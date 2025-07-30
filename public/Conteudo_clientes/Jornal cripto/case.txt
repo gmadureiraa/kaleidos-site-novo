@@ -1,0 +1,9 @@
+### Nome do Projeto/Cliente: Jornal cripto
+1. Resumo do Projeto: Revisão e publicação de newsletter diária (crypto today), todos dias 7 da manhã, também escrevemos 3 ebooks, além da revisão e design do ebook
+2. Sobre o Cliente: Jornal Cripto é uma plataforma de notícias e análises sobre criptomoedas, com foco em conteúdo atualizado, blog, newsletter e ferramentas como Radar para monitoramento de mercado. Visa educar e informar investidores no ecossistema cripto brasileiro.
+3. Serviços Realizados: Criação de conteúdo, criação de website, desenvolvimento de webapp, criação de blog, criação de newsletter semanal, tráfego pago, branding e desenvolvimento de marca, automações para criação de blog post automático usando n8n( criamos um fluxo que escreve 6 blog posts por dia, escrevemos uma newsletter a mão estruturada e manual duas vezes por semana, desenvolvemos um personagem
+4. Destaques do Projeto: Automatização via n8n para 6 posts diários; newsletters manuais 2x/semana; desenvolvimento de personagem para branding; webapp Radar para insights em tempo real; tráfego pago que impulsionou audiência; branding completo elevando a marca no setor cripto.
+5. Galeria de Imagens/Vídeos: Capturas de tela do site, blog posts e Radar tool disponíveis nos links; visuais de branding como logos e personagens.
+6. Depoimentos: Nenhum encontrado explicitamente, mas o site destaca análises confiáveis e ferramentas inovadoras.
+7. Links do projeto: news.jornalcripto.com jornalcripto.com radar.jornalcripto.com
+8. Métricas de Impacto: (Não especificadas para este projeto.) 

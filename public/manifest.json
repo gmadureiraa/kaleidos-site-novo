@@ -1,0 +1,32 @@
+{
+  "name": "Kaleidos Digital - Marketing e Conteúdo",
+  "short_name": "Kaleidos",
+  "description": "Especialistas em crescimento de marcas através de conteúdo criativo, automações inteligentes e lançamentos estratégicos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ec4899",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/Imagens/Capa.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Imagens/Capa.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "marketing"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+} 
