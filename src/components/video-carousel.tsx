@@ -5,39 +5,154 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
-const videos = [
+const carouselItems = [
+  // Distribuição equilibrada - 1-2 exemplos de cada cliente intercalados
+  
   // Bit das Minas
-  "/Conteudo_clientes/Bit das minas/Reels-1-Gi-2.mp4",
-  "/Conteudo_clientes/Bit das minas/Reels-3-Gi.mp4",
+  {
+    src: "/Conteudo_clientes/Bit das minas/Reels-1-Gi-2.mp4",
+    type: "video",
+    href: "/cases/bit-das-minas",
+    title: "Bit das Minas",
+    description: "Reels virais"
+  },
   
   // Layla Foz
-  "/Conteudo_clientes/Layla Foz/Reels-1-Layla-1.mp4",
-  "/Conteudo_clientes/Layla Foz/Reels-2-Layla-1.mp4",
+  {
+    src: "/Conteudo_clientes/Layla Foz/Reels-1-Layla-1.mp4",
+    type: "video",
+    href: "/cases/layla-foz",
+    title: "Layla Foz",
+    description: "Reels educativos"
+  },
   
   // Investidor 4.20
-  "/Conteudo_clientes/Investidor 4.20/Reels-1-Lucas-1.mp4",
-  "/Conteudo_clientes/Investidor 4.20/Reels-3-Lucas.mp4",
+  {
+    src: "/Conteudo_clientes/Investidor 4.20/Reels-1-Lucas-1.mp4",
+    type: "video",
+    href: "/cases/investidor-4-20",
+    title: "Investidor 4.20",
+    description: "Growth explosivo"
+  },
   
   // Yasmin
-  "/Conteudo_clientes/Yasmin/Reels-1-Yasmin-1.mp4",
-  "/Conteudo_clientes/Yasmin/Reels-3-Yasmin.mp4",
+  {
+    src: "/Conteudo_clientes/Yasmin/Reels-1-Yasmin-1.mp4",
+    type: "video",
+    href: "/cases/yasmin",
+    title: "Yasmin",
+    description: "Reels criativos"
+  },
   
   // Paradigma Education
-  "/Conteudo_clientes/Paradigma/PARADIGMAv2.mp4",
-  "/Conteudo_clientes/Paradigma/20250620_PARADIGMA_01M06S_V3.mp4",
+  {
+    src: "/Conteudo_clientes/Paradigma/PARADIGMAv2.mp4",
+    type: "video",
+    href: "/cases/paradigma-education",
+    title: "Paradigma Education",
+    description: "Motion design"
+  },
   
-  // Defifest (imagens)
-  "/Conteudo_clientes/Defifest/1.png",
-  "/Conteudo_clientes/Defifest/10.png",
+  // Defifest (imagem)
+  {
+    src: "/Conteudo_clientes/Defifest/1.png",
+    type: "image",
+    href: "/cases/defifest",
+    title: "Defifest",
+    description: "Design de evento"
+  },
   
-  // Jornal Cripto (imagens)
-  "/Conteudo_clientes/Jornal cripto/1-2.png",
-  "/Conteudo_clientes/Jornal cripto/2-1.png",
+  // Bit das Minas (segundo exemplo)
+  {
+    src: "/Conteudo_clientes/Bit das minas/Reels-3-Gi.mp4",
+    type: "video",
+    href: "/cases/bit-das-minas",
+    title: "Bit das Minas",
+    description: "Conteúdo engajante"
+  },
   
-  // Mercado Bitcoin (imagens)
-  "/Conteudo_clientes/Mercado Bitcoin/Instagram.png",
-  "/Conteudo_clientes/Mercado Bitcoin/Instagram2.png",
+  // Jornal Cripto (imagem)
+  {
+    src: "/Conteudo_clientes/Jornal cripto/1-2.png",
+    type: "image",
+    href: "/cases/jornal-cripto",
+    title: "Jornal Cripto",
+    description: "Design editorial"
+  },
+  
+  // Layla Foz (segundo exemplo)
+  {
+    src: "/Conteudo_clientes/Layla Foz/Reels-2-Layla-1.mp4",
+    type: "video",
+    href: "/cases/layla-foz",
+    title: "Layla Foz",
+    description: "Conteúdo autêntico"
+  },
+  
+  // Mercado Bitcoin (imagem)
+  {
+    src: "/Conteudo_clientes/Mercado Bitcoin/Instagram.png",
+    type: "image",
+    href: "/cases/mercado-bitcoin",
+    title: "Mercado Bitcoin",
+    description: "Posts Instagram"
+  },
+  
+  // Investidor 4.20 (segundo exemplo)
+  {
+    src: "/Conteudo_clientes/Investidor 4.20/Reels-3-Lucas.mp4",
+    type: "video",
+    href: "/cases/investidor-4-20",
+    title: "Investidor 4.20",
+    description: "Lançamentos virais"
+  },
+  
+  // Defifest (segunda imagem)
+  {
+    src: "/Conteudo_clientes/Defifest/10.png",
+    type: "image",
+    href: "/cases/defifest",
+    title: "Defifest",
+    description: "Branding completo"
+  },
+  
+  // Yasmin (segundo exemplo)
+  {
+    src: "/Conteudo_clientes/Yasmin/Reels-3-Yasmin.mp4",
+    type: "video",
+    href: "/cases/yasmin",
+    title: "Yasmin",
+    description: "Conteúdo viral"
+  },
+  
+  // Jornal Cripto (segunda imagem)
+  {
+    src: "/Conteudo_clientes/Jornal cripto/2-1.png",
+    type: "image",
+    href: "/cases/jornal-cripto",
+    title: "Jornal Cripto",
+    description: "Layout profissional"
+  },
+  
+  // Paradigma Education (segundo exemplo)
+  {
+    src: "/Conteudo_clientes/Paradigma/20250620_PARADIGMA_01M06S_V3.mp4",
+    type: "video",
+    href: "/cases/paradigma-education",
+    title: "Paradigma Education",
+    description: "Edição avançada"
+  },
+  
+  // Mercado Bitcoin (segunda imagem)
+  {
+    src: "/Conteudo_clientes/Mercado Bitcoin/Instagram2.png",
+    type: "image",
+    href: "/cases/mercado-bitcoin",
+    title: "Mercado Bitcoin",
+    description: "Conteúdo financeiro"
+  },
 ];
 
 export default function VideoCarousel() {
@@ -95,14 +210,14 @@ export default function VideoCarousel() {
         modules={[Autoplay]}
         loop
         autoplay={{ 
-          delay: isMobile ? 3000 : 2000, // Delay maior em mobile
+          delay: isMobile ? 3000 : 2000,
           disableOnInteraction: false 
         }}
-        speed={isMobile ? 1500 : 2000} // Velocidade menor em mobile
+        speed={isMobile ? 1500 : 2000}
         slidesPerView={1.1}
         spaceBetween={12}
         centeredSlides
-        allowTouchMove={true} // Permitir touch em mobile
+        allowTouchMove={true}
         className="w-full max-w-6xl"
         style={{ padding: "0 12px" }}
         breakpoints={{
@@ -128,73 +243,68 @@ export default function VideoCarousel() {
           }
         }}
       >
-        {videos.map((src, idx) => {
-          const isImage = src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg');
-          
-          return (
-            <SwiperSlide key={idx}>
-              <div className="flex justify-center items-center h-[350px] sm:h-[400px] md:h-[500px] lg:h-[570px]">
-                {isImage ? (
-                  <img
-                    src={src}
-                    alt="Resultado do cliente"
-                    className="rounded-[16px] sm:rounded-[20px] md:rounded-[24px] lg:rounded-[32px] shadow-lg bg-black w-full"
-                    style={{
-                      aspectRatio: "9/16",
-                      width: "100%",
-                      maxWidth: "312px",
-                      height: "auto",
-                      maxHeight: "741px",
-                      objectFit: "cover",
-                      background: "#000"
-                    }}
-                    loading="lazy"
-                    decoding="async"
-                    onLoad={(e) => {
-                      // Esconder loading state
-                      const img = e.target as HTMLImageElement;
-                      img.style.opacity = '1';
-                    }}
-                    onError={(e) => {
-                      // Mostrar fallback em caso de erro
-                      const img = e.target as HTMLImageElement;
-                      img.src = '/Imagens/placeholder.png';
-                    }}
-                  />
-                ) : (
-                  <video
-                    src={src}
-                    autoPlay={!isMobile} // Desabilitar autoplay em mobile
-                    loop
-                    muted
-                    playsInline
-                    className="rounded-[16px] sm:rounded-[20px] md:rounded-[24px] lg:rounded-[32px] shadow-lg bg-black w-full"
-                    style={{
-                      aspectRatio: "9/16",
-                      width: "100%",
-                      maxWidth: "312px",
-                      height: "auto",
-                      maxHeight: "741px",
-                      objectFit: "cover",
-                      background: "#000"
-                    }}
-                    preload="none" // Não carregar até ser visível
-                    onLoadStart={(e) => {
-                      // Mostrar loading state
-                      const video = e.target as HTMLVideoElement;
-                      video.style.opacity = '0.5';
-                    }}
-                    onCanPlay={(e) => {
-                      // Esconder loading state
-                      const video = e.target as HTMLVideoElement;
-                      video.style.opacity = '1';
-                    }}
-                  />
-                )}
+        {carouselItems.map((item, idx) => (
+          <SwiperSlide key={idx}>
+            <Link href={item.href} className="block group">
+              <div className="relative flex justify-center items-center h-[350px] sm:h-[400px] md:h-[500px] lg:h-[570px]">
+                {/* Container com bordas de reels */}
+                <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] h-full">
+                  {/* Borda externa (fundo escuro) */}
+                  <div className="absolute inset-0 bg-black rounded-[20px] sm:rounded-[24px] md:rounded-[28px] lg:rounded-[32px] shadow-2xl transform group-hover:scale-105 transition-transform duration-300" />
+                  
+                  {/* Conteúdo interno */}
+                  <div className="relative w-full h-full p-1 sm:p-1.5 md:p-2 lg:p-2.5">
+                    {item.type === "image" ? (
+                      <img
+                        src={item.src}
+                        alt={`${item.title} - ${item.description}`}
+                        className="w-full h-full rounded-[16px] sm:rounded-[18px] md:rounded-[20px] lg:rounded-[24px] object-cover bg-black"
+                        loading="lazy"
+                        decoding="async"
+                        onLoad={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.style.opacity = '1';
+                        }}
+                        onError={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.src = '/Imagens/placeholder.png';
+                        }}
+                      />
+                    ) : (
+                      <video
+                        src={item.src}
+                        autoPlay={!isMobile}
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full rounded-[16px] sm:rounded-[18px] md:rounded-[20px] lg:rounded-[24px] object-cover bg-black"
+                        preload="none"
+                        onLoadStart={(e) => {
+                          const video = e.target as HTMLVideoElement;
+                          video.style.opacity = '0.5';
+                        }}
+                        onCanPlay={(e) => {
+                          const video = e.target as HTMLVideoElement;
+                          video.style.opacity = '1';
+                        }}
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Overlay com informações */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 sm:p-4 rounded-b-[16px] sm:rounded-b-[18px] md:rounded-b-[20px] lg:rounded-b-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/80 text-xs sm:text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </SwiperSlide>
-          );
-        })}
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

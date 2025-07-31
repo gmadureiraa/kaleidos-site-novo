@@ -116,10 +116,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <head>
-        <StructuredData />
-      </head>
       <body className={`${atelier.variable} ${inter.variable} ${gridlite.variable} font-sans`}>
+        <StructuredData />
         <Navbar />
         {children}
         <Analytics />

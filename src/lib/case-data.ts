@@ -354,19 +354,19 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Edição de vídeo", "Motion Graphics", "Animação", "Cortes de Podcast"],
     media: [
       { 
-        src: "/Conteudo_clientes/Paradigma/PARADIGMAv2.mp4", 
+        src: "/Conteudo_clientes/Paradigma/PARADIGMA_2.mp4", 
         type: "video", 
         alt: "Paradigma Education - Vídeo Principal",
         poster: "/Imagens/Elementos/19.png"
       },
       { 
-        src: "/Conteudo_clientes/Paradigma/20250620_PARADIGMA_01M06S_V3.mp4", 
+        src: "/Conteudo_clientes/Paradigma/PARADIGMA_3.mp4", 
         type: "video", 
         alt: "Paradigma Education - Motion 1",
         poster: "/Imagens/Elementos/20.png"
       },
       { 
-        src: "/Conteudo_clientes/Paradigma/20250702_PARADIGMA_01M13S.mp4", 
+        src: "/Conteudo_clientes/Paradigma/PARADIGMA_1.mp4", 
         type: "video", 
         alt: "Paradigma Education - Motion 2",
         poster: "/Imagens/Elementos/21.png"
