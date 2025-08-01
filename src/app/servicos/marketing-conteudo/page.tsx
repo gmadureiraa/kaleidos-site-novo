@@ -282,10 +282,6 @@ export default function KaleidosContentPage() {
                 // Jornal Cripto - Imagens
                 "/Conteudo_clientes/Jornal cripto/1-2.png",
                 "/Conteudo_clientes/Jornal cripto/2-1.png",
-                
-                // Mercado Bitcoin - Imagens
-                "/Conteudo_clientes/Mercado Bitcoin/Instagram.png",
-                "/Conteudo_clientes/Mercado Bitcoin/Instagram2.png",
               ].map((src, idx) => {
                 const isImage = src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg');
                 

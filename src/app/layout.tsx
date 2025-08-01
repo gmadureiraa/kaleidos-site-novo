@@ -63,6 +63,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
+      { url: '/favicon-128x128.png', sizes: '128x128', type: 'image/png' },
+      { url: '/favicon-256x256.png', sizes: '256x256', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon-128x128.png',
+  },
   openGraph: {
     title: "Kaleidos Digital - Marketing e Conteúdo",
     description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "Especialistas em crescimento de marcas através de conteúdo criativo, automações inteligentes e lançamentos estratégicos.",
@@ -101,10 +113,6 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
   },
   manifest: '/manifest.json',
 };
