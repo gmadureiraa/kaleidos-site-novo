@@ -190,19 +190,20 @@ export default function VideoCarousel() {
     };
   }, []);
 
-  if (!isVisible) {
-    return (
-      <div id="video-carousel" className="w-full flex justify-center py-6 sm:py-8 lg:py-12 bg-white">
-        <div className="w-full max-w-6xl px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-[350px] sm:h-[400px] md:h-[500px] lg:h-[570px] bg-gray-200 rounded-[16px] animate-pulse" />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // Remover a condição de visibilidade para garantir que os vídeos carreguem sempre
+  // if (!isVisible) {
+  //   return (
+  //     <div id="video-carousel" className="w-full flex justify-center py-6 sm:py-8 lg:py-12 bg-white">
+  //       <div className="w-full max-w-6xl px-4">
+  //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  //           {[...Array(6)].map((_, i) => (
+  //             <div key={i} className="h-[350px] sm:h-[400px] md:h-[500px] lg:h-[570px] bg-gray-200 rounded-[16px] animate-pulse" />
+  //           ))}
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div id="video-carousel" className="w-full flex justify-center py-6 sm:py-8 lg:py-12 bg-white">
@@ -273,7 +274,7 @@ export default function VideoCarousel() {
                     ) : (
                       <video
                         src={item.src}
-                        autoPlay={!isMobile}
+                        autoPlay
                         loop
                         muted
                         playsInline
