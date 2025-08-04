@@ -156,7 +156,6 @@ const carouselItems = [
 ];
 
 export default function VideoCarousel() {
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -168,25 +167,8 @@ export default function VideoCarousel() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Intersection Observer para lazy loading
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById('video-carousel');
-    if (element) {
-      observer.observe(element);
-    }
-
     return () => {
       window.removeEventListener('resize', checkMobile);
-      observer.disconnect();
     };
   }, []);
 
