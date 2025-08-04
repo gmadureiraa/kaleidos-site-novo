@@ -1,0 +1,408 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Tipografia da Kaleidos Digital - Otimizada com next/font/local */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Tipografia da Kaleidos Digital - Hierarquia Baseada na Proporção Áurea */
+  --font-display: var(--font-atelier), 'Atelier', serif; /* Fonte Principal para Títulos */
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif; /* Fonte Secundária para Textos */
+  --font-accent: var(--font-gridlite), 'Gridlite', sans-serif; /* Fonte de Destaque/Acent */
+  --font-mono: var(--font-inter), 'Inter', monospace; /* Fonte Monospace */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Grid pattern for background */
+.bg-grid-black\/\[0\.02\] {
+  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+}
+
+.bg-grid-white\/\[0\.02\] {
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+}
+
+/* Card flip animations */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Carrossel de Reels - Estilos específicos */
+.reels-thumbnail {
+  aspect-ratio: 2/3;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 80px;
+  min-height: 120px;
+  max-width: 80px;
+  max-height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.reels-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.reels-thumbnail.active {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px #7CFF6B, 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Carrossel Horizontal Fluido - Estilos específicos */
+.carousel-horizontal {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-horizontal {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animação de carregamento para vídeos */
+.video-loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Scrollbar personalizada para o carrossel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Melhorias para o carrossel principal */
+.carousel-main {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-main:hover {
+  transform: scale(1.02);
+}
+
+/* Indicadores do carrossel */
+.carousel-indicator {
+  transition: all 0.3s ease;
+}
+
+.carousel-nav-button {
+  transition: all 0.3s ease;
+}
+
+.carousel-nav-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.video-modal {
+  backdrop-filter: blur(8px);
+}
+
+.video-modal-content {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsividade para o carrossel horizontal */
+@media (max-width: 768px) {
+  .carousel-horizontal {
+    gap: 1rem;
+  }
+  
+  .carousel-item {
+    width: 240px !important;
+    height: 360px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .carousel-horizontal {
+    gap: 1rem;
+  }
+  
+  .carousel-item {
+    width: 280px !important;
+    height: 420px !important;
+  }
+}
+
+.font-display {
+  font-family: 'Atelier', serif;
+}
+
+.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-accent {
+  font-family: 'Gridlite', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Inter', monospace;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+/* AI State Loading Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Carrossel com formatos específicos */
+.carousel-reels {
+  aspect-ratio: 9/16;
+  max-height: 600px;
+}
+
+.carousel-feed {
+  aspect-ratio: 1/1;
+  max-height: 500px;
+}
+
+/* Responsividade para carrossel */
+@media (max-width: 768px) {
+  .carousel-reels {
+    max-height: 500px;
+  }
+  
+  .carousel-feed {
+    max-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-reels {
+    max-height: 700px;
+  }
+  
+  .carousel-feed {
+    max-height: 600px;
+  }
+}
+
+.atelier-font {
+  font-family: 'Atelier', sans-serif;
+}
+
+/* Estilos para tweets embutidos */
+.twitter-tweet {
+  margin: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+
+.twitter-tweet img {
+  border-radius: 8px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+/* Melhorar responsividade dos tweets */
+.twitter-tweet-rendered {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Container do tweet para melhor exibição */
+.tweet-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+

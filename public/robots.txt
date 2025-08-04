@@ -1,0 +1,63 @@
+# Robots.txt para Kaleidos Digital
+# https://kaleidos.com.br/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kaleidos.com.br/sitemap.xml
+
+# Crawl-delay para ser respeitoso com o servidor
+Crawl-delay: 1
+
+# Permitir todos os recursos importantes
+Allow: /cases/
+Allow: /servicos/
+Allow: /sobre
+Allow: /contato
+Allow: /Imagens/
+Allow: /logo/
+
+# Bloquear arquivos desnecessários
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Permitir vídeos e imagens para indexação
+Allow: /Conteudo_clientes/
+Allow: /videos/
+Allow: /*.mp4$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+
+# Configurações específicas para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configurações específicas para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Configurações para bots de redes sociais
+User-agent: Twitterbot
+Allow: /
+Allow: /Imagens/
+Allow: /logo/
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /Imagens/
+Allow: /logo/
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /Imagens/
+Allow: /logo/ 

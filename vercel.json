@@ -1,0 +1,49 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/sitemap.xml",
+      "dest": "/api/sitemap"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/Conteudo_clientes/(.*)",
+      "dest": "/Conteudo_clientes/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "src": "/videos/(.*)",
+      "dest": "/videos/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "src": "/Imagens/(.*)",
+      "dest": "/Imagens/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/logo/(.*)",
+      "dest": "/logo/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    }
+  ]
+}
