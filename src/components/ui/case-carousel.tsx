@@ -331,9 +331,6 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                   <p className="text-xs text-gray-600">
                     {currentIndex + 1} de {media.length}
                   </p>
-                  <p className="text-sm font-medium text-gray-900">
-                    {currentMedia.alt || `${title} - Material ${currentIndex + 1}`}
-                  </p>
                 </div>
               </div>
             ) : (
@@ -410,9 +407,6 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                 <div className="mt-4 sm:mt-6 text-center px-4">
                   <p className="text-xs sm:text-sm text-gray-600">
                     {currentIndex + 1} de {media.length}
-                  </p>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">
-                    {currentMedia.alt || `${title} - Material ${currentIndex + 1}`}
                   </p>
                 </div>
                 

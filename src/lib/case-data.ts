@@ -17,7 +17,6 @@ export interface CaseData {
     link?: string; // URL para link externo (ex: Instagram)
   }[];
 }
-
 // Dados dos cases com todo o conteúdo disponível
 export const casesData: Record<string, CaseData> = {
   "defifest": {
@@ -32,33 +31,33 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Tivemos mais de 600 participantes em um evento de DeFi, com palestras e networking.",
     servicos: ["Design", "Motion", "Edição de vídeo", "Copywrite"],
     media: [
-      { src: "/Conteudo_clientes/Defifest/1.png", type: "image", alt: "Design Defifest 1" },
-      { src: "/Conteudo_clientes/Defifest/4.png", type: "image", alt: "Design Defifest 4" },
-      { src: "/Conteudo_clientes/Defifest/6.png", type: "image", alt: "Design Defifest 6" },
-      { src: "/Conteudo_clientes/Defifest/7.png", type: "image", alt: "Design Defifest 7" },
-      { src: "/Conteudo_clientes/Defifest/8.png", type: "image", alt: "Design Defifest 8" },
-      { src: "/Conteudo_clientes/Defifest/9.png", type: "image", alt: "Design Defifest 9" },
-      { src: "/Conteudo_clientes/Defifest/10.png", type: "image", alt: "Design Defifest 10" },
-      { src: "/Conteudo_clientes/Defifest/13.png", type: "image", alt: "Design Defifest 13" },
-      { src: "/Conteudo_clientes/Defifest/16.png", type: "image", alt: "Design Defifest 16" },
-      { src: "/Conteudo_clientes/Defifest/17.png", type: "image", alt: "Design Defifest 17" },
-      { src: "/Conteudo_clientes/Defifest/22.png", type: "image", alt: "Design Defifest 22" },
-      { src: "/Conteudo_clientes/Defifest/23.png", type: "image", alt: "Design Defifest 23" },
-      { src: "/Conteudo_clientes/Defifest/24.png", type: "image", alt: "Design Defifest 24" },
-      { src: "/Conteudo_clientes/Defifest/30.png", type: "image", alt: "Design Defifest 30" },
-      { src: "/Conteudo_clientes/Defifest/31.png", type: "image", alt: "Design Defifest 31" },
-      { src: "/Conteudo_clientes/Defifest/68.png", type: "image", alt: "Design Defifest 68" },
-      { src: "/Conteudo_clientes/Defifest/71.png", type: "image", alt: "Design Defifest 71" },
-      { src: "/Conteudo_clientes/Defifest/76.png", type: "image", alt: "Design Defifest 76" },
-      { src: "/Conteudo_clientes/Defifest/77.png", type: "image", alt: "Design Defifest 77" },
-      { src: "/Conteudo_clientes/Defifest/78.png", type: "image", alt: "Design Defifest 78" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%201.png", type: "image", alt: "Palestra 1" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%202.png", type: "image", alt: "Palestra 2" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%203.png", type: "image", alt: "Palestra 3" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%204.png", type: "image", alt: "Palestra 4" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%205.png", type: "image", alt: "Palestra 5" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%206.png", type: "image", alt: "Palestra 6" },
-      { src: "/Conteudo_clientes/Defifest/Palestra%207.png", type: "image", alt: "Palestra 7" },
+      { src: "/Conteudo_clientes/Defifest/1.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/4.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/6.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/7.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/8.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/9.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/10.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/13.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/16.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/17.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/22.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/23.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/24.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/30.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/31.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/68.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/71.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/76.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/77.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/78.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%201.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%202.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%203.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%204.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%205.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%206.png", type: "image" },
+      { src: "/Conteudo_clientes/Defifest/Palestra%207.png", type: "image" },
     ]
   },
   "bit-das-minas": {
@@ -76,37 +75,31 @@ export const casesData: Record<string, CaseData> = {
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-1-Gi-2.mp4", 
         type: "video", 
-        alt: "Reels Gi 1",
         poster: "/Imagens/Elementos/1.png"
       },
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-3-Gi.mp4", 
         type: "video", 
-        alt: "Reels Gi 3",
         poster: "/Imagens/Elementos/2.png"
       },
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-4-Gi.mp4", 
         type: "video", 
-        alt: "Reels Gi 4",
         poster: "/Imagens/Elementos/3.png"
       },
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-5-Gi.mp4", 
         type: "video", 
-        alt: "Reels Gi 5",
         poster: "/Imagens/Elementos/4.png"
       },
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-6-Gi.mp4", 
         type: "video", 
-        alt: "Reels Gi 6",
         poster: "/Imagens/Elementos/5.png"
       },
       { 
         src: "/Conteudo_clientes/Bit%20das%20minas/Reels-7-Gi-1.mp4", 
         type: "video", 
-        alt: "Reels Gi 7",
         poster: "/Imagens/Elementos/6.png"
       },
     ]
@@ -123,32 +116,28 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Crescimento no Instagram de 100 mil para 172 mil seguidores; mais de 20 milhões de views nos reels.",
     servicos: ["Edição de vídeos", "Roteiros de Reels", "Newsletter"],
     media: [
-      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels1.png", type: "image", alt: "Capa Reels Layla 1" },
-      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels2.png", type: "image", alt: "Capa Reels Layla 2" },
-      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels3.png", type: "image", alt: "Capa Reels Layla 3" },
-      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels4.png", type: "image", alt: "Capa Reels Layla 4" },
+      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels1.png", type: "image" },
+      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels2.png", type: "image" },
+      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels3.png", type: "image" },
+      { src: "/Conteudo_clientes/Layla%20Foz/Capa_Reels4.png", type: "image" },
       { 
         src: "/Conteudo_clientes/Layla%20Foz/Reels-1-Layla-1.mp4", 
         type: "video", 
-        alt: "Reels Layla 1",
         poster: "/Conteudo_clientes/Layla%20Foz/Capa_Reels1.png"
       },
       { 
         src: "/Conteudo_clientes/Layla%20Foz/Reels-2-Layla-1.mp4", 
         type: "video", 
-        alt: "Reels Layla 2",
         poster: "/Conteudo_clientes/Layla%20Foz/Capa_Reels2.png"
       },
       { 
         src: "/Conteudo_clientes/Layla%20Foz/Reels-3-Layla-1.mp4", 
         type: "video", 
-        alt: "Reels Layla 3",
         poster: "/Conteudo_clientes/Layla%20Foz/Capa_Reels3.png"
       },
       { 
         src: "/Conteudo_clientes/Layla%20Foz/Reels-4-Layla.mp4", 
         type: "video", 
-        alt: "Reels Layla 4",
         poster: "/Conteudo_clientes/Layla%20Foz/Capa_Reels4.png"
       },
     ]
@@ -165,12 +154,12 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Conseguimos um aumento médio de mais de 100% nas curtidas em social media.",
     servicos: ["Copywrite", "Criação de conteúdo"],
     media: [
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.37.16.png", type: "image", alt: "Crypto.com Tweet 1" },
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.37.28.png", type: "image", alt: "Crypto.com Tweet 2" },
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.45.29.png", type: "image", alt: "Crypto.com Tweet 3" },
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.20.png", type: "image", alt: "Crypto.com Tweet 4" },
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.26.png", type: "image", alt: "Crypto.com Tweet 5" },
-      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.31.png", type: "image", alt: "Crypto.com Tweet 6" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.37.16.png", type: "image" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.37.28.png", type: "image" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.45.29.png", type: "image" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.20.png", type: "image" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.26.png", type: "image" },
+      { src: "/Conteudo_clientes/Crypto.com/Captura%20de%20Tela%202025-07-26%20às%2022.46.31.png", type: "image" },
     ]
   },
   "jornal-cripto": {
@@ -185,14 +174,14 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Automatização de 6 posts diários, newsletters semanais, crescimento exponencial da audiência e posicionamento como referência no setor.",
     servicos: ["Criação de marca", "Identidade visual", "Desenvolvimento web", "Estratégia de marketing", "Tráfego pago", "Criação de conteúdo", "Automações", "Newsletter", "Webapp"],
     media: [
-      { src: "/Conteudo_clientes/Jornal%20cripto/1-2.png", type: "image", alt: "Jornal Cripto - Newsletter" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/2-1.png", type: "image", alt: "Jornal Cripto - Site Principal" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/8.png", type: "image", alt: "Jornal Cripto - Radar App" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/11-1.png", type: "image", alt: "Jornal Cripto - Conteúdo 1" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/12.png", type: "image", alt: "Jornal Cripto - Conteúdo 2" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/13-1.png", type: "image", alt: "Jornal Cripto - Conteúdo 3" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/21-1.png", type: "image", alt: "Jornal Cripto - Conteúdo 4" },
-      { src: "/Conteudo_clientes/Jornal%20cripto/22.png", type: "image", alt: "Jornal Cripto - Conteúdo 5" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/1-2.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/2-1.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/8.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/11-1.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/12.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/13-1.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/21-1.png", type: "image" },
+      { src: "/Conteudo_clientes/Jornal%20cripto/22.png", type: "image" },
     ]
   },
   "mercado-bitcoin": {
@@ -207,13 +196,13 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Trouxemos mais de 180 posts para Instagram; ganhamos mais de 80 mil inscritos no período.",
     servicos: ["Criação de conteúdo", "Instagram", "Twitter", "LinkedIn"],
     media: [
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram.png", type: "image", alt: "Mercado Bitcoin Post 1" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram2.png", type: "image", alt: "Mercado Bitcoin Post 2" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram3.png", type: "image", alt: "Mercado Bitcoin Post 3" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram4.png", type: "image", alt: "Mercado Bitcoin Post 4" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram5.png", type: "image", alt: "Mercado Bitcoin Post 5" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram6.png", type: "image", alt: "Mercado Bitcoin Post 6" },
-      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram8.png", type: "image", alt: "Mercado Bitcoin Post 8" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram2.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram3.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram4.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram5.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram6.png", type: "image" },
+      { src: "/Conteudo_clientes/Mercado%20Bitcoin/Instagram8.png", type: "image" },
     ]
   },
   "orlando": {
@@ -228,9 +217,9 @@ export const casesData: Record<string, CaseData> = {
     metricas: "Não especificadas para este projeto.",
     servicos: ["Newsletter diária", "Ebooks", "Design"],
     media: [
-      { src: "/Conteudo_clientes/Orlando/Ebook%20custódia.pdf", type: "pdf", alt: "Ebook Custódia" },
-      { src: "/Conteudo_clientes/Orlando/Ebook%20de%20Opções%20e%20Realização%20de%20lucros.pdf", type: "pdf", alt: "Ebook Opções" },
-      { src: "/Conteudo_clientes/Orlando/Ebook%20DeFi%20e%20Airdrop.pdf", type: "pdf", alt: "Ebook DeFi" },
+      { src: "/Conteudo_clientes/Orlando/Ebook%20custódia.pdf", type: "pdf" },
+      { src: "/Conteudo_clientes/Orlando/Ebook%20de%20Opções%20e%20Realização%20de%20lucros.pdf", type: "pdf" },
+      { src: "/Conteudo_clientes/Orlando/Ebook%20DeFi%20e%20Airdrop.pdf", type: "pdf" },
     ]
   },
   "yasmin": {
@@ -248,31 +237,26 @@ export const casesData: Record<string, CaseData> = {
       { 
         src: "/Conteudo_clientes/Yasmin/Reels-1-Yasmin-1.mp4", 
         type: "video", 
-        alt: "Reels Yasmin 1",
         poster: "/Imagens/Elementos/7.png"
       },
       { 
         src: "/Conteudo_clientes/Yasmin/Reels-2-Yasmin-1.mp4", 
         type: "video", 
-        alt: "Reels Yasmin 2",
         poster: "/Imagens/Elementos/8.png"
       },
       { 
         src: "/Conteudo_clientes/Yasmin/Reels-3-Yasmin.mp4", 
         type: "video", 
-        alt: "Reels Yasmin 3",
         poster: "/Imagens/Elementos/9.png"
       },
       { 
         src: "/Conteudo_clientes/Yasmin/Reels-4-Yasmin.mp4", 
         type: "video", 
-        alt: "Reels Yasmin 4",
         poster: "/Imagens/Elementos/10.png"
       },
       { 
         src: "/Conteudo_clientes/Yasmin/Reels-5-Yasmin.mp4", 
         type: "video", 
-        alt: "Reels Yasmin 5",
         poster: "/Imagens/Elementos/11.png"
       },
     ]
@@ -292,53 +276,46 @@ export const casesData: Record<string, CaseData> = {
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-1-Lucas-1.mp4", 
         type: "video", 
-        alt: "Reels Lucas 1",
         poster: "/Imagens/Elementos/12.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-2-Lucas-1.mp4", 
         type: "video", 
-        alt: "Reels Lucas 2",
         poster: "/Imagens/Elementos/13.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-3-Lucas.mp4", 
         type: "video", 
-        alt: "Reels Lucas 3",
         poster: "/Imagens/Elementos/14.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-4-Lucas.mp4", 
         type: "video", 
-        alt: "Reels Lucas 4",
         poster: "/Imagens/Elementos/15.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Palestrantes-Defifest-2025-Video-1.mp4", 
         type: "video", 
-        alt: "Palestrantes Defifest 2025",
         poster: "/Imagens/Elementos/16.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-6-Lucas.mp4", 
         type: "video", 
-        alt: "Reels Lucas 6",
         poster: "/Imagens/Elementos/17.png"
       },
       { 
         src: "/Conteudo_clientes/Investidor%204.20/Reels-7-Lucas.mp4", 
         type: "video", 
-        alt: "Reels Lucas 7",
         poster: "/Imagens/Elementos/18.png"
       },
-      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio1.png", type: "image", alt: "Criativo Anúncio 1" },
-      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio2.png", type: "image", alt: "Criativo Anúncio 2" },
-      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio3.png", type: "image", alt: "Criativo Anúncio 3" },
-      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura1.png", type: "image", alt: "Página Captura 1" },
-      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura2.png", type: "image", alt: "Página Captura 2" },
-      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura4.png", type: "image", alt: "Página Captura 4" },
-      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura5.png", type: "image", alt: "Página Captura 5" },
-      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura13.png", type: "image", alt: "Página Captura 13" },
+      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio1.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio2.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/Criativoanuncio3.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura1.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura2.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura4.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura5.png", type: "image" },
+      { src: "/Conteudo_clientes/Investidor%204.20/pagina%20de%20captura/páginacaptura13.png", type: "image" },
     ]
   },
   "paradigma-education": {
@@ -356,43 +333,36 @@ export const casesData: Record<string, CaseData> = {
       { 
         src: "/Conteudo_clientes/Paradigma/20250620_PARADIGMA_01M06S_V3.mp4", 
         type: "video", 
-        alt: "Paradigma Education - Vídeo Principal",
         poster: "/Imagens/Elementos/19.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/20250702_PARADIGMA_01M13S.mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 1",
         poster: "/Imagens/Elementos/20.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/PARADIGMAv2.mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 2",
         poster: "/Imagens/Elementos/21.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/20250717_PARADIGMA_01M20S_V2(1).mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 3",
         poster: "/Imagens/Elementos/22.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/20250722_PARADIGMA_01M55S_V2(1).mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 4",
         poster: "/Imagens/Elementos/23.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/PARADIGMA%20v2(1).mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 5",
         poster: "/Imagens/Elementos/24.png"
       },
       { 
         src: "/Conteudo_clientes/Paradigma/20250801_PARADIGMA_00M40S_V1(1).mp4", 
         type: "video", 
-        alt: "Paradigma Education - Motion 6",
         poster: "/Imagens/Elementos/25.png"
       },
     ]
@@ -412,32 +382,27 @@ export const casesData: Record<string, CaseData> = {
       { 
         src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.02.27.png", 
         type: "image", 
-        alt: "Você conhece o defiverso?",
         link: "https://www.instagram.com/p/DLpl-wfx2FQ/?img_index=1"
       },
       { 
         src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.09.png", 
         type: "image", 
-        alt: "4 coisas que você deveria fazer toda manhã",
         link: "https://www.instagram.com/p/DMdHCjWxjxg/?img_index=1"
       },
       { 
         src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.13.png", 
         type: "image", 
-        alt: "Altcoin season é só um blefe",
         link: "https://www.instagram.com/p/DMXysRxxHEH/?img_index=1"
       },
-      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.19.png", type: "image", alt: "Post Defiverso 4" },
-      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.48.png", type: "image", alt: "Post Defiverso 5" },
-      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.04.56.png", type: "image", alt: "Post Defiverso 6" },
+      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.19.png", type: "image" },
+      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.03.48.png", type: "image" },
+      { src: "/Conteudo_clientes/Defiverso/Captura%20de%20Tela%202025-07-27%20às%2000.04.56.png", type: "image" },
     ]
   }
 };
-
 export function getCaseData(id: string): CaseData | null {
   return casesData[id] || null;
 }
-
 export function getAllCases(): CaseData[] {
   return Object.values(casesData);
 } 
