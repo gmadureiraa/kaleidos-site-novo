@@ -371,6 +371,30 @@ export const casesData: Record<string, CaseData> = {
         alt: "Paradigma Education - Motion 2",
         poster: "/Imagens/Elementos/21.png"
       },
+      { 
+        src: "/Conteudo_clientes/Paradigma/20250717_PARADIGMA_01M20S_V2(1).mp4", 
+        type: "video", 
+        alt: "Paradigma Education - Motion 3",
+        poster: "/Imagens/Elementos/22.png"
+      },
+      { 
+        src: "/Conteudo_clientes/Paradigma/20250722_PARADIGMA_01M55S_V2(1).mp4", 
+        type: "video", 
+        alt: "Paradigma Education - Motion 4",
+        poster: "/Imagens/Elementos/23.png"
+      },
+      { 
+        src: "/Conteudo_clientes/Paradigma/PARADIGMA%20v2(1).mp4", 
+        type: "video", 
+        alt: "Paradigma Education - Motion 5",
+        poster: "/Imagens/Elementos/24.png"
+      },
+      { 
+        src: "/Conteudo_clientes/Paradigma/20250801_PARADIGMA_00M40S_V1(1).mp4", 
+        type: "video", 
+        alt: "Paradigma Education - Motion 6",
+        poster: "/Imagens/Elementos/25.png"
+      },
     ]
   },
   "defiverso": {
