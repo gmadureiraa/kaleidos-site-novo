@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
@@ -126,8 +127,12 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${atelier.variable} ${inter.variable} ${gridlite.variable} font-sans`}>
         <StructuredData />
-        <Navbar />
-        {children}
+        <Suspense fallback={null}>
+          <Navbar />
+        </Suspense>
+        <Suspense fallback={null}>
+          {children}
+        </Suspense>
         <Analytics />
       </body>
     </html>
