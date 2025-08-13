@@ -8,7 +8,7 @@ import Image from "next/image"
 import { useI18n } from "@/i18n/useI18n"
 
 export default function HeroKaleidos() {
-  const { t, locale } = useI18n()
+  const { t } = useI18n()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {

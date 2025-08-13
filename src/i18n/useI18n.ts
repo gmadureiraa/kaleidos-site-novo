@@ -20,8 +20,8 @@ export function useI18n() {
   const locale: Locale = (qLang === "en" || qLang === "pt") ? qLang : detectLocaleFromPath(pathname);
 
   function t(namespace: string, key: string): string {
-    const dict = (dictionaries as any)[locale]?.[namespace] ?? {};
-    return dict[key] ?? key;
+    const ns = dictionaries[locale]?.[namespace] || {};
+    return (ns as Record<string, string>)[key] ?? key;
   }
 
   function switchLocale(nextLocale: Locale) {
