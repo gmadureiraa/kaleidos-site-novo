@@ -37,8 +37,6 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
   const { t, locale } = useI18n();
   const {
     nome,
-    descricao,
-    descricao_en,
     fraseImpactante,
     fraseImpactante_en,
     detalhes,
@@ -46,8 +44,6 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
     links,
     metricas,
     metricas_en,
-    servicos,
-    servicos_en,
     media
   } = caseData;
   const isEn = locale === 'en';
