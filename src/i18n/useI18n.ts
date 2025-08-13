@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { dictionaries, Locale } from "./dictionaries";
 
 export function detectLocaleFromPath(pathname: string): Locale {
@@ -15,7 +15,6 @@ export function detectLocaleFromPath(pathname: string): Locale {
 
 export function useI18n() {
   const pathname = usePathname() || "/";
-  const router = useRouter();
   const [queryLocale, setQueryLocale] = useState<Locale | null>(null);
 
   useEffect(() => {
