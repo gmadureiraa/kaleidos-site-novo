@@ -10,49 +10,7 @@ import { WHATSAPP_NUMBER, SERVICOS } from "@/lib/constants";
 export default function ContatoPage() {
   const { t, locale } = useI18n();
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    empresa: "",
-    mensagem: ""
-  });
-
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-
-  const [submitting, setSubmitting] = useState(false);
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (submitting) return;
-    setSubmitting(true);
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          servicos: selectedServices,
-          locale,
-        }),
-      });
-      if (!res.ok) throw new Error('request_failed');
-      // resetar campos
-      setFormData({ nome: '', email: '', empresa: '', mensagem: '' });
-      setSelectedServices([]);
-      alert(t('contact','alertSuccess'));
-    } catch (err) {
-      console.error('contact submit error', err);
-      alert('Ocorreu um erro ao enviar. Tente novamente.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const toggleServico = (servico: string) => {
     setSelectedServices((prev) =>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles, Target, Users, Award, ArrowRight } from "lucide-react";
+import { ArrowLeft, Sparkles, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 import Image from "next/image";

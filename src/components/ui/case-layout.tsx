@@ -54,7 +54,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
   const detalhesText = isEn && detalhes_en ? detalhes_en : detalhes;
   const fraseText = isEn && fraseImpactante_en ? fraseImpactante_en : fraseImpactante;
   const metricasText = isEn && metricas_en ? metricas_en : metricas;
-  const servicosList = (isEn && servicos_en && servicos_en.length) ? servicos_en : servicos;
+  // Sidebar removida; lista de serviços não é usada na UI atual
 
 
 
