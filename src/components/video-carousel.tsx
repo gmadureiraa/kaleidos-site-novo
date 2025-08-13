@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useI18n } from "@/i18n/useI18n";
 
 const carouselItems = [
   // Distribuição equilibrada - 1-2 exemplos de cada cliente intercalados
@@ -156,6 +157,8 @@ const carouselItems = [
 ];
 
 export default function VideoCarousel() {
+  const { locale } = useI18n();
+  const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -228,7 +231,7 @@ export default function VideoCarousel() {
       >
         {carouselItems.map((item, idx) => (
           <SwiperSlide key={idx}>
-            <Link href={item.href} className="block group">
+            <Link href={withLang(item.href)} className="block group">
               <div className="relative flex justify-center items-center h-[350px] sm:h-[400px] md:h-[500px] lg:h-[570px]">
                 {/* Container com bordas de reels */}
                 <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] h-full">

@@ -5,8 +5,10 @@ import { motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useI18n } from "@/i18n/useI18n"
 
 export default function HeroKaleidos() {
+  const { t, locale } = useI18n()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -54,10 +56,10 @@ export default function HeroKaleidos() {
         </div>
         
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-4 sm:mb-8 font-sans">
-          O futuro do seu conteúdo começa aqui!
+          {t('home','heroTagline1')}
         </p>
         <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto font-sans leading-relaxed">
-          Especialistas em crescimento de marcas através de conteúdo criativo, automações inteligentes e lançamentos estratégicos
+          {t('home','heroTagline2')}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <Button 
@@ -65,7 +67,7 @@ export default function HeroKaleidos() {
             onClick={() => document.getElementById("cases-section")?.scrollIntoView({ behavior: "smooth" })}
             className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto shadow-lg"
           >
-            Ver Cases
+            {t('home','heroSeeCases')}
           </Button>
           <Button
             size="lg"
@@ -73,7 +75,7 @@ export default function HeroKaleidos() {
             onClick={() => document.getElementById("ajuda-section")?.scrollIntoView({ behavior: "smooth" })}
             className="border-white text-white hover:bg-white hover:text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto bg-transparent"
           >
-            Fale Conosco
+            {t('home','heroContact')}
           </Button>
         </div>
       </motion.div>

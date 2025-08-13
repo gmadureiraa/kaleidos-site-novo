@@ -15,8 +15,10 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { useI18n } from "@/i18n/useI18n";
 
 export default function KaleidosContentPage() {
+  const { locale } = useI18n();
   const [api, setApi] = useState<CarouselApi>();
   const [isPaused, setIsPaused] = useState(false);
 
@@ -36,7 +38,7 @@ export default function KaleidosContentPage() {
   }, [api, isPaused]);
 
   const handleWhatsApp = () => {
-    const message = "Olá! Preciso da ajuda da Kaleidos Content para criar conteúdo que viraliza. Podem me ajudar?";
+    const message = locale==='en' ? "Hello! I need Kaleidos Content to create content that goes viral. Can you help me?" : "Olá! Preciso da ajuda da Kaleidos Content para criar conteúdo que viraliza. Podem me ajudar?";
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -60,24 +62,21 @@ export default function KaleidosContentPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 font-display text-black">
-              Kaleidos{" "}
-              <span className="text-black">
-                Content
-              </span>
+              Kaleidos <span className="text-black">Content</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Conteúdo que faz sua audiência parar e pensar:{" "}
-              <span className="text-black font-semibold">&ldquo;Que genial!&rdquo;</span>
+              {locale==='en' ? 'Content that makes your audience stop and think: ' : 'Conteúdo que faz sua audiência parar e pensar: '}
+              <span className="text-black font-semibold">{locale==='en' ? '“That\'s brilliant!”' : '“Que genial!”'}</span>
             </p>
 
             {/* Word Rotate Section */}
             <div className="mb-8">
-              <p className="text-lg text-gray-600 mb-4">Nós fazemos:</p>
+              <p className="text-lg text-gray-600 mb-4">{locale==='en' ? 'We do:' : 'Nós fazemos:'}</p>
               <div className="text-black">
                 <WordRotate
                   className="text-2xl md:text-3xl font-bold text-black"
-                  words={["Conteúdo Único!", "Copy Persuasiva", "Roteiros Virais", "Edição de vídeos", "Email Marketing", "Design", "Branding"]}
+                  words={locale==='en' ? ["Unique Content!", "Persuasive Copy", "Viral Scripts", "Video Editing", "Email Marketing", "Design", "Branding"] : ["Conteúdo Único!", "Copy Persuasiva", "Roteiros Virais", "Edição de vídeos", "Email Marketing", "Design", "Branding"]}
                   duration={3000}
                 />
               </div>
@@ -88,7 +87,7 @@ export default function KaleidosContentPage() {
                 onClick={handleWhatsApp}
                 className="bg-black text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300"
               >
-                Começar agora
+                {locale==='en' ? 'Start now' : 'Começar agora'}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
@@ -110,11 +109,10 @@ export default function KaleidosContentPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display text-black">
-              O que podemos{" "}
-              <span className="text-black">fazer</span>
+              {locale==='en' ? 'What we can ' : 'O que podemos '}<span className="text-black">{locale==='en' ? 'do' : 'fazer'}</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Conteúdo fundamento em dados que transformam seu marketing em resultados reais
+              {locale==='en' ? 'Data‑driven content that turns your marketing into real results' : 'Conteúdo fundamento em dados que transformam seu marketing em resultados reais'}
             </p>
           </motion.div>
 
@@ -125,40 +123,44 @@ export default function KaleidosContentPage() {
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold text-black font-display">
-                    Criamos conteúdo que viraliza
+                    {locale==='en' ? 'We create content that goes viral' : 'Criamos conteúdo que viraliza'}
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Desenvolvemos <strong>conteúdo personalizado</strong> que transformam sua marca em uma máquina de engajamento. Nossa abordagem combina <strong>copywriting avançado</strong>, <strong>roteiros inteligentes</strong> e <strong>edição criativa</strong> para criar conteúdo que as pessoas querem consumir e compartilhar.
+                    {locale==='en' ? (
+                      <>
+                        We develop <strong>custom content</strong> that turns your brand into an engagement machine. Our approach combines <strong>advanced copywriting</strong>, <strong>smart scripts</strong> and <strong>creative editing</strong> to create content people want to consume and share.
+                      </>
+                    ) : (
+                      <>
+                        Desenvolvemos <strong>conteúdo personalizado</strong> que transformam sua marca em uma máquina de engajamento. Nossa abordagem combina <strong>copywriting avançado</strong>, <strong>roteiros inteligentes</strong> e <strong>edição criativa</strong> para criar conteúdo que as pessoas querem consumir e compartilhar.
+                      </>
+                    )}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                    <h4 className="text-lg font-bold text-black mb-3">Copywriting</h4>
-                    <p className="text-gray-600 text-sm">
-                      Textos persuasivos que converte visitantes em clientes, usando técnicas avançadas de psicologia de vendas.
-                    </p>
+                    <h4 className="text-lg font-bold text-black mb-3">{locale==='en' ? 'Copywriting' : 'Copywriting'}</h4>
+                    <p className="text-gray-600 text-sm">{locale==='en' ? 'Persuasive texts that turn visitors into customers, using advanced sales psychology techniques.' : 'Textos persuasivos que converte visitantes em clientes, usando técnicas avançadas de psicologia de vendas.'}</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                    <h4 className="text-lg font-bold text-black mb-3">Roteiros</h4>
-                    <p className="text-gray-600 text-sm">
-                      Scripts inteligentes que capturam atenção desde os primeiros segundos e mantêm o engajamento.
-                    </p>
+                    <h4 className="text-lg font-bold text-black mb-3">{locale==='en' ? 'Scripts' : 'Roteiros'}</h4>
+                    <p className="text-gray-600 text-sm">{locale==='en' ? 'Smart scripts that capture attention from the first seconds and keep engagement high.' : 'Scripts inteligentes que capturam atenção desde os primeiros segundos e mantêm o engajamento.'}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-6 pt-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-black mb-2">500+</div>
-                    <div className="text-sm text-gray-600">Vídeos editados</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Edited videos' : 'Vídeos editados'}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-black mb-2">30M+</div>
-                    <div className="text-sm text-gray-600">Views nos reels</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Reels views' : 'Views nos reels'}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-black mb-2">600+</div>
-                    <div className="text-sm text-gray-600">Peças de Design</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Design assets' : 'Peças de Design'}</div>
                   </div>
                 </div>
               </div>
@@ -192,25 +194,29 @@ export default function KaleidosContentPage() {
               <div className="space-y-8 order-1 lg:order-2">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold text-black font-display">
-                    Design e edição que impressiona
+                    {locale==='en' ? 'Design and editing that impress' : 'Design e edição que impressiona'}
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Criamos <strong>designs únicos</strong> e <strong>edições cinematográficas</strong> que fazem sua marca se destacar. Nossa equipe especializada em <strong>After Effects</strong>, <strong>motion graphics</strong> e <strong>correção de cor</strong> transforma vídeos simples em experiências visuais memoráveis que viralizam naturalmente.
+                    {locale==='en' ? (
+                      <>
+                        We create <strong>unique designs</strong> and <strong>cinematic edits</strong> that make your brand stand out. Our team specialized in <strong>After Effects</strong>, <strong>motion graphics</strong> and <strong>color grading</strong> transforms simple videos into memorable visual experiences that go viral naturally.
+                      </>
+                    ) : (
+                      <>
+                        Criamos <strong>designs únicos</strong> e <strong>edições cinematográficas</strong> que fazem sua marca se destacar. Nossa equipe especializada em <strong>After Effects</strong>, <strong>motion graphics</strong> e <strong>correção de cor</strong> transforma vídeos simples em experiências visuais memoráveis que viralizam naturalmente.
+                      </>
+                    )}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                     <h4 className="text-lg font-bold text-black mb-3">Motion Graphics</h4>
-                    <p className="text-gray-600 text-sm">
-                      Animações e efeitos visuais que capturam atenção e transmitem sua mensagem de forma impactante.
-                    </p>
+                    <p className="text-gray-600 text-sm">{locale==='en' ? 'Animations and visual effects that capture attention and deliver your message with impact.' : 'Animações e efeitos visuais que capturam atenção e transmitem sua mensagem de forma impactante.'}</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                    <h4 className="text-lg font-bold text-black mb-3">Edição Criativa</h4>
-                    <p className="text-gray-600 text-sm">
-                      Cortes dinâmicos, transições suaves e ritmo cinematográfico que mantêm o espectador engajado.
-                    </p>
+                    <h4 className="text-lg font-bold text-black mb-3">{locale==='en' ? 'Creative Editing' : 'Edição Criativa'}</h4>
+                    <p className="text-gray-600 text-sm">{locale==='en' ? 'Dynamic cuts, smooth transitions and cinematic rhythm that keep viewers engaged.' : 'Cortes dinâmicos, transições suaves e ritmo cinematográfico que mantêm o espectador engajado.'}</p>
                   </div>
                 </div>
 
@@ -232,11 +238,10 @@ export default function KaleidosContentPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display text-white">
-              Nossos{" "}
-              <span className="text-white">Trabalhos</span>
+              {locale==='en' ? 'Our ' : 'Nossos '}<span className="text-white">{locale==='en' ? 'Work' : 'Trabalhos'}</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Vídeos editados, designs criados e conteúdo que viraliza
+              {locale==='en' ? 'Edited videos, created designs and content that goes viral' : 'Vídeos editados, designs criados e conteúdo que viraliza'}
             </p>
           </motion.div>
 
@@ -349,11 +354,11 @@ export default function KaleidosContentPage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Button 
+               <Button 
               onClick={handleWhatsApp}
               className="bg-white text-black px-8 py-4 text-lg font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300"
             >
-              Quero Conteúdo Assim
+               {locale==='en' ? 'I want content like this' : 'Quero Conteúdo Assim'}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
@@ -370,17 +375,21 @@ export default function KaleidosContentPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display text-black">
-              Pronto para Criar{" "}
-              <span className="text-black">Conteúdo que Viraliza?</span>
+              {locale==='en' ? 'Ready to create ' : 'Pronto para Criar '}<span className="text-black">{locale==='en' ? 'content that goes viral?' : 'Conteúdo que Viraliza?'}</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {[
+              {(locale==='en' ? [
+                'Content that truly engages',
+                'Copy that converts',
+                'Videos that go viral',
+                'Audience that grows organically'
+              ] : [
                 "Conteúdo que engaja de verdade",
                 "Copy que converte",
                 "Vídeos que viralizam",
                 "Audiência que cresce organicamente"
-              ].map((benefit, index) => (
+              ]).map((benefit, index) => (
                 <motion.div 
                   key={index} 
                   className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-600 transition-all duration-300"
@@ -403,7 +412,7 @@ export default function KaleidosContentPage() {
               className="bg-black text-white px-12 py-6 text-xl font-bold rounded-2xl hover:scale-105 transition-all duration-300 group overflow-hidden"
             >
               <span className="relative z-10 flex items-center">
-                Quero Conteúdo que Funciona
+                {locale==='en' ? 'I want content that works' : 'Quero Conteúdo que Funciona'}
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </Button>

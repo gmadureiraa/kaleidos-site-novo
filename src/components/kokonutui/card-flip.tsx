@@ -16,6 +16,7 @@ import { useState } from "react";
 
 export interface CardFlipProps {
     title?: string;
+    backTitle?: string;
     subtitle?: string;
     description?: string;
     features?: string[];
@@ -24,10 +25,12 @@ export interface CardFlipProps {
     frontBorderColor?: string;
     backBgGradient?: string;
     backBorderColor?: string;
+    onDark?: boolean;
 }
 
 export default function CardFlip({
     title = "Design Systems",
+    backTitle,
     subtitle = "Explore the fundamentals",
     description = "Dive deep into the world of modern UI/UX design.",
     features = ["UI/UX", "Modern Design", "Tailwind CSS", "Kokonut UI"],
@@ -36,6 +39,7 @@ export default function CardFlip({
     frontBorderColor = "border-zinc-200",
     // backBgGradient = "from-zinc-900 to-black",
     backBorderColor = "border-zinc-800",
+    onDark = false,
 }: CardFlipProps) {
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -66,15 +70,15 @@ export default function CardFlip({
                         "absolute inset-0 w-full h-full",
                         "[backface-visibility:hidden] [transform:rotateY(0deg)]",
                         "overflow-hidden rounded-2xl",
-                        "bg-zinc-50 dark:bg-zinc-900",
-                        `border ${frontBorderColor}`,
-                        "shadow-xs dark:shadow-lg",
+                        onDark ? "bg-black" : "bg-white",
+                        onDark ? "border-transparent" : `border ${frontBorderColor}`,
+                        "shadow-sm dark:shadow-lg",
                         "transition-all duration-700",
                         "group-hover:shadow-lg dark:group-hover:shadow-xl",
                         isFlipped ? "opacity-0" : "opacity-100"
                     )}
                 >
-                    <div className="relative h-full overflow-hidden bg-gradient-to-b from-zinc-100 to-white dark:from-zinc-900 dark:to-black">
+                    <div className={cn("relative h-full overflow-hidden", onDark ? "bg-black" : "bg-white") }>
                         <div className="absolute inset-0 flex items-start justify-center pt-24">
                             <div className="relative w-[200px] h-[100px] flex items-center justify-center">
                                 {[...Array(10)].map((_, i) => (
@@ -117,10 +121,10 @@ export default function CardFlip({
                     <div className="absolute bottom-0 left-0 right-0 p-5">
                         <div className="flex items-center justify-between gap-3">
                             <div className="space-y-1.5">
-                                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]">
+                                <h3 className={cn("text-lg font-semibold leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]", onDark ? "text-white" : "text-zinc-900") }>
                                     {title}
                                 </h3>
-                                <p className="text-sm text-zinc-600 dark:text-zinc-200 line-clamp-2 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] delay-[50ms]">
+                                <p className={cn("text-sm line-clamp-2 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] delay-[50ms]", onDark ? "text-zinc-300" : "text-zinc-600") }>
                                     {subtitle}
                                 </p>
                             </div>
@@ -143,8 +147,8 @@ export default function CardFlip({
                         "absolute inset-0 w-full h-full",
                         "[backface-visibility:hidden] [transform:rotateY(180deg)]",
                         "p-6 rounded-2xl",
-                        "bg-zinc-50 dark:bg-zinc-900",
-                        `border ${backBorderColor}`,
+                        onDark ? "bg-black" : "bg-white",
+                        onDark ? "border-transparent" : `border ${backBorderColor}`,
                         "shadow-xs dark:shadow-lg",
                         "flex flex-col",
                         "transition-all duration-700",
@@ -154,10 +158,10 @@ export default function CardFlip({
                 >
                     <div className="flex-1 space-y-6">
                         <div className="space-y-2">
-                            <h3 className="text-lg font-semibold text-zinc-900 dark:text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
-                                {title}
+                            <h3 className={cn("text-lg font-semibold leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]", onDark ? "text-white" : "text-zinc-900") }>
+                                {backTitle ?? title}
                             </h3>
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] line-clamp-2">
+                            <p className={cn("text-sm tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] line-clamp-2", onDark ? "text-zinc-300" : "text-zinc-600") }>
                                 {description}
                             </p>
                         </div>
@@ -166,7 +170,7 @@ export default function CardFlip({
                             {features.map((feature, index) => (
                                 <div
                                     key={feature}
-                                    className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300 transition-all duration-500"
+                                    className={cn("flex items-center gap-2 text-sm transition-all duration-500", onDark ? "text-zinc-300" : "text-zinc-700")}
                                     style={{
                                         transform: isFlipped
                                             ? "translateX(0)"
@@ -199,7 +203,7 @@ export default function CardFlip({
                                 "hover:scale-[1.02] hover:cursor-pointer"
                             )}
                         >
-                            <span className="text-sm font-medium text-zinc-900 dark:text-white transition-colors duration-300 group-hover/start:text-orange-600 dark:group-hover/start:text-orange-400">
+                            <span className={cn("text-sm font-medium transition-colors duration-300 group-hover/start:text-orange-600 dark:group-hover/start:text-orange-400", onDark ? "text-white" : "text-zinc-900") }>
                                 Começar Agora
                             </span>
                             <div className="relative group/icon">

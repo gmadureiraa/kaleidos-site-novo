@@ -60,21 +60,7 @@ export default function AIStateLoading() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center space-x-2">
-          {states.map((_, index) => (
-            <motion.div
-              key={index}
-              className={`w-2 h-2 rounded-full ${
-                index === currentState ? "bg-white" : "bg-gray-600"
-              }`}
-              animate={{
-                scale: index === currentState ? 1.2 : 1,
-                opacity: index === currentState ? 1 : 0.5,
-              }}
-              transition={{ duration: 0.3 }}
-            />
-          ))}
-        </div>
+        {/* Dots removidos a pedido */}
       </div>
     </div>
   );

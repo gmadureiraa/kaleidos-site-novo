@@ -29,6 +29,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaInstagram, FaYoutube, FaTiktok, FaFacebook, FaTwitter } from "react-icons/fa6";
 import AITextLoading from "@/components/kokonutui/ai-text-loading";
 import { useAnimationOptimization } from "@/hooks/use-animation-optimization";
+import { useI18n } from "@/i18n/useI18n";
 
 // Componente wrapper para evitar problemas de hidratação
 function ClientOnly({ children }: { children: React.ReactNode }) {
@@ -87,67 +88,78 @@ interface BentoItem {
     className?: string;
 }
 
-const bentoItems: BentoItem[] = [
-    {
-        id: "conteudo",
-        title: "Marketing de Conteúdo",
-        subtitle: "Kaleidos Content",
-        description:
-            "Copy, roteiro, edição, design, newsletters e muito mais para sua marca se destacar.",
-        href: "/servicos/marketing-conteudo",
-        feature: "spotlight",
-        spotlightItems: [
-            "Copywriting estratégico",
-            "Roteiros criativos",
-            "Edição de vídeo e áudio",
-            "Design visual",
-            "Newsletters e campanhas",
-        ],
-        size: "lg",
-        className: "col-span-2 row-span-1 md:col-span-2 md:row-span-1",
-    },
-    {
-        id: "agentes-ia",
-        title: "Agentes de IA & Automação",
-        subtitle: "Kaleidos AI",
-        description:
-            "Inteligência artificial para automação de processos, chatbots, análise de dados e personalização de conteúdo.",
-        href: "/servicos/ia-automacoes",
-        feature: "typing",
-        typingText:
-            "const agent = new AIAgent({\n  model: 'gpt-4-turbo',\n  tools: [copywriting, dataAnalysis],\n  memory: new ConversationalMemory()\n});\n\nawait agent.learn(domainData);\nreturn agent;",
-        size: "md",
-        className: "col-span-2 row-span-1 col-start-1 col-end-3",
-    },
-    {
-        id: "criacao-conteudo",
-        title: "Criação de Conteúdo",
-        subtitle: "Kaleidos Content",
-        description:
-            "Produção de conteúdo multiplataforma para redes sociais. Instagram, YouTube, X, TikTok, Facebook e mais.",
-        href: "/servicos/marketing-conteudo",
-        feature: "icons",
-        size: "md",
-        className: "col-span-2 row-span-1 col-start-1 col-end-3",
-    },
-
-    {
-        id: "sites",
-        title: "Páginas e Sites",
-        description:
-            "Criação de landing pages, sites institucionais e hotsites otimizados para conversão.",
-        href: "#sites",
-        feature: "spotlight",
-        spotlightItems: [
-            "UX/UI Design",
-            "Desenvolvimento Next.js",
-            "SEO e performance",
-            "Integrações e automações",
-        ],
-        size: "sm",
-        className: "col-span-1 row-span-1",
-    },
-];
+function getBentoItems(locale: 'pt'|'en'): BentoItem[] {
+    const isEn = locale === 'en';
+    return [
+        {
+            id: "conteudo",
+            title: isEn ? "Content Marketing" : "Marketing de Conteúdo",
+            subtitle: "Kaleidos Content",
+            description: isEn
+                ? "Copy, scripts, editing, design, newsletters and more to make your brand stand out."
+                : "Copy, roteiro, edição, design, newsletters e muito mais para sua marca se destacar.",
+            href: "/servicos/marketing-conteudo",
+            feature: "spotlight",
+            spotlightItems: isEn
+                ? [
+                    "Strategic copywriting",
+                    "Creative scripts",
+                    "Video and audio editing",
+                    "Visual design",
+                    "Newsletters and campaigns",
+                  ]
+                : [
+                    "Copywriting estratégico",
+                    "Roteiros criativos",
+                    "Edição de vídeo e áudio",
+                    "Design visual",
+                    "Newsletters e campanhas",
+                  ],
+            size: "lg",
+            className: "col-span-2 row-span-1 md:col-span-2 md:row-span-1",
+        },
+        {
+            id: "agentes-ia",
+            title: isEn ? "AI Agents & Automation" : "Agentes de IA & Automação",
+            subtitle: "Kaleidos AI",
+            description: isEn
+                ? "Artificial intelligence for process automation, chatbots, data analysis and content personalization."
+                : "Inteligência artificial para automação de processos, chatbots, análise de dados e personalização de conteúdo.",
+            href: "/servicos/ia-automacoes",
+            feature: "typing",
+            typingText:
+                "const agent = new AIAgent({\n  model: 'gpt-4-turbo',\n  tools: [copywriting, dataAnalysis],\n  memory: new ConversationalMemory()\n});\n\nawait agent.learn(domainData);\nreturn agent;",
+            size: "md",
+            className: "col-span-2 row-span-1 col-start-1 col-end-3",
+        },
+        {
+            id: "criacao-conteudo",
+            title: isEn ? "Content Creation" : "Criação de Conteúdo",
+            subtitle: "Kaleidos Content",
+            description: isEn
+                ? "Multi‑platform content production for social media. Instagram, YouTube, X, TikTok, Facebook and more."
+                : "Produção de conteúdo multiplataforma para redes sociais. Instagram, YouTube, X, TikTok, Facebook e mais.",
+            href: "/servicos/marketing-conteudo",
+            feature: "icons",
+            size: "md",
+            className: "col-span-2 row-span-1 col-start-1 col-end-3",
+        },
+        {
+            id: "sites",
+            title: isEn ? "Pages & Websites" : "Páginas e Sites",
+            description: isEn
+                ? "Landing pages, corporate sites and hotsites optimized for conversion."
+                : "Criação de landing pages, sites institucionais e hotsites otimizados para conversão.",
+            href: "#sites",
+            feature: "spotlight",
+            spotlightItems: isEn
+                ? ["UX/UI Design", "Next.js Development", "SEO and performance", "Integrations and automations"]
+                : ["UX/UI Design", "Desenvolvimento Next.js", "SEO e performance", "Integrações e automações"],
+            size: "sm",
+            className: "col-span-1 row-span-1",
+        },
+    ];
+}
 
 const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -628,6 +640,8 @@ const BentoCard = ({ item }: { item: BentoItem }) => {
 
 export default function BentoGrid() {
     const { shouldAnimate, getOptimizedAnimation } = useAnimationOptimization();
+    const { locale } = useI18n();
+    const items = getBentoItems(locale as 'pt'|'en');
     
     const containerAnimation = getOptimizedAnimation(
         { duration: 0.8, ease: "easeOut" },
@@ -640,7 +654,7 @@ export default function BentoGrid() {
                 <h2
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 sm:mb-12 text-left sm:text-center font-display tracking-tight"
                 >
-                    O que fazemos
+                    {locale==='en' ? 'What we do' : 'O que fazemos'}
                 </h2>
                 {/* Bento Grid */}
                 <motion.div
@@ -656,13 +670,13 @@ export default function BentoGrid() {
                             variants={shouldAnimate() ? fadeInUp : {}}
                             className="md:col-span-1"
                         >
-                            <BentoCard item={bentoItems[0]} />
+                            <BentoCard item={items[0]} />
                         </motion.div>
                         <motion.div
                             variants={shouldAnimate() ? fadeInUp : {}}
                             className="md:col-span-2"
                         >
-                            <BentoCard item={bentoItems[1]} />
+                            <BentoCard item={items[1]} />
                         </motion.div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
@@ -670,7 +684,7 @@ export default function BentoGrid() {
                             variants={shouldAnimate() ? fadeInUp : {}}
                             className="md:col-span-1"
                         >
-                            <BentoCard item={bentoItems[2]} />
+                            <BentoCard item={items[2]} />
                         </motion.div>
                         <motion.div
                             variants={fadeInUp}
@@ -681,7 +695,7 @@ export default function BentoGrid() {
                                     <div className="flex items-center justify-between mb-4">
                                         <div>
                                             <h3 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-                                                Growth Strategy & Lançamentos
+                                                {locale==='en' ? 'Growth Strategy & Launches' : 'Growth Strategy & Lançamentos'}
                                             </h3>
                                             <p className="text-sm italic text-neutral-500 dark:text-neutral-400 mt-1 font-sans">
                                                 Kaleidos Growth
@@ -690,16 +704,22 @@ export default function BentoGrid() {
                                         <ArrowUpRight className="h-5 w-5 text-neutral-400 dark:text-neutral-500" />
                                     </div>
                                     <p className="text-sm text-neutral-600 dark:text-neutral-400 tracking-tight mb-4">
-                                        Estratégias de crescimento e planejamento de lançamentos digitais para maximizar resultados e conversões.
+                                        {locale==='en' ? 'Growth strategies and planning of digital launches to maximize results and conversions.' : 'Estratégias de crescimento e planejamento de lançamentos digitais para maximizar resultados e conversões.'}
                                     </p>
                                     <ClientOnly>
                                         <AITextLoading 
-                                            texts={[
-                                                "Analisando mercado...",
-                                                "Criando estratégia...",
-                                                "Otimizando conversões...",
-                                                "Planejando lançamento...",
-                                                "Executando campanha..."
+                                            texts={locale==='en' ? [
+                                                'Analyzing market...',
+                                                'Creating strategy...',
+                                                'Optimizing conversions...',
+                                                'Planning launch...',
+                                                'Running campaign...'
+                                            ] : [
+                                                'Analisando mercado...',
+                                                'Criando estratégia...',
+                                                'Otimizando conversões...',
+                                                'Planejando lançamento...',
+                                                'Executando campanha...'
                                             ]}
                                             interval={2000}
                                         />

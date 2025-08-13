@@ -5,76 +5,116 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Brain, PenTool, Video, Mail, Rocket, FileText, Workflow, Brush } from "lucide-react";
 import { useState } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { useI18n } from "@/i18n/useI18n";
 
-export function CtaAjuda() {
-  const [selectedService, setSelectedService] = useState<string>("");
+export function CtaAjuda({ variant = "dark" }: { variant?: "dark" | "light" }) {
+  const { t, locale } = useI18n();
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const handleWhatsApp = () => {
-    const message = selectedService 
-      ? `Olá! Preciso de ajuda com ${selectedService}. Podem me ajudar?`
-      : "Olá! Preciso da ajuda da Kaleidos. Podem me ajudar?";
+    const selected = selectedServices.join(', ');
+    const message = selectedServices.length > 0
+      ? (locale==='pt' ? `Olá! Preciso de ajuda com: ${selected}. Podem me ajudar?` : `Hello! I need help with: ${selected}. Can you help me?`)
+      : (locale==='pt' ? "Olá! Preciso da ajuda da Kaleidos. Podem me ajudar?" : "Hello! I need Kaleidos' help. Can you help me?");
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const services = [
     {
-      title: "Edição de Vídeo",
-      description: "Edição profissional para reels, anúncios e institucionais",
+      title: locale==='en' ? 'Video Editing' : 'Edição de Vídeo',
+      description: locale==='en' ? 'Professional editing for reels, ads and institutional videos' : 'Edição profissional para reels, anúncios e institucionais',
       icon: Video,
-      value: "edição de vídeo"
+      value: locale==='en' ? 'video editing' : 'edição de vídeo'
     },
     {
-      title: "Roteiros de Vídeos",
-      description: "Roteiros criativos e estratégicos para vídeos que engajam",
+      title: locale==='en' ? 'Video Scripts' : 'Roteiros de Vídeos',
+      description: locale==='en' ? 'Creative, strategic scripts for videos that engage' : 'Roteiros criativos e estratégicos para vídeos que engajam',
       icon: PenTool,
-      value: "roteiros de vídeos"
+      value: locale==='en' ? 'video scripts' : 'roteiros de vídeos'
     },
     {
-      title: "Newsletter",
-      description: "Criação, copy e automação de newsletters para sua audiência",
+      title: 'Newsletter',
+      description: locale==='en' ? 'Creation, copy and newsletter automations for your audience' : 'Criação, copy e automação de newsletters para sua audiência',
       icon: Mail,
-      value: "newsletter"
+      value: 'newsletter'
     },
     {
-      title: "Lançamento",
-      description: "Estratégias completas para lançamentos digitais de sucesso",
+      title: locale==='en' ? 'Launch' : 'Lançamento',
+      description: locale==='en' ? 'Complete strategies for successful digital launches' : 'Estratégias completas para lançamentos digitais de sucesso',
       icon: Rocket,
-      value: "lançamento"
+      value: locale==='en' ? 'launch' : 'lançamento'
     },
     {
-      title: "Criação de Conteúdo",
-      description: "Posts, textos, copywriting e conteúdo multiplataforma",
+      title: locale==='en' ? 'Content Creation' : 'Criação de Conteúdo',
+      description: locale==='en' ? 'Posts, copywriting and multi‑platform content' : 'Posts, textos, copywriting e conteúdo multiplataforma',
       icon: FileText,
-      value: "criação de conteúdo"
+      value: locale==='en' ? 'content creation' : 'criação de conteúdo'
     },
     {
-      title: "Design",
-      description: "Identidade visual, social media, banners e mais",
+      title: 'Design',
+      description: locale==='en' ? 'Visual identity, social media, banners and more' : 'Identidade visual, social media, banners e mais',
       icon: Brush,
-      value: "design"
+      value: 'design'
     },
     {
-      title: "Automações",
-      description: "Automatize processos, integrações e fluxos de trabalho",
+      title: locale==='en' ? 'Automations' : 'Automações',
+      description: locale==='en' ? 'Automate processes, integrations and workflows' : 'Automatize processos, integrações e fluxos de trabalho',
       icon: Workflow,
-      value: "automações"
+      value: locale==='en' ? 'automations' : 'automações'
     },
     {
-      title: "IA",
-      description: "Soluções de inteligência artificial para marketing e conteúdo",
+      title: 'IA',
+      description: locale==='en' ? 'AI solutions for marketing and content' : 'Soluções de inteligência artificial para marketing e conteúdo',
       icon: Brain,
-      value: "inteligência artificial"
+      value: locale==='en' ? 'artificial intelligence' : 'inteligência artificial'
+    },
+    // Novos serviços
+    {
+      title: locale==='en' ? 'Social Media Management' : 'Gestão de Social Media',
+      description: locale==='en' ? 'Planning, calendar and publishing across platforms' : 'Planejamento, calendário e publicação multi-plataforma',
+      icon: FileText,
+      value: locale==='en' ? 'social media management' : 'gestão de social media'
+    },
+    {
+      title: locale==='en' ? 'Landing Pages' : 'Landing Pages',
+      description: locale==='en' ? 'High-converting capture pages' : 'Páginas de captura que convertem',
+      icon: Brush,
+      value: locale==='en' ? 'landing pages' : 'landing pages'
+    },
+    {
+      title: locale==='en' ? 'Branding' : 'Branding',
+      description: locale==='en' ? 'Brand voice and identity system' : 'Voz da marca e identidade visual',
+      icon: Brush,
+      value: 'branding'
+    },
+    {
+      title: locale==='en' ? 'Community Management' : 'Gestão de Comunidade',
+      description: locale==='en' ? 'Discord/Telegram structure and moderation' : 'Estrutura e moderação em Discord/Telegram',
+      icon: Workflow,
+      value: locale==='en' ? 'community management' : 'gestão de comunidade'
+    },
+    {
+      title: locale==='en' ? 'Web Development' : 'Desenvolvimento Web',
+      description: locale==='en' ? 'Next.js websites and integrations' : 'Sites em Next.js e integrações',
+      icon: Workflow,
+      value: locale==='en' ? 'web development' : 'desenvolvimento web'
+    },
+    {
+      title: locale==='en' ? 'Motion Graphics' : 'Motion Graphics',
+      description: locale==='en' ? '2D animation and kinetic typography' : 'Animação 2D e tipografia cinética',
+      icon: Video,
+      value: 'motion graphics'
     }
   ];
 
   return (
-    <section id="ajuda-section" className="w-full bg-black py-16 px-4">
+    <section id="ajuda-section" className={`w-full ${variant==='dark' ? 'bg-black' : 'bg-white'} py-16 px-4`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-5xl sm:text-6xl font-bold text-[#7CFF6B] mb-4 text-center font-display tracking-tight">
-          Nós podemos te ajudar!
+        <h2 className={`text-5xl sm:text-6xl font-bold ${variant==='dark' ? 'text-[#7CFF6B]' : 'text-black'} mb-4 text-center font-display tracking-tight`}>
+          {locale==='pt' ? 'Nós podemos te ajudar!' : 'We can help you!'}
         </h2>
-        <p className="mb-10 text-white text-lg text-center">Nos diga o que você precisa</p>
+        <p className={`mb-10 ${variant==='dark' ? 'text-white' : 'text-neutral-700'} text-lg text-center`}>{locale==='pt' ? 'Nos diga o que você precisa' : 'Tell us what you need'}</p>
         
         <div className="max-w-[800px] mx-auto mb-10">
           <motion.div 
@@ -88,35 +128,34 @@ export function CtaAjuda() {
             }}
           >
             {services.map((service) => {
-              const isSelected = selectedService === service.value;
+              const isSelected = selectedServices.includes(service.value);
               return (
                 <motion.button
                   key={service.value}
-                  onClick={() => setSelectedService(service.value)}
+                  onClick={() => {
+                    setSelectedServices((prev) =>
+                      prev.includes(service.value)
+                        ? prev.filter(v => v !== service.value)
+                        : [...prev, service.value]
+                    );
+                  }}
                   layout
                   initial={false}
-                  animate={{
-                    backgroundColor: isSelected ? "#2a1711" : "rgba(39, 39, 42, 0.5)",
-                  }}
-                  whileHover={{
-                    backgroundColor: isSelected ? "#2a1711" : "rgba(39, 39, 42, 0.8)",
-                  }}
-                  whileTap={{
-                    backgroundColor: isSelected ? "#1f1209" : "rgba(39, 39, 42, 0.9)",
-                  }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{
                     type: "spring",
                     stiffness: 500,
                     damping: 30,
                     mass: 0.5,
-                    backgroundColor: { duration: 0.1 },
+                    scale: { duration: 0.1 },
                   }}
-                  className={`
-                    inline-flex items-center px-4 py-2 rounded-full text-base font-medium
-                    whitespace-nowrap overflow-hidden ring-1 ring-inset
-                    ${isSelected 
-                      ? "text-[#ff9066] ring-[hsla(0,0%,100%,0.12)]" 
-                      : "text-zinc-400 ring-[hsla(0,0%,100%,0.06)]"}
+                   className={`
+                    inline-flex items-center px-4 py-2 rounded-full text-sm sm:text-base font-medium
+                    whitespace-nowrap overflow-hidden border
+                    ${variant==='dark'
+                      ? `${isSelected ? 'bg-[#2a1711] text-[#ff9066] border-transparent' : 'bg-zinc-700/60 text-zinc-300 border-zinc-600'}`
+                      : `${isSelected ? 'bg-pink-50 text-pink-700 border-pink-300' : 'bg-white text-neutral-800 border-neutral-200'}`}
                   `}
                 >
                   <motion.div 
@@ -144,8 +183,8 @@ export function CtaAjuda() {
                           }}
                           className="absolute right-0"
                         >
-                          <div className="w-4 h-4 rounded-full bg-[#ff9066] flex items-center justify-center">
-                          <CheckCircle className="w-3 h-3 text-[#2a1711]" strokeWidth={1.5} />
+                          <div className={`w-4 h-4 rounded-full ${variant==='dark' ? 'bg-[#ff9066]' : 'bg-pink-500'} flex items-center justify-center`}>
+                          <CheckCircle className={`w-3 h-3 ${variant==='dark' ? 'text-[#2a1711]' : 'text-white'}`} strokeWidth={1.5} />
                           </div>
                         </motion.span>
                       )}
@@ -158,9 +197,9 @@ export function CtaAjuda() {
 
         <Button
           onClick={handleWhatsApp}
-          className="bg-[#7CFF6B] text-black px-12 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-[#5be04d] transition-colors"
+          className={`${variant==='dark' ? 'bg-[#7CFF6B] text-black hover:bg-[#5be04d]' : 'bg-black text-white hover:bg-neutral-800'} px-12 py-4 rounded-full font-bold text-lg shadow-lg transition-colors`}
         >
-          Enviar Mensagem
+          {locale==='pt' ? 'Enviar Mensagem' : 'Send Message'}
         </Button>
       </div>
     </section>

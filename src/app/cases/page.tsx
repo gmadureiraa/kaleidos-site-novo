@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useI18n } from "@/i18n/useI18n";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAllCases, type CaseData } from "@/lib/case-data";
 
 // const allTags = Array.from(new Set(getAllCases().flatMap(p => p.tags)));
 
 export default function CasesPage() {
+  const { t, locale } = useI18n();
+  const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const [modalCase, setModalCase] = useState<CaseData | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -134,7 +137,7 @@ export default function CasesPage() {
         viewport={{ once: true }}
         className="text-4xl font-bold text-center mb-8"
       >
-        Resultados & Projetos
+        {t('casesList','title')}
       </motion.h1>
 
       <motion.div
@@ -159,7 +162,7 @@ export default function CasesPage() {
             }}
           >
             <Link
-              href={`/cases/${proj.id}`}
+              href={withLang(`/cases/${proj.id}`)}
               className="group block"
             >
               <motion.div
@@ -188,7 +191,7 @@ export default function CasesPage() {
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold mb-2 group-hover:text-[#7CFF6B] transition-colors">
-                    {proj.nome}
+                    {locale==='en' && (proj as any).nome_en ? (proj as any).nome_en : proj.nome}
                   </h3>
                   <div className="flex flex-wrap gap-1 mb-2">
                     {proj.tags.slice(0, 3).map(tagItem => (
@@ -203,14 +206,14 @@ export default function CasesPage() {
                     )}
                   </div>
                   <p className="text-sm text-gray-700 mb-3 font-medium">
-                    {proj.fraseImpactante}
+                    {locale==='en' && (proj as any).fraseImpactante_en ? (proj as any).fraseImpactante_en : proj.fraseImpactante}
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">
-                      {proj.media.length} {proj.media.length === 1 ? 'item' : 'itens'}
+                      {proj.media.length} {proj.media.length === 1 ? t('casesList','item') : t('casesList','items')}
                     </span>
                     <span className="text-[#7CFF6B] text-sm font-medium">
-                      Ver case →
+                      {t('casesList','seeCase')}
                     </span>
                   </div>
                 </div>

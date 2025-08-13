@@ -1,21 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, ArrowRight, TrendingUp, Lightbulb } from "lucide-react";
+import { ArrowLeft, ArrowRight, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { CaseCarousel } from "@/components/ui/case-carousel";
 import { CryptoTweetsCarousel } from "@/components/ui/crypto-tweets-carousel";
+import { useI18n } from "@/i18n/useI18n";
 
 interface CaseLayoutProps {
   caseData: {
     id: string;
     nome: string;
     descricao: string;
+    descricao_en?: string;
     fraseImpactante?: string;
+    fraseImpactante_en?: string;
     detalhes: string;
+    detalhes_en?: string;
     links: string[];
     metricas: string;
+    metricas_en?: string;
     servicos: string[];
+    servicos_en?: string[];
     media: {
       src: string;
       type: 'image' | 'video' | 'pdf';
@@ -28,16 +34,28 @@ interface CaseLayoutProps {
 }
 
 export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutProps) {
+  const { t, locale } = useI18n();
   const {
     nome,
     descricao,
+    descricao_en,
     fraseImpactante,
+    fraseImpactante_en,
     detalhes,
+    detalhes_en,
     links,
     metricas,
+    metricas_en,
     servicos,
+    servicos_en,
     media
   } = caseData;
+  const isEn = locale === 'en';
+  const detalhesText = isEn && detalhes_en ? detalhes_en : detalhes;
+  const descricaoText = isEn && descricao_en ? descricao_en : descricao;
+  const fraseText = isEn && fraseImpactante_en ? fraseImpactante_en : fraseImpactante;
+  const metricasText = isEn && metricas_en ? metricas_en : metricas;
+  const servicosList = (isEn && servicos_en && servicos_en.length) ? servicos_en : servicos;
 
 
 
@@ -47,20 +65,20 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <Link 
-            href="/cases" 
+            href={locale==='en'?'/cases?lang=en':'/cases'} 
             className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Home / Cases
+            {t('case','breadcrumb')}
           </Link>
         </div>
       </div>
 
       {/* Conteúdo Principal */}
       <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:gap-12">
           {/* Coluna Principal */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="space-y-12">
             {/* Título e Descrição */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,11 +97,11 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                O que fizemos
+                {t('case','whatWeDid')}
               </h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap">
-                  {detalhes}
+                  {detalhesText}
                 </p>
               </div>
             </motion.section>
@@ -95,8 +113,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
               >
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">
-                  Website desenvolvido para o evento
+                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                   {t('case','websiteDeveloped')}
                 </h2>
                 <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                   <div className="relative w-full max-w-4xl mx-auto">
@@ -131,7 +149,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                         className="inline-flex items-center gap-2 text-[#7CFF6B] hover:text-[#6BE85A] font-medium transition-colors"
                       >
                         <ArrowRight className="w-4 h-4" />
-                        Visitar o site completo
+                         {t('case','visitSite')}
                       </a>
                     </div>
                   </div>
@@ -160,8 +178,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">
-                  Visual do nosso trabalho
+                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                   {t('case','visualWork')}
                 </h2>
                 {visualSection ?? (
                   <CaseCarousel 
@@ -182,8 +200,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mb-12"
               >
-                <h2 className="text-2xl font-bold mb-6 text-gray-900">
-                  Plataformas Desenvolvidas
+                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                   {t('case','platforms')}
                 </h2>
                 <div className="space-y-8">
                   {/* Site Principal */}
@@ -194,8 +212,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm"
                   >
                     <div className="text-center mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        Site Principal
+                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                         Site
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
                         jornalcripto.com
@@ -223,8 +241,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm"
                   >
                     <div className="text-center mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        Newsletter
+                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                         {t('case','newsletter')}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
                         news.jornalcripto.com
@@ -252,8 +270,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm"
                   >
                     <div className="text-center mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        Radar App
+                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                         Radar App
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
                         radar.jornalcripto.com
@@ -373,20 +391,20 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                Resultados
+                {t('case','results')}
               </h2>
               
               {/* Frase Impactante */}
-              {fraseImpactante && (
+              {fraseText && (
                 <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6">
                   <div className="flex items-start gap-3">
                     <Lightbulb className="w-6 h-6 text-[#7CFF6B] flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">
-                        Resultado Destacado
+                       <h3 className="text-lg font-bold text-gray-900 mb-2">
+                         {t('case','highlightedResult')}
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
-                        {fraseImpactante}
+                        {fraseText}
                       </p>
                     </div>
                   </div>
@@ -396,10 +414,10 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
               {/* Estatísticas */}
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <h3 className="text-lg font-bold mb-4 text-gray-900">
-                  Métricas de Sucesso
+                  {t('case','successMetrics')}
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  {metricas}
+                  {metricasText}
                 </p>
               </div>
             </motion.section>
@@ -411,8 +429,8 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                  Links do projeto
+                 <h2 className="text-2xl font-bold mb-4 text-gray-900">
+                   {t('case','links')}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {links.map((link: string, index: number) => (
@@ -434,96 +452,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
             )}
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Logo e Nome */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">K</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">KALEIDOS</span>
-            </motion.div>
-
-            {/* Overview */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Overview
-              </h3>
-              <p className="text-gray-600 leading-relaxed text-sm">
-                {descricao}
-              </p>
-            </motion.div>
-
-            {/* Métricas */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="w-5 h-5 text-[#7CFF6B] flex-shrink-0" />
-                <h3 className="text-lg font-bold text-gray-900">
-                  Métricas de Impacto
-                </h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed whitespace-pre-wrap text-sm">
-                {metricas}
-              </p>
-            </motion.div>
-
-            {/* Serviços */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <CheckCircle className="w-5 h-5 text-[#7CFF6B] flex-shrink-0" />
-                <h3 className="text-lg font-bold text-gray-900">
-                  Serviços Prestados
-                </h3>
-              </div>
-              <div className="space-y-2">
-                {servicos.map((servico: string, index: number) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#7CFF6B] flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">{servico}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="bg-[#7CFF6B] p-5 rounded-xl text-center"
-            >
-              <div className="w-6 h-6 text-black mx-auto mb-3" />
-              <h3 className="text-lg font-bold text-black mb-2">
-                Quer resultados similares?
-              </h3>
-              <p className="text-black mb-4 opacity-90 text-sm">
-                Vamos criar algo incrível juntos!
-              </p>
-              <Link
-                href="/contato"
-                className="inline-block bg-black text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition-colors text-sm"
-              >
-                Falar Conosco
-              </Link>
-            </motion.div>
-          </div>
+          {/* Sidebar removida conforme solicitação */}
         </div>
       </div>
     </div>

@@ -93,6 +93,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // i18n via query param (?lang=en) — sem App Router i18n nativo
   
   // Otimização de build
   poweredByHeader: false,
