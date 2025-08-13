@@ -27,7 +27,7 @@ export function useI18n() {
       } else {
         setQueryLocale(null);
       }
-    } catch (_) {
+    } catch {
       setQueryLocale(null);
     }
   }, [pathname]);
