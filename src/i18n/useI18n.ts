@@ -1,6 +1,7 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { dictionaries, Locale } from "./dictionaries";
 
 export function detectLocaleFromPath(pathname: string): Locale {
@@ -15,9 +16,26 @@ export function detectLocaleFromPath(pathname: string): Locale {
 export function useI18n() {
   const pathname = usePathname() || "/";
   const router = useRouter();
-  const search = useSearchParams();
-  const qLang = (search?.get("lang") || "") as Locale;
-  const locale: Locale = (qLang === "en" || qLang === "pt") ? qLang : detectLocaleFromPath(pathname);
+  const [queryLocale, setQueryLocale] = useState<Locale | null>(null);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get("lang");
+      if (lang === "en" || lang === "pt") {
+        setQueryLocale(lang);
+      } else {
+        setQueryLocale(null);
+      }
+    } catch (_) {
+      setQueryLocale(null);
+    }
+  }, [pathname]);
+
+  const locale: Locale = useMemo(
+    () => queryLocale ?? detectLocaleFromPath(pathname),
+    [queryLocale, pathname]
+  );
 
   function t(namespace: string, key: string): string {
     const ns = dictionaries[locale]?.[namespace] || {};
