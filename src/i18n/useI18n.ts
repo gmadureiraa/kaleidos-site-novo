@@ -46,8 +46,10 @@ export function useI18n() {
     const url = new URL(window.location.href);
     if (nextLocale === "pt") {
       url.searchParams.delete("lang");
+      setQueryLocale(null);
     } else {
       url.searchParams.set("lang", nextLocale);
+      setQueryLocale(nextLocale);
     }
     router.push(url.pathname + (url.search ? url.search : ""));
   }
