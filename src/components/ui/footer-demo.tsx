@@ -1,5 +1,5 @@
 "use client"
-import { Instagram, Linkedin, Mail, Twitter, Phone } from "lucide-react"
+import { Mail, Phone } from "lucide-react"
 // import { Footer } from "@/components/ui/footer"
 import Image from "next/image"
 import { motion } from "framer-motion";
@@ -33,15 +33,6 @@ export function FooterDemo() {
           <div className="flex space-x-4">
             <a href="https://wa.me/12936180547" className="text-gray-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
               <Phone className="h-6 w-6" />
-            </a>
-            <a href="https://instagram.com/kaleidosdigital" className="text-gray-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
-              <Instagram className="h-6 w-6" />
-            </a>
-            <a href="https://linkedin.com/company/kaleidosdigital" className="text-gray-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
-              <Linkedin className="h-6 w-6" />
-            </a>
-            <a href="https://twitter.com/kaleidosdigital" className="text-gray-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
-              <Twitter className="h-6 w-6" />
             </a>
             <a href="mailto:madureira@kaleidosdigital.com" className="text-gray-300 hover:text-white transition-colors">
               <Mail className="h-6 w-6" />

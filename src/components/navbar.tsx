@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "@/i18n/useI18n";
+import Image from "next/image";
 
 const servicesBase = {
   pt: [
@@ -28,20 +29,7 @@ const servicesBase = {
   ]
 } as const;
 
-const casesBase = {
-  pt: [
-    { title: "Investidor 4.20", href: "/cases/investidor-4-20", description: "Estratégias de crescimento e lançamentos de produtos." },
-    { title: "Layla Foz", href: "/cases/layla-foz", description: "Mais de 20 milhões de views em reels." },
-    { title: "Mercado Bitcoin", href: "/cases/mercado-bitcoin", description: "180 posts criados em 18 meses." },
-    { title: "Ver Todos", href: "/cases", description: "Explore todos os nossos cases de sucesso." },
-  ],
-  en: [
-    { title: "Investidor 4.20", href: "/cases/investidor-4-20", description: "Growth strategies and product launches." },
-    { title: "Layla Foz", href: "/cases/layla-foz", description: "Over 20 million views on Reels." },
-    { title: "Mercado Bitcoin", href: "/cases/mercado-bitcoin", description: "180 posts created in 18 months." },
-    { title: "See All", href: "/cases", description: "Explore all our success stories." },
-  ]
-} as const;
+// Removido dropdown de cases; menu aponta direto para /cases
 
 function ListItem({
   title,
@@ -70,7 +58,6 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const services = servicesBase[locale];
-  const cases = casesBase[locale];
 
   return (
     <nav className="bg-black border-b border-gray-800 sticky top-0 z-50">
@@ -78,12 +65,13 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16 flex-nowrap gap-4">
           {/* Logo */}
           <Link href={withLang('/')} className="flex items-center space-x-2">
-            <img
+            <Image
               src="/logo/Logos-11.svg"
               alt="Kaleidos Logo"
               width={32}
               height={32}
               className="w-8 h-8"
+              priority
             />
             <span className="text-xl font-bold text-white font-display">{t('nav','brand')}</span>
           </Link>
@@ -122,33 +110,11 @@ export function Navbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white hover:text-gray-200 bg-transparent border-none">
-                    {t('nav','cases')}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                           <Link
-                            className="from-[#7CFF6B]/10 to-[#7CFF6B]/5 flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                             href={withLang('/cases')}
-                          >
-                             <div className="mt-4 mb-2 text-lg font-medium text-gray-900">
-                               {t('nav','ourCases')}
-                            </div>
-                             <p className="text-gray-600 text-sm leading-tight">
-                               {t('nav','casesDesc')}
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                       {cases.map((caseItem) => (
-                         <ListItem key={caseItem.title} title={caseItem.title} href={withLang(caseItem.href)}>
-                          {caseItem.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
+                  <NavigationMenuLink asChild>
+                    <Link href={withLang('/cases')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
+                      {t('nav','cases')}
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
@@ -172,8 +138,12 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
+          {/* Mobile: language switch + menu button */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <button onClick={() => switchLocale('pt')} className={`text-xs px-2 py-1 rounded ${locale==='pt'?'bg-white text-black':'text-white border border-white/30'}`}>PT</button>
+              <button onClick={() => switchLocale('en')} className={`text-xs px-2 py-1 rounded ${locale==='en'?'bg-white text-black':'text-white border border-white/30'}`}>EN</button>
+            </div>
             <Button
               variant="ghost"
               size="sm"
@@ -204,31 +174,17 @@ export function Navbar() {
                   ))}
                 </div>
               </div>
-              {/* Cases */}
+              {/* Cases (apenas link para página) */}
               <div>
-                <div className="text-sm font-medium text-white mb-2">{t('nav','cases')}</div>
-                <div className="space-y-2 pl-4">
-                  {cases.map((caseItem) => (
-                    <Link
-                      key={caseItem.title}
-                      href={withLang(caseItem.href)}
-                      className="block text-sm text-gray-300 hover:text-white py-1"
-                    >
-                      {caseItem.title}
-                    </Link>
-                  ))}
-                </div>
+                <Link href={withLang('/cases')} className="block text-sm font-medium text-white py-1">
+                  {t('nav','cases')}
+                </Link>
               </div>
               {/* Outros Links */}
               <div className="space-y-2">
                 <Link href={withLang('/sobre')} className="block text-sm text-gray-300 hover:text-white py-1">
                   {t('nav','about')}
                 </Link>
-              </div>
-              {/* Language switcher - mobile */}
-              <div className="flex items-center gap-2">
-                <button onClick={() => switchLocale('pt')} className={`text-xs px-2 py-1 rounded ${locale==='pt'?'bg-white text-black':'text-white border border-white/30'}`}>PT</button>
-                <button onClick={() => switchLocale('en')} className={`text-xs px-2 py-1 rounded ${locale==='en'?'bg-white text-black':'text-white border border-white/30'}`}>EN</button>
               </div>
               {/* Mobile CTA */}
               <div className="pt-4 border-t border-gray-800">

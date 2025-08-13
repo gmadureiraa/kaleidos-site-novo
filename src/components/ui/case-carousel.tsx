@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, FileText, Download, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import Image from 'next/image';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -212,32 +213,26 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                 className="block"
                 onClick={(e) => e.stopPropagation()}
               >
-                <img
+                <Image
                   src={item.src}
                   alt={item.alt || `${title} - Imagem ${index + 1}`}
                   className="rounded-xl shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
-                  style={{
-                    aspectRatio: aspectRatio,
-                    width: isReelsFormat ? "280px" : "320px",
-                    height: "auto",
-                    objectFit: "cover"
-                  }}
+                  width={isReelsFormat ? 280 : 320}
+                  height={isReelsFormat ? Math.round((isReelsVertical ? 280 * 16/9 : 280 * 5/4)) : Math.round(320)}
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
                   ↗ Instagram
                 </div>
               </a>
             ) : (
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt || `${title} - Imagem ${index + 1}`}
                 className="rounded-xl shadow-lg"
-                style={{
-                  aspectRatio: aspectRatio,
-                  width: isReelsFormat ? "280px" : "320px",
-                  height: "auto",
-                  objectFit: "cover"
-                }}
+                width={isReelsFormat ? 280 : 320}
+                height={isReelsFormat ? Math.round((isReelsVertical ? 280 * 16/9 : 280 * 5/4)) : Math.round(320)}
+                style={{ objectFit: 'cover' }}
               />
             )}
             <div className={`absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 ${cardStyle.bg} rounded-lg p-2 sm:p-3`}>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -168,10 +169,14 @@ export default function KaleidosContentPage() {
               {/* Right Column - Image */}
               <div className="relative">
                 <div className="rounded-2xl h-auto overflow-hidden">
-                  <img 
+                  <Image 
                     src="/Elementos/KaleidosContent.png" 
                     alt="Kaleidos Content - Conteúdo em Ação" 
+                    width={1600}
+                    height={900}
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    priority={false}
                   />
                 </div>
               </div>
@@ -182,10 +187,13 @@ export default function KaleidosContentPage() {
               {/* Left Column - Image */}
               <div className="relative order-2 lg:order-1">
                 <div className="rounded-2xl h-auto overflow-hidden">
-                  <img 
+                  <Image 
                     src="/Elementos/KaleidosDesign.png" 
                     alt="Kaleidos Content - Design & Edição" 
+                    width={1600}
+                    height={900}
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
                   />
                 </div>
               </div>
@@ -301,7 +309,7 @@ export default function KaleidosContentPage() {
                         className="flex justify-center items-center cursor-pointer group"
                         onClick={() => {
                           // Abrir em modal ou expandir
-                          const media = isImage ? 
+                            const media = isImage ? 
                             `<img src="${src}" alt="Trabalho expandido" class="max-w-full max-h-[80vh] object-contain" />` :
                             `<video src="${src}" controls autoplay loop muted class="max-w-full max-h-[80vh] object-contain" />`;
                           

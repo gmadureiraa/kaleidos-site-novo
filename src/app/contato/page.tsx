@@ -11,6 +11,27 @@ export default function ContatoPage() {
   const { t, locale } = useI18n();
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  
+  // Lista de serviços traduzida quando EN
+  const SERVICES_LOCALIZED: string[] = locale === 'en'
+    ? [
+        'Video Editing',
+        'Scripts',
+        'Text Content',
+        'Launches',
+        'Pages and Websites',
+        'Growth',
+        'Email Marketing',
+        'Content Consulting',
+        'Design',
+        'Social Media',
+        'Copywriting',
+        'Automation',
+        'AI & Chatbots',
+        'Data Analysis',
+        'SEO',
+      ]
+    : SERVICOS;
 
   const toggleServico = (servico: string) => {
     setSelectedServices((prev) =>
@@ -19,9 +40,12 @@ export default function ContatoPage() {
   };
 
   const handleWhatsApp = () => {
-    let texto = "Olá! Preciso de ajuda com: %0A";
+    const hasSelection = selectedServices.length > 0;
+    const header = locale === 'en' ? 'Hello! I need help with:' : 'Olá! Preciso de ajuda com:';
+    const fallback = locale === 'en' ? 'Hello! I need help with marketing and content.' : 'Olá! Preciso de ajuda com marketing e conteúdo.';
+    let texto = `${header} %0A`;
     texto += selectedServices.map((s) => `- ${s}`).join("%0A");
-    if (selectedServices.length === 0) texto = "Olá! Preciso de ajuda com marketing e conteúdo.";
+    if (!hasSelection) texto = fallback;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, "_blank");
   };
 
@@ -78,7 +102,7 @@ export default function ContatoPage() {
                   mass: 0.5,
                 }}
               >
-                {SERVICOS.map((servico) => {
+                {SERVICES_LOCALIZED.map((servico) => {
                   const isSelected = selectedServices.includes(servico);
                   return (
                     <motion.button

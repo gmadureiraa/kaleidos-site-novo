@@ -17,6 +17,7 @@ import {
 import { useEffect, useState } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
+import Image from "next/image";
 
 export default function KaleidosGrowthPage() {
   const { locale } = useI18n();
@@ -162,10 +163,13 @@ export default function KaleidosGrowthPage() {
               {/* Right Column - Image */}
               <div className="relative">
                 <div className="rounded-2xl h-auto overflow-hidden">
-                  <img 
+                  <Image 
                     src="/Elementos/KaleidosLaunch.png" 
                     alt="Kaleidos Launch - Lançamentos em Ação" 
+                    width={1600}
+                    height={900}
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
                   />
                 </div>
               </div>
@@ -176,10 +180,13 @@ export default function KaleidosGrowthPage() {
               {/* Left Column - Image */}
               <div className="relative order-2 lg:order-1">
                 <div className="rounded-2xl h-auto overflow-hidden">
-                  <img 
+                  <Image 
                     src="/Elementos/KaleidosGrowth.png" 
                     alt="Kaleidos Growth - Growth Orgânico" 
+                    width={1600}
+                    height={900}
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
                   />
                 </div>
               </div>

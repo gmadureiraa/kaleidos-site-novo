@@ -24,7 +24,7 @@ NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 
 # Redes Sociais
 NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/kaleidosdigital
-NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/company/kaleidos-digital
+NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/company/kaleidos-digital/?viewAsMember=true
 
 # Contato
 NEXT_PUBLIC_CONTACT_EMAIL=contato@kaleidos.com.br
