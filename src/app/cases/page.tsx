@@ -191,7 +191,7 @@ export default function CasesPage() {
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-bold mb-2 group-hover:text-[#7CFF6B] transition-colors">
-                    {locale==='en' && (proj as any).nome_en ? (proj as any).nome_en : proj.nome}
+                    {locale==='en' && (proj as unknown as { nome_en?: string }).nome_en ? (proj as unknown as { nome_en?: string }).nome_en : proj.nome}
                   </h3>
                   <div className="flex flex-wrap gap-1 mb-2">
                     {proj.tags.slice(0, 3).map(tagItem => (
@@ -206,7 +206,7 @@ export default function CasesPage() {
                     )}
                   </div>
                   <p className="text-sm text-gray-700 mb-3 font-medium">
-                    {locale==='en' && (proj as any).fraseImpactante_en ? (proj as any).fraseImpactante_en : proj.fraseImpactante}
+                    {locale==='en' && (proj as unknown as { fraseImpactante_en?: string }).fraseImpactante_en ? (proj as unknown as { fraseImpactante_en?: string }).fraseImpactante_en : proj.fraseImpactante}
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">

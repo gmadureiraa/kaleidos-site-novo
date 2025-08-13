@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useI18n } from "@/i18n/useI18n";
 
 interface FAQItem {

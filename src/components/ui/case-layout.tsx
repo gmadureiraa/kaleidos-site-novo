@@ -52,7 +52,6 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
   } = caseData;
   const isEn = locale === 'en';
   const detalhesText = isEn && detalhes_en ? detalhes_en : detalhes;
-  const descricaoText = isEn && descricao_en ? descricao_en : descricao;
   const fraseText = isEn && fraseImpactante_en ? fraseImpactante_en : fraseImpactante;
   const metricasText = isEn && metricas_en ? metricas_en : metricas;
   const servicosList = (isEn && servicos_en && servicos_en.length) ? servicos_en : servicos;

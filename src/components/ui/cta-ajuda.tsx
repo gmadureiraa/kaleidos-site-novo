@@ -8,7 +8,7 @@ import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
 
 export function CtaAjuda({ variant = "dark" }: { variant?: "dark" | "light" }) {
-  const { t, locale } = useI18n();
+  const { locale } = useI18n();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const handleWhatsApp = () => {

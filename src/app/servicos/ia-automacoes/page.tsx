@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Zap, Brain, Workflow, Clock, Mail, MessageSquare, BarChart3, Target, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, Mail, MessageSquare, BarChart3, Target, TrendingUp } from "lucide-react";
 import CardFlip from "@/components/kokonutui/card-flip";
 import AIStateLoading from "@/components/kokonutui/ai-state-loading";
 import {
