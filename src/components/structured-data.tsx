@@ -1,69 +1,136 @@
 export function StructuredData() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kaleidos.com.br";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Kaleidos Digital",
-    "url": "https://kaleidos.com.br",
-    "logo": "https://kaleidos.com.br/Kaleidos/imagens/Capa.png",
-    "description": "Especialistas em crescimento de marcas através de conteúdo criativo, automações inteligentes e lançamentos estratégicos",
+    "alternateName": ["Kaleidos", "Kaleidos Agência"],
+    "url": baseUrl,
+    "logo": `${baseUrl}/Kaleidos/logo/Logos-10.svg`,
+    "image": `${baseUrl}/Kaleidos/imagens/Capa.png`,
+    "description":
+      "Agência de marketing digital especializada em cripto, Web3 e fintech. Estratégia, conteúdo, IA e growth para projetos que levam o próprio trabalho a sério.",
+    "slogan": "Criamos conteúdo que realmente constrói atenção.",
     "foundingDate": "2023",
+    "knowsAbout": [
+      "Marketing Digital",
+      "Marketing Cripto",
+      "Web3",
+      "DeFi",
+      "Fintech",
+      "Criação de Conteúdo",
+      "IA e Automações",
+      "Growth Hacking",
+      "Lançamentos Digitais",
+      "Branding",
+    ],
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "BR"
+      "addressCountry": "BR",
+      "addressLocality": "São José dos Campos",
+      "addressRegion": "SP",
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "availableLanguage": "Portuguese"
-    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "madureira@kaleidosdigital.com",
+        "availableLanguage": ["Portuguese", "English"],
+        "areaServed": "BR",
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": `${baseUrl}/contato`,
+        "availableLanguage": ["Portuguese", "English"],
+      },
+    ],
     "sameAs": [
-      "https://www.instagram.com/kaleidosdigital",
-      "https://www.linkedin.com/company/kaleidos-digital"
+      "https://www.instagram.com/digitalkaleidos",
+      "https://twitter.com/digitalkaleidos",
+      "https://www.linkedin.com/company/kaleidos-digital",
     ],
     "serviceType": [
       "Marketing Digital",
+      "Marketing Cripto",
+      "Marketing Web3",
       "Criação de Conteúdo",
-      "Automações",
+      "IA e Automações",
       "Lançamentos",
-      "Growth Hacking"
+      "Growth Hacking",
+      "Branding",
     ],
-    "areaServed": "Brasil",
+    "areaServed": [
+      { "@type": "Country", "name": "Brasil" },
+      { "@type": "Place", "name": "Global" },
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Serviços de Marketing Digital",
+      "name": "Serviços de Marketing Digital para Cripto e Web3",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "Marketing de Conteúdo",
-            "description": "Criação de conteúdo criativo para redes sociais e blogs"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Growth e Lançamentos",
-            "description": "Estratégias de lançamento e crescimento de marcas"
-          }
+            "description":
+              "Criação de conteúdo estratégico para redes sociais, blog e newsletter de projetos cripto, Web3 e fintech.",
+            "url": `${baseUrl}/servicos/marketing-conteudo`,
+          },
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "IA e Automações",
-            "description": "Automações inteligentes para otimizar processos"
-          }
-        }
-      ]
-    }
+            "description":
+              "Sistemas de IA e automações para escalar produção de conteúdo e operação de marketing.",
+            "url": `${baseUrl}/servicos/ia-automacoes`,
+          },
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Growth e Lançamentos",
+            "description":
+              "Estratégias completas de lançamento e crescimento para produtos digitais e projetos cripto.",
+            "url": `${baseUrl}/servicos/growth-lancamentos`,
+          },
+        },
+      ],
+    },
+  };
+
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kaleidos Digital",
+    "url": baseUrl,
+    "inLanguage": "pt-BR",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Kaleidos Digital",
+      "url": baseUrl,
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${baseUrl}/blog?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+      />
+    </>
   );
-} 
+}

@@ -5,12 +5,21 @@ import { blogPosts } from '@/lib/blog-data'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaleidos.com.br'
   const now = new Date()
-  
+
+  // Last modified inferida do post mais recente do blog (representa "atividade recente")
+  const latestBlogDate = blogPosts.length
+    ? new Date(
+        blogPosts
+          .map((p) => new Date(p.publishedAt).getTime())
+          .reduce((a, b) => Math.max(a, b), 0)
+      )
+    : now
+
   // Páginas principais
   const mainPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: now,
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
@@ -71,11 +80,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // Blog pages
+  // Blog pages — usa data real de publicação para cada artigo
   const blogIndex: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
-      lastModified: now,
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -89,4 +98,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   return [...mainPages, ...servicePages, ...casePages, ...blogIndex, ...blogArticles]
-} 
+}

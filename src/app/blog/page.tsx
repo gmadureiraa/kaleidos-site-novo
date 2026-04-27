@@ -209,8 +209,8 @@ export default function BlogPage() {
             <p
               className={`mt-3 text-sm ${
                 subscribeStatus === "success"
-                  ? "text-[#7CFF6B]"
-                  : "text-red-400"
+                  ? "text-[#3d9e32]"
+                  : "text-red-600"
               }`}
             >
               {subscribeMsg}
