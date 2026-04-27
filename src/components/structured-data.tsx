@@ -1,7 +1,16 @@
 export function StructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kaleidos.com.br";
+  const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
+  // TODO Gabriel: preencher dados reais quando disponiveis
+  // - NEXT_PUBLIC_KALEIDOS_PHONE: telefone/WhatsApp em formato E.164 (ex: +5512999999999)
+  // - NEXT_PUBLIC_KALEIDOS_TAX_ID: CNPJ formatado (ex: 00.000.000/0000-00)
+  // - NEXT_PUBLIC_KALEIDOS_STREET / POSTAL_CODE: endereco fiscal completo
+  const phone = process.env.NEXT_PUBLIC_KALEIDOS_PHONE;
+  const taxId = process.env.NEXT_PUBLIC_KALEIDOS_TAX_ID;
+  const streetAddress = process.env.NEXT_PUBLIC_KALEIDOS_STREET;
+  const postalCode = process.env.NEXT_PUBLIC_KALEIDOS_POSTAL_CODE;
 
-  const structuredData = {
+  const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Kaleidos Digital",
@@ -28,14 +37,19 @@ export function StructuredData() {
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "BR",
-      "addressLocality": "São José dos Campos",
+      "addressLocality": "São Paulo",
       "addressRegion": "SP",
+      ...(streetAddress ? { "streetAddress": streetAddress } : {}),
+      ...(postalCode ? { "postalCode": postalCode } : {}),
     },
+    ...(phone ? { "telephone": phone } : {}),
+    ...(taxId ? { "taxID": taxId } : {}),
     "contactPoint": [
       {
         "@type": "ContactPoint",
         "contactType": "customer service",
         "email": "madureira@kaleidosdigital.com",
+        ...(phone ? { "telephone": phone } : {}),
         "availableLanguage": ["Portuguese", "English"],
         "areaServed": "BR",
       },
@@ -48,7 +62,7 @@ export function StructuredData() {
     ],
     "sameAs": [
       "https://www.instagram.com/digitalkaleidos",
-      "https://twitter.com/digitalkaleidos",
+      `https://twitter.com/${twitterHandle}`,
       "https://www.linkedin.com/company/kaleidos-digital",
     ],
     "serviceType": [

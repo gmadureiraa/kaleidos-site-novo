@@ -10,6 +10,8 @@ import { useAnalytics } from "@/components/analytics";
 export function FooterDemo() {
   const { t, locale } = useI18n();
   const { trackWhatsApp } = useAnalytics();
+  const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
+  const instagramHandle = "digitalkaleidos";
   
   const services = locale === 'en' 
     ? [
@@ -68,18 +70,18 @@ export function FooterDemo() {
             </p>
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              <a 
-                href="https://www.instagram.com/digitalkaleidos" 
-                target="_blank" 
+              <a
+                href={`https://www.instagram.com/${instagramHandle}`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
-                href="https://twitter.com/digitalkaleidos" 
-                target="_blank" 
+              <a
+                href={`https://twitter.com/${twitterHandle}`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
                 aria-label="Twitter"

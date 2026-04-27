@@ -19,6 +19,7 @@ export function generateSEOMetadata({
   type = "website",
 }: SEOProps): Metadata {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kaleidos.com.br";
+  const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   
   const baseTitle = "Kaleidos — Agência de Marketing Digital para Cripto e Web3";
@@ -51,7 +52,8 @@ export function generateSEOMetadata({
       title: fullTitle,
       description: fullDescription,
       images: [ogImage],
-      creator: "@kaleidosdigital",
+      creator: twitterHandle,
+      site: twitterHandle,
     },
     alternates: {
       canonical: fullUrl,

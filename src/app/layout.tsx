@@ -102,8 +102,8 @@ export const metadata: Metadata = {
     title: "Kaleidos — Agência de Marketing Digital para Cripto, Web3 e Fintech",
     description: "Agência de marketing digital especializada em cripto, web3 e fintech. IA integrada, 8 clientes ativos, 120+ peças de conteúdo por mês.",
     images: ['/Kaleidos/imagens/Capa.png'],
-    creator: '@digitalkaleidos',
-    site: '@digitalkaleidos',
+    creator: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '@digitalkaleidos',
+    site: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '@digitalkaleidos',
   },
   robots: {
     index: true,
