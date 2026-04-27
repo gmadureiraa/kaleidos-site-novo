@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 
@@ -241,20 +242,13 @@ export default function VideoCarousel() {
                   {/* Conteúdo interno */}
                   <div className="relative w-full h-full p-1 sm:p-1.5 md:p-2 lg:p-2.5">
                     {item.type === "image" ? (
-                      <img
+                      <Image
                         src={item.src}
                         alt={`${item.title} - ${item.description}`}
-                        className="w-full h-full rounded-[16px] sm:rounded-[18px] md:rounded-[20px] lg:rounded-[24px] object-cover bg-black"
+                        fill
+                        sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
+                        className="rounded-[16px] sm:rounded-[18px] md:rounded-[20px] lg:rounded-[24px] object-cover bg-black"
                         loading="lazy"
-                        decoding="async"
-                        onLoad={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.style.opacity = '1';
-                        }}
-                        onError={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.src = '/Kaleidos/imagens/placeholder.png';
-                        }}
                       />
                     ) : (
                       <video

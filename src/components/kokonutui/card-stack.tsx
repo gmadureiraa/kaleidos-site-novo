@@ -11,6 +11,7 @@
  */
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -205,9 +206,12 @@ const Card = ({ product, index, totalCards, isExpanded }: CardProps) => {
                         "shadow-inner"
                     )}
                 >
-                    <img
+                    <Image
                         src={product.image}
                         alt={product.title}
+                        width={800}
+                        height={550}
+                        sizes="(max-width: 768px) 100vw, 320px"
                         className="object-cover w-full h-full"
                         loading="lazy"
                     />

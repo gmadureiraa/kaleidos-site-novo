@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CaseCarousel } from "@/components/ui/case-carousel";
@@ -693,9 +694,12 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     Métricas da Newsletter
                   </h3>
                   <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
-                    <img
+                    <Image
                       src="/Cases/defiverso/estudo/Métricas newsletter.png"
                       alt="Métricas da Newsletter Defiverso"
+                      width={1600}
+                      height={900}
+                      sizes="(max-width: 1024px) 100vw, 896px"
                       className="w-full h-auto"
                     />
                   </div>
@@ -830,16 +834,22 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                       <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
-                        <img
+                        <Image
                           src="/Cases/defiverso/estudo/Tweet automação.png"
                           alt="Tweet de Automação do Twitter"
+                          width={1200}
+                          height={800}
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="w-full h-auto"
                         />
                       </div>
                       <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
-                        <img
+                        <Image
                           src="/Cases/defiverso/estudo/Tweet resultado.png"
                           alt="Tweet de Resultado do Twitter"
+                          width={1200}
+                          height={800}
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="w-full h-auto"
                         />
                       </div>

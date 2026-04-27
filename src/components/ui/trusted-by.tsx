@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useI18n } from "@/i18n/useI18n";
@@ -38,18 +39,14 @@ function ClientLogo({ client, index }: { client: typeof clients[0]; index: numbe
       rel="noopener noreferrer"
       className="marquee-item block min-w-[120px]"
     >
-      <div className="relative h-16 w-auto flex items-center justify-center">
-        <img
+      <div className="relative h-16 w-[150px] flex items-center justify-center">
+        <Image
           src={client.logo}
           alt={`Logo de ${client.name}, parceiro da Kaleidos Digital`}
-          className="object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-          style={{ 
-            maxHeight: '64px',
-            maxWidth: '150px',
-            width: 'auto',
-            height: 'auto',
-            display: 'block'
-          }}
+          width={150}
+          height={64}
+          sizes="150px"
+          className="object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-pointer max-h-16 w-auto h-auto"
           loading={index < 6 ? "eager" : "lazy"}
           onError={() => {
             setHasError(true);

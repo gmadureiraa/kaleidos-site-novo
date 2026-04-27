@@ -347,12 +347,14 @@ export default function KaleidosContentPage() {
                           document.body.appendChild(modal);
                         }}
                       >
-                        <div className="w-full max-w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-lg bg-black group-hover:scale-105 transition-transform duration-300">
+                        <div className="relative w-full max-w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-lg bg-black group-hover:scale-105 transition-transform duration-300">
                           {isImage ? (
-                            <img
+                            <Image
                               src={src}
                               alt="Trabalho de edição e design"
-                              className="w-full h-full object-cover"
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 280px"
+                              className="object-cover"
                             />
                           ) : (
                             <video
