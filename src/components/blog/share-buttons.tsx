@@ -26,7 +26,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
         href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition-all"
+        className="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all"
         aria-label="Compartilhar no Twitter"
       >
         <Twitter className="w-4 h-4" />
@@ -35,14 +35,14 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition-all"
+        className="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all"
         aria-label="Compartilhar no LinkedIn"
       >
         <Linkedin className="w-4 h-4" />
       </a>
       <button
         onClick={handleCopy}
-        className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition-all"
+        className="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all"
         aria-label="Copiar link"
       >
         {copied ? (

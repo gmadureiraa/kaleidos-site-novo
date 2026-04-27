@@ -53,7 +53,7 @@ export default function BlogPage() {
   const rest = allFiltered.slice(2);
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-white">
       {/* Header */}
       <section className="pt-32 pb-0 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1120px] mx-auto">
@@ -63,10 +63,10 @@ export default function BlogPage() {
             transition={{ duration: 0.4 }}
             className="mb-16"
           >
-            <h1 className="text-[2.75rem] md:text-[3.5rem] font-bold text-white font-display leading-[1.08] tracking-[-0.03em] mb-4">
+            <h1 className="text-[2.75rem] md:text-[3.5rem] font-bold text-gray-900 font-display leading-[1.08] tracking-[-0.03em] mb-4">
               Blog
             </h1>
-            <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-xl leading-relaxed">
               Conteudo sobre marketing digital, IA, automacao e crescimento de
               marcas.
             </p>
@@ -77,7 +77,7 @@ export default function BlogPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.15 }}
-            className="mb-12 pb-8 border-b border-white/[0.06]"
+            className="mb-12 pb-8 border-b border-gray-200"
           >
             <CategoryFilter
               selected={selectedCategory}
@@ -87,7 +87,7 @@ export default function BlogPage() {
 
           {/* Highlights — 2 posts side by side */}
           {highlights.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pb-16 border-b border-white/[0.06]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pb-16 border-b border-gray-200">
               {highlights.map((post, i) => (
                 <motion.article
                   key={post.slug}
@@ -96,7 +96,7 @@ export default function BlogPage() {
                   transition={{ duration: 0.45, delay: i * 0.1 }}
                 >
                   <Link href={`/blog/${post.slug}`} className="group block">
-                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5 bg-[#0a0a0a] border border-white/[0.06]">
+                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5 bg-gray-100 border border-gray-200">
                       <Image
                         src={post.coverImage}
                         alt={post.title}
@@ -112,19 +112,19 @@ export default function BlogPage() {
                         <span className="text-[#7CFF6B] font-medium">
                           {categoryLabels[post.category]}
                         </span>
-                        <span className="text-gray-700">/</span>
+                        <span className="text-gray-300">/</span>
                         <time dateTime={post.publishedAt}>
                           {formatDate(post.publishedAt)}
                         </time>
-                        <span className="text-gray-700">/</span>
+                        <span className="text-gray-300">/</span>
                         <span>{post.readTime} min</span>
                       </div>
 
-                      <h2 className="text-xl md:text-2xl font-bold text-white leading-snug tracking-[-0.015em] group-hover:text-[#7CFF6B] transition-colors duration-200 font-display">
+                      <h2 className="text-xl md:text-2xl font-bold text-gray-900 leading-snug tracking-[-0.015em] group-hover:text-[#5ae04a] transition-colors duration-200 font-display">
                         {post.title}
                       </h2>
 
-                      <p className="text-[14px] text-gray-500 line-clamp-2 leading-relaxed">
+                      <p className="text-[14px] text-gray-600 line-clamp-2 leading-relaxed">
                         {post.excerpt}
                       </p>
 
@@ -163,7 +163,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
         <div className="max-w-lg mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -172,10 +172,10 @@ export default function BlogPage() {
             transition={{ duration: 0.4 }}
             className="space-y-4 mb-8"
           >
-            <h2 className="text-2xl font-bold text-white font-display tracking-[-0.02em]">
+            <h2 className="text-2xl font-bold text-gray-900 font-display tracking-[-0.02em]">
               Newsletter da Kaleidos
             </h2>
-            <p className="text-[15px] text-gray-500 leading-relaxed">
+            <p className="text-[15px] text-gray-600 leading-relaxed">
               Estrategias, cases e insights sobre marketing, IA e crescimento.
               Uma vez por semana, direto no seu email.
             </p>
@@ -195,7 +195,7 @@ export default function BlogPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={subscribeStatus === "loading"}
-              className="flex-1 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-gray-600 focus:outline-none focus:border-[#7CFF6B]/40 focus:ring-1 focus:ring-[#7CFF6B]/10 transition-all text-sm disabled:opacity-50"
+              className="flex-1 px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#7CFF6B]/50 focus:ring-1 focus:ring-[#7CFF6B]/15 transition-all text-sm disabled:opacity-50"
             />
             <button
               type="submit"

@@ -78,7 +78,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative pt-24 pb-12 px-4 sm:px-6 max-w-7xl mx-auto">
         <motion.div
@@ -86,10 +86,10 @@ export default function PortfolioPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display text-white tracking-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display text-gray-900 tracking-tight">
             {t("portfolio", "title")}
           </h1>
-          <p className="mt-4 text-lg sm:text-xl text-white/40 max-w-xl font-sans">
+          <p className="mt-4 text-lg sm:text-xl text-gray-600 max-w-xl font-sans">
             {t("portfolio", "subtitle")}
           </p>
         </motion.div>
@@ -118,16 +118,16 @@ export default function PortfolioPage() {
       {/* View toggle — only show for site category */}
       {(activeCategory === "all" || activeCategory === "site") && (
         <div className="flex justify-end max-w-7xl mx-auto px-4 sm:px-6 pt-4">
-          <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
+          <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1 border border-gray-200">
             <button
               onClick={() => setViewMode("gallery")}
-              className={`p-2 rounded-md transition-colors cursor-pointer ${viewMode === "gallery" ? "bg-white/10 text-white" : "text-white/30 hover:text-white/60"}`}
+              className={`p-2 rounded-md transition-colors cursor-pointer ${viewMode === "gallery" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-800"}`}
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`p-2 rounded-md transition-colors cursor-pointer ${viewMode === "list" ? "bg-white/10 text-white" : "text-white/30 hover:text-white/60"}`}
+              className={`p-2 rounded-md transition-colors cursor-pointer ${viewMode === "list" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-800"}`}
             >
               <LayoutList className="w-4 h-4" />
             </button>
@@ -155,7 +155,7 @@ export default function PortfolioPage() {
                 <>
                   {activeCategory === "all" && (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
-                      <h2 className="text-xl font-display text-white/60 tracking-tight">Sites</h2>
+                      <h2 className="text-xl font-display text-gray-700 tracking-tight">Sites</h2>
                     </div>
                   )}
                   <PortfolioList items={listItems} categoryLabels={categoryLabels} />
@@ -164,7 +164,7 @@ export default function PortfolioPage() {
               {galleryItems.length > 0 && (
                 <>
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
-                    <h2 className="text-xl font-display text-white/60 tracking-tight">Criativos & Conteudo</h2>
+                    <h2 className="text-xl font-display text-gray-700 tracking-tight">Criativos & Conteudo</h2>
                   </div>
                   <PortfolioGrid
                     items={galleryItems}

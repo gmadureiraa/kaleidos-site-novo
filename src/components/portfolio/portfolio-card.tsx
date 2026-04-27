@@ -38,7 +38,7 @@ export function PortfolioCard({
       className="break-inside-avoid mb-4 group cursor-pointer"
       onClick={onClick}
     >
-      <div className="relative rounded-lg overflow-hidden border border-white/5 bg-white/[0.02]">
+      <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm">
         {/* Thumbnail */}
         {isVideo && !item.poster ? (
           <div className="relative w-full aspect-video bg-gradient-to-br from-gray-900 to-gray-800">

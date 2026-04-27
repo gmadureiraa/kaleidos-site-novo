@@ -29,7 +29,7 @@ export function CategoryFilter({ selected, onSelect }: CategoryFilterProps) {
             className={`relative px-4 py-2 rounded-full text-[13px] font-medium transition-colors duration-200 ${
               isActive
                 ? "text-black"
-                : "text-gray-500 hover:text-gray-300"
+                : "text-gray-600 hover:text-gray-900"
             }`}
           >
             {isActive && (

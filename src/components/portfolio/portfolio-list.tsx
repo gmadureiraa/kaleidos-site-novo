@@ -57,18 +57,18 @@ export function PortfolioList({ items, categoryLabels }: PortfolioListProps) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: idx * 0.05 }}
           >
-            <div className="rounded-3xl bg-[#18181b] p-8 sm:p-12 overflow-hidden">
+            <div className="rounded-3xl bg-gray-50 border border-gray-200 p-8 sm:p-12 overflow-hidden shadow-sm">
               {/* Project header */}
               <div className="flex items-start justify-between mb-8">
                 <div>
-                  <span className="text-xs font-medium uppercase tracking-wider text-white/40 mb-2 block">
+                  <span className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-2 block">
                     {categoryLabels[project.category] || project.category}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-display text-white font-bold tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-display text-gray-900 font-bold tracking-tight">
                     {project.name}
                   </h3>
                   {project.caseData?.descricao && (
-                    <p className="text-sm text-white/50 mt-2 max-w-lg line-clamp-2">
+                    <p className="text-sm text-gray-600 mt-2 max-w-lg line-clamp-2">
                       {project.caseData.descricao}
                     </p>
                   )}
@@ -78,7 +78,7 @@ export function PortfolioList({ items, categoryLabels }: PortfolioListProps) {
                       {project.caseData.servicos.slice(0, 4).map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10"
+                          className="text-[10px] px-2 py-0.5 rounded-full bg-white text-gray-600 border border-gray-200"
                         >
                           {tag}
                         </span>
@@ -91,7 +91,7 @@ export function PortfolioList({ items, categoryLabels }: PortfolioListProps) {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 flex items-center gap-1.5 text-xs text-white/40 hover:text-[#7CFF6B] transition-colors border border-white/10 rounded-full px-3 py-1.5"
+                    className="shrink-0 flex items-center gap-1.5 text-xs text-gray-600 hover:text-[#2d7a26] transition-colors border border-gray-200 rounded-full px-3 py-1.5 bg-white"
                   >
                     <ExternalLink className="w-3 h-3" />
                     Visitar
@@ -132,7 +132,7 @@ export function PortfolioList({ items, categoryLabels }: PortfolioListProps) {
       })}
 
       {items.length === 0 && (
-        <div className="text-center py-24 text-white/30">
+        <div className="text-center py-24 text-gray-500">
           <p className="text-lg">Nenhum projeto encontrado</p>
         </div>
       )}

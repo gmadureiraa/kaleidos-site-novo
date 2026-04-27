@@ -78,7 +78,7 @@ export function PortfolioGrid({
 
       {/* Empty state */}
       {items.length === 0 && (
-        <div className="flex flex-col items-center justify-center py-24 text-white/30">
+        <div className="flex flex-col items-center justify-center py-24 text-gray-500">
           <p className="text-lg font-display">Nenhum item encontrado</p>
           <p className="text-sm mt-1">Tente outro filtro</p>
         </div>
