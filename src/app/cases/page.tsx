@@ -163,18 +163,6 @@ export default function CasesPage() {
     ? "Stories from clients across crypto, web3, fintech, content and creators. Each card opens the full case: problem, solution and outcome."
     : "Histórias de clientes de cripto, web3, fintech, conteúdo e criadores. Cada card abre o case completo: problema, solução e resultado.";
 
-  const stats = locale === "en"
-    ? [
-        { number: `${sortedCases.length}`, label: "delivered cases" },
-        { number: "8", label: "active clients" },
-        { number: "120+", label: "monthly content pieces" },
-      ]
-    : [
-        { number: `${sortedCases.length}`, label: "cases entregues" },
-        { number: "8", label: "clientes ativos" },
-        { number: "120+", label: "peças de conteúdo por mês" },
-      ];
-
   return (
     <main className="min-h-screen bg-white py-12 px-2 sm:px-4">
       <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12">
@@ -197,27 +185,6 @@ export default function CasesPage() {
           {heroIntro}
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.25 }}
-          viewport={{ once: true }}
-          className="mt-8 grid grid-cols-3 gap-3 sm:gap-4"
-        >
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 shadow-sm"
-            >
-              <div className="font-display text-3xl sm:text-4xl font-bold text-gray-900">
-                {s.number}
-              </div>
-              <div className="mt-1 text-xs sm:text-sm text-gray-600">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
       </section>
 
       <motion.div
