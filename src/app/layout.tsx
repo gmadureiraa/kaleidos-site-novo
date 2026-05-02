@@ -68,7 +68,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  other: {},
+  // Facebook domain verification — atribui kaleidos.com.br ao Madureira
+  // Cripto BM (704738313932684). Necessário pra Aggregated Event Measurement
+  // e pra atribuir Pixels ao domínio.
+  other: {
+    "facebook-domain-verification": "6bs4tp7zf4ndtyhcik02uoh4tnbc9q",
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
