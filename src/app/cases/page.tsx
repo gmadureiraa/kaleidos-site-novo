@@ -80,6 +80,15 @@ export default function CasesPage() {
     return readyCases.includes(caseId);
   };
 
+  // Extrai a primeira linha de "metricas" (headline do resultado) pra mostrar no card
+  const getHeadlineMetric = (proj: CaseData): string | null => {
+    const raw = locale === "en" && proj.metricas_en ? proj.metricas_en : proj.metricas;
+    if (!raw) return null;
+    const firstLine = raw.split("\n").find((l) => l.trim().length > 0);
+    if (!firstLine) return null;
+    return firstLine.length > 80 ? firstLine.slice(0, 77) + "…" : firstLine;
+  };
+
   // Função para obter estilo do card baseado no ID do case
   const getCardStyle = (caseId: string) => {
     const name = caseId.toLowerCase();
@@ -150,17 +159,66 @@ export default function CasesPage() {
     }
   };
 
+  const heroIntro = locale === "en"
+    ? "Stories from clients across crypto, web3, fintech, content and creators. Each card opens the full case: problem, solution and outcome."
+    : "Histórias de clientes de cripto, web3, fintech, conteúdo e criadores. Cada card abre o case completo: problema, solução e resultado.";
+
+  const stats = locale === "en"
+    ? [
+        { number: `${sortedCases.length}`, label: "delivered cases" },
+        { number: "8", label: "active clients" },
+        { number: "120+", label: "monthly content pieces" },
+      ]
+    : [
+        { number: `${sortedCases.length}`, label: "cases entregues" },
+        { number: "8", label: "clientes ativos" },
+        { number: "120+", label: "peças de conteúdo por mês" },
+      ];
+
   return (
     <main className="min-h-screen bg-white py-12 px-2 sm:px-4">
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}
-        viewport={{ once: true }}
-        className="text-4xl font-bold text-center mb-8"
-      >
-        {t('casesList','title')}
-      </motion.h1>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12">
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: true }}
+          className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-gray-900"
+        >
+          {t('casesList','title')}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.15 }}
+          viewport={{ once: true }}
+          className="mt-3 max-w-2xl text-base sm:text-lg text-gray-600"
+        >
+          {heroIntro}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.25 }}
+          viewport={{ once: true }}
+          className="mt-8 grid grid-cols-3 gap-3 sm:gap-4"
+        >
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 shadow-sm"
+            >
+              <div className="font-display text-3xl sm:text-4xl font-bold text-gray-900">
+                {s.number}
+              </div>
+              <div className="mt-1 text-xs sm:text-sm text-gray-600">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </section>
 
       <motion.div
         initial="hidden"
@@ -214,6 +272,12 @@ export default function CasesPage() {
                       <p className="text-sm text-gray-700 mb-3 font-medium">
                         {locale==='en' && (proj as unknown as { fraseImpactante_en?: string }).fraseImpactante_en ? (proj as unknown as { fraseImpactante_en?: string }).fraseImpactante_en : proj.fraseImpactante}
                       </p>
+                      {getHeadlineMetric(proj) && (
+                        <div className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                          {getHeadlineMetric(proj)}
+                        </div>
+                      )}
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-gray-500">
                           {proj.media.length} {proj.media.length === 1 ? t('casesList','item') : t('casesList','items')}

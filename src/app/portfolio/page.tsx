@@ -77,6 +77,12 @@ export default function PortfolioPage() {
     items: t("portfolio", "items"),
   };
 
+  const portfolioStats = [
+    { number: `${allItems.length}`, label: t("portfolio", "items") },
+    { number: `${clients.length}`, label: t("portfolio", "filterByClient") },
+    { number: "120+", label: "peças/mês" },
+  ];
+
   return (
     <main className="min-h-screen bg-white">
       {/* Hero */}
@@ -92,6 +98,28 @@ export default function PortfolioPage() {
           <p className="mt-4 text-lg sm:text-xl text-gray-600 max-w-xl font-sans">
             {t("portfolio", "subtitle")}
           </p>
+        </motion.div>
+
+        {/* Stats inline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm"
+        >
+          {portfolioStats.map((s, i) => (
+            <div key={s.label} className="flex items-center gap-2">
+              <span className="font-display text-2xl font-bold text-gray-900">
+                {s.number}
+              </span>
+              <span className="text-gray-500">{s.label}</span>
+              {i < portfolioStats.length - 1 && (
+                <span className="ml-6 text-gray-300" aria-hidden="true">
+                  /
+                </span>
+              )}
+            </div>
+          ))}
         </motion.div>
 
         {/* Decorative line */}
