@@ -152,7 +152,7 @@ const differentiators: Differentiator[] = [
   },
   {
     title: "IA na operação",
-    body: "Não é IA pra ads terceirizada. É IA integrada no fluxo editorial: pauta, roteiro, copy, imagem e distribuição passam por modelos.",
+    body: "Não é IA pra ads terceirizada. Sequência Viral gera carrossel pronto na voz da marca, Radar Viral monitora tendências cross-platform, Reels Viral analisa cena por cena. Tudo conectado ao fluxo editorial.",
     Icon: Brain,
   },
   {
@@ -174,7 +174,7 @@ type Service = {
 const services: Service[] = [
   {
     title: "Marketing recorrente",
-    price: "A partir de R$ 10k/mês",
+    price: "A partir de R$ 10k/mês · mínimo 3 meses",
     description:
       "Gestão completa dos canais com IA embarcada no fluxo editorial.",
     bullets: [
@@ -336,7 +336,7 @@ const steps: Step[] = [
   {
     number: "04",
     title: "Review",
-    body: "Reuniões mensais de número. Ajustes baseados em dado, não em achismo.",
+    body: "Reunião mensal com painel de pipeline, leads e retenção. Ajuste de rota baseado em dado.",
   },
 ];
 
@@ -397,8 +397,9 @@ export default function LpPage() {
           A Kaleidos integra IA no marketing de cripto, web3 e fintech.
         </h1>
         <p className="mt-5 max-w-2xl text-center text-base text-gray-400 sm:text-lg">
-          8 clientes ativos, 120+ peças de conteúdo por mês, tooling proprietário
-          (Sequência Viral, Radar Viral, Reels Viral) que potencializa cada execução.
+          Operação desde 2022. 8 clientes ativos, 120+ peças de conteúdo por mês,
+          tooling proprietário (Sequência Viral, Radar Viral, Reels Viral) que
+          potencializa cada execução.
         </p>
 
         <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
@@ -510,7 +511,7 @@ export default function LpPage() {
           {[
             { number: "8", label: "clientes ativos" },
             { number: "120+", label: "peças de conteúdo por mês" },
-            { number: "4", label: "produtos próprios shipados" },
+            { number: "3+", label: "anos operando o nicho" },
           ].map((stat) => (
             <div
               key={stat.label}
