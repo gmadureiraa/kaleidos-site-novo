@@ -114,30 +114,6 @@ const problems: Problem[] = [
   },
 ];
 
-type Pillar = {
-  title: string;
-  body: string;
-  Icon: React.ComponentType<{ className?: string }>;
-};
-
-const pillars: Pillar[] = [
-  {
-    title: "IA dentro da operação, não em volta",
-    body: "Sequência Viral, Radar Viral e Reels Viral rodam todo dia no fluxo editorial. Pauta, copy, imagem e distribuição passam por modelos próprios.",
-    Icon: GitBranch,
-  },
-  {
-    title: "Time que vive o setor",
-    body: "Operação cripto desde 2022, com clientes em DeFi, Bitcoin self-custody, fintech e dolarização. Time entende stablecoin, KYC e compliance sem precisar de glossário.",
-    Icon: Bitcoin,
-  },
-  {
-    title: "Métrica de negócio, não de vaidade",
-    body: "Review mensal mede o que importa: pipeline, retenção, leads qualificados, conversão de waitlist. Engajamento bruto entra como sinal, não como entrega.",
-    Icon: TrendingUp,
-  },
-];
-
 type Differentiator = {
   title: string;
   body: string;
@@ -357,49 +333,6 @@ export default function LpPage() {
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10">
                 <p.Icon className="h-5 w-5 text-red-400" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-white">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* VIRADA */}
-      <section
-        aria-label="Virada"
-        className="mx-auto mb-20 max-w-5xl px-4 sm:px-6"
-      >
-        <div className="mb-10">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7CFF6B]">
-            <span className="h-1 w-1 rounded-full bg-[#7CFF6B]" />
-            Virada
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-            A Kaleidos resolve juntando três coisas que outras agências separam.
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-gray-400">
-            IA na operação, time que vive o setor e métrica de negócio. Sem essas três
-            juntas, marketing pra esse mercado é caro e devagar.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {pillars.map((p, i) => (
-            <div
-              key={p.title}
-              className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
-            >
-              <div className="mb-5 flex items-center gap-3">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#7CFF6B]">
-                  0{i + 1}
-                </span>
-                <div className="h-px flex-1 bg-gradient-to-r from-[#7CFF6B]/40 to-transparent" />
-              </div>
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-                <p.Icon className="h-5 w-5 text-[#7CFF6B]" />
               </div>
               <h3 className="font-display text-xl font-semibold text-white">
                 {p.title}
