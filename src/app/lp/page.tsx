@@ -13,14 +13,6 @@ import {
   Workflow,
   Brain,
   Bitcoin,
-  AlertTriangle,
-  ShieldAlert,
-  GitBranch,
-  Quote,
-  Plus,
-  Minus,
-  TrendingUp,
-  Users,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -87,30 +79,6 @@ const tools: Tool[] = [
     domain: "reels.kaleidos.com.br",
     description: "Reels analisados cena por cena, com roteiro adaptado.",
     Icon: Film,
-  },
-];
-
-type Problem = {
-  title: string;
-  body: string;
-  Icon: React.ComponentType<{ className?: string }>;
-};
-
-const problems: Problem[] = [
-  {
-    title: "Jargão que afasta o público errado",
-    body: "Agência tradicional escreve sobre cripto como turista. O leitor sente em duas linhas e o post morre no scroll.",
-    Icon: AlertTriangle,
-  },
-  {
-    title: "Compliance que muda toda semana",
-    body: "Regra de ad da Meta, Google, X e LinkedIn pra cripto e fintech muda sem aviso. Quem não opera no nicho perde campanha por palavra errada na headline.",
-    Icon: ShieldAlert,
-  },
-  {
-    title: "Audiência conhece o produto melhor que o time",
-    body: "Comunidade web3 e fintech corrige a marca em público. Sem time que vive o setor, cada post vira risco reputacional.",
-    Icon: Users,
   },
 ];
 
@@ -303,43 +271,6 @@ export default function LpPage() {
             Ver cases
             <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
           </Link>
-        </div>
-      </section>
-
-      {/* PROBLEMA */}
-      <section
-        aria-label="Problema"
-        className="mx-auto mb-16 max-w-5xl px-4 sm:px-6"
-      >
-        <div className="mb-10">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
-            <span className="h-1 w-1 rounded-full bg-[#7CFF6B]" />
-            Problema
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-            Marketing pra cripto, web3 e fintech não funciona como pra produto comum.
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-gray-400">
-            Três problemas que fazem agência tradicional perder dinheiro do cliente
-            antes do primeiro resultado.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {problems.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-            >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10">
-                <p.Icon className="h-5 w-5 text-red-400" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-white">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">{p.body}</p>
-            </div>
-          ))}
         </div>
       </section>
 
