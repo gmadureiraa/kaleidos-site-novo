@@ -1,4 +1,7 @@
 import { Resend } from "resend";
+import { upsertLead } from "@/lib/db/leads";
+import { sendSequenceEmail } from "@/lib/emails/lead-sequence/send";
+import { markEmailSent } from "@/lib/db/leads";
 
 export async function POST(request: Request) {
   try {
@@ -20,6 +23,7 @@ export async function POST(request: Request) {
       );
     }
 
+    // 1. Notificação interna pro time (Resend)
     const resendApiKey = process.env.RESEND_API_KEY;
     const subject = locale === "en"
       ? `[Kaleidos AI] New lead: ${nome}${empresa ? ` (${empresa})` : ""}`
@@ -28,6 +32,7 @@ export async function POST(request: Request) {
       "madureira@kaleidosdigital.com",
       "nathalia@kaleidosdigital.com",
     ];
+    const cc = ["gf.madureiraa@gmail.com"];
 
     const text = `
 Nome: ${nome}
@@ -43,7 +48,7 @@ ${gargalo}
     const html = `
       <div style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #111">
         <h2 style="margin:0 0 12px 0;">${subject}</h2>
-        <p style="color:#666;font-size:14px;margin:0 0 16px 0">Lead capturado pela página /servicos/ia-automacoes</p>
+        <p style="color:#666;font-size:14px;margin:0 0 16px 0">Lead capturado pela página /servicos/ia-automacoes-completa</p>
         <table style="border-collapse:collapse;width:100%;font-size:14px">
           <tr><td style="padding:6px 0;color:#666;width:140px">Nome</td><td style="padding:6px 0"><strong>${nome}</strong></td></tr>
           <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0">${email}</td></tr>
@@ -59,29 +64,70 @@ ${gargalo}
       </div>
     `;
 
-    if (!resendApiKey) {
-      // Em dev sem key, retorna ok pra não bloquear o fluxo
-      console.log("[lead-ia] RESEND_API_KEY ausente — simulando envio:", { nome, email, empresa, tamanho, gargalo });
-      return new Response(JSON.stringify({ ok: true, simulated: true }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
+    let internalSimulated = false;
+    if (resendApiKey) {
+      try {
+        const resend = new Resend(resendApiKey);
+        await resend.emails.send({
+          from: "Kaleidos <onboarding@resend.dev>",
+          to,
+          cc,
+          replyTo: email,
+          subject,
+          text,
+          html,
+        });
+      } catch (err) {
+        console.error("[lead-ia] erro resend interno:", err);
+      }
+    } else {
+      internalSimulated = true;
+      console.log("[lead-ia] RESEND_API_KEY ausente — notificação interna simulada");
     }
 
-    const resend = new Resend(resendApiKey);
-    await resend.emails.send({
-      from: "Kaleidos <onboarding@resend.dev>",
-      to,
-      replyTo: email,
-      subject,
-      text,
-      html,
-    });
+    // 2. Persiste lead pra sequence (Postgres). Falha silenciosa se DATABASE_URL ausente.
+    let lead = null;
+    try {
+      lead = await upsertLead({
+        email,
+        name: nome,
+        empresa,
+        tamanho,
+        whatsapp,
+        gargalo,
+      });
+    } catch (err) {
+      console.error("[lead-ia] erro persistindo lead:", err);
+    }
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    // 3. Dispara email #1 (welcome) imediatamente.
+    let welcomeSent = false;
+    try {
+      const r = await sendSequenceEmail({
+        to: email,
+        name: nome,
+        emailNumber: 1,
+        dryRun: false,
+      });
+      welcomeSent = r.ok;
+      if (r.ok && lead) {
+        await markEmailSent(lead.id, 1).catch(() => {});
+      }
+    } catch (err) {
+      console.error("[lead-ia] erro enviando welcome:", err);
+    }
+
+    return new Response(
+      JSON.stringify({
+        ok: true,
+        triggerEmailSequence: true,
+        leadId: lead?.id ?? null,
+        persisted: lead !== null,
+        welcomeSent,
+        internalSimulated,
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (err) {
     console.error("[lead-ia] erro:", err);
     return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
