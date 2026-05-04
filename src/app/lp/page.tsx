@@ -220,49 +220,6 @@ const services: Service[] = [
   },
 ];
 
-type Case = {
-  client: string;
-  vertical: string;
-  scope: string;
-  result: string;
-  quote?: string;
-  author?: string;
-};
-
-const cases: Case[] = [
-  {
-    client: "Defiverso",
-    vertical: "Educação cripto · Comunidade",
-    scope: "Newsletter semanal, carrosséis, roteiros, automações de lançamento.",
-    result:
-      "Comunidade com 14k+ alunos. Mais de 19 roteiros e campanhas completas de lançamento entregues, com depoimentos públicos de alunos que transformaram patrimônio.",
-    quote:
-      "Entrei no Defiverso sem saber por onde começar. Em três meses consegui participar de três airdrops relevantes e estruturar minha renda passiva em DeFi.",
-    author: "Marina Castro · Aluna Defiverso",
-  },
-  {
-    client: "DSEC Labs",
-    vertical: "Bitcoin self-custody · Hardware",
-    scope: "Posicionamento, conteúdo institucional, lançamento ColdKit.",
-    result:
-      "Narrativa No Trust. Do It Yourself estabelecida nos canais. Funil ativo da landing à compra do kit, com produção contínua para Alfred P2P e ecossistema.",
-  },
-  {
-    client: "Lucas Amendola",
-    vertical: "Marca pessoal · Educador cripto",
-    scope: "Operação multiplataforma (IG, X, LinkedIn) e gestão editorial.",
-    result:
-      "174k no Instagram, 380k no YouTube, presença consolidada em LinkedIn e X. Pauta semanal alimenta funil orgânico do Defiverso.",
-  },
-  {
-    client: "NeoBankless",
-    vertical: "Fintech · Dolarização",
-    scope: "Conteúdo recorrente Instagram + LinkedIn, narrativa Founders Club.",
-    result:
-      "Linguagem de private bank traduzida pra audiência cripto-friendly. Diferenciação clara vs neobanks tradicionais e narrativa de USDc consolidada.",
-  },
-];
-
 type Step = {
   number: string;
   title: string;
@@ -602,80 +559,6 @@ export default function LpPage() {
               </ul>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CASES / PROVA */}
-      <section
-        aria-label="Cases"
-        className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-      >
-        <div className="mb-10">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
-            <span className="h-1 w-1 rounded-full bg-[#7CFF6B]" />
-            Cases
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-            O que a Kaleidos já entregou.
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-gray-400">
-            Quatro contas que mostram o jeito Kaleidos de operar, do nicho cripto
-            ao fintech BR.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {cases.map((c) => (
-            <article
-              key={c.client}
-              className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
-            >
-              <div className="mb-5 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-white">
-                    {c.client}
-                  </h3>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-[#7CFF6B]">
-                    {c.vertical}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
-                  Escopo
-                </p>
-                <p className="text-sm text-gray-300 sm:text-[15px]">{c.scope}</p>
-              </div>
-
-              <div className="mb-5 border-t border-white/5 pt-4">
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
-                  Resultado
-                </p>
-                <p className="text-sm text-gray-300 sm:text-[15px]">{c.result}</p>
-              </div>
-
-              {c.quote && (
-                <div className="mt-auto rounded-xl border border-white/5 bg-black/30 p-4">
-                  <Quote className="mb-2 h-4 w-4 text-[#7CFF6B]" />
-                  <p className="text-sm italic text-gray-300">&ldquo;{c.quote}&rdquo;</p>
-                  {c.author && (
-                    <p className="mt-2 text-xs text-gray-500">{c.author}</p>
-                  )}
-                </div>
-              )}
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 flex justify-center">
-          <Link
-            href="/cases"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:border-[#7CFF6B]/30 hover:bg-white/[0.06]"
-          >
-            Ver todos os cases
-            <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
-          </Link>
         </div>
       </section>
 
