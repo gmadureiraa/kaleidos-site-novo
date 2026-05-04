@@ -263,6 +263,54 @@ const cases: Case[] = [
   },
 ];
 
+type Faq = {
+  question: string;
+  answer: string;
+};
+
+const faqs: Faq[] = [
+  {
+    question: "Trabalham com clientes fora do nicho cripto, web3 e fintech?",
+    answer:
+      "Sim, mas é minoria. Cripto, web3 e fintech é onde o time tem mais profundidade e onde a operação fica mais eficiente. Fora disso, atendemos quando o desafio é alto (lançamento, marca pessoal de fundador, IA na operação) e o tom permite usar nosso método.",
+  },
+  {
+    question: "Quanto custa um projeto?",
+    answer:
+      "Marketing recorrente parte de R$ 10k/mês com engajamento mínimo de 3 meses. Consultoria estratégica parte de R$ 5k/mês. Lançamentos e sistemas IA custom são sob orçamento, definido depois do diagnóstico. Não trabalhamos com projeto avulso de design.",
+  },
+  {
+    question: "Quanto tempo até ver resultado?",
+    answer:
+      "Resultado de processo (operação rodando, tooling integrado, pauta editorial saudável) em 30 dias. Resultado de número (alcance, leads, conversão de waitlist) começa entre 60 e 90 dias, dependendo de canal e maturidade da marca. Marketing orgânico não dá resultado em 7 dias e a Kaleidos não vende essa promessa.",
+  },
+  {
+    question: "Vocês fazem tráfego pago também?",
+    answer:
+      "Sim, dentro de lançamentos e sprints full-funnel. Não oferecemos gestão de mídia recorrente isolada como produto. Quando o cliente já tem gestor de tráfego, o time da Kaleidos integra criativo e mensagem para essa frente.",
+  },
+  {
+    question: "Como medem o resultado?",
+    answer:
+      "Review mensal com painel de métricas conectadas a negócio: pipeline gerado, leads qualificados, retenção, conversão de waitlist, custo por lead. Engajamento bruto e crescimento de seguidor entram como sinal de tração, não como entrega final.",
+  },
+  {
+    question: "Posso começar com um teste antes de assinar contrato?",
+    answer:
+      "Sim. A primeira etapa é um diagnóstico pago de baixo escopo: auditoria de canais, posicionamento e oportunidades imediatas. Se a Kaleidos não for o ajuste certo, você sai com o documento e zero pendência.",
+  },
+  {
+    question: "Trabalham com clientes internacionais?",
+    answer:
+      "Sim. Operamos em PT-BR e inglês, com clientes de Bitcoin self-custody e fintech atendendo mercado global. Toda comunicação institucional pode rodar nas duas línguas.",
+  },
+  {
+    question: "O que acontece se eu não gostar da entrega?",
+    answer:
+      "Contrato tem janela de saída clara após o terceiro mês. Se a entrega não bate o combinado em review, ajustamos escopo ou encerramos sem multa. A Kaleidos não trabalha amarrando cliente em contrato anual sem revisão.",
+  },
+];
+
 type Step = {
   number: string;
   title: string;
@@ -708,6 +756,48 @@ export default function LpPage() {
                 <div className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 -translate-y-1/2 bg-gradient-to-r from-[#7CFF6B]/40 to-transparent md:block" />
               )}
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section
+        aria-label="Perguntas frequentes"
+        className="mx-auto mt-24 max-w-3xl px-4 sm:px-6"
+      >
+        <div className="mb-10 text-center">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
+            <span className="h-1 w-1 rounded-full bg-[#7CFF6B]" />
+            FAQ
+          </span>
+          <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
+            Perguntas frequentes.
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-base text-gray-400">
+            Oito respostas honestas pras perguntas que decisor sempre faz antes de
+            fechar contrato com agência.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {faqs.map((f) => (
+            <details
+              key={f.question}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all hover:border-white/20 open:border-[#7CFF6B]/20 open:bg-white/[0.05]"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left">
+                <span className="font-display text-base font-semibold text-white sm:text-lg">
+                  {f.question}
+                </span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] transition-all group-open:border-[#7CFF6B]/30 group-open:bg-[#7CFF6B]/10">
+                  <Plus className="h-4 w-4 text-gray-400 group-open:hidden" />
+                  <Minus className="hidden h-4 w-4 text-[#7CFF6B] group-open:block" />
+                </span>
+              </summary>
+              <div className="border-t border-white/5 px-5 pb-5 pt-4">
+                <p className="text-sm text-gray-400 sm:text-[15px]">{f.answer}</p>
+              </div>
+            </details>
           ))}
         </div>
       </section>
