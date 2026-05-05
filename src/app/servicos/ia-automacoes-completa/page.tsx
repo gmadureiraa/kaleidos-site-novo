@@ -7,14 +7,11 @@ import {
   ArrowUpRight,
   ArrowRight,
   Clock,
-  MessageSquare,
   Mail,
-  TrendingUp,
   Search,
   FileText,
   PhoneCall,
   Workflow,
-  Brain,
   Cpu,
   Compass,
   CheckCircle2,
@@ -101,12 +98,7 @@ export default function KaleidosIAPage() {
       <HeroSection onCta={() => handleWhatsApp("hero_cta")} />
 
       {/* ================================================================ */}
-      {/* 2. PROBLEMA — onde os 70% somem                                   */}
-      {/* ================================================================ */}
-      <ProblemSection />
-
-      {/* ================================================================ */}
-      {/* 2.5 CARROSSEL FLIP — problema → solução IA (cards interativos)    */}
+      {/* 2. CARROSSEL FLIP — problema → solução IA (cards interativos)    */}
       {/* ================================================================ */}
       <FlipCarouselSection
         locale={locale}
@@ -114,42 +106,37 @@ export default function KaleidosIAPage() {
       />
 
       {/* ================================================================ */}
-      {/* 3. VIRADA — 3 pilares                                             */}
-      {/* ================================================================ */}
-      <PillarsSection />
-
-      {/* ================================================================ */}
-      {/* 4. GARGALOS ATACADOS                                              */}
+      {/* 3. GARGALOS ATACADOS                                              */}
       {/* ================================================================ */}
       <BottlenecksSection onCta={(g) => handleWhatsApp(`gargalo_${g}`)} />
 
       {/* ================================================================ */}
-      {/* 5. PROCESSO                                                       */}
+      {/* 4. PROCESSO                                                       */}
       {/* ================================================================ */}
       <ProcessSection />
 
       {/* ================================================================ */}
-      {/* 6. CASES                                                          */}
+      {/* 5. CASES                                                          */}
       {/* ================================================================ */}
       <CasesSection />
 
       {/* ================================================================ */}
-      {/* 7. PRODUTOS PRÓPRIOS                                              */}
+      {/* 6. PRODUTOS PRÓPRIOS                                              */}
       {/* ================================================================ */}
       <ProductsSection />
 
       {/* ================================================================ */}
-      {/* 8. COMO TRABALHAMOS (modalidades sem preço)                       */}
+      {/* 7. COMO TRABALHAMOS (modalidades sem preço)                       */}
       {/* ================================================================ */}
       <ModalitiesSection onCta={(t) => handleWhatsApp(`modalidade_${t}`)} />
 
       {/* ================================================================ */}
-      {/* 9. FAQ                                                            */}
+      {/* 8. FAQ                                                            */}
       {/* ================================================================ */}
       <FAQSection />
 
       {/* ================================================================ */}
-      {/* 10. CTA FINAL + FORM                                              */}
+      {/* 9. CTA FINAL + FORM                                               */}
       {/* ================================================================ */}
       <FinalCtaSection />
 
@@ -212,140 +199,6 @@ function HeroSection({ onCta }: { onCta: () => void }) {
   );
 }
 
-/* =================================================================== */
-/* PROBLEMA                                                            */
-/* =================================================================== */
-
-function ProblemSection() {
-  const items = [
-    {
-      Icon: Clock,
-      title: "Tarefas repetitivas",
-      body: "Cobrança, follow-up, atendimento de nível 1, status report. O time perde 2-4h por dia em coisa que IA já resolve.",
-    },
-    {
-      Icon: Search,
-      title: "Pesquisa manual",
-      body: "Briefing de cliente, benchmark de concorrente, varredura de notícia: 3 dias virando relatório que ninguém lê inteiro.",
-    },
-    {
-      Icon: MessageSquare,
-      title: "Conteúdo do zero",
-      body: "1 hora pra montar um carrossel. 2 horas pra editar um reels. 5 dias do brief até a peça aprovada.",
-    },
-    {
-      Icon: PhoneCall,
-      title: "Atendimento que não escala",
-      body: "WhatsApp lotado de pergunta repetida. Nível 1 consumindo o tempo do time que devia estar fechando proposta.",
-    },
-  ];
-
-  return (
-    <section
-      aria-label="Problema"
-      className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-    >
-      <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
-          O problema
-        </p>
-        <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Sete em cada dez horas do teu time são tarefa que a máquina faz melhor.
-        </h2>
-        <p className="mt-4 text-base text-gray-400">
-          A operação tradicional gasta o expediente em quatro frentes que não
-          escalam com gente. Aqui é onde o tempo some:
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {items.map((it, i) => (
-          <motion.div
-            key={it.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            viewport={{ once: true }}
-            className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.05]"
-          >
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-              <it.Icon className="h-5 w-5 text-gray-300" />
-            </div>
-            <h3 className="font-display text-xl font-semibold text-white">
-              {it.title}
-            </h3>
-            <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">
-              {it.body}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* =================================================================== */
-/* PILARES — A virada                                                  */
-/* =================================================================== */
-
-function PillarsSection() {
-  const pillars = [
-    {
-      Icon: Brain,
-      title: "IA dentro da operação",
-      body: "A Kaleidos não vende SaaS de prateleira. Implementa IA no fluxo que já existe — Notion, ClickUp, WhatsApp, planilha, CRM. Onde o time já vive.",
-    },
-    {
-      Icon: Workflow,
-      title: "Time multidisciplinar",
-      body: "Estratégia, copy, design, dev e operação no mesmo briefing. A IA entra como camada, não como projeto isolado de TI.",
-    },
-    {
-      Icon: TrendingUp,
-      title: "Métrica de negócio",
-      body: "Não é eficiência de vaidade. Cada implementação tem alvo: hora liberada, ticket resolvido, lead qualificado, peça publicada.",
-    },
-  ];
-
-  return (
-    <section
-      aria-label="A virada"
-      className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-    >
-      <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
-          A virada
-        </p>
-        <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          A diferença entre &quot;usar IA&quot; e ter IA na operação.
-        </h2>
-        <p className="mt-4 text-base text-gray-400">
-          A maioria das empresas comprou ChatGPT Pro e acha que &quot;tá com IA&quot;.
-          A Kaleidos entra três níveis abaixo, no processo:
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {pillars.map((p) => (
-          <div
-            key={p.title}
-            className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
-          >
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-              <p.Icon className="h-5 w-5 text-[#7CFF6B]" />
-            </div>
-            <h3 className="font-display text-xl font-semibold text-white">
-              {p.title}
-            </h3>
-            <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">
-              {p.body}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* =================================================================== */
 /* GARGALOS ATACADOS                                                   */
@@ -599,14 +452,6 @@ function CasesSection() {
     },
   ];
 
-  // Marquee de logos abaixo (cases legados — operação rodando)
-  const operating = [
-    { slug: "defiverso", cliente: "Defiverso", vertical: "Educação cripto" },
-    { slug: "investidor-4-20", cliente: "Investidor 4.20", vertical: "Fintech" },
-    { slug: "dsec", cliente: "DSEC Labs", vertical: "Bitcoin security" },
-    { slug: "layla-foz", cliente: "Layla Foz", vertical: "Espiritualidade" },
-  ];
-
   return (
     <section
       aria-label="Cases"
@@ -621,7 +466,7 @@ function CasesSection() {
         </h2>
         <p className="mt-4 text-base text-gray-400">
           Dois exemplos do que a Kaleidos resolve quando IA entra dentro do
-          fluxo, não em cima dele. Embaixo, mais marcas que confiam na operação.
+          fluxo, não em cima dele.
         </p>
       </div>
 
@@ -676,28 +521,6 @@ function CasesSection() {
         ))}
       </div>
 
-      {/* Marquee — cases operando hoje (logos menores) */}
-      <div className="mt-10">
-        <p className="mb-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-gray-500">
-          + Operação rodando hoje em
-        </p>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {operating.map((o) => (
-            <Link
-              key={o.slug}
-              href={`/cases/${o.slug}`}
-              className="group flex flex-col rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.04]"
-            >
-              <span className="font-display text-sm font-semibold text-white">
-                {o.cliente}
-              </span>
-              <span className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-gray-500">
-                {o.vertical}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
@@ -1150,34 +973,21 @@ function FlipCarouselSection({
 /* =================================================================== */
 
 function FAQSection() {
+  // Top 4 — perguntas que de fato bloqueiam fechamento. Outras (nicho,
+  // fidelidade, stack técnico, porte da empresa) ficam pra call de 30min
+  // gratuita ou DM, evitando bloated FAQ que ninguém lê.
   const items = [
     {
       q: "Em quanto tempo eu vejo resultado?",
       a: "Em 30 dias o primeiro gargalo já tá rodando em produção. A métrica de hora liberada começa a subir a partir do mês 2. Mês 3 é onde a maioria dos clientes vê os 70% reais.",
     },
     {
-      q: "Atende fora do nicho cripto/web3?",
-      a: "Sim. A Kaleidos tem 5+ anos no nicho cripto e fintech, mas o método de IA na operação funciona em qualquer setor B2B/B2C com volume de conteúdo, atendimento ou cobrança recorrente.",
-    },
-    {
       q: "O código fica com quem?",
       a: "Sempre com o cliente. Sem lock-in, sem dependência de SaaS terceiro pra rodar o que a Kaleidos construiu. O time entrega no repositório do cliente, com documentação.",
     },
     {
-      q: "Tem fidelidade no plano mensal?",
-      a: "Mínimo de 3 meses. Tempo necessário pra implementar o primeiro ciclo de gargalos e mostrar métrica real de hora liberada. Depois disso, mensal sem multa.",
-    },
-    {
-      q: "Vocês usam Make, n8n, Zapier ou tudo custom?",
-      a: "Os três, dependendo do gargalo. n8n e Make pra fluxos no-code que precisam ser editados pelo time do cliente. Custom (TS + Python + Supabase) quando o gargalo merece um sistema próprio.",
-    },
-    {
       q: "Que tipo de suporte tem depois da entrega?",
       a: "No mensal, suporte vai até o fim do contrato. Em sistema custom, a Kaleidos oferece SLA de manutenção opcional, ou faz handoff técnico pro time interno do cliente assumir.",
-    },
-    {
-      q: "Vocês trabalham com empresa pequena ou só com grande?",
-      a: "Trabalha com os dois. A call gratuita de 30 min é o ponto de partida pra qualquer porte. Mensal pede operação que já tem time editorial, atendimento ou cobrança ativa. Sistema custom é pra quem quer plataforma própria.",
     },
     {
       q: "Como mede ROI?",
