@@ -1050,6 +1050,27 @@ function FlipCarouselSection({
         borderColor: "border-emerald-400",
       },
     },
+    {
+      front: {
+        title: locale === "en" ? "Manual reports" : "Relatório Manual",
+        description: locale === "en"
+          ? "End of month: 3 days exporting, formatting, sending PDF by hand."
+          : "Fim do mês: 3 dias exportando, formatando, mandando PDF na mão.",
+        bgGradient: "from-slate-600 to-gray-700",
+        borderColor: "border-slate-400",
+      },
+      back: {
+        title: locale === "en" ? "Auto on schedule" : "Auto no Cron",
+        description: locale === "en"
+          ? "Daily, weekly, monthly — IA puxa dado, monta narrativa, envia."
+          : "Diário, semanal, mensal — IA puxa dado, monta narrativa, envia.",
+        features: locale === "en"
+          ? ["Cron schedule", "Brand template", "Email + WhatsApp"]
+          : ["Schedule cron", "Template da marca", "Email + WhatsApp"],
+        bgGradient: "from-teal-500 to-emerald-600",
+        borderColor: "border-teal-400",
+      },
+    },
   ];
 
   return (
@@ -1065,9 +1086,13 @@ function FlipCarouselSection({
           Onde a IA realmente entra na operação.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          16 frentes que a Kaleidos automatiza no fluxo do cliente — sem
+          17 frentes que a Kaleidos automatiza no fluxo do cliente — sem
           dashboard novo, sem &quot;ChatGPT aberto numa aba&quot;. Hover pra
           virar cada card.
+        </p>
+        <p className="mt-3 text-sm font-medium text-[#7CFF6B]">
+          E essa lista não termina aqui. Qualquer tarefa repetitiva entra no
+          fluxo — auditamos, mapeamos e implementamos.
         </p>
       </div>
 
