@@ -1,520 +1,988 @@
-import type { Metadata } from "next";
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
+  Instrument_Serif,
+  Plus_Jakarta_Sans,
+  Geist_Mono,
+} from "next/font/google";
+import { motion } from "framer-motion";
+import {
   ArrowUpRight,
+  ArrowRight,
   Sparkles,
-  Film,
-  Radar,
-  Rocket,
-  Compass,
   Cpu,
+  Globe,
+  Radar,
+  Film,
+  CreditCard,
   CheckCircle2,
-  Workflow,
-  Brain,
-  Bitcoin,
+  Plus,
+  Minus,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Marketing IA pra cripto, web3 e fintech — Kaleidos",
-  description:
-    "Agência com tooling próprio (Sequência Viral, Radar Viral, Reels Viral). 8 clientes ativos. Solicite proposta.",
-  alternates: {
-    canonical: "/lp",
-  },
-  openGraph: {
-    title: "Marketing IA pra cripto, web3 e fintech — Kaleidos",
-    description:
-      "Agência com tooling próprio (Sequência Viral, Radar Viral, Reels Viral). 8 clientes ativos. Solicite proposta.",
-    url: "https://kaleidos.com.br/lp",
-    siteName: "Kaleidos Digital",
-    images: [
-      {
-        url: "/Kaleidos/imagens/Capa.png",
-        width: 1200,
-        height: 630,
-        alt: "Kaleidos — Marketing IA pra cripto, web3 e fintech",
-      },
-    ],
-    locale: "pt_BR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Marketing IA pra cripto, web3 e fintech — Kaleidos",
-    description:
-      "Agência com tooling próprio (Sequência Viral, Radar Viral, Reels Viral). 8 clientes ativos. Solicite proposta.",
-    images: ["/Kaleidos/imagens/Capa.png"],
-    creator: "@digitalkaleidos",
-    site: "@digitalkaleidos",
-  },
-};
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
-type Tool = {
-  name: string;
-  href: string;
-  domain: string;
-  description: string;
-  Icon: React.ComponentType<{ className?: string }>;
-};
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  style: "italic",
+  display: "swap",
+  variable: "--font-instrument-serif",
+});
 
-const tools: Tool[] = [
-  {
-    name: "Sequência Viral",
-    href: "https://viral.kaleidos.com.br",
-    domain: "viral.kaleidos.com.br",
-    description: "Carrosséis prontos pra postar com IA na voz da marca.",
-    Icon: Sparkles,
-  },
-  {
-    name: "Radar Viral",
-    href: "https://radar.kaleidos.com.br",
-    domain: "radar.kaleidos.com.br",
-    description: "Inteligência diária cross-platform: temas em alta com brief IA.",
-    Icon: Radar,
-  },
-  {
-    name: "Reels Viral",
-    href: "https://reels.kaleidos.com.br",
-    domain: "reels.kaleidos.com.br",
-    description: "Reels analisados cena por cena, com roteiro adaptado.",
-    Icon: Film,
-  },
-];
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
 
-type Differentiator = {
-  title: string;
-  body: string;
-  Icon: React.ComponentType<{ className?: string }>;
-};
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+});
 
-const differentiators: Differentiator[] = [
-  {
-    title: "Tooling proprietário",
-    body: "Sequência Viral pra carrosséis, Radar Viral pra inteligência de tendências e Reels Viral pra repurpose. Construído pelo time, usado todo dia.",
-    Icon: Cpu,
-  },
-  {
-    title: "IA na operação",
-    body: "Não é IA pra ads terceirizada. É IA integrada no fluxo editorial: pauta, roteiro, copy, imagem e distribuição passam por modelos.",
-    Icon: Brain,
-  },
-  {
-    title: "Especialização cripto",
-    body: "Time entende o nicho, fala a língua. De DeFi a Bitcoin maxi, de fintech a web3 — sem precisar explicar o que é uma stablecoin.",
-    Icon: Bitcoin,
-  },
-];
+// Pixel Meta type
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
-type Service = {
-  title: string;
-  price: string;
-  description: string;
-  bullets: string[];
-  Icon: React.ComponentType<{ className?: string }>;
-  highlight?: boolean;
-};
+const WA_TEXT = "Oi! Vi a Kaleidos e quero conversar sobre:";
 
-const services: Service[] = [
-  {
-    title: "Marketing recorrente",
-    price: "A partir de R$ 10k/mês",
-    description:
-      "Gestão completa dos canais com IA embarcada no fluxo editorial.",
-    bullets: [
-      "Instagram, Twitter, LinkedIn e newsletter",
-      "Pauta semanal + execução + métricas",
-      "Tooling próprio integrado ao processo",
-    ],
-    Icon: Workflow,
-    highlight: true,
-  },
-  {
-    title: "Lançamentos",
-    price: "Sob orçamento",
-    description: "Sprint full-funnel de 30 a 90 dias pra produto, evento ou rodada.",
-    bullets: [
-      "Estratégia, criativo e mídia",
-      "Tracking de funil ponta a ponta",
-      "Time dedicado por janela",
-    ],
-    Icon: Rocket,
-  },
-  {
-    title: "Consultoria estratégica",
-    price: "A partir de R$ 5k/mês",
-    description: "1-on-1 com founder pra destravar marca, posicionamento e canais.",
-    bullets: [
-      "Sessões quinzenais",
-      "Diagnóstico + roadmap trimestral",
-      "Acompanhamento por Slack/WhatsApp",
-    ],
-    Icon: Compass,
-  },
-  {
-    title: "Sistemas IA customizados",
-    price: "Sob orçamento",
-    description: "Pipeline de IA construído sob medida pro teu negócio.",
-    bullets: [
-      "Geração de conteúdo, automação, dashboards",
-      "Stack TS + Python + Supabase",
-      "Entrega como produto, não relatório",
-    ],
-    Icon: Cpu,
-  },
-];
+function waLink(extra?: string) {
+  const text = extra ? `${WA_TEXT} ${extra}` : WA_TEXT;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
 
-type Step = {
-  number: string;
-  title: string;
-  body: string;
-};
-
-const steps: Step[] = [
-  {
-    number: "01",
-    title: "Brief",
-    body: "Conta o objetivo, contexto e budget. Em 48h tem retorno.",
-  },
-  {
-    number: "02",
-    title: "Diagnóstico",
-    body: "Auditoria de canais, posicionamento e oportunidades imediatas.",
-  },
-  {
-    number: "03",
-    title: "Execução",
-    body: "Time entra em campo. Tooling proprietário acelera output.",
-  },
-  {
-    number: "04",
-    title: "Review",
-    body: "Reuniões mensais de número. Ajustes baseados em dado, não em achismo.",
-  },
-];
-
-const clientBadges = [
-  "Bitcoin Security B2B",
-  "Fintech B2B",
-  "Educação cripto B2C",
-  "Asset management",
-  "Influencer fintech",
-  "Bem-estar digital",
-  "Web3 protocol",
-  "IA produtividade",
-];
-
-const proposalCta =
-  "https://wa.me/5512997796835?text=Oi%2C%20quero%20uma%20proposta%20da%20Kaleidos%20%2F%2Flp";
-
-export default function LpPage() {
+export default function KaleidosLPPage() {
   return (
-    <main
-      id="main-content"
-      role="main"
-      className="relative min-h-screen overflow-hidden bg-black text-white"
+    <div
+      className={`${instrumentSerif.variable} ${plusJakarta.variable} ${geistMono.variable} kal-lp`}
     >
-      {/* Background gradient */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7CFF6B]/15 via-black to-black" />
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+      <style jsx global>{`
+        .kal-lp {
+          --paper: #f5f1e8;
+          --cream: #fbf7ee;
+          --ink: #0a0908;
+          --coal: #1a1816;
+          --rec: #ff3d2e;
+          --rec-hot: #ff5947;
+          --muted: #6b6660;
+          --line: #ddd7ca;
+          --soft: #eae3d2;
+          --amber: #f0b33c;
 
-      {/* HERO */}
-      <section className="mx-auto flex max-w-5xl flex-col items-center px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
-        <div className="mb-6 flex items-center gap-3">
-          <Image
-            src="/Kaleidos/logo/Logos-10.svg"
-            alt="Kaleidos Digital"
-            width={48}
-            height={48}
-            className="h-12 w-12"
-            priority
-          />
-          <span className="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Kaleidos
-          </span>
-        </div>
+          background: var(--paper);
+          color: var(--ink);
+          font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+          min-height: 100vh;
+        }
+        .kal-lp * {
+          box-sizing: border-box;
+        }
+        .kal-lp .serif {
+          font-family: var(--font-instrument-serif), Georgia, serif;
+          font-style: italic;
+          font-weight: 400;
+        }
+        .kal-lp .mono {
+          font-family: var(--font-geist-mono), ui-monospace, monospace;
+        }
+        .kal-lp .eyebrow {
+          font-family: var(--font-geist-mono), monospace;
+          font-size: 10px;
+          line-height: 1;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--rec);
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .kal-lp .rec-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          background: var(--rec);
+          display: inline-block;
+          animation: kal-pulse 1.6s ease-in-out infinite;
+        }
+        @keyframes kal-pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.55; transform: scale(0.85); }
+        }
+        .kal-lp .card {
+          background: var(--cream);
+          border: 1.5px solid var(--ink);
+          box-shadow: 3px 3px 0 0 var(--ink);
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .kal-lp .card:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: 5px 5px 0 0 var(--ink);
+        }
+        .kal-lp .card-hot {
+          background: var(--cream);
+          border: 1.5px solid var(--ink);
+          box-shadow: 5px 5px 0 0 var(--rec);
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .kal-lp .card-hot:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 7px 7px 0 0 var(--rec);
+        }
+        .kal-lp .rdv-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--ink);
+          color: var(--paper);
+          font-weight: 700;
+          font-size: 14px;
+          padding: 14px 22px;
+          border: 1.5px solid var(--ink);
+          box-shadow: 3px 3px 0 0 var(--ink);
+          text-decoration: none;
+          cursor: pointer;
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .kal-lp .rdv-btn:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 5px 5px 0 0 var(--rec);
+        }
+        .kal-lp .rdv-btn-rec {
+          background: var(--rec);
+          color: var(--paper);
+          border: 1.5px solid var(--ink);
+          box-shadow: 3px 3px 0 0 var(--ink);
+        }
+        .kal-lp .rdv-btn-rec:hover {
+          background: var(--rec-hot);
+        }
+        .kal-lp .rdv-btn-ghost {
+          background: transparent;
+          color: var(--ink);
+          border: 1.5px solid var(--ink);
+          box-shadow: 3px 3px 0 0 var(--ink);
+        }
+        .kal-lp .rdv-btn-ghost:hover {
+          background: var(--soft);
+          box-shadow: 5px 5px 0 0 var(--ink);
+        }
+        .kal-lp .num-badge {
+          font-family: var(--font-geist-mono), monospace;
+          font-size: 11px;
+          letter-spacing: 0.16em;
+          color: var(--muted);
+          border: 1px solid var(--line);
+          padding: 4px 10px;
+          background: var(--paper);
+          display: inline-block;
+        }
+        .kal-lp .grain::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.04;
+          background-image:
+            radial-gradient(rgba(10,9,8,0.6) 1px, transparent 1px);
+          background-size: 3px 3px;
+        }
+        .kal-lp .scroll-x {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .kal-lp .scroll-x::-webkit-scrollbar { display: none; }
+        .kal-lp input,
+        .kal-lp textarea {
+          background: var(--paper);
+          border: 1.5px solid var(--ink);
+          color: var(--ink);
+          padding: 12px 14px;
+          font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+          font-size: 14px;
+          width: 100%;
+          outline: none;
+          box-shadow: 3px 3px 0 0 var(--ink);
+        }
+        .kal-lp input:focus,
+        .kal-lp textarea:focus {
+          box-shadow: 5px 5px 0 0 var(--rec);
+        }
+        .kal-lp ::placeholder { color: var(--muted); opacity: 0.7; }
+        .kal-lp .divider {
+          height: 1.5px;
+          background: var(--ink);
+          width: 100%;
+        }
+        .kal-lp h1, .kal-lp h2, .kal-lp h3 { color: var(--ink); }
+      `}</style>
 
-        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CFF6B] sm:text-sm">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CFF6B]" />
-          Agência IA-first · Cripto, web3, fintech
+      <Hero />
+      <Frentes />
+      <Produtos />
+      <Cases />
+      <Stack />
+      <Processo />
+      <FAQ />
+      <CTAFinal />
+      <Footer />
+    </div>
+  );
+}
+
+/* ============================ HERO ============================ */
+function Hero() {
+  return (
+    <section className="relative overflow-hidden grain px-5 sm:px-10 pt-16 sm:pt-24 pb-16">
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" />
+          KALEIDOS · AGÊNCIA BOUTIQUE DE MARKETING + IA
         </span>
 
-        <h1 className="text-center font-display text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
-          A Kaleidos integra IA no marketing de cripto, web3 e fintech.
+        <h1 className="serif mt-6 text-[44px] leading-[0.96] sm:text-[72px] md:text-[96px] tracking-tight">
+          A agência que constrói o sistema,<br className="hidden sm:block" /> não só o conteúdo.
         </h1>
-        <p className="mt-5 max-w-2xl text-center text-base text-gray-400 sm:text-lg">
-          8 clientes ativos, 120+ peças de conteúdo por mês, tooling proprietário
-          (Sequência Viral, Radar Viral, Reels Viral) que potencializa cada execução.
+
+        <p className="mt-7 max-w-2xl text-[17px] sm:text-[19px] leading-relaxed text-[var(--coal)]">
+          5+ anos no nicho cripto/web3/fintech. 8 marcas operando hoje.
+          17 frentes automatizadas com IA. Conteúdo + sites + automações
+          no mesmo time.
         </p>
 
-        <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
-            href={proposalCta}
+            href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] sm:text-base"
+            className="rdv-btn rdv-btn-rec"
           >
-            Solicitar proposta
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            Falar comigo <ArrowUpRight className="h-4 w-4" />
           </a>
-          <Link
-            href="/cases"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CFF6B]/30 hover:bg-white/[0.06] sm:text-base"
-          >
-            Ver cases
-            <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
-          </Link>
-        </div>
-      </section>
-
-      {/* PROVA INSTITUCIONAL */}
-      <section
-        aria-label="Prova institucional"
-        className="mx-auto max-w-5xl px-4 sm:px-6"
-      >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {[
-            { number: "8", label: "clientes ativos" },
-            { number: "120+", label: "peças de conteúdo por mês" },
-            { number: "4", label: "produtos próprios shipados" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm"
-            >
-              <div className="font-display text-4xl font-bold text-[#7CFF6B] sm:text-5xl">
-                {stat.number}
-              </div>
-              <div className="mt-1 text-sm text-gray-400">{stat.label}</div>
-            </div>
-          ))}
+          <a href="#cases" className="rdv-btn rdv-btn-ghost">
+            Ver cases <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
 
-        <div className="mt-8">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-            Verticais que a Kaleidos atende
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {clientBadges.map((badge) => (
-              <span
-                key={badge}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-gray-300 sm:text-sm"
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
+        <div className="mt-10 flex flex-wrap gap-2">
+          <span className="num-badge">5+ anos</span>
+          <span className="num-badge">8 marcas</span>
+          <span className="num-badge">17 frentes IA</span>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* DIFERENCIAL */}
-      <section
-        aria-label="Diferencial"
-        className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-      >
-        <h2 className="mb-3 font-display text-3xl font-semibold text-white sm:text-4xl">
-          O que torna a Kaleidos diferente.
+/* ============================ FRENTES ============================ */
+function Frentes() {
+  const cards = [
+    {
+      Icon: Sparkles,
+      title: "Agência de Conteúdo",
+      desc: "Estratégia editorial + produção em volume. Carrosséis, reels, newsletters, threads, blog SEO. Voz da marca consistente em todas as redes.",
+      bullets: [
+        "Time multidisciplinar (estrategista, copy, designer, social)",
+        "Calendário editorial mensal",
+        "Métrica de growth (alcance, engajamento, conversão)",
+        "Especialização cripto/web3/fintech",
+      ],
+      link: null,
+    },
+    {
+      Icon: Cpu,
+      title: "IA dentro da Operação",
+      desc: "Auditoria de gargalos do time + implementação de IA no fluxo do cliente. Cobrança, atendimento, pesquisa, conteúdo, relatório. Até 70% do dia recuperado.",
+      bullets: [
+        "Diagnóstico gratuito em 48h",
+        "Código fica com o cliente (sem lock-in, sem SaaS de aluguel)",
+        "17 frentes já mapeadas",
+        "Inclui acesso aos produtos: Sequência Viral, Radar Viral, Reels Viral",
+      ],
+      link: { href: "/servicos/ia-automacoes-completa", label: "Página dedicada" },
+      highlight: true,
+    },
+    {
+      Icon: Globe,
+      title: "Sites e Sistemas",
+      desc: "Landing pages que convertem, sites institucionais com SEO de verdade, sistemas custom (SaaS, dashboards, automações). Stack moderna: Next.js, Tailwind, Vercel.",
+      bullets: [
+        "Design system próprio por cliente",
+        "Performance Lighthouse 95+",
+        "SEO técnico (schema, sitemap, OG)",
+        "Possibilidade de manutenção mensal",
+      ],
+      link: null,
+    },
+  ];
+
+  return (
+    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)]">
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> O QUE A KALEIDOS FAZ
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
+          Três frentes. Mesmo time.
         </h2>
-        <p className="mb-10 max-w-2xl text-base text-gray-400">
-          Três coisas que a maioria das agências não tem, e que a Kaleidos coloca
-          como pilar da operação.
-        </p>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {differentiators.map((d) => (
-            <div
-              key={d.title}
-              className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {cards.map((c, i) => (
+            <motion.div
+              key={c.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={`${c.highlight ? "card-hot" : "card"} p-7 flex flex-col`}
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-                <d.Icon className="h-5 w-5 text-[#7CFF6B]" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-white">
-                {d.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">{d.body}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Tools strip */}
-        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {tools.map((tool) => (
-            <a
-              key={tool.name}
-              href={tool.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/30 hover:bg-white/[0.05]"
-            >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                <tool.Icon className="h-4 w-4 text-[#7CFF6B]" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-sm font-semibold text-white">{tool.name}</div>
-                <div className="truncate text-xs text-gray-500">{tool.domain}</div>
-              </div>
-              <ArrowUpRight className="h-4 w-4 shrink-0 text-gray-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* SERVIÇOS */}
-      <section
-        aria-label="Serviços"
-        className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-      >
-        <h2 className="mb-3 font-display text-3xl font-semibold text-white sm:text-4xl">
-          Como a Kaleidos pode trabalhar contigo.
-        </h2>
-        <p className="mb-10 max-w-2xl text-base text-gray-400">
-          Quatro modos de engajamento. Todos com tooling próprio e time
-          especializado.
-        </p>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className={`group relative flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 ${
-                s.highlight
-                  ? "border-[#7CFF6B]/30 bg-[#7CFF6B]/[0.04] shadow-[0_0_60px_-30px_rgba(124,255,107,0.4)]"
-                  : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]"
-              }`}
-            >
-              {s.highlight && (
-                <span className="absolute right-5 top-5 rounded-full border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#7CFF6B]">
-                  Mais buscado
+              <div className="flex items-center justify-between">
+                <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-[var(--ink)] bg-[var(--paper)]">
+                  <c.Icon className="h-5 w-5" />
+                </div>
+                <span className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                  0{i + 1}
                 </span>
-              )}
-
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-                <s.Icon className="h-5 w-5 text-[#7CFF6B]" />
               </div>
-
-              <h3 className="font-display text-2xl font-semibold text-white">
-                {s.title}
-              </h3>
-              <p className="mt-1.5 font-mono text-xs uppercase tracking-wider text-[#7CFF6B]">
-                {s.price}
+              <h3 className="serif mt-6 text-3xl leading-tight">{c.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[var(--coal)]">
+                {c.desc}
               </p>
-              <p className="mt-3 text-sm text-gray-400 sm:text-[15px]">
-                {s.description}
-              </p>
-
-              <ul className="mt-5 space-y-2 border-t border-white/5 pt-5">
-                {s.bullets.map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-start gap-2 text-sm text-gray-300"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#7CFF6B]" />
+              <ul className="mt-5 space-y-2">
+                {c.bullets.map((b) => (
+                  <li key={b} className="flex gap-2 text-sm text-[var(--coal)]">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--rec)]" />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+              {c.link && (
+                <Link
+                  href={c.link.href}
+                  className="mt-6 inline-flex items-center gap-1.5 mono text-[11px] uppercase tracking-[0.18em] text-[var(--ink)] hover:text-[var(--rec)] underline underline-offset-4 decoration-[1.5px]"
+                >
+                  {c.link.label} <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </motion.div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* COMO FUNCIONA */}
-      <section
-        aria-label="Como funciona"
-        className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-      >
-        <h2 className="mb-3 font-display text-3xl font-semibold text-white sm:text-4xl">
-          Como funciona.
+/* ============================ PRODUTOS ============================ */
+function Produtos() {
+  const produtos = [
+    {
+      Icon: Sparkles,
+      name: "Sequência Viral",
+      url: "https://viral.kaleidos.com.br",
+      domain: "viral.kaleidos.com.br",
+      desc: "Carrossel viral em 30s a partir de brief de 3 linhas",
+    },
+    {
+      Icon: Radar,
+      name: "Radar Viral",
+      url: "https://radar.kaleidos.com.br",
+      domain: "radar.kaleidos.com.br",
+      desc: "Brief diário cruzando IG, YouTube, news e newsletters",
+    },
+    {
+      Icon: Film,
+      name: "Reels Viral",
+      url: "https://reels.kaleidos.com.br",
+      domain: "reels.kaleidos.com.br",
+      desc: "Cole link IG, receba roteiro adaptado cena por cena",
+    },
+    {
+      Icon: CreditCard,
+      name: "Kaleidos Pay",
+      url: "https://pay.kaleidos.com.br",
+      domain: "pay.kaleidos.com.br",
+      desc: "Cobrança + proposta com régua automática WhatsApp + email",
+    },
+  ];
+
+  return (
+    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)] bg-[var(--soft)]/40">
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> PRODUTOS QUE A KALEIDOS CONSTRUIU
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
+          Não vendemos SaaS. Construímos.
         </h2>
-        <p className="mb-10 max-w-2xl text-base text-gray-400">
-          Quatro passos do primeiro contato à operação rodando.
+        <p className="mt-5 max-w-2xl text-[16px] sm:text-[17px] leading-relaxed text-[var(--coal)]">
+          Quatro produtos próprios que o time Kaleidos usa todo dia. Quando vira
+          cliente, esses produtos entram no fluxo dele também.
         </p>
 
-        <div className="relative grid grid-cols-1 gap-4 md:grid-cols-4">
-          {steps.map((s, i) => (
-            <div
-              key={s.number}
-              className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-            >
-              <div className="font-mono text-xs uppercase tracking-wider text-gray-500">
-                Passo {s.number}
-              </div>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-400">{s.body}</p>
-              {i < steps.length - 1 && (
-                <div className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 -translate-y-1/2 bg-gradient-to-r from-[#7CFF6B]/40 to-transparent md:block" />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section
-        aria-label="CTA final"
-        className="mx-auto mt-24 max-w-3xl px-4 pb-24 sm:px-6"
-      >
-        <div className="relative overflow-hidden rounded-3xl border border-[#7CFF6B]/20 bg-gradient-to-br from-[#7CFF6B]/[0.08] via-white/[0.02] to-white/[0.02] p-8 text-center sm:p-12">
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#7CFF6B]/20 blur-3xl" />
-
-          <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-            Pronto pra colocar IA na operação de marketing?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-gray-400">
-            Manda um brief e em 48h a Kaleidos volta com diagnóstico e proposta.
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href={proposalCta}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {produtos.map((p, i) => (
+            <motion.a
+              key={p.name}
+              href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] sm:text-base"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="card p-7 group flex flex-col"
             >
-              Solicitar proposta
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
-            <Link
-              href="/contato"
-              className="text-sm text-gray-400 underline-offset-4 transition-colors hover:text-[#7CFF6B] hover:underline sm:text-base"
+              <div className="flex items-center justify-between">
+                <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-[var(--ink)] bg-[var(--rec)]">
+                  <p.Icon className="h-5 w-5 text-[var(--paper)]" />
+                </div>
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
+              <h3 className="serif mt-6 text-3xl leading-tight">{p.name}</h3>
+              <p className="mono mt-2 text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">
+                {p.domain}
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-[var(--coal)]">
+                {p.desc}
+              </p>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ CASES ============================ */
+function Cases() {
+  const cases = [
+    {
+      type: "produto",
+      cliente: "Sequência Viral",
+      vertical: "Produto próprio",
+      desc: "Carrossel viral em 30s a partir de brief de 3 linhas",
+    },
+    {
+      type: "produto",
+      cliente: "Radar Viral",
+      vertical: "Produto próprio",
+      desc: "Brief diário cruzando IG, YouTube, news e newsletters",
+    },
+    {
+      type: "produto",
+      cliente: "Reels Viral",
+      vertical: "Produto próprio",
+      desc: "Cole link IG, receba roteiro adaptado cena por cena",
+    },
+    {
+      type: "produto",
+      cliente: "Kaleidos Pay",
+      vertical: "Produto próprio",
+      desc: "Régua automática WhatsApp + email pra cobrança",
+    },
+    {
+      type: "cliente",
+      cliente: "Defiverso",
+      vertical: "Educação cripto",
+      desc: "Newsletter Resumo Criptoverso + automação IG/Twitter",
+    },
+    {
+      type: "cliente",
+      cliente: "Investidor 4.20",
+      vertical: "Bitcoin BR · 300k+",
+      desc: "Funil orgânico YouTube → IG → newsletter",
+    },
+    {
+      type: "cliente",
+      cliente: "DSEC Labs",
+      vertical: "Bitcoin security",
+      desc: "Alfred Reply Guy bot + conteúdo técnico em 3 níveis",
+    },
+    {
+      type: "cliente",
+      cliente: "Layla Foz",
+      vertical: "Bem-estar · 184k IG",
+      desc: "Newsletter Brisa da Semana + repurpose",
+    },
+    {
+      type: "cliente",
+      cliente: "Renan",
+      vertical: "Consultor financeiro",
+      desc: "Diagnóstico funil + IA captação + dashboard",
+    },
+    {
+      type: "cliente",
+      cliente: "Hugo Doria",
+      vertical: "IA prática · vibe coding",
+      desc: "Pipeline conteúdo YouTube + IG reels",
+    },
+  ];
+
+  return (
+    <section
+      id="cases"
+      className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)]"
+    >
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> OPERAÇÃO RODANDO HOJE
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
+          10+ projetos com IA dentro do fluxo.
+        </h2>
+      </div>
+
+      <div className="mx-auto max-w-6xl mt-12">
+        <div
+          className="scroll-x flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6"
+          aria-label="Carrossel de cases"
+        >
+          {cases.map((c, i) => (
+            <motion.div
+              key={c.cliente}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: Math.min(i * 0.04, 0.4) }}
+              className="card snap-start shrink-0 basis-[280px] p-6"
             >
-              ou contato@kaleidos.com.br
-            </Link>
-          </div>
+              <span
+                className="mono text-[10px] uppercase tracking-[0.16em]"
+                style={{
+                  color: c.type === "produto" ? "var(--rec)" : "var(--muted)",
+                }}
+              >
+                {c.type === "produto" ? "● Produto" : "● Cliente"}
+              </span>
+              <h3 className="serif mt-3 text-2xl leading-tight">{c.cliente}</h3>
+              <p className="mono mt-1 text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+                {c.vertical}
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--coal)]">
+                {c.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-500">
-          <Link href="/" className="transition-colors hover:text-[#7CFF6B]">
+        <p className="mono mt-3 text-center text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
+          ← arrasta pro lado →
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ STACK ============================ */
+function Stack() {
+  const groups = [
+    {
+      label: "Frontend",
+      items: [
+        { n: "Next.js", d: "App Router + Server Components" },
+        { n: "React 19", d: "UI declarativa, server-first" },
+        { n: "TypeScript", d: "Tipo forte do front ao back" },
+        { n: "Tailwind v4", d: "Tokens + utilitário, sem CSS solto" },
+        { n: "Framer Motion", d: "Animação que entrega polimento" },
+      ],
+    },
+    {
+      label: "Backend",
+      items: [
+        { n: "Supabase", d: "Postgres + auth + storage" },
+        { n: "Neon", d: "Postgres serverless pra produtos" },
+        { n: "Stripe", d: "Cobrança recorrente e one-shot" },
+        { n: "Resend", d: "Email transacional + audiences" },
+        { n: "Vercel", d: "Edge runtime, deploy contínuo" },
+      ],
+    },
+    {
+      label: "IA",
+      items: [
+        { n: "Anthropic Claude", d: "Reasoning longo, conteúdo denso" },
+        { n: "Google Gemini", d: "Multimodal + análise de vídeo" },
+        { n: "OpenAI", d: "Tooling auxiliar e fine-tuning" },
+        { n: "Apify", d: "Scrapers IG/YouTube/News" },
+      ],
+    },
+    {
+      label: "DevOps",
+      items: [
+        { n: "Vercel", d: "Hosting + edge functions" },
+        { n: "GitHub Actions", d: "CI/CD e crons agendados" },
+        { n: "Sentry", d: "Erro em produção, alerta no Slack" },
+        { n: "PostHog", d: "Product analytics + feature flags" },
+      ],
+    },
+  ];
+
+  return (
+    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)] bg-[var(--cream)]">
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> COMO A GENTE TRABALHA
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
+          Stack que entrega qualidade enterprise.
+        </h2>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {groups.map((g) => (
+            <div key={g.label} className="card p-6">
+              <h3 className="mono text-[11px] uppercase tracking-[0.18em] text-[var(--rec)]">
+                {g.label}
+              </h3>
+              <div className="mt-5 space-y-4">
+                {g.items.map((it) => (
+                  <div key={it.n} className="border-b border-dashed border-[var(--line)] pb-3 last:border-b-0 last:pb-0">
+                    <div className="mono text-[13px] font-semibold text-[var(--ink)]">
+                      {it.n}
+                    </div>
+                    <div className="mt-1 text-[12px] leading-relaxed text-[var(--muted)]">
+                      {it.d}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ PROCESSO ============================ */
+function Processo() {
+  const steps = [
+    {
+      n: "01",
+      title: "Diagnóstico",
+      body: "Call de 30-45min ou form de gargalo. Saída: relatório executável em 48h.",
+    },
+    {
+      n: "02",
+      title: "Plano",
+      body: "Documento de escopo, timeline, custo, métricas de sucesso. Aprovado pelo cliente antes de começar.",
+    },
+    {
+      n: "03",
+      title: "Construção",
+      body: "Implementação no fluxo real. Time multidisciplinar (copy, design, dev). Reuniões semanais.",
+    },
+    {
+      n: "04",
+      title: "Métrica & Iteração",
+      body: "Hora liberada, lead qualificado, peça publicada. Reunião mensal de delta.",
+    },
+  ];
+
+  return (
+    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)]">
+      <div className="mx-auto max-w-6xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> COMO A GENTE TRABALHA
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
+          Quatro passos do brief ao deploy.
+        </h2>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.n}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="card p-6"
+            >
+              <div className="serif text-[64px] leading-none text-[var(--rec)]">
+                {s.n}
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-[var(--ink)]">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-[var(--coal)]">
+                {s.body}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ FAQ ============================ */
+function FAQ() {
+  const items = [
+    {
+      q: "Em quanto tempo eu vejo resultado?",
+      a: "Em 30 dias o primeiro gargalo já tá rodando em produção. A métrica começa a subir a partir do mês 2. Mês 3 é onde a maioria dos clientes vê o pico real — alcance, hora liberada, leads qualificados.",
+    },
+    {
+      q: "Vocês atendem fora do nicho cripto?",
+      a: "Sim. A Kaleidos nasceu em cripto/web3/fintech e ainda é onde temos mais profundidade, mas atendemos qualquer marca onde o problema é conteúdo + IA + sistema. Saúde, educação, B2B, SaaS — desde que a gente entenda a operação, dá pra entregar.",
+    },
+    {
+      q: "O código fica com quem?",
+      a: "Sempre com o cliente. Sem lock-in, sem dependência de SaaS terceiro pra rodar o que a Kaleidos construiu. O time entrega no repositório do cliente, com documentação. Acabou o contrato? O sistema continua rodando.",
+    },
+    {
+      q: "Qual o investimento?",
+      a: "Diagnóstico é grátis (48h). Implementação varia pelo escopo: projeto custom começa em R$ 8.000 (entrega única) ou plano mensal a partir de R$ 4.500/mês com mínimo de 3 meses. ROI típico: time libera 60-100h/mês, paga sozinho em 30-60 dias.",
+    },
+    {
+      q: "Tem fidelidade?",
+      a: "Não. O mensal exige 3 meses pra fazer sentido (gargalo grande não resolve em 30 dias). Depois disso é mês a mês, cancela quando quiser. Sem multa, sem letrinha pequena.",
+    },
+  ];
+
+  const [open, setOpen] = useState<number | null>(0);
+
+  return (
+    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)] bg-[var(--soft)]/40">
+      <div className="mx-auto max-w-3xl">
+        <span className="eyebrow">
+          <span className="rec-dot" /> PERGUNTAS FREQUENTES
+        </span>
+        <h2 className="serif mt-5 text-[40px] sm:text-[56px] leading-[1] tracking-tight">
+          O que decisor pergunta antes de fechar.
+        </h2>
+
+        <div className="mt-12 card divide-y divide-[var(--ink)] [&>*]:border-b-[1.5px] [&>*]:border-[var(--ink)] [&>*:last-child]:border-b-0">
+          {items.map((it, i) => {
+            const isOpen = open === i;
+            return (
+              <button
+                key={it.q}
+                onClick={() => setOpen(isOpen ? null : i)}
+                className="flex w-full flex-col px-5 py-5 text-left hover:bg-[var(--paper)]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <span className="serif text-xl sm:text-2xl leading-tight">
+                    {it.q}
+                  </span>
+                  <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center border-[1.5px] border-[var(--ink)] bg-[var(--paper)]">
+                    {isOpen ? (
+                      <Minus className="h-3.5 w-3.5 text-[var(--rec)]" />
+                    ) : (
+                      <Plus className="h-3.5 w-3.5" />
+                    )}
+                  </span>
+                </div>
+                {isOpen && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    className="mt-4 text-[15px] leading-relaxed text-[var(--coal)]"
+                  >
+                    {it.a}
+                  </motion.p>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ CTA FINAL ============================ */
+function CTAFinal() {
+  const [form, setForm] = useState({ nome: "", email: "", gargalo: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
+    "idle"
+  );
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.nome || !form.email) return;
+    setStatus("sending");
+    try {
+      const r = await fetch("/api/lead-ia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await r.json();
+      if (data.ok) {
+        setStatus("ok");
+        if (typeof window !== "undefined" && typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: "Kaleidos LP",
+            content_category: "lp",
+          });
+        }
+      } else {
+        setStatus("err");
+      }
+    } catch {
+      setStatus("err");
+    }
+  }
+
+  return (
+    <section
+      id="contato"
+      className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)] bg-[var(--ink)]"
+    >
+      <div className="mx-auto max-w-3xl">
+        <span
+          className="eyebrow"
+          style={{ color: "var(--rec)" }}
+        >
+          <span className="rec-dot" /> VAMOS CONVERSAR
+        </span>
+        <h2
+          className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight"
+          style={{ color: "var(--paper)" }}
+        >
+          Conta o que a tua operação precisa.
+        </h2>
+
+        <div
+          className="mt-12 p-7 sm:p-10"
+          style={{
+            background: "var(--cream)",
+            border: "1.5px solid var(--paper)",
+            boxShadow: "5px 5px 0 0 var(--rec)",
+          }}
+        >
+          {status === "ok" ? (
+            <div className="text-center py-8">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center bg-[var(--rec)] border-[1.5px] border-[var(--ink)]">
+                <CheckCircle2 className="h-6 w-6 text-[var(--paper)]" />
+              </div>
+              <h3 className="serif text-3xl">Recebido.</h3>
+              <p className="mt-3 text-[15px] text-[var(--coal)]">
+                Resposta em 48h pelo email{" "}
+                <span className="mono text-[13px]">{form.email}</span>. Quer
+                falar agora?
+              </p>
+              <a
+                href={waLink("Acabei de mandar o form da LP.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rdv-btn rdv-btn-rec mt-6"
+              >
+                Falar no WhatsApp <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="grid gap-5">
+              <div>
+                <label className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] block mb-2">
+                  Nome <span className="text-[var(--rec)]">*</span>
+                </label>
+                <input
+                  required
+                  value={form.nome}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, nome: e.target.value }))
+                  }
+                  placeholder="Seu nome"
+                />
+              </div>
+              <div>
+                <label className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] block mb-2">
+                  Email <span className="text-[var(--rec)]">*</span>
+                </label>
+                <input
+                  required
+                  type="email"
+                  value={form.email}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, email: e.target.value }))
+                  }
+                  placeholder="voce@empresa.com"
+                />
+              </div>
+              <div>
+                <label className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] block mb-2">
+                  O que você precisa?
+                </label>
+                <textarea
+                  rows={4}
+                  value={form.gargalo}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, gargalo: e.target.value }))
+                  }
+                  placeholder="Ex: agência de conteúdo cripto · OU · IA pra cobrança · OU · landing page que converte"
+                />
+              </div>
+
+              <div className="flex flex-col items-center gap-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="rdv-btn rdv-btn-rec disabled:opacity-60"
+                >
+                  {status === "sending" ? "Enviando…" : "Enviar e receber resposta em 48h"}
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+                <p className="mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] text-center">
+                  Sem fidelidade · Sem contrato · Resposta em 48h · LGPD
+                </p>
+                {status === "err" && (
+                  <p className="mono text-[11px] text-[var(--rec)]">
+                    Algo deu errado. Tenta de novo ou manda WhatsApp.
+                  </p>
+                )}
+                <a
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] underline underline-offset-4 decoration-[1.5px] text-[var(--ink)] hover:text-[var(--rec)]"
+                >
+                  ou fala direto no WhatsApp
+                </a>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ FOOTER ============================ */
+function Footer() {
+  return (
+    <footer
+      className="px-5 sm:px-10 py-10"
+      style={{ background: "var(--ink)", color: "var(--paper)" }}
+    >
+      <div className="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="rec-dot" />
+          <span className="mono text-[11px] uppercase tracking-[0.18em]">
+            Kaleidos · agência boutique de marketing + IA
+          </span>
+        </div>
+        <div className="flex items-center gap-5 mono text-[11px] uppercase tracking-[0.18em]">
+          <Link href="/" className="hover:text-[var(--rec)]">
             kaleidos.com.br
           </Link>
-          <span className="text-gray-700" aria-hidden="true">•</span>
-          <Link href="/cases" className="transition-colors hover:text-[#7CFF6B]">
+          <Link
+            href="/servicos/ia-automacoes-completa"
+            className="hover:text-[var(--rec)]"
+          >
+            Kaleidos AI
+          </Link>
+          <Link href="/cases" className="hover:text-[var(--rec)]">
             Cases
           </Link>
-          <span className="text-gray-700" aria-hidden="true">•</span>
-          <Link href="/portfolio" className="transition-colors hover:text-[#7CFF6B]">
-            Portfolio
-          </Link>
-          <span className="text-gray-700" aria-hidden="true">•</span>
-          <Link href="/links" className="transition-colors hover:text-[#7CFF6B]">
-            Links
-          </Link>
         </div>
-
-        <p className="mt-6 text-center text-[11px] text-gray-600">
-          © {new Date().getFullYear()} Kaleidos Digital
-        </p>
-      </section>
-    </main>
+      </div>
+    </footer>
   );
 }
