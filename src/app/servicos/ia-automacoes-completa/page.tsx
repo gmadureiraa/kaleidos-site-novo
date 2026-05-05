@@ -8,10 +8,7 @@ import {
   ArrowRight,
   Clock,
   Mail,
-  Search,
   FileText,
-  PhoneCall,
-  Workflow,
   Cpu,
   Compass,
   CheckCircle2,
@@ -106,37 +103,32 @@ export default function KaleidosIAPage() {
       />
 
       {/* ================================================================ */}
-      {/* 3. GARGALOS ATACADOS                                              */}
-      {/* ================================================================ */}
-      <BottlenecksSection onCta={(g) => handleWhatsApp(`gargalo_${g}`)} />
-
-      {/* ================================================================ */}
-      {/* 4. PROCESSO                                                       */}
+      {/* 3. PROCESSO                                                       */}
       {/* ================================================================ */}
       <ProcessSection />
 
       {/* ================================================================ */}
-      {/* 5. CASES                                                          */}
+      {/* 4. CASES (2 destaques antes/depois)                               */}
       {/* ================================================================ */}
       <CasesSection />
 
       {/* ================================================================ */}
-      {/* 6. PRODUTOS PRÓPRIOS                                              */}
+      {/* 5. OPERAÇÃO RODANDO — carrossel de 10+ projetos (clientes + tools) */}
       {/* ================================================================ */}
-      <ProductsSection />
+      <OperationsCarouselSection />
 
       {/* ================================================================ */}
-      {/* 7. COMO TRABALHAMOS (modalidades sem preço)                       */}
+      {/* 6. COMO TRABALHAMOS (modalidades sem preço)                       */}
       {/* ================================================================ */}
       <ModalitiesSection onCta={(t) => handleWhatsApp(`modalidade_${t}`)} />
 
       {/* ================================================================ */}
-      {/* 8. FAQ                                                            */}
+      {/* 7. FAQ                                                            */}
       {/* ================================================================ */}
       <FAQSection />
 
       {/* ================================================================ */}
-      {/* 9. CTA FINAL + FORM                                               */}
+      {/* 8. CTA FINAL + FORM                                               */}
       {/* ================================================================ */}
       <FinalCtaSection />
 
@@ -200,151 +192,6 @@ function HeroSection({ onCta }: { onCta: () => void }) {
 }
 
 
-/* =================================================================== */
-/* GARGALOS ATACADOS                                                   */
-/* =================================================================== */
-
-function BottlenecksSection({
-  onCta,
-}: {
-  onCta: (gargalo: string) => void;
-}) {
-  const items = [
-    {
-      Icon: Sparkles,
-      gargalo: "Carrossel: 1h → 30s",
-      antes: "Briefing → copy → design → revisão. 1h por peça, no melhor dia.",
-      depois:
-        "Brief de 3 linhas vira carrossel pronto pra postar com a Sequência Viral. 30s.",
-      stack: "Sequência Viral",
-    },
-    {
-      Icon: Film,
-      gargalo: "Reels: 2h → 12 min",
-      antes: "Cole o link, abre no Premiere, transcreve, refaz roteiro, edita.",
-      depois:
-        "Cole o link no Reels Viral. Análise cena por cena, roteiro adaptado e storyboard.",
-      stack: "Reels Viral",
-    },
-    {
-      Icon: Search,
-      gargalo: "Pesquisa: 3 dias → 30 min",
-      antes:
-        "Equipe de research lendo concorrente, newsletter e Twitter pra montar um relatório.",
-      depois:
-        "Agentes varrem fonte, cruzam dado e devolvem briefing acionável em 30 min.",
-      stack: "Agentes customizados",
-    },
-    {
-      Icon: FileText,
-      gargalo: "Reunião → 5 conteúdos",
-      antes: "Gravou call de 1h, ninguém escuta de novo, insight some.",
-      depois:
-        "Transcrição entra no pipeline e vira post, e-mail, FAQ, onboarding e roteiro.",
-      stack: "Repurpose pipeline",
-    },
-    {
-      Icon: Mail,
-      gargalo: "Cobrança manual → automática",
-      antes:
-        "Gestor olhando planilha, mandando WhatsApp, esquecendo follow-up.",
-      depois:
-        "Régua automática puxa do Stripe/Asaas, dispara mensagem na voz da marca, escala só caso de exceção.",
-      stack: "Kaleidos Pay",
-    },
-    {
-      Icon: PhoneCall,
-      gargalo: "Atendimento N1 → agente",
-      antes:
-        "Time respondendo as mesmas 30 perguntas. Tempo médio de resposta: 4h.",
-      depois:
-        "Agente treinado na base do produto resolve N1 em segundos. Time só pega o que merece humano.",
-      stack: "Chatbot proprietário",
-    },
-    {
-      Icon: Workflow,
-      gargalo: "Brief → entrega: 5 dias → 1 dia",
-      antes:
-        "Brief escrito, passa por 3 pessoas, perde contexto, volta pra ajuste.",
-      depois:
-        "Brief estruturado dispara fluxo IA + revisão humana. Primeira versão em 24h.",
-      stack: "Pipeline editorial",
-    },
-    {
-      Icon: Compass,
-      gargalo: "Pitch deck: 1 semana → 3h",
-      antes:
-        "Sócio fazendo deck no Keynote, copiando dado de outro deck, refazendo gráfico.",
-      depois:
-        "Bullets viram deck estruturado com IA + design system da marca já aplicado.",
-      stack: "Deck generator",
-    },
-  ];
-
-  return (
-    <section
-      id="gargalos"
-      aria-label="Gargalos atacados"
-      className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
-    >
-      <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
-          O que muda na prática
-        </p>
-        <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Oito gargalos que a Kaleidos ataca primeiro.
-        </h2>
-        <p className="mt-4 text-base text-gray-400">
-          Cada um vem com diagnóstico, implementação e métrica de antes/depois.
-          O código fica no repositório do cliente.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {items.map((it, i) => (
-          <motion.button
-            key={it.gargalo}
-            onClick={() => onCta(it.gargalo)}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.05 }}
-            viewport={{ once: true }}
-            className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
-          >
-            <div className="mb-5 flex items-center justify-between">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-                <it.Icon className="h-5 w-5 text-[#7CFF6B]" />
-              </div>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
-                {it.stack}
-              </span>
-            </div>
-            <h3 className="font-display text-xl font-semibold text-white">
-              {it.gargalo}
-            </h3>
-            <div className="mt-4 space-y-2 text-sm">
-              <div className="flex gap-2 text-gray-500">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
-                  antes
-                </span>
-                <span className="flex-1">{it.antes}</span>
-              </div>
-              <div className="flex gap-2 text-gray-300">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#7CFF6B]">
-                  depois
-                </span>
-                <span className="flex-1">{it.depois}</span>
-              </div>
-            </div>
-            <span className="mt-5 inline-flex items-center gap-1 text-xs font-medium text-[#7CFF6B] opacity-0 transition-opacity group-hover:opacity-100">
-              Esse é o meu gargalo <ArrowUpRight className="h-3 w-3" />
-            </span>
-          </motion.button>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* =================================================================== */
 /* PROCESSO                                                            */
@@ -526,82 +373,199 @@ function CasesSection() {
 }
 
 /* =================================================================== */
-/* PRODUTOS PRÓPRIOS                                                   */
+/* OPERAÇÃO RODANDO — 10 cases reais (clientes + produtos próprios)   */
 /* =================================================================== */
 
-function ProductsSection() {
-  const products = [
+function OperationsCarouselSection() {
+  const cases = [
     {
+      kind: "produto" as const,
       Icon: Sparkles,
-      name: "Sequência Viral",
-      url: "viral.kaleidos.com.br",
-      body: "Carrossel pronto pra postar a partir de um brief de 3 linhas. Voz da marca, design system, capa.",
+      cliente: "Sequência Viral",
+      vertical: "Produto próprio",
+      solucao: "Carrossel viral em 30s a partir de brief de 3 linhas",
+      stack: "Next + Gemini + Imagen + Stripe",
+      url: "https://viral.kaleidos.com.br",
     },
     {
+      kind: "produto" as const,
       Icon: Radar,
-      name: "Radar Viral",
-      url: "radar.kaleidos.com.br",
-      body: "Inteligência cross-platform diária: tema em alta com brief IA pra time pular pra dentro.",
+      cliente: "Radar Viral",
+      vertical: "Produto próprio",
+      solucao: "Brief diário cruzando IG, YouTube, news e newsletters",
+      stack: "Next + Neon + Apify + Gemini cron",
+      url: "https://radar.kaleidos.com.br",
     },
     {
+      kind: "produto" as const,
       Icon: Film,
-      name: "Reels Viral",
-      url: "reels.kaleidos.com.br",
-      body: "Cole o link de um reels concorrente. Análise cena por cena, roteiro adaptado, storyboard.",
+      cliente: "Reels Viral",
+      vertical: "Produto próprio",
+      solucao: "Cole link IG → roteiro adaptado cena por cena",
+      stack: "Next + Apify + Gemini Flash",
+      url: "https://reels-viral.vercel.app",
     },
     {
+      kind: "produto" as const,
       Icon: Cpu,
-      name: "Kaleidos Pay",
-      url: "kaleidos.com.br/pay",
-      body: "Cobrança e propostas com régua automática. WhatsApp + e-mail na voz da marca.",
+      cliente: "Kaleidos Pay",
+      vertical: "Produto próprio",
+      solucao: "Cobrança + proposta com régua automática WhatsApp + email",
+      stack: "Next + Stripe + WhatsApp Web",
+      url: "https://pay.kaleidos.com.br",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: Compass,
+      cliente: "Defiverso",
+      vertical: "Educação cripto",
+      solucao: "Newsletter Resumo Criptoverso + automação IG/Twitter + comunidade",
+      stack: "Resend + KAI + Stripe",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: ArrowUpRight,
+      cliente: "Investidor 4.20",
+      vertical: "Bitcoin BR · 300k+",
+      solucao: "Funil orgânico YouTube → IG → newsletter, repurpose com IA",
+      stack: "Sequência Viral + Radar + Newsletter pipeline",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: FileText,
+      cliente: "DSEC Labs",
+      vertical: "Bitcoin security",
+      solucao: "Alfred Reply Guy bot + conteúdo técnico em 3 níveis (Twitter/LinkedIn/blog)",
+      stack: "Bot autônomo + KAI + Webflow",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: Sparkles,
+      cliente: "Layla Foz",
+      vertical: "Bem-estar · 184k IG",
+      solucao: "Newsletter Brisa da Semana + repurpose YouTube → IG/TikTok",
+      stack: "Resend + Apify + Sequência Viral",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: Cpu,
+      cliente: "Renan",
+      vertical: "Consultor financeiro",
+      solucao: "Diagnóstico do funil + IA na captação + dashboard cliente",
+      stack: "Custom (TS + Supabase + Stripe)",
+    },
+    {
+      kind: "cliente" as const,
+      Icon: Mail,
+      cliente: "Hugo Doria",
+      vertical: "IA prática · vibe coding",
+      solucao: "Pipeline conteúdo YouTube + IG reels com voz consistente",
+      stack: "Reels Viral + n8n",
     },
   ];
 
   return (
     <section
-      aria-label="Produtos próprios"
-      className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
+      aria-label="Operação rodando"
+      className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
-          Tooling proprietário
+          Operação rodando hoje
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          A Kaleidos não &quot;usa IA&quot;. A Kaleidos constrói IA.
+          10 projetos com IA dentro do fluxo.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          Quatro produtos próprios que o time usa internamente todo dia. Quando
-          o cliente contrata, esses produtos entram no fluxo dele também.
+          Mistura de clientes ativos e produtos próprios que a Kaleidos opera
+          todo dia. Cada um vem com stack visível, sem caixa-preta.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {products.map((p) => (
-          <a
-            key={p.name}
-            href={`https://${p.url}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/30 hover:bg-white/[0.05]"
-          >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-              <p.Icon className="h-5 w-5 text-[#7CFF6B]" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="font-display text-lg font-semibold text-white">
-                  {p.name}
-                </span>
-                <span className="truncate font-mono text-[10px] text-gray-500">
-                  {p.url}
+      <div
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Carrossel de cases — arraste pro lado pra ver os 10"
+      >
+        {cases.map((c, i) => {
+          const isProduct = c.kind === "produto";
+          const accent = isProduct ? "#7CFF6B" : "#FFB347";
+          const cardClass =
+            "group relative flex shrink-0 snap-start basis-[280px] flex-col rounded-2xl border bg-white/[0.03] p-5 transition-all hover:-translate-y-0.5 hover:bg-white/[0.06] sm:basis-[320px]";
+          const inner = (
+            <>
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border"
+                  style={{
+                    borderColor: `${accent}33`,
+                    background: `${accent}1A`,
+                  }}
+                >
+                  <c.Icon className="h-5 w-5" style={{ color: accent }} />
+                </div>
+                <span
+                  className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em]"
+                  style={{ color: accent }}
+                >
+                  {isProduct ? "Produto próprio" : "Cliente"}
                 </span>
               </div>
-              <p className="mt-1 text-sm text-gray-400">{p.body}</p>
-            </div>
-            <ArrowUpRight className="h-4 w-4 shrink-0 text-gray-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
-          </a>
-        ))}
+              <h3 className="font-display text-xl font-semibold text-white">
+                {c.cliente}
+              </h3>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-gray-500">
+                {c.vertical}
+              </p>
+              <p className="mt-4 flex-1 text-sm text-gray-300">{c.solucao}</p>
+              <div className="mt-5 border-t border-white/5 pt-3">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
+                  Stack ·{" "}
+                </span>
+                <span className="font-mono text-[10px] text-gray-400">
+                  {c.stack}
+                </span>
+              </div>
+              {c.url && (
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#7CFF6B] opacity-0 transition-opacity group-hover:opacity-100">
+                  Abrir <ArrowUpRight className="h-3 w-3" />
+                </span>
+              )}
+            </>
+          );
+          return c.url ? (
+            <motion.a
+              key={c.cliente}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              viewport={{ once: true }}
+              className={cardClass}
+              style={{ borderColor: `${accent}26` }}
+            >
+              {inner}
+            </motion.a>
+          ) : (
+            <motion.div
+              key={c.cliente}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              viewport={{ once: true }}
+              className={cardClass}
+              style={{ borderColor: `${accent}26` }}
+            >
+              {inner}
+            </motion.div>
+          );
+        })}
       </div>
+
+      <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-gray-500">
+        ← arrasta pro lado pra ver todos →
+      </p>
     </section>
   );
 }
@@ -773,21 +737,21 @@ function FlipCarouselSection({
   const cards = [
     {
       front: {
-        title: locale === "en" ? "Time wasted" : "Tempo Perdido",
+        title: locale === "en" ? "Manual N1 support" : "Atendimento N1",
         description: locale === "en"
-          ? "Hours on repetitive tasks that AI already solves."
-          : "Horas em tarefas repetitivas que a IA já resolve.",
+          ? "Team answering the same 30 questions. Avg reply time: 4h."
+          : "Time respondendo as mesmas 30 perguntas. Resposta média: 4h.",
         bgGradient: "from-red-500 to-pink-600",
         borderColor: "border-red-400",
       },
       back: {
-        title: locale === "en" ? "AI on the flow" : "IA no fluxo",
+        title: locale === "en" ? "4h → 8s" : "4h → 8s",
         description: locale === "en"
-          ? "Automation inside the existing tool — not a parallel SaaS."
-          : "Automação dentro da ferramenta que o time já usa, não SaaS paralelo.",
+          ? "Trained agent on the product knowledge base solves N1 in seconds."
+          : "Agente treinado na base do produto resolve N1 em segundos.",
         features: locale === "en"
-          ? ["Inside Notion/ClickUp", "Zero new login", "Plug into the workflow"]
-          : ["Dentro do Notion/ClickUp", "Zero login novo", "Encaixa no fluxo"],
+          ? ["Inside the existing chat", "Logged tickets", "Human only on edge cases"]
+          : ["Dentro do chat existente", "Tickets logados", "Humano só em exceção"],
         bgGradient: "from-green-500 to-emerald-600",
         borderColor: "border-green-400",
       },
@@ -906,14 +870,14 @@ function FlipCarouselSection({
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
-          Problema ↔ Solução
+          O antes e depois
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Passa o cursor. Cada card vira a virada.
+          Onde a IA realmente entra na operação.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          Seis frentes onde a IA entra de fato — não &quot;ChatGPT aberto numa aba&quot;,
-          mas dentro do fluxo. Hover pra ver a virada de cada uma.
+          Seis frentes que a Kaleidos automatiza no fluxo do cliente — sem
+          dashboard novo, sem &quot;ChatGPT aberto numa aba&quot;.
         </p>
       </div>
 
