@@ -570,43 +570,41 @@ function ProcessSection() {
 /* =================================================================== */
 
 function CasesSection() {
-  const cases = [
+  // Cases destaque (2 protagonistas — narrativa concreta)
+  const featured = [
     {
-      slug: "defiverso",
-      cliente: "Defiverso",
-      vertical: "Educação cripto",
-      stack: "Pipeline editorial + agentes de research",
-      resumo:
-        "A Kaleidos opera o conteúdo do Defiverso há mais de 2 anos. Newsletter de sexta, terça e sábado saem com curadoria + redação assistida por agentes que cruzam Gmail, X e veículos cripto.",
-      destaque: "14k+ alunos, 3 newsletters/semana sem aumentar o time editorial.",
+      slug: "renan-consultoria",
+      cliente: "Renan · Consultoria financeira",
+      vertical: "Consultor financeiro",
+      stack: "Reunião → plano executável (IA + plataforma compartilhada)",
+      headline: "Reuniões 1-1 que viram plano executável automaticamente.",
+      antes:
+        "Toda call era papel e áudio. Plano definido na hora, mas detalhes sumiam até sexta. Cliente esquecia tarefa, consultor esquecia follow-up. Tudo manual.",
+      depois:
+        "Encontro é gravado e resumido por IA. Durante a call, o plano já é montado e cai numa plataforma compartilhada (consultor + cliente): resumo da conversa, tarefas pra cada lado, prazos e próximos passos.",
+      destaque:
+        "Zero detalhe perdido. Cliente acompanha o plano sozinho. Consultor escala atendimento sem perder qualidade.",
     },
     {
-      slug: "investidor-4-20",
-      cliente: "Lucas Amendola · Investidor 4.20",
-      vertical: "Influencer fintech",
-      stack: "Repurpose pipeline + Reels Viral",
-      resumo:
-        "Vídeo de segunda do Lucas vira newsletter de terça, carrossel, reels e tweets. Mesma matéria-prima, cinco saídas, sem refazer pesquisa.",
-      destaque: "174k IG · 380k YouTube · 1 vídeo vira 5 peças semanais.",
+      slug: "radar-viral",
+      cliente: "Radar Viral · Plataforma própria Kaleidos",
+      vertical: "Cross-post automatizado",
+      stack: "Monitor de postagens + geração cross-rede",
+      headline: "1 vídeo → 5 conteúdos cross-rede em minutos.",
+      antes:
+        "Criador posta vídeo no YouTube ou Instagram e perde reach: cross-post é manual, ou simplesmente não acontece. Voz inconsistente, esforço dobrado, métrica fragmentada.",
+      depois:
+        "O Radar monitora as postagens e gera automaticamente os derivados pra cada rede: thread no X, post LinkedIn, carrossel IG, e-mail de newsletter. Voz consistente, formato adaptado pra cada canal.",
+      destaque: "+5 redes cobertas em 1 click. Minutos no lugar de horas.",
     },
-    {
-      slug: "dsec",
-      cliente: "DSEC Labs",
-      vertical: "Bitcoin security B2B",
-      stack: "Conteúdo técnico + agente Alfred",
-      resumo:
-        "Tema viral de cibersegurança vira post DSEC PT-BR + reply-guy Alfred em inglês na mesma janela. Reply guy automatizado em X com voz consistente.",
-      destaque: "Operação editorial 40/25/20/10/5 nos pilares definidos.",
-    },
-    {
-      slug: "layla-foz",
-      cliente: "Layla Foz",
-      vertical: "Espiritualidade & feminino",
-      stack: "Voz da marca + automação editorial",
-      resumo:
-        "184k seguidores no IG. A Kaleidos opera a voz, faz repurpose de live em carrossel e reels e mantém esteira de conteúdo sem perder a alma da Layla.",
-      destaque: "Voz preservada em escala, sem soar IA-genérica.",
-    },
+  ];
+
+  // Marquee de logos abaixo (cases legados — operação rodando)
+  const operating = [
+    { slug: "defiverso", cliente: "Defiverso", vertical: "Educação cripto" },
+    { slug: "investidor-4-20", cliente: "Investidor 4.20", vertical: "Fintech" },
+    { slug: "dsec", cliente: "DSEC Labs", vertical: "Bitcoin security" },
+    { slug: "layla-foz", cliente: "Layla Foz", vertical: "Espiritualidade" },
   ];
 
   return (
@@ -622,23 +620,26 @@ function CasesSection() {
           Cases reais, operação rodando hoje.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          Quatro frentes diferentes, mesma Kaleidos por trás. O que muda é o
-          gargalo prioritário e a stack de IA aplicada.
+          Dois exemplos do que a Kaleidos resolve quando IA entra dentro do
+          fluxo, não em cima dele. Embaixo, mais marcas que confiam na operação.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {cases.map((c) => (
-          <Link
+      {/* Cases destaque — 2 protagonistas com antes/depois */}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {featured.map((c, i) => (
+          <motion.div
             key={c.slug}
-            href={`/cases/${c.slug}`}
-            className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.05]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            viewport={{ once: true }}
+            className="group flex flex-col rounded-2xl border border-[#7CFF6B]/15 bg-gradient-to-br from-[#7CFF6B]/[0.04] via-white/[0.02] to-white/[0.02] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/30 hover:bg-white/[0.05] sm:p-7"
           >
             <div className="mb-4 flex items-center justify-between">
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-gray-400">
+              <span className="rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CFF6B]">
                 {c.vertical}
               </span>
-              <ArrowUpRight className="h-4 w-4 text-gray-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
             </div>
             <h3 className="font-display text-2xl font-semibold text-white">
               {c.cliente}
@@ -646,17 +647,56 @@ function CasesSection() {
             <p className="mt-1 font-mono text-xs uppercase tracking-wider text-[#7CFF6B]">
               {c.stack}
             </p>
-            <p className="mt-3 text-sm text-gray-400 sm:text-[15px]">
-              {c.resumo}
+            <p className="mt-4 font-display text-lg leading-snug text-white sm:text-xl">
+              {c.headline}
             </p>
+
+            <div className="mt-5 space-y-3 border-t border-white/5 pt-5 text-sm">
+              <div className="flex gap-3 text-gray-500">
+                <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-gray-600 pt-0.5">
+                  antes
+                </span>
+                <span className="flex-1">{c.antes}</span>
+              </div>
+              <div className="flex gap-3 text-gray-300">
+                <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-[#7CFF6B] pt-0.5">
+                  depois
+                </span>
+                <span className="flex-1">{c.depois}</span>
+              </div>
+            </div>
+
             <div className="mt-5 border-t border-white/5 pt-4 text-sm text-gray-300">
               <span className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
-                Destaque ·{" "}
+                Resultado ·{" "}
               </span>
               {c.destaque}
             </div>
-          </Link>
+          </motion.div>
         ))}
+      </div>
+
+      {/* Marquee — cases operando hoje (logos menores) */}
+      <div className="mt-10">
+        <p className="mb-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-gray-500">
+          + Operação rodando hoje em
+        </p>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {operating.map((o) => (
+            <Link
+              key={o.slug}
+              href={`/cases/${o.slug}`}
+              className="group flex flex-col rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/20 hover:bg-white/[0.04]"
+            >
+              <span className="font-display text-sm font-semibold text-white">
+                {o.cliente}
+              </span>
+              <span className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-gray-500">
+                {o.vertical}
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
