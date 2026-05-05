@@ -208,34 +208,6 @@ function HeroSection({ onCta }: { onCta: () => void }) {
       >
         <AIStateLoading />
       </motion.div>
-
-      {/* Stat bar — números abaixo do pulse */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true }}
-        className="mt-10 grid w-full grid-cols-2 gap-3 sm:grid-cols-4"
-      >
-        {[
-          { number: "5+", label: "anos no nicho" },
-          { number: "8", label: "marcas ativas" },
-          { number: "4", label: "produtos próprios" },
-          { number: "70%", label: "tempo médio recuperado" },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left backdrop-blur-sm"
-          >
-            <div className="font-display text-3xl font-bold text-[#7CFF6B] sm:text-4xl">
-              {stat.number}
-            </div>
-            <div className="mt-1 text-xs text-gray-400 sm:text-sm">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </motion.div>
     </section>
   );
 }
