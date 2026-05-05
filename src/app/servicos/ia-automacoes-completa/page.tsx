@@ -861,6 +861,195 @@ function FlipCarouselSection({
         borderColor: "border-orange-400",
       },
     },
+    {
+      front: {
+        title: locale === "en" ? "Manual collection" : "Cobrança Manual",
+        description: locale === "en"
+          ? "Spreadsheet, missed follow-up, late invoice."
+          : "Planilha aberta, follow-up esquecido, fatura no atraso.",
+        bgGradient: "from-amber-500 to-yellow-600",
+        borderColor: "border-amber-400",
+      },
+      back: {
+        title: locale === "en" ? "Auto invoice" : "Régua Automática",
+        description: locale === "en"
+          ? "Stripe + WhatsApp on the brand voice. Escalates only edge cases."
+          : "Stripe + WhatsApp na voz da marca. Escala só exceção.",
+        features: locale === "en"
+          ? ["WhatsApp + email", "On-brand voice", "Smart retry"]
+          : ["WhatsApp + email", "Voz da marca", "Retry inteligente"],
+        bgGradient: "from-lime-500 to-green-600",
+        borderColor: "border-lime-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "1h-long meeting" : "Reunião de 1h",
+        description: locale === "en"
+          ? "Recorded the call. Nobody listens again. Insight gone."
+          : "Gravou call de 1h. Ninguém escuta de novo. Insight some.",
+        bgGradient: "from-rose-500 to-red-600",
+        borderColor: "border-rose-400",
+      },
+      back: {
+        title: locale === "en" ? "5 contents in 10 min" : "5 conteúdos em 10 min",
+        description: locale === "en"
+          ? "Transcription becomes post, email, FAQ, onboarding, script."
+          : "Transcrição vira post, email, FAQ, onboarding e roteiro.",
+        features: locale === "en"
+          ? ["Auto transcript", "Repurpose pipeline", "Brand voice"]
+          : ["Transcrição auto", "Repurpose pipeline", "Voz da marca"],
+        bgGradient: "from-fuchsia-500 to-pink-600",
+        borderColor: "border-fuchsia-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Brief → delivery: 5 days" : "Brief → entrega: 5 dias",
+        description: locale === "en"
+          ? "Brief written, 3 reviewers, context lost, back to edit."
+          : "Brief escrito, passa por 3 pessoas, perde contexto, volta pra ajuste.",
+        bgGradient: "from-blue-600 to-sky-700",
+        borderColor: "border-blue-400",
+      },
+      back: {
+        title: locale === "en" ? "5 days → 24h" : "5 dias → 24h",
+        description: locale === "en"
+          ? "Structured brief triggers AI flow + human review. v1 in 24h."
+          : "Brief estruturado dispara fluxo IA + revisão humana. v1 em 24h.",
+        features: locale === "en"
+          ? ["Pipeline editorial", "Human review on top", "v1 fixed time"]
+          : ["Pipeline editorial", "Revisão humana no topo", "v1 em prazo fixo"],
+        bgGradient: "from-emerald-500 to-teal-600",
+        borderColor: "border-emerald-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Pitch deck: 1 week" : "Pitch deck: 1 semana",
+        description: locale === "en"
+          ? "Founder on Keynote, copying old slides, redoing the chart."
+          : "Sócio no Keynote, copiando slide antigo, refazendo gráfico.",
+        bgGradient: "from-purple-600 to-indigo-700",
+        borderColor: "border-purple-400",
+      },
+      back: {
+        title: locale === "en" ? "1 week → 3h" : "1 semana → 3h",
+        description: locale === "en"
+          ? "Bullets become a structured deck with the brand design system."
+          : "Bullets viram deck estruturado com design system da marca.",
+        features: locale === "en"
+          ? ["Brand design system", "Auto charts", "PDF export"]
+          : ["Design system da marca", "Gráficos auto", "Export PDF"],
+        bgGradient: "from-orange-500 to-amber-600",
+        borderColor: "border-orange-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Lost lead" : "Lead Perdido",
+        description: locale === "en"
+          ? "Filled the form, nobody answered in 2 days. Lead cold."
+          : "Preencheu form, ninguém respondeu em 2 dias. Lead esfriou.",
+        bgGradient: "from-red-600 to-orange-700",
+        borderColor: "border-red-400",
+      },
+      back: {
+        title: locale === "en" ? "Reply in 60s" : "Resposta em 60s",
+        description: locale === "en"
+          ? "Smart auto-reply qualifies, schedules, hands warm to seller."
+          : "Auto-reply inteligente qualifica, agenda, entrega quente pro vendedor.",
+        features: locale === "en"
+          ? ["Lead scoring", "Auto-schedule", "Slack/email handoff"]
+          : ["Lead scoring", "Agendamento auto", "Handoff Slack/email"],
+        bgGradient: "from-green-500 to-lime-600",
+        borderColor: "border-green-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Manual translation" : "Tradução Manual",
+        description: locale === "en"
+          ? "Same content rewritten by hand for EN/PT. Tone lost."
+          : "Mesmo conteúdo reescrito à mão pra EN/PT. Tom se perde.",
+        bgGradient: "from-yellow-600 to-orange-700",
+        borderColor: "border-yellow-400",
+      },
+      back: {
+        title: locale === "en" ? "1 brief, 2 markets" : "1 brief, 2 mercados",
+        description: locale === "en"
+          ? "AI keeps the voice and adapts cultural reference per market."
+          : "IA mantém a voz e adapta referência cultural por mercado.",
+        features: locale === "en"
+          ? ["Voice preserved", "Cultural adapt", "Glossary locked"]
+          : ["Voz preservada", "Adapta cultura", "Glossário travado"],
+        bgGradient: "from-cyan-500 to-blue-600",
+        borderColor: "border-cyan-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Hashtag guess" : "Hashtag no Chute",
+        description: locale === "en"
+          ? "Posting with random tags. Reach unpredictable. SEO blind."
+          : "Posta com hashtag chutada. Alcance imprevisível. SEO no escuro.",
+        bgGradient: "from-pink-600 to-rose-700",
+        borderColor: "border-pink-400",
+      },
+      back: {
+        title: locale === "en" ? "Daily SEO brief" : "Briefing SEO Diário",
+        description: locale === "en"
+          ? "Radar Viral pulls trending topics + tag set ready per niche."
+          : "Radar Viral puxa tema em alta + tag set pronto por nicho.",
+        features: locale === "en"
+          ? ["Trending source", "Per-niche tags", "Direct to publish"]
+          : ["Fonte em alta", "Tags por nicho", "Direto pra publicar"],
+        bgGradient: "from-purple-500 to-fuchsia-600",
+        borderColor: "border-purple-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Manual onboarding" : "Onboarding Manual",
+        description: locale === "en"
+          ? "10 emails written one by one. New users churn before week 1."
+          : "10 emails escritos um por um. User novo cai antes da semana 1.",
+        bgGradient: "from-indigo-600 to-violet-700",
+        borderColor: "border-indigo-400",
+      },
+      back: {
+        title: locale === "en" ? "Drip auto" : "Drip Automático",
+        description: locale === "en"
+          ? "Lifecycle pipeline with branching by user behavior."
+          : "Pipeline de lifecycle com ramificação pelo comportamento do user.",
+        features: locale === "en"
+          ? ["Behavior triggers", "Brand voice", "Resend audience"]
+          : ["Triggers por ação", "Voz da marca", "Audience Resend"],
+        bgGradient: "from-sky-500 to-cyan-600",
+        borderColor: "border-sky-400",
+      },
+    },
+    {
+      front: {
+        title: locale === "en" ? "Forgotten metric" : "Métrica Esquecida",
+        description: locale === "en"
+          ? "Looker Studio nobody opens. Decision in the gut."
+          : "Looker Studio que ninguém abre. Decisão no feeling.",
+        bgGradient: "from-zinc-500 to-stone-600",
+        borderColor: "border-zinc-400",
+      },
+      back: {
+        title: locale === "en" ? "WhatsApp daily report" : "Relatório no WhatsApp",
+        description: locale === "en"
+          ? "Daily 30s message: what changed, why, what to do today."
+          : "Mensagem de 30s todo dia: o que mudou, por quê, o que fazer hoje.",
+        features: locale === "en"
+          ? ["Auto delta", "Plain language", "1-tap action"]
+          : ["Delta automático", "Linguagem direta", "1 clique pra agir"],
+        bgGradient: "from-emerald-500 to-green-600",
+        borderColor: "border-emerald-400",
+      },
+    },
   ];
 
   return (
@@ -876,8 +1065,9 @@ function FlipCarouselSection({
           Onde a IA realmente entra na operação.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          Seis frentes que a Kaleidos automatiza no fluxo do cliente — sem
-          dashboard novo, sem &quot;ChatGPT aberto numa aba&quot;.
+          16 frentes que a Kaleidos automatiza no fluxo do cliente — sem
+          dashboard novo, sem &quot;ChatGPT aberto numa aba&quot;. Hover pra
+          virar cada card.
         </p>
       </div>
 
