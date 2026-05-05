@@ -186,7 +186,7 @@ function HeroSection({ onCta }: { onCta: () => void }) {
           onClick={onCta}
           className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] sm:text-base"
         >
-          Agendar diagnóstico
+          Agendar diagnóstico gratuito (30min)
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </button>
         <a
@@ -501,9 +501,9 @@ function ProcessSection() {
   const steps = [
     {
       number: "01",
-      title: "Diagnóstico",
-      body: "1 dia. A Kaleidos audita teu fluxo, mapeia gargalos e mostra onde os 70% somem. Saída: relatório com 3-5 alvos priorizados por ROI.",
-      duration: "1 dia",
+      title: "Diagnóstico gratuito",
+      body: "Call de 30-45 min comigo. Mapeio teus 3 maiores gargalos e te entrego um plano. Sem custo, sem compromisso. No fim, se fizer sentido, oferto a implementação completa.",
+      duration: "30-45 min · gratuito",
     },
     {
       number: "02",
@@ -791,17 +791,17 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
   const tiers = [
     {
       Icon: Calendar,
-      name: "Diagnóstico pontual",
-      duration: "1 dia",
+      name: "Diagnóstico gratuito",
+      duration: "30-45 min · sem custo",
       description:
-        "Ponto de partida. A Kaleidos audita teu fluxo, mapeia gargalos e entrega plano de ação priorizado por ROI.",
+        "Call comigo. Mapeio teus 3 maiores gargalos e te entrego um plano. Sem compromisso. No fim, se fizer sentido, oferto a implementação completa.",
       bullets: [
-        "1 dia de imersão com o time",
-        "Mapa de gargalos com 3-5 alvos prioritários",
-        "Estimativa de hora liberada por mês",
-        "Plano executável pelo teu time interno se quiser",
+        "Call de 30-45 min ao vivo",
+        "Mapa dos 3 maiores gargalos",
+        "Plano de ação executável",
+        "Sem custo, sem compromisso",
       ],
-      ctaLabel: "Começar pelo diagnóstico",
+      ctaLabel: "Agendar minha call gratuita",
       tier: "diagnostico",
     },
     {
@@ -850,8 +850,9 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
           Três modalidades, mesma Kaleidos por trás.
         </h2>
         <p className="mt-4 text-base text-gray-400">
-          A maioria começa pelo diagnóstico. Quem já mapeou o gargalo entra
-          direto na implementação contínua. Pra plataforma própria, sistema customizado.
+          A maioria começa pela call gratuita de 30 min. Quem já mapeou o
+          gargalo entra direto na implementação contínua. Pra plataforma própria,
+          sistema customizado.
         </p>
       </div>
 
@@ -916,7 +917,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       <div className="mt-10 text-center">
         <p className="text-base text-gray-400">
           Conta o gargalo.{" "}
-          <span className="text-white">A Kaleidos volta com diagnóstico em 48h.</span>
+          <span className="text-white">Agenda uma call gratuita de 30 min comigo.</span>
         </p>
       </div>
     </section>
@@ -1176,7 +1177,7 @@ function FAQSection() {
     },
     {
       q: "Vocês trabalham com empresa pequena ou só com grande?",
-      a: "Trabalha com os dois. Diagnóstico R$ 5k é viável pra startup. Mensal R$ 15k+ pede operação que já tem time editorial, atendimento ou cobrança ativa. Sistema custom é pra quem quer plataforma própria.",
+      a: "Trabalha com os dois. A call gratuita de 30 min é o ponto de partida pra qualquer porte. Mensal pede operação que já tem time editorial, atendimento ou cobrança ativa. Sistema custom é pra quem quer plataforma própria.",
     },
     {
       q: "Como mede ROI?",
@@ -1283,11 +1284,14 @@ function FinalCtaSection() {
 
         <div className="relative">
           <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
-            Conta o gargalo. A Kaleidos volta com diagnóstico em 48h.
+            Agenda minha call gratuita.
           </h2>
+          <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CFF6B]">
+            Diagnóstico gratuito · sem compromisso
+          </p>
           <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400">
-            Preenche o que dá. O time devolve com 3 sugestões de implementação +
-            estimativa de hora liberada por mês.
+            30-45 min comigo. Mapeio teus 3 maiores gargalos e te entrego um
+            plano. Se fizer sentido, oferto a implementação no fim.
           </p>
 
           {status === "ok" ? (
@@ -1373,7 +1377,7 @@ function FinalCtaSection() {
                   disabled={status === "sending"}
                   className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
                 >
-                  {status === "sending" ? "Enviando…" : "Enviar diagnóstico"}
+                  {status === "sending" ? "Enviando…" : "Agendar minha call gratuita"}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
                 {status === "err" && (
