@@ -28,11 +28,17 @@ export async function POST(request: Request) {
     const subject = locale === "en"
       ? `[Kaleidos AI] New lead: ${nome}${empresa ? ` (${empresa})` : ""}`
       : `[Kaleidos AI] Novo lead: ${nome}${empresa ? ` (${empresa})` : ""}`;
-    const to = [
-      "madureira@kaleidosdigital.com",
-      "nathalia@kaleidosdigital.com",
-    ];
-    const cc = ["gf.madureiraa@gmail.com"];
+    const parseList = (raw?: string) =>
+      (raw || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    const to = parseList(process.env.LEAD_NOTIFICATION_TO).length
+      ? parseList(process.env.LEAD_NOTIFICATION_TO)
+      : ["madureira@kaleidosdigital.com", "nathalia@kaleidosdigital.com"];
+    const cc = parseList(process.env.LEAD_NOTIFICATION_CC).length
+      ? parseList(process.env.LEAD_NOTIFICATION_CC)
+      : ["gf.madureiraa@gmail.com"];
 
     const text = `
 Nome: ${nome}
@@ -117,6 +123,38 @@ ${gargalo}
       console.error("[lead-ia] erro enviando welcome:", err);
     }
 
+    // 4. Cadastra contato na Resend Audience (campanhas/broadcasts).
+    //    Falha silenciosa: persistência local + welcome já rodaram.
+    let audienceAdded = false;
+    try {
+      const audienceId = process.env.RESEND_AUDIENCE_ID_LEADS;
+      if (audienceId && resendApiKey) {
+        const resend = new Resend(resendApiKey);
+        const parts = (nome || "").trim().split(/\s+/).filter(Boolean);
+        const firstName = parts[0];
+        const lastName = parts.length > 1 ? parts.slice(1).join(" ") : undefined;
+        await resend.contacts.create({
+          email,
+          audienceId,
+          firstName,
+          lastName,
+          unsubscribed: false,
+        });
+        audienceAdded = true;
+        if (process.env.NODE_ENV !== "production") {
+          console.log(
+            `[lead-ia] contact criado na audience ${audienceId} → ${email}`
+          );
+        }
+      } else if (!audienceId) {
+        if (process.env.NODE_ENV !== "production") {
+          console.log("[lead-ia] RESEND_AUDIENCE_ID_LEADS ausente — audience skip");
+        }
+      }
+    } catch (err) {
+      console.warn("[lead-ia] resend audience create failed", err);
+    }
+
     return new Response(
       JSON.stringify({
         ok: true,
@@ -124,6 +162,7 @@ ${gargalo}
         leadId: lead?.id ?? null,
         persisted: lead !== null,
         welcomeSent,
+        audienceAdded,
         internalSimulated,
       }),
       { status: 200, headers: { "Content-Type": "application/json" } }
