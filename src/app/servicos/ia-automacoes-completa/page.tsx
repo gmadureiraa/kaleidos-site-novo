@@ -123,17 +123,56 @@ export default function KaleidosIAPage() {
       <ModalitiesSection onCta={(t) => handleWhatsApp(`modalidade_${t}`)} />
 
       {/* ================================================================ */}
-      {/* 7. FAQ                                                            */}
-      {/* ================================================================ */}
-      <FAQSection />
-
-      {/* ================================================================ */}
-      {/* 8. CTA FINAL + FORM                                               */}
+      {/* 7. CTA + FORM (movido pra cima — antes do FAQ — pra capturar leads */}
+      {/*    quentes que chegam até modalidades. FAQ vira objection killer  */}
+      {/*    pós-form pra quem ainda hesita.)                                */}
       {/* ================================================================ */}
       <FinalCtaSection />
 
+      {/* ================================================================ */}
+      {/* 8. FAQ (objection handling final)                                 */}
+      {/* ================================================================ */}
+      <FAQSection />
+
       <FooterDemo />
+
+      {/* Sticky bottom CTA mobile — aparece após scroll do hero (P0 audit) */}
+      <StickyMobileCTA onCta={() => handleWhatsApp("sticky_mobile")} />
     </main>
+  );
+}
+
+/* =================================================================== */
+/* STICKY MOBILE CTA — aparece após scroll > 1 viewport (mobile only) */
+/* =================================================================== */
+
+function StickyMobileCTA({ onCta }: { onCta: () => void }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      // Mostra a partir de 60% do viewport scrollado (pós-hero).
+      setVisible(window.scrollY > window.innerHeight * 0.6);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      className={`fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#7CFF6B] px-5 py-3 text-sm font-semibold text-black shadow-[0_8px_32px_rgba(124,255,107,0.4)] transition-all duration-300 sm:hidden ${
+        visible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-4 opacity-0"
+      }`}
+    >
+      <button
+        onClick={onCta}
+        className="inline-flex items-center gap-2 whitespace-nowrap"
+      >
+        💬 Falar agora <ArrowUpRight className="h-4 w-4" />
+      </button>
+    </div>
   );
 }
 
@@ -160,16 +199,32 @@ function HeroSection({ onCta }: { onCta: () => void }) {
         SaaS de aluguel, sem dashboard que ninguém abre.
       </p>
 
-      <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
+      {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
+      <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-400 sm:text-sm">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <strong className="text-white">8 marcas</strong> operando
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <strong className="text-white">5+ anos</strong> de operação
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <strong className="text-white">17 frentes</strong> automatizadas
+        </span>
+      </div>
+
+      <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row">
         <button
           onClick={onCta}
           className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] sm:text-base"
         >
-          Agendar diagnóstico gratuito (30min)
+          Diagnóstico gratuito · resposta em 48h
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </button>
         <a
-          href="#gargalos"
+          href="#carrossel-gargalos"
           className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CFF6B]/30 hover:bg-white/[0.06] sm:text-base"
         >
           Ver gargalos atacados
@@ -1075,6 +1130,7 @@ function FlipCarouselSection({
 
   return (
     <section
+      id="carrossel-gargalos"
       aria-label="Carrossel problema-solução"
       className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
@@ -1161,6 +1217,10 @@ function FAQSection() {
       a: "Em 30 dias o primeiro gargalo já tá rodando em produção. A métrica de hora liberada começa a subir a partir do mês 2. Mês 3 é onde a maioria dos clientes vê os 70% reais.",
     },
     {
+      q: "Qual é o investimento?",
+      a: "Diagnóstico é grátis (48h). Implementação varia pelo escopo: projeto custom começa em R$ 8.000 (entrega única) ou plano mensal a partir de R$ 4.500/mês com mínimo de 3 meses. ROI típico: time libera 60-100h/mês, paga sozinho em 30-60 dias.",
+    },
+    {
       q: "O código fica com quem?",
       a: "Sempre com o cliente. Sem lock-in, sem dependência de SaaS terceiro pra rodar o que a Kaleidos construiu. O time entrega no repositório do cliente, com documentação.",
     },
@@ -1229,14 +1289,18 @@ function FAQSection() {
 /* CTA FINAL + FORM                                                    */
 /* =================================================================== */
 
+// Type pra fbq global do Meta Pixel (sem dependência de @types/facebook-pixel)
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 function FinalCtaSection() {
   const [form, setForm] = useState({
     nome: "",
     email: "",
-    empresa: "",
-    tamanho: "",
     gargalo: "",
-    whatsapp: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
     "idle"
@@ -1255,6 +1319,13 @@ function FinalCtaSection() {
       const data = await r.json();
       if (data.ok) {
         setStatus("ok");
+        // Meta Pixel — dispara Lead event quando form converte (P0 audit)
+        if (typeof window !== "undefined" && typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: "Kaleidos AI · Diagnóstico gratuito",
+            content_category: "ia-automacoes-completa",
+          });
+        }
       } else {
         setStatus("err");
       }
@@ -1265,22 +1336,24 @@ function FinalCtaSection() {
 
   return (
     <section
+      id="agendar"
       aria-label="CTA final"
-      className="mx-auto mt-24 max-w-3xl px-4 pb-24 sm:px-6"
+      className="mx-auto mt-24 max-w-3xl px-4 sm:px-6"
     >
       <div className="relative overflow-hidden rounded-3xl border border-[#7CFF6B]/20 bg-gradient-to-br from-[#7CFF6B]/[0.08] via-white/[0.02] to-white/[0.02] p-8 sm:p-12">
         <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#7CFF6B]/20 blur-3xl" />
 
         <div className="relative">
           <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
-            Agenda minha call gratuita.
+            Diagnóstico gratuito em 48h.
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CFF6B]">
-            Diagnóstico gratuito · sem compromisso
+            Sem fidelidade · Sem contrato · LGPD
           </p>
           <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400">
-            30-45 min comigo. Mapeio teus 3 maiores gargalos e te entrego um
-            plano. Se fizer sentido, oferto a implementação no fim.
+            Você descreve o gargalo. A Kaleidos volta em 48h com diagnóstico
+            executável: o que automatizar primeiro, qual ROI, quanto tempo.
+            Se não fizer sentido, ninguém perde tempo.
           </p>
 
           {status === "ok" ? (
@@ -1292,9 +1365,9 @@ function FinalCtaSection() {
                 Recebido.
               </h3>
               <p className="mt-2 text-sm text-gray-300">
-                A Kaleidos volta em até 48h pelo email{" "}
-                <span className="text-[#7CFF6B]">{form.email}</span>. Se o
-                gargalo é urgente, manda WhatsApp também.
+                Diagnóstico em 48h pelo email{" "}
+                <span className="text-[#7CFF6B]">{form.email}</span>. Especialista
+                (não bot) prepara teu plano. Quer falar agora?
               </p>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -1304,7 +1377,7 @@ function FinalCtaSection() {
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-5 py-2.5 text-sm font-semibold text-black hover:-translate-y-0.5 transition-transform"
               >
-                Falar no WhatsApp <ArrowRight className="h-4 w-4" />
+                Falar no WhatsApp agora <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           ) : (
@@ -1327,36 +1400,11 @@ function FinalCtaSection() {
                 required
                 placeholder="voce@empresa.com"
               />
-              <Field
-                label="Empresa"
-                value={form.empresa}
-                onChange={(v) => setForm((f) => ({ ...f, empresa: v }))}
-                placeholder="Empresa (opcional)"
-              />
-              <Field
-                label="WhatsApp"
-                value={form.whatsapp}
-                onChange={(v) => setForm((f) => ({ ...f, whatsapp: v }))}
-                placeholder="DDD + número"
-              />
-              <SelectField
-                label="Tamanho do time"
-                value={form.tamanho}
-                onChange={(v) => setForm((f) => ({ ...f, tamanho: v }))}
-                options={[
-                  { v: "", l: "Selecione" },
-                  { v: "1-5", l: "1 a 5 pessoas" },
-                  { v: "6-15", l: "6 a 15 pessoas" },
-                  { v: "16-50", l: "16 a 50 pessoas" },
-                  { v: "50+", l: "50+ pessoas" },
-                ]}
-                className="sm:col-span-2"
-              />
               <TextareaField
                 label="Qual o teu gargalo principal?"
                 value={form.gargalo}
                 onChange={(v) => setForm((f) => ({ ...f, gargalo: v }))}
-                placeholder="Ex: gasto 3 dias por semana fazendo carrossel manual, ou: meu time atende as mesmas 30 perguntas no WhatsApp todo dia."
+                placeholder="Ex: gasto 3 dias por semana fazendo carrossel manual. Ou: meu time atende as mesmas 30 perguntas no WhatsApp todo dia. Ou: cobrança vira planilha do mês."
                 className="sm:col-span-2"
               />
 
@@ -1366,9 +1414,13 @@ function FinalCtaSection() {
                   disabled={status === "sending"}
                   className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
                 >
-                  {status === "sending" ? "Enviando…" : "Agendar minha call gratuita"}
+                  {status === "sending" ? "Enviando…" : "Receber diagnóstico em 48h"}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
+                <p className="text-[11px] text-gray-500 text-center">
+                  Sem fidelidade · Sem contrato · Resposta em 48h · Dados
+                  protegidos pela LGPD
+                </p>
                 {status === "err" && (
                   <p className="text-xs text-red-400">
                     Algo deu errado. Tenta de novo ou manda WhatsApp.
@@ -1452,39 +1504,6 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-[#7CFF6B]/40 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B]/20"
       />
-    </label>
-  );
-}
-
-function SelectField({
-  label,
-  value,
-  onChange,
-  options,
-  className,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: { v: string; l: string }[];
-  className?: string;
-}) {
-  return (
-    <label className={`flex flex-col gap-2 ${className ?? ""}`}>
-      <span className="font-mono text-[10px] uppercase tracking-wider text-gray-400">
-        {label}
-      </span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white transition-colors focus:border-[#7CFF6B]/40 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B]/20"
-      >
-        {options.map((o) => (
-          <option key={o.v} value={o.v} className="bg-black">
-            {o.l}
-          </option>
-        ))}
-      </select>
     </label>
   );
 }

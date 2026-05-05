@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
 import { GoogleAnalytics } from "@/components/analytics";
 import { Clarity } from "@/components/clarity";
+import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
 import { SkipToContent } from "@/components/ui/skip-to-content";
@@ -162,6 +163,7 @@ export default function RootLayout({
             </Suspense>
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
             <Clarity />
+            <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID || ''} />
           </ErrorBoundary>
         </SmoothScrollProvider>
       </body>
