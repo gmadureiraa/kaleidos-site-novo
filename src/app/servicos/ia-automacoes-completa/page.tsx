@@ -1300,6 +1300,7 @@ function FinalCtaSection() {
   const [form, setForm] = useState({
     nome: "",
     email: "",
+    telefone: "",
     gargalo: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
@@ -1308,13 +1309,18 @@ function FinalCtaSection() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.nome || !form.email) return;
+    if (!form.nome || !form.email || !form.telefone) return;
     setStatus("sending");
     try {
       const r = await fetch("/api/lead-ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          whatsapp: form.telefone,
+          gargalo: form.gargalo,
+        }),
       });
       const data = await r.json();
       if (data.ok) {
@@ -1399,6 +1405,15 @@ function FinalCtaSection() {
                 onChange={(v) => setForm((f) => ({ ...f, email: v }))}
                 required
                 placeholder="voce@empresa.com"
+              />
+              <Field
+                label="Telefone / WhatsApp"
+                type="tel"
+                value={form.telefone}
+                onChange={(v) => setForm((f) => ({ ...f, telefone: v }))}
+                required
+                placeholder="(11) 99999-9999"
+                className="sm:col-span-2"
               />
               <TextareaField
                 label="Qual o teu gargalo principal?"
