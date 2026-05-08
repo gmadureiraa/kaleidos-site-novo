@@ -15,6 +15,7 @@ export default function BlogPage() {
     BlogCategory | "all"
   >("all");
   const [email, setEmail] = useState("");
+  const [hp, setHp] = useState(""); // honeypot — humanos não preenchem
   const [subscribeStatus, setSubscribeStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -28,7 +29,7 @@ export default function BlogPage() {
       const res = await fetch("/api/newsletter/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, _hp: hp }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro ao assinar");
@@ -188,6 +189,29 @@ export default function BlogPage() {
             className="flex flex-col sm:flex-row gap-3"
             onSubmit={handleSubscribe}
           >
+            {/* Honeypot anti-bot — invisível pra humanos */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "-10000px",
+                top: "auto",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
+              }}
+            >
+              <label htmlFor="_hp_news">Não preencha</label>
+              <input
+                id="_hp_news"
+                name="_hp"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+              />
+            </div>
             <input
               type="email"
               placeholder="seu@email.com"

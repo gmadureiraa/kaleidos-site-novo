@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import {
+  getClientIp,
+  rateLimit,
+  tooManyRequestsResponse,
+} from "@/lib/security/rate-limit";
+import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 
 // Lazy Resend client — avoids build-time failures when env vars are missing
 let _resend: Resend | null = null;
@@ -17,13 +23,26 @@ const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID ?? "";
 
 /**
  * POST /api/newsletter/subscribe
- * Body: { email: string }
+ * Body: { email: string, _hp?: string }
  *
  * Adds an email to the Kaleidos Resend audience.
  */
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    // Rate limit: 5 reqs / 10min por IP.
+    const ip = getClientIp(req);
+    const rl = await rateLimit("newsletter", ip, { max: 5, window: "10 m" });
+    if (!rl.success) {
+      return tooManyRequestsResponse(rl);
+    }
+
+    const body = await req.json();
+    const { email, _hp } = body || {};
+
+    // Honeypot: 200 silencioso "success" sem efeito real
+    if (isHoneypotTriggered(_hp)) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!email || typeof email !== "string") {
       return NextResponse.json(
@@ -32,9 +51,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: "Invalid email format" },
         { status: 400 }

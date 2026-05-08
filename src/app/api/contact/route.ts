@@ -1,7 +1,20 @@
 import { Resend } from "resend";
+import {
+  getClientIp,
+  rateLimit,
+  tooManyRequestsResponse,
+} from "@/lib/security/rate-limit";
+import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 
 export async function POST(request: Request) {
   try {
+    // Rate limit: 5 reqs / 10min por IP.
+    const ip = getClientIp(request);
+    const rl = await rateLimit("contact", ip, { max: 5, window: "10 m" });
+    if (!rl.success) {
+      return tooManyRequestsResponse(rl);
+    }
+
     const data = await request.json();
     const {
       nome = "",
@@ -10,7 +23,16 @@ export async function POST(request: Request) {
       mensagem = "",
       servicos = [],
       locale = "pt",
+      _hp,
     } = data || {};
+
+    // Honeypot: 200 silencioso pra não dar feedback pro bot.
+    if (isHoneypotTriggered(_hp)) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     if (!nome || !email || !mensagem) {
       return new Response(
@@ -19,7 +41,16 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!isValidEmail(email)) {
+      return new Response(
+        JSON.stringify({ ok: false, error: "invalid_email" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const resendApiKey = process.env.RESEND_API_KEY;
+    const fromAddress =
+      process.env.RESEND_FROM ?? "Kaleidos <noreply@kaleidos.com.br>";
     const subject = locale === "en" ? `New contact: ${nome}` : `Novo contato: ${nome}`;
     const to = [
       "madureira@kaleidosdigital.com",
@@ -56,7 +87,7 @@ ${mensagem}
 
     const resend = new Resend(resendApiKey);
     await resend.emails.send({
-      from: "Kaleidos <onboarding@resend.dev>",
+      from: fromAddress,
       to,
       replyTo: email,
       subject,

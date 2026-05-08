@@ -2,9 +2,22 @@ import { Resend } from "resend";
 import { upsertLead } from "@/lib/db/leads";
 import { sendSequenceEmail } from "@/lib/emails/lead-sequence/send";
 import { markEmailSent } from "@/lib/db/leads";
+import {
+  getClientIp,
+  rateLimit,
+  tooManyRequestsResponse,
+} from "@/lib/security/rate-limit";
+import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 
 export async function POST(request: Request) {
   try {
+    // Rate limit: 5 reqs / 10min por IP. Forms são raros, limite apertado.
+    const ip = getClientIp(request);
+    const rl = await rateLimit("lead-ia", ip, { max: 5, window: "10 m" });
+    if (!rl.success) {
+      return tooManyRequestsResponse(rl);
+    }
+
     const data = await request.json();
     const {
       nome = "",
@@ -14,7 +27,16 @@ export async function POST(request: Request) {
       gargalo = "",
       whatsapp = "",
       locale = "pt",
+      _hp,
     } = data || {};
+
+    // Honeypot: se preenchido, retorna 200 silencioso (não dá pista pro bot).
+    if (isHoneypotTriggered(_hp)) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     if (!nome || !email) {
       return new Response(
@@ -23,8 +45,17 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!isValidEmail(email)) {
+      return new Response(
+        JSON.stringify({ ok: false, error: "invalid_email" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     // 1. Notificação interna pro time (Resend)
     const resendApiKey = process.env.RESEND_API_KEY;
+    const fromAddress =
+      process.env.RESEND_FROM ?? "Kaleidos <noreply@kaleidos.com.br>";
     const subject = locale === "en"
       ? `[Kaleidos AI] New lead: ${nome}${empresa ? ` (${empresa})` : ""}`
       : `[Kaleidos AI] Novo lead: ${nome}${empresa ? ` (${empresa})` : ""}`;
@@ -75,7 +106,7 @@ ${gargalo}
       try {
         const resend = new Resend(resendApiKey);
         await resend.emails.send({
-          from: "Kaleidos <onboarding@resend.dev>",
+          from: fromAddress,
           to,
           cc,
           replyTo: email,

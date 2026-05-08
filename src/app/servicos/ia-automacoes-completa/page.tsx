@@ -1303,6 +1303,7 @@ function FinalCtaSection() {
     telefone: "",
     gargalo: "",
   });
+  const [hp, setHp] = useState(""); // honeypot — humanos não preenchem
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
     "idle"
   );
@@ -1320,6 +1321,7 @@ function FinalCtaSection() {
           email: form.email,
           whatsapp: form.telefone,
           gargalo: form.gargalo,
+          _hp: hp,
         }),
       });
       const data = await r.json();
@@ -1391,6 +1393,30 @@ function FinalCtaSection() {
               onSubmit={handleSubmit}
               className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2"
             >
+              {/* Honeypot anti-bot — invisível pra humanos */}
+              <div
+                aria-hidden="true"
+                className="sm:col-span-2"
+                style={{
+                  position: "absolute",
+                  left: "-10000px",
+                  top: "auto",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden",
+                }}
+              >
+                <label htmlFor="_hp_ia">Não preencha</label>
+                <input
+                  id="_hp_ia"
+                  name="_hp"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                />
+              </div>
               <Field
                 label="Nome"
                 value={form.nome}

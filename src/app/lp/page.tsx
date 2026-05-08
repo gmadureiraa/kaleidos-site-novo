@@ -799,6 +799,7 @@ function FAQ() {
 /* ============================ CTA FINAL ============================ */
 function CTAFinal() {
   const [form, setForm] = useState({ nome: "", email: "", gargalo: "" });
+  const [hp, setHp] = useState(""); // honeypot — humanos não preenchem
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
     "idle"
   );
@@ -811,7 +812,7 @@ function CTAFinal() {
       const r = await fetch("/api/lead-ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, _hp: hp }),
       });
       const data = await r.json();
       if (data.ok) {
@@ -879,6 +880,29 @@ function CTAFinal() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-5">
+              {/* Honeypot anti-bot — invisível pra humanos */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-10000px",
+                  top: "auto",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden",
+                }}
+              >
+                <label htmlFor="_hp_lp">Não preencha</label>
+                <input
+                  id="_hp_lp"
+                  name="_hp"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                />
+              </div>
               <div>
                 <label className="mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] block mb-2">
                   Nome <span className="text-[var(--rec)]">*</span>

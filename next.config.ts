@@ -1,5 +1,20 @@
 import type { NextConfig } from "next";
 
+// CSP laxa inicial — script-src precisa de unsafe-inline enquanto GA/Meta Pixel
+// forem injetados via dangerouslySetInnerHTML. Ajustar pra nonce-based quando
+// possível.
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://www.google-analytics.com https://*.clarity.ms https://*.facebook.com https://*.resend.com",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -13,22 +28,24 @@ const nextConfig: NextConfig = {
 
   // Otimização de imagens
   images: {
-    domains: ["images.unsplash.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
     unoptimized: false,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 dias
   },
-  
+
   // Otimização de pacotes
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
   },
-  
+
   // Compressão
   compress: true,
-  
+
   // Headers de segurança e cache
   async headers() {
     return [
@@ -51,6 +68,18 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: CONTENT_SECURITY_POLICY,
           },
         ],
       },
@@ -104,7 +133,7 @@ const nextConfig: NextConfig = {
     ];
   },
   // i18n via query param (?lang=en) — sem App Router i18n nativo
-  
+
   // Otimização de build
   poweredByHeader: false,
   generateEtags: false,
