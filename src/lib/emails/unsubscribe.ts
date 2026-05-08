@@ -1,7 +1,26 @@
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHmac, randomBytes, timingSafeEqual } from "crypto";
 
-const SECRET = () =>
-  process.env.LEAD_UNSUB_SECRET || process.env.RESEND_API_KEY || "kaleidos-dev-secret";
+// Dev-only fallback: random per process boot. Tokens NÃO persistem entre restarts
+// em dev sem LEAD_UNSUB_SECRET — comportamento desejado pra forçar setup explícito.
+const DEV_FALLBACK_SECRET = randomBytes(32).toString("hex");
+
+function SECRET(): string {
+  const explicit = process.env.LEAD_UNSUB_SECRET;
+  if (explicit && explicit.length >= 16) return explicit;
+
+  if (process.env.NODE_ENV === "production") {
+    // Fail loud: nunca cair no RESEND_API_KEY (rotação invalida tokens) nem em
+    // string hardcoded. Operador precisa setar 32 bytes random no Vercel.
+    throw new Error(
+      "LEAD_UNSUB_SECRET é obrigatório em produção. Gerar com `openssl rand -base64 32` e setar no Vercel env vars."
+    );
+  }
+
+  console.warn(
+    "[unsubscribe] LEAD_UNSUB_SECRET ausente — usando random per-process (tokens não persistem entre restarts)."
+  );
+  return DEV_FALLBACK_SECRET;
+}
 
 function b64url(buf: Buffer | string) {
   const b = typeof buf === "string" ? Buffer.from(buf) : buf;
@@ -23,7 +42,15 @@ export function verifyUnsubToken(token: string): string | null {
   const [payload, sig] = token.split(".");
   if (!payload || !sig) return null;
 
-  const expected = b64url(createHmac("sha256", SECRET()).update(payload).digest());
+  let expected: string;
+  try {
+    expected = b64url(createHmac("sha256", SECRET()).update(payload).digest());
+  } catch (err) {
+    // SECRET() pode lançar em prod sem env var setada — retorna null em vez
+    // de 500 pra rota de unsub, ainda registra o problema pra ops.
+    console.error("[unsubscribe] SECRET indisponível:", err);
+    return null;
+  }
   const a = Buffer.from(sig);
   const b = Buffer.from(expected);
   if (a.length !== b.length) return null;

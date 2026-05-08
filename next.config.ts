@@ -83,7 +83,9 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache para assets estáticos
+      // Cache para assets estáticos. CORS restringido pra origin Kaleidos
+      // (assets servidos via mesma origin não precisam CORS no <img>/<video>;
+      // restringir previne hotlinking cross-origin se conteúdo virar gated).
       {
         source: '/Conteudo_clientes/:path*',
         headers: [
@@ -93,7 +95,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',
+            value: 'https://kaleidos.com.br',
           },
         ],
       },
@@ -106,7 +108,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',
+            value: 'https://kaleidos.com.br',
           },
         ],
       },
