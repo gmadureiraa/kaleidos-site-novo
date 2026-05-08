@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 import {
   getPostBySlug,
   getRelatedPosts,
@@ -41,7 +42,12 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const relatedPosts = getRelatedPosts(slug, 3);
-  const contentHtml = markdownToHtml(post.content);
+  const rawHtml = markdownToHtml(post.content);
+  // Defense in depth: hoje o conteúdo é trusted (hardcoded em blog-data.ts).
+  // Se um dia migrar pra CMS, DOMPurify bloqueia <script>, on*=, javascript:.
+  const contentHtml = DOMPurify.sanitize(rawHtml, {
+    ADD_ATTR: ["target", "rel"],
+  });
 
   return (
     <ArticleContent
@@ -52,8 +58,18 @@ export default async function BlogPostPage({ params }: Props) {
   );
 }
 
+// Escapa HTML literal antes de processar markdown — previne <script> literal
+// no source de virar tag executável. Tags resultantes do markdown (h1, p, etc.)
+// ficam intactas porque são geradas DEPOIS do escape.
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 function markdownToHtml(markdown: string): string {
-  let html = markdown.trim();
+  let html = escapeHtml(markdown.trim());
 
   // Tables
   html = html.replace(
