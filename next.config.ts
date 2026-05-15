@@ -23,6 +23,14 @@ const nextConfig: NextConfig = {
         destination: "/sobre",
         permanent: true,
       },
+      {
+        // Consolidação 2026-05-15: a versão completa (LP de conversão com
+        // form, FlipCarousel, cases, audit P0 e Meta Pixel) virou canônica.
+        // 301 preserva SEO da rota antiga.
+        source: "/servicos/ia-automacoes",
+        destination: "/servicos/ia-automacoes-completa",
+        permanent: true,
+      },
     ];
   },
 

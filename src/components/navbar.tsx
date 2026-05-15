@@ -19,12 +19,12 @@ import Image from "next/image";
 const servicesBase = {
   pt: [
     { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo", description: "Estratégias de conteúdo que engajam e convertem." },
-    { title: "Kaleidos AI", href: "/servicos/ia-automacoes", description: "Automatize processos com inteligência artificial." },
+    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "Automatize processos com inteligência artificial." },
     { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos", description: "Estratégias de crescimento e lançamentos de produtos." },
   ],
   en: [
     { title: "Content Marketing", href: "/servicos/marketing-conteudo", description: "Content strategies that engage and convert." },
-    { title: "Kaleidos AI", href: "/servicos/ia-automacoes", description: "Automate processes with artificial intelligence." },
+    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "Automate processes with artificial intelligence." },
     { title: "Growth & Launches", href: "/servicos/growth-lancamentos", description: "Growth strategies and product launches." },
   ]
 } as const;

@@ -100,7 +100,7 @@ export function StructuredData() {
             "name": "IA e Automações",
             "description":
               "Sistemas de IA e automações para escalar produção de conteúdo e operação de marketing.",
-            "url": `${baseUrl}/servicos/ia-automacoes`,
+            "url": `${baseUrl}/servicos/ia-automacoes-completa`,
           },
         },
         {

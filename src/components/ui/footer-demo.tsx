@@ -16,12 +16,12 @@ export function FooterDemo() {
   const services = locale === 'en' 
     ? [
         { title: "Content Marketing", href: "/servicos/marketing-conteudo" },
-        { title: "Kaleidos AI", href: "/servicos/ia-automacoes" },
+        { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth & Launches", href: "/servicos/growth-lancamentos" },
       ]
     : [
         { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo" },
-        { title: "Kaleidos AI", href: "/servicos/ia-automacoes" },
+        { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos" },
       ];
 

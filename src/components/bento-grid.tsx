@@ -125,7 +125,7 @@ function getBentoItems(locale: 'pt'|'en'): BentoItem[] {
             description: isEn
                 ? "Artificial intelligence for process automation, chatbots, data analysis and content personalization."
                 : "Inteligência artificial para automação de processos, chatbots, análise de dados e personalização de conteúdo.",
-            href: "/servicos/ia-automacoes",
+            href: "/servicos/ia-automacoes-completa",
             feature: "typing",
             typingText:
                 "const agent = new KaleidosAgent({\n  capabilities: ['automation', 'content', 'analytics'],\n  learning: continuous,\n  schedule: alwaysOn\n});\n\nagent.deploy();\n// Automação que escala com seu negócio",

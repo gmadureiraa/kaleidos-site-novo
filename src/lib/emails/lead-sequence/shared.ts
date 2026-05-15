@@ -43,7 +43,7 @@ export function shell(opts: {
             <td style="padding:0 36px 32px 36px;border-top:1px solid #f1f1ef;">
               <p style="margin:24px 0 8px 0;font-size:12px;color:#9ca3af;line-height:1.5;">
                 Recebeu por ter pedido um diagnóstico em
-                <a href="https://kaleidos.com.br/servicos/ia-automacoes" style="color:#6b7280;">kaleidos.com.br/servicos/ia-automacoes</a>.
+                <a href="https://kaleidos.com.br/servicos/ia-automacoes-completa" style="color:#6b7280;">kaleidos.com.br/servicos/ia-automacoes-completa</a>.
               </p>
               <p style="margin:0;font-size:12px;color:#9ca3af;">
                 Não quer mais receber?
@@ -131,5 +131,5 @@ export function escapeHtml(s: string): string {
 }
 
 export function ctaUrl(origem: string): string {
-  return `https://kaleidos.com.br/servicos/ia-automacoes?utm_source=email&utm_medium=lead-sequence&utm_campaign=${encodeURIComponent(origem)}#diagnostico`;
+  return `https://kaleidos.com.br/servicos/ia-automacoes-completa?utm_source=email&utm_medium=lead-sequence&utm_campaign=${encodeURIComponent(origem)}#diagnostico`;
 }
