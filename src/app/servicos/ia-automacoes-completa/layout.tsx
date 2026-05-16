@@ -4,8 +4,8 @@ import { generateServiceMetadata } from "@/lib/seo-helpers";
 export async function generateMetadata(): Promise<Metadata> {
   return generateServiceMetadata(
     "ia-automacoes",
-    "Kaleidos AI · IA na operação, até 70% do tempo recuperado",
-    "A Kaleidos audita gargalos, implementa IA dentro do fluxo do cliente e entrega o código no repositório dele. Sem lock-in. Sem SaaS de aluguel."
+    "Aumente em 3x a produtividade da sua empresa · Kaleidos AI",
+    "Implementamos soluções com IA que tornam você e seu time mais produtivos, economizam tempo e dinheiro. Código entregue no seu repositório, sem lock-in."
   );
 }
 

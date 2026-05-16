@@ -189,14 +189,14 @@ function HeroSection({ onCta }: { onCta: () => void }) {
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[68px]">
-        Até <span className="text-[#7CFF6B]">70% do dia</span> da tua operação,
-        <br className="hidden sm:block" /> recuperado.
+        Aumente em <span className="text-[#7CFF6B]">3x</span> a produtividade
+        <br className="hidden sm:block" /> da sua empresa com a Kaleidos.
       </h1>
 
       <p className="mt-6 max-w-2xl text-base text-gray-400 sm:text-lg">
-        A Kaleidos audita os gargalos do teu time, implementa IA dentro do fluxo
-        que já existe e entrega o código no teu repositório. Sem lock-in, sem
-        SaaS de aluguel, sem dashboard que ninguém abre.
+        Implementamos soluções que tornam você e seu time mais produtivos,
+        economizam tempo e dinheiro no seu dia a dia. IA dentro do fluxo que
+        já existe, código entregue no seu repositório, sem lock-in.
       </p>
 
       {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
