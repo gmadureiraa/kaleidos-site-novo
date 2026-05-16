@@ -31,6 +31,12 @@ const nextConfig: NextConfig = {
         destination: "/servicos/ia-automacoes-completa",
         permanent: true,
       },
+      {
+        // Consolidação 2026-05-15: /carta deletada, URL única é a principal.
+        source: "/servicos/ia-automacoes-completa/carta",
+        destination: "/servicos/ia-automacoes-completa",
+        permanent: true,
+      },
     ];
   },
 
