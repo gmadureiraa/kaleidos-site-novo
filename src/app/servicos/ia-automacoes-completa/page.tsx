@@ -194,9 +194,7 @@ function HeroSection({ onCta }: { onCta: () => void }) {
       </h1>
 
       <p className="mt-6 max-w-2xl text-base text-gray-400 sm:text-lg">
-        Implementamos soluções que tornam você e seu time mais produtivos,
-        economizam tempo e dinheiro no seu dia a dia. IA dentro do fluxo que
-        já existe, código entregue no seu repositório, sem lock-in.
+        IA dentro do fluxo que já existe. Código no repositório do cliente, sem lock-in.
       </p>
 
       {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
@@ -211,7 +209,7 @@ function HeroSection({ onCta }: { onCta: () => void }) {
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
-          <strong className="text-white">17 frentes</strong> automatizadas
+          <strong className="text-white">10+ frentes</strong> automatizadas
         </span>
       </div>
 
@@ -259,25 +257,25 @@ function ProcessSection() {
     {
       number: "01",
       title: "Diagnóstico gratuito",
-      body: "Call de 30-45 min comigo. Mapeio teus 3 maiores gargalos e te entrego um plano. Sem custo, sem compromisso. No fim, se fizer sentido, oferto a implementação completa.",
+      body: "Call de 30-45 min. Mapeio os 3 maiores gargalos e devolvo um plano.",
       duration: "30-45 min · gratuito",
     },
     {
       number: "02",
       title: "Mapa de gargalos",
-      body: "Sai do diagnóstico um mapa: o que automatiza primeiro, o que precisa de processo antes, o que é IA-resolvível e o que não é.",
+      body: "Plano com prioridade: o que automatiza primeiro, o que precisa de processo, o que IA não resolve.",
       duration: "Entregue em 48h",
     },
     {
       number: "03",
       title: "Build",
-      body: "4 a 8 semanas. Time da Kaleidos implementa direto na stack do cliente. Sprints quinzenais, código no repositório dele desde o dia 1.",
+      body: "Time Kaleidos implementa na stack do cliente. Sprints quinzenais, código no repositório dele desde o dia 1.",
       duration: "4-8 semanas",
     },
     {
       number: "04",
       title: "Iteração contínua",
-      body: "Mensal. Métrica de hora liberada / lead / peça é revisada. Próximos gargalos atacados. O sistema vira ativo, não projeto fechado.",
+      body: "Métrica de hora liberada revisada todo mês. Próximos gargalos atacados.",
       duration: "Recorrente",
     },
   ];
@@ -308,7 +306,7 @@ function ProcessSection() {
             <h3 className="mt-2 font-display text-xl font-semibold text-white">
               {s.title}
             </h3>
-            <p className="mt-2 text-sm text-gray-400">{s.body}</p>
+            <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">{s.body}</p>
             <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/5 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CFF6B]">
               <Clock className="h-3 w-3" /> {s.duration}
             </div>
@@ -336,11 +334,11 @@ function CasesSection() {
       stack: "Reunião → plano executável (IA + plataforma compartilhada)",
       headline: "Reuniões 1-1 que viram plano executável automaticamente.",
       antes:
-        "Toda call era papel e áudio. Plano definido na hora, mas detalhes sumiam até sexta. Cliente esquecia tarefa, consultor esquecia follow-up. Tudo manual.",
+        "Plano definido na call. Até sexta os detalhes sumiam. Cliente esquecia tarefa, consultor esquecia follow-up.",
       depois:
-        "Encontro é gravado e resumido por IA. Durante a call, o plano já é montado e cai numa plataforma compartilhada (consultor + cliente): resumo da conversa, tarefas pra cada lado, prazos e próximos passos.",
+        "Call gravada e resumida por IA. Plano cai numa plataforma compartilhada: tarefas, prazos e próximos passos pra cada lado.",
       destaque:
-        "Zero detalhe perdido. Cliente acompanha o plano sozinho. Consultor escala atendimento sem perder qualidade.",
+        "Zero detalhe perdido. Consultor escala sem perder qualidade.",
     },
     {
       slug: "radar-viral",
@@ -349,10 +347,10 @@ function CasesSection() {
       stack: "Monitor de postagens + geração cross-rede",
       headline: "1 vídeo → 5 conteúdos cross-rede em minutos.",
       antes:
-        "Criador posta vídeo no YouTube ou Instagram e perde reach: cross-post é manual, ou simplesmente não acontece. Voz inconsistente, esforço dobrado, métrica fragmentada.",
+        "Posta no YouTube ou IG e perde reach. Cross-post é manual, ou não acontece. Voz inconsistente.",
       depois:
-        "O Radar monitora as postagens e gera automaticamente os derivados pra cada rede: thread no X, post LinkedIn, carrossel IG, e-mail de newsletter. Voz consistente, formato adaptado pra cada canal.",
-      destaque: "+5 redes cobertas em 1 click. Minutos no lugar de horas.",
+        "Radar monitora as postagens e gera derivados: thread no X, post LinkedIn, carrossel IG, e-mail. Formato adaptado por canal.",
+      destaque: "5 redes cobertas em 1 click. Minutos no lugar de horas.",
     },
   ];
 
@@ -529,9 +527,8 @@ function OperationsCarouselSection() {
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
           10 projetos com IA dentro do fluxo.
         </h2>
-        <p className="mt-4 text-base text-gray-400">
-          Mistura de clientes ativos e produtos próprios que a Kaleidos opera
-          todo dia. Cada um vem com stack visível, sem caixa-preta.
+        <p className="mt-4 text-base text-gray-400 sm:text-lg">
+          Clientes ativos e produtos próprios. Stack visível, sem caixa-preta.
         </p>
       </div>
 
@@ -634,7 +631,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       name: "Diagnóstico gratuito",
       duration: "30-45 min · sem custo",
       description:
-        "Call comigo. Mapeio teus 3 maiores gargalos e te entrego um plano. Sem compromisso. No fim, se fizer sentido, oferto a implementação completa.",
+        "Mapa dos 3 maiores gargalos + plano de ação. Sem compromisso.",
       bullets: [
         "Call de 30-45 min ao vivo",
         "Mapa dos 3 maiores gargalos",
@@ -649,7 +646,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       name: "Implementação contínua",
       duration: "Mês a mês · mín. 3 meses",
       description:
-        "Implementação rodando junto com o time. A Kaleidos toca os gargalos prioritários em sprints quinzenais com equipe interna nossa.",
+        "Equipe Kaleidos roda junto com o time em sprints quinzenais.",
       bullets: [
         "2-3 implementações de IA por sprint",
         "Equipe multidisciplinar dedicada (estratégia + dev + copy)",
@@ -665,7 +662,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       name: "Sistema customizado",
       duration: "Escopo fechado",
       description:
-        "Pipeline de IA construído sob medida pra um problema específico. Pra quem quer um produto próprio dentro da operação.",
+        "Pipeline de IA sob medida pra um problema específico. Produto próprio dentro da operação.",
       bullets: [
         "Discovery + arquitetura + build sob escopo",
         "Stack TS + Python + Supabase + Gemini/Claude",
@@ -782,18 +779,19 @@ function FlipCarouselSection({
     return () => clearInterval(autoplay);
   }, [api, isPaused]);
 
+  // 6 cards selecionados — dor universal + número concreto + alto contraste antes/depois.
   const cards = [
     {
       front: {
         title: locale === "en" ? "Manual N1 support" : "Atendimento N1",
         description: locale === "en"
-          ? "Team answering the same 30 questions. Avg reply time: 4h."
-          : "Time respondendo as mesmas 30 perguntas. Resposta média: 4h.",
+          ? "Team answering the same 30 questions. Avg reply: 4h."
+          : "Time respondendo as mesmas 30 perguntas. Resposta: 4h.",
         bgGradient: "from-red-500 to-pink-600",
         borderColor: "border-red-400",
       },
       back: {
-        title: locale === "en" ? "4h → 8s" : "4h → 8s",
+        title: "4h → 8s",
         description: locale === "en"
           ? "Trained agent on the product knowledge base solves N1 in seconds."
           : "Agente treinado na base do produto resolve N1 em segundos.",
@@ -814,7 +812,7 @@ function FlipCarouselSection({
         borderColor: "border-blue-400",
       },
       back: {
-        title: locale === "en" ? "1h → 30s" : "1h → 30s",
+        title: "1h → 30s",
         description: locale === "en"
           ? "Brief in 3 lines becomes a carousel ready to post."
           : "Brief de 3 linhas vira carrossel pronto pra postar.",
@@ -830,7 +828,7 @@ function FlipCarouselSection({
         title: locale === "en" ? "Manual research" : "Pesquisa Manual",
         description: locale === "en"
           ? "3 days reading newsletter and X to brief one client."
-          : "3 dias lendo newsletter e X pra montar um briefing.",
+          : "3 dias lendo newsletter e X pra um briefing.",
         bgGradient: "from-yellow-500 to-orange-600",
         borderColor: "border-yellow-400",
       },
@@ -848,73 +846,10 @@ function FlipCarouselSection({
     },
     {
       front: {
-        title: locale === "en" ? "Manual analysis" : "Análise Manual",
-        description: locale === "en"
-          ? "Manual data collection, weekly report nobody reads."
-          : "Coleta manual de dado, relatório semanal que ninguém lê.",
-        bgGradient: "from-pink-500 to-rose-600",
-        borderColor: "border-pink-400",
-      },
-      back: {
-        title: locale === "en" ? "Live insight" : "Insight Ao Vivo",
-        description: locale === "en"
-          ? "Dashboard with insight ready, no one builds reports."
-          : "Dashboard com insight pronto, ninguém monta relatório.",
-        features: locale === "en"
-          ? ["Real-time data", "Smart alert", "Decision over screen"]
-          : ["Dado tempo real", "Alerta inteligente", "Decisão na tela"],
-        bgGradient: "from-indigo-500 to-blue-600",
-        borderColor: "border-indigo-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Inbox overload" : "Excesso de Email",
-        description: locale === "en"
-          ? "Hundreds of mails, no priority, no organization."
-          : "Centenas de email, sem priorização, sem organização.",
-        bgGradient: "from-emerald-500 to-green-600",
-        borderColor: "border-emerald-400",
-      },
-      back: {
-        title: locale === "en" ? "Triage agent" : "Agente Triagem",
-        description: locale === "en"
-          ? "AI organizes, prioritizes and drafts replies for review."
-          : "IA organiza, prioriza e rascunha resposta pra revisão.",
-        features: locale === "en"
-          ? ["Daily summary", "Smart priority", "Auto draft"]
-          : ["Resumo diário", "Prioridade inteligente", "Rascunho automático"],
-        bgGradient: "from-violet-500 to-purple-600",
-        borderColor: "border-violet-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Doesn't scale" : "Não Escala",
-        description: locale === "en"
-          ? "Process growing only with new hires."
-          : "Processo só cresce com nova contratação.",
-        bgGradient: "from-cyan-500 to-blue-600",
-        borderColor: "border-cyan-400",
-      },
-      back: {
-        title: locale === "en" ? "Total scale" : "Escala Total",
-        description: locale === "en"
-          ? "Systems that adapt to demand without a new hire."
-          : "Sistemas que se adaptam à demanda sem contratar.",
-        features: locale === "en"
-          ? ["Auto growth", "Smart adaptation", "Cost flat"]
-          : ["Crescimento auto", "Adaptação inteligente", "Custo flat"],
-        bgGradient: "from-orange-500 to-red-600",
-        borderColor: "border-orange-400",
-      },
-    },
-    {
-      front: {
         title: locale === "en" ? "Manual collection" : "Cobrança Manual",
         description: locale === "en"
           ? "Spreadsheet, missed follow-up, late invoice."
-          : "Planilha aberta, follow-up esquecido, fatura no atraso.",
+          : "Planilha aberta, follow-up esquecido, fatura atrasada.",
         bgGradient: "from-amber-500 to-yellow-600",
         borderColor: "border-amber-400",
       },
@@ -932,73 +867,10 @@ function FlipCarouselSection({
     },
     {
       front: {
-        title: locale === "en" ? "1h-long meeting" : "Reunião de 1h",
-        description: locale === "en"
-          ? "Recorded the call. Nobody listens again. Insight gone."
-          : "Gravou call de 1h. Ninguém escuta de novo. Insight some.",
-        bgGradient: "from-rose-500 to-red-600",
-        borderColor: "border-rose-400",
-      },
-      back: {
-        title: locale === "en" ? "5 contents in 10 min" : "5 conteúdos em 10 min",
-        description: locale === "en"
-          ? "Transcription becomes post, email, FAQ, onboarding, script."
-          : "Transcrição vira post, email, FAQ, onboarding e roteiro.",
-        features: locale === "en"
-          ? ["Auto transcript", "Repurpose pipeline", "Brand voice"]
-          : ["Transcrição auto", "Repurpose pipeline", "Voz da marca"],
-        bgGradient: "from-fuchsia-500 to-pink-600",
-        borderColor: "border-fuchsia-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Brief → delivery: 5 days" : "Brief → entrega: 5 dias",
-        description: locale === "en"
-          ? "Brief written, 3 reviewers, context lost, back to edit."
-          : "Brief escrito, passa por 3 pessoas, perde contexto, volta pra ajuste.",
-        bgGradient: "from-blue-600 to-sky-700",
-        borderColor: "border-blue-400",
-      },
-      back: {
-        title: locale === "en" ? "5 days → 24h" : "5 dias → 24h",
-        description: locale === "en"
-          ? "Structured brief triggers AI flow + human review. v1 in 24h."
-          : "Brief estruturado dispara fluxo IA + revisão humana. v1 em 24h.",
-        features: locale === "en"
-          ? ["Pipeline editorial", "Human review on top", "v1 fixed time"]
-          : ["Pipeline editorial", "Revisão humana no topo", "v1 em prazo fixo"],
-        bgGradient: "from-emerald-500 to-teal-600",
-        borderColor: "border-emerald-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Pitch deck: 1 week" : "Pitch deck: 1 semana",
-        description: locale === "en"
-          ? "Founder on Keynote, copying old slides, redoing the chart."
-          : "Sócio no Keynote, copiando slide antigo, refazendo gráfico.",
-        bgGradient: "from-purple-600 to-indigo-700",
-        borderColor: "border-purple-400",
-      },
-      back: {
-        title: locale === "en" ? "1 week → 3h" : "1 semana → 3h",
-        description: locale === "en"
-          ? "Bullets become a structured deck with the brand design system."
-          : "Bullets viram deck estruturado com design system da marca.",
-        features: locale === "en"
-          ? ["Brand design system", "Auto charts", "PDF export"]
-          : ["Design system da marca", "Gráficos auto", "Export PDF"],
-        bgGradient: "from-orange-500 to-amber-600",
-        borderColor: "border-orange-400",
-      },
-    },
-    {
-      front: {
         title: locale === "en" ? "Lost lead" : "Lead Perdido",
         description: locale === "en"
           ? "Filled the form, nobody answered in 2 days. Lead cold."
-          : "Preencheu form, ninguém respondeu em 2 dias. Lead esfriou.",
+          : "Preencheu form, ninguém respondeu em 2 dias. Esfriou.",
         bgGradient: "from-red-600 to-orange-700",
         borderColor: "border-red-400",
       },
@@ -1006,7 +878,7 @@ function FlipCarouselSection({
         title: locale === "en" ? "Reply in 60s" : "Resposta em 60s",
         description: locale === "en"
           ? "Smart auto-reply qualifies, schedules, hands warm to seller."
-          : "Auto-reply inteligente qualifica, agenda, entrega quente pro vendedor.",
+          : "Auto-reply qualifica, agenda e entrega quente pro vendedor.",
         features: locale === "en"
           ? ["Lead scoring", "Auto-schedule", "Slack/email handoff"]
           : ["Lead scoring", "Agendamento auto", "Handoff Slack/email"],
@@ -1016,107 +888,23 @@ function FlipCarouselSection({
     },
     {
       front: {
-        title: locale === "en" ? "Manual translation" : "Tradução Manual",
+        title: locale === "en" ? "Brief → delivery: 5 days" : "Brief → entrega: 5 dias",
         description: locale === "en"
-          ? "Same content rewritten by hand for EN/PT. Tone lost."
-          : "Mesmo conteúdo reescrito à mão pra EN/PT. Tom se perde.",
-        bgGradient: "from-yellow-600 to-orange-700",
-        borderColor: "border-yellow-400",
+          ? "Brief, 3 reviewers, context lost, back to edit."
+          : "Brief passa por 3 pessoas, perde contexto, volta pra ajuste.",
+        bgGradient: "from-blue-600 to-sky-700",
+        borderColor: "border-blue-400",
       },
       back: {
-        title: locale === "en" ? "1 brief, 2 markets" : "1 brief, 2 mercados",
+        title: locale === "en" ? "5 days → 24h" : "5 dias → 24h",
         description: locale === "en"
-          ? "AI keeps the voice and adapts cultural reference per market."
-          : "IA mantém a voz e adapta referência cultural por mercado.",
+          ? "Structured brief triggers AI flow + human review. v1 in 24h."
+          : "Brief estruturado dispara fluxo IA + revisão humana. v1 em 24h.",
         features: locale === "en"
-          ? ["Voice preserved", "Cultural adapt", "Glossary locked"]
-          : ["Voz preservada", "Adapta cultura", "Glossário travado"],
-        bgGradient: "from-cyan-500 to-blue-600",
-        borderColor: "border-cyan-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Hashtag guess" : "Hashtag no Chute",
-        description: locale === "en"
-          ? "Posting with random tags. Reach unpredictable. SEO blind."
-          : "Posta com hashtag chutada. Alcance imprevisível. SEO no escuro.",
-        bgGradient: "from-pink-600 to-rose-700",
-        borderColor: "border-pink-400",
-      },
-      back: {
-        title: locale === "en" ? "Daily SEO brief" : "Briefing SEO Diário",
-        description: locale === "en"
-          ? "Radar Viral pulls trending topics + tag set ready per niche."
-          : "Radar Viral puxa tema em alta + tag set pronto por nicho.",
-        features: locale === "en"
-          ? ["Trending source", "Per-niche tags", "Direct to publish"]
-          : ["Fonte em alta", "Tags por nicho", "Direto pra publicar"],
-        bgGradient: "from-purple-500 to-fuchsia-600",
-        borderColor: "border-purple-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Manual onboarding" : "Onboarding Manual",
-        description: locale === "en"
-          ? "10 emails written one by one. New users churn before week 1."
-          : "10 emails escritos um por um. User novo cai antes da semana 1.",
-        bgGradient: "from-indigo-600 to-violet-700",
-        borderColor: "border-indigo-400",
-      },
-      back: {
-        title: locale === "en" ? "Drip auto" : "Drip Automático",
-        description: locale === "en"
-          ? "Lifecycle pipeline with branching by user behavior."
-          : "Pipeline de lifecycle com ramificação pelo comportamento do user.",
-        features: locale === "en"
-          ? ["Behavior triggers", "Brand voice", "Resend audience"]
-          : ["Triggers por ação", "Voz da marca", "Audience Resend"],
-        bgGradient: "from-sky-500 to-cyan-600",
-        borderColor: "border-sky-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Forgotten metric" : "Métrica Esquecida",
-        description: locale === "en"
-          ? "Looker Studio nobody opens. Decision in the gut."
-          : "Looker Studio que ninguém abre. Decisão no feeling.",
-        bgGradient: "from-zinc-500 to-stone-600",
-        borderColor: "border-zinc-400",
-      },
-      back: {
-        title: locale === "en" ? "WhatsApp daily report" : "Relatório no WhatsApp",
-        description: locale === "en"
-          ? "Daily 30s message: what changed, why, what to do today."
-          : "Mensagem de 30s todo dia: o que mudou, por quê, o que fazer hoje.",
-        features: locale === "en"
-          ? ["Auto delta", "Plain language", "1-tap action"]
-          : ["Delta automático", "Linguagem direta", "1 clique pra agir"],
-        bgGradient: "from-emerald-500 to-green-600",
+          ? ["Editorial pipeline", "Human review on top", "v1 fixed time"]
+          : ["Pipeline editorial", "Revisão humana no topo", "v1 em prazo fixo"],
+        bgGradient: "from-emerald-500 to-teal-600",
         borderColor: "border-emerald-400",
-      },
-    },
-    {
-      front: {
-        title: locale === "en" ? "Manual reports" : "Relatório Manual",
-        description: locale === "en"
-          ? "End of month: 3 days exporting, formatting, sending PDF by hand."
-          : "Fim do mês: 3 dias exportando, formatando, mandando PDF na mão.",
-        bgGradient: "from-slate-600 to-gray-700",
-        borderColor: "border-slate-400",
-      },
-      back: {
-        title: locale === "en" ? "Auto on schedule" : "Auto no Cron",
-        description: locale === "en"
-          ? "Daily, weekly, monthly — IA puxa dado, monta narrativa, envia."
-          : "Diário, semanal, mensal — IA puxa dado, monta narrativa, envia.",
-        features: locale === "en"
-          ? ["Cron schedule", "Brand template", "Email + WhatsApp"]
-          : ["Schedule cron", "Template da marca", "Email + WhatsApp"],
-        bgGradient: "from-teal-500 to-emerald-600",
-        borderColor: "border-teal-400",
       },
     },
   ];
@@ -1132,16 +920,13 @@ function FlipCarouselSection({
           O antes e depois
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Onde a IA realmente entra na operação.
+          Onde a IA entra na operação.
         </h2>
-        <p className="mt-4 text-base text-gray-400">
-          17 frentes que a Kaleidos automatiza no fluxo do cliente — sem
-          dashboard novo, sem &quot;ChatGPT aberto numa aba&quot;. Hover pra
-          virar cada card.
+        <p className="mt-4 text-base text-gray-400 sm:text-lg">
+          6 frentes recorrentes. Hover pra virar cada card.
         </p>
         <p className="mt-3 text-sm font-medium text-[#7CFF6B]">
-          E essa lista não termina aqui. Qualquer tarefa repetitiva entra no
-          fluxo — auditamos, mapeamos e implementamos.
+          Qualquer tarefa repetitiva entra no fluxo. A gente audita, mapeia e implementa.
         </p>
       </div>
 
@@ -1207,23 +992,23 @@ function FAQSection() {
   const items = [
     {
       q: "Em quanto tempo eu vejo resultado?",
-      a: "Em 30 dias o primeiro gargalo já tá rodando em produção. A métrica de hora liberada começa a subir a partir do mês 2. Mês 3 é onde a maioria dos clientes vê os 70% reais.",
+      a: "30 dias: primeiro gargalo rodando em produção. Mês 2: hora liberada começa a subir. Mês 3: 70% reais na maioria dos casos.",
     },
     {
       q: "Qual é o investimento?",
-      a: "Diagnóstico é grátis (48h). Implementação varia pelo escopo: projeto custom começa em R$ 8.000 (entrega única) ou plano mensal a partir de R$ 4.500/mês com mínimo de 3 meses. ROI típico: time libera 60-100h/mês, paga sozinho em 30-60 dias.",
+      a: "Diagnóstico grátis (48h). Projeto custom começa em R$ 8.000. Plano mensal a partir de R$ 4.500/mês, mínimo 3 meses. ROI típico paga sozinho em 30-60 dias.",
     },
     {
       q: "O código fica com quem?",
-      a: "Sempre com o cliente. Sem lock-in, sem dependência de SaaS terceiro pra rodar o que a Kaleidos construiu. O time entrega no repositório do cliente, com documentação.",
+      a: "Sempre com o cliente. Sem lock-in. Entregue no repositório, com documentação.",
     },
     {
-      q: "Que tipo de suporte tem depois da entrega?",
-      a: "No mensal, suporte vai até o fim do contrato. Em sistema custom, a Kaleidos oferece SLA de manutenção opcional, ou faz handoff técnico pro time interno do cliente assumir.",
+      q: "Que suporte tem depois da entrega?",
+      a: "Mensal: suporte até o fim do contrato. Custom: SLA de manutenção opcional ou handoff técnico pro time interno.",
     },
     {
       q: "Como mede ROI?",
-      a: "Hora liberada por mês x custo da hora do time x meses de operação. Se a Kaleidos libera 80h/mês de um time que custa R$ 200/h, o cálculo é simples. Aparece na reunião mensal.",
+      a: "Hora liberada/mês × custo da hora × meses. 80h liberadas de um time de R$ 200/h = R$ 16k/mês recuperados. Aparece na reunião mensal.",
     },
   ];
 
@@ -1351,10 +1136,8 @@ function FinalCtaSection() {
           <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CFF6B]">
             Sem fidelidade · Sem contrato · LGPD
           </p>
-          <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400">
-            Você descreve o gargalo. A Kaleidos volta em 48h com diagnóstico
-            executável: o que automatizar primeiro, qual ROI, quanto tempo.
-            Se não fizer sentido, ninguém perde tempo.
+          <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400 sm:text-lg">
+            Descreve o gargalo. Volta em 48h: o que automatizar primeiro, qual ROI, quanto tempo.
           </p>
 
           {status === "ok" ? (
@@ -1366,9 +1149,8 @@ function FinalCtaSection() {
                 Recebido.
               </h3>
               <p className="mt-2 text-sm text-gray-300">
-                Diagnóstico em 48h pelo email{" "}
-                <span className="text-[#7CFF6B]">{form.email}</span>. Especialista
-                (não bot) prepara teu plano. Quer falar agora?
+                Diagnóstico em 48h em{" "}
+                <span className="text-[#7CFF6B]">{form.email}</span>. Especialista (não bot) prepara teu plano.
               </p>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
