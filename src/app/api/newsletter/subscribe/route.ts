@@ -6,6 +6,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
+import { captureServerEvent } from "@/lib/posthog-server";
 
 // Lazy Resend client — avoids build-time failures when env vars are missing
 let _resend: Resend | null = null;
@@ -80,6 +81,11 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
+
+    await captureServerEvent(email, "newsletter_signup", {
+      audience_id: AUDIENCE_ID,
+      resend_contact_id: data?.id ?? null,
+    });
 
     return NextResponse.json({
       success: true,

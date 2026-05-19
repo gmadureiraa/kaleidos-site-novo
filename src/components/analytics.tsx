@@ -1,6 +1,16 @@
 "use client";
 
 import Script from "next/script";
+import posthog from "posthog-js";
+
+function phCapture(event: string, props?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  try {
+    posthog.capture(event, props);
+  } catch {
+    // no-op
+  }
+}
 
 interface GoogleAnalyticsProps {
   gaId: string;
@@ -64,10 +74,12 @@ export function useAnalytics() {
   const trackClick = (elementName: string, location: string) => {
     trackEvent("click", "user_interaction", elementName);
     trackEvent("element_click", location, elementName);
+    phCapture("cta_clicked", { element: elementName, location });
   };
 
   const trackConversion = (conversionType: string, value?: number) => {
     trackEvent("conversion", conversionType, undefined, value);
+    phCapture("conversion", { conversion_type: conversionType, value });
   };
 
   const trackScroll = (percentage: number) => {
@@ -89,10 +101,14 @@ export function useAnalytics() {
         location: location,
         context: context || "general",
       });
-      
+
       // Também registrar como conversão
       trackConversion("whatsapp_click", 1);
     }
+    phCapture("whatsapp_click", {
+      location,
+      context: context || "general",
+    });
   };
 
   return {

@@ -5,6 +5,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
+import { captureServerEvent } from "@/lib/posthog-server";
 
 export async function POST(request: Request) {
   try {
@@ -93,6 +94,12 @@ ${mensagem}
       subject,
       text,
       html,
+    });
+
+    await captureServerEvent(email, "contact_submitted", {
+      empresa: empresa || null,
+      servicos_count: (servicos || []).length,
+      locale,
     });
 
     return new Response(JSON.stringify({ ok: true }), {

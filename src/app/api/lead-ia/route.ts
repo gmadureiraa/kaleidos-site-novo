@@ -8,6 +8,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
+import { captureServerEvent } from "@/lib/posthog-server";
 
 export async function POST(request: Request) {
   try {
@@ -185,6 +186,15 @@ ${gargalo}
     } catch (err) {
       console.warn("[lead-ia] resend audience create failed", err);
     }
+
+    await captureServerEvent(email, "lead_ia_submitted", {
+      empresa: empresa || null,
+      tamanho: tamanho || null,
+      has_whatsapp: Boolean(whatsapp),
+      has_gargalo: Boolean(gargalo),
+      welcome_sent: welcomeSent,
+      audience_added: audienceAdded,
+    });
 
     return new Response(
       JSON.stringify({
