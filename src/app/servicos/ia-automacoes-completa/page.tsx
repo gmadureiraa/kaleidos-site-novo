@@ -17,7 +17,6 @@ import {
   Film,
   Plus,
   Minus,
-  ChevronRight,
   Calendar,
   Repeat,
   Wrench,

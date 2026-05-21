@@ -27,6 +27,49 @@ interface CaseCarouselProps {
   format?: 'default' | 'instagram' | 'reels';
 }
 
+// Imagem do carrossel com fallback gracioso caso o asset esteja ausente (404).
+// Evita exibir imagem quebrada — mostra placeholder neutro com o título.
+function CarouselImage({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  label,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  label?: string;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div
+        className={`flex items-center justify-center rounded-xl bg-gray-100 text-gray-400 ${className ?? ""}`}
+        style={{ width, height }}
+      >
+        <span className="px-3 text-center text-xs">{label || "Mídia indisponível"}</span>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      className={className}
+      width={width}
+      height={height}
+      style={{ objectFit: "cover" }}
+      onError={() => setHasError(true)}
+    />
+  );
+}
+
 export function CaseCarousel({ media, title, clientType = "reels", format = 'default' }: CaseCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -176,26 +219,26 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                 className="block"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Image
+                <CarouselImage
                   src={item.src}
                   alt={item.alt || `${title} - Imagem ${index + 1}`}
                   className="rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
                   width={isReelsFormat ? 280 : 320}
                   height={isReelsFormat ? Math.round((isReelsVertical ? 280 * 16/9 : 280 * 5/4)) : Math.round(320)}
-                  style={{ objectFit: 'cover' }}
+                  label={title}
                 />
                 <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
                   ↗ Instagram
                 </div>
               </a>
             ) : (
-              <Image
+              <CarouselImage
                 src={item.src}
                 alt={item.alt || `${title} - Imagem ${index + 1}`}
                 className="rounded-xl"
                 width={isReelsFormat ? 280 : 320}
                 height={isReelsFormat ? Math.round((isReelsVertical ? 280 * 16/9 : 280 * 5/4)) : Math.round(320)}
-                style={{ objectFit: 'cover' }}
+                label={title}
               />
             )}
           </div>
