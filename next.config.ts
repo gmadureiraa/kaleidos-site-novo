@@ -50,6 +50,14 @@ const nextConfig: NextConfig = {
         destination: "/servicos/ia-automacoes-completa",
         permanent: true,
       },
+      {
+        // A rota /portfolio nunca foi criada como page, mas o navbar e links
+        // externos apontam pra ela. /cases é a vitrine de trabalhos canônica.
+        // 301 evita 404 e preserva qualquer SEO acumulado.
+        source: "/portfolio",
+        destination: "/cases",
+        permanent: true,
+      },
     ];
   },
 
