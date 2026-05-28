@@ -1,20 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 import { motion, AnimatePresence } from "framer-motion";
+import { Search, X } from "lucide-react";
 import { getAllCases, type CaseData } from "@/lib/case-data";
 import { FooterDemo } from "@/components/ui/footer-demo";
 
-// const allTags = Array.from(new Set(getAllCases().flatMap(p => p.tags)));
+// Categorias canônicas para filtro — agrupamos as tags reais em buckets que fazem sentido
+// pro visitante (em vez de expor todas as ~20 tags soltas). Cada bucket lista as tags
+// que o disparam.
+type CategoryFilter = {
+  id: string;
+  labelPt: string;
+  labelEn: string;
+  match: string[]; // tags (case-insensitive, substring) que pertencem a esse bucket
+};
+const CATEGORY_FILTERS: CategoryFilter[] = [
+  { id: "cripto",   labelPt: "Cripto & Web3",         labelEn: "Crypto & Web3",        match: ["Cripto", "Web3", "Fintech"] },
+  { id: "video",    labelPt: "Vídeo & Reels",         labelEn: "Video & Reels",        match: ["Vídeo", "Reels", "Roteiros", "Motion", "Animação", "Podcast"] },
+  { id: "design",   labelPt: "Design & Identidade",   labelEn: "Design & Identity",    match: ["Design"] },
+  { id: "conteudo", labelPt: "Conteúdo & Social",     labelEn: "Content & Social",     match: ["Copywriting", "Social Media", "Newsletter", "Conteúdo", "Criação de conteúdo", "Marketing de Conteúdo"] },
+  { id: "web",      labelPt: "Sites & Plataformas",   labelEn: "Sites & Platforms",    match: ["Desenvolvimento Web", "Dashboard", "SaaS", "Analytics", "Gamification"] },
+  { id: "lancamentos", labelPt: "Lançamentos & Leads", labelEn: "Launches & Leads",    match: ["Lançamentos", "Geração de Leads", "Automação", "Influencer"] },
+  { id: "ia",       labelPt: "IA & Automação",        labelEn: "AI & Automation",      match: ["IA", "Automação"] },
+  { id: "evento",   labelPt: "Eventos",               labelEn: "Events",               match: ["Evento"] },
+];
 
 export default function CasesPage() {
   const { t, locale } = useI18n();
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const [modalCase, setModalCase] = useState<CaseData | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   // Definir ordem específica dos cases
   const caseOrder = [
@@ -36,11 +57,55 @@ export default function CasesPage() {
   ];
 
   const allCases = getAllCases();
-  
+
   // Ordenar os cases conforme a ordem definida
-  const sortedCases = caseOrder
-    .map(id => allCases.find(caseData => caseData.id === id))
-    .filter(Boolean) as CaseData[];
+  const sortedCases = useMemo(
+    () =>
+      caseOrder
+        .map((id) => allCases.find((caseData) => caseData.id === id))
+        .filter(Boolean) as CaseData[],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allCases.length]
+  );
+
+  // Aplicar filtros de busca + categoria sobre a lista ordenada
+  const filteredCases = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    const activeMatchList = activeCategory
+      ? CATEGORY_FILTERS.find((c) => c.id === activeCategory)?.match.map((m) => m.toLowerCase()) ?? []
+      : null;
+
+    return sortedCases.filter((proj) => {
+      // filtro categoria — bate se qualquer tag/serviço contém substring de algum match
+      if (activeMatchList && activeMatchList.length) {
+        const haystack = [...(proj.tags ?? []), ...(proj.servicos ?? [])]
+          .join(" | ")
+          .toLowerCase();
+        const ok = activeMatchList.some((m) => haystack.includes(m));
+        if (!ok) return false;
+      }
+      // busca textual — nome, frase, tags, serviços
+      if (q) {
+        const hay = [
+          proj.nome,
+          proj.fraseImpactante,
+          proj.fraseImpactante_en,
+          ...(proj.tags ?? []),
+          ...(proj.servicos ?? []),
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+  }, [sortedCases, search, activeCategory]);
+
+  const clearFilters = () => {
+    setSearch("");
+    setActiveCategory(null);
+  };
 
   const nextImage = () => {
     if (modalCase && modalCase.media.length > 0) {
@@ -185,6 +250,83 @@ export default function CasesPage() {
           {heroIntro}
         </motion.p>
 
+        {/* Busca + filtros por categoria */}
+        <div className="mt-8 space-y-4">
+          <div className="relative max-w-xl">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true" />
+            <input
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={locale === 'en' ? 'Search cases (client, service, tag…)' : 'Buscar cases (cliente, serviço, tag…)'}
+              aria-label={locale === 'en' ? 'Search cases' : 'Buscar cases'}
+              className="w-full pl-10 pr-10 py-2.5 text-sm rounded-full border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition bg-white"
+            />
+            {search && (
+              <button
+                type="button"
+                onClick={() => setSearch("")}
+                aria-label={locale === 'en' ? 'Clear search' : 'Limpar busca'}
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap gap-2" role="group" aria-label={locale === 'en' ? 'Filter by category' : 'Filtrar por categoria'}>
+            <button
+              type="button"
+              onClick={() => setActiveCategory(null)}
+              aria-pressed={activeCategory === null}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors border ${
+                activeCategory === null
+                  ? 'bg-black text-white border-black'
+                  : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              {locale === 'en' ? 'All' : 'Tudo'}
+            </button>
+            {CATEGORY_FILTERS.map((cat) => {
+              const active = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveCategory(active ? null : cat.id)}
+                  aria-pressed={active}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors border ${
+                    active
+                      ? 'bg-black text-white border-black'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+                  }`}
+                >
+                  {locale === 'en' ? cat.labelEn : cat.labelPt}
+                </button>
+              );
+            })}
+            {(search || activeCategory) && (
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-pink-600 hover:bg-pink-50 transition-colors"
+              >
+                {locale === 'en' ? 'Clear filters' : 'Limpar filtros'}
+              </button>
+            )}
+          </div>
+
+          <div className="text-xs text-gray-500" aria-live="polite">
+            {filteredCases.length === sortedCases.length
+              ? (locale === 'en'
+                  ? `${sortedCases.length} cases`
+                  : `${sortedCases.length} cases`)
+              : (locale === 'en'
+                  ? `${filteredCases.length} of ${sortedCases.length} cases`
+                  : `${filteredCases.length} de ${sortedCases.length} cases`)}
+          </div>
+        </div>
+
       </section>
 
       <motion.div
@@ -198,9 +340,9 @@ export default function CasesPage() {
             transition: { staggerChildren: 0.18, delayChildren: 0.3 },
           },
         }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6"
       >
-        {sortedCases.map(proj => (
+        {filteredCases.map(proj => (
           <motion.div
             key={proj.id}
             variants={{
@@ -299,6 +441,26 @@ export default function CasesPage() {
           </motion.div>
         ))}
       </motion.div>
+
+      {filteredCases.length === 0 && (
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 mt-4 text-center">
+          <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-8">
+            <p className="text-gray-700 font-medium">
+              {locale === 'en' ? 'No cases match your filters.' : 'Nenhum case bate com esses filtros.'}
+            </p>
+            <p className="text-sm text-gray-500 mt-1">
+              {locale === 'en' ? 'Try clearing the search or pick another category.' : 'Tente limpar a busca ou escolher outra categoria.'}
+            </p>
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="mt-4 inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-black text-white hover:bg-gray-800 transition-colors"
+            >
+              {locale === 'en' ? 'Clear filters' : 'Limpar filtros'}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Modal para visualização rápida */}
       <AnimatePresence>
