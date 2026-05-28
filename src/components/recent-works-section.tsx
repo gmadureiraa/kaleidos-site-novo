@@ -99,6 +99,7 @@ export default function RecentWorksSection() {
                         alt={client.name}
                         fill
                         className="object-contain object-left"
+                        sizes="140px"
                       />
                     </div>
                   ) : (

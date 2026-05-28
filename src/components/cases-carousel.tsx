@@ -195,6 +195,7 @@ function CasesCarouselContent() {
                         alt={caseItem.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 28vw"
                       />
                     )}
                   </div>
