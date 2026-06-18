@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style>
+</head>
+<body>
+<div id="card">
+  <h1>Curva de retenção: comunidade incentivada vs. orgânica</h1>
+  <p class="sub">% de usuários ativos que permanecem após o evento de aquisição (D0 = 100%)</p>
+  <div class="wrap"><canvas id="c"></canvas></div>
+  <div class="src">Fonte: estimativa de mercado da Kaleidos com base em padrões observados pós-airdrop. Ilustrativo.</div>
+</div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+new Chart(document.getElementById('c'), {
+  type:'line',
+  data:{
+    labels:['D0','D1','D7','D30','D60','D90','D180'],
+    datasets:[
+      { label:'Comunidade orgânica (produto retém)', data:[100,78,62,52,47,44,41],
+        borderColor:K.pinkLine, backgroundColor:K.pinkSoft, borderWidth:3, fill:true, tension:0.32,
+        pointRadius:4, pointBackgroundColor:K.pink, pointBorderColor:K.cream, pointBorderWidth:1.5 },
+      { label:'Comunidade só incentivada (airdrop farming)', data:[100,55,28,12,7,4,2],
+        borderColor:K.neutral, backgroundColor:'rgba(168,159,144,0.10)', borderWidth:2.5, fill:false, tension:0.32, borderDash:[6,4],
+        pointRadius:4, pointBackgroundColor:K.neutral3, pointBorderColor:K.cream, pointBorderWidth:1.5 },
+    ],
+  },
+  options:{ responsive:true, maintainAspectRatio:false, animation:false,
+    plugins:{ legend:{ labels:{ font:{family:K.sans,size:13}, color:K.ink, boxWidth:14, padding:16 } },
+      tooltip:{ callbacks:{ label:(c)=>` ${c.dataset.label}: ${c.parsed.y}%` } } },
+    scales:{ x:{ grid:{display:false}, ticks:{ color:K.neutral3, font:{family:K.mono,size:11} } },
+      y:{ grid:{color:K.grid}, beginAtZero:true, max:100, ticks:{ color:K.neutral3, font:{family:K.mono,size:11}, callback:(v)=>v+'%' } } } },
+});
+</script>
+</body>
+</html>

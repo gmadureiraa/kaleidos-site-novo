@@ -23,6 +23,9 @@ interface CaseLayoutProps {
     detalhes: string;
     detalhes_en?: string;
     links: string[];
+    externalLink?: string;
+    externalLabel?: string;
+    externalLabel_en?: string;
     metricas: string;
     metricas_en?: string;
     servicos: string[];
@@ -194,11 +197,16 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
     detalhes,
     detalhes_en,
     links,
+    externalLink,
+    externalLabel,
+    externalLabel_en,
     metricas,
     metricas_en,
     media
   } = caseData;
   const isEn = locale === 'en';
+  const externalLabelText = (isEn && externalLabel_en ? externalLabel_en : externalLabel)
+    || (isEn ? 'Visit website' : 'Ver no site');
   const detalhesText = isEn && detalhes_en ? detalhes_en : detalhes;
   const fraseText = isEn && fraseImpactante_en ? fraseImpactante_en : fraseImpactante;
   const metricasText = isEn && metricas_en ? metricas_en : metricas;
@@ -265,6 +273,17 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
               <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 leading-tight">
                 {nome}
               </h1>
+              {externalLink && (
+                <a
+                  href={externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-[#7CFF6B] border border-[#7CFF6B] hover:bg-gray-900 transition-colors"
+                >
+                  {externalLabelText}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              )}
             </motion.div>
 
             {/* O que fizemos */}
@@ -309,24 +328,24 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                         <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                       </div>
                       <div className="flex-1 bg-white rounded px-3 py-1 text-xs text-gray-600 text-center">
-                        defiverso.com/defifest-2025/
+                        defiverso.com
                       </div>
                     </div>
-                    
+
                     {/* Preview do site */}
                     <div className="bg-white border border-gray-200 rounded-b-lg overflow-hidden">
                       <iframe
-                        src="https://defiverso.com/defifest-2025/"
+                        src="https://defiverso.com"
                         className="w-full h-96"
                         title="Defifest 2025 Website Preview"
                         loading="lazy"
                         sandbox="allow-scripts allow-same-origin"
                       />
                     </div>
-                    
+
                     <div className="mt-4 text-center">
                       <a
-                        href="https://defiverso.com/defifest-2025/"
+                        href="https://defiverso.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-[#7CFF6B] hover:text-[#6BE85A] font-medium transition-colors"
@@ -534,14 +553,14 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                         Página de Captura
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
-                        defiverso.com/pagina-de-captura/
+                        news.defiverso.com
                       </p>
                       <p className="text-sm text-gray-600 mb-4">
                         Desenvolvemos uma nova página de captura para lançamentos que revolucionou a conversão e impulsionou as vendas.
                       </p>
                       <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
                         <iframe
-                          src="https://defiverso.com/pagina-de-captura/"
+                          src="https://news.defiverso.com"
                           className="w-full h-full"
                           title="Página de Captura Defiverso"
                           loading="lazy"
@@ -549,9 +568,9 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-4 right-4">
-                          <a 
-                            href="https://defiverso.com/pagina-de-captura/" 
-                            target="_blank" 
+                          <a
+                            href="https://news.defiverso.com"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="bg-black text-white px-3 py-1 rounded-full text-xs hover:bg-gray-800 transition-colors"
                           >
@@ -1001,44 +1020,28 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                   </h3>
                   <div className="space-y-2">
                     {(isEn && caseData.servicos_en ? caseData.servicos_en : caseData.servicos || []).map((servico, index) => {
+                      // Tags de serviço como rótulos (sem link): a navegação por âncora
+                      // dava "clique morto" quando a seção alvo não existia naquele case.
                       const sectionId = getServiceSectionId(servico, caseData.id);
-                      const handleClick = (e: React.MouseEvent) => {
-                        if (sectionId) {
-                          e.preventDefault();
-                          // Ajustar offset para considerar navbar + header breadcrumbs + espaçamento
-                          setTimeout(() => {
-                            const element = document.getElementById(sectionId);
-                            if (element) {
-                              const navbarHeight = 64; // Altura da navbar
-                              const headerHeight = 120; // Altura do header com breadcrumbs
-                              const extraPadding = 24; // Espaçamento extra para melhor visualização
-                              const offset = navbarHeight + headerHeight + extraPadding;
-                              
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - offset;
-                              
-                              window.scrollTo({
-                                top: Math.max(0, offsetPosition),
-                                behavior: 'smooth'
-                              });
-                            }
-                          }, 10);
-                        }
-                      };
-
                       if (sectionId) {
                         return (
                           <a
                             key={index}
                             href={`#${sectionId}`}
-                            onClick={handleClick}
-                            className="text-gray-700 text-base hover:text-[#7CFF6B] transition-colors cursor-pointer block"
+                            onClick={(e) => {
+                              const element = document.getElementById(sectionId);
+                              if (!element) return; // sem âncora → deixa o tag inerte (sem clique morto)
+                              e.preventDefault();
+                              const offset = 64 + 120 + 24;
+                              const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+                              window.scrollTo({ top: Math.max(0, offsetPosition), behavior: "smooth" });
+                            }}
+                            className="text-gray-700 text-base hover:text-[#3d9e32] transition-colors block"
                           >
                             {servico}
                           </a>
                         );
                       }
-                      
                       return (
                         <p key={index} className="text-gray-700 text-base">
                           {servico}
@@ -1053,6 +1056,36 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
         </div>
       </div>
       
+      {/* CTA de conversão — fecha o case com um caminho pra falar com a Kaleidos */}
+      <section className="bg-[#0A0A0A] px-6 py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            {isEn ? "Want results like these?" : "Quer um resultado desses?"}
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-gray-300 sm:text-lg">
+            {isEn
+              ? "Let's build the marketing of your crypto/web3 project together."
+              : "Vamos construir juntos o marketing do seu projeto cripto ou web3."}
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={`https://wa.me/5512997796835?text=${encodeURIComponent(isEn ? "Hi Kaleidos, I saw a case study and want to talk." : "Oi Kaleidos, vi um case e quero falar com vocês.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-8 py-3.5 text-sm font-semibold text-black transition-all hover:brightness-95"
+            >
+              {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"}
+            </a>
+            <a
+              href="/contato"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+            >
+              {isEn ? "Book a meeting" : "Agendar reunião"}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <FooterDemo />
     </div>

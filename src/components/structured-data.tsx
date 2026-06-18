@@ -21,7 +21,7 @@ export function StructuredData() {
     "description":
       "Agência de marketing digital especializada em cripto, Web3 e fintech. Estratégia, conteúdo, IA e growth para projetos que levam o próprio trabalho a sério.",
     "slogan": "Criamos conteúdo que realmente constrói atenção.",
-    "foundingDate": "2023",
+    "foundingDate": "2020",
     "knowsAbout": [
       "Marketing Digital",
       "Marketing Cripto",

@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Como se Preparar para o Próximo Bull Market — Playbook Kaleidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KALEIDOS · PLAYBOOK — COMO SE PREPARAR PARA O PRÓXIMO BULL
+   Estilo Lunar (report limpo) · marca Kaleidos · accent âmbar
+   ============================================================ */
+:root{
+  --bg:#0d0d12;
+  --ink:#141118;
+  --body:#26222c;
+  --muted:#6c6676;
+  --line:#e7e2ec;
+  --paper:#ffffff;
+  --amber:#E0913A;
+  --amber-d:#b86f22;
+  --amber-soft:#fcf2e6;
+  --pink:#d262b2;
+  --pink-d:#a8458b;
+  --green:#3fae73;
+  --red:#d9534f;
+  --orange:#ff9a3d;
+  --blue:#5aa6ff;
+  --cream:#f4f1ea;
+  --mono:'IBM Plex Mono', monospace;
+  --sans:'Inter', sans-serif;
+  --serif:'Fraunces', serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ background:#3a3640; font-family:var(--sans); color:var(--body); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+@page{ size:A4; margin:0; }
+
+.page{
+  position:relative;
+  width:210mm; height:297mm;
+  background:var(--paper);
+  overflow:hidden;
+  margin:0 auto 10px auto;
+  page-break-after:always;
+  break-after:page;
+}
+.page:last-child{ page-break-after:auto; }
+
+/* ---------- página de conteúdo (branca) ---------- */
+.content{
+  padding:24mm 22mm 20mm 22mm;
+  display:flex; flex-direction:column; height:100%;
+}
+.content::before{ /* linha âmbar no topo */
+  content:""; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,var(--amber) 0%, var(--pink) 100%);
+}
+.runhead{
+  position:absolute; top:9mm; left:22mm; right:22mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.22em;
+  text-transform:uppercase; color:#b8b2c0;
+}
+.runhead .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--amber); margin-right:7px; vertical-align:middle; }
+.folio{
+  position:absolute; bottom:11mm; left:0; right:0; text-align:center;
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em; color:#b3adbb;
+}
+.folio b{ color:var(--amber-d); font-weight:600; }
+
+/* ---------- tipografia de capítulo ---------- */
+.chap-num{
+  font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.30em;
+  text-transform:uppercase; color:var(--amber-d); margin-bottom:9px;
+}
+.chap-num::before{ content:"[ "; color:#e3cdb3; }
+.chap-num::after{ content:" ]"; color:#e3cdb3; }
+h1.chap{
+  font-family:var(--serif); font-weight:800; font-size:31px; line-height:1.02;
+  letter-spacing:-.015em; color:var(--amber-d);
+  margin-bottom:16px; max-width:96%;
+}
+h1.chap .ink{ color:var(--ink); }
+h2{
+  font-family:var(--sans); font-weight:700; font-size:14.5px; letter-spacing:-.005em;
+  color:var(--ink); margin:18px 0 8px;
+  display:flex; align-items:baseline; gap:9px;
+}
+h2::before{
+  content:""; display:inline-block; width:14px; height:2px; background:var(--amber);
+  transform:translateY(-4px); flex:0 0 auto;
+}
+p{ font-size:10.6px; line-height:1.62; color:var(--body); margin-bottom:9px; }
+p strong, li strong{ color:var(--ink); font-weight:700; }
+a{ color:var(--amber-d); text-decoration:none; }
+.src{ font-family:var(--mono); font-size:8.3px; color:var(--muted); }
+.src a{ color:var(--amber-d); }
+
+ul.bul, ol.bul{ margin:4px 0 10px; padding-left:0; list-style:none; }
+ul.bul li, ol.bul li{
+  font-size:10.4px; line-height:1.55; color:var(--body);
+  padding-left:18px; margin-bottom:7px; position:relative;
+}
+ul.bul li::before{
+  content:""; position:absolute; left:2px; top:7px;
+  width:6px; height:6px; background:var(--amber); border-radius:1px; transform:rotate(45deg);
+}
+ol.bul{ counter-reset:k; }
+ol.bul li{ padding-left:26px; }
+ol.bul li::before{
+  counter-increment:k; content:counter(k);
+  position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:9px; font-weight:600; color:#fff;
+  background:var(--amber); width:16px; height:16px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* checklist list */
+ul.check{ list-style:none; margin:6px 0 12px; }
+ul.check li{
+  font-size:10.5px; line-height:1.5; color:var(--body);
+  padding:7px 0 7px 26px; position:relative; border-bottom:1px dashed var(--line);
+}
+ul.check li::before{
+  content:""; position:absolute; left:0; top:7px;
+  width:15px; height:15px; border:1.6px solid var(--amber); border-radius:4px; background:#fff;
+}
+ul.check li strong{ color:var(--ink); }
+
+/* ---------- quadro "Retenha" ---------- */
+.retain{
+  margin-top:auto; margin-bottom:2mm;
+  background:linear-gradient(100deg, #15110d 0%, #2a1c0d 55%, #3a2710 100%);
+  border-left:4px solid var(--amber);
+  border-radius:8px; padding:14px 18px 14px 16px; color:var(--cream);
+}
+.retain .lab{
+  font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--amber); margin-bottom:5px;
+}
+.retain p{ color:#f3ece2; font-size:10.6px; line-height:1.5; margin:0; font-weight:500; }
+
+/* ---------- tabelas comparativas (estilo Lunar) ---------- */
+.tbl-wrap{ margin:12px 0 12px; border-radius:9px; overflow:hidden; box-shadow:0 1px 0 var(--line), 0 1px 2.5px rgba(40,30,20,.18); }
+.tbl-cap{
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 6px 2px;
+}
+.tbl-cap b{ color:var(--amber-d); }
+table.cmp{ width:100%; border-collapse:collapse; font-size:9.9px; }
+table.cmp thead th{
+  text-align:left; padding:9px 12px; font-weight:700; font-size:9.6px;
+  color:#fff; letter-spacing:.01em;
+  background:linear-gradient(135deg, #15110d 0%, #34230f 100%);
+}
+table.cmp thead th:first-child{ background:linear-gradient(135deg,#221d29 0%,#2a2330 100%); color:#cfc8d6; }
+table.cmp thead th.bad{ background:linear-gradient(135deg,#2a2330 0%,#3a2a22 100%); }
+table.cmp thead th.good{ background:linear-gradient(135deg,#9c6520 0%,var(--amber) 100%); }
+table.cmp td{
+  padding:8px 12px; vertical-align:top; line-height:1.42; color:var(--body);
+  border-bottom:1px solid var(--line);
+}
+table.cmp tbody tr:nth-child(odd) td{ background:#fbf8f4; }
+table.cmp td.lab{ font-weight:700; color:var(--ink); width:22%; background:#f5efe7 !important; }
+table.cmp td.good{ color:var(--amber-d); font-weight:600; }
+table.cmp tr:last-child td{ border-bottom:0; }
+.tbl-wrap.tight table.cmp td{ padding:6px 11px; line-height:1.34; }
+.tbl-wrap.tight table.cmp thead th{ padding:7px 11px; }
+
+/* tabela de dados (uniforme) */
+table.data{ width:100%; border-collapse:collapse; font-size:9.6px; }
+table.data thead th{
+  text-align:left; padding:8px 11px; font-weight:700; font-size:9.2px; color:#fff;
+  background:linear-gradient(135deg, #15110d 0%, #34230f 100%); letter-spacing:.01em;
+}
+table.data td{ padding:7px 11px; vertical-align:top; line-height:1.4; border-bottom:1px solid var(--line); color:var(--body); }
+table.data td.k{ font-weight:700; color:var(--ink); white-space:nowrap; }
+table.data tbody tr:nth-child(odd) td{ background:#fbf8f4; }
+table.data tr:last-child td{ border-bottom:0; }
+table.data .amber{ color:var(--amber-d); font-weight:700; }
+
+/* ---------- card de citação (estilo destaque) ---------- */
+.quotecard{
+  border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:10px;
+  padding:13px 16px 12px; background:#fff; box-shadow:0 8px 24px -20px rgba(40,30,20,.5);
+  margin:12px 0;
+}
+.quotecard .ql{ font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--amber-d); margin-bottom:6px; }
+.quotecard .qt{ font-family:var(--serif); font-style:italic; font-size:13px; line-height:1.45; color:var(--ink); }
+.quotecard .qa{ margin-top:7px; font-family:var(--mono); font-size:8.4px; color:var(--muted); letter-spacing:.04em; }
+
+/* ---------- prints de dado ---------- */
+.figgrid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:11px 0; }
+.fig{
+  border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;
+  box-shadow:0 6px 18px -15px rgba(40,30,20,.5); display:flex; flex-direction:column;
+}
+.fig img{ width:100%; height:auto; max-height:124px; object-fit:cover; object-position:top center; display:block; background:#fff; }
+.fig.tall img{ max-height:158px; }
+.fig.fg img{ object-position:center bottom; }
+.fig .cap{
+  padding:7px 10px; font-family:var(--mono); font-size:8px; letter-spacing:.04em;
+  color:var(--muted); line-height:1.4; border-top:1px solid var(--line);
+}
+.fig .cap b{ color:var(--ink); }
+.fig .cap .amber{ color:var(--amber-d); }
+
+/* ---------- charts ---------- */
+.chartbox{
+  border:1px solid var(--line); border-radius:10px; padding:12px 14px 10px; background:#fff;
+  margin:11px 0; box-shadow:0 6px 18px -16px rgba(40,30,20,.5);
+}
+.chartbox .ttl{ font-family:var(--mono); font-size:8.8px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.chartbox .ttl b{ color:var(--amber-d); }
+.chartbox canvas{ display:block; margin:0 auto; }
+.chartnote{ font-size:8.8px; color:var(--muted); margin-top:6px; line-height:1.4; }
+.chartnote b{ color:var(--ink); }
+
+/* ---------- callout / nota / lead / pull ---------- */
+.note{
+  background:var(--amber-soft); border:1px solid #f0e0cb; border-radius:8px;
+  padding:10px 13px; margin:10px 0; font-size:9.8px; line-height:1.5; color:#5a3f1f;
+}
+.note b{ color:var(--amber-d); }
+.lead{
+  font-size:12px; line-height:1.55; color:var(--ink); font-weight:500;
+  border-left:3px solid var(--amber); padding-left:13px; margin:2px 0 14px;
+}
+.pull{
+  font-family:var(--serif); font-style:italic; font-weight:600; font-size:15px; line-height:1.38; color:var(--amber-d);
+  margin:13px 0; padding:0 0 0 2px;
+}
+.kicker{ font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:14px 0 4px; }
+
+/* ---------- públicos / cards de 3 ---------- */
+.cardgrid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; margin:10px 0 4px; }
+.cardgrid2{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:10px 0 4px; }
+.scard{ border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:#fff; position:relative; overflow:hidden; }
+.scard::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:4px; }
+.scard.c1::before{ background:var(--amber); } .scard.c2::before{ background:var(--pink); }
+.scard.c3::before{ background:var(--green); } .scard.c4::before{ background:var(--blue); }
+.scard h4{ font-size:11.5px; font-weight:800; color:var(--ink); margin-bottom:5px; }
+.scard .pr{ font-size:9px; line-height:1.45; color:var(--body); margin-bottom:4px; }
+.scard .pr b{ font-family:var(--mono); font-size:7.6px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; display:block; }
+
+/* ---------- slots de influencer (em breve) ---------- */
+.slotgrid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:14px 0; }
+.slot{
+  border:1px solid var(--line); border-radius:12px; background:#fff; padding:14px 15px;
+  box-shadow:0 6px 18px -16px rgba(40,30,20,.5); position:relative;
+}
+.slot .top{ display:flex; align-items:center; gap:11px; margin-bottom:10px; }
+.slot .av{
+  width:42px; height:42px; border-radius:50%; flex:0 0 auto;
+  background:repeating-linear-gradient(135deg,#efe7dc,#efe7dc 6px,#f6f0e7 6px,#f6f0e7 12px);
+  border:1.5px dashed #d8c6ad;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:18px; color:#c5a878;
+}
+.slot .who .nm{ font-weight:700; font-size:11px; color:#9a8a76; }
+.slot .who .hd{ font-family:var(--mono); font-size:8.6px; color:#b7a68f; letter-spacing:.04em; }
+.slot .player{
+  display:flex; align-items:center; gap:10px; padding:9px 11px; border-radius:9px;
+  background:#faf6f0; border:1px solid #f0e6d8;
+}
+.slot .player .pbtn{
+  width:26px; height:26px; border-radius:50%; flex:0 0 auto; background:var(--amber);
+  display:flex; align-items:center; justify-content:center; opacity:.55;
+}
+.slot .player .pbtn svg{ width:11px; height:11px; }
+.slot .player .wave{ flex:1; height:18px; display:flex; align-items:center; gap:2.5px; }
+.slot .player .wave i{ display:block; width:2.5px; border-radius:2px; background:#e3cdb0; }
+.slot .player .tg{ font-family:var(--mono); font-size:8px; color:#bda988; letter-spacing:.06em; }
+.slot .badge{
+  position:absolute; top:13px; right:14px; font-family:var(--mono); font-size:7.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--amber-d); background:var(--amber-soft);
+  border:1px solid #f0e0cb; border-radius:999px; padding:3px 9px;
+}
+.slot .qz{ margin-top:10px; font-family:var(--serif); font-style:italic; font-size:10.5px; line-height:1.4; color:#b1a18c; }
+
+/* ============================================================
+   CAPA / LEGAL (escuras)
+   ============================================================ */
+.dark{ background:var(--bg); color:var(--cream); }
+.cover-full{ position:absolute; inset:0; }
+.cover-full img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ---------- capa desenhada ---------- */
+.cover{ position:absolute; inset:0; background:radial-gradient(120% 90% at 50% 38%, #1a140d 0%, #0d0b08 60%, #08070a 100%); overflow:hidden; }
+.cover .coverimg{ position:absolute; inset:0; }
+.cover .coverimg img{ width:100%; height:100%; object-fit:cover; opacity:.92; }
+.cover .cgrad{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,7,10,.55) 0%, rgba(8,7,10,0) 30%, rgba(8,7,10,.15) 62%, rgba(8,7,10,.92) 100%); }
+.cover .ctop{ position:absolute; top:24mm; left:22mm; right:22mm; display:flex; justify-content:space-between; align-items:center; }
+.cover .brandmark{ font-family:var(--mono); letter-spacing:.42em; font-size:13px; text-transform:uppercase; color:#fff; }
+.cover .brandmark .d{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--amber); margin-right:11px; box-shadow:0 0 14px var(--amber); vertical-align:middle; }
+.cover .vol{ font-family:var(--mono); font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:rgba(244,241,234,.55); }
+.cover .cbottom{ position:absolute; left:22mm; right:22mm; bottom:26mm; }
+.cover .eyebrow{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--amber); margin-bottom:14px; }
+.cover h1{ font-family:var(--serif); font-weight:800; font-size:52px; line-height:.98; letter-spacing:-.02em; color:#fff; margin-bottom:16px; }
+.cover h1 .am{ color:var(--amber); font-style:italic; font-weight:600; }
+.cover .sub{ font-size:12.5px; line-height:1.55; color:rgba(244,241,234,.78); max-width:78%; margin-bottom:20px; }
+.cover .meta{ display:flex; gap:22px; font-family:var(--mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,241,234,.5); border-top:1px solid rgba(255,255,255,.14); padding-top:14px; }
+.cover .meta b{ color:var(--amber); font-weight:600; }
+
+/* ---------- sumário (TOC) ---------- */
+.toc{ padding:30mm 24mm 22mm; }
+.toc .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--amber-d); margin-bottom:8px; }
+.toc h1{ font-family:var(--serif); font-size:38px; font-weight:800; letter-spacing:-.02em; color:var(--ink); line-height:1; margin-bottom:6px; }
+.toc h1 .pk{ color:var(--amber); font-style:italic; }
+.toc .desc{ font-size:11px; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.toc ol{ list-style:none; counter-reset:t; }
+.toc li{
+  counter-increment:t; display:flex; align-items:baseline; gap:12px;
+  padding:8.5px 0; border-bottom:1px dashed var(--line);
+}
+.toc li .n{ font-family:var(--mono); font-size:10px; color:var(--amber-d); width:26px; font-weight:600; }
+.toc li .t{ font-weight:600; font-size:11.5px; color:var(--ink); }
+.toc li .t small{ display:block; font-weight:400; font-size:9px; color:var(--muted); margin-top:2px; }
+.toc li .dots{ flex:1; border-bottom:1px dotted #d8cbbb; transform:translateY(-3px); margin:0 4px; }
+.toc li .pg{ font-family:var(--mono); font-size:11px; color:var(--ink); font-weight:600; }
+.toc li.section .t{ color:var(--amber-d); text-transform:uppercase; font-size:10px; letter-spacing:.1em; }
+
+/* ---------- intro ---------- */
+.intro .big{
+  font-family:var(--serif); font-size:17px; line-height:1.42; color:var(--ink); font-weight:500;
+  margin-bottom:14px; letter-spacing:-.01em;
+}
+
+/* ---------- legal / contracapa ---------- */
+.legal{ padding:32mm 26mm; display:flex; flex-direction:column; height:100%; }
+.legal .brand{ font-family:var(--mono); letter-spacing:.4em; font-size:15px; text-transform:uppercase; color:#fff; }
+.legal .brand .d{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--amber); margin-right:12px; box-shadow:0 0 12px var(--amber); vertical-align:middle; }
+.legal h2{ font-family:var(--serif); color:#fff; font-size:27px; font-weight:800; line-height:1.08; margin:22px 0 12px; letter-spacing:-.01em; }
+.legal h2::before{ display:none; }
+.legal h2 .am{ color:var(--amber); font-style:italic; }
+.legal p{ color:rgba(244,241,234,.78); font-size:10px; line-height:1.6; }
+.legal .amber{ color:var(--amber); }
+.legal .hr{ height:1px; background:rgba(255,255,255,.12); margin:18px 0; }
+.legal .ctas{ display:flex; gap:11px; margin-top:8px; flex-wrap:wrap; }
+.legal .cta-dark{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:600;
+  letter-spacing:.10em; text-transform:uppercase; color:var(--bg); background:var(--amber);
+  padding:11px 19px; border-radius:999px;
+}
+.legal .cta-ghost{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:600;
+  letter-spacing:.10em; text-transform:uppercase; color:#fff; border:1px solid rgba(255,255,255,.3);
+  padding:11px 19px; border-radius:999px;
+}
+.legal .src-block{ font-family:var(--mono); font-size:8px; line-height:1.7; color:rgba(244,241,234,.45); }
+.legal .src-block a{ color:rgba(224,145,58,.85); }
+.legal .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(244,241,234,.4); }
+.legal .sign{ font-family:var(--serif); font-style:italic; font-size:13px; color:rgba(244,241,234,.6); margin-top:14px; }
+.bracket{ position:absolute; width:30px; height:30px; border:2px solid var(--amber); opacity:.7; }
+.bracket.tl{ top:26px; left:26px; border-right:0; border-bottom:0; }
+.bracket.tr{ top:26px; right:26px; border-left:0; border-bottom:0; }
+.bracket.bl{ bottom:26px; left:26px; border-right:0; border-top:0; }
+.bracket.br{ bottom:26px; right:26px; border-left:0; border-top:0; }
+
+/* aviso topo */
+.warnbar{
+  background:#fbf3e8; border:1px solid #f0e0cb; border-radius:8px; padding:9px 13px; margin:0 0 14px;
+  font-size:9.4px; line-height:1.5; color:#6e5430;
+}
+.warnbar b{ color:var(--amber-d); }
+</style>
+</head>
+<body>
+
+<!-- ============================== CAPA ============================== -->
+<section class="page dark">
+  <div class="cover">
+    <div class="coverimg"><img src="assets/cover/capa.png" alt="Curva de ciclo com touro âmbar"></div>
+    <div class="cgrad"></div>
+    <div class="ctop">
+      <div class="brandmark"><span class="d"></span>KALEIDOS</div>
+      <div class="vol">Playbook · Edição Ciclos</div>
+    </div>
+    <div class="cbottom">
+      <div class="eyebrow">[ O guia do investidor de varejo ]</div>
+      <h1>Como se preparar<br>para o próximo<br><span class="am">bull market</span></h1>
+      <div class="sub">Os ciclos, as narrativas e o plano completo: ler onde estamos, acumular no tédio, dimensionar por convicção e, a parte que ninguém ensina, saber a hora de sair.</div>
+      <div class="meta">
+        <span><b>9</b> capítulos</span>
+        <span><b>13</b> anos de ciclos</span>
+        <span>Conteúdo <b>educacional</b></span>
+        <span>kaleidos.com.br</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================== -->
+<section class="page">
+  <div class="content toc">
+    <div class="kick">[ Sumário ]</div>
+    <h1>O <span class="pk">PLANO</span></h1>
+    <div class="desc">Não é sobre acertar o topo nem o fundo. É sobre chegar preparado e sobreviver tempo suficiente pra que os acertos componham.</div>
+    <ol>
+      <li><span class="n">—</span><span class="t">Introdução<small>Por que a maioria chega no pior momento, e como evitar</small></span><span class="dots"></span><span class="pg">04</span></li>
+      <li><span class="n">01</span><span class="t">Os ciclos cripto, decodificados<small>O que 2013, 2017, 2021 e 2024-25 ensinam, e o relógio de 4 anos</small></span><span class="dots"></span><span class="pg">05</span></li>
+      <li><span class="n">02</span><span class="t">As narrativas que fizeram cada ciclo<small>De ICO a RWA: quem ganhou e quem se queimou em cada onda</small></span><span class="dots"></span><span class="pg">07</span></li>
+      <li><span class="n">03</span><span class="t">Como ler onde estamos no ciclo<small>O painel de indicadores explicado do zero</small></span><span class="dots"></span><span class="pg">10</span></li>
+      <li><span class="n">04</span><span class="t">Como se preparar ANTES do bull<small>Tese, alocação, DCA, custódia e os erros do varejo</small></span><span class="dots"></span><span class="pg">12</span></li>
+      <li><span class="n">05</span><span class="t">As próximas narrativas pra ficar de olho<small>RWA, stablecoins, agentes, InfoFi, prediction markets</small></span><span class="dots"></span><span class="pg">14</span></li>
+      <li><span class="n">06</span><span class="t">Quando SAIR<small>A gestão de saída que separa quem realiza de quem devolve</small></span><span class="dots"></span><span class="pg">16</span></li>
+      <li><span class="n">07</span><span class="t">A palavra dos maiores nomes do Brasil<small>A leitura de quem está no jogo há ciclos, em áudio</small></span><span class="dots"></span><span class="pg">18</span></li>
+      <li><span class="n">08</span><span class="t">O checklist do próximo ciclo<small>Tudo em uma página de ação</small></span><span class="dots"></span><span class="pg">19</span></li>
+      <li><span class="n">—</span><span class="t">Aviso &amp; quem fez este playbook</span><span class="dots"></span><span class="pg">20</span></li>
+    </ol>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Kaleidos · Como se preparar pro próximo bull market</span><span>kaleidos.com.br</span></div>
+  <div class="folio">— <b>02</b> —</div>
+</section>
+
+<!-- ============================== INTRODUÇÃO ============================== -->
+<section class="page">
+  <div class="content intro">
+    <div class="chap-num">Introdução</div>
+    <h1 class="chap"><span class="ink">A MAIORIA CHEGA</span><br>NO PIOR MOMENTO POSSÍVEL</h1>
+
+    <div class="warnbar"><b>Aviso.</b> Este material é educacional. Não é recomendação de investimento, nem promessa de retorno. Cripto é volátil e você pode perder dinheiro. Use isto pra pensar melhor, não pra ter alguém pra culpar.</div>
+
+    <p class="big">A maioria das pessoas chega no cripto no topo: quando o preço já subiu, o vizinho já ficou rico e a manchete já gritou. Compra na euforia, segura na queda, vende no desespero, e sai jurando que cripto é golpe.</p>
+    <p>Não precisa ser assim. O cripto se move em <strong>ciclos</strong>. Eles não são idênticos, mas rimam: um gatilho de oferta (o halving), uma onda de atenção (a narrativa da vez), um pico de ganância, e depois um inverno que limpa quem entrou sem plano. Quem entende esse ritmo não tenta adivinhar o futuro. Constrói um <strong>plano</strong> pra cada fase: o que fazer no tédio do bear, como ler onde o mercado está, como entrar sem se queimar, e a parte que quase ninguém ensina, <strong>como e quando sair</strong>.</p>
+
+    <h2>O plano, em nove capítulos</h2>
+    <ol class="bul">
+      <li><strong>Os ciclos cripto, decodificados.</strong> O que 2013, 2017, 2021 e 2024-25 ensinam, e o padrão de quatro anos.</li>
+      <li><strong>As narrativas que fizeram cada ciclo.</strong> De ICO a RWA, quem ganhou e quem se queimou em cada onda.</li>
+      <li><strong>Como ler onde estamos no ciclo.</strong> Um painel de indicadores explicado do zero.</li>
+      <li><strong>Como se preparar ANTES do bull.</strong> Tese, alocação, custódia e os erros do varejo.</li>
+      <li><strong>As próximas narrativas pra ficar de olho.</strong> Onde a atenção provavelmente vai.</li>
+      <li><strong>Quando SAIR.</strong> A gestão de saída que separa quem realiza lucro de quem devolve tudo.</li>
+      <li><strong>A palavra dos maiores nomes do Brasil.</strong> A leitura de quem está no jogo há ciclos.</li>
+      <li><strong>O checklist do próximo ciclo.</strong> Tudo em uma página de ação.</li>
+    </ol>
+
+    <p>Não é sobre acertar o topo nem o fundo. Ninguém acerta. É sobre <strong>chegar preparado</strong>, agir com plano em vez de emoção, e sobreviver tempo suficiente pra que os acertos componham. O mercado paga a paciência e cobra caro a pressa.</p>
+
+    <div class="retain">
+      <div class="lab">A promessa do guia</div>
+      <p>Um plano pra cada fase do ciclo. Acumular no tédio, ler a temperatura com dados, dimensionar por convicção e sair com disciplina. Vamos.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Introdução</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>04</b> —</div>
+</section>
+
+<!-- ============================== CAP 1 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 01</div>
+    <h1 class="chap">OS CICLOS CRIPTO, <span class="ink">DECODIFICADOS</span></h1>
+    <p class="lead">A cada quatro anos, mais ou menos, o Bitcoin faz a mesma coisa: sobe até a euforia, despenca até o desespero e recomeça. Quem entende esse relógio não compra topo nem vende fundo por acidente. Quem ignora ele acha que "dessa vez é diferente" e perde o mesmo dinheiro de sempre.</p>
+
+    <p>Desde 2012, o Bitcoin repetiu um padrão tão parecido que virou quase folclore: o <strong>ciclo de quatro anos</strong>. Não é magia. É a combinação de três forças que se alinham de tempos em tempos: a oferta de moedas novas caindo pela metade, a atenção do público explodindo, e a alavancagem (dinheiro emprestado pra apostar mais) inflando tudo até estourar.</p>
+
+    <div class="cardgrid2">
+      <div class="scard c1"><h4>Halving</h4><div class="pr">A cada ~210 mil blocos (~4 anos), a recompensa dos mineradores cai pela metade. Reduz a criação de BTC novo. É o evento âncora de todo ciclo.</div></div>
+      <div class="scard c2"><h4>Bull / Bear</h4><div class="pr">Touro ataca de baixo pra cima (preços subindo, ganância). Urso ataca de cima pra baixo (queda, pânico, capitulação).</div></div>
+    </div>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>ATH do Bitcoin por ciclo</b> — escala logarítmica</div>
+      <canvas id="chart-ath" width="500" height="220"></canvas>
+      <div class="chartnote">Em todos os ciclos o topo veio <b>12 a 18 meses depois do halving</b>, no 2º semestre do ano seguinte. <span class="src">Fonte: CoinGecko · altcoininvestor · Yahoo Finance · bitkan</span></div>
+    </div>
+
+    <h2>Quatro voltas no mesmo relógio</h2>
+    <p><strong>Ciclo 1 (2012-2015):</strong> o 1º halving (28/nov/2012) cortou a recompensa de 50 pra 25 BTC, com o BTC a ~US$ 12. Topo em 30/nov/2013, perto de <strong>US$ 1.127</strong> (quase 90× em um ano). Fundo em jan/2015, na casa dos US$ 150-200, queda de mais de 80%. <span class="src">Fonte: <a href="https://www.coingecko.com/research/publications/when-bitcoin-all-time-highs">CoinGecko</a></span></p>
+    <p><strong>Ciclo 2 (2016-2018):</strong> 2º halving (9/jul/2016, 25→12,5 BTC), BTC a ~US$ 650. Topo em 17/dez/2017 a <strong>~US$ 19.700</strong>, o ciclo das ICOs e do almoço de domingo. Fundo em dez/2018 a ~US$ 3.200, queda de ~83%. <span class="src">Fonte: <a href="https://altcoininvestor.com/history-of-bitcoin-bull-bear-market/">altcoininvestor</a></span></p>
+    <p><strong>Ciclo 3 (2020-2022):</strong> 3º halving (11/mai/2020, 12,5→6,25 BTC). Ciclo de dois topos: ~US$ 64 mil em abr/2021 e o ATH definitivo em 10/nov/2021, perto de <strong>US$ 69.000</strong>. Foi o ciclo de DeFi, NFT e tesourarias. O urso de 2022 deixou cadáveres: Terra/Luna, Celsius, FTX. Fundo a ~US$ 15.500, queda de ~77%. <span class="src">Fonte: <a href="https://finance.yahoo.com/news/bitcoin-hits-new-all-time-high-near-69000-before-tumbling-151901990.html">Yahoo Finance</a></span></p>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 01 · Ciclos decodificados</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>05</b> —</div>
+</section>
+
+<!-- ============================== CAP 1 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 01 · cont.</div>
+    <h1 class="chap">O ETF MUDA <span class="ink">O JOGO</span></h1>
+
+    <p><strong>Ciclo 4 (2024-2025):</strong> aqui o roteiro ganhou capítulo novo. Antes do halving, em 10/jan/2024, a SEC aprovou <strong>11 ETFs de Bitcoin à vista</strong>: qualquer pessoa com conta numa corretora tradicional passou a comprar exposição a BTC como quem compra ação. O 4º halving veio depois (19/abr/2024, 6,25→3,125 BTC). A combinação empurrou o BTC ao <strong>ATH de ~US$ 126.000 em 6/out/2025</strong>. Só o IBIT da BlackRock acumulou mais de <strong>US$ 62 bilhões</strong> em entradas líquidas. <span class="src">Fonte: <a href="https://www.theblock.co/post/282319/bitcoin-all-time-high">The Block</a></span></p>
+
+    <div class="figgrid">
+      <div class="fig tall"><img src="assets/news/coingecko-btc-price.png" alt="Gráfico de preço histórico do BTC na CoinGecko"><div class="cap"><b>CoinGecko</b> · preço histórico do BTC<br>O gráfico de ciclos do Bitcoin, <span class="amber">topos e fundos visíveis a olho nu</span>.</div></div>
+      <div class="fig tall"><img src="assets/news/theblock-btc-ath-etf.png" alt="The Block — Bitcoin ATH e aprovação dos ETFs"><div class="cap"><b>The Block</b> · jan/2024<br>SEC aprova <span class="amber">11 ETFs spot de Bitcoin</span>: a porta do dinheiro institucional.</div></div>
+    </div>
+
+    <div class="tbl-cap">[ Tabela ] <b>13 anos de ciclos</b> em uma página</div>
+    <div class="tbl-wrap tight">
+      <table class="data">
+        <thead><tr><th>Ciclo</th><th>Halving (gatilho)</th><th>Topo (ATH)</th><th>Fundo seguinte</th><th>Queda</th></tr></thead>
+        <tbody>
+          <tr><td class="k">1</td><td>28/nov/2012 · 50→25</td><td class="amber">~US$ 1.127 · nov/2013</td><td>~US$ 150-200 · jan/2015</td><td>~85%</td></tr>
+          <tr><td class="k">2</td><td>9/jul/2016 · 25→12,5</td><td class="amber">~US$ 19.700 · dez/2017</td><td>~US$ 3.200 · dez/2018</td><td>~83%</td></tr>
+          <tr><td class="k">3</td><td>11/mai/2020 · 12,5→6,25</td><td class="amber">~US$ 69.000 · nov/2021</td><td>~US$ 15.500 · nov/2022</td><td>~77%</td></tr>
+          <tr><td class="k">4</td><td>19/abr/2024 · 6,25→3,125 (+ETF)</td><td class="amber">~US$ 126.000 · out/2025</td><td>a definir</td><td>a definir</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Por que o relógio bate, e onde pode estar quebrando</h2>
+    <p>Três motores se alinham: <strong>oferta</strong> (o halving aperta a criação de BTC novo), <strong>atenção</strong> (preço subindo vira notícia, notícia atrai gente, gente compra, ciclo de reflexividade) e <strong>alavancagem</strong> (na euforia todo mundo aposta com dinheiro emprestado, o que turbina a subida e a queda em cascata). <span class="src">Fonte: <a href="https://www.fidelity.com/learning-center/trading-investing/four-year-bitcoin-and-crypto-cycles">Fidelity</a></span></p>
+    <p>Mas há sinais de que o ciclo 4 se comporta diferente: o <strong>ETF mudou quem manda</strong> (institucional rebalanceia, não faz FOMO de Twitter, o que pode amortecer topos e fundos); o <strong>efeito do halving diminui</strong> (cada corte mexe numa fatia menor da oferta total); e a <strong>macro pesa mais</strong> (juros, liquidez, regulação). O ciclo de quatro anos te dá uma <strong>expectativa de probabilidade, não uma profecia</strong>. <span class="src">Fonte: <a href="https://www.calebandbrown.com/blog/is-bitcoins-four-year-cycle-broken/">Caleb &amp; Brown</a></span></p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Se o ciclo é a maré, os próximos capítulos te ensinam a ler a altura da água (Cap 3), a se preparar antes da enchente (Cap 4) e a sair da praia antes da ressaca (Cap 6). O mapa é o melhor que temos, mas mapa não é território.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 01 · O ETF muda o jogo</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>06</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02</div>
+    <h1 class="chap">AS NARRATIVAS QUE <span class="ink">FIZERAM CADA CICLO</span></h1>
+    <p class="lead">Todo bull market sobe carregando uma frase. "Capte milhões com um whitepaper." "Deposite e ganhe token." "Compre o macaco e entre no clube." "Tokenize o mundo real." É sempre uma história puxando o capital, não o contrário. O dinheiro grande foi feito por quem entrou na narrativa antes do consenso e saiu na saturação.</p>
+
+    <h2>Por que narrativa é o motor</h2>
+    <p>Uma ação tem fluxo de caixa, lucro, múltiplo. Um token na largada tem uma promessa: o preço é a soma das expectativas sobre uma história que ainda não aconteceu. Por isso o mercado roda em <strong>narrative trading</strong>: capital alocado por qual história esquenta, não por qual protocolo tem o melhor fundamento. Quando uma narrativa pega fogo, todo token com aquela etiqueta sobe junto, bom ou ruim. Três consequências pra você:</p>
+    <ul class="bul">
+      <li><strong>A história roteia o capital.</strong> Você ganha estando na narrativa certa na hora certa, mesmo num projeto medíocre, e perde na narrativa errada mesmo num projeto bom.</li>
+      <li><strong>A narrativa tem meia-vida.</strong> Nasce de nicho, vira consenso, satura e morre. Comprar narrativa madura é comprar perto do topo.</li>
+      <li><strong>A maioria das narrativas morre</strong> e leva o dinheiro de quem ficou junto. A cada ciclo, uma ou duas viram infraestrutura. As outras viram gráfico de colapso.</li>
+    </ul>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>O que sobrou de cada narrativa</b> — resíduo de valor (qualitativo)</div>
+      <canvas id="chart-narrativas" width="500" height="240"></canvas>
+      <div class="chartnote">Verde = virou infra permanente · âmbar = misto/em aberto · vermelho = quase nada sobrou. <b>DeFi e RWA tinham demanda paga depois do hype; ICO e play-to-earn, não.</b></div>
+    </div>
+
+    <p><strong>1. ICO (2017):</strong> vender o futuro num PDF. Mais de 700 ICOs captaram <strong>US$ 5-6 bi</strong> em 2017 (Filecoin US$ 257 mi, Tezos US$ 232 mi); somando 2017-18, ~US$ 20 bi. Quando o evento de captação é maior que o produto, você compra expectativa, e expectativa sem entrega vence rápido. Quase nada sobrou.</p>
+    <p><strong>2. DeFi Summer (2020):</strong> te pagar pra usar o produto. O Compound distribuiu COMP a quem usava, nasceu o yield farming. COMP foi a <strong>US$ 372</strong>, YFI de US$ 0 a US$ 40 mil em dois meses. Boa parte era insustentável, mas a infra ficou: empréstimo onchain, DEXs, stablecoins. A pergunta-teste: as pessoas continuariam usando sem token grátis?</p>
+
+    <div class="retain">
+      <div class="lab">Lição que liga as duas</div>
+      <p>Quando o evento (captação, incentivo) é maior que o produto, é hype. Quando alguém paga pelo serviço depois que o incentivo acaba, há tese. DeFi passou; ICO reprovou.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · Narrativas</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>07</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02 · cont.</div>
+    <h1 class="chap">QUEM GANHOU, <span class="ink">QUEM SE QUEIMOU</span></h1>
+
+    <p><strong>3. NFT / PFP (2021):</strong> comprar identidade e status. O Bored Ape Yacht Club teve floor de <strong>~144,9 ETH</strong> (mai/2022, ~US$ 410 mil por macaco), volume de ~US$ 2,4 bi. Fechou 2022 a ~69 ETH e seguiu derretendo. Comunidade construída só sobre preço evapora quando o preço cai.</p>
+    <p><strong>4. Play-to-Earn (2021):</strong> jogar pra pagar as contas. O Axie saltou a <strong>2,5 milhões de DAU</strong> e US$ 1,2 bi de receita, 55% nas Filipinas. O SLP foi de US$ 0,36 a menos de um centavo: os mesmos 150 SLP/dia que valiam US$ 55 viraram US$ 1,41. Economia de pirâmide com gráficos bonitos. Feriu os vulneráveis.</p>
+    <p><strong>5. Ordinals / BRC-20 (2023):</strong> a guerra dentro do Bitcoin. <strong>72.328 inscrições/dia</strong> em abr/2023, taxas superando a recompensa de bloco. A polêmica era o marketing. Hype dos BRC-20 esfriou, mas provou receita real de taxas pro Bitcoin.</p>
+    <p><strong>6. Memecoins (2023-24):</strong> atenção pura. A pump.fun gerou ~US$ 60 mi em taxas até jul/2024; até jan/2025, mais de <strong>6 milhões de memecoins</strong> lançadas. A maioria morreu em horas. Memecoin não é investimento, é aposta com regras de cassino: a casa sempre ganha.</p>
+    <p><strong>7. AI agents (2024-25):</strong> a IA que vira a própria influenciadora do token. O Truth Terminal promoveu a GOAT, que foi a <strong>US$ 1,2 bi</strong> em dias; o setor passou de US$ 15 bi. Em aberto: utilidade real x avatar vazio se separando agora.</p>
+    <p><strong>8. RWA (2025-26):</strong> a narrativa que cresceu de terno. RWA onchain passou de <strong>US$ 32 bi</strong> (+200% no ano), BUIDL da BlackRock a ~US$ 2,5 bi, e a narrativa liderou 2025 (~185% médio). Diferente de todas: demanda paga e lastro real desde o dia um. <span class="src">Fonte: <a href="https://www.coingecko.com/research/publications/most-profitable-crypto-narratives">CoinGecko</a></span></p>
+
+    <div class="tbl-cap">[ Filtro ] <b>Como distinguir hype de tese</b> — quatro perguntas</div>
+    <div class="tbl-wrap tight">
+      <table class="data">
+        <thead><tr><th>Pergunta</th><th>O que ela revela</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Demanda paga sobreviveria ao fim do incentivo?</td><td>Se só o token grátis sustenta o uso, é hype. (DeFi passou, P2E reprovou.)</td></tr>
+          <tr><td class="k">Já está na boca de todo influenciador?</td><td>Se está em toda thread, você chegou no consenso. Narrativa madura é cara.</td></tr>
+          <tr><td class="k">Tem lastro real ou só promessa?</td><td>RWA tem título embaixo. ICO de 2017 tinha um PDF.</td></tr>
+          <tr><td class="k">Qual meu plano de saída antes de entrar?</td><td>Em narrativa especulativa, saída escrita antes da euforia separa quem realiza de quem segura o saco.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Narrativa move o ciclo, mas a maioria das narrativas morre. Quem termina mais rico não adivinha a narrativa: distingue a que tem tese da que é só barulho, entra cedo e sai antes da multidão chegar pra pagar a conta.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · Quem ganhou e quem se queimou</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>08</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 (parte 3) — tabela resumo ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02 · resumo</div>
+    <h1 class="chap">OITO CICLOS <span class="ink">EM UMA PÁGINA</span></h1>
+    <p class="lead">Releia a tabela e o padrão salta aos olhos: as narrativas que viraram infraestrutura tinham alguém pagando pelo produto depois que o hype passou. As que colapsaram, não. Esse é o divisor entre tese (algo que dura) e hype (algo que brilha e apaga).</p>
+
+    <div class="tbl-cap">[ Tabela ] <b>As 8 narrativas</b>, o dado-âncora e o que sobrou</div>
+    <div class="tbl-wrap">
+      <table class="data">
+        <thead><tr><th>Narrativa</th><th>Ciclo</th><th>Pico (dado-âncora)</th><th>O que sobrou</th></tr></thead>
+        <tbody>
+          <tr><td class="k">ICO</td><td>2017</td><td>~US$ 5-6 bi em 700+ ICOs</td><td>Quase nada. Bolha estourou, repressão regulatória</td></tr>
+          <tr><td class="k">DeFi Summer</td><td>2020</td><td>COMP a US$ 372, TVL a bilhões</td><td class="amber">Bastante. Empréstimo/DEX/stablecoin viraram infra</td></tr>
+          <tr><td class="k">NFT / PFP</td><td>2021</td><td>BAYC floor ~144,9 ETH</td><td>Pouco do preço, algo da ideia</td></tr>
+          <tr><td class="k">Play-to-Earn</td><td>2021</td><td>Axie 2,5 mi DAU · US$ 1,2 bi</td><td>Quase nada. Pirâmide colapsou</td></tr>
+          <tr><td class="k">Ordinals / BRC-20</td><td>2023</td><td>72.328 inscrições/dia</td><td>Misto. Provou receita de taxas pro BTC</td></tr>
+          <tr><td class="k">Memecoins</td><td>2023-24</td><td>6 mi+ tokens na pump.fun</td><td>Quase nada por token. A casa ganhou</td></tr>
+          <tr><td class="k">AI agents</td><td>2024-25</td><td>GOAT US$ 1,2 bi · setor > US$ 15 bi</td><td>Em aberto. Utilidade x avatar se separando</td></tr>
+          <tr><td class="k">RWA</td><td>2025-26</td><td>US$ 32 bi onchain · ~185% em 2025</td><td class="amber">Está sobrando. Lastro real desde o dia um</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pull">"O investidor que termina cada ciclo mais rico não é o que adivinha a narrativa, é o que sabe distinguir a que tem tese da que é só barulho."</p>
+
+    <div class="note"><b>Olhando pra frente.</b> No Capítulo 5 a gente faz o mesmo exercício, mas pra frente: quais são as próximas narrativas, qual o sinal real de cada uma, e como se posicionar cedo sem se queimar.</div>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Toda alta cripto é puxada por uma história. Participar da história certa na hora certa é como o varejo faz dinheiro. Confundir a história com o produto, e segurar a narrativa morta, é como o varejo perde tudo de volta.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · Oito ciclos em uma página</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>09</b> —</div>
+</section>
+
+<!-- ============================== CAP 3 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 03</div>
+    <h1 class="chap">COMO LER ONDE <span class="ink">ESTAMOS NO CICLO</span></h1>
+    <p class="lead">Você não precisa adivinhar o futuro. Precisa montar um painel de instrumentos, como o de um avião, e aprender a ler os ponteiros. Nenhum sozinho te diz a verdade. Mas quando vários apontam pro mesmo lado, você está olhando pra uma probabilidade que vale ouro.</p>
+
+    <p>O cripto tem uma vantagem que a bolsa não tem: a blockchain é pública. Cada transação fica registrada, o que permite calcular indicadores <strong>on-chain</strong>. Some derivativos, sentimento e fluxo institucional, e você tem um painel pra estimar a temperatura do ciclo.</p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>O painel de indicadores</b> — zona de topo vs zona de fundo</div>
+      <canvas id="chart-painel" width="500" height="250"></canvas>
+      <div class="chartnote">A leitura não está em nenhum ponteiro isolado, está na <b>confluência</b>: vários indicadores no extremo, ao mesmo tempo, no mesmo lado.</div>
+    </div>
+
+    <h2>O painel on-chain</h2>
+    <p><strong>MVRV-Z Score</strong> compara o valor de mercado com o preço médio de compra de toda a rede. Acima de ~7 historicamente marcou topo (acertou a máxima de cada ciclo dentro de ~2 semanas); abaixo de 0, a rede vale menos que o custo médio, a zona de acumulação mais confiável (2015, 2018, 2022). <span class="src">Fonte: <a href="https://www.bitcoinmagazinepro.com/charts/mvrv-zscore/">Bitcoin Magazine Pro</a></span></p>
+    <p><strong>Pi Cycle Top</strong> dispara quando a média de 111 dias cruza acima da média de 350 dias ×2. Identificou todos os grandes topos desde 2012, com poucos alarmes falsos. É especialista em topo, não em fundo. <span class="src">Fonte: <a href="https://www.nasdaq.com/articles/bitcoin-pi-cycle-top-indicator-how-accurately-time-market-cycle-peaks">Nasdaq</a></span></p>
+    <p><strong>RHODL Ratio</strong> compara a riqueza de quem comprou na semana passada com a de quem segura há 1-2 anos. Quando os recém-chegados dominam, é enxurrada de gente nova comprando topo. Marcou os topos com precisão de ~1 semana.</p>
+    <p><strong>Dominância do BTC e Altseason Index:</strong> o Altseason Index olha quantas das top 100 bateram o BTC em 90 dias. <strong>75+ = altseason</strong> (dinheiro no risco, fase final e mais perigosa do bull); <strong>25 ou menos = temporada do Bitcoin</strong> (fuga pro BTC, medo, acumulação). <span class="src">Fonte: <a href="https://coinmarketcap.com/charts/altcoin-season-index/">CoinMarketCap</a></span></p>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 03 · Ler o ciclo</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>10</b> —</div>
+</section>
+
+<!-- ============================== CAP 3 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 03 · cont.</div>
+    <h1 class="chap">DERIVATIVOS, SENTIMENTO <span class="ink">E O DINHEIRO GRANDE</span></h1>
+
+    <p><strong>Funding rate</strong> é o pagamento periódico trocado entre quem aposta na alta (longs) e na baixa (shorts) nos futuros perpétuos. Positivo e alto = euforia (longs lotados, combustível pra cascata de liquidação). Negativo e profundo = pânico (shorts demais, às vezes precede recuperação). É termômetro da semana, não do ano. <span class="src">Fonte: <a href="https://www.coinbase.com/learn/perpetual-futures/understanding-funding-rates-in-perpetual-futures">Coinbase</a></span></p>
+    <p><strong>Fear &amp; Greed Index</strong> resume o humor numa nota de 0 a 100 (volatilidade, volume, redes sociais, dominância). <strong>0-24 medo extremo</strong> (historicamente, ótimas compras); <strong>75-100 ganância extrema</strong> (zona clássica de topo). A filosofia é a de Buffett: tenha medo quando os outros são gananciosos. <span class="src">Fonte: <a href="https://alternative.me/crypto/fear-and-greed-index/">Alternative.me</a></span></p>
+
+    <div class="figgrid">
+      <div class="fig fg"><img src="assets/news/fear-greed-index.png" alt="Crypto Fear & Greed Index"><div class="cap"><b>alternative.me</b> · Fear &amp; Greed Index<br>O humor do mercado em <span class="amber">um número de 0 a 100</span>, atualizado todo dia.</div></div>
+      <div class="fig"><img src="assets/news/gemini-halving-history.png" alt="Histórico de halvings do Bitcoin (Gemini)"><div class="cap"><b>Gemini Cryptopedia</b><br>O histórico dos <span class="amber">quatro halvings</span> e suas datas, o relógio do ciclo.</div></div>
+    </div>
+
+    <p><strong>Fluxo de ETF:</strong> desde jan/2024, quanto entra menos quanto sai dos fundos a cada dia. Entradas fortes e persistentes = dinheiro "de terno" comprando (o IBIT da BlackRock somou mais de US$ 62 bi). Saídas persistentes podem antecipar fraqueza, mas dias de saída grande nem sempre são tendência: em 2025, mesmo com "recordes de saída", os produtos cripto absorveram US$ 46,7 bi no ano. <span class="src">Fonte: <a href="https://cryptoslate.com/bitcoin-etf-record-outflows-are-deceptive-as-crypto-products-absorbed-46-7-billion-in-2025/">CryptoSlate</a></span></p>
+
+    <div class="tbl-cap">[ Tabela ] <b>O painel</b> — euforia vs capitulação</div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th></th><th class="bad">Sinal de euforia (topo)</th><th class="good">Sinal de capitulação (fundo)</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">MVRV-Z</td><td>Acima de ~7</td><td class="good">Abaixo de 0</td></tr>
+          <tr><td class="lab">Pi Cycle Top</td><td>111d cruza acima de 350×2</td><td class="good">(especialista em topo)</td></tr>
+          <tr><td class="lab">RHODL</td><td>Novatos dominando</td><td class="good">Veteranos dominando</td></tr>
+          <tr><td class="lab">Altseason</td><td>75+ (fase final)</td><td class="good">25 ou menos (fuga pro BTC)</td></tr>
+          <tr><td class="lab">Funding</td><td>Muito positivo (longs lotados)</td><td class="good">Muito negativo (pânico)</td></tr>
+          <tr><td class="lab">Fear &amp; Greed</td><td>75-100 (ganância extrema)</td><td class="good">0-24 (medo extremo)</td></tr>
+          <tr><td class="lab">Fluxo de ETF</td><td>Entradas fortes e persistentes</td><td class="good">Saídas líquidas persistentes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="retain">
+      <div class="lab">A regra de ouro</div>
+      <p>Nenhum indicador é mágico, e cada um já deu sinal falso. O valor está na confluência: vários apontando pro mesmo lado. Ainda assim é probabilidade, não profecia. Ler o ciclo é medir a temperatura e agir com disciplina enquanto todos agem com emoção.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 03 · Confluência</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>11</b> —</div>
+</section>
+
+<!-- ============================== CAP 4 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04</div>
+    <h1 class="chap">COMO SE PREPARAR <span class="ink">ANTES DO BULL</span></h1>
+    <p class="lead">O resultado de um investidor de cripto raramente se decide no auge do bull. Ele se decide meses antes, no tédio: o preço lateralizado, os grupos esvaziados, "cripto" virou piada no churrasco. Quem se prepara no tédio do bear é quem sobra de pé na euforia do bull.</p>
+
+    <p>O inimigo número um do varejo não é o mercado, é o próprio impulso. O preparo transforma impulso em plano. Começa por duas coisas antes de comprar qualquer coisa.</p>
+
+    <h2>Tese e perfil de risco primeiro</h2>
+    <p><strong>Tese</strong> é a resposta honesta pra "por que eu acredito que isso vai valer mais no futuro?". Não vale "porque subiu" nem "porque o fulano falou". É uma frase que você consegue defender e sabe quando quebrou. Sem tese, qualquer queda de 20% vira pânico e qualquer alta vira ganância.</p>
+    <p><strong>Perfil de risco</strong> é quanta volatilidade você dorme tranquilo. Se a carteira caísse 60% amanhã, você venderia em pânico ou aguentaria? O dinheiro é de prazo de 2 a 4 anos? Você tem reserva de emergência separada <em>antes</em> de pensar em cripto? Se a última resposta é "não", pare aqui. <strong>Cripto é a última camada do bolo, nunca a base.</strong> Só invista o valor que toleraria ver indo a zero.</p>
+
+    <h2>Núcleo + satélites</h2>
+    <p><strong>Núcleo</strong> é a base sólida (BTC, e pra muitos ETH): mais líquido, maior histórico, maior chance de sobreviver a vários ciclos. <strong>Satélites</strong> são as apostas de maior risco e maior movimento (altcoins, narrativas novas): potencial maior, mas risco real de ir a zero. Satélite é a parte que você assume que pode sumir.</p>
+
+    <div class="tbl-cap">[ Tabela ] <b>Alocação por perfil</b> — números ilustrativos, não receita</div>
+    <div class="tbl-wrap tight">
+      <table class="data">
+        <thead><tr><th>Perfil</th><th>Núcleo (BTC/ETH)</th><th>Satélites</th><th>Estável (caixa)</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Conservador</td><td class="amber">70% a 85%</td><td>0% a 10%</td><td>10% a 25%</td></tr>
+          <tr><td class="k">Moderado</td><td class="amber">55% a 70%</td><td>15% a 30%</td><td>10% a 20%</td></tr>
+          <tr><td class="k">Agressivo</td><td class="amber">40% a 55%</td><td>30% a 50%</td><td>5% a 15%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Caixa não é covardia, é munição: é o que te permite comprar quando todo mundo está vendendo. E alocação não é estática, rebalancear (vender um pouco do que cresceu pra voltar ao alvo) é disciplina, não traição à tese.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Tese e perfil definem por que você está aqui e quanto aguenta perder. Núcleo sólido, satélites na medida, um pouco de caixa. Reserva de emergência sempre vem primeiro.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 04 · Preparar antes</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>12</b> —</div>
+</section>
+
+<!-- ============================== CAP 4 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04 · cont.</div>
+    <h1 class="chap">DCA, CUSTÓDIA <span class="ink">E OS ERROS DO VAREJO</span></h1>
+
+    <h2>DCA: o preço médio é amigo de quem não tem bola de cristal</h2>
+    <p><strong>DCA</strong> (Dollar-Cost Averaging) é comprar um valor fixo em intervalos regulares, independente do preço. Quando está baixo, os mesmos R$ 200 compram mais; quando alto, menos. No fim você tem um <strong>preço médio</strong>, não uma única aposta no pior momento. Tira a emoção, aproveita o preço deprimido do bear e distribui o risco no tempo. Não protege de tese errada, por isso anda de mãos dadas com a tese.</p>
+
+    <h2>Custódia: de nada adianta acertar o ciclo e perder pra um golpe</h2>
+    <p><strong>Não deixe tudo na corretora.</strong> "Not your keys, not your coins": corretora pode quebrar, ser hackeada ou congelar saque. A parte de longo prazo vai pra <strong>self-custody</strong> com <strong>hardware wallet</strong> (Ledger, Trezor), que mantém a chave offline. A <strong>seed phrase</strong> (12 ou 24 palavras) é o seu dinheiro: anote em papel ou metal, nunca em foto, nuvem ou WhatsApp. <strong>Ninguém legítimo pede a seed phrase, quem pede é golpe, 100% das vezes.</strong></p>
+
+    <div class="cardgrid2">
+      <div class="scard c2"><h4>Golpes comuns no Brasil</h4><div class="pr">"Rendimento garantido" de 3-10% ao mês (Ponzi); grupo de sinais e robô de trade; falso suporte e falso airdrop que drenam a carteira; pig butchering (golpe do amor); clipboard malware que troca o endereço copiado.</div></div>
+      <div class="scard c1"><h4>A regra-mãe</h4><div class="pr">Se parece bom demais pra ser verdade, é golpe. Desconfie de pressa: golpista adora urgência ("é só hoje", "vagas acabando"). Investidor preparado tem o luxo de não ter pressa. Sempre confira os primeiros e últimos caracteres do endereço antes de enviar.</div></div>
+    </div>
+
+    <div class="tbl-cap">[ Tabela ] <b>Erros clássicos do varejo</b> e o que fazer no lugar</div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th class="bad">Erro clássico</th><th class="good">O que fazer no lugar</th></tr></thead>
+        <tbody>
+          <tr><td>Comprar no topo, por FOMO, já nas manchetes</td><td class="good">Acumular na baixa via DCA, com plano de entrada antes</td></tr>
+          <tr><td>Usar alavancagem sem entender liquidação</td><td class="good">Só capital próprio; sem entender, sem alavancagem</td></tr>
+          <tr><td>Tudo numa única narrativa "que vai explodir"</td><td class="good">Diversificar núcleo e satélites; nenhum satélite concentra tudo</td></tr>
+          <tr><td>Deixar 100% na corretora por comodidade</td><td class="good">Mover o longo prazo pra self-custody com hardware wallet</td></tr>
+          <tr><td>Comprar sem tese, porque "subiu"</td><td class="good">Escrever a tese em uma frase; saber quando ela quebra</td></tr>
+          <tr><td>Vender no fundo do bear, em pânico</td><td class="good">Se a tese segue de pé, queda não é motivo de venda</td></tr>
+          <tr><td>Seed phrase em foto, nuvem ou print</td><td class="good">Papel ou metal offline; nunca compartilhar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Quase todo erro tem a mesma raiz: agir pela emoção e sem plano. Tese, alocação, DCA e custódia existem pra você ter o plano pronto antes de a emoção chegar. Quando o mercado virar, você executa o que o seu eu calmo já decidiu.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 04 · DCA e custódia</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>13</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05</div>
+    <h1 class="chap">AS PRÓXIMAS NARRATIVAS <span class="ink">PRA FICAR DE OLHO</span></h1>
+    <p class="lead">O dinheiro grande não está em adivinhar a narrativa certa. Está em chegar um trimestre antes da multidão na história que tinha sinal real, e em dimensionar a posição pelo tamanho da convicção. Posição pequena em aposta, posição maior em tese.</p>
+
+    <h2>Sinal não é palpite</h2>
+    <p><strong>Sinal</strong> é um dado concreto, com fonte e data, que mostra capital institucional, regulação ou infraestrutura se movendo <em>antes</em> do hype de varejo. BlackRock protocolando fundo tokenizado na SEC é sinal. Uma lei marcando data no calendário é sinal. Quando todo influenciador já fala, o sinal virou consenso e o preço já subiu.</p>
+    <ul class="bul">
+      <li><strong>Tese:</strong> sinal datável forte, lastro real, fase não saturada. Cabe posição maior, porque o risco é de timing, não de ser fumaça. RWA e stablecoins são teses.</li>
+      <li><strong>Aposta:</strong> sinal real mas incipiente, demanda imatura. Cabe só posição pequena, dinheiro que você aceita perder inteiro. Pagamentos agênticos e InfoFi são, hoje, mais aposta que tese.</li>
+    </ul>
+
+    <div class="tbl-cap">[ Tabela ] <b>Seis narrativas</b>, o sinal e como entrar com cabeça</div>
+    <div class="tbl-wrap tight">
+      <table class="data">
+        <thead><tr><th>Narrativa</th><th>Sinal (dado + fonte)</th><th>Tese / aposta</th></tr></thead>
+        <tbody>
+          <tr><td class="k">RWA / tokenização</td><td>US$ 32 bi onchain, +200% no ano, BUIDL ~US$ 2,5 bi</td><td class="amber">Tese</td></tr>
+          <tr><td class="k">Stablecoins &amp; PayFi</td><td>GENIUS Act, prazo 18/07/2026; mercado US$ 322 bi</td><td class="amber">Tese</td></tr>
+          <tr><td class="k">AI agents / x402</td><td>119 mi+ transações x402 na Base; Travala paga hotel</td><td>Aposta</td></tr>
+          <tr><td class="k">InfoFi / atenção</td><td>YAPS desligado pelo X, pivô pra attention markets</td><td>Aposta</td></tr>
+          <tr><td class="k">Prediction markets</td><td>US$ 24 bi/mês; Copa 2026 pode mover US$ 2,5 bi</td><td class="amber">Tese (ferramenta)</td></tr>
+          <tr><td class="k">Consumer crypto</td><td>Chain abstraction já é o paradigma dominante</td><td>Aposta (habilitador)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>RWA</strong> saiu do slide e entrou na planilha de quem aloca de verdade: US$ 32 bi onchain (+200%), BUIDL da BlackRock a ~US$ 2,5 bi, treasuries tokenizados perto de US$ 13 bi. Tese, com dois cuidados: a etiqueta "RWA" vai ser colada em projeto vazio, então compre a tese (ativo real auditável, adoção crescendo), não a tag. <span class="src">Fonte: <a href="https://app.rwa.xyz/">rwa.xyz</a></span></p>
+    <p><strong>Stablecoins &amp; PayFi</strong> têm o sinal regulatório mais explícito: o GENIUS Act marcou prazo até <strong>18/07/2026</strong> pra stablecoin virar produto regulado nos EUA. A Mastercard já tem BitLicense de NY; o mercado passou de US$ 322 bi. Pra investidor, a jogada é a infraestrutura ao redor (emissores, trilhos), ancorada na data. <span class="src">Fonte: <a href="https://thedefiant.io/converge/tradfi-and-fintech/mastercard-wins-ny-bitlicense-deepening-push-into-stablecoin-settlement">The Defiant</a></span></p>
+
+    <div class="figgrid">
+      <div class="fig tall"><img src="assets/news/rwa-xyz-dashboard.png" alt="RWA.xyz dashboard ao vivo"><div class="cap"><b>RWA.xyz</b> · dado ao vivo<br>O painel que mede a <span class="amber">tokenização de ativos reais</span> onchain em tempo real.</div></div>
+      <div class="fig tall" style="display:flex;align-items:center;justify-content:center;background:#15110d;">
+        <div style="padding:18px 16px;color:#f3ece2;">
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">Regra de ouro</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:13px;line-height:1.4;color:#fff;">"Tamanho da posição = tamanho da convicção. Errar uma tese custa tempo; errar uma aposta custa o capital inteiro daquela posição."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>A narrativa mais emocionante (a IA que conversa, o token que promete revolução) é a que tem mais hype e menos lastro. A mais chata (o título tokenizado que rende juros) é a que tem mais sinal e menos drama. Entediante e datável dura mais que revolucionário e prometido.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · Próximas narrativas</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>14</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05 · cont.</div>
+    <h1 class="chap">APOSTAS, FERRAMENTAS <span class="ink">E A REGRA DE OURO</span></h1>
+
+    <p><strong>AI agents e pagamentos agênticos (x402):</strong> a versão durável da narrativa é máquina pagando máquina. O x402 da Coinbase já processou <strong>119 milhões de transações na Base</strong>, e em 4/jun/2026 a Travala lançou reserva de hotel via agente, com USDC e custo de até US$ 0,01. Mas a demanda de varejo ainda não chegou. Aposta: separe o agente com utilidade real do avatar vendendo token. <span class="src">Fonte: <a href="https://www.coinbase.com/developer-platform/discover/launches/x402">Coinbase</a></span></p>
+    <p><strong>InfoFi e mercados de atenção:</strong> a Kaito desligou o YAPS em 15/jan/2026 depois que o X mudou a política de API (token caiu 17%), e pivotou pra "attention markets" com a Polymarket. Aposta, com uma lente extra: desconfie de projeto que depende de uma única plataforma que ele não controla. <span class="src">Fonte: <a href="https://www.coindesk.com/business/2026/01/15/kaito-to-sunset-yaps-as-x-cracks-down-on-infofi-apps-token-falls-17">CoinDesk</a></span></p>
+    <p><strong>Prediction markets:</strong> deixou de ser sobre eleição. O volume combinado Kalshi + Polymarket foi de menos de US$ 5 bi (set/2025) a ~<strong>US$ 24 bi/mês</strong> (abr/2026), com categorias novas de cultura e a Copa 2026 podendo mover US$ 2,5 bi. Pra você, é mais ferramenta que ativo: a odds é um termômetro de consenso mais honesto que opinião de influenciador. <span class="src">Fonte: <a href="https://www.pewresearch.org/short-reads/2026/05/27/trading-volume-on-prediction-markets-has-soared-in-recent-months/">Pew</a></span></p>
+    <p><strong>Consumer crypto:</strong> cripto vira massa quando a complexidade some. A chain abstraction (esconder a engrenagem técnica) já é o paradigma dominante de carteira em 2026. É mais habilitador das outras narrativas do que um ativo claro pra comprar. Trate como tema de fundo. <span class="src">Fonte: <a href="https://eco.com/support/en/articles/11822744-what-is-chain-abstraction-2026-guide">Eco</a></span></p>
+
+    <h2>Dimensione pela convicção, não pela empolgação</h2>
+    <p>O erro que o varejo comete em todo ciclo é confundir aposta com tese: entrar pesado numa narrativa imatura porque ela é a mais emocionante. Três princípios pra qualquer narrativa futura:</p>
+    <ol class="bul">
+      <li><strong>Sinal datável antes de hype de varejo.</strong> Procure o dado com fonte e data. Promessa sem número não é sinal.</li>
+      <li><strong>Tamanho da posição = tamanho da convicção.</strong> Tese aceita posição maior (risco de timing). Aposta pede posição pequena. Nunca aposte tese-sized numa narrativa aposta-sized.</li>
+      <li><strong>Nem toda narrativa vira ciclo, e tudo bem.</strong> Acerte grande nas poucas teses sólidas e erre pequeno nas muitas apostas.</li>
+    </ol>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Quem entra pequeno em dez apostas e grande em duas teses sobrevive pra surfar a próxima. Quem entra grande na narrativa errada sai do jogo.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · A regra de ouro</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>15</b> —</div>
+</section>
+
+<!-- ============================== CAP 6 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 06</div>
+    <h1 class="chap">QUANDO <span class="ink">SAIR</span></h1>
+    <p class="lead">Muita gente acerta a entrada, vê a tese se confirmar e a carteira multiplicar, e mesmo assim termina o ciclo no zero a zero. Por quê? Porque não soube sair. Comprou bem e nunca realizou. Sair é a habilidade mais subestimada e menos ensinada do mercado.</p>
+
+    <h2>Por que sair é mais difícil que entrar</h2>
+    <p>Entrar é fácil porque a emoção te empurra na mesma direção da ação: você quer comprar, o FOMO te dá o impulso. Sair é difícil porque a emoção te empurra na direção <strong>contrária</strong> da ação racional. No topo, todo mundo está ganhando, as manchetes são eufóricas, e vender parece deixar dinheiro na mesa. Dois vieses dominam: <strong>ancoragem no topo</strong> (qualquer venda abaixo do melhor preço que você já viu parece prejuízo, mesmo sendo lucro enorme) e <strong>efeito manada</strong> (ir contra a multidão é mais desconfortável exatamente quando o risco é maior).</p>
+    <p>Cuidado com a cultura do <strong>"diamond hands"</strong>: segurar tem lugar numa tese de longo prazo, mas virou desculpa pra nunca realizar. Convicção é ter uma tese. Teimosia é ignorar todos os sinais porque vender dói. A solução não é "ter mais disciplina no momento" (no momento, a disciplina já perdeu pra adrenalina). É decidir antes, por escrito.</p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Take-profit escalonado</b> — vender em tranches na subida</div>
+      <canvas id="chart-takeprofit" width="500" height="230"></canvas>
+      <div class="chartnote">Você não precisa acertar o topo. Cada losango é uma tranche realizada na subida. <b>O perfeito é inimigo do bom realizado.</b></div>
+    </div>
+
+    <h2>Take-profit escalonado</h2>
+    <p>A ideia central: <strong>você não precisa acertar o topo. Você só precisa sair bem.</strong> Take-profit é realizar lucro; escalonado é fazer em <strong>tranches</strong>, em vários momentos da subida, em vez de tentar vender tudo no ponto mais alto. É simétrico ao DCA: assim como você não tenta acertar o fundo na compra, não tenta acertar o topo na venda. Um exemplo ilustrativo: venda 20% num patamar de "ótimo lucro", mais 20% acima, mais uma fatia conforme a euforia se acumula, e mantenha uma parte pequena como aposta de cauda.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Cada tranche vendida é dinheiro que sai do risco e nunca mais depende do que o preço faz. Você se protege do arrependimento dos dois lados: se subir, ainda tem posição; se cair, já realizou. A meta deixa de ser o impossível (cravar o topo) e passa a ser o possível (sair bem, na média).</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 06 · Quando sair</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>16</b> —</div>
+</section>
+
+<!-- ============================== CAP 6 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 06 · cont.</div>
+    <h1 class="chap">O PLANO DE SAÍDA <span class="ink">ESCRITO</span></h1>
+
+    <p>Os sinais de topo não tocam um sino, mas aparecem juntos quando o ciclo está esticado. <strong>Euforia do varejo</strong> (taxista comprando e dando dica), <strong>mídia mainstream em festa</strong> (cripto vira capa, cobertura passa de cética a celebratória), <strong>"todo mundo está ganhando"</strong>, e <strong>lixo subindo mais que ativo sólido</strong>. Some os indicadores do Cap 3 em extremo: Fear &amp; Greed em ganância extrema, MVRV-Z em zona alta, funding alto e positivo, Pi Cycle acendendo. <strong>Um sinal é ruído; vários juntos é informação.</strong></p>
+
+    <h2>A única defesa contra você mesmo</h2>
+    <p>Tudo desemboca aqui: o take-profit e os sinais só funcionam se existirem <strong>antes</strong> da euforia, no papel, decididos pela sua versão racional. Monte um plano de saída escrito no bear, junto com a tese e a alocação. Ele responde:</p>
+    <ul class="bul">
+      <li>Quanto eu vendo e quando (em que patamares ou diante de quais sinais, qual percentual em cada tranche)?</li>
+      <li>Pra onde vai o dinheiro realizado (estável, renda fixa, conta separada, retirada pra vida real)?</li>
+      <li>O que faço se subir depois da 1ª venda? (Nada, sigo o plano.) E se cair forte? (Também sigo, sem venda de pânico.)</li>
+      <li>Qual parte, se houver, eu seguro de verdade pro longo prazo, e por quê?</li>
+    </ul>
+    <p class="pull">"É a mesma lógica do marinheiro que se amarra ao mastro pra não ceder ao canto da sereia. O plano escrito é a sua corda."</p>
+    <p><strong>Lucro de papel não é lucro.</strong> Enquanto não vendeu, você tem um número bonito que pode virar pó. Quando realiza, parte rotaciona pra <strong>estável</strong>: trava o ganho e vira munição pro próximo ciclo (o caixa do topo é o que compra barato no próximo bear). Sobre "diamond hands": segurar 20% por convicção de uma década é decisão; segurar 100% porque vender dói é teimosia disfarçada.</p>
+
+    <div class="tbl-cap">[ Tabela ] <b>Sinal de topo</b> → ação alinhada ao plano</div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th class="bad">Sinal de topo</th><th class="good">Ação alinhada ao plano</th></tr></thead>
+        <tbody>
+          <tr><td>Euforia do varejo: quem nunca falou de cripto dá dica</td><td class="good">Tratar como alerta; começar a executar tranches</td></tr>
+          <tr><td>Mídia mainstream eufórica, cripto virou capa</td><td class="good">Auge da cobertura costuma coincidir com auge do preço</td></tr>
+          <tr><td>Memecoins e lixo explodindo acima do sólido</td><td class="good">Reduzir exposição a satélites de risco</td></tr>
+          <tr><td>Fear &amp; Greed em ganância extrema prolongada</td><td class="good">Considerar realizar tranche; sentimento esticado não dura</td></tr>
+          <tr><td>Funding alto e positivo persistente</td><td class="good">Alavancagem excessiva; risco de correção brusca</td></tr>
+          <tr><td>"Vou esperar só mais um pouco"</td><td class="good">O pensamento mais perigoso; é pra isso que o plano existe</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Ninguém acerta o topo exato, e o objetivo nunca foi acertar. O objetivo é sair bem: com lucro realizado, disciplina e sem arrependimento dos dois lados. Monte o plano no bear, obedeça no bull. Comprar bem sem saber sair não basta.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 06 · O plano escrito</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>17</b> —</div>
+</section>
+
+<!-- ============================== CAP 7 — INFLUENCERS (SLOTS) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 07</div>
+    <h1 class="chap">A PALAVRA DOS MAIORES <span class="ink">NOMES DO BRASIL</span></h1>
+    <p class="lead">Nenhum playbook substitui a leitura de quem já atravessou ciclos com pele em jogo. Por isso convidamos alguns dos maiores nomes e criadores de cripto do Brasil pra responder, em áudio, uma pergunta só.</p>
+
+    <div class="quotecard">
+      <div class="ql">A pergunta</div>
+      <div class="qt">"Como você está se preparando para o próximo ciclo, e o que faria diferente do anterior?"</div>
+      <div class="qa">A resposta de cada um, na voz deles. Sem roteiro, sem filtro.</div>
+    </div>
+
+    <div class="kicker">[ Em breve nesta página ]</div>
+    <div class="slotgrid">
+      <div class="slot">
+        <div class="badge">Em breve</div>
+        <div class="top">
+          <div class="av">♪</div>
+          <div class="who"><div class="nm">Nome do criador</div><div class="hd">@handle</div></div>
+        </div>
+        <div class="player">
+          <div class="pbtn"><svg viewBox="0 0 12 12" fill="#15110d"><path d="M2 1l8 5-8 5z"/></svg></div>
+          <div class="wave"><i style="height:6px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:10px"></i><i style="height:16px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:17px"></i><i style="height:8px"></i></div>
+          <div class="tg">0:00</div>
+        </div>
+        <div class="qz">"Trecho-resumo do áudio entra aqui quando chegar."</div>
+      </div>
+      <div class="slot">
+        <div class="badge">Em breve</div>
+        <div class="top">
+          <div class="av">♪</div>
+          <div class="who"><div class="nm">Nome do criador</div><div class="hd">@handle</div></div>
+        </div>
+        <div class="player">
+          <div class="pbtn"><svg viewBox="0 0 12 12" fill="#15110d"><path d="M2 1l8 5-8 5z"/></svg></div>
+          <div class="wave"><i style="height:8px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:18px"></i><i style="height:6px"></i><i style="height:13px"></i><i style="height:17px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:8px"></i><i style="height:14px"></i></div>
+          <div class="tg">0:00</div>
+        </div>
+        <div class="qz">"Trecho-resumo do áudio entra aqui quando chegar."</div>
+      </div>
+      <div class="slot">
+        <div class="badge">Em breve</div>
+        <div class="top">
+          <div class="av">♪</div>
+          <div class="who"><div class="nm">Nome do criador</div><div class="hd">@handle</div></div>
+        </div>
+        <div class="player">
+          <div class="pbtn"><svg viewBox="0 0 12 12" fill="#15110d"><path d="M2 1l8 5-8 5z"/></svg></div>
+          <div class="wave"><i style="height:10px"></i><i style="height:16px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:18px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:17px"></i><i style="height:11px"></i><i style="height:15px"></i><i style="height:6px"></i><i style="height:13px"></i><i style="height:18px"></i></div>
+          <div class="tg">0:00</div>
+        </div>
+        <div class="qz">"Trecho-resumo do áudio entra aqui quando chegar."</div>
+      </div>
+      <div class="slot">
+        <div class="badge">Em breve</div>
+        <div class="top">
+          <div class="av">♪</div>
+          <div class="who"><div class="nm">Nome do criador</div><div class="hd">@handle</div></div>
+        </div>
+        <div class="player">
+          <div class="pbtn"><svg viewBox="0 0 12 12" fill="#15110d"><path d="M2 1l8 5-8 5z"/></svg></div>
+          <div class="wave"><i style="height:7px"></i><i style="height:13px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:6px"></i><i style="height:12px"></i><i style="height:17px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:18px"></i><i style="height:7px"></i><i style="height:13px"></i></div>
+          <div class="tg">0:00</div>
+        </div>
+        <div class="qz">"Trecho-resumo do áudio entra aqui quando chegar."</div>
+      </div>
+    </div>
+
+    <div class="note"><b>Cria conteúdo de cripto no Brasil e quer mandar o seu?</b> Estamos coletando os áudios. Fale com a Kaleidos pra aparecer nesta página. Volte pra ouvir as respostas conforme chegam.</div>
+
+    <div class="retain">
+      <div class="lab">Por que isto importa</div>
+      <p>Indicador é probabilidade, plano é estrutura, mas a leitura de quem já perdeu e ganhou dinheiro em ciclos passados é a camada que nenhum gráfico entrega. É a experiência viva por cima do método.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 07 · A palavra dos maiores nomes</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>18</b> —</div>
+</section>
+
+<!-- ============================== CAP 8 — CHECKLIST ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 08</div>
+    <h1 class="chap">O CHECKLIST DO <span class="ink">PRÓXIMO CICLO</span></h1>
+    <p class="lead">Tudo que este playbook ensinou, em uma página. Imprima, salve, releia antes de cada decisão grande. Não é recomendação, é estrutura.</p>
+
+    <div class="kicker">[ Antes — no bear / na lateralização ]</div>
+    <ul class="check">
+      <li>Escrevi minha <strong>tese</strong>: por que estou aqui e por quanto tempo.</li>
+      <li>Defini meu <strong>perfil de risco</strong> e só aloquei valor que toleraria ver cair muito.</li>
+      <li>Separei <strong>núcleo</strong> (o que seguro o ciclo inteiro) de <strong>satélites</strong> (apostas menores).</li>
+      <li>Tenho um plano de <strong>acumulação</strong> (aportes regulares, sem tentar cravar o fundo).</li>
+      <li>Minha <strong>custódia</strong> está resolvida: o grosso fora da corretora, seed phrase offline.</li>
+      <li>Sei reconhecer os <strong>golpes</strong> comuns (rendimento garantido, sinais pagos, falso airdrop, pig butchering).</li>
+    </ul>
+
+    <div class="kicker">[ Durante — a leitura do ciclo ]</div>
+    <ul class="check">
+      <li>Acompanho um <strong>painel simples</strong> (MVRV, dominância, funding, Fear &amp; Greed, fluxo de ETF) sem virar refém dele.</li>
+      <li>Distingo <strong>tese de aposta</strong> ao olhar uma narrativa nova, e dimensiono a posição por convicção.</li>
+      <li>Não entro por <strong>FOMO</strong> nem uso <strong>alavancagem</strong> que não entendo.</li>
+      <li>Reviso a tese quando os fatos mudam, não quando o preço me assusta.</li>
+    </ul>
+
+    <div class="kicker">[ A saída — a parte que decide o resultado ]</div>
+    <ul class="check">
+      <li>Tenho um <strong>plano de saída ESCRITO</strong> antes da euforia chegar.</li>
+      <li>Penso em <strong>vender em tranches</strong> na subida, sem tentar acertar o topo exato.</li>
+      <li>Conheço os <strong>sinais de topo</strong> (euforia do varejo, mídia mainstream, indicadores no extremo).</li>
+      <li>Sei a diferença entre <strong>lucro de papel e lucro realizado</strong>, e tenho um destino pro que realizo.</li>
+      <li>Aceito que <strong>sair bem</strong> vale mais que tentar sair perfeito.</li>
+    </ul>
+
+    <div class="retain">
+      <div class="lab">A regra de ouro</div>
+      <p>O plano se escreve com a cabeça fria, no tédio. A euforia e o pânico existem justamente pra te fazer rasgar o plano. Não rasgue.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 08 · Checklist</span><span>Como se preparar pro próximo bull market</span></div>
+  <div class="folio">— <b>19</b> —</div>
+</section>
+
+<!-- ============================== DISCLAIMER + CONTRACAPA KALEIDOS ============================== -->
+<section class="page dark">
+  <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+  <div class="legal">
+    <div class="brand"><span class="d"></span>KALEIDOS</div>
+
+    <h2>Antes de ir:<br>o aviso que <span class="am">importa</span></h2>
+    <p>Este playbook é <strong style="color:#fff;">conteúdo educacional</strong>. Nada aqui é recomendação de investimento, consultoria financeira, oferta ou promessa de retorno. Os exemplos de alocação, os patamares e os indicadores são ilustrativos, pra explicar conceitos, não pra você copiar. Cripto é um ativo volátil e de risco: você pode perder parte ou todo o capital investido. Estude por conta própria, considere seu perfil, e quando fizer sentido procure um profissional habilitado. <span class="amber">Desconfie de qualquer um que prometa retorno garantido, no cripto, garantia é o nome do golpe.</span> A responsabilidade pelas suas decisões é só sua.</p>
+
+    <div class="hr"></div>
+
+    <h2 style="font-size:22px;margin-top:0;">Quem fez<br>este playbook</h2>
+    <p>A <strong style="color:#fff;">Kaleidos</strong> é a agência cripto-nativa do Brasil. Estudamos o mercado on-chain a fundo e transformamos isso em estratégia, conteúdo e crescimento pra projetos de cripto e web3. Este playbook é parte do nosso trabalho de tornar o mercado menos confuso e mais honesto, do investidor de varejo ao founder. Se você constrói no cripto, ou quer construir, e precisa de marketing de quem entende o mercado de verdade, fale com a gente.</p>
+
+    <div class="ctas">
+      <span class="cta-dark">Falar no WhatsApp · (12) 93618-0547</span>
+      <span class="cta-ghost">kaleidos.com.br →</span>
+    </div>
+
+    <div class="sign">Dormiu, acordou, se preparou. Nos vemos no próximo ciclo.</div>
+
+    <div class="hr"></div>
+
+    <div class="src-block">
+      <strong style="color:rgba(244,241,234,.7);">FONTES PRINCIPAIS</strong><br>
+      CoinGecko · Gemini Cryptopedia · The Block · Yahoo Finance · bitkan · altcoininvestor · Fidelity · Caleb &amp; Brown · Cointelegraph · CoinDesk · TIME · Wikipedia · BeInCrypto · Decrypt · Yellow.com · Glassnode · Bitcoin Magazine Pro · Nasdaq · CoinMarketCap · Coinbase · Phemex · Alternative.me · CryptoSlate · rwa.xyz · The Defiant · Mastercard · Pew Research · TRM Labs · Eco. Dados coletados em fontes públicas em junho de 2026 e podem mudar.
+    </div>
+
+    <div class="foot">
+      <span>// playbook · edição ciclos</span>
+      <span>Kaleidos · A agência cripto-nativa do Brasil</span>
+    </div>
+  </div>
+</section>
+
+<!-- Chart.js + configs -->
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+</body>
+</html>

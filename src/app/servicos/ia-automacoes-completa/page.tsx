@@ -27,6 +27,7 @@ import { useI18n } from "@/i18n/useI18n";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
 import { useAnalytics } from "@/components/analytics";
+import { getAttributionMeta } from "@/lib/attribution";
 import CardFlip from "@/components/kokonutui/card-flip";
 import AIStateLoading from "@/components/kokonutui/ai-state-loading";
 import {
@@ -214,7 +215,7 @@ function HeroSection({ onCta }: { onCta: () => void }) {
 
       <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row">
         <a
-          href={`https://wa.me/12936180547?text=${encodeURIComponent("Oi Kaleidos, vi a página sobre IA na operação e quero falar com vocês.")}`}
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Oi Kaleidos, vi a página sobre IA na operação e quero falar com vocês.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(37,211,102,0.7)] sm:text-base"
@@ -223,8 +224,8 @@ function HeroSection({ onCta }: { onCta: () => void }) {
           Falar no WhatsApp
         </a>
         <button
-          onClick={onCta}
-          className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CFF6B]/30 hover:bg-white/[0.06] sm:text-base"
+          onClick={() => document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" })}
+          className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CF067]/30 hover:bg-white/[0.06] sm:text-base"
         >
           Receber por email
           <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
@@ -453,7 +454,7 @@ function OperationsCarouselSection() {
       vertical: "Produto próprio",
       solucao: "Cole link IG → roteiro adaptado cena por cena",
       stack: "Next + Apify + Gemini Flash",
-      url: "https://reels-viral.vercel.app",
+      url: "https://reels.kaleidos.com.br",
     },
     {
       kind: "produto" as const,
@@ -1099,6 +1100,7 @@ function FinalCtaSection() {
           whatsapp: form.telefone,
           gargalo: form.gargalo,
           _hp: hp,
+          metadata: getAttributionMeta(),
         }),
       });
       const data = await r.json();
@@ -1277,7 +1279,7 @@ function FinalCtaSection() {
           •
         </span>
         <Link
-          href="/lp"
+          href="/sobre"
           className="transition-colors hover:text-[#7CFF6B]"
         >
           Sobre a Kaleidos

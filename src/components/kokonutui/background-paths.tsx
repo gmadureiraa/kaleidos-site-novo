@@ -83,8 +83,11 @@ function generateAestheticPath(
     return pathCommands.join(" ");
 }
 
-const generateUniqueId = (prefix: string): string =>
-    `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+// IDs determinísticos (prefixo + posição da instância + índice) pra evitar
+// hydration mismatch — Math.random() em render gera valores diferentes no
+// server e no client.
+const buildPathId = (prefix: string, position: number, index: number): string =>
+    `${prefix}-${position > 0 ? "r" : "l"}-${index}`;
 
 // Memoized FloatingPaths component
 const FloatingPaths = memo(function FloatingPaths({
@@ -96,7 +99,7 @@ const FloatingPaths = memo(function FloatingPaths({
     const primaryPaths: PathData[] = useMemo(
         () =>
             Array.from({ length: 12 }, (_, i) => ({
-                id: generateUniqueId("primary"),
+                id: buildPathId("primary", position, i),
                 d: generateAestheticPath(i, position, "primary"),
                 opacity: 0.15 + i * 0.02,
                 width: 4 + i * 0.3,
@@ -109,7 +112,7 @@ const FloatingPaths = memo(function FloatingPaths({
     const secondaryPaths: PathData[] = useMemo(
         () =>
             Array.from({ length: 15 }, (_, i) => ({
-                id: generateUniqueId("secondary"),
+                id: buildPathId("secondary", position, i),
                 d: generateAestheticPath(i, position, "secondary"),
                 opacity: 0.12 + i * 0.015,
                 width: 3 + i * 0.25,
@@ -122,7 +125,7 @@ const FloatingPaths = memo(function FloatingPaths({
     const accentPaths: PathData[] = useMemo(
         () =>
             Array.from({ length: 10 }, (_, i) => ({
-                id: generateUniqueId("accent"),
+                id: buildPathId("accent", position, i),
                 d: generateAestheticPath(i, position, "accent"),
                 opacity: 0.08 + i * 0.12,
                 width: 2 + i * 0.2,

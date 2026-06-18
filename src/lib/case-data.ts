@@ -10,6 +10,9 @@ export interface CaseData {
   detalhes_en?: string;
   depoimentos?: string;
   links: string[];
+  externalLink?: string; // URL oficial do cliente (site / rede social) para CTA externo
+  externalLabel?: string; // rótulo do CTA (ex: "Ver no site", "Ver no Instagram")
+  externalLabel_en?: string;
   metricas: string;
   metricas_en?: string;
   servicos: string[];
@@ -35,7 +38,10 @@ export const casesData: Record<string, CaseData> = {
     detalhes: "O Desafio\n\nO mercado DeFi brasileiro estava fragmentado, com eventos pequenos e desconectados. A comunidade precisava de um espaço unificado para educação, networking e crescimento conjunto. O desafio era criar um evento que não apenas educasse, mas que estabelecesse conexões duradouras entre os principais players do ecossistema.\n\nNossa Estratégia\n\nDesenvolvemos uma identidade visual completa que comunicasse inovação e profissionalismo. Criamos materiais que funcionassem tanto para marketing digital quanto para o ambiente físico do evento, garantindo consistência visual em todos os touchpoints.\n\n• Design System completo com paleta de cores e tipografia\n• Banners e materiais promocionais para redes sociais\n• Cenas de transição animadas para as palestras\n• Identidade visual para coffee breaks e networking\n• Materiais impressos para o evento presencial\n\nO Resultado\n\nDefifest 2025 se tornou o maior evento DeFi do Brasil, reunindo 600+ participantes em um dia completo de educação e networking. O evento contou com palestras de especialistas como Victor Castaneda, Mychel Mendes e Coruja Cripto, cobrindo temas como o futuro do Bitcoin, tributação cripto, DeFi em mercados de baixa e IA no setor.\n\nDestaques incluem networking com lunch, coffee breaks e happy hour all-inclusive, além de um show de encerramento com DJ renomado. O evento ocorreu em 7 de junho de 2025 no Clube Pinheiros, São Paulo, estabelecendo um novo padrão para eventos DeFi no Brasil.",
     detalhes_en: "The Challenge\n\nThe Brazilian DeFi market was fragmented, with small and disconnected events. The community needed a unified space for education, networking and joint growth. The challenge was to create an event that not only educated, but established lasting connections between the main players in the ecosystem.\n\nOur Strategy\n\nWe developed a complete visual identity that communicated innovation and professionalism. We created materials that worked for both digital marketing and the physical event environment, ensuring visual consistency across all touchpoints.\n\n• Complete Design System with color palette and typography\n• Banners and promotional materials for social media\n• Animated transition scenes for talks\n• Visual identity for coffee breaks and networking\n• Print materials for the in-person event\n\nThe Result\n\nDefifest 2025 became the largest DeFi event in Brazil, bringing together 600+ participants for a complete day of education and networking. The event featured talks by experts such as Victor Castaneda, Mychel Mendes and Coruja Cripto, covering topics like Bitcoin's future, crypto taxation, DeFi in bear markets and AI in the industry.\n\nHighlights included networking with lunch, coffee breaks and an all-inclusive happy hour, plus a closing show with a renowned DJ. Held on June 7, 2025 at Clube Pinheiros (São Paulo), it established a new standard for DeFi events in Brazil.",
     depoimentos: "Evento revolucionário que conectou a comunidade DeFi brasileira.",
-    links: ["https://defiverso.com/defifest-2025/"],
+    links: ["https://defiverso.com"],
+    externalLink: "https://defiverso.com",
+    externalLabel: "Ver o evento",
+    externalLabel_en: "See the event",
     metricas: "600+ participantes\n\nO maior evento DeFi do Brasil em 2025, reunindo a elite da comunidade cripto brasileira para um dia completo de educação, networking e conexões estratégicas.\n\n• 600+ participantes presenciais\n• 15+ palestrantes especialistas\n• 8 horas de conteúdo educacional\n• 100% de satisfação dos participantes\n• 3x mais networking que eventos similares\n\nO evento estabeleceu um novo padrão para eventos DeFi no Brasil, combinando educação de alta qualidade com experiências memoráveis de networking.",
     metricas_en: "600+ attendees\n\nThe largest DeFi event in Brazil in 2025, bringing together the elite of the Brazilian crypto community for a complete day of education, networking and strategic connections.\n\n• 600+ in-person attendees\n• 15+ expert speakers\n• 8 hours of educational content\n• 100% participant satisfaction\n• 3x more networking than similar events\n\nThe event established a new standard for DeFi events in Brazil, combining high-quality education with memorable networking experiences.",
     servicos: ["Design", "Motion", "Edição de vídeo", "Copywriting"],
@@ -59,7 +65,10 @@ export const casesData: Record<string, CaseData> = {
     detalhes: "O Desafio\n\nO mercado de educação em cripto no Brasil era dominado por conteúdo masculino e técnico, deixando muitas mulheres de fora. A Bit das Minas precisava criar uma abordagem única que fosse educativa, acessível e empoderadora para o público feminino, diferenciando-se da concorrência.\n\nNossa Estratégia\n\nDesenvolvemos uma estratégia de conteúdo multicanal focada em educação prática e empoderamento feminino. Criamos roteiros que transformavam conceitos complexos em linguagem acessível, sempre conectando o aprendizado com a realidade das mulheres brasileiras.\n\n• Roteiros educativos com linguagem acessível\n• Reels com dicas práticas e cases reais\n• Copywriting focado em empoderamento feminino\n• Estratégia de lançamentos com storytelling envolvente\n• Newsletter semanal com análises contextualizadas\n\nO Resultado\n\nMais de 4 lançamentos bem-sucedidos, incluindo cursos como 'Revolução Cripto' para iniciantes. O crescimento orgânico via reels educativos e dicas práticas resultou em uma comunidade engajada e fiel. A newsletter 'Bit News' com análises semanais se tornou referência no mercado.\n\nO projeto reforçou a missão de empoderamento feminino em cripto, criando um espaço seguro e educativo para mulheres que queriam aprender sobre investimentos digitais.",
     detalhes_en: "The Challenge\n\nThe Brazilian crypto education market was dominated by male and technical content, leaving many women out. Bit das Minas needed to create a unique approach that was educational, accessible and empowering for the female audience, differentiating itself from the competition.\n\nOur Strategy\n\nWe developed a multi-channel content strategy focused on practical education and female empowerment. We created scripts that transformed complex concepts into accessible language, always connecting learning with the reality of Brazilian women.\n\n• Educational scripts with accessible language\n• Reels with practical tips and real cases\n• Copywriting focused on female empowerment\n• Launch strategy with engaging storytelling\n• Weekly newsletter with contextualized analyses\n\nThe Result\n\nOver 4 successful launches, including beginner courses like 'Crypto Revolution'. Organic growth through educational reels and practical tips resulted in an engaged and loyal community. The 'Bit News' newsletter with weekly analyses became a market reference.\n\nThe project reinforced the mission of empowering women in crypto, creating a safe and educational space for women who wanted to learn about digital investments.",
     depoimentos: "Crescimento exponencial no faturamento e engajamento da comunidade.",
-    links: ["https://www.instagram.com/bitdasminas/?hl=en", "https://bitdasminas.com/", "https://news.bitdasminas.com/", "https://apps.apple.com/us/app/bit-das-minas/id6476791912"],
+    links: ["https://www.instagram.com/bitdasminas/?hl=en", "https://apps.apple.com/us/app/bit-das-minas/id6476791912"],
+    externalLink: "https://www.instagram.com/bitdasminas/?hl=en",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "200% de aumento no faturamento\n\nTransformamos a Bit das Minas em uma das principais referências de educação cripto para mulheres no Brasil, com resultados impressionantes em engajamento e conversão.\n\n• 200% de aumento no faturamento dos lançamentos\n• 50% de redução no custo por lead\n• 150+ vídeos editados para anúncios\n• 4+ lançamentos bem-sucedidos\n• Comunidade engajada com alta retenção\n\nA estratégia de conteúdo empoderador e educativo resultou em uma comunidade fiel e um crescimento sustentável, estabelecendo a Bit das Minas como líder no segmento feminino de educação cripto.",
     metricas_en: "200% revenue increase\n\nWe transformed Bit das Minas into one of the main crypto education references for women in Brazil, with impressive results in engagement and conversion.\n\n• 200% increase in launch revenue\n• 50% reduction in cost per lead\n• 150+ videos edited for ads\n• 4+ successful launches\n• Engaged community with high retention\n\nThe empowering and educational content strategy resulted in a loyal community and sustainable growth, establishing Bit das Minas as a leader in the female crypto education segment.",
     servicos: ["Edição de vídeo", "Copywriting", "Roteiro", "Lançamentos"],
@@ -109,6 +118,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "The Challenge\n\nLayla Foz already had an engaged audience, but needed content that maintained her intellectual depth while adapting to Instagram's algorithm demands. The challenge was to preserve her authenticity and creativity while maximizing reach and engagement.\n\nOur Strategy\n\nWe developed an approach that combined Layla's content depth with social media optimized formats. We created reels that maintained her creative and intellectual essence, plus newsletters that nurtured her audience with quality content.\n\n• Video editing that preserves content depth\n• Reels optimized for engagement and reach\n• Newsletters for audience nurturing\n• Maintaining authenticity and creativity\n• Focus on innovation and exceptional quality\n\nThe Result\n\nEdited content that preserved Layla's depth and creativity, including engagement reels and newsletters to nurture her audience. The exceptional quality enabled her to focus on innovation, boosting her impact on demanding platforms.\n\nThe result was impressive Instagram growth from 100k to 172k followers, with over 20 million views on reels, establishing Layla as one of Brazil's leading intellectual content creators.",
     depoimentos: "Crescimento impressionante no Instagram e engajamento massivo nos reels.",
     links: ["https://www.instagram.com/laylafoz/"],
+    externalLink: "https://www.instagram.com/laylafoz",
+    externalLabel: "Ver no Instagram",
+    externalLabel_en: "See on Instagram",
     metricas: "20M+ views nos reels\n\nTransformamos o perfil da Layla Foz em uma das principais referências de conteúdo intelectual no Instagram brasileiro, com crescimento exponencial e engajamento massivo.\n\n• 20M+ views nos reels\n• Crescimento de 100k para 172k seguidores (+72%)\n• Engajamento massivo e consistente\n• Estabelecimento como referência intelectual\n• Qualidade excepcional mantida em todos os formatos\n\nA estratégia de preservar a profundidade do conteúdo enquanto otimizava para redes sociais resultou em um crescimento sustentável e uma audiência altamente engajada, consolidando Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
     metricas_en: "20M+ views on reels\n\nWe transformed Layla Foz's profile into one of the main intellectual content references on Brazilian Instagram, with exponential growth and massive engagement.\n\n• 20M+ views on reels\n• Growth from 100k to 172k followers (+72%)\n• Massive and consistent engagement\n• Establishment as intellectual reference\n• Exceptional quality maintained across all formats\n\nThe strategy of preserving content depth while optimizing for social media resulted in sustainable growth and a highly engaged audience, consolidating Layla as one of Brazil's leading intellectual content creators.",
     servicos: ["Edição de vídeos", "Roteiros de Reels", "Newsletter"],
@@ -152,6 +164,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "The Challenge\n\nCrypto.com, one of the largest global exchanges, needed content that communicated simplicity and security to the Brazilian market. The challenge was to create posts that educated about cryptocurrencies in an accessible way, maintaining the credibility of the international brand.\n\nOur Strategy\n\nWe developed a multi-channel content strategy focused on education and engagement. We created personalized posts for Instagram and Twitter that explained complex concepts in simple ways, always aligned with Crypto.com's vision of simplicity and security.\n\n• Educational content about BTC, CRO and other cryptocurrencies\n• Posts aligned with simplicity and security vision\n• Multi-channel strategy (Instagram and Twitter)\n• Accessible language for Brazilian audience\n• Focus on education and engagement\n\nThe Result\n\nTailored content that significantly boosted engagement on Instagram and Twitter. Posts about BTC, CRO and other cryptocurrencies contributed to platform growth in Brazil, establishing Crypto.com as an educational reference in the Brazilian crypto market.\n\nThe result was an average increase of over 210% in social media likes, consolidating the brand's presence in the Brazilian market.",
     depoimentos: "Nenhum depoimento específico sobre Kaleidos encontrado, mas a plataforma é elogiada por agências crypto em geral.",
     links: ["https://www.instagram.com/cryptocomofficial/?hl=en", "https://twitter.com/cryptocom"],
+    externalLink: "https://crypto.com",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "210% de aumento nas curtidas\n\nTransformamos a presença digital da Crypto.com no Brasil, estabelecendo a marca como referência educativa no mercado cripto brasileiro com engajamento excepcional.\n\n• 210% de aumento nas curtidas em redes sociais\n• Estabelecimento como referência educativa\n• Crescimento significativo no engajamento\n• Consolidação da presença no mercado brasileiro\n• Conteúdo educativo de alta qualidade\n\nA estratégia de conteúdo educativo e acessível resultou em um engajamento massivo, consolidando a Crypto.com como uma das principais referências educativas sobre criptomoedas no Brasil.",
     metricas_en: "210% increase in likes\n\nWe transformed Crypto.com's digital presence in Brazil, establishing the brand as an educational reference in the Brazilian crypto market with exceptional engagement.\n\n• 210% increase in social media likes\n• Establishment as educational reference\n• Significant growth in engagement\n• Consolidation of presence in Brazilian market\n• High-quality educational content\n\nThe strategy of educational and accessible content resulted in massive engagement, consolidating Crypto.com as one of the main educational references about cryptocurrencies in Brazil.",
     servicos: ["Copywriting", "Criação de conteúdo"],
@@ -177,6 +192,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "We built Jornal Cripto from scratch. We developed the entire visual identity including logo, color palette and main character. We implemented a complete digital marketing strategy from lead acquisition to audience retention. We developed three web platforms: jornalcripto.com (main site), news.jornalcripto.com (newsletter) and radar.jornalcripto.com (real‑time insights webapp). We set up n8n automations for 6 daily blog posts and 2 weekly manual newsletters. We managed paid traffic campaigns that significantly boosted the audience. We created organic and paid content, establishing Jornal Cripto as a reference in the Brazilian crypto sector.",
     depoimentos: "Projeto completo que transformou uma ideia em uma das principais referências do setor cripto no Brasil.",
     links: ["https://news.jornalcripto.com", "https://jornalcripto.com", "https://radar.jornalcripto.com"],
+    externalLink: "https://jornalcripto.com",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "6 posts automáticos por dia\n\nConstruímos o Jornal Cripto do zero, transformando uma ideia em uma das principais referências do setor cripto no Brasil com automação e crescimento exponencial.\n\n• 6 posts automáticos diários via n8n\n• 2 newsletters semanais manuais\n• 3 plataformas web desenvolvidas\n• Crescimento exponencial da audiência\n• Posicionamento como referência no setor\n• Estratégia completa de marketing digital\n\nO projeto completo incluiu criação de marca, identidade visual, desenvolvimento web, estratégia de marketing, tráfego pago e automações, estabelecendo o Jornal Cripto como uma das principais referências educativas sobre criptomoedas no Brasil.",
     metricas_en: "6 automated posts per day\n\nWe built Jornal Cripto from scratch, transforming an idea into one of the main references in the Brazilian crypto sector with automation and exponential growth.\n\n• 6 daily automated posts via n8n\n• 2 weekly manual newsletters\n• 3 web platforms developed\n• Exponential audience growth\n• Positioning as sector reference\n• Complete digital marketing strategy\n\nThe complete project included brand creation, visual identity, web development, marketing strategy, paid traffic and automations, establishing Jornal Cripto as one of the main educational references about cryptocurrencies in Brazil.",
     servicos: ["Criação de marca", "Identidade visual", "Desenvolvimento web", "Estratégia de marketing", "Tráfego pago", "Criação de conteúdo", "Automações", "Newsletter", "Webapp"],
@@ -198,14 +216,17 @@ export const casesData: Record<string, CaseData> = {
     tags: ["Cripto", "Social Media", "Design"],
     descricao: "Criação de conteúdo para rede social, criamos conteúdo para instagram, twitter e linkedin por 18 meses para os perfis do mercado bitcoin",
     descricao_en: "Social content creation: Instagram, Twitter and LinkedIn for 18 months for Mercado Bitcoin’s profiles.",
-    fraseImpactante: "180 posts criados em 18 meses.",
-    fraseImpactante_en: "180 posts created in 18 months.",
-    detalhes: "Desenvolvemos e executamos uma estratégia completa de conteúdo para o Mercado Bitcoin durante 18 meses consecutivos. Criamos mais de 180 posts originais para Instagram, Twitter e LinkedIn, cobrindo temas como economia digital, legislação pró-cripto, análises de mercado e educação financeira. Nossos conteúdos foram alinhados à visão da plataforma de tornar o mercado cripto acessível ao público brasileiro, resultando em engajamento significativo e fortalecimento da presença digital da marca. O trabalho incluiu criação de copywriting, design de posts, estratégia de calendário editorial e análise de performance para otimização contínua.",
-    detalhes_en: "We developed and executed a complete content strategy for Mercado Bitcoin for 18 consecutive months. We created over 180 original posts for Instagram, Twitter and LinkedIn, covering topics like digital economy, pro‑crypto legislation, market analysis and financial education. Our content aligned with the platform’s mission to make crypto accessible to Brazilians, resulting in significant engagement and a stronger digital presence. Work included copywriting, post design, editorial calendar strategy and performance analysis for continuous optimization.",
+    fraseImpactante: "1.000+ posts em 18 meses, mais de 3 por dia útil.",
+    fraseImpactante_en: "1,000+ posts in 18 months, more than 3 per business day.",
+    detalhes: "Desenvolvemos e executamos uma estratégia completa de conteúdo para o Mercado Bitcoin durante 18 meses consecutivos. Criamos mais de 1.000 posts originais para Instagram, Twitter e LinkedIn, em um ritmo de mais de 3 publicações por dia útil, cobrindo temas como economia digital, legislação pró-cripto, análises de mercado e educação financeira. Nossos conteúdos foram alinhados à visão da plataforma de tornar o mercado cripto acessível ao público brasileiro, resultando em engajamento significativo e fortalecimento da presença digital da marca. O trabalho incluiu criação de copywriting, design de posts, estratégia de calendário editorial e análise de performance para otimização contínua.",
+    detalhes_en: "We developed and executed a complete content strategy for Mercado Bitcoin for 18 consecutive months. We created over 1,000 original posts for Instagram, Twitter and LinkedIn, at a pace of more than 3 publications per business day, covering topics like digital economy, pro‑crypto legislation, market analysis and financial education. Our content aligned with the platform’s mission to make crypto accessible to Brazilians, resulting in significant engagement and a stronger digital presence. Work included copywriting, post design, editorial calendar strategy and performance analysis for continuous optimization.",
     depoimentos: "Nenhum específico sobre Kaleidos, mas elogios gerais à plataforma em buscas.",
     links: ["https://www.mercadobitcoin.com.br/", "https://twitter.com/mercadobitcoin"],
-    metricas: "180 posts em 18 meses\n\nDesenvolvemos uma estratégia completa de conteúdo para o Mercado Bitcoin durante 18 meses consecutivos, fortalecendo significativamente a presença digital da maior exchange brasileira.\n\n• 180+ posts originais criados\n• 80k+ novos seguidores no período\n• Estratégia multicanal (Instagram, Twitter, LinkedIn)\n• 18 meses de execução contínua\n• Engajamento significativo e crescimento sustentável\n\nA estratégia de conteúdo educativa e acessível resultou em um fortalecimento da presença digital da marca, consolidando o Mercado Bitcoin como referência em educação cripto no Brasil.",
-    metricas_en: "180 posts in 18 months\n\nWe developed a complete content strategy for Mercado Bitcoin for 18 consecutive months, significantly strengthening the digital presence of Brazil's largest exchange.\n\n• 180+ original posts created\n• 80k+ new followers in the period\n• Multi-channel strategy (Instagram, Twitter, LinkedIn)\n• 18 months of continuous execution\n• Significant engagement and sustainable growth\n\nThe educational and accessible content strategy resulted in a strengthening of the brand's digital presence, consolidating Mercado Bitcoin as a reference in crypto education in Brazil.",
+    externalLink: "https://www.mercadobitcoin.com.br",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
+    metricas: "1.000+ posts em 18 meses\n\nDesenvolvemos uma estratégia completa de conteúdo para o Mercado Bitcoin durante 18 meses consecutivos, fortalecendo significativamente a presença digital da maior exchange brasileira.\n\n• 1.000+ posts originais criados\n• Mais de 3 publicações por dia útil, de forma consistente\n• Estratégia multicanal (Instagram, Twitter, LinkedIn)\n• 18 meses de execução contínua\n• Engajamento significativo e crescimento sustentável\n\nA estratégia de conteúdo educativa e acessível resultou em um fortalecimento da presença digital da marca, consolidando o Mercado Bitcoin como referência em educação cripto no Brasil.",
+    metricas_en: "1,000+ posts in 18 months\n\nWe developed a complete content strategy for Mercado Bitcoin for 18 consecutive months, significantly strengthening the digital presence of Brazil's largest exchange.\n\n• 1,000+ original posts created\n• More than 3 publications per business day, consistently\n• Multi-channel strategy (Instagram, Twitter, LinkedIn)\n• 18 months of continuous execution\n• Significant engagement and sustainable growth\n\nThe educational and accessible content strategy resulted in a strengthening of the brand's digital presence, consolidating Mercado Bitcoin as a reference in crypto education in Brazil.",
     servicos: ["Criação de conteúdo", "Instagram", "Twitter", "LinkedIn"],
     servicos_en: ["Content creation", "Instagram", "Twitter", "LinkedIn"],
     media: [
@@ -295,7 +316,10 @@ export const casesData: Record<string, CaseData> = {
     detalhes: "Contexto\n\nO Investidor 4.20, liderado por Lucas Amendola, já era uma das principais referências em educação cripto no Brasil. A comunidade buscava escalar a produção de vídeos longos e curtos sem perder a profundidade técnica que sempre fez parte da marca.\n\nO Desafio\n\nManter a qualidade analítica enquanto ampliávamos a frequência e a viralidade do conteúdo. Precisávamos transformar análises complexas em formatos envolventes tanto para YouTube quanto para Shorts/Reels, garantindo performance nos algoritmos e retenção da audiência.\n\nNossa Abordagem\n\n**Edição de Vídeos Longos (YouTube):** Refinamos a narrativa visual dos vídeos semanais, com ritmo dinâmico, gráficos e elementos que simplificam conceitos avançados de mercado e DeFi.\n**Pílulas Virais (Shorts/Reels):** Criamos um formato proprietário de cortes com legendas dinâmicas, ganchos fortes e otimização de retenção, garantindo publicação diária e alcance orgânico constante.\n\nLançamentos e Estrutura Comercial\n\n• Desenvolvimento completo de criativos, roteiros e vídeos para tráfego pago.\n• Construção da jornada comercial (funil, narrativa, páginas de captura e follow-up).\n• Implementação de automações oficiais via API do WhatsApp para nutrição e grupos de comunidade.\n\nResultados do Lançamento\n\nA operação integrada de conteúdo, criativos e tecnologia permitiu executar lançamentos em escala, mantendo consistência de mensagem e conversão elevada durante todo o funil.\n\nConclusão\n\nO case reforça a nossa capacidade de transformar conteúdos de nicho em máquinas de crescimento. A estratégia 360º garantiu performance, escalabilidade e fortalecimento da comunidade Investidor 4.20 em todos os canais digitais.",
     detalhes_en: "Context\n\nInvestidor 4.20, led by Lucas Amendola, was already a top crypto education reference in Brazil. The community wanted to scale long-form and short-form production without losing the deep analysis that defines the brand.\n\nThe Challenge\n\nKeep analytical quality while increasing content frequency and virality. We needed to turn complex market insights into engaging formats for both YouTube and Shorts/Reels, securing algorithm performance and audience retention.\n\nOur Approach\n\n**Long-form Editing (YouTube):** We refined weekly videos with dynamic pacing, graphics and elements that simplify advanced market and DeFi concepts.\n**Viral Capsules (Shorts/Reels):** We created a proprietary cut format with dynamic captions, strong hooks and retention optimization, ensuring daily publishing and steady organic reach.\n\nLaunches and Commercial Structure\n\n• Full development of ad creatives, scripts and videos for paid traffic.\n• Funnel architecture: storytelling, capture pages and follow-up flows.\n• Official WhatsApp API automations for nurturing groups and community management.\n\nLaunch Outcomes\n\nThe integrated operation across content, creatives and technology enabled scalable launches with consistent messaging and high conversion throughout the funnel.\n\nConclusion\n\nThis case highlights our ability to turn niche expertise into growth machines. The 360º strategy delivered performance, scalability and a stronger Investidor 4.20 community across every channel.",
     depoimentos: "Nenhum específico, mas posts destacam crescimento.",
-    links: ["https://twitter.com/investidor420", "https://www.instagram.com/lucas.amendolaa/", "https://news.defiverso.com", "https://defiverso.com/pagina-de-captura/"],
+    links: ["https://twitter.com/investidor420", "https://www.instagram.com/lucas.amendolaa/", "https://news.defiverso.com"],
+    externalLink: "https://www.youtube.com/@investidor4.20",
+    externalLabel: "Ver no YouTube",
+    externalLabel_en: "See on YouTube",
     metricas: "5x aumento no faturamento\n\nTransformamos o Investidor 4.20 em uma das principais referências do setor cripto brasileiro, com crescimento exponencial em todos os canais e resultados comerciais excepcionais.\n\n• 5x aumento no faturamento desde nossa entrada\n• Instagram: 50k → 180k seguidores (+260%)\n• YouTube: 200k → 382k inscritos (+91%)\n• Newsletter: 30k inscritos com 35% de abertura\n• 200+ criativos estáticos e 100+ vídeos para anúncios\n• Estrutura comercial completa desenvolvida do zero\n\nA estratégia integrada de conteúdo, automações e lançamentos resultou em um crescimento extraordinário, estabelecendo o Investidor 4.20 como uma das principais referências no setor cripto brasileiro.",
     metricas_en: "5x revenue increase\n\nWe transformed Investidor 4.20 into one of the main references in the Brazilian crypto sector, with exponential growth across all channels and exceptional commercial results.\n\n• 5x revenue increase since our arrival\n• Instagram: 50k → 180k followers (+260%)\n• YouTube: 200k → 382k subscribers (+91%)\n• Newsletter: 30k subscribers with 35% open rate\n• 200+ static creatives and 100+ ad videos\n• Complete commercial structure built from scratch\n\nThe integrated strategy of content, automations and launches resulted in extraordinary growth, establishing Investidor 4.20 as one of the main references in the Brazilian crypto sector.",
     servicos: ["Edição de vídeos", "Desenvolvimento comercial", "Newsletter", "Copywriter", "Automações IA", "Estratégias de lançamento", "Criativos para anúncios", "Páginas de captura", "Design"],
@@ -412,6 +436,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "Since June 2025, Kaleidos has taken complete management of Defiverso's content marketing strategy and lead acquisition. The central goal was to establish the brand as Brazil's largest crypto education platform, transforming complex market information into accessible, high-value content that generates concrete results.\n\nOur work focused on three main fronts:\n\n**1. Social Media (Instagram & Twitter):** Creation of cutting-edge educational content, visual identity development and complete Instagram management, focusing on organic growth. Implementation of an AI-powered automation flow for Twitter, ensuring constant presence and traffic direction.\n\n**2. Email Marketing & Lead Generation:** Newsletter creation from scratch and development of a **7-Day Mini Course** as a high-converting lead magnet.\n\n**3. Launch Support:** Collaboration in creating **static creatives and carousels** for paid traffic campaigns, optimizing media performance.",
     depoimentos: "A parceria Kaleidos e Defiverso resultou na criação de um ecossistema de marketing digital completo e de alta performance.",
     links: ["https://defiverso.com", "https://news.defiverso.com", "https://www.instagram.com/defiverso/"],
+    externalLink: "https://defiverso.com",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "**Máquina de Aquisição de Leads - Email Marketing:**\n\n• **Mais de 29.000 inscrições** no Minicurso \"7 Dias DeFi\"\n• **26.554 assinantes ativos** da Newsletter\n• **Taxa de Abertura Média de 33.01%** (muito acima da média do mercado de 15-25%)\n• **Taxa de Abertura do Minicurso no pico: 54.76%**\n• **Taxa de Cliques (CTR) do Minicurso no pico: 24.55%**\n\n**Construção de Audiência - Instagram (90 dias):**\n\n• **12 Milhões de Visualizações** de Alcance Orgânico\n• **Crescimento de 28,4%** no Alcance Orgânico\n• **302.9 Mil contas** de Alcance Total\n• **136.9 Mil interações** com conteúdo (curtidas, comentários, salvos e compartilhamentos)\n• **14.4 Mil cliques no link** (tráfego qualificado)\n• **8.6 Mil novos seguidores** em apenas 3 meses\n\n**Otimização de Processos:**\n\n• Automação no Twitter via IA para presença constante\n• Criação de criativos estáticos e carrosséis para tráfego pago\n\nEstes resultados concretos demonstram a capacidade da Kaleidos de entregar não apenas conteúdo de qualidade, mas também **crescimento sustentável e conversão em escala** para o Defiverso.",
     metricas_en: "**Lead Generation Machine - Email Marketing:**\n\n• **Over 29,000 enrollments** in the \"7 Days DeFi\" Mini Course\n• **26,554 active subscribers** to the Newsletter\n• **Average Open Rate of 33.01%** (well above market average of 15-25%)\n• **Mini Course Peak Open Rate: 54.76%**\n• **Mini Course Peak Click-Through Rate (CTR): 24.55%**\n\n**Audience Building - Instagram (90 days):**\n\n• **12 Million Organic Reach** views\n• **28.4% growth** in Organic Reach\n• **302.9 Thousand accounts** of Total Reach\n• **136.9 Thousand interactions** with content (likes, comments, saves and shares)\n• **14.4 Thousand link clicks** (qualified traffic)\n• **8.6 Thousand new followers** in just 3 months\n\n**Process Optimization:**\n\n• Twitter automation via AI for constant presence\n• Creation of static creatives and carousels for paid traffic\n\nThese concrete results demonstrate Kaleidos' ability to deliver not only quality content, but also **sustainable growth and scale conversion** for Defiverso.",
     servicos: ["Design posts", "Instagram Defiverso", "Newsletter Defiverso", "Curso 7 dias DeFi", "Twitter", "Resultados gerais"],
@@ -440,6 +467,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "The Challenge\n\nLedger needed a Black Friday campaign targeting the Brazilian crypto audience. The goal was to promote the Ledger Nano X at 50% off with Bitcoin cashback, running across portals like Portal do Bitcoin and other channels in the national crypto ecosystem.\n\nOur Approach\n\nWe developed a complete creative package for the campaign:\n\n• **Brainstorm and creative direction:** Study of Ledger's visual identity (typography, black/orange palette, product photography) and adaptation for the Brazilian market.\n• **Portal banners:** Leaderboard, rectangle and skyscraper formats optimized for Brazil's top crypto portals.\n• **Display ad creatives:** Conversion-focused pieces highlighting the 50% discount, BTC cashback and Black Friday urgency.\n• **Format adaptations:** Horizontal banners for portal headers, vertical for sidebars, and square pieces for social media.\n\nThe Result\n\nWe delivered 25+ creative pieces across multiple formats, all aligned with Ledger's brand guidelines and optimized for conversion in the Brazilian market. The campaign covered the main portals of the national crypto ecosystem during the Black Friday period.",
     depoimentos: "",
     links: ["https://www.ledger.com"],
+    externalLink: "https://www.ledger.com",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "25+ criativos entregues\n\nCampanha completa de Black Friday para a Ledger no mercado brasileiro.\n\n• 25+ peças criativas em múltiplos formatos\n• Banners para portais cripto (Portal do Bitcoin e outros)\n• Display ads otimizados para conversão\n• Formatos: leaderboard, rectangle, skyscraper, social\n• Alinhamento total com brand guidelines Ledger\n• Cobertura nos principais portais do ecossistema cripto brasileiro",
     metricas_en: "25+ creatives delivered\n\nComplete Black Friday campaign for Ledger in the Brazilian market.\n\n• 25+ creative pieces across multiple formats\n• Banners for crypto portals (Portal do Bitcoin and others)\n• Display ads optimized for conversion\n• Formats: leaderboard, rectangle, skyscraper, social\n• Full alignment with Ledger brand guidelines\n• Coverage across Brazil's main crypto ecosystem portals",
     servicos: ["Design", "Banners", "Display Ads", "Direção Criativa"],
@@ -467,6 +497,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "We built the neobankless.com institutional website, produced 4 cinematic manifesto videos and created the Instagram content strategy for NBS.",
     depoimentos: "",
     links: ["https://neobankless.com", "https://www.instagram.com/neobankless/"],
+    externalLink: "https://neobankless.com",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
     metricas: "Site institucional + vídeos de manifesto + conteúdo para Instagram.",
     metricas_en: "Institutional website + manifesto videos + Instagram content.",
     servicos: ["Desenvolvimento web", "Edição de vídeo", "Roteiro", "Social Media", "Design"],
@@ -553,6 +586,9 @@ export const casesData: Record<string, CaseData> = {
     detalhes_en: "Reels and YouTube video editing about AI, vibe coding, and tools like Cursor, Claude Code and Lovable. Technical content with dynamic editing.",
     depoimentos: "",
     links: ["https://www.instagram.com/hugodoria_dev/"],
+    externalLink: "https://www.instagram.com/hugodoria_dev/",
+    externalLabel: "Ver no Instagram",
+    externalLabel_en: "See on Instagram",
     metricas: "Edição de reels e vídeos de YouTube sobre IA e desenvolvimento.",
     metricas_en: "Reels and YouTube video editing about AI and development.",
     servicos: ["Edição de vídeo", "Edição de reels", "Motion graphics"],
@@ -570,7 +606,10 @@ export const casesData: Record<string, CaseData> = {
     detalhes: "Edição de vídeos para YouTube, transcrições e criação de newsletters no Beehiiv para Eduardo Bueno — criador de conteúdo sobre política e história.",
     detalhes_en: "YouTube video editing, transcriptions and newsletter creation on Beehiiv for Eduardo Bueno — content creator covering politics and history.",
     depoimentos: "",
-    links: ["https://www.youtube.com/@EduardoBueno"],
+    links: ["https://www.youtube.com/@buenasideias"],
+    externalLink: "https://www.youtube.com/@buenasideias",
+    externalLabel: "Ver no YouTube",
+    externalLabel_en: "See on YouTube",
     metricas: "Edição de vídeo, transcrições e newsletters no Beehiiv.",
     metricas_en: "Video editing, transcriptions and newsletters on Beehiiv.",
     servicos: ["Edição de vídeo", "Transcrição", "Newsletter", "Copywriting"],
@@ -655,26 +694,6 @@ export const casesData: Record<string, CaseData> = {
       { src: "/Cases/tech-portfolio/defi-radar-mobile.png", type: "image", alt: "DeFi Radar — Mobile" }
     ]
   },
-  "mentoria-defiverso": {
-    id: "mentoria-defiverso",
-    nome: "Mentoria Defiverso",
-    tags: ["Desenvolvimento Web", "EdTech", "Cripto"],
-    descricao: "Plataforma de mentoria educacional para construcao de patrimonio cripto. 26 paginas com dashboard, aulas, controle de risco e acompanhamento continuo.",
-    descricao_en: "Educational mentoring platform for building crypto wealth. 26 pages with dashboard, lessons, risk control and continuous monitoring.",
-    fraseImpactante: "Acelere a construcao do seu patrimonio com acompanhamento continuo.",
-    fraseImpactante_en: "Accelerate wealth building with continuous mentoring.",
-    detalhes: "Plataforma completa de mentoria com landing page, area de alunos, dashboard de carteira, aulas em video, controle de risco e chat.\n\nStack: Vite/React, Supabase, Tailwind, 114 componentes",
-    detalhes_en: "Complete mentoring platform with landing page, student area, portfolio dashboard, video lessons, risk control and chat.",
-    links: [],
-    metricas: "26 paginas | 114 componentes | Supabase Auth",
-    metricas_en: "26 pages | 114 components | Supabase Auth",
-    servicos: ["Desenvolvimento Web", "UI/UX", "EdTech", "Plataforma"],
-    servicos_en: ["Web Development", "UI/UX", "EdTech", "Platform"],
-    media: [
-      { src: "/Cases/tech-portfolio/mentoria-defiverso.png", type: "image", alt: "Mentoria Defiverso — Landing" },
-      { src: "/Cases/tech-portfolio/mentoria-mobile.png", type: "image", alt: "Mentoria Defiverso — Mobile" }
-    ]
-  },
   "depay": {
     id: "depay",
     nome: "DePay",
@@ -693,64 +712,6 @@ export const casesData: Record<string, CaseData> = {
     media: [
       { src: "/Cases/tech-portfolio/depay.png", type: "image", alt: "DePay — Landing" },
       { src: "/Cases/tech-portfolio/depay-mobile.png", type: "image", alt: "DePay — Mobile" }
-    ]
-  },
-  "defiverso-quests": {
-    id: "defiverso-quests",
-    nome: "Defiverso Quests",
-    tags: ["Desenvolvimento Web", "Web3", "Gamification"],
-    descricao: "Plataforma de quests e airdrop para o ecossistema Defiverso. Conexao wallet/Discord, missoes sociais e sistema de pontos com tiers.",
-    descricao_en: "Quest and airdrop platform for the Defiverso ecosystem. Wallet/Discord connection, social missions and points system with tiers.",
-    fraseImpactante: "Complete missoes. Acumule pontos.",
-    fraseImpactante_en: "Complete missions. Earn points.",
-    detalhes: "App web3 com conexao de wallet, Discord, Twitter e Instagram. Sistema de quests com verificacao, pontos e tiers de airdrop (Bronze, Silver, Gold, Diamond).\n\nStack: Next.js, TypeScript, Tailwind, Shadcn/ui",
-    detalhes_en: "Web3 app with wallet, Discord, Twitter and Instagram connection. Quest system with verification, points and airdrop tiers.",
-    links: ["https://defiverso-quests-app.vercel.app"],
-    metricas: "Gamification | Airdrop | 5 quests | 4 tiers",
-    metricas_en: "Gamification | Airdrop | 5 quests | 4 tiers",
-    servicos: ["Desenvolvimento Web", "UI/UX", "Web3", "Gamification"],
-    servicos_en: ["Web Development", "UI/UX", "Web3", "Gamification"],
-    media: [
-      { src: "/Cases/tech-portfolio/defiverso-quests.png", type: "image", alt: "Defiverso Quests — Quests" },
-      { src: "/Cases/tech-portfolio/defiverso-quests-mobile.png", type: "image", alt: "Defiverso Quests — Mobile" }
-    ]
-  },
-  "viral-hunter": {
-    id: "viral-hunter",
-    nome: "Viral Hunter",
-    tags: ["Desenvolvimento Web", "Creator Economy", "Analytics"],
-    descricao: "Ferramenta de pesquisa de conteudo viral para criadores. Monitora 31 canais YouTube, noticias cripto, trends e gera ideias de conteudo automaticamente.",
-    descricao_en: "Viral content research tool for creators. Monitors 31 YouTube channels, crypto news, trends and auto-generates content ideas.",
-    fraseImpactante: "Encontre o proximo video viral antes de todo mundo.",
-    fraseImpactante_en: "Find the next viral video before everyone else.",
-    detalhes: "Dashboard com 10 paginas: feed diario, top videos, thumbnails, noticias de 22 fontes, redes sociais, crypto trends e ideias salvas.\n\nStack: Vite/React, YouTube API, CoinGecko, Supabase, RSS",
-    detalhes_en: "Dashboard with 10 pages: daily feed, top videos, thumbnails, news from 22 sources, social media, crypto trends and saved ideas.",
-    links: [],
-    metricas: "10 paginas | 31 canais | 22 fontes de noticias | YouTube API",
-    metricas_en: "10 pages | 31 channels | 22 news sources | YouTube API",
-    servicos: ["Desenvolvimento Web", "UI/UX", "Analytics", "Creator Economy"],
-    servicos_en: ["Web Development", "UI/UX", "Analytics", "Creator Economy"],
-    media: [
-      { src: "/Cases/tech-portfolio/viral-hunter.png", type: "image", alt: "Viral Hunter — Dashboard" }
-    ]
-  },
-  "defiverso-dashboard": {
-    id: "defiverso-dashboard",
-    nome: "The Launch — Defiverso",
-    tags: ["Desenvolvimento Web", "Dashboard", "Analytics"],
-    descricao: "Dashboard de analise completa de todos os lancamentos do Defiverso. Metricas de performance, graficos e acompanhamento em tempo real.",
-    descricao_en: "Complete analysis dashboard for all Defiverso launches. Performance metrics, charts and real-time monitoring.",
-    fraseImpactante: "Todos os lancamentos em um unico dashboard.",
-    fraseImpactante_en: "All launches in a single dashboard.",
-    detalhes: "Dashboard com Recharts para visualizacao de dados de lancamentos.\n\nStack: Next.js, Recharts, Tailwind",
-    detalhes_en: "Dashboard with Recharts for launch data visualization.",
-    links: ["https://defiverso-dashboard.vercel.app"],
-    metricas: "Dashboard completo | Recharts | Next.js",
-    metricas_en: "Complete dashboard | Recharts | Next.js",
-    servicos: ["Desenvolvimento Web", "UI/UX", "Dashboard", "Analytics"],
-    servicos_en: ["Web Development", "UI/UX", "Dashboard", "Analytics"],
-    media: [
-      { src: "/Cases/tech-portfolio/defiverso-dashboard.png", type: "image", alt: "The Launch — Defiverso Dashboard" }
     ]
   },
   "nbs": {
@@ -774,9 +735,34 @@ export const casesData: Record<string, CaseData> = {
     ]
   }
 };
+// Cases que possuem rota/página completa em /cases/<id> (pasta estática dedicada).
+// Fonte única de verdade para listagem (cards clicáveis) e sitemap (evita URLs 404).
+// Os demais cases em casesData são tratados como "Em breve" (sem rota ainda).
+export const ROUTED_CASE_IDS: string[] = [
+  "investidor-4-20",
+  "neobankless",
+  "hugo-doria",
+  "paradigma-education",
+  "bit-das-minas",
+  "buenas-ideias",
+  "layla-foz",
+  "defiverso",
+  "crypto-com",
+  "mercado-bitcoin",
+  "jornal-cripto",
+  "orlando",
+  "yasmin",
+  "defifest",
+  "ledger",
+];
+
 export function getCaseData(id: string): CaseData | null {
   return casesData[id] || null;
 }
 export function getAllCases(): CaseData[] {
   return Object.values(casesData);
-} 
+}
+// Apenas os cases com página dedicada — usado pelo sitemap para não gerar 404.
+export function getRoutedCases(): CaseData[] {
+  return ROUTED_CASE_IDS.map((id) => casesData[id]).filter(Boolean) as CaseData[];
+}

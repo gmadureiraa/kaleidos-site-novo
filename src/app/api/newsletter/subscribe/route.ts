@@ -7,6 +7,8 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
+import { getPaperBySlug } from "@/lib/papers-data";
+import { sendPaperDelivery } from "@/lib/emails/paper-delivery";
 
 // Lazy Resend client — avoids build-time failures when env vars are missing
 let _resend: Resend | null = null;
@@ -38,7 +40,42 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { email, _hp } = body || {};
+    const { email, _hp, name } = body || {};
+
+    // Entrega de lead magnet: se o gate/popup pediu um paper específico,
+    // mandamos o material por email na hora (honra a promessa do gate).
+    const deliverSlug =
+      typeof body?.deliver?.paperSlug === "string"
+        ? body.deliver.paperSlug.slice(0, 80)
+        : "";
+
+    // Metadata de jornada do lead (origem, artigo, UTMs) — alimenta o perfil
+    // da pessoa no PostHog (estilo "vida do lead" do RD Station). Resend guarda
+    // a lista; PostHog guarda a jornada, ambos com o email como chave.
+    const rawMeta = (body && body.metadata) || {};
+    const META_KEYS = [
+      "source",
+      "article_slug",
+      "path",
+      "referrer",
+      "channel",
+      "traffic_source",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "first_channel",
+      "first_source",
+      "first_referrer",
+      "first_utm_source",
+      "first_utm_campaign",
+    ] as const;
+    const meta: Record<string, string> = {};
+    for (const k of META_KEYS) {
+      const v = rawMeta[k];
+      if (typeof v === "string" && v) meta[k] = v.slice(0, 300);
+    }
 
     // Honeypot: 200 silencioso "success" sem efeito real
     if (isHoneypotTriggered(_hp)) {
@@ -74,22 +111,65 @@ export async function POST(req: NextRequest) {
       email,
     });
 
+    // Contato duplicado (já inscrito) NÃO é falha: seguimos pra entregar o
+    // material de novo. Só falhamos de verdade quando o erro não é duplicidade
+    // e também não há material pra entregar.
     if (error) {
-      console.error("Resend subscribe error:", error);
-      return NextResponse.json(
-        { error: "Failed to subscribe" },
-        { status: 500 }
-      );
+      const errMsg = (error as { message?: string })?.message ?? "";
+      const isDuplicate = /exist|already|duplicat/i.test(errMsg);
+      if (!isDuplicate && !deliverSlug) {
+        console.error("Resend subscribe error:", error);
+        return NextResponse.json(
+          { error: "Failed to subscribe" },
+          { status: 500 }
+        );
+      }
+      if (!isDuplicate) {
+        console.error("Resend subscribe error (entrega segue):", error);
+      }
+    }
+
+    // Entrega do material (best-effort: nunca derruba a inscrição).
+    let delivered = false;
+    if (deliverSlug) {
+      const paper = getPaperBySlug(deliverSlug);
+      if (paper) {
+        try {
+          const r = await sendPaperDelivery({
+            to: email,
+            paper,
+            name: typeof name === "string" ? name : null,
+          });
+          delivered = r.ok;
+        } catch (err) {
+          console.error("[subscribe] erro entregando paper:", err);
+        }
+      }
     }
 
     await captureServerEvent(email, "newsletter_signup", {
       audience_id: AUDIENCE_ID,
       resend_contact_id: data?.id ?? null,
+      delivered_paper: deliverSlug || null,
+      ...meta,
+      // first-touch persiste no perfil da pessoa; last-touch sempre atualiza
+      $set: {
+        last_channel: meta.channel ?? null,
+        last_source: meta.traffic_source ?? meta.source ?? null,
+        last_path: meta.path ?? null,
+      },
+      $set_once: {
+        first_channel: meta.first_channel ?? meta.channel ?? null,
+        first_source: meta.first_source ?? meta.traffic_source ?? null,
+        first_referrer: meta.first_referrer ?? meta.referrer ?? null,
+        first_article: meta.article_slug ?? null,
+      },
     });
 
     return NextResponse.json({
       success: true,
       id: data?.id,
+      delivered,
       message: "Inscricao realizada com sucesso!",
     });
   } catch (error) {

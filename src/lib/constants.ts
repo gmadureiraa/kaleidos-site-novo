@@ -1,6 +1,6 @@
 // Constantes globais para uso em todo o projeto
 
-export const WHATSAPP_NUMBER = "12936180547";
+export const WHATSAPP_NUMBER = "5512997796835";
 
 export const SERVICOS = [
   "Edição de Vídeo",

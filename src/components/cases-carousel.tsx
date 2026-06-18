@@ -8,81 +8,129 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { CasesCarouselSkeleton } from "@/components/ui/skeletons";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { useAnalytics } from "@/components/analytics";
+import { useRef } from "react";
+
+/**
+ * Vídeo que NÃO baixa nada até entrar na viewport (preload="none" + IntersectionObserver).
+ * Evita que a home dispare ~21MB de download de 6 vídeos autoplay competindo com o LCP.
+ * Só dá play quando o card está visível; pausa ao sair.
+ */
+function LazyVideo({ src, className }: { src: string; className?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!el.src) el.src = src; // só define o src (dispara o download) quando visível
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [src]);
+
+  return (
+    <video
+      ref={ref}
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+    />
+  );
+}
 
 const casesCarouselData = [
   {
     id: "bit-das-minas",
     title: "Bit das Minas",
-    description: "Edição de vídeo, copywrite e roteiro para lançamentos virais.",
+    tag: "Conteúdo · Lançamento",
+    description: "Edição de vídeo, copywriting e roteiro para lançamentos virais.",
     metric: "+200% Faturamento",
-    metricColor: "bg-pink-500",
+    gradient: "linear-gradient(150deg, #D262B2 0%, #7A2E78 55%, #1A0E1A 100%)",
     coverImage: "/Cases/bit-das-minas/conteudo/Reels-1-Gi-2.mp4",
     href: "/cases/bit-das-minas"
   },
   {
     id: "layla-foz",
     title: "Layla Foz",
+    tag: "Vídeo · Newsletter",
     description: "Edição de vídeo e criação de newsletters para crescimento orgânico.",
     metric: "+20M Views",
-    metricColor: "bg-pink-500",
+    gradient: "linear-gradient(150deg, #FF8A5B 0%, #C13E7A 55%, #1A0E16 100%)",
     coverImage: "/Cases/layla-foz/conteudo/Reels-1-Layla-1.mp4",
     href: "/cases/layla-foz"
   },
   {
     id: "investidor-4-20",
     title: "Investidor 4.20",
+    tag: "Comercial · Lançamento",
     description: "Desenvolvimento comercial completo e estratégias de lançamento.",
     metric: "5x Faturamento",
-    metricColor: "bg-pink-500",
+    gradient: "linear-gradient(150deg, #7CF067 0%, #1E7A3A 55%, #0A1A0E 100%)",
     coverImage: "/Cases/investidor-4-20/conteudo/Reels-1-Lucas-1.mp4",
     href: "/cases/investidor-4-20"
   },
   {
     id: "yasmin",
     title: "Yasmin",
+    tag: "Reels · Motion",
     description: "Edição de reels virais com técnicas de After Effects para conteúdo crypto.",
     metric: "Reels Virais",
-    metricColor: "bg-pink-500",
+    gradient: "linear-gradient(150deg, #5AC8E0 0%, #2D5BFF 55%, #0A1024 100%)",
     coverImage: "/Cases/yasmin/conteudo/Reels-1-Yasmin-1.mp4",
     href: "/cases/yasmin"
   },
   {
     id: "paradigma-education",
     title: "Paradigma Education",
+    tag: "Motion · Educação",
     description: "Edição de vídeo com motion graphics e animações para conteúdo educativo.",
     metric: "Motion Design",
-    metricColor: "bg-pink-500",
+    gradient: "linear-gradient(150deg, #FFB020 0%, #C13E7A 55%, #1A1010 100%)",
     coverImage: "/Cases/paradigma/conteudo/PARADIGMAv2.mp4",
     href: "/cases/paradigma-education"
   },
   {
     id: "defiverso",
     title: "Defiverso",
+    tag: "Social Media · Estratégia",
     description: "Criação de conteúdo do zero para Instagram, Twitter e grupo de WhatsApp. Desenvolvimento de toda estratégia de social media.",
-    metric: "8K Seguidores",
-    metricColor: "bg-pink-500",
+    metric: "12M Views",
+    gradient: "linear-gradient(150deg, #9945FF 0%, #5226A8 55%, #120A24 100%)",
     coverImage: "/Cases/defiverso/conteudo/Breaking news defiverso.png",
     href: "/cases/defiverso"
   },
   {
     id: "mercado-bitcoin",
     title: "Mercado Bitcoin",
+    tag: "Conteúdo · 18 meses",
     description: "Criação de conteúdo para redes sociais durante 18 meses.",
-    metric: "+80K Seguidores",
-    metricColor: "bg-pink-500",
+    metric: "1.000+ Posts",
+    gradient: "linear-gradient(150deg, #F7931A 0%, #A85A12 55%, #1A1208 100%)",
     coverImage: "/Cases/mercado-bitcoin/conteudo/Instagram.png",
     href: "/cases/mercado-bitcoin"
   },
   {
     id: "crypto-com",
     title: "Crypto.com",
+    tag: "Conteúdo · Social",
     description: "Criação de conteúdo para Instagram e Twitter com estratégia focada.",
-    metric: "+100% Curtidas",
-    metricColor: "bg-pink-500",
+    metric: "+210% Curtidas",
+    gradient: "linear-gradient(150deg, #2D5BFF 0%, #14245E 55%, #070B1A 100%)",
     coverImage: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.37.16.png",
     href: "/cases/crypto-com"
   }
@@ -119,9 +167,16 @@ function CasesCarouselContent() {
           viewport={{ once: true, amount: 0.7 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 font-display tracking-tight">
-          Um resultado vale mais que mil palavras{" "}  
+          <p className="mb-4 font-mono text-xs uppercase tracking-[0.22em] text-[#7CF067]">
+            Cases em destaque
+          </p>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-display tracking-tight">
+            Um resultado vale mais que mil palavras
           </h2>
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-400 leading-relaxed">
+            Marcas cripto, web3 e creators que confiaram na Kaleidos pra crescer
+            de verdade. Deslize e veja o trabalho.
+          </p>
         </motion.div>
 
         <Swiper
@@ -166,7 +221,7 @@ function CasesCarouselContent() {
           }}
         >
           {casesCarouselData.map((caseItem, idx) => (
-            <SwiperSlide key={idx}>
+            <SwiperSlide key={caseItem.id}>
               <Link 
                 href={withLang(caseItem.href)} 
                 className="block group"
@@ -176,53 +231,50 @@ function CasesCarouselContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: idx * 0.1 }}
                   viewport={{ once: true, amount: 0.7 }}
-                  className="relative h-[400px] sm:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden bg-black border border-gray-800/50 group-hover:border-green-400/30 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-green-400/10 group-hover:scale-[1.02]"
+                  className="relative aspect-[9/16] rounded-3xl overflow-hidden bg-[#0c0c0c] border border-white/10 transition-all duration-300 group-hover:border-white/25 group-hover:shadow-2xl group-hover:shadow-black/40 group-hover:-translate-y-1"
                 >
-                  {/* Cover Image/Video */}
-                  <div className="absolute inset-0">
-                    {isVideo(caseItem.coverImage) ? (
-                      <video
-                        src={caseItem.coverImage}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <Image
-                        src={caseItem.coverImage}
-                        alt={caseItem.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 28vw"
-                      />
-                    )}
+                  {/* Media: o vídeo/imagem preenche o card inteiro */}
+                  {isVideo(caseItem.coverImage) ? (
+                    <LazyVideo
+                      src={caseItem.coverImage}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <Image
+                      src={caseItem.coverImage}
+                      alt={caseItem.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 28vw"
+                    />
+                  )}
+
+                  {/* Scrims pretos sutis (topo + base) só pra legibilidade do texto */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/65 to-transparent z-10" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10" />
+
+                  {/* Header: tag + métrica */}
+                  <div className="absolute top-0 left-0 right-0 z-20 flex items-start justify-between p-4 sm:p-5">
+                    <span className="inline-flex items-center rounded-full bg-black/35 px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-white/90 backdrop-blur-sm ring-1 ring-white/15">
+                      {caseItem.tag}
+                    </span>
+                    <span className="inline-flex items-center rounded-md bg-[#7CF067] px-2.5 py-1 text-xs font-bold text-black">
+                      {caseItem.metric}
+                    </span>
                   </div>
-                  
-                  {/* Content - Bottom Section with Rectangle Shadow */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[40%] p-0">
-                    {/* Gradient overlay for better text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/95 to-transparent rounded-t-2xl"></div>
-                    
-                    {/* Rectangle with shadow for title, description and metric */}
-                    <div className="relative bg-black/70 backdrop-blur-md rounded-t-2xl p-5 sm:p-6 shadow-2xl h-full flex flex-col justify-end w-full">
-                      <div className="space-y-2 sm:space-y-2.5">
-                        <h3 className="text-white font-bold text-xl sm:text-2xl font-display text-left leading-tight">
-                          {caseItem.title}
-                        </h3>
-                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-left line-clamp-2">
-                          {caseItem.description}
-                        </p>
-                        
-                        {/* Metric badge - mais elegante e sutil */}
-                        <div className="pt-1">
-                          <span className="inline-flex items-center px-3 py-1 rounded-md bg-green-400/10 text-green-400/90 font-medium text-xs sm:text-sm border border-green-400/30 backdrop-blur-sm transition-all group-hover:bg-green-400/15 group-hover:border-green-400/40">
-                            {caseItem.metric}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+
+                  {/* Footer: título + descrição */}
+                  <div className="absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-5">
+                    <h3 className="text-white font-bold text-xl sm:text-2xl font-display leading-tight">
+                      {caseItem.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-white/75 leading-relaxed line-clamp-2">
+                      {caseItem.description}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#7CF067]">
+                      Ver case
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
                   </div>
                 </motion.div>
               </Link>

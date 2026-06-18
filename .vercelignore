@@ -1,0 +1,25 @@
+# Arquivos pesados que NÃO devem ir pro deploy da Vercel.
+# (não dá pra rm localmente; o ignore impede que entrem no bundle/upload)
+
+# 258MB de .webp órfãos ao lado dos .mp4 nas case pages — zero referências no código.
+public/Cases/**/conteudo/*.webp
+
+# Pasta de fontes estáticas do Inter (18MB, ~60 TTF) — só as variáveis são usadas.
+public/Kaleidos/fonts/Inter/static
+
+# Fontes-fonte .ttf/.otf agora substituídas por .woff2 (next/font usa as woff2).
+public/Kaleidos/fonts/Inter/Inter-VariableFont_opsz,wght.ttf
+public/Kaleidos/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf
+public/Kaleidos/fonts/Atelier/OpenType-TT/Atelier.ttf
+public/Kaleidos/fonts/Gridlite/Gridlite.otf
+
+# Lixo de SO / editor
+**/.DS_Store
+
+# Builds locais + dirs .next-* que sobraram de restarts de dev (não vão pro deploy).
+.next
+.next-*
+node_modules
+
+# Não enviar a pasta do Claude Code
+.claude

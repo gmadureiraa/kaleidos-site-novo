@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Capa — O Playbook do Lançamento Cripto (TGE) 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0d; --ink:#f4f1ea; --pink:#d262b2; --green:#7CF067;
+    --orange:#ff9a3d; --blue:#5aa6ff;
+    --mono:'IBM Plex Mono', monospace; --sans:'Inter', sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:#000; }
+  .page{ position:relative; width:794px; height:1123px; background:var(--bg);
+    overflow:hidden; font-family:var(--sans); color:var(--ink); }
+
+  .grid{ position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(120% 90% at 50% 42%, #000 50%, transparent 100%); }
+
+  /* portal coded: anéis concêntricos + glow */
+  .portal{ position:absolute; left:50%; top:430px; transform:translate(-50%,-50%); width:560px; height:560px; }
+  .ring{ position:absolute; inset:0; border-radius:50%; border:1.5px solid rgba(210,98,178,.28); }
+  .ring.r2{ inset:48px; border-color:rgba(124,240,103,.18); }
+  .ring.r3{ inset:104px; border-color:rgba(210,98,178,.34); }
+  .ring.r4{ inset:168px; border-color:rgba(255,255,255,.10); }
+  .core{ position:absolute; inset:210px; border-radius:50%;
+    background:radial-gradient(circle, rgba(244,241,234,.95) 0%, rgba(210,98,178,.55) 30%, rgba(210,98,178,.10) 60%, transparent 75%);
+    filter:blur(2px); }
+  .glow{ position:absolute; left:50%; top:430px; transform:translate(-50%,-50%);
+    width:820px; height:820px;
+    background:radial-gradient(circle, rgba(210,98,178,.28) 0%, rgba(124,240,103,.08) 34%, transparent 64%);
+    filter:blur(10px); }
+  /* gantry: torre de lançamento estilizada */
+  .gantry{ position:absolute; left:50%; top:170px; transform:translateX(-50%); width:200px; height:560px; opacity:.9; }
+  .gantry .mast{ position:absolute; left:50%; transform:translateX(-50%); width:3px; height:100%; background:linear-gradient(180deg, var(--pink), rgba(210,98,178,.1)); }
+  .gantry .arm{ position:absolute; left:8%; width:84%; height:2px; background:rgba(244,241,234,.22); }
+  .gantry .a1{ top:14%; } .gantry .a2{ top:34%; } .gantry .a3{ top:54%; } .gantry .a4{ top:74%; }
+  .gantry .node{ position:absolute; width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); left:calc(50% - 3.5px); }
+
+  .bracket{ position:absolute; width:34px; height:34px; border:2px solid var(--pink); opacity:.85; }
+  .bracket.tl{ top:34px; left:34px; border-right:0; border-bottom:0; }
+  .bracket.tr{ top:34px; right:34px; border-left:0; border-bottom:0; }
+  .bracket.bl{ bottom:34px; left:34px; border-right:0; border-top:0; }
+  .bracket.br{ bottom:34px; right:34px; border-left:0; border-top:0; }
+
+  .seal{ position:absolute; top:60px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:12px; }
+  .seal .dot{ width:10px; height:10px; border-radius:50%; background:var(--pink); box-shadow:0 0 14px var(--pink); }
+  .seal .name{ font-family:var(--mono); font-weight:600; letter-spacing:.42em; font-size:17px; text-transform:uppercase; color:var(--ink); padding-left:.42em; }
+  .seal .tag{ position:absolute; top:34px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:rgba(244,241,234,.45); }
+
+  .chip{ position:absolute; font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.05em; text-transform:uppercase; padding:7px 14px; border-radius:999px; border:1px solid currentColor; white-space:nowrap; }
+  .c-pink{ color:var(--pink); background:rgba(210,98,178,.12); box-shadow:0 0 18px rgba(210,98,178,.25); }
+  .c-green{ color:var(--green); background:rgba(124,240,103,.10); box-shadow:0 0 18px rgba(124,240,103,.18); }
+  .c-orange{ color:var(--orange); background:rgba(255,154,61,.12); box-shadow:0 0 18px rgba(255,154,61,.20); }
+  .c-blue{ color:var(--blue); background:rgba(90,166,255,.12); box-shadow:0 0 18px rgba(90,166,255,.20); }
+  .ch1{ top:150px; left:54px; transform:rotate(-7deg); }
+  .ch2{ top:140px; right:58px; transform:rotate(6deg); }
+  .ch3{ top:214px; left:128px; transform:rotate(4deg); }
+  .ch4{ top:208px; right:108px; transform:rotate(-5deg); }
+  .ch5{ top:286px; left:40px; transform:rotate(-3deg); }
+  .ch6{ top:290px; right:42px; transform:rotate(7deg); }
+  .ch9{ top:806px; left:78px; transform:rotate(-3deg); }
+  .ch10{ top:806px; right:86px; transform:rotate(4deg); }
+
+  .titlewrap{ position:absolute; left:50%; top:470px; transform:translateX(-50%); width:740px; text-align:center; z-index:5; }
+  .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:var(--pink); margin-bottom:18px; }
+  .title{ font-family:var(--sans); font-weight:900; color:#fff; font-size:74px; line-height:.93; letter-spacing:-.025em; text-shadow:0 6px 40px rgba(0,0,0,.7); }
+  .title .l2{ color:var(--pink); }
+  .sub{ margin-top:22px; font-family:var(--sans); font-style:italic; font-weight:500; font-size:23px; letter-spacing:.01em; color:rgba(244,241,234,.92); }
+
+  .footer{ position:absolute; left:0; right:0; bottom:92px; text-align:center; }
+  .enter{ font-family:var(--sans); font-weight:700; font-size:25px; color:#fff; }
+  .enter .arrow{ color:var(--pink); }
+  .descr{ margin-top:14px; font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(244,241,234,.55); }
+  .cta{ margin-top:26px; display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--bg); background:var(--pink); padding:11px 22px; border-radius:999px; box-shadow:0 0 30px rgba(210,98,178,.45); }
+
+  .corner-l, .corner-r{ position:absolute; bottom:54px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,241,234,.4); }
+  .corner-l{ left:60px; }
+  .corner-r{ right:60px; text-align:right; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="gantry">
+      <div class="mast"></div>
+      <div class="arm a1"></div><div class="node" style="top:14%"></div>
+      <div class="arm a2"></div><div class="node" style="top:34%"></div>
+      <div class="arm a3"></div><div class="node" style="top:54%"></div>
+      <div class="arm a4"></div><div class="node" style="top:74%"></div>
+    </div>
+    <div class="portal">
+      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
+      <div class="core"></div>
+    </div>
+
+    <span class="bracket tl"></span><span class="bracket tr"></span>
+    <span class="bracket bl"></span><span class="bracket br"></span>
+
+    <div class="seal">
+      <span class="dot"></span><span class="name">KALEIDOS</span>
+      <div class="tag">[ A AGÊNCIA CRIPTO-NATIVA DO BRASIL ]</div>
+    </div>
+
+    <span class="chip c-pink   ch1">Pré-lançamento</span>
+    <span class="chip c-green  ch2">Airdrop &amp; Pontos</span>
+    <span class="chip c-blue   ch3">Narrativa</span>
+    <span class="chip c-orange ch4">KOL</span>
+    <span class="chip c-green  ch5">Comunidade</span>
+    <span class="chip c-pink   ch6">Tokenomics</span>
+    <span class="chip c-orange ch9">Listagem</span>
+    <span class="chip c-blue   ch10">Pós-TGE</span>
+
+    <div class="titlewrap">
+      <div class="eyebrow">[ O Playbook do Lançamento ]</div>
+      <h1 class="title">LANÇAMENTO<br/>CRIPTO<br/><span class="l2">TGE 2026</span></h1>
+      <p class="sub">Como levar um token do zero ao mercado, sem virar exit liquidity.</p>
+    </div>
+
+    <div class="footer">
+      <div class="enter">Abra a porta do lançamento <span class="arrow">&rsaquo;&rsaquo;</span></div>
+      <div class="descr">Pré-lançamento · Airdrop · Narrativa · KOL · Comunidade · Pós-TGE</div>
+      <div class="cta">Baixe grátis &nbsp;↓</div>
+    </div>
+
+    <div class="corner-l">// playbook tge v.2026</div>
+    <div class="corner-r">guia de autoridade<br/>kaleidos.com.br</div>
+  </div>
+</body>
+</html>

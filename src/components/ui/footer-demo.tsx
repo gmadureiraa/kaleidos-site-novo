@@ -13,16 +13,28 @@ export function FooterDemo() {
   const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
   const instagramHandle = "digitalkaleidos";
   
-  const services = locale === 'en' 
+  const services = locale === 'en'
     ? [
         { title: "Content Marketing", href: "/servicos/marketing-conteudo" },
         { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth & Launches", href: "/servicos/growth-lancamentos" },
+        { title: "Crypto SEO & GEO", href: "/servicos/seo-cripto" },
+        { title: "Web3 Consulting & GTM", href: "/servicos/consultoria-gtm" },
+        { title: "Crypto Social Media", href: "/servicos/social-media-cripto" },
+        { title: "PR & Communications", href: "/servicos/pr-assessoria" },
+        { title: "Community Management", href: "/servicos/comunidade-cripto" },
+        { title: "Influencer & KOL", href: "/servicos/influencer-kol" },
       ]
     : [
         { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo" },
         { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos" },
+        { title: "SEO & GEO Cripto", href: "/servicos/seo-cripto" },
+        { title: "Consultoria Web3 & GTM", href: "/servicos/consultoria-gtm" },
+        { title: "Social Media Cripto", href: "/servicos/social-media-cripto" },
+        { title: "PR & Assessoria", href: "/servicos/pr-assessoria" },
+        { title: "Gestão de Comunidade", href: "/servicos/comunidade-cripto" },
+        { title: "Influencer & KOL", href: "/servicos/influencer-kol" },
       ];
 
   const pages = locale === 'en'
@@ -30,6 +42,7 @@ export function FooterDemo() {
         { title: "Home", href: "/" },
         { title: "Cases", href: "/cases" },
         { title: "Blog", href: "/blog" },
+        { title: "Papers", href: "/papers" },
         { title: "About", href: "/sobre" },
         { title: "Contact", href: "/contato" },
       ]
@@ -37,6 +50,7 @@ export function FooterDemo() {
         { title: "Início", href: "/" },
         { title: "Cases", href: "/cases" },
         { title: "Blog", href: "/blog" },
+        { title: "Papers", href: "/papers" },
         { title: "Sobre", href: "/sobre" },
         { title: "Contato", href: "/contato" },
       ];
@@ -206,6 +220,12 @@ export function FooterDemo() {
               </a>
               <a href="/contato" className="hover:text-[#7CFF6B] transition-colors">
                 {locale === 'en' ? 'Contact' : 'Contato'}
+              </a>
+              <a href="/privacidade" className="hover:text-[#7CFF6B] transition-colors">
+                {locale === 'en' ? 'Privacy' : 'Privacidade'}
+              </a>
+              <a href="/termos" className="hover:text-[#7CFF6B] transition-colors">
+                {locale === 'en' ? 'Terms' : 'Termos'}
               </a>
             </div>
           </div>

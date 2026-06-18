@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>O Playbook do Lançamento Cripto (TGE) 2026 — Kaleidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KALEIDOS · PLAYBOOK DO LANÇAMENTO CRIPTO (TGE) 2026
+   Estilo Lunar (report limpo) · marca Kaleidos DARK
+   ============================================================ */
+@font-face{ font-family:'Atelier'; src:url('fonts/Atelier.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face{ font-family:'Gridlite'; src:url('fonts/Gridlite.otf') format('opentype'); font-weight:400; font-display:swap; }
+:root{
+  --bg:#000000;
+  --ink:#F4F1EC;
+  --body:#cfcabf;
+  --muted:#8d877c;
+  --line:#262626;
+  --paper:#0A0A0A;
+  --pink:#d262b2;
+  --pink-d:#e58fce;
+  --pink-soft:#3a1830;
+  --green:#7CF067;
+  --orange:#e09a52;
+  --blue:#5aa6ff;
+  --cream:#101010;
+  --mono:'Gridlite', monospace;
+  --sans:'Inter', sans-serif;
+  --disp:'Atelier', sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ background:#000; font-family:var(--sans); color:var(--body); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+@page{ size:A4; margin:0; }
+
+.page{
+  position:relative;
+  width:210mm; height:297mm;
+  background:var(--paper);
+  overflow:hidden;
+  margin:0 auto 10px auto;
+  page-break-after:always;
+  break-after:page;
+}
+.page:last-child{ page-break-after:auto; }
+
+/* ---------- página de conteúdo ---------- */
+.content{ padding:24mm 22mm 20mm 22mm; display:flex; flex-direction:column; }
+.content::before{ content:""; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,var(--pink) 0%, var(--pink-d) 100%); }
+.runhead{ position:absolute; top:9mm; left:22mm; right:22mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.22em; text-transform:uppercase; color:#b8b2c0; }
+.runhead .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--pink); margin-right:7px; vertical-align:middle; }
+.folio{ position:absolute; bottom:11mm; left:0; right:0; text-align:center;
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em; color:#b3adbb; }
+.folio b{ color:var(--pink-d); font-weight:600; }
+
+/* ---------- tipografia de capítulo ---------- */
+.chap-num{ font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.30em; text-transform:uppercase; color:var(--pink); margin-bottom:9px; }
+.chap-num::before{ content:"[ "; color:#5a3a52; }
+.chap-num::after{ content:" ]"; color:#5a3a52; }
+h1.chap{ font-family:var(--disp); font-weight:800; font-size:27px; line-height:1.05; letter-spacing:-.015em; text-transform:uppercase; color:var(--pink); margin-bottom:16px; max-width:92%; }
+h1.chap .ink{ color:var(--ink); }
+h2{ font-family:var(--disp); font-weight:700; font-size:14.5px; letter-spacing:-.005em; color:var(--ink); margin:18px 0 8px; display:flex; align-items:baseline; gap:9px; }
+h2::before{ content:""; display:inline-block; width:14px; height:2px; background:var(--pink); transform:translateY(-4px); flex:0 0 auto; }
+p{ font-size:10.6px; line-height:1.62; color:var(--body); margin-bottom:9px; }
+p strong, li strong{ color:var(--ink); font-weight:700; }
+a{ color:var(--pink-d); text-decoration:none; }
+.src{ font-family:var(--mono); font-size:8.3px; color:var(--muted); }
+.src a{ color:var(--pink-d); }
+
+ul.bul, ol.bul{ margin:4px 0 10px; padding-left:0; list-style:none; }
+ul.bul li, ol.bul li{ font-size:10.4px; line-height:1.55; color:var(--body); padding-left:18px; margin-bottom:7px; position:relative; }
+ul.bul li::before{ content:""; position:absolute; left:2px; top:7px; width:6px; height:6px; background:var(--pink); border-radius:1px; transform:rotate(45deg); }
+ol.bul{ counter-reset:k; }
+ol.bul li{ padding-left:26px; }
+ol.bul li::before{ counter-increment:k; content:counter(k); position:absolute; left:0; top:1px; font-family:var(--mono); font-size:9px; font-weight:600; color:#fff; background:var(--pink); width:16px; height:16px; border-radius:4px; display:flex; align-items:center; justify-content:center; }
+
+/* ---------- quadro "Retenha" ---------- */
+.retain{ margin-top:auto; margin-bottom:2mm; background:linear-gradient(100deg, #1a1620 0%, #2a1226 60%, #3a1733 100%); border-left:4px solid var(--pink); border-radius:8px; padding:14px 18px 14px 16px; color:#F4F1EC; }
+.retain .lab{ font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:var(--pink); margin-bottom:5px; }
+.retain p{ color:#efe9f2; font-size:10.6px; line-height:1.5; margin:0; font-weight:500; }
+
+/* ---------- tabelas comparativas ---------- */
+.tbl-wrap{ margin:12px 0 12px; border-radius:9px; overflow:hidden; border:1px solid var(--line); box-shadow:0 1px 0 rgba(0,0,0,.5), 0 1px 2.5px rgba(0,0,0,.4); }
+.tbl-cap{ font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 6px 2px; }
+.tbl-cap b{ color:var(--pink-d); }
+table.cmp{ width:100%; border-collapse:collapse; font-size:9.9px; }
+table.cmp thead th{ text-align:left; padding:9px 12px; font-weight:700; font-size:9.6px; color:#F4F1EC; letter-spacing:.01em; background:linear-gradient(135deg, #101010 0%, #2a1226 100%); }
+table.cmp thead th:first-child{ background:linear-gradient(135deg,#0f0f0f 0%,#1a1620 100%); color:var(--muted); }
+table.cmp thead th.bad{ background:linear-gradient(135deg,#161616 0%,#2a1226 100%); }
+table.cmp thead th.good{ background:linear-gradient(135deg,#7a2e63 0%,var(--pink) 100%); }
+table.cmp td{ padding:8px 12px; vertical-align:top; line-height:1.42; color:var(--body); border-bottom:1px solid var(--line); background:#0A0A0A; }
+table.cmp tbody tr:nth-child(odd) td{ background:#101010; }
+table.cmp td.lab{ font-weight:700; color:var(--ink); width:24%; background:#161019 !important; }
+table.cmp td.good{ color:var(--green); font-weight:600; }
+table.cmp tr:last-child td{ border-bottom:0; }
+.tbl-wrap.tight table.cmp td{ padding:6px 11px; line-height:1.34; }
+.tbl-wrap.tight table.cmp thead th{ padding:7px 11px; }
+
+/* ---------- card de tweet ---------- */
+.tweet{ border:1px solid var(--line); border-radius:14px; padding:13px 15px 12px; background:#0f0f0f; box-shadow:0 8px 24px -18px rgba(0,0,0,.7); margin:11px 0; }
+.tweet .top{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+.tweet .av{ width:34px; height:34px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-family:var(--sans); font-weight:800; font-size:14px; color:#fff; background:linear-gradient(135deg,var(--pink) 0%, var(--pink-d) 100%); }
+.tweet .who{ line-height:1.2; }
+.tweet .nm{ font-weight:700; font-size:10.8px; color:var(--ink); display:flex; align-items:center; gap:4px; }
+.tweet .vf{ color:var(--pink); font-size:11px; }
+.tweet .hd{ font-size:9.6px; color:var(--muted); }
+.tweet .xlogo{ margin-left:auto; width:16px; height:16px; opacity:.85; filter:brightness(0) invert(1); }
+.tweet .body{ font-size:10.7px; line-height:1.5; color:#e6e1da; }
+.tweet .body em{ color:var(--muted); font-style:normal; }
+.tweet .meta{ margin-top:9px; padding-top:8px; border-top:1px solid var(--line); display:flex; gap:14px; font-family:var(--mono); font-size:8.6px; color:var(--muted); letter-spacing:.04em; }
+.tweet .meta b{ color:var(--ink); font-weight:600; }
+
+/* ---------- charts ---------- */
+.chartbox{ border:1px solid var(--line); border-radius:10px; padding:12px 14px 10px; background:#0f0f0f; margin:11px 0; box-shadow:0 6px 18px -16px rgba(0,0,0,.7); }
+.chartbox .ttl{ font-family:var(--mono); font-size:8.8px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.chartbox .ttl b{ color:var(--pink-d); }
+.chartbox canvas{ display:block; margin:0 auto; }
+.chartnote{ font-size:8.8px; color:var(--muted); margin-top:6px; line-height:1.4; }
+.chartnote b{ color:var(--ink); }
+
+/* ---------- big numbers / stat strip ---------- */
+.stats{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; margin:11px 0; }
+.stat{ border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:#0f0f0f; position:relative; overflow:hidden; }
+.stat::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:4px; background:var(--pink); }
+.stat .big{ font-family:var(--disp); font-weight:800; font-size:22px; color:var(--ink); line-height:1; letter-spacing:-.01em; }
+.stat .big.pk{ color:var(--pink-d); }
+.stat .big.gr{ color:var(--green); }
+.stat .lab{ font-size:8.6px; line-height:1.4; color:var(--muted); margin-top:5px; }
+
+/* ---------- infográfico cards ---------- */
+.pubgrid{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:10px 0 4px; }
+.pcard{ border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:#0f0f0f; position:relative; overflow:hidden; }
+.pcard::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:4px; }
+.pcard.p1::before{ background:var(--pink); } .pcard.p2::before{ background:var(--blue); }
+.pcard.p3::before{ background:var(--green); } .pcard.p4::before{ background:var(--orange); }
+.pcard h4{ font-size:11.5px; font-weight:800; color:var(--ink); margin-bottom:5px; }
+.pcard .pr{ font-size:9px; line-height:1.45; color:var(--body); margin-bottom:3px; }
+.pcard .pr b{ font-family:var(--mono); font-size:7.6px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; display:block; }
+
+/* ---------- timeline horizontal ---------- */
+.flow{ display:flex; gap:0; margin:12px 0 12px; }
+.flow .step{ flex:1; border:1px solid var(--line); background:#0f0f0f; padding:10px 9px; position:relative; }
+.flow .step:first-child{ border-radius:9px 0 0 9px; }
+.flow .step:last-child{ border-radius:0 9px 9px 0; }
+.flow .step + .step{ border-left:0; }
+.flow .step .n{ font-family:var(--mono); font-size:8px; letter-spacing:.14em; color:var(--pink); font-weight:600; }
+.flow .step .t{ font-size:9.4px; font-weight:700; color:var(--ink); margin-top:3px; line-height:1.2; }
+.flow .step .d{ font-size:8px; color:var(--muted); margin-top:3px; line-height:1.35; }
+
+/* ---------- callout / nota ---------- */
+.note{ background:var(--pink-soft); border:1px solid #5a2a4a; border-radius:8px; padding:10px 13px; margin:10px 0; font-size:9.8px; line-height:1.5; color:#f0d9ea; }
+.note b{ color:var(--pink-d); }
+.lead{ font-size:12px; line-height:1.55; color:var(--ink); font-weight:500; border-left:3px solid var(--pink); padding-left:13px; margin:2px 0 14px; }
+.pull{ font-family:var(--sans); font-weight:700; font-size:13px; line-height:1.4; color:var(--pink-d); margin:12px 0; padding:0 0 0 2px; }
+
+/* ---------- caso (case card) ---------- */
+.case{ border:1px solid var(--line); border-radius:10px; background:linear-gradient(135deg,#0f0f0f 0%, #141016 100%); padding:12px 14px; margin:11px 0; }
+.case .ct{ font-family:var(--mono); font-size:8.6px; letter-spacing:.18em; text-transform:uppercase; color:var(--pink); margin-bottom:5px; }
+.case h3{ font-family:var(--disp); font-weight:700; font-size:13px; color:var(--ink); margin-bottom:5px; }
+.case p{ font-size:9.8px; line-height:1.5; margin-bottom:6px; }
+.case p:last-child{ margin-bottom:0; }
+
+/* ============================================================
+   CAPA / LEGAL (escuras)
+   ============================================================ */
+.dark{ background:var(--bg); color:#F4F1EC; }
+.cover-full{ position:absolute; inset:0; }
+.cover-full img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ---------- sumário (TOC) ---------- */
+.toc{ padding:30mm 24mm 22mm; }
+.toc .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; }
+.toc h1{ font-family:var(--disp); font-size:34px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin-bottom:4px; }
+.toc h1 .pk{ color:var(--pink); }
+.toc .desc{ font-size:11px; color:var(--muted); margin-bottom:22px; font-style:italic; }
+.toc ol{ list-style:none; counter-reset:t; }
+.toc li{ counter-increment:t; display:flex; align-items:baseline; gap:12px; padding:8px 0; border-bottom:1px dashed var(--line); }
+.toc li .n{ font-family:var(--mono); font-size:10px; color:var(--pink); width:26px; font-weight:600; }
+.toc li .t{ font-weight:600; font-size:11.5px; color:var(--ink); }
+.toc li .t small{ display:block; font-weight:400; font-size:9px; color:var(--muted); margin-top:2px; }
+.toc li .dots{ flex:1; border-bottom:1px dotted #2a2a2a; transform:translateY(-3px); margin:0 4px; }
+.toc li .pg{ font-family:var(--mono); font-size:11px; color:var(--ink); font-weight:600; }
+
+/* ---------- glossário ---------- */
+.gloss .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; }
+.gloss h1{ font-family:var(--disp); font-size:30px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin-bottom:4px; }
+.gloss h1 .pk{ color:var(--pink); }
+.gloss .desc{ font-size:10.5px; color:var(--muted); margin-bottom:16px; font-style:italic; }
+.gloss dl{ columns:2; column-gap:20px; }
+.gloss .gi{ break-inside:avoid; margin-bottom:9px; padding-bottom:8px; border-bottom:1px dashed var(--line); }
+.gloss dt{ font-weight:800; font-size:10.5px; color:var(--pink-d); margin-bottom:2px; }
+.gloss dd{ font-size:9.6px; line-height:1.42; color:var(--body); }
+
+/* ---------- intro ---------- */
+.intro .big{ font-size:15px; line-height:1.55; color:var(--ink); font-weight:600; margin-bottom:14px; letter-spacing:-.01em; }
+
+/* ---------- legal ---------- */
+.legal{ padding:34mm 26mm; display:flex; flex-direction:column; height:100%; }
+.legal .brand{ font-family:var(--mono); letter-spacing:.4em; font-size:15px; text-transform:uppercase; color:#fff; }
+.legal .brand .d{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--pink); margin-right:12px; box-shadow:0 0 12px var(--pink); vertical-align:middle; }
+.legal h2{ font-family:var(--disp); color:#F4F1EC; font-size:24px; font-weight:800; line-height:1.18; margin:24px 0 12px; letter-spacing:-.01em; }
+.legal h2::before{ display:none; }
+.legal p{ color:rgba(244,241,234,.78); font-size:10px; line-height:1.6; }
+.legal .pink{ color:var(--pink); }
+.legal .hr{ height:1px; background:rgba(255,255,255,.12); margin:18px 0; }
+.legal .src-block{ font-family:var(--mono); font-size:8px; line-height:1.7; color:rgba(244,241,234,.45); }
+.legal .src-block a{ color:rgba(210,98,178,.85); }
+.legal .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(244,241,234,.4); }
+.legal .cta-dark{ display:inline-block; margin-top:6px; font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--pink); padding:11px 20px; border-radius:999px; }
+.bracket{ position:absolute; width:30px; height:30px; border:2px solid var(--pink); opacity:.7; }
+.bracket.tl{ top:26px; left:26px; border-right:0; border-bottom:0; }
+.bracket.tr{ top:26px; right:26px; border-left:0; border-bottom:0; }
+.bracket.bl{ bottom:26px; left:26px; border-right:0; border-top:0; }
+.bracket.br{ bottom:26px; right:26px; border-left:0; border-top:0; }
+
+/* ---------- balanceador / compactador ---------- */
+.content.balance{ min-height:297mm; justify-content:space-between; }
+.content.balance > *{ flex:0 0 auto; }
+.content.compact{ padding-top:20mm; padding-bottom:16mm; }
+.content.compact h1.chap{ margin-bottom:11px; font-size:25px; }
+.content.compact .lead{ margin:2px 0 10px; font-size:11.3px; }
+.content.compact h2{ margin:13px 0 6px; }
+.content.compact p{ margin-bottom:7px; line-height:1.55; }
+.content.compact ul.bul, .content.compact ol.bul{ margin:3px 0 8px; }
+.content.compact ul.bul li, .content.compact ol.bul li{ margin-bottom:5px; line-height:1.46; }
+.content.compact .tbl-wrap, .content.compact .chartbox, .content.compact .tweet, .content.compact .case{ margin-top:9px; margin-bottom:9px; }
+.content.compact .retain{ padding:11px 16px; }
+.content.compact .retain p{ font-size:10.2px; line-height:1.45; }
+</style>
+</head>
+<body>
+
+<!-- ============================== CAPA ============================== -->
+<section class="page dark">
+  <div class="cover-full"><img src="assets/cover/capa.png" alt="Capa — O Playbook do Lançamento Cripto (TGE) 2026" /></div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================== -->
+<section class="page">
+  <div class="content toc">
+    <div class="kick">[ Sumário ]</div>
+    <h1>O <span class="pk">PLAYBOOK</span></h1>
+    <div class="desc">Como levar um token do zero ao mercado em 2026, com exemplos reais de quem acertou e de quem virou exit liquidity.</div>
+    <ol>
+      <li><span class="n">—</span><span class="t">Glossário rápido<small>Os termos do lançamento em uma linha cada</small></span><span class="dots"></span><span class="pg">03</span></li>
+      <li><span class="n">—</span><span class="t">Introdução</span><span class="dots"></span><span class="pg">04</span></li>
+      <li><span class="n">01</span><span class="t">Lançar em 2026 é outro jogo<small>Da era do hype à era da utilidade</small></span><span class="dots"></span><span class="pg">05</span></li>
+      <li><span class="n">02</span><span class="t">A anatomia de um TGE<small>As seis fases, do pré-lançamento ao pós</small></span><span class="dots"></span><span class="pg">06</span></li>
+      <li><span class="n">03</span><span class="t">Narrativa e pré-lançamento<small>Narrative-market-fit e demanda construída antes do token</small></span><span class="dots"></span><span class="pg">07</span></li>
+      <li><span class="n">04</span><span class="t">Pontos como motor de lançamento<small>Blur, EigenLayer e a opacidade da Hyperliquid</small></span><span class="dots"></span><span class="pg">08</span></li>
+      <li><span class="n">05</span><span class="t">O airdrop sem virar exit liquidity<small>Por que 64% vendem e como reter o resto</small></span><span class="dots"></span><span class="pg">10</span></li>
+      <li><span class="n">06</span><span class="t">KOL e influência com disclosure<small>O KOL round, o dump de 22 segundos e o caso Kardashian</small></span><span class="dots"></span><span class="pg">12</span></li>
+      <li><span class="n">07</span><span class="t">A comunidade que distribui<small>Jupiter, Berachain e o ativo de demanda mais durável</small></span><span class="dots"></span><span class="pg">13</span></li>
+      <li><span class="n">08</span><span class="t">Tokenomics como marketing<small>Low float, high FDV e o buyback da Hyperliquid</small></span><span class="dots"></span><span class="pg">14</span></li>
+      <li><span class="n">09</span><span class="t">Listagem, liquidez e market maker<small>O efeito Binance e o que a listagem faz com o preço</small></span><span class="dots"></span><span class="pg">16</span></li>
+      <li><span class="n">10</span><span class="t">Pós-TGE: retenção &gt; recompensa<small>Ethena, o Jupuary que recuou e Friend.tech</small></span><span class="dots"></span><span class="pg">17</span></li>
+      <li><span class="n">—</span><span class="t">Fechamento &amp; CTA</span><span class="dots"></span><span class="pg">19</span></li>
+    </ol>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Kaleidos · Playbook do Lançamento Cripto (TGE) 2026</span><span>kaleidos.com.br</span></div>
+  <div class="folio">— <b>02</b> —</div>
+</section>
+
+<!-- ============================== GLOSSÁRIO ============================== -->
+<section class="page">
+  <div class="content gloss">
+    <div class="kick">[ Glossário rápido ]</div>
+    <h1>OS <span class="pk">TERMOS</span></h1>
+    <div class="desc">Lançar um token tem dialeto próprio. Os termos que mais aparecem neste guia, em uma linha cada, pra você ler sem travar.</div>
+    <dl>
+      <div class="gi"><dt>TGE (Token Generation Event)</dt><dd>O momento em que o token passa a existir e é distribuído. Não é o mesmo que a listagem em exchange.</dd></div>
+      <div class="gi"><dt>Airdrop</dt><dd>Distribuição gratuita de tokens pra carteiras, usada pra atrair usuários e recompensar uso passado.</dd></div>
+      <div class="gi"><dt>Programa de pontos</dt><dd>Sistema que recompensa atividade com "pontos" antes do token, depois convertidos no airdrop.</dd></div>
+      <div class="gi"><dt>Snapshot</dt><dd>A foto da blockchain numa data específica que define quem é elegível ao airdrop.</dd></div>
+      <div class="gi"><dt>FDV (Fully Diluted Valuation)</dt><dd>Preço do token × supply total. Valor "se tudo já estivesse circulando".</dd></div>
+      <div class="gi"><dt>Float / supply circulante</dt><dd>A fatia do supply de fato em mercado no dia do lançamento. Float baixo infla o preço.</dd></div>
+      <div class="gi"><dt>Capital mercenário</dt><dd>Dinheiro que entra só pelo incentivo e some no instante em que o incentivo seca.</dd></div>
+      <div class="gi"><dt>Sybil</dt><dd>Carteiras falsas criadas pela mesma pessoa pra farmar um airdrop várias vezes.</dd></div>
+      <div class="gi"><dt>KOL (Key Opinion Leader)</dt><dd>Influenciador de referência cujo endosso move opinião e preço numa comunidade.</dd></div>
+      <div class="gi"><dt>KOL round</dt><dd>Alocação privada e descontada de tokens a influenciadores em troca de divulgação.</dd></div>
+      <div class="gi"><dt>Launchpool / Launchpad</dt><dd>Programa de exchange (ex.: Binance) que distribui ou vende o token novo pra base dela.</dd></div>
+      <div class="gi"><dt>Market maker</dt><dd>Quem provê liquidez de compra e venda pro token recém-listado não ter spread absurdo.</dd></div>
+      <div class="gi"><dt>TVL (Total Value Locked)</dt><dd>Capital total depositado num protocolo. Mede tamanho, mas é fácil de inflar com incentivo.</dd></div>
+      <div class="gi"><dt>Narrative-market-fit</dt><dd>Quando a história do projeto reflete o que o mercado está sedento pra ouvir naquele momento.</dd></div>
+      <div class="gi"><dt>Mindshare</dt><dd>A fatia de atenção que um projeto ocupa na conversa do mercado.</dd></div>
+      <div class="gi"><dt>Vesting / cliff</dt><dd>Cronograma de liberação dos tokens de time e investidor ao longo do tempo (e a carência inicial).</dd></div>
+      <div class="gi"><dt>Buyback</dt><dd>Recompra do próprio token com receita do protocolo, reduzindo supply em circulação.</dd></div>
+      <div class="gi"><dt>Fair launch</dt><dd>Lançamento sem alocação privada pesada, com float maior e distribuição comunitária.</dd></div>
+    </dl>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Glossário rápido</span><span>Playbook do Lançamento Cripto (TGE) 2026</span></div>
+  <div class="folio">— <b>03</b> —</div>
+</section>
+
+<!-- ============================== INTRODUÇÃO ============================== -->
+<section class="page">
+  <div class="content intro">
+    <div class="chap-num">Introdução</div>
+    <h1 class="chap"><span class="ink">LANÇAR UM TOKEN</span><br>É A PARTE FÁCIL</h1>
+    <p class="big">Gerar um token leva minutos. Fazer ele sobreviver à própria distribuição é onde 9 em cada 10 projetos quebram. O TGE não é a linha de chegada do marketing, é a largada do teste mais duro que o projeto vai enfrentar.</p>
+    <p>O padrão é cruel e se repete. Um projeto passa meses farmando hype, monta um programa de pontos, distribui um airdrop gigante e celebra o dia do lançamento como vitória. Aí o gráfico despenca. Dos 50 maiores airdrops, <strong>46% bateram o topo de preço em até duas semanas</strong>, e sete bateram no primeiro dia. <span class="src">Fonte: <a href="https://www.coingecko.com/research/publications/when-to-sell-airdrops">CoinGecko</a></span></p>
+    <p>A Kaleidos lê esse movimento de dentro. São anos analisando lançamentos cripto, destrinchando os que viraram comunidade durável e os que viraram exit liquidity, documentando o que separa um do outro. Nossa base de papers existe pra isso: virar padrão repetível, não opinião de timeline. Não vendemos achismo. Vendemos leitura.</p>
+    <p>Este guia é a destilação dessa leitura para quem vai lançar (ou já lançou) um token em 2026. Dez capítulos cobrindo o lançamento de ponta a ponta: pré-lançamento, narrativa, pontos, airdrop, KOL, comunidade, tokenomics, listagem e pós-TGE. Cada afirmação carrega um dado com fonte. Cada capítulo traz um caso real, uma tabela ou um gráfico.</p>
+    <h2>A tese deste playbook</h2>
+    <ul class="bul">
+      <li>o airdrop é o <strong>gatilho</strong>, não o evento: sem retenção projetada antes dele, o TGE é só liquidez de saída;</li>
+      <li>quem reteve (Hyperliquid, Jupiter) tinha um produto ou ritual real por trás; quem só farmou (Friend.tech) evaporou;</li>
+      <li>comunidade pré-construída e narrativa certa valem mais que qualquer campanha de hype;</li>
+      <li>tokenomics, KOL e listagem são ferramentas de marketing, e cada uma tem um jeito de dar errado.</li>
+    </ul>
+    <p>Se você toca o lançamento de um projeto cripto, este é o mapa do campo minado. Bem-vindo a 2026.</p>
+    <div class="retain">
+      <div class="lab">A promessa do guia</div>
+      <p>Dez capítulos, cada um com caso real, tabela ou gráfico e dado com fonte. Do pré-lançamento ao pós-TGE, sem floreio e sem fórmula mágica.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Introdução</span><span>Playbook do Lançamento Cripto (TGE) 2026</span></div>
+  <div class="folio">— <b>04</b> —</div>
+</section>
+
+<!-- ============================== CAP 1 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 01</div>
+    <h1 class="chap">LANÇAR EM 2026 <span class="ink">É OUTRO JOGO</span></h1>
+    <p class="lead">O playbook de lançamento que funcionou em 2021 mata projeto em 2026. O mercado amadureceu, o capital ficou cético e a régua subiu. Antes de falar de tática, é preciso entender em que terreno você está lançando.</p>
+
+    <h2>O que mudou no terreno</h2>
+    <p><strong>O dinheiro institucional entrou de verdade.</strong> O ETF de Bitcoin da BlackRock (IBIT) se aproximou de <strong>US$ 100 bilhões sob gestão</strong>, o mais rápido da história a chegar perto desse marco, e os ETPs cripto nos EUA passaram de <strong>US$ 186 bilhões</strong> combinados. Esse capital não compra meme: compra tese, fundamento e compliance. <span class="src">Fonte: <a href="https://www.theblock.co/post/373631/bitcoin-etfs-largest-daily-inflows-since-trump-election-blackrock-ibit-nears-100-billion-usd-aum">The Block</a></span></p>
+    <p><strong>A regulação virou estrutura.</strong> O <strong>GENIUS Act</strong> foi sancionado em 18/jul/2025 (Senado 68–30, Câmara 308–122), o primeiro marco federal de stablecoin dos EUA, exigindo lastro 1:1. Lançar com clareza regulatória deixou de ser opcional e virou selo de marca. <span class="src">Fonte: <a href="https://www.whitehouse.gov/fact-sheets/2025/07/fact-sheet-president-donald-j-trump-signs-genius-act-into-law/">The White House</a></span></p>
+    <p><strong>A utilidade encostou no hype.</strong> Stablecoins movimentaram <strong>US$ 27,6 trilhões on-chain em 2024</strong>, acima de Visa e Mastercard somadas. A infra ganhou tração real; a especulação pura encolheu. Quem lança em 2026 compete por atenção num mercado que aprendeu a perguntar "o que isso faz?". <span class="src">Fonte: <a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate</a></span></p>
+
+    <div class="tbl-cap">[ Tabela ] Lançar na <b>era do hype</b> vs lançar na <b>era da utilidade</b></div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th class="bad">Era do hype · 2020–2024</th><th class="good">Era da utilidade · 2025–2026</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">O que vende o TGE</td><td>"Esse token vai 100x"</td><td class="good">"Esse produto já tem uso real"</td></tr>
+          <tr><td class="lab">Métrica de sucesso</td><td>Preço no dia 1, nº de holders</td><td class="good">Retenção em D90, receita on-chain</td></tr>
+          <tr><td class="lab">Distribuição</td><td>Float baixo, FDV inflado</td><td class="good">Float maior, alinhamento provado</td></tr>
+          <tr><td class="lab">Quem você atrai</td><td>Farmer mercenário</td><td class="good">Usuário e holder de convicção</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A mensagem do capítulo é simples: o lançamento de 2026 é um teste de fundamento disfarçado de evento de marketing. O hype ainda abre a porta, mas só o que tem produto e alinhamento atravessa para o outro lado dela.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Você não está lançando no mercado de 2021. Capital institucional, regulação e usuários céticos mudaram a régua: o TGE de 2026 premia quem prova utilidade e pune quem só inflou expectativa.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 01 · Outro jogo</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>05</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02</div>
+    <h1 class="chap">A ANATOMIA <span class="ink">DE UM TGE</span></h1>
+    <p class="lead">Um lançamento não é um botão. É um funil de seis fases, e cada uma tem um objetivo de marketing distinto. Confundir as fases é o erro mais comum: tratar a listagem como o evento, quando ela costuma ser o topo, não a largada.</p>
+
+    <div class="flow">
+      <div class="step"><div class="n">FASE 1</div><div class="t">Pré-lançamento</div><div class="d">Narrativa, comunidade, seed e KOL. Construir demanda.</div></div>
+      <div class="step"><div class="n">FASE 2</div><div class="t">Pontos / testnet</div><div class="d">Recompensar uso real antes do token existir.</div></div>
+      <div class="step"><div class="n">FASE 3</div><div class="t">Snapshot</div><div class="d">A foto que define quem é elegível ao airdrop.</div></div>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="n">FASE 4</div><div class="t">TGE / claim</div><div class="d">O token nasce e é distribuído. Pico de pressão de venda.</div></div>
+      <div class="step"><div class="n">FASE 5</div><div class="t">Listagem</div><div class="d">Entrada em CEX/DEX. Liquidez e descoberta de preço.</div></div>
+      <div class="step"><div class="n">FASE 6</div><div class="t">Pós-TGE</div><div class="d">Reter, recomprar, entregar. Onde se ganha ou perde.</div></div>
+    </div>
+
+    <h2>O TGE não é a listagem</h2>
+    <p>A distinção mais importante e mais ignorada: o <strong>TGE distribui</strong> o token; a <strong>listagem</strong> dá liquidez e descoberta de preço em exchange, e quase sempre vem depois. São dois eventos com dinâmicas opostas. No TGE, quem recebeu de graça vende; na listagem, quem não conseguiu comprar entra. Tratar os dois como um só é o que faz projeto despejar todo o orçamento de marketing no dia errado.</p>
+
+    <h2>Cada fase, um objetivo de marketing</h2>
+    <ul class="bul">
+      <li><strong>Pré-lançamento:</strong> não é "gerar hype", é gerar <em>demanda real</em>. Narrativa certa, comunidade que entende a tese, lista de espera de quem quer o produto.</li>
+      <li><strong>Pontos:</strong> bootstrappar uso sem pressão de venda. O usuário trabalha de graça em troca de uma promessa, e isso só funciona se a promessa for crível.</li>
+      <li><strong>TGE / claim:</strong> a hora de gerenciar a venda inevitável. Quem desenhou retenção antes, sobrevive ao claim.</li>
+      <li><strong>Pós-TGE:</strong> a fase mais longa e a menos planejada. É aqui que o buyback, a entrega de produto e o ritual de comunidade decidem se o token vira ativo ou pó.</li>
+    </ul>
+
+    <div class="note"><b>O erro clássico.</b> Projetos gastam 90% da energia nas fases 1 a 4 e improvisam a fase 6. Mas o mercado precifica exatamente o contrário: o que importa é o que acontece <em>depois</em> que o dinheiro fácil do airdrop é vendido.</div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Seis fases, seis objetivos. O TGE distribui, a listagem dá liquidez, e o pós-TGE decide tudo. Quem planeja só até o dia do claim já perdeu o jogo que importa.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · Anatomia do TGE</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>06</b> —</div>
+</section>
+
+<!-- ============================== CAP 3 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 03</div>
+    <h1 class="chap">NARRATIVA E <span class="ink">PRÉ-LANÇAMENTO</span></h1>
+    <p class="lead">A demanda que sustenta um lançamento não nasce no dia do TGE. Nasce meses ou anos antes, na narrativa certa e numa comunidade que já quer o token antes de ele existir. O pré-lançamento é onde o jogo se decide silenciosamente.</p>
+
+    <h2>Narrative-market-fit vem antes de tudo</h2>
+    <p>O conceito de <strong>narrative-market-fit</strong>, cunhado por David Perell em 2022 com raiz na "economia narrativa" de Robert Shiller, é direto: sua história precisa refletir o que o mercado já está sedento pra ouvir. A Ethena não vendeu "protocolo de basis trade delta-neutro". Vendeu <strong>"Internet Bond"</strong>, um dólar sintético que rende, num momento em que o mercado queria rendimento. Esse enquadramento deu ar institucional a um produto complexo e ajudou a puxar o USDe de zero a <strong>mais de US$ 2 bilhões em cerca de sete semanas</strong>. <span class="src">Fonte: <a href="https://www.theblock.co/post/286640/ethena-usde-stablecoin-crosses-2-billion-supply">The Block</a>, <a href="https://perell.com/essay/narrative-market-fit/">David Perell</a></span></p>
+
+    <h2>Comunidade construída antes do token</h2>
+    <p>O ativo de demanda mais durável não é uma campanha, é uma comunidade pré-existente. A <strong>Berachain</strong> não começou como blockchain: começou em agosto de 2021 como a coleção de NFTs <strong>Bong Bears</strong> (107 peças), cujo mecanismo de rebase airdropava novas coleções aos holders e cultivava uma comunidade meme-nativa fanática. Anos depois, essa base virou a demanda pré-fabricada do TGE de fev/2025, com a rede entrando ao ar já com bilhões em liquidez. <span class="src">Fonte: <a href="https://decrypt.co/resources/what-is-berachain-proof-of-liquidity-blockchain">Decrypt</a></span></p>
+
+    <div class="case">
+      <div class="ct">Caso · Pudgy Penguins</div>
+      <h3>A marca antes do token</h3>
+      <p>A Pudgy inverteu o playbook: construiu marca e distribuição de IP no mundo físico <strong>antes</strong> do token. Colocou pelúcias na Walmart, Target e GameStop, vendendo <strong>mais de 2 milhões de unidades e US$ 13 milhões</strong> em mais de 10.000 pontos de venda. O brinquedo de US$ 10 virou funil de aquisição: o normie entra pela prateleira, não pela corretora.</p>
+      <p>Quando o PENGU lançou na Solana em dez/2024, já existia marca, demanda e uma comunidade enorme pra distribuir. O airdrop comunitário recebeu <strong>mais de 100 mil requisições de claim só na primeira noite</strong>. <span class="src">Fonte: <a href="https://decrypt.co/218420/pudgy-penguins-10-million-toy-sales-walmart">Decrypt</a></span></p>
+    </div>
+
+    <p>A lição cruza os três casos: você não "lança" demanda no TGE. Você a <strong>colhe</strong>. Quem chega no dia do token sem narrativa testada e sem comunidade já engajada está tentando construir a casa começando pelo telhado.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Narrativa certa + comunidade pré-construída = demanda que sobrevive ao claim. Ethena vendeu "Internet Bond", Berachain vinha de uma comunidade de 2021, Pudgy vendeu pelúcia antes de token. Nenhum começou no dia do TGE.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 03 · Narrativa e pré-lançamento</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>07</b> —</div>
+</section>
+
+<!-- ============================== CAP 4 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04</div>
+    <h1 class="chap">PONTOS COMO MOTOR <span class="ink">DE LANÇAMENTO</span></h1>
+    <p class="lead">O programa de pontos virou a primitiva de lançamento padrão entre 2023 e 2025. A ideia é elegante: recompense uso antes do token, bootstrappe TVL sem pressão de venda. O problema é que pontos transparentes e gamificáveis atraem exatamente o usuário errado.</p>
+
+    <h2>Por que pontos funcionam (até funcionarem demais)</h2>
+    <p>A <strong>Blur</strong> popularizou o modelo moderno: na temporada 1, distribuiu pontos a cerca de <strong>150 mil usuários</strong>, gerou <strong>US$ 1,2 bilhão</strong> em negociação de NFT e chegou a ocupar mais de <strong>60% do volume de NFT na Ethereum</strong>, superando o OpenSea por um período. Todo lançamento seguinte copiou. <span class="src">Fonte: <a href="https://www.bankless.com/read/the-point-of-points-in-crypto">Bankless</a></span></p>
+    <p>A <strong>EigenLayer</strong> levou ao extremo: o motor de pontos puxou o TVL de zero a cerca de <strong>US$ 15 bilhões em seis meses</strong>, com mais de 280 mil usuários, tudo antes de existir token. Prova que pontos bootstrappam capital numa escala que nenhuma campanha paga alcança. <span class="src">Fonte: <a href="https://www.theblock.co/post/298796/eigenlayers-total-value-locked-surpasses-20-billion-for-the-first-time">The Block</a></span></p>
+
+    <h2>O lado podre: capital mercenário</h2>
+    <p>O ponto fraco do ponto: leaderboard público e regra clara é um convite ao farming. O capital que entra atrás do ponto vai embora quando o ponto acaba. A <strong>Blast</strong> viu o TVL cair <strong>mais de 50%</strong> nas semanas após o airdrop. A própria EigenLayer perdeu <strong>US$ 351 milhões de TVL em um único dia</strong> durante a controvérsia da sua política de airdrop. <span class="src">Fonte: <a href="https://beincrypto.com/eigenlayer-airdrop-policy-controversy/">BeInCrypto</a></span></p>
+
+    <div class="note"><b>"Points fatigue".</b> Em 2024, a própria CoinDesk escreveu que o airdrop da EigenLayer "poderia sinalizar o fim dos pontos", depois do backlash com alocação não-transparente, bloqueios geográficos e token não-transferível. O usuário cansou de farmar promessa vaga. <span class="src">Fonte: <a href="https://www.coindesk.com/tech/2024/05/09/eigenlayers-eigen-airdrop-might-signal-demise-of-once-popular-points">CoinDesk</a></span></div>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Pontos bootstrappam capital numa escala que nenhuma campanha alcança, mas pontos transparentes e gamificáveis atraem mercenário que foge no claim. A pergunta não é "se" usar pontos, é como impedir que eles sejam farmados.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 04 · Pontos como motor</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>08</b> —</div>
+</section>
+
+<!-- ============================== CAP 4 (cont.) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04 · cont.</div>
+    <h1 class="chap">A OPACIDADE <span class="ink">QUE BLINDA O AIRDROP</span></h1>
+    <p class="lead">Se o problema do ponto é que ele é farmável, a solução da Hyperliquid foi radical: tornar o programa propositalmente opaco. Sem fórmula pública, ninguém faz engenharia reversa, e o jeito de maximizar o airdrop vira simplesmente usar o produto de verdade.</p>
+
+    <h2>O contra-exemplo Hyperliquid</h2>
+    <p>A Hyperliquid rodou um programa de pontos <strong>closed-source em duas temporadas</strong> (de nov/2023 a nov/2024) sem nunca revelar o critério exato de conversão. O resultado: em vez de otimizar pra um leaderboard, o usuário otimizava tradeando no produto, que já era líder em volume de perps on-chain antes mesmo do token. <span class="src">Fonte: <a href="https://hyperliquid.gitbook.io/hyperliquid-docs/points">Docs Hyperliquid</a></span></p>
+    <p>No Genesis Event de 29/nov/2024, distribuiu <strong>31% do supply (310 milhões de HYPE) a mais de 94 mil usuários</strong>, com <strong>zero alocação para VC, exchange ou market maker</strong>. O airdrop converteu traders ativos em holders, não farmers de saída, e virou uma das comunidades mais fiéis do ciclo. <span class="src">Fonte: <a href="https://blockworks.com/news/hyperliquid-hype-airdrop">Blockworks</a></span></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">J</div>
+        <div class="who"><div class="nm">Jeff Yan <span class="vf">✦</span></div><div class="hd">@chameleon_jeff · Hyperliquid</div></div>
+        <img class="xlogo" src="assets/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Ownership should be community-driven." <em>— sobre distribuir 31% do supply à comunidade, sem VC e sem alocação de time no dia do airdrop.</em></div>
+      <div class="meta"><span>via Blockworks</span><span>nov/2024</span></div>
+    </div>
+
+    <div class="tbl-cap">[ Tabela ] Pontos <b>transparentes</b> vs pontos <b>opacos / retroativos</b></div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th></th><th class="bad">Transparente / gamificável</th><th class="good">Opaco / retroativo</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">Quem otimiza</td><td>O farmer, com bots e sybils</td><td class="good">O usuário, usando o produto</td></tr>
+          <tr><td class="lab">Retenção pós-drop</td><td>Despenca (Blast −50% TVL)</td><td class="good">Alta (Hyperliquid, comunidade fiel)</td></tr>
+          <tr><td class="lab">Risco</td><td>Capital mercenário domina</td><td class="good">Recompensa uso genuíno passado</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A regra que sai daqui: se a fórmula do ponto é pública, ela vira meta a ser explorada. Se a recompensa é <strong>retroativa e ponderada por uso real</strong>, não há leaderboard pra farmar, e quem é premiado é quem já estava lá pelo produto.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Pontos opacos e retroativos vencem pontos transparentes: sem fórmula pública, a única forma de farmar é usar o produto. A Hyperliquid distribuiu 31% do supply sem VC e colheu uma comunidade que ficou.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 04 · Opacidade que blinda</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>09</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05</div>
+    <h1 class="chap">O AIRDROP SEM VIRAR <span class="ink">EXIT LIQUIDITY</span></h1>
+    <p class="lead">O airdrop é um evento de liquidez front-loaded. Você entrega tokens com custo zero a quem não tem motivo pra ficar, e a maioria vende na primeira oferta. O dado é implacável e a pergunta certa não é "como distribuir mais", é "como reter quem recebeu".</p>
+
+    <h2>A matemática do dump</h2>
+    <p>O padrão se repete em escala. No airdrop da <strong>ZKsync</strong>, a Nansen mostrou que <strong>41% dos 10 mil maiores recebedores venderam toda a alocação em cerca de 24 horas</strong>, e cerca de 71% venderam ao menos parte; o token caiu ~34,5% no pós-launch. Estimativas de mercado apontam que perto de <strong>64% dos recebedores vendem já no TGE</strong>. <span class="src">Fonte: <a href="https://www.theblock.co/post/300608/zksync-token-airdrop-sales-nansen">The Block / Nansen</a></span></p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Curva de retenção</b> pós-airdrop — farmado vs ligado a produto</div>
+      <canvas id="chart-dump" width="500" height="230"></canvas>
+      <div class="chartnote">Ilustrativo, baseado nos padrões observados (ZKsync, Arbitrum, Hyperliquid). <b>Airdrop farmado some no claim; airdrop ligado a um produto que retém segura uma fração relevante até D90.</b></div>
+    </div>
+
+    <h2>O problema sybil</h2>
+    <p>Boa parte de quem recebe nem é gente. No airdrop da <strong>Arbitrum</strong> (mar/2023), apesar dos filtros, cerca de <strong>150 mil endereços sybil passaram e abocanharam perto de 25% do airdrop</strong>. A <strong>LayerZero</strong> chegou a flagar <strong>803 mil endereços sybil</strong> antes da distribuição. Filtro não elimina o farmer, só encarece o farming. <span class="src">Fonte: <a href="https://www.dlnews.com/articles/defi/sybil-attackers-loot-airdrops-for-millions-with-fake-wallets/">DL News</a>, <a href="https://cointelegraph.com/news/layerzero-concludes-sybil-self-reporting-phase">Cointelegraph</a></span></p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Airdrop é pressão de venda garantida: ~64% vendem no TGE, e sybils abocanham uma fatia gorda. O airdrop não retém ninguém, o produto retém. Distribua pensando em quem fica, não em quantas carteiras você toca.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · Sem virar exit liquidity</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>10</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 (cont.) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05 · cont.</div>
+    <h1 class="chap">COMO PROJETAR <span class="ink">UM AIRDROP QUE FICA</span></h1>
+    <p class="lead">Se o dump é inevitável, o que dá pra controlar é quem você atrai, quanto despeja de uma vez e o que oferece pra quem não vende. Quatro alavancas separam o airdrop que vira comunidade do que vira gráfico despencando.</p>
+
+    <ol class="bul">
+      <li><strong>Premie uso real, retroativamente.</strong> Critério baseado em comportamento passado genuíno (volume, tempo, transações reais) é mais caro de farmar do que pontos ao vivo. A opacidade ajuda: sem fórmula, sem como otimizar.</li>
+      <li><strong>Tenha um produto que dê motivo de voltar.</strong> A Hyperliquid reteve porque o airdrop caiu pra quem já tradeava num produto líder. Sem produto sticky, o token vira só liquidez de saída.</li>
+      <li><strong>Controle o despejo.</strong> Distribuir tudo de uma vez é garantir o dump. Vesting, claim escalonado e recompensa por holding mudam o cálculo de quem recebeu.</li>
+      <li><strong>Dê um motivo de ficar além do preço.</strong> Governança real, fee-share, acesso, status na comunidade. Quem só recebeu preço, vende preço.</li>
+    </ol>
+
+    <div class="case">
+      <div class="ct">Contraste · o que NÃO fazer</div>
+      <h3>Arbitrum: o claim caótico e o AIP-1</h3>
+      <p>A Arbitrum distribuiu ~1,16 bilhão de ARB a 625 mil carteiras num airdrop retroativo elogiado. Mas o preço foi de uma máxima de <strong>~US$ 8,67 para ~US$ 1,40 em 30 minutos</strong> de claim, puro farmer vendendo. <span class="src">Fonte: <a href="https://www.coindesk.com/markets/2023/03/23/arbitrum-token-settles-at-138-amid-airdrop-claim-chaos/">CoinDesk</a></span></p>
+      <p>Pior: a primeira proposta de governança (AIP-1) pediu 750 milhões de ARB (~US$ 1 bilhão) à fundação, que já tinha transferido e vendido parte <strong>antes</strong> do voto. <strong>76–77% votaram contra.</strong> A "descentralização" virou teatro no primeiro teste, e quebrar confiança no TGE custa caro. <span class="src">Fonte: <a href="https://www.theblock.co/post/224444/arbitrum-sells-tokens-aip1">The Block</a></span></p>
+    </div>
+
+    <div class="note"><b>Como usar na prática.</b> Antes de definir o airdrop, responda: "se eu fosse um farmer, como eu maximizaria isso sem usar o produto de verdade?". Todo caminho que você encontrar é um buraco a fechar. Se não houver caminho, você desenhou um airdrop que premia usuário, não mercenário.</div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Quatro alavancas: premie uso retroativo, tenha produto sticky, controle o despejo, dê motivo além do preço. E nunca quebre a confiança no TGE, como a Arbitrum no AIP-1. Distribuição é marketing; governança é reputação.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · Airdrop que fica</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>11</b> —</div>
+</section>
+
+<!-- ============================== CAP 6 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 06</div>
+    <h1 class="chap">KOL E INFLUÊNCIA <span class="ink">COM DISCLOSURE</span></h1>
+    <p class="lead">Influenciador move preço e atenção, e por isso virou peça central de lançamento. Mas o KOL round, a venda privada e descontada de tokens a influencers, carrega um incentivo embutido de dump e um risco regulatório que pós-FTX ninguém pode mais ignorar.</p>
+
+    <h2>Como funciona o KOL round</h2>
+    <p>Um KOL round é uma venda privada disfarçada de "parceria": o influencer entra numa alocação descontada antes do TGE em troca de posts. Tickets típicos vão de <strong>US$ 1 mil a US$ 20 mil</strong>, com vesting de 12 a 24 meses e algumas publicações por mês, ocupando em geral <strong>5% a 15% do captado</strong>. O detalhe perigoso é o desconto: num caso documentado, KOLs entraram a <strong>um quinto do valuation</strong> que a Paradigm pagou. Base mais barata + liquidez antecipada = incentivo estrutural a vender no usuário que veio pelo post. <span class="src">Fonte: <a href="https://www.coindesk.com/business/2024/05/09/inside-cryptos-kol-economy-influencer-investors-get-special-treatment-in-token-deals">CoinDesk</a>, <a href="https://flexe.io/blog/kol-crypto-guide/">Flexe</a></span></p>
+
+    <h2>Disclosure não é opcional</h2>
+    <p>Pós-FTX, uma alocação de token é uma conexão material idêntica a um pagamento em dinheiro. O caso-régua é <strong>Kim Kardashian</strong>: a SEC aplicou <strong>US$ 1,26 milhão</strong> de acordo (US$ 1 milhão de multa + devolução do cachê de US$ 250 mil pela promoção não-divulgada do EthereumMax) e <strong>três anos de proibição</strong> de promover cripto. O precedente é claro: um "#AD" sozinho não basta, porque omite quanto foi pago. <span class="src">Fonte: <a href="https://www.sec.gov/newsroom/press-releases/2022-183">SEC</a></span></p>
+
+    <h2>O problema do engajamento falso</h2>
+    <p>Boa parte da audiência de KOL é fantasma. Estimativas específicas de cripto apontam que <strong>mais de 10% dos seguidores de grandes contas do setor são falsos</strong>, e os piores dumps de KOL ao TGE foram associados a carteiras com tempo de holding de segundos. Pagar por alcance inflado é queimar orçamento e ainda atrair o sybil. <span class="src">Fonte: <a href="https://news.lever.io/crypto-influencer-fraud-detect-fake-engagement-web3/">Lever</a></span></p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O KOL round é venda privada com desconto e vesting curto: incentivo embutido a dumpar. Use KOL pela audiência real e pela tese, não pelo número de seguidores, e exija disclosure, porque a alocação é pagamento aos olhos do regulador.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 06 · KOL com disclosure</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>12</b> —</div>
+</section>
+
+<!-- ============================== CAP 7 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 07</div>
+    <h1 class="chap">A COMUNIDADE <span class="ink">QUE DISTRIBUI</span></h1>
+    <p class="lead">A distribuição mais barata e mais resiliente de um lançamento não é paga, é a comunidade que carrega a mensagem por convicção. Mas comunidade não se compra no mês do TGE: se constrói antes, e os melhores casos vêm de anos de antecedência.</p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Comunidade pré-construída</b> — meses de antecedência antes do token</div>
+      <canvas id="chart-comunidade" width="500" height="210"></canvas>
+      <div class="chartnote">Berachain vinha de uma comunidade NFT de 2021; Friend.tech lançou sem base nenhuma. <b>Quanto mais tempo de comunidade antes do token, mais durável a demanda no TGE.</b></div>
+    </div>
+
+    <div class="case">
+      <div class="ct">Caso · Jupiter</div>
+      <h3>Identidade antes do token, ritual depois</h3>
+      <p>A Jupiter construiu a identidade "J.U.P / catdets / Cats of Culture" meses antes do TGE, com um fundador pseudônimo ("Meow") movido a ensaios longos. Quando o token lançou em 31/jan/2024, havia <strong>~955 mil carteiras elegíveis</strong> e uma comunidade pronta: <strong>mais de 20% dos tokens foram reclamados na primeira hora</strong>. <span class="src">Fonte: <a href="https://decrypt.co/206422/jupiter-airdrop-solana-dex-aggregator">Decrypt</a>, <a href="https://www.coindesk.com/markets/2024/01/31/jupiters-jup-token-soars-after-massive-700m-airdrop-to-solana-wallets">CoinDesk</a></span></p>
+      <p>O movimento genial foi transformar o airdrop em <strong>ritual anual ("Jupuary")</strong>: em vez de um drop único, a promessa de repetir todo janeiro virou loop de retenção. Continue usando o agregador, continue qualificando. (No Cap. 10 veremos como esse mesmo ritual depois virou um passivo.)</p>
+    </div>
+
+    <h2>O que faz comunidade distribuir</h2>
+    <ul class="bul">
+      <li><strong>Identidade antes de utilidade.</strong> Catdets, Bong Bears, Pudgy: um nome e uma cultura que a pessoa quer vestir, não só um produto que ela usa.</li>
+      <li><strong>Fundador presente e com voz própria.</strong> Meow escrevendo ensaios, Luca Netz defendendo a tese da marca. Comunidade segue gente, não logo.</li>
+      <li><strong>Um motivo de carregar a bandeira.</strong> Status, pertencimento, mindshare. A pessoa divulga porque a vitória do projeto é a vitória dela.</li>
+    </ul>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Comunidade é a distribuição mais barata e durável de um TGE, mas só se construída antes. Identidade vestível, fundador com voz e um motivo de carregar a bandeira transformam holder em canal de marketing.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 07 · Comunidade que distribui</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>13</b> —</div>
+</section>
+
+<!-- ============================== CAP 8 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 08</div>
+    <h1 class="chap">TOKENOMICS <span class="ink">COMO MARKETING</span></h1>
+    <p class="lead">O token é o maior canal de marketing de um projeto: ele comunica os valores antes de qualquer copy. Como você distribui o supply, quanto coloca em circulação e o que faz com a receita diz mais sobre o alinhamento do time do que qualquer thread.</p>
+
+    <h2>A armadilha do low float, high FDV</h2>
+    <p>O erro estrutural de 2024 foi lançar com float minúsculo e FDV inflado. A Binance Research mostrou que o <strong>MC/FDV médio dos tokens lançados em 2024 foi de 12,3%</strong>, o mais baixo em três anos, com cerca de <strong>88% do supply travado</strong>. O resultado: descoberta de preço acontecia no privado, o varejo comprava o topo na listagem e os unlocks despejavam depois. A própria Binance estimou que seriam necessários <strong>~US$ 80 bilhões de demanda nova só pra segurar os preços</strong> diante dos desbloqueios. <span class="src">Fonte: <a href="https://cointelegraph.com/news/binance-urges-small-medium-projects-high-fdv-trend">Cointelegraph</a> / <a href="https://public.bnbstatic.com/static/files/research/low-float-and-high-fdv-how-did-we-get-here.pdf">Binance Research</a></span></p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Float inicial</b> — média 2024 vs faixa saudável</div>
+      <canvas id="chart-float" width="500" height="200"></canvas>
+      <div class="chartnote">Float baixo + sentimento otimista = pico rápido e insustentável que reverte nos unlocks. <b>A correção de 2025–2026 puxa para float maior e fair launches.</b></div>
+    </div>
+
+    <p>A conta saiu cara. Tokens lançados nesse modelo viraram pó: STRK perto de <strong>−99%</strong>, Wormhole (W) cerca de <strong>−98%</strong>, ENA por volta de <strong>−87%</strong> dos respectivos topos. Float baixo não é "escassez bullish", é uma bomba-relógio de unlock. <span class="src">Fonte: <a href="https://www.fxstreet.com/cryptocurrencies/news/top-crypto-losers-zcash-starknet-and-ethena-lead-losses-amid-bearish-pressure-202512010307">FXStreet</a></span></p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Tokenomics é a primeira mensagem de marketing do projeto. Low float com FDV inflado grita "saída de VC, não distribuição": pico rápido, dump nos unlocks. Float maior e fair launch sinalizam alinhamento, e o mercado de 2026 está aprendendo a ler isso.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 08 · Tokenomics como marketing</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>14</b> —</div>
+</section>
+
+<!-- ============================== CAP 8 (cont.) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 08 · cont.</div>
+    <h1 class="chap">O TOKEN QUE <span class="ink">COMPRA A SI MESMO</span></h1>
+    <p class="lead">Se distribuição comunica alinhamento na largada, o que você faz com a receita depois comunica alinhamento no longo prazo. O buyback financiado por receita real virou a prova on-chain mais forte de que o projeto trabalha pro holder, não contra ele.</p>
+
+    <h2>O buyback da Hyperliquid</h2>
+    <p>A Hyperliquid criou o <strong>Assistance Fund</strong>: um mecanismo que recicla a maior parte das taxas do protocolo comprando HYPE no mercado aberto. Até maio de 2026, isso somava <strong>mais de US$ 1,3 bilhão em buyback</strong>, destinando <strong>~97% das taxas</strong> (com proposta votada pra elevar a 99%) à recompra, o equivalente a cerca de 7% do market cap ao ano. <span class="src">Fonte: <a href="https://crypto.news/why-hype-is-different-inside-hyperliquids-buyback/">crypto.news</a></span></p>
+    <p>O efeito de marketing é silencioso e poderoso: cada taxa paga vira pressão compradora no token. O holder não precisa acreditar numa promessa de roadmap, ele lê o buyback on-chain. Alinhamento <em>provado</em> bate alinhamento <em>prometido</em> todas as vezes.</p>
+
+    <div class="tbl-cap">[ Tabela ] Três sinais de tokenomics que o mercado <b>lê como marketing</b></div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th>Sinal</th><th class="bad">Lê mal</th><th class="good">Lê bem</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">Float inicial</td><td>~12% (low float, dump de unlock)</td><td class="good">Maior, com distribuição comunitária</td></tr>
+          <tr><td class="lab">Alocação de VC</td><td>Pesada, desconto enorme</td><td class="good">Leve ou zero (Hyperliquid: zero)</td></tr>
+          <tr><td class="lab">Uso da receita</td><td>Emissão inflacionária de token novo</td><td class="good">Buyback / fee-share provado on-chain</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A síntese do capítulo: tokenomics não é planilha de financeiro, é declaração pública de quem o projeto serve. Float, alocação e uso da receita são lidos pelo mercado como mensagem, e a mensagem mais forte é a que está registrada na blockchain, não no whitepaper.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O buyback financiado por receita real é a prova de alinhamento mais forte que existe: cada taxa vira compra do token. A Hyperliquid recomprou mais de US$ 1,3 bilhão em HYPE. Alinhamento provado on-chain bate qualquer promessa.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 08 · O token que se compra</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>15</b> —</div>
+</section>
+
+<!-- ============================== CAP 9 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 09</div>
+    <h1 class="chap">LISTAGEM, LIQUIDEZ <span class="ink">E MARKET MAKER</span></h1>
+    <p class="lead">A listagem em exchange é o momento mais visível do lançamento e o mais incompreendido. O "pump da Binance" é real, mas frequentemente é o topo, não a largada. Entender o que a listagem faz com o preço evita transformar o auge em armadilha.</p>
+
+    <h2>O efeito da listagem</h2>
+    <p>O <strong>Launchpool da Binance</strong> distribuiu <strong>mais de US$ 1,75 bilhão</strong> em recompensas de token ao longo de 21 eventos em 2024, com APY médio na casa dos 84%. É um motor de distribuição potente: o usuário stakeia BNB, mantém o BNB e farma o token novo. <span class="src">Fonte: <a href="https://blockchain.news/news/bnb-holders-earned-177-percent-returns-launchpool-airdrops">blockchain.news</a></span></p>
+    <p>O "efeito listagem" também é mensurável: estudos apontam um pump médio de <strong>+41% (CoinDesk, 2023) a +87% (estudos de 2025)</strong> em tokens recém-listados na Binance, o mais forte entre as CEXs. O problema é o que vem depois: o drawdown médio chega a <strong>~70%</strong>, e a esmagadora maioria dos tokens listados acaba caindo. A listagem é evento de saída de quem entrou cedo. <span class="src">Fonte: <a href="https://www.coindesk.com/markets/2023/01/06/binance-effect-means-41-price-spike-for-newly-listed-tokens">CoinDesk</a></span></p>
+
+    <h2>O papel do market maker</h2>
+    <p>Token recém-listado precisa de liquidez pra não ter spread absurdo. O modelo padrão é o de <strong>empréstimo + opção</strong>: o projeto empresta cerca de <strong>5% do supply</strong> ao market maker, que provê liquidez de compra e venda e tem opções de compra a um strike fixo. Não exige capital base do projeto, só governance token, mas o desenho do contrato importa: market maker mal incentivado também despeja. <span class="src">Fonte: <a href="https://www.blocmates.com/articles/how-market-making-deals-work-in-crypto">blocmates</a></span></p>
+
+    <div class="note"><b>CEX-first vs DEX-first.</b> A maioria dos lançamentos só em DEX nunca constrói o volume que as exchanges Tier-1 exigem pra listar. A norma de 2026 é híbrida: semear liquidez em DEX e camadar a CEX pelo alcance, sem tratar a listagem como o evento de marketing principal.</div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>A listagem dá liquidez e alcance, mas o pump médio (+41% a +87%) costuma virar drawdown de ~70%. Não gaste o orçamento de marketing celebrando o topo: a listagem é descoberta de preço, não a vitória.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 09 · Listagem e liquidez</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>16</b> —</div>
+</section>
+
+<!-- ============================== CAP 10 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 10</div>
+    <h1 class="chap">PÓS-TGE: RETENÇÃO <span class="ink">&gt; RECOMPENSA</span></h1>
+    <p class="lead">O lançamento de verdade começa quando o airdrop é vendido. A fase pós-TGE é a mais longa, a menos planejada e a que decide se o token vira ativo ou pó. A regra que atravessa todos os casos: recompensa atrai, só utilidade retém.</p>
+
+    <div class="case">
+      <div class="ct">Caso · Ethena</div>
+      <h3>Segunda temporada pra reter o que a primeira atraiu</h3>
+      <p>A Ethena não parou no airdrop de 750 milhões de ENA (~US$ 500–550 milhões). Logo depois, lançou a <strong>"Sats Campaign"</strong>, uma segunda temporada de pontos com colateral em BTC, justamente pra reter a TVL que o farm da primeira tinha atraído. O produto (USDe rendendo) dava o motivo de ficar; a campanha nova dava o motivo de não sacar. <span class="src">Fonte: <a href="https://thedefiant.io/news/defi/ethena-labs-ena-launches-at-usd1-billion-post-airdrop-as-sats-campaign-kicks-off">The Defiant</a></span></p>
+    </div>
+
+    <div class="case">
+      <div class="ct">Caso · Jupiter</div>
+      <h3>Quando o ritual de retenção vira passivo</h3>
+      <p>O "Jupuary" anual era genial como loop de retenção, até virar uma expectativa de trade garantido. Os drops geravam <strong>farm-and-dump</strong> recorrente, e a DAO acabou aprovando (com ~75% de apoio) zerar as emissões líquidas de JUP, cortando o Jupuary de 2026 de <strong>700 milhões para 200 milhões de tokens (~71% de redução)</strong>. Muitos holders se sentiram traídos. Lição: incentivo recorrente cria dependência, e cortar dependência tem custo de reputação. <span class="src">Fonte: <a href="https://www.ainvest.com/news/jupiter-reduce-jup-net-emissions-proposal-approved-jupuary-airdrop-indefinitely-postponed-2602-63/">Ainvest</a></span></p>
+    </div>
+
+    <div class="case">
+      <div class="ct">Cautionary tale · Friend.tech</div>
+      <h3>Hype sem retenção: o colapso de 95%</h3>
+      <p>A Friend.tech explodiu no lançamento (Base, ago/2023): <strong>~US$ 8,1 milhões de volume e ~136 mil usuários ativos no dia 1</strong>. Mas o mecanismo de pontos-por-airdrop pagava pra tradar, atraindo mercenário, não comunidade. O volume caiu <strong>95% em dez dias</strong>, ainda no auge do hype. Quando o airdrop FRIEND finalmente caiu (mai/2024), o token <strong>despencou ~98% em horas</strong>, e o time renunciou ao controle dos contratos meses depois. <span class="src">Fonte: <a href="https://www.dlnews.com/articles/defi/friend-tech-shuts-down-after-revenue-and-users-plummet/">DL News</a>, <a href="https://crypto.news/friend-techs-token-falls-98-following-airdrop-fiasco/">crypto.news</a></span></p>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Pós-TGE é onde se ganha ou perde. Ethena reteve com produto + segunda campanha; Jupiter aprendeu que ritual de incentivo vira dependência cara; Friend.tech provou que hype sem retenção é só liquidez de saída adiada. Recompensa atrai, utilidade retém.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 10 · Retenção &gt; recompensa</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>17</b> —</div>
+</section>
+
+<!-- ============================== CHECKLIST ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Síntese operacional</div>
+    <h1 class="chap">O CHECKLIST <span class="ink">DO LANÇAMENTO</span></h1>
+    <p class="lead">Os dez capítulos destilados num checklist por fase. Não é fórmula mágica: é o conjunto de perguntas que separa o lançamento que vira comunidade do que vira gráfico despencando.</p>
+
+    <div class="pubgrid">
+      <div class="pcard p1"><h4>Pré-lançamento</h4><div class="pr"><b>Narrativa</b>Sua história reflete o que o mercado quer ouvir agora?</div><div class="pr"><b>Comunidade</b>Existe base engajada antes do token, ou só hype?</div></div>
+      <div class="pcard p2"><h4>Pontos</h4><div class="pr"><b>Anti-farm</b>Como um farmer maximizaria sem usar o produto?</div><div class="pr"><b>Retroativo</b>A recompensa premia uso real e passado?</div></div>
+      <div class="pcard p3"><h4>Airdrop / TGE</h4><div class="pr"><b>Despejo</b>O claim é escalonado ou despeja tudo de uma vez?</div><div class="pr"><b>Sybil</b>Quanto do drop vai pra carteira falsa?</div></div>
+      <div class="pcard p4"><h4>Tokenomics</h4><div class="pr"><b>Float</b>O float inicial é saudável ou é bomba de unlock?</div><div class="pr"><b>Receita</b>Há buyback ou fee-share provado on-chain?</div></div>
+    </div>
+    <div class="pubgrid">
+      <div class="pcard p1"><h4>KOL</h4><div class="pr"><b>Audiência</b>O alcance é real ou inflado por bots?</div><div class="pr"><b>Disclosure</b>A alocação está divulgada como pagamento?</div></div>
+      <div class="pcard p2"><h4>Listagem</h4><div class="pr"><b>Liquidez</b>O contrato de market maker está bem incentivado?</div><div class="pr"><b>Timing</b>Você está celebrando o topo como se fosse a largada?</div></div>
+      <div class="pcard p3"><h4>Pós-TGE</h4><div class="pr"><b>Retenção</b>Há motivo de voltar ao produto pós-airdrop?</div><div class="pr"><b>Dependência</b>Seus incentivos recorrentes têm saída planejada?</div></div>
+      <div class="pcard p4"><h4>Reputação</h4><div class="pr"><b>Governança</b>Você cumpre o que prometeu no TGE (lição AIP-1)?</div><div class="pr"><b>Honestidade</b>Você discute os riscos antes que o mercado descubra?</div></div>
+    </div>
+
+    <p style="margin-top:14px;">Use isso como filtro antes de fechar qualquer decisão de lançamento. Passe cada fase pelas duas perguntas e marque onde a resposta é <strong>"não sei"</strong> ou <strong>"depende"</strong>. Esses pontos são exatamente onde os casos deste guia falharam: o claim caótico da Arbitrum era um "despejo" sem resposta, o colapso da Friend.tech era uma "retenção" sem resposta, os dumps de 2024 eram um "float" sem resposta.</p>
+    <p>Nenhum projeto fecha as dezesseis com nota máxima. O ponto não é a perfeição, é a <strong>consciência</strong>: saber onde você está exposto antes do mercado descobrir por você. Um lançamento honesto consigo mesmo já está à frente de 90% do mercado, que ainda trata o TGE como linha de chegada.</p>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Lançar bem é responder essas dezesseis perguntas com honestidade antes do TGE. Cada "não sei" é um buraco por onde o mercenário entra e a comunidade vaza.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Síntese · Checklist do lançamento</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>18</b> —</div>
+</section>
+
+<!-- ============================== FECHAMENTO ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Fechamento</div>
+    <h1 class="chap">O QUE LEVAR <span class="ink">DESTE PLAYBOOK</span></h1>
+    <p class="lead">Lançar um token em 2026 não pede um marketing de lançamento melhor. Pede um diferente. Três ideias atravessam cada capítulo deste guia, e elas se sustentam mutuamente.</p>
+
+    <h2>1 · O airdrop é o gatilho, não o evento</h2>
+    <p>A distribuição não retém ninguém. O produto retém. Quem desenhou retenção antes do TGE (Hyperliquid com um perp DEX líder, Jupiter com um ritual de comunidade) sobreviveu ao claim. Quem dependeu só do farm (Friend.tech) virou liquidez de saída adiada. Cerca de 64% dos recebedores vendem no TGE: a pergunta certa nunca foi "quantas carteiras eu toco", e sim "quem fica depois que o dinheiro fácil vende".</p>
+
+    <h2>2 · A demanda se colhe, não se lança</h2>
+    <p>Narrativa certa e comunidade pré-construída valem mais que qualquer campanha de hype no mês do TGE. Ethena vendeu "Internet Bond", Berachain vinha de uma comunidade de 2021, Pudgy vendeu pelúcia antes de token. Nenhum começou no dia do lançamento, e por isso nenhum dependeu do dia do lançamento.</p>
+
+    <h2>3 · Cada ferramenta tem um jeito de dar errado</h2>
+    <p>Pontos transparentes viram farm. KOL sem disclosure vira risco regulatório e dump. Low float vira bomba de unlock. Listagem celebrada como topo vira armadilha. Governança traída no TGE (o AIP-1 da Arbitrum) vira quebra de confiança permanente. Lançar bem é conhecer cada armadilha antes de pisar nela.</p>
+
+    <div class="note" style="margin-top:14px;">Executar isso é trabalho, e é trabalho específico de cripto. Tokenomics que constrói marca, comunidade que vira força de distribuição, narrativa com fit de mercado, distribuição que premia usuário e não mercenário, compliance que vira diferencial. <b>Não é marketing genérico com um logo de blockchain colado.</b></div>
+
+    <p>É exatamente o que a <strong>Kaleidos</strong> faz. Somos a agência cripto-nativa do Brasil: anos lendo lançamentos on-chain, traduzindo desenho de incentivo em narrativa e narrativa em comunidade que fica. Este playbook é uma amostra de como pensamos. Se o seu projeto vai lançar um token e quer um marketing à altura de 2026, a gente ajuda a executar.</p>
+
+    <div class="retain">
+      <div class="lab">Kaleidos</div>
+      <p>A agência cripto-nativa do Brasil. O airdrop é o gatilho · a demanda se colhe · cada ferramenta tem um jeito de dar errado.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Fechamento</span><span>Playbook do Lançamento (TGE) 2026</span></div>
+  <div class="folio">— <b>19</b> —</div>
+</section>
+
+<!-- ============================== LEGAL / CONTRACAPA ============================== -->
+<section class="page dark">
+  <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+  <div class="legal">
+    <div class="brand"><span class="d"></span>KALEIDOS</div>
+    <h2>Vai lançar um token<br>e não quer virar exit liquidity?</h2>
+    <p>Este playbook é uma amostra de como a Kaleidos lê um lançamento. Narrativa com fit de mercado, comunidade que distribui, pontos que não são farmados, tokenomics que constrói marca, compliance que vira diferencial. Se é isso que o seu TGE precisa, a gente executa.</p>
+    <div class="cta-dark">kaleidos.com.br →</div>
+
+    <div class="hr"></div>
+
+    <p style="font-size:9px;color:rgba(244,241,234,.6);"><strong style="color:#fff;">Aviso.</strong> Este material é educacional e de marketing. Não constitui aconselhamento financeiro, jurídico ou de investimento. Dados de terceiros foram coletados em fontes públicas em junho de 2026 e podem mudar. Cite a fonte primária antes de decidir. Cripto envolve risco; faça sua própria pesquisa.</p>
+
+    <div class="hr"></div>
+
+    <div class="src-block">
+      <strong style="color:rgba(244,241,234,.7);">FONTES PRINCIPAIS</strong><br>
+      CoinGecko Research · Nansen / The Block · CoinDesk · Cointelegraph · Blockworks · Decrypt · The Defiant · DL News · crypto.news · BeInCrypto · Bankless · Binance Research · CryptoSlate · FXStreet · Flexe · SEC · The White House (GENIUS Act) · Docs Hyperliquid · docs.arbitrum.foundation · David Perell (narrative-market-fit) · Robert Shiller (Narrative Economics). Casos: Hyperliquid, Jupiter, Ethena, Pudgy Penguins, Berachain, Arbitrum, Friend.tech, Blur, EigenLayer, ZKsync, LayerZero. Citação de Jeff Yan atribuída via Blockworks.
+    </div>
+
+    <div class="foot">
+      <span>// playbook tge v.2026</span>
+      <span>Kaleidos · A agência cripto-nativa do Brasil</span>
+    </div>
+  </div>
+</section>
+
+<!-- Chart.js + configs -->
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+</body>
+</html>

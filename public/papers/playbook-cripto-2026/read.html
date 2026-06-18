@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marketing Cripto em 2026 — O Playbook Completo da Kaleidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KALEIDOS · PLAYBOOK MARKETING CRIPTO 2026
+   Estilo Lunar (report limpo) · marca Kaleidos
+   ============================================================ */
+:root{
+  --bg:#0d0d12;
+  --ink:#141118;
+  --body:#26222c;
+  --muted:#6c6676;
+  --line:#e7e2ec;
+  --paper:#ffffff;
+  --pink:#d262b2;
+  --pink-d:#a8458b;
+  --pink-soft:#fbeef6;
+  --green:#3fae73;
+  --orange:#ff9a3d;
+  --blue:#5aa6ff;
+  --cream:#f4f1ea;
+  --mono:'IBM Plex Mono', monospace;
+  --sans:'Inter', sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ background:#3a3640; font-family:var(--sans); color:var(--body); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+@page{ size:A4; margin:0; }
+
+.page{
+  position:relative;
+  width:210mm; height:297mm;
+  background:var(--paper);
+  overflow:hidden;
+  margin:0 auto 10px auto;
+  page-break-after:always;
+  break-after:page;
+}
+.page:last-child{ page-break-after:auto; }
+
+/* ---------- página de conteúdo (branca) ---------- */
+.content{
+  padding:24mm 22mm 20mm 22mm;
+  display:flex; flex-direction:column;
+}
+.content::before{ /* linha rosa no topo */
+  content:""; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,var(--pink) 0%, var(--pink-d) 100%);
+}
+.runhead{
+  position:absolute; top:9mm; left:22mm; right:22mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.22em;
+  text-transform:uppercase; color:#b8b2c0;
+}
+.runhead .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--pink); margin-right:7px; vertical-align:middle; }
+.folio{
+  position:absolute; bottom:11mm; left:0; right:0; text-align:center;
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em; color:#b3adbb;
+}
+.folio b{ color:var(--pink-d); font-weight:600; }
+
+/* ---------- tipografia de capítulo ---------- */
+.chap-num{
+  font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.30em;
+  text-transform:uppercase; color:var(--pink); margin-bottom:9px;
+}
+.chap-num::before{ content:"[ "; color:#d9c5d4; }
+.chap-num::after{ content:" ]"; color:#d9c5d4; }
+h1.chap{
+  font-family:var(--sans); font-weight:800; font-size:27px; line-height:1.05;
+  letter-spacing:-.015em; text-transform:uppercase; color:var(--pink);
+  margin-bottom:16px; max-width:92%;
+}
+h1.chap .ink{ color:var(--ink); }
+h2{
+  font-family:var(--sans); font-weight:700; font-size:14.5px; letter-spacing:-.005em;
+  color:var(--ink); margin:18px 0 8px;
+  display:flex; align-items:baseline; gap:9px;
+}
+h2::before{
+  content:""; display:inline-block; width:14px; height:2px; background:var(--pink);
+  transform:translateY(-4px); flex:0 0 auto;
+}
+p{ font-size:10.6px; line-height:1.62; color:var(--body); margin-bottom:9px; }
+p strong, li strong{ color:var(--ink); font-weight:700; }
+a{ color:var(--pink-d); text-decoration:none; }
+.src{ font-family:var(--mono); font-size:8.3px; color:var(--muted); }
+.src a{ color:var(--pink-d); }
+
+ul.bul, ol.bul{ margin:4px 0 10px; padding-left:0; list-style:none; }
+ul.bul li, ol.bul li{
+  font-size:10.4px; line-height:1.55; color:var(--body);
+  padding-left:18px; margin-bottom:7px; position:relative;
+}
+ul.bul li::before{
+  content:""; position:absolute; left:2px; top:7px;
+  width:6px; height:6px; background:var(--pink); border-radius:1px; transform:rotate(45deg);
+}
+ol.bul{ counter-reset:k; }
+ol.bul li{ padding-left:26px; }
+ol.bul li::before{
+  counter-increment:k; content:counter(k);
+  position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:9px; font-weight:600; color:#fff;
+  background:var(--pink); width:16px; height:16px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ---------- quadro "Retenha" ---------- */
+.retain{
+  margin-top:auto; margin-bottom:2mm;
+  background:linear-gradient(100deg, #1a1620 0%, #2a1226 60%, #3a1733 100%);
+  border-left:4px solid var(--pink);
+  border-radius:8px; padding:14px 18px 14px 16px; color:var(--cream);
+}
+.retain .lab{
+  font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--pink); margin-bottom:5px;
+}
+.retain p{ color:#efe9f2; font-size:10.6px; line-height:1.5; margin:0; font-weight:500; }
+
+/* ---------- tabelas comparativas (estilo Lunar) ---------- */
+.tbl-wrap{ margin:12px 0 12px; border-radius:9px; overflow:hidden; box-shadow:0 1px 0 var(--line), 0 1px 2.5px rgba(40,20,40,.18); }
+.tbl-cap{
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 6px 2px;
+}
+.tbl-cap b{ color:var(--pink-d); }
+table.cmp{ width:100%; border-collapse:collapse; font-size:9.9px; }
+table.cmp thead th{
+  text-align:left; padding:9px 12px; font-weight:700; font-size:9.6px;
+  color:#fff; letter-spacing:.01em;
+  background:linear-gradient(135deg, #1a1620 0%, #34122d 100%);
+}
+table.cmp thead th:first-child{ background:linear-gradient(135deg,#221d29 0%,#2a2330 100%); color:#cfc8d6; }
+table.cmp thead th.bad{ background:linear-gradient(135deg,#2a2330 0%,#3a2235 100%); }
+table.cmp thead th.good{ background:linear-gradient(135deg,#7a2e63 0%,var(--pink) 100%); }
+table.cmp td{
+  padding:8px 12px; vertical-align:top; line-height:1.42; color:var(--body);
+  border-bottom:1px solid var(--line);
+}
+table.cmp tbody tr:nth-child(odd) td{ background:#faf7fb; }
+table.cmp td.lab{ font-weight:700; color:var(--ink); width:24%; background:#f3eef4 !important; }
+table.cmp td.good{ color:var(--pink-d); font-weight:600; }
+table.cmp tr:last-child td{ border-bottom:0; }
+.tbl-wrap.tight table.cmp td{ padding:6px 11px; line-height:1.34; }
+.tbl-wrap.tight table.cmp thead th{ padding:7px 11px; }
+
+/* ---------- card de tweet (estilo X) ---------- */
+.tweet{
+  border:1px solid var(--line); border-radius:14px; padding:13px 15px 12px;
+  background:#fff; box-shadow:0 8px 24px -18px rgba(40,20,40,.5);
+  margin:11px 0;
+}
+.tweet .top{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+.tweet .av{
+  width:34px; height:34px; border-radius:50%; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--sans); font-weight:800; font-size:14px; color:#fff;
+  background:linear-gradient(135deg,var(--pink) 0%, var(--pink-d) 100%);
+}
+.tweet .who{ line-height:1.2; }
+.tweet .nm{ font-weight:700; font-size:10.8px; color:var(--ink); display:flex; align-items:center; gap:4px; }
+.tweet .vf{ color:var(--pink); font-size:11px; }
+.tweet .hd{ font-size:9.6px; color:var(--muted); }
+.tweet .xlogo{ margin-left:auto; width:16px; height:16px; opacity:.85; }
+.tweet .body{ font-size:10.7px; line-height:1.5; color:#1c1820; }
+.tweet .body em{ color:var(--muted); font-style:normal; }
+.tweet .meta{
+  margin-top:9px; padding-top:8px; border-top:1px solid var(--line);
+  display:flex; gap:14px; font-family:var(--mono); font-size:8.6px; color:var(--muted);
+  letter-spacing:.04em;
+}
+.tweet .meta b{ color:var(--ink); font-weight:600; }
+
+/* ---------- prints de dado ---------- */
+.figgrid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:11px 0; }
+.fig{
+  border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;
+  box-shadow:0 6px 18px -14px rgba(40,20,40,.5); display:flex; flex-direction:column;
+}
+.fig img{ width:100%; height:auto; max-height:118px; object-fit:cover; object-position:top center; display:block; background:#f3eef4; }
+.fig.tall img{ max-height:150px; }
+.fig .cap{
+  padding:7px 10px; font-family:var(--mono); font-size:8px; letter-spacing:.04em;
+  color:var(--muted); line-height:1.4; border-top:1px solid var(--line);
+}
+.fig .cap b{ color:var(--ink); }
+.fig .cap .pink{ color:var(--pink-d); }
+
+/* ---------- mapa de canais (logos) ---------- */
+.chan{ display:flex; flex-direction:column; gap:8px; margin:11px 0 12px; }
+.chan .row{
+  display:grid; grid-template-columns:128px 1fr 130px; gap:12px; align-items:center;
+  border:1px solid var(--line); border-radius:9px; padding:9px 12px; background:#fff;
+}
+.chan .brand{ display:flex; align-items:center; gap:9px; }
+.chan .ico{
+  width:30px; height:30px; border-radius:8px; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center; background:var(--ink);
+}
+.chan .ico img{ width:16px; height:16px; filter:brightness(0) invert(1); }
+.chan .ico.x img,.chan .ico.tt img,.chan .ico.rd img,.chan .ico.li img,.chan .ico.fc img,.chan .ico.yt img{ filter:brightness(0) invert(1); }
+.chan .nm{ font-weight:700; font-size:10px; color:var(--ink); }
+.chan .fn{ font-size:9.4px; color:var(--body); line-height:1.4; }
+.chan .pub{ font-family:var(--mono); font-size:8.2px; color:var(--muted); text-align:right; line-height:1.4; letter-spacing:.02em; }
+
+/* ---------- charts ---------- */
+.chartbox{
+  border:1px solid var(--line); border-radius:10px; padding:12px 14px 10px; background:#fff;
+  margin:11px 0; box-shadow:0 6px 18px -16px rgba(40,20,40,.5);
+}
+.chartbox .ttl{ font-family:var(--mono); font-size:8.8px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.chartbox .ttl b{ color:var(--pink-d); }
+.chartbox canvas{ display:block; margin:0 auto; }
+.chartnote{ font-size:8.8px; color:var(--muted); margin-top:6px; line-height:1.4; }
+.chartnote b{ color:var(--ink); }
+
+/* ---------- infográfico HTML (públicos) ---------- */
+.pubgrid{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:10px 0 4px; }
+.pcard{ border:1px solid var(--line); border-radius:10px; padding:11px 12px; background:#fff; position:relative; overflow:hidden; }
+.pcard::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:4px; }
+.pcard.p1::before{ background:var(--pink); } .pcard.p2::before{ background:var(--blue); }
+.pcard.p3::before{ background:var(--green); } .pcard.p4::before{ background:var(--orange); }
+.pcard h4{ font-size:11.5px; font-weight:800; color:var(--ink); margin-bottom:5px; }
+.pcard .pr{ font-size:9px; line-height:1.45; color:var(--body); margin-bottom:3px; }
+.pcard .pr b{ font-family:var(--mono); font-size:7.6px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; display:block; }
+
+/* ---------- callout / nota ---------- */
+.note{
+  background:var(--pink-soft); border:1px solid #f0d9ea; border-radius:8px;
+  padding:10px 13px; margin:10px 0; font-size:9.8px; line-height:1.5; color:#5a2e4d;
+}
+.note b{ color:var(--pink-d); }
+.lead{
+  font-size:12px; line-height:1.55; color:var(--ink); font-weight:500;
+  border-left:3px solid var(--pink); padding-left:13px; margin:2px 0 14px;
+}
+.pull{
+  font-family:var(--sans); font-weight:700; font-size:13px; line-height:1.4; color:var(--pink-d);
+  margin:12px 0; padding:0 0 0 2px;
+}
+
+/* ============================================================
+   CAPA / LEGAL (escuras)
+   ============================================================ */
+.dark{ background:var(--bg); color:var(--cream); }
+.cover-full{ position:absolute; inset:0; }
+.cover-full img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ---------- sumário (TOC) ---------- */
+.toc{ padding:30mm 24mm 22mm; }
+.toc .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; }
+.toc h1{ font-size:34px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin-bottom:4px; }
+.toc h1 .pk{ color:var(--pink); }
+.toc .desc{ font-size:11px; color:var(--muted); margin-bottom:22px; font-style:italic; }
+.toc ol{ list-style:none; counter-reset:t; }
+.toc li{
+  counter-increment:t; display:flex; align-items:baseline; gap:12px;
+  padding:9px 0; border-bottom:1px dashed var(--line);
+}
+.toc li .n{ font-family:var(--mono); font-size:10px; color:var(--pink); width:26px; font-weight:600; }
+.toc li .t{ font-weight:600; font-size:11.5px; color:var(--ink); }
+.toc li .t small{ display:block; font-weight:400; font-size:9px; color:var(--muted); margin-top:2px; }
+.toc li .dots{ flex:1; border-bottom:1px dotted #cfc8d6; transform:translateY(-3px); margin:0 4px; }
+.toc li .pg{ font-family:var(--mono); font-size:11px; color:var(--ink); font-weight:600; }
+.toc li.section .t{ color:var(--pink-d); text-transform:uppercase; font-size:10px; letter-spacing:.1em; }
+
+/* ---------- glossário ---------- */
+.gloss .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); margin-bottom:8px; }
+.gloss h1{ font-size:30px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin-bottom:4px; }
+.gloss h1 .pk{ color:var(--pink); }
+.gloss .desc{ font-size:10.5px; color:var(--muted); margin-bottom:16px; font-style:italic; }
+.gloss dl{ columns:2; column-gap:20px; }
+.gloss .gi{ break-inside:avoid; margin-bottom:9px; padding-bottom:8px; border-bottom:1px dashed var(--line); }
+.gloss dt{ font-weight:800; font-size:10.5px; color:var(--pink-d); margin-bottom:2px; }
+.gloss dd{ font-size:9.6px; line-height:1.42; color:var(--body); }
+
+/* ---------- intro ---------- */
+.intro .big{
+  font-size:15px; line-height:1.55; color:var(--ink); font-weight:600;
+  margin-bottom:14px; letter-spacing:-.01em;
+}
+
+/* ---------- legal / contracapa ---------- */
+.legal{ padding:34mm 26mm; display:flex; flex-direction:column; height:100%; }
+.legal .brand{ font-family:var(--mono); letter-spacing:.4em; font-size:15px; text-transform:uppercase; color:#fff; }
+.legal .brand .d{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--pink); margin-right:12px; box-shadow:0 0 12px var(--pink); vertical-align:middle; }
+.legal h2{ color:#fff; font-size:24px; font-weight:800; line-height:1.1; margin:24px 0 12px; letter-spacing:-.01em; }
+.legal h2::before{ display:none; }
+.legal p{ color:rgba(244,241,234,.78); font-size:10px; line-height:1.6; }
+.legal .pink{ color:var(--pink); }
+.legal .hr{ height:1px; background:rgba(255,255,255,.12); margin:18px 0; }
+.legal .src-block{ font-family:var(--mono); font-size:8px; line-height:1.7; color:rgba(244,241,234,.45); }
+.legal .src-block a{ color:rgba(210,98,178,.85); }
+.legal .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(244,241,234,.4); }
+.legal .cta-dark{
+  display:inline-block; margin-top:6px; font-family:var(--mono); font-size:11px; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--pink);
+  padding:11px 20px; border-radius:999px;
+}
+.bracket{ position:absolute; width:30px; height:30px; border:2px solid var(--pink); opacity:.7; }
+.bracket.tl{ top:26px; left:26px; border-right:0; border-bottom:0; }
+.bracket.tr{ top:26px; right:26px; border-left:0; border-bottom:0; }
+.bracket.bl{ bottom:26px; left:26px; border-right:0; border-top:0; }
+.bracket.br{ bottom:26px; right:26px; border-left:0; border-top:0; }
+</style>
+</head>
+<body>
+
+<!-- ============================== CAPA ============================== -->
+<section class="page dark">
+  <div class="cover-full"><img src="assets/cover/capa.png" alt="Capa — Marketing Cripto em 2026" /></div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================== -->
+<section class="page">
+  <div class="content toc">
+    <div class="kick">[ Sumário ]</div>
+    <h1>O <span class="pk">PLAYBOOK</span></h1>
+    <div class="desc">Para onde a atenção, os canais e as métricas estão indo, e como estruturar seu marketing para o que vem.</div>
+    <ol>
+      <li><span class="n">—</span><span class="t">Glossário rápido<small>Os termos-chave deste guia em 1 linha cada</small></span><span class="dots"></span><span class="pg">03</span></li>
+      <li><span class="n">—</span><span class="t">Introdução</span><span class="dots"></span><span class="pg">04</span></li>
+      <li><span class="n">01</span><span class="t">Por que 2026 exige um marketing diferente<small>Da era da especulação à era da utilidade</small></span><span class="dots"></span><span class="pg">05</span></li>
+      <li><span class="n">02</span><span class="t">Segmentação de público na nova era<small>O fim do "fica rico" e os 4 públicos fragmentados</small></span><span class="dots"></span><span class="pg">06</span></li>
+      <li><span class="n">03</span><span class="t">Métricas de valor substituem as de vaidade<small>Receita, CAC, LTV, ativação e retenção</small></span><span class="dots"></span><span class="pg">08</span></li>
+      <li><span class="n">04</span><span class="t">Além do marketing de um canal só<small>A morte do "só CT" e o mapa de canais 2026</small></span><span class="dots"></span><span class="pg">09</span></li>
+      <li><span class="n">05</span><span class="t">O varejo web3 se expande<small>Stablecoins no caixa e RWA na carteira de fundo</small></span><span class="dots"></span><span class="pg">10</span></li>
+      <li><span class="n">06</span><span class="t">Workflows de marketing AI-native<small>A regra 80/10/10 e o GEO / AI-SEO</small></span><span class="dots"></span><span class="pg">12</span></li>
+      <li><span class="n">07</span><span class="t">Confiança e Compliance<small>Pós-FTX, disclosure de KOL e regulatory-first como marca</small></span><span class="dots"></span><span class="pg">13</span></li>
+      <li><span class="n">08</span><span class="t">Playbooks por setor<small>DeFi, memecoin, infra, RWA, NFT/IP e stablecoin</small></span><span class="dots"></span><span class="pg">14</span></li>
+      <li><span class="n">09</span><span class="t">Recompensas ≠ Retenção<small>Mercenário vs convicção e o custo por usuário retido</small></span><span class="dots"></span><span class="pg">15</span></li>
+      <li><span class="n">10</span><span class="t">InfoFi vai além da atenção<small>O pivô de janeiro de 2026 e a atenção tokenizada</small></span><span class="dots"></span><span class="pg">17</span></li>
+      <li><span class="n">—</span><span class="t">Fechamento &amp; CTA</span><span class="dots"></span><span class="pg">19</span></li>
+    </ol>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Kaleidos · Playbook Marketing Cripto 2026</span><span>kaleidos.com.br</span></div>
+  <div class="folio">— <b>02</b> —</div>
+</section>
+
+<!-- ============================== GLOSSÁRIO ============================== -->
+<section class="page">
+  <div class="content gloss">
+    <div class="kick">[ Glossário rápido ]</div>
+    <h1>OS <span class="pk">TERMOS</span></h1>
+    <div class="desc">Marketing cripto tem dialeto próprio. Os termos que mais aparecem neste guia, em uma linha cada, pra você ler sem travar.</div>
+    <dl>
+      <div class="gi"><dt>On-chain</dt><dd>Registrado na própria blockchain, público e verificável (não num banco de dados privado).</dd></div>
+      <div class="gi"><dt>TVL (Total Value Locked)</dt><dd>Capital total depositado num protocolo. Mede tamanho, mas é fácil de inflar com incentivo.</dd></div>
+      <div class="gi"><dt>Stablecoin</dt><dd>Cripto atrelada a uma moeda (em geral o dólar), criada pra não oscilar de preço.</dd></div>
+      <div class="gi"><dt>RWA (Real-World Assets)</dt><dd>Ativos do mundo real (treasuries, fundos, crédito) tokenizados e representados on-chain.</dd></div>
+      <div class="gi"><dt>Airdrop</dt><dd>Distribuição gratuita de tokens pra carteiras, usada pra atrair usuários e recompensar uso.</dd></div>
+      <div class="gi"><dt>Mindshare</dt><dd>A fatia de atenção que um projeto ou criador ocupa na conversa do mercado.</dd></div>
+      <div class="gi"><dt>InfoFi / Yaps</dt><dd>"Information Finance": tokenizar a atenção. Yaps são os pontos da Kaito por mindshare gerado.</dd></div>
+      <div class="gi"><dt>KOL (Key Opinion Leader)</dt><dd>Influenciador de referência cujo endosso move opinião e preço numa comunidade.</dd></div>
+      <div class="gi"><dt>GEO (AI-SEO)</dt><dd>Otimizar pra ser citado dentro da resposta da IA (ChatGPT, Perplexity), o novo "rankear no Google".</dd></div>
+      <div class="gi"><dt>Teste de Howey</dt><dd>Critério da Justiça dos EUA que define se um ativo é "security" (valor mobiliário regulado).</dd></div>
+      <div class="gi"><dt>Security</dt><dd>Valor mobiliário regulado. Chamar um token assim aciona regras pesadas da SEC.</dd></div>
+      <div class="gi"><dt>Fee-share / Real yield</dt><dd>Divisão da receita real do protocolo com o holder, não emissão inflacionária de token novo.</dd></div>
+      <div class="gi"><dt>AMM</dt><dd>"Automated Market Maker": modelo que troca tokens por fórmula, sem livro de ordens (ex.: Uniswap).</dd></div>
+      <div class="gi"><dt>Sybil</dt><dd>Carteiras falsas criadas pela mesma pessoa pra farmar um airdrop várias vezes.</dd></div>
+      <div class="gi"><dt>CAC / CPW</dt><dd>Custo de aquisição por cliente / por carteira que de fato agiu on-chain.</dd></div>
+      <div class="gi"><dt>MiCA</dt><dd>Regulação de cripto-ativos da União Europeia, em vigência plena desde 2025.</dd></div>
+    </dl>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Glossário rápido</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>03</b> —</div>
+</section>
+
+<!-- ============================== INTRODUÇÃO ============================== -->
+<section class="page">
+  <div class="content intro">
+    <div class="chap-num">Introdução</div>
+    <h1 class="chap"><span class="ink">CRIPTO É O MERCADO</span><br>QUE MAIS MUDA DE ROUPA</h1>
+    <p class="big">A narrativa quente de janeiro é piada em julho. O canal que trazia usuário ano passado virou deserto de bot. A métrica que todo mundo perseguia virou vergonha em deck de investidor. Nada disso é exagero: é o ritmo normal do setor.</p>
+    <p>Quem trata marketing cripto como marketing comum quebra. O playbook que funcionou no bull de 2021 matou projeto no bear de 2022, e voltar a usá-lo em 2026 é apostar contra o próprio dinheiro. O mercado amadureceu. As regras mudaram. A pergunta do usuário mudou.</p>
+    <p>A Kaleidos lê esse movimento de dentro. São anos analisando o mercado cripto, destrinchando lançamentos que deram certo e os que evaporaram, documentando o que sobra quando o hype passa. Nossa base de papers existe pra isso: virar padrão repetível, não opinião de timeline. Não vendemos achismo. Vendemos leitura.</p>
+    <p>Este guia é a destilação dessa leitura para 2026. Dez capítulos sobre para onde a atenção, os canais e as métricas estão indo, e como estruturar seu marketing para o que vem. Cada afirmação aqui carrega um dado com fonte. Cada capítulo entrega tabela, gráfico ou exemplo real, não conselho genérico.</p>
+    <h2>O que você vai encontrar</h2>
+    <ul class="bul">
+      <li>por que 2026 exige um marketing diferente do que você aprendeu;</li>
+      <li>como segmentar público numa era em que "fica rico" parou de funcionar;</li>
+      <li>quais métricas substituem as de vaidade;</li>
+      <li>como distribuir, reter, vender confiança e usar IA sem virar ruído.</li>
+    </ul>
+    <p>Se você toca o marketing de um projeto, fundo, exchange ou produto cripto, este é o mapa. Bem-vindo a 2026.</p>
+    <div class="retain">
+      <div class="lab">A promessa do guia</div>
+      <p>Dez capítulos, cada um com tabela, gráfico ou caso real e dado com fonte. Da era da especulação à era da utilidade, sem floreio.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Introdução</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>04</b> —</div>
+</section>
+
+<!-- ============================== CAP 1 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 01</div>
+    <h1 class="chap">POR QUE 2026 EXIGE UM <span class="ink">MARKETING DIFERENTE</span></h1>
+    <p class="lead">Existe uma linha divisória clara na história recente de cripto. De um lado, 2020 a 2024: a era da especulação. Do outro, 2025 e 2026: a era da utilidade. Marketing que nasceu de um lado não atravessa pro outro sem reescrita.</p>
+
+    <h2>O que a era da especulação vendia</h2>
+    <p>Na era da especulação, o produto era a promessa. O token subia antes de qualquer entrega, porque o preço era a soma das expectativas sobre uma história ainda não realizada. O marketing existia para inflar essa expectativa: hype, FOMO, "100x garantido", influencer despejando bag, número de holders no Discord como troféu.</p>
+    <p>Funcionava enquanto entrava dinheiro novo. Quando parava de entrar, o loop colapsava. O caso mais brutal é o play-to-earn: cerca de <strong>US$ 15 bilhões</strong> entraram no setor, e <strong>mais de 90% dos jogos Web3 morreram</strong> quando o influxo secou, com tokens caindo 95%. A narrativa prometia diversão e entregava planilha. <span class="src">Fonte: <a href="https://www.coindesk.com/markets/2026/04/23/more-than-90-of-web3-games-failed-after-usd15-billion-boom-as-gamers-never-showed-up-caladan">CoinDesk</a></span></p>
+
+    <h2>O que mudou — três forças</h2>
+    <p><strong>Regulação parou de ser ameaça e virou estrutura.</strong> Em 2025, a MiCA entrou em vigência plena na União Europeia, com migração obrigatória para tokens compliant. Nos EUA, o <strong>GENIUS Act</strong> foi sancionado em 18/jul/2025, o primeiro marco federal de stablecoin, exigindo lastro 1:1. "Audited" e "MiCA-compliant" viraram selo de marca. <span class="src">Fonte: <a href="https://www.whitehouse.gov/fact-sheets/2025/07/fact-sheet-president-donald-j-trump-signs-genius-act-into-law/">The White House</a>, <a href="https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica">ESMA</a></span></p>
+    <p><strong>O capital institucional entrou de verdade.</strong> Os ETFs spot de cripto nos EUA captaram cerca de <strong>US$ 32 bilhões</strong> em 2025; os fundos cripto globais somaram ~US$ 47 bilhões em entradas, fechando o ano com US$ 152,6 bi sob gestão. Dinheiro institucional não compra meme: compra tese, compliance e fundamento. <span class="src">Fonte: <a href="https://cointelegraph.com/news/us-spot-crypto-etfs-see-32-billion-inflows-2025">Cointelegraph</a></span></p>
+    <p><strong>A expectativa do usuário virou de cabeça pra baixo.</strong> A pergunta deixou de ser "quanto vou ganhar?" e passou a ser "o que isso faz?". Stablecoins liquidaram <strong>US$ 33 trilhões on-chain</strong> em 2025, acima dos US$ 25,5 tri somados de Visa e Mastercard, com ~60% do fluxo já B2B. A infra ganhou; a especulação encolheu. <span class="src">Fonte: <a href="https://crypto.news/stablecoins-now-move-more-money-than-visa-and-mastercard-combined/">crypto.news</a></span></p>
+
+    <div class="tbl-cap">[ Tabela ] <b>Era da Especulação</b> vs <b>Era da Utilidade</b></div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th class="bad">Era da Especulação · 2020–2024</th><th class="good">Era da Utilidade · 2025–2026</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">Value prop</td><td>"Esse token vai pra lua"</td><td class="good">"Esse produto resolve X problema real"</td></tr>
+          <tr><td class="lab">Marketing =</td><td>Inflar hype e FOMO</td><td class="good">Provar competência e gerar confiança</td></tr>
+          <tr><td class="lab">Sucesso =</td><td>Preço, holders, número de Discord</td><td class="good">Receita, retenção, uso on-chain</td></tr>
+          <tr><td class="lab">Público</td><td>Especulador buscando upside</td><td class="good">Usuário, instituição e dev buscando função</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A mensagem do capítulo é simples: o marketing de 2026 vende função, não fantasia. Quem ainda fala a língua de 2021 está gritando uma promessa num mercado que aprendeu a pedir prova.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Quando o produto era promessa, o marketing inflava a promessa. Quando o produto é utilidade, o marketing prova a utilidade. São jogos diferentes: público, mensagem e métrica diferentes.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 01 · Marketing diferente</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>05</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02</div>
+    <h1 class="chap">SEGMENTAÇÃO DE PÚBLICO <span class="ink">NA NOVA ERA</span></h1>
+    <p class="lead">Por anos, cripto teve um público só: quem queria ficar rico. A mensagem era universal porque a motivação era universal. Era preguiçoso e funcionava, porque o mercado inteiro estava no mesmo cassino.</p>
+    <p>Esse público acabou. Não porque a ganância sumiu, mas porque "fica rico" parou de converter num mercado cético, regulado e cheio de cicatrizes de rugpull. O usuário de 2026 já viu o filme do "100x garantido" terminar em zero. Ele desconfia por padrão.</p>
+
+    <h2>A pergunta mudou de "quanto" para "o quê"</h2>
+    <p>A virada central é essa: o usuário não pergunta mais "quanto vou ganhar?". Ele pergunta "o que isso faz?". É a mesma virada da era da utilidade do Capítulo 1, agora aplicada a como você fala com cada pessoa.</p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">G</div>
+        <div class="who"><div class="nm">GeeAkpan <span class="vf">✦</span></div><div class="hd">@GeeAkpan</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Marketing goes beyond 'number of likes, and impressions'. <em>(...)</em> it's the profitability to the brand that really matters! ARE WE TRULY DRIVING BUSINESS GROWTH AND REVENUE THROUGH OUR ONLINE PRESENCE?! <em>(...)</em> shifting focus from vanity metrics to actionable insights."</div>
+      <div class="meta"><span>❤ <b>73</b></span><span>🔁 5</span><span>💬 6</span><span>5.414 seguidores</span></div>
+    </div>
+    <p>Isso destrói a mensagem única. Se a motivação não é mais só lucro, você precisa saber com quem está falando, porque cada público entrou em cripto por uma porta diferente e responde a um gancho diferente.</p>
+
+    <h2>Os quatro públicos fragmentados</h2>
+    <div class="pubgrid">
+      <div class="pcard p1"><h4>Degens</h4><div class="pr"><b>Motivação</b>Cultura, velocidade, pertencimento.</div><div class="pr"><b>Canal</b>Crypto Twitter, Telegram.</div><div class="pr"><b>Prova</b>Dialeto e meme: detectam impostor na hora.</div></div>
+      <div class="pcard p2"><h4>Builders</h4><div class="pr"><b>Motivação</b>Aguenta produção? Avaliam arquitetura.</div><div class="pr"><b>Canal</b>GitHub, Farcaster, docs.</div><div class="pr"><b>Prova</b>Docs limpos, código aberto, integrações reais.</div></div>
+      <div class="pcard p3"><h4>Institucional</h4><div class="pr"><b>Motivação</b>Clareza de token, compliance, tese longa.</div><div class="pr"><b>Canal</b>LinkedIn, relatórios, mesas de reunião.</div><div class="pr"><b>Prova</b>Research e selo regulatório: os US$ 32 bi dos ETFs.</div></div>
+      <div class="pcard p4"><h4>Mainstream</h4><div class="pr"><b>Motivação</b>Resolver um problema, sem entender blockchain.</div><div class="pr"><b>Canal</b>Embutido no produto que já usa.</div><div class="pr"><b>Prova</b>Simplicidade e benefício concreto, sem jargão.</div></div>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>O mercado de 2026 não tem uma audiência, tem quatro. Segmentação não é luxo de marketing maduro: é pré-requisito de conversão num mercado que se fragmentou.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · Segmentação</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>06</b> —</div>
+</section>
+
+<!-- ============================== CAP 2 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02 · cont.</div>
+    <h1 class="chap">AS TRÊS PERGUNTAS <span class="ink">QUE TODO USUÁRIO FAZ</span></h1>
+    <p class="lead">Definido o público, vem o filtro que vale pra todos eles. Antes de escrever qualquer copy, passe a mensagem por três perguntas. Se ela não responde às três, não converte.</p>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Os 4 públicos</b> — por que prova cada um converte</div>
+      <canvas id="chart-publicos" width="500" height="240"></canvas>
+      <div class="chartnote">Falar com os quatro ao mesmo tempo, na mesma mensagem, é não falar com ninguém. <b>Cada público pesa um eixo de prova diferente:</b> degens compram cultura, institucional compra compliance.</div>
+    </div>
+
+    <ol class="bul">
+      <li><strong>O que isso habilita?</strong> Que capacidade nova eu ganho? Não a feature, o resultado. "Manda dólar pra qualquer lugar em segundos, sem banco" responde; "L1 rápida, barata e segura" não responde nada.</li>
+      <li><strong>Como isso encaixa na minha vida?</strong> Onde entra na rotina, no fluxo, no portfólio? Utilidade abstrata não converte. Utilidade situada, sim.</li>
+      <li><strong>Por que isso é melhor que o que já uso?</strong> Sem um "melhor que X" claro, você é só mais uma opção. E opção sem diferença é descarte.</li>
+    </ol>
+
+    <p>Repare que nenhuma das três fala de preço ou de "quanto rende". As três falam de <strong>função</strong>. É a mesma virada do Capítulo 1, aterrissada na frase que você escreve: pare de prometer retorno, comece a provar utilidade situada na vida de cada um dos quatro públicos.</p>
+
+    <div class="note"><b>Como usar na prática.</b> Pegue seu pitch atual e responda às três perguntas em voz alta. Onde travar é onde a copy está vendendo fantasia em vez de função. Reescreva esse trecho primeiro: é o que mais derruba conversão.</div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Quatro públicos, um filtro: habilita o quê, encaixa onde, melhor que o quê. Mensagem que não responde às três é ruído, por mais bem segmentada que esteja.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 02 · As três perguntas</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>07</b> —</div>
+</section>
+
+<!-- ============================== CAP 3 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 03</div>
+    <h1 class="chap">MÉTRICAS DE VALOR <span class="ink">SUBSTITUEM AS DE VAIDADE</span></h1>
+    <p class="lead">Todo projeto cripto tem um dashboard. O problema é o que ele mede. Por anos, o setor encheu deck e thread com número que sobe fácil e não prova nada: follower, holder no Discord, like, pico de TVL (o capital total depositado no protocolo). Tudo isso é vaidade.</p>
+
+    <h2>Por que vaidade perdeu valor</h2>
+    <p>Métrica de vaidade tem três defeitos fatais. É <strong>fácil de comprar</strong> (follower e bot por dólar). É <strong>fácil de inflar</strong> (TVL spike é capital mercenário que entra na véspera do snapshot e some). E é <strong>desconectada de negócio</strong> (cem mil seguidores que nunca abriram a carteira não pagam servidor).</p>
+    <p>O airdrop prova em escala: <strong>88% dos tokens perdem valor em três meses</strong> e <strong>64% dos recipientes vendem na hora</strong>. "Distribuímos pra um milhão de carteiras" é vaidade; "mantivemos cem mil ativas em D90" é negócio. <span class="src">Fonte: <a href="https://blog.zpass.ai/the-airdrop-efficiency-crisis">zpass</a></span></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">G</div>
+        <div class="who"><div class="nm">gideonfip <span class="vf">✦</span></div><div class="hd">@gideonfip</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"These vanity metrics like transaction count can be misleading if they don't translate into user retention. Projects that only rely on speculation to acquire users will fail. Once the rewards dry up, all of the mercenary capital will be withdrawn."</div>
+      <div class="meta"><span>❤ <b>273</b></span><span>🔁 45</span><span>💬 70</span><span>👁 59.077</span></div>
+    </div>
+
+    <h2>As cinco métricas que importam</h2>
+    <ol class="bul">
+      <li><strong>Receita.</strong> O protocolo gera fee real? Hyperliquid rodou ~US$ 1,3 bilhão anualizado em fees de trades reais, sem emissão. Receita é a métrica que não dá pra fingir.</li>
+      <li><strong>CAC / Cost-per-Wallet (CPW).</strong> Quanto custa trazer uma carteira que de fato agiu on-chain. Em cripto, o token distribuído é CAC pago em equity futuro, não caridade.</li>
+      <li><strong>LTV.</strong> Quanto de valor uma carteira gera na vida: fees, volume recorrente, recompra. Sem LTV maior que CAC, o crescimento queima caixa.</li>
+      <li><strong>Activation Rate.</strong> Que fração de quem entrou chegou ao momento de valor (primeiro swap, primeira posição). Sign-up sem ativação é follower com outro nome.</li>
+      <li><strong>Retenção (D7 / D30 / D90).</strong> O número que mais importa, porque é o que mais mente quando você não olha. Acima de 40–50% sem dump em 7 dias já é forte.</li>
+    </ol>
+
+    <div class="tbl-cap">[ Tabela ] <b>Vaidade</b> (parece tração) vs <b>Valor</b> (é negócio)</div>
+    <div class="tbl-wrap tight">
+      <table class="cmp">
+        <thead><tr><th class="bad">Métrica de Vaidade — parece tração</th><th class="good">Métrica de Valor — é negócio</th></tr></thead>
+        <tbody>
+          <tr><td>DAU inflado por rewards</td><td class="good">Revenue (fee real do protocolo)</td></tr>
+          <tr><td>Preço de token no curto prazo</td><td class="good">LTV (valor por carteira na vida)</td></tr>
+          <tr><td>Impressões e alcance</td><td class="good">CAC (custo real de aquisição)</td></tr>
+          <tr><td>Likes e retweets</td><td class="good">Cost-per-Wallet (carteira que agiu on-chain)</td></tr>
+          <tr><td>TVL spike (capital mercenário)</td><td class="good">Activation Rate (chegou ao valor)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Se a métrica sobe com o incentivo e cai sem ele, é vaidade. Valor é receita, CAC, LTV, ativação e retenção. Otimize por carteira retida, nunca por carteira elegível.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 03 · Valor vs vaidade</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>08</b> —</div>
+</section>
+
+<!-- ============================== CAP 4 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04</div>
+    <h1 class="chap">ALÉM DO MARKETING <span class="ink">DE UM CANAL SÓ</span></h1>
+    <p class="lead">Por uma década, marketing cripto teve um único endereço: o Crypto Twitter. A narrativa nascia lá, o deal começava lá, o mindshare (a fatia de atenção que cada projeto ocupa) se media lá. Não está mais, e 2026 deu a prova mais didática possível.</p>
+
+    <h2>A morte do "só CT"</h2>
+    <p>Em 15/jan/2026, o X revogou o acesso de API que sustentava os Yaps da Kaito (os pontos que tokenizam atenção, o que o setor chama de InfoFi; detalhamos no Cap 10). A comunidade Yapper de ~157 mil membros foi banida, o <strong>$KAITO caiu ~17%</strong> e uma economia de atenção inteira sumiu sem aviso. <span class="src">Fonte: <a href="https://www.coindesk.com/business/2026/01/15/kaito-to-sunset-yaps-as-x-cracks-down-on-infofi-apps-token-falls-17">CoinDesk</a></span></p>
+    <p>Depender de um canal embute três riscos. <strong>Risco de plataforma:</strong> API cortada, algoritmo mudado, conta suspensa. <strong>Risco de audiência:</strong> o CT é cripto-nativo, mas mainstream, institucional e jornalista não estão lá. <strong>Risco de descoberta:</strong> ~70% das buscas cripto já são respondidas por IA sem clique (o que exige GEO, ver Cap 6), e o tráfego de referência de IA cresce 130–150% ao ano. <span class="src">Fonte: <a href="https://ventureburn.com/why-40-of-crypto-projects-will-lose-users-to-ai-search-in-2026-and-what-to-do-about-it/">Ventureburn</a></span></p>
+
+    <h2>O mapa de canais 2026</h2>
+    <div class="chan">
+      <div class="row"><div class="brand"><div class="ico x"><img src="assets/pulled/logos/x-twitter.svg" alt=""></div><div class="nm">X / Crypto Twitter</div></div><div class="fn">Praça: a narrativa nasce, o mindshare se mede, o deal começa.</div><div class="pub">Builders · traders<br>research · founders</div></div>
+      <div class="row"><div class="brand"><div class="ico yt"><img src="assets/pulled/logos/youtube.svg" alt=""></div><div class="nm">YouTube</div></div><div class="fn">Profundidade e confiança por rosto/voz; 2ª fonte mais citada por IA.</div><div class="pub">Quem quer aprender<br>mainstream-curioso</div></div>
+      <div class="row"><div class="brand"><div class="ico tt"><img src="assets/pulled/logos/tiktok.svg" alt=""></div><div class="nm">TikTok / Reels</div></div><div class="fn">Topo de funil: descoberta mainstream, hook de 15–30s.</div><div class="pub">Público amplo<br>não-cripto-nativo</div></div>
+      <div class="row"><div class="brand"><div class="ico li"><img src="assets/pulled/logos/linkedin.svg" alt=""></div><div class="nm">LinkedIn</div></div><div class="fn">Autoridade institucional/B2B: infra, RWA, fundraising.</div><div class="pub">Investidores<br>enterprise · talento</div></div>
+      <div class="row"><div class="brand"><div class="ico rd"><img src="assets/pulled/logos/reddit.svg" alt=""></div><div class="nm">Reddit</div></div><div class="fn">Debate e SEO de cauda longa; fonte #1 citada por IA (~40%).</div><div class="pub">Nicho · céticos<br>pesquisadores</div></div>
+      <div class="row"><div class="brand"><div class="ico fc"><img src="assets/pulled/logos/farcaster.svg" alt=""></div><div class="nm">Farcaster / Lens</div></div><div class="fn">Sinal cripto-nativo de alto valor, mas em declínio severo de uso.</div><div class="pub">Devs · early<br>hardcore</div></div>
+    </div>
+    <div class="note"><b>Três notas mudam a leitura.</b> Reddit é GEO disfarçado (~40% das citações de LLM vêm de lá). LinkedIn é o subaproveitado de cripto: pra infra e stablecoin regulada, o público está lá e a concorrência de conteúdo bom é baixa. Farcaster e Lens são sinal, não escala: o Farcaster viu o número de novos usuários cair cerca de 95% e o engajamento diário despencar. <span class="src"><a href="https://www.semrush.com/blog/most-cited-domains-ai/">Semrush</a> · <a href="https://www.cryptopolitan.com/farcasters-daily-active-users-drop-40/">Cryptopolitan</a></span></div>
+
+    <h2>A regra: carteira de canais, com âncora própria</h2>
+    <p>O mínimo viável é praça (CT) + canal próprio (newsletter/blog) + profundidade (YouTube) + descoberta (short-video). Todo canal alugado precisa de um mecanismo pra virar próprio: CTA pra newsletter, captura de email. O caso Yaps provou: quem tinha lista só perdeu uma camada; quem dependia só do CT ficou sem chão.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Um canal é um ponto único de falha. Distribua em carteira (praça + próprio + profundidade + descoberta) e use o alugado pra alimentar o que é seu.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 04 · Multi-canal</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>09</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05</div>
+    <h1 class="chap">O VAREJO WEB3 <span class="ink">SE EXPANDE</span></h1>
+    <p class="lead">Enquanto o marketing discutia narrativa, o produto cripto invadiu o varejo de pagamentos. Cripto deixou de ser destino e virou infraestrutura. E infraestrutura tem um marketing diferente: ela não aparece no holofote, aparece embutida no produto de quem você já usa.</p>
+
+    <h2>Stablecoins chegam ao caixa</h2>
+    <p>O sinal mais claro veio da Mastercard. Em 28/abr/2025, a empresa anunciou capacidades de ponta a ponta pra stablecoin, <em>"from wallets to checkouts"</em>, permitindo gastar stablecoin da carteira cripto via cartão tradicional em mais de <strong>150 milhões de pontos de venda</strong>. Do lado do lojista, parceria com Nuvei e Circle pra receber em USDC. A stablecoin atravessou da especulação pro PDV. <span class="src">Fonte: <a href="https://www.mastercard.com/news/press/2025/april/mastercard-unveils-end-to-end-capabilities-to-power-stablecoin-transactions-from-wallets-to-checkouts/">Mastercard</a></span></p>
+
+    <div class="figgrid">
+      <div class="fig"><img src="assets/pulled/mastercard-stablecoin-wallets-checkout-2025.png" alt="Mastercard press release"><div class="cap"><b>Mastercard Newsroom</b> · 28/abr/2025<br><span class="pink">"From wallets to checkouts"</span>: 360° em stablecoin, parceria OKX/Nuvei/Circle.</div></div>
+      <div class="fig"><img src="assets/pulled/a16z-state-of-crypto-2025.png" alt="a16z State of Crypto 2025"><div class="cap"><b>a16z · State of Crypto 2025</b><br>Stablecoins <span class="pink">US$ 46T não-ajustado (+106% a/a)</span> · US$ 9T ajustado · ~3× Visa.</div></div>
+    </div>
+
+    <p>A escala é o que muda o jogo. O <strong>State of Crypto 2025 da a16z</strong> mostra que stablecoins movimentaram ~<strong>US$ 46 trilhões</strong> em volume não-ajustado em 12 meses (+106%), quase o triplo da Visa. Na base ajustada, que filtra bot pra medir uso orgânico, são ~<strong>US$ 9 trilhões</strong>, 5× o throughput anual do PayPal. <span class="src">Fonte: <a href="https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/">a16z</a></span></p>
+    <p>Vale separar as réguas: o ~US$ 33 trilhões do Capítulo 1 é settlement ajustado (transferências limpas, base crypto.news); o ~US$ 46 trilhões da a16z é volume bruto não-ajustado, que ela mesma reduz a ~US$ 9 trilhões quando filtra bot. Bases diferentes, mesma conclusão: stablecoin já se mede em dezenas de trilhões por ano.</p>
+    <p>Pro marketing, a leitura é direta. Quando a stablecoin vira backend, o usuário final muitas vezes nem sabe que está usando cripto. Não dá pra vender "blockchain" pra quem só quer mandar dólar em segundos. Vende-se a função: rápido, barato, sem banco no meio. A infra ganhou; o jargão perdeu.</p>
+
+    <div class="pull">"Mais de 1% de todos os dólares dos EUA já existem como stablecoins tokenizadas; elas são o #17 maior detentor de Treasuries." <span style="font-family:var(--mono);font-size:8px;color:var(--muted);font-weight:400;">— a16z, State of Crypto 2025</span></div>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Stablecoin no caixa é cripto virando invisível. Backend não se vende por hype: se vende por função, rápido, barato, sem banco no meio.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · Varejo web3</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>10</b> —</div>
+</section>
+
+<!-- ============================== CAP 5 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05 · cont.</div>
+    <h1 class="chap">RWA: O ATIVO DO MUNDO REAL <span class="ink">ENTRA NA CADEIA</span></h1>
+    <p>A segunda frente é a tokenização de ativos do mundo real (RWA): treasuries, fundos, crédito privado e ações representados on-chain. Aqui o número de hoje é pequeno e a projeção é enorme, e é justamente esse contraste que define a narrativa.</p>
+    <p>Hoje o mercado é de ~<strong>US$ 30 bilhões</strong> on-chain, com crédito privado e treasuries na frente. O Standard Chartered projeta <strong>US$ 2 trilhões até 2028</strong> (um salto de ~56× em três anos): US$ 750 bi em money market, US$ 750 bi em ações listadas, US$ 250 bi em outros fundos e US$ 250 bi nos menos líquidos. <span class="src">Fonte: <a href="https://www.theblock.co/post/377059/standard-chartered-tokenized-rwa-2-trillion-2028-ethereum">The Block</a> · <a href="https://app.rwa.xyz/">RWA.xyz</a></span></p>
+
+    <div class="figgrid">
+      <div class="fig tall"><img src="assets/pulled/rwa-xyz-dashboard.png" alt="RWA.xyz dashboard"><div class="cap"><b>RWA.xyz</b> · dado ao vivo<br>RWA distribuído <span class="pink">US$ 30,84B</span> · 887.549 holders · stablecoin value US$ 298,20B.</div></div>
+      <div class="fig tall"><img src="assets/pulled/defillama-stablecoins.png" alt="DefiLlama stablecoins"><div class="cap"><b>DefiLlama · Stablecoins</b> · ao vivo<br>Market cap <span class="pink">US$ 316,46B</span> · dominância USDT 59,84%.</div></div>
+    </div>
+
+    <p>O risco que o próprio banco aponta é regulatório: sem regras claras de ativo digital nos EUA, o momentum pode desacelerar. Isso reforça o Capítulo 1: "audited" e "compliant" viraram selo de marca. Em RWA, o comprador é o institucional, e o institucional não converte por hype: converte por research, clareza de estrutura e selo regulatório.</p>
+
+    <h2>A consequência pro marketing</h2>
+    <p>O varejo web3 que se expande é, no fundo, cripto virando invisível. Stablecoin no caixa e RWA na carteira de fundo pedem o marketing de utilidade do Capítulo 1, segmentado pelos públicos do Capítulo 2: mainstream que quer simplicidade, institucional que quer prova. Quem ainda vende "lua" está falando a língua errada pro mercado que mais cresce.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Cripto virou backend (US$ 46T em stablecoins, RWA rumo a US$ 2T). E backend se vende por função e compliance, não por hype.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 05 · RWA</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>11</b> —</div>
+</section>
+
+<!-- ============================== CAP 6 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 06</div>
+    <h1 class="chap">WORKFLOWS DE MARKETING <span class="ink">AI-NATIVE</span></h1>
+    <p class="lead">A IA não substituiu o marketing de cripto. Ela mudou onde o esforço humano importa. Quem usa IA pra produzir mais conteúdo raso só acelera ruído. Quem usa IA pra liberar tempo humano pro que move autoridade (a tese e o hook) sai na frente.</p>
+
+    <h2>A regra 80/10/10: o esforço vai pro hook</h2>
+    <p>Num feed onde a IA gera enxurrada, a primeira frase é a única coisa disputando atenção real. Por isso: <strong>80% do esforço no hook, 10% no corpo, 10% no fechamento.</strong> A IA escreve o rascunho em segundos; o humano gera 3 variações de hook por peça, lê em voz alta, escolhe a que para o scroll. A atomização é industrializável; a tese não.</p>
+
+    <div class="tbl-cap">[ Tabela ] <b>O que a IA faz</b> vs <b>o que o humano faz</b></div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th class="bad">IA faz (commodity, industrializável)</th><th class="good">Humano faz (a vantagem real)</th></tr></thead>
+        <tbody>
+          <tr><td>Rascunho do corpo do post em segundos</td><td class="good">Decide a tese: o que vale dizer</td></tr>
+          <tr><td>Reformata, traduz, resume, gera N variações</td><td class="good">Escreve e escolhe o hook (3 variações por peça)</td></tr>
+          <tr><td>Atomiza 1 pilar → thread, tweets, carrossel, corte</td><td class="good">Garante voz, opinião e lastro de autoridade</td></tr>
+          <tr><td>Planeja o calendário a partir de um comando</td><td class="good">Lê em voz alta e aprova o que para o scroll</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>GEO / AI-SEO: ser citado pela IA é o novo rankear</h2>
+    <p><strong>GEO (Generative Engine Optimization)</strong> é otimizar pra ser citado <em>dentro</em> da resposta que ChatGPT, Perplexity e Google AI Overviews entregam. A IA não dá opções, dá um veredito. Em cripto, ~70% das buscas já são respondidas por IA sem clique. Se você não está na resposta, não existe pra quem perguntou.</p>
+    <p>O melhor é que GEO não tem truque. O estudo da <strong>Princeton (Aggarwal et al., KDD 2024)</strong> testou 9 táticas em 10.000 queries; 5 aumentaram a citação por IA em 30–41%. As vencedoras são o que research sério já faz:</p>
+    <ul class="bul">
+      <li><strong>Citar fontes:</strong> até <strong>+115%</strong> de visibilidade pra conteúdo menos rankeado. A alavanca mais forte.</li>
+      <li><strong>Adicionar estatísticas:</strong> <strong>+41%</strong>. Dado numérico concreto em cada afirmação (TVL, volume, %, data).</li>
+      <li><strong>Citações/quotes:</strong> +28%. Fala de founder, trecho de report on-record.</li>
+      <li><strong>Voz autoritativa + fluência:</strong> a IA cita quem afirma com lastro, não quem hesita.</li>
+    </ul>
+    <p>O que <em>piora</em> a citação: keyword stuffing, simplificação excessiva, encher linguiça. <strong>GEO favorece o modelo de research-as-marketing.</strong> As fontes que a IA mais puxa são Reddit (~40%), Wikipedia (~26%) e YouTube (~23%).</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>A IA libera produção e distribuição, mas a tese e o hook continuam humanos. Ser citado pela IA recompensa exatamente quem faz research com dado, fonte e clareza: a vantagem está na mesa pra quem fizer primeiro.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 06 · AI-native</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>12</b> —</div>
+</section>
+
+<!-- ============================== CAP 7 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 07</div>
+    <h1 class="chap">CONFIANÇA E <span class="ink">COMPLIANCE</span></h1>
+    <p class="lead">Em nov/2022, a FTX evaporou US$ 8 bilhões de fundos de clientes da noite pro dia. Era a exchange "confiável", com arena na NBA e Tom Brady no comercial. A pergunta do usuário deixou de ser "esse projeto vai pra cima?" e virou "esse projeto vai sumir com meu dinheiro?".</p>
+    <p>Isso transforma compliance em marketing. Marca é uma promessa crível de comportamento futuro. Num mercado onde metade dos atores some com o dinheiro, <em>provar</em> que você não vai sumir é a proposta de valor mais forte que existe. E você prova com os instrumentos da compliance: licença, auditoria, atestação de reservas, transparência on-chain. Cada um é um sinal caro de falsificar.</p>
+
+    <h2>O que você NUNCA pode dizer</h2>
+    <p>Antes de qualquer estratégia, o time internaliza a camada zero: o que nunca sai num post, ad ou roteiro. Não é copy fraca, são gatilhos jurídicos. "Compre e fique rico com o esforço do nosso time" empurra o token pra dentro do teste de Howey (o critério da Justiça dos EUA que define o que é security, valor mobiliário regulado) e transforma o influenciador em réu da SEC.</p>
+
+    <div class="tbl-cap">[ Tabela ] <b>O que NUNCA dizer</b> vs <b>o que dizer</b></div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th class="bad">NUNCA — gatilho jurídico</th><th class="good">SIM — utilidade, mecânica, comunidade</th></tr></thead>
+        <tbody>
+          <tr><td>"Compre e fique rico com o esforço do nosso time"</td><td class="good">"O token dá fee-share e governança sobre X"</td></tr>
+          <tr><td>"Retorno garantido", "100x", "lua"</td><td class="good">"Veja o buyback e a receita on-chain, ao vivo"</td></tr>
+          <tr><td>"Investimento sem risco"</td><td class="good">"Como o protocolo funciona e quem o audita"</td></tr>
+          <tr><td>Post pago sem revelar o pagamento</td><td class="good">"Parceria paga: recebi US$ X pra falar disso"</td></tr>
+          <tr><td>"Somos regulados" (genérico)</td><td class="good">"BitLicense NY DFS, atestado mensalmente"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Disclosure de KOL: a regra que multou celebridade</h2>
+    <p>Parceria paga com KOL (Key Opinion Leader, o influenciador de referência de uma comunidade) e não divulgada é o erro mais caro do marketing cripto. Nos EUA, a FTC exige divulgar a "material connection" junto do endosso, com penalidade civil de até <strong>US$ 53.088 por violação</strong> (2025). O caso-monumento: <strong>Kim Kardashian pagou US$ 1,26 milhão à SEC</strong> por postar sobre o EthereumMax pra 250 milhões de seguidores. Ela marcou como "ad", mas não revelou os US$ 250 mil recebidos. Ficou proibida de promover crypto securities por 3 anos. Na UE, a MiCA exige toda comunicação <em>fair, clear and not misleading</em>.</p>
+
+    <h2>Regulatory-first como marca</h2>
+    <p>Em 2025 a régua subiu. O <strong>GENIUS Act</strong> criou o primeiro framework federal de stablecoins: lastro 1:1, atestações mensais, auditoria anual. A <strong>Circle</strong> fez da transparência a proposta de valor inteira do USDC (reservas semanais, custódia no BNY Mellon, gestão BlackRock); o GENIUS Act codificou em lei o que ela já praticava. Em 2026 o USDC ultrapassa US$ 75 bilhões. A régua: <strong>específico vence genérico.</strong> "BitLicense" e "atestado mensalmente" são marketing; "somos regulados" é fanfarra.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Confiança é o recurso mais escasso da cripto, e o mais valioso de comunicar. O melhor marketing e o melhor compliance convergem no mesmo lugar: dizer a verdade de forma clara.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 07 · Confiança</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>13</b> —</div>
+</section>
+
+<!-- ============================== CAP 8 ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 08</div>
+    <h1 class="chap">PLAYBOOKS <span class="ink">POR SETOR</span></h1>
+    <p class="lead">Não existe "marketing de cripto" genérico. Um protocolo DeFi, uma memecoin e uma stablecoin regulada disputam públicos opostos com lógicas opostas. O que funciona num é veneno no outro.</p>
+
+    <h2>DeFi — prove o yield, não prometa</h2>
+    <p>Público cético, on-chain, que lê tokenomics. Não compra promessa, compra mecânica verificável. A <strong>Hyperliquid</strong> é a referência: ~97% das fees vão pra recompra diária de HYPE, mais de US$ 1,3 bilhão em buybacks e receita anualizada de ~US$ 1,3 bilhão, sem emissão. "Real yield" (receita real distribuída, não emissão inflacionária) e "buyback transparente" são a copy mais forte porque são caros de falsificar. Aqui você vende o dado on-chain, não o adjetivo. <span class="src">Fonte: <a href="https://defillama.com/protocol/hyperliquid">DefiLlama</a></span></p>
+
+    <h2>Memecoin — a cultura é o produto</h2>
+    <p>Sem fundamento técnico, a tokenomics <em>é</em> a comunidade e o produto <em>é</em> o meme. Vence quem cria linguagem interna e zero alocação de insider (fair launch como feature). <strong>WIF</strong> fez fair launch puro; <strong>BONK</strong> airdropou 50% do supply aos usuários Solana. Viraram marcas de bilhões sem uma linha de roadmap. Você é o maestro, não a orquestra: copy financeira mata o clima.</p>
+
+    <h2>Infra / L1 — devrel e narrativa de categoria</h2>
+    <p>O cliente real é o <strong>desenvolvedor</strong>, e o jogo é <em>category design</em>: definir a categoria em que você será julgado. A <strong>Uniswap</strong> não vendeu "DEX melhor": vendeu o AMM (Automated Market Maker, troca de tokens por fórmula, sem livro de ordens) como paradigma, e o AMM virou template de milhares de protocolos. O canal é LinkedIn, o asset é o paper de tese, o motor é revenue share e devrel (relações com desenvolvedores).</p>
+
+    <h2>RWA — compliance + linguagem institucional</h2>
+    <p>Público institucional, medo regulatório. Marketing é compliance vestido de narrativa: licença com número, custódia auditável. O mercado de stablecoins/RWA combinado caminha pra <strong>US$ 1,9 trilhão até 2030</strong> (escopo mais amplo e horizonte mais longo que o US$ 2T só-RWA até 2028 do Cap 5), e ganha quem fala a língua de banco: a Circle custodiando no BNY Mellon com gestão BlackRock é exatamente esse sinal. Em RWA, "auditável" é a feature. <span class="src">Fonte: <a href="https://www.bcg.com/publications/2025/relevance-of-on-chain-asset-tokenization">BCG</a></span></p>
+
+    <h2>NFT / IP — marca e licensing, não JPEG</h2>
+    <p>O erro é vender NFT como ativo financeiro. A <strong>Pudgy Penguins</strong> (comprada por ~US$ 2,5M em 2022) virou brand: toys em mais de 10.000 lojas (Walmart, Target, Amazon), ~US$ 40 milhões de receita anual, mirando US$ 120 milhões em 2026. Conteúdo cultural e licensing vencem o discurso financeiro. <span class="src">Fonte: <a href="https://fortune.com/crypto/2024/12/12/pudgy-penguins-pengu-token-launch-igloo-luca-netz/">Fortune</a></span></p>
+
+    <h2>Stablecoin — distribuição e partnerships</h2>
+    <p>Jogo de <strong>distribuição</strong>: vence quem está embutido em mais lugares onde o dinheiro se move. A copy é compliance (GENIUS Act, atestação mensal); a estratégia é partnership com fintechs, exchanges e carteiras. O USDC cresce porque está em todo lugar e é o mais auditável. Marketing B2B silencioso: cada integração é uma campanha que compõe.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O setor define o jogo. DeFi prova com dado on-chain, memecoin distribui com cultura, infra desenha categoria pra devs, RWA fala compliance, NFT vira marca/IP, stablecoin vence por distribuição. Aplicar o playbook errado no setor errado queima orçamento.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 08 · Por setor</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>14</b> —</div>
+</section>
+
+<!-- ============================== CAP 9 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 09</div>
+    <h1 class="chap">RECOMPENSAS <span class="ink">≠ RETENÇÃO</span></h1>
+    <p class="lead">O airdrop é o anúncio mais barato que existe em cripto. Também é o mais fácil de desperdiçar.</p>
+    <p>Recompensa atrai. Recompensa não retém. O incentivo (airdrop, pontos, emissão de yield) é mecanismo de <strong>aquisição</strong>, não de <strong>retenção</strong>. Ele compra a primeira interação. O que faz a carteira <em>ficar</em> é outra coisa.</p>
+    <p>O ciclo previsível: o token entra no critério, a carteira aparece pra farmar, o claim acontece, a carteira some. <strong>64% dos recipientes vendem na hora do claim. 88% dos tokens de airdrop perdem valor em até 3 meses.</strong> Você não pagou CAC. Pagou pra alguém pegar seu token e ir embora. <span class="src">Fonte: <a href="https://blog.zpass.ai/the-airdrop-efficiency-crisis">zpass</a></span></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">H</div>
+        <div class="who"><div class="nm">Haseeb &gt;|&lt; <span class="vf">✦</span></div><div class="hd">@hosseeb · Dragonfly</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Yes, Airdrops are Dumb. But they don't have to be. <em>(...)</em> Projects spend months attracting farmers who generate artificial activity, only to watch those same farmers dump tokens immediately after TGE. <em>(...)</em> Now instead of rewarding people gaming the snapshot, you reward staying power and real users."</div>
+      <div class="meta"><span>❤ <b>819</b></span><span>🔁 89</span><span>💬 292</span><span>👁 207.519</span></div>
+    </div>
+
+    <h2>Mercenário vs. convicção</h2>
+    <p>A diferença entre comunidade e mercenário é o motivo de a carteira estar ali. Mercenário veio pelo token e vai embora com o token. Membro veio pelo produto e o token é bônus. O critério do seu programa decide qual você compra, porque <strong>tudo o que você recompensa, você recebe em dobro, incluindo a fraude.</strong></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">T</div>
+        <div class="who"><div class="nm">Tristan <span class="vf">✦</span></div><div class="hd">@Tristan0x</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Over 25% of all wallets on our airdrop did &lt;$500 in volume <em>(...)</em> As a normal B2C business would you waste any time on such low LTV customers? Most certainly not. <em>(...)</em> Zero skin in the game."</div>
+      <div class="meta"><span>❤ <b>592</b></span><span>🔁 78</span><span>💬 88</span><span>👁 141.559</span></div>
+    </div>
+
+    <p>Os fracassos canônicos de 2024–25 são aula. <strong>zkSync (ZK):</strong> 40% venderam tudo na hora, 79% das carteiras ativas abandonaram o protocolo em 1 mês. <strong>Scroll (SCR):</strong> -US$ 170M de TVL após o snapshot, mais suspeita de sybil interno (carteiras falsas pra farmar o airdrop várias vezes). <strong>Uniswap (UNI), o caso fundador:</strong> ~75% venderam em 7 dias, ~93% acabaram vendendo tudo. <span class="src">Fonte: <a href="https://www.techflowpost.com/en-US/article/30835">TechFlow</a> · <a href="https://beincrypto.com/scroll-airdrop-farming-tvl-drop/">BeInCrypto</a> · <a href="https://blog.zpass.ai/the-airdrop-efficiency-crisis">zpass</a></span></p>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>TVL inflada por incentivo é aluguel temporário, não comunidade. Quando o incentivo acaba, o capital vai embora. O erro estrutural é confundir a métrica que sobe no gráfico com a comunidade que fica.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 09 · Recompensas ≠ Retenção</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>15</b> —</div>
+</section>
+
+<!-- ============================== CAP 9 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 09 · cont.</div>
+    <h1 class="chap">O QUE DE FATO <span class="ink">RETÉM</span></h1>
+
+    <div class="chartbox">
+      <div class="ttl">[ Gráfico ] <b>Retenção pós-airdrop</b> — D0 → D90</div>
+      <canvas id="chart-retencao" width="500" height="230"></canvas>
+      <div class="chartnote">Curva de carteiras que ficam após o claim. zkSync: <b>21% ativos em D30</b>. Uniswap: ~75% venderam em D7. A faixa do setor: <b>88% dos tokens perdem valor em 3 meses.</b> <span class="src">zpass · TechFlow</span></div>
+    </div>
+
+    <p>O incentivo <em>reforça</em> comportamento existente, nunca o cria. Product-market fit vem primeiro; o airdrop só acelera o que já acontecia. O que segura a carteira depois do claim:</p>
+    <ol class="bul">
+      <li><strong>Utilidade real do token.</strong> Staking com poder de verdade, desconto de fee, fee-share (divisão da receita do protocolo). Sem dreno (sink), o token só tem torneira (faucet): entrada sem saída é inflação.</li>
+      <li><strong>A próxima season já anunciada no dia do claim.</strong> Ethena encadeou Shards → Sats → S3; o farmer fica porque ainda dá pra ganhar a próxima rodada.</li>
+      <li><strong>Governança com poder real.</strong> Quem vota defende. Optimism premiou quem participa, não quem farma.</li>
+      <li><strong>Ownership e alinhamento provado.</strong> Hyperliquid distribuiu 31% do supply, reservou ~39% pra rewards futuros e recompra HYPE com ~97% das fees. Continuou líder em volume <em>pós-claim</em>.</li>
+    </ol>
+
+    <div class="tbl-cap">[ Tabela ] <b>Mercenário</b> vs <b>Convicção</b></div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th class="bad">Mercenário</th><th class="good">Convicção</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">Por que veio</td><td>Pelo token</td><td class="good">Pelo produto</td></tr>
+          <tr><td class="lab">Critério premiou</td><td>Volume vazio, TVL de véspera, quest de clique</td><td class="good">Tempo, profundidade, recorrência, contribuição</td></tr>
+          <tr><td class="lab">No claim</td><td>Vende (64% do setor)</td><td class="good">Segura, usa, defende</td></tr>
+          <tr><td class="lab">Horizonte</td><td>Sai com o token</td><td class="good">Fica pela próxima season</td></tr>
+          <tr><td class="lab">Métrica que enxerga</td><td>Valor no pico</td><td class="good">Custo por usuário retido (D90)</td></tr>
+          <tr><td class="lab">Caso</td><td>zkSync (79% abandono), Scroll (-US$ 170M)</td><td class="good">Hyperliquid (líder pós-claim), Ethena</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A métrica que importa não é "carteiras elegíveis". É <strong>custo por usuário retido</strong> (token distribuído ÷ carteiras ativas em D90). Distribuir pra 1M que somem é pior que pra 100k que ficam.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O airdrop entrega a carteira; a comunidade a retém. Desenhe o dia seguinte ao claim <em>antes</em> de desenhar o claim. Otimize por quem fica.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 09 · O que retém</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>16</b> —</div>
+</section>
+
+<!-- ============================== CAP 10 (parte 1) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 10</div>
+    <h1 class="chap">INFOFI VAI ALÉM <span class="ink">DA ATENÇÃO</span></h1>
+    <p class="lead">Atenção virou ativo financeiro. Aí o dono da plataforma desligou o ativo.</p>
+    <p>InfoFi (Information Finance) foi a inovação de marketing cripto mais comentada de 2025: tokenizar a atenção. A líder, <strong>Kaito</strong>, mede <em>mindshare</em> e recompensa com <strong>Yaps</strong>. Projetos abriam leaderboards e faziam airdrop pros top yappers. Berachain, Story Protocol, Movement e Arbitrum (campanha de 400k ARB) integraram. A categoria chegou a ~<strong>US$ 335M de market cap</strong> em 2025. <span class="src">Fonte: <a href="https://crypto.com/us/research/infofi-jun-2025">crypto.com research</a></span></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">K</div>
+        <div class="who"><div class="nm">Kaito AI <span class="vf">✦</span></div><div class="hd">@KaitoAI · oficial</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Our Yaps points program is now live for everyone! Collect real-time points for the mindshare you contribute to crypto. Marking the beginning of our InfoFi roadmap."</div>
+      <div class="meta"><span>❤ <b>3.307</b></span><span>🔁 1.256</span><span>💬 764</span><span>👁 592.513</span></div>
+    </div>
+
+    <h2>O pivô de janeiro de 2026</h2>
+    <p>Em <strong>15/jan/2026</strong>, a Kaito anunciou o <em>sunset</em> dos Yaps. O motivo não foi mercado: o <strong>X revogou o acesso de API</strong> pra apps que recompensam quem posta, justificando pela explosão de spam gerado por IA. Em horas:</p>
+    <ul class="bul">
+      <li>A comunidade Yapper no X, <strong>~157 mil membros, foi banida.</strong></li>
+      <li>O token <strong>$KAITO caiu ~17%</strong>, arrastando outros tokens de InfoFi.</li>
+      <li>Uma <strong>economia de atenção inteira</strong> sumiu de um anúncio pro outro, porque dependia de uma única API.</li>
+    </ul>
+    <p><span class="src">Fonte: <a href="https://www.coindesk.com/business/2026/01/15/kaito-to-sunset-yaps-as-x-cracks-down-on-infofi-apps-token-falls-17">CoinDesk</a> · <a href="https://coinjournal.net/news/kaito-winds-down-yaps-product-after-losing-access-to-the-x-api/">CoinJournal</a></span></p>
+    <p>A Kaito não morreu. Reagiu rápido. Pivotou pra <strong>Kaito Studio</strong> (marketplace creator↔brand cobrindo X, YouTube e TikTok) e pra <strong>Attention Markets</strong> (parceria com a Polymarket, mar/2026, transformando mindshare em ativo negociável). <span class="src">Fonte: <a href="https://www.coingecko.com/learn/what-is-kaito-earn-yap-points">CoinGecko</a> · <a href="https://thedefiant.io/news/defi/kaito-and-polymarket-unveil-attention-markets">The Defiant</a></span></p>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">T</div>
+        <div class="who"><div class="nm">Tanaka <span class="vf">✦</span></div><div class="hd">@Tanaka_L2</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"I analysed 17 projects to prove the overhype trap of InfoFi campaigns. <em>(...)</em> the average drop from launch price to immediate post-TGE low is ~68.8%. <em>(...)</em> you cannot airdrop loyalty and you cannot engineer belief through emissions alone."</div>
+      <div class="meta"><span>❤ <b>108</b></span><span>🔁 10</span><span>💬 36</span><span>👁 12.843</span></div>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 10 · InfoFi</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>17</b> —</div>
+</section>
+
+<!-- ============================== CAP 10 (parte 2) ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Capítulo 10 · cont.</div>
+    <h1 class="chap">A LIÇÃO: ACELERADOR, <span class="ink">NÃO FUNDAÇÃO</span></h1>
+    <p>A leitura errada é "InfoFi morreu". A própria Kaito provou o contrário ao sobreviver. A leitura certa é mais dura e mais útil:</p>
+    <p class="pull">"Qualquer canal que você não controla pode ser desligado por uma decisão que não é sua."</p>
+    <p>Quem tinha construído distribuição <em>só</em> via Yaps e CT ficou sem chão. Quem tinha um <em>canal próprio</em> (lista de email, comunidade própria, blog com SEO) só perdeu uma camada de amplificação.</p>
+
+    <h2>As três regras Kaleidos pra usar InfoFi</h2>
+    <ol class="bul">
+      <li><strong>É camada de amplificação sobre uma tese que já se sustenta.</strong> Igual KOL: roda como acelerador na janela de lançamento, nunca como base única da comunidade.</li>
+      <li><strong>Mensurável é a vantagem; dependência é o risco.</strong> O ganho real é tornar atenção mensurável. O custo é depender de uma plataforma terceira que muda a regra a qualquer momento. O canal próprio é o seguro.</li>
+      <li><strong>O próprio pivô da Kaito é o playbook.</strong> Ela reagiu ao corte de canal único diversificando (X → +YouTube +TikTok) e criando produto que controla. Quem vive de um canal, morre por um canal.</li>
+    </ol>
+
+    <div class="tweet">
+      <div class="top">
+        <div class="av">K</div>
+        <div class="who"><div class="nm">Kaito AI <span class="vf">✦</span></div><div class="hd">@KaitoAI · oficial</div></div>
+        <img class="xlogo" src="assets/pulled/logos/x-twitter.svg" alt="X">
+      </div>
+      <div class="body">"Announcing some big upcoming improvements to Yapper Leaderboards <em>(...)</em> Introducing a reputation threshold <em>(...)</em> to prevent AI bots, and to focus more on signal over grinding. <em>(...)</em> Building a culture of retroactive, milestone-based, and ROI-driven rewards."</div>
+      <div class="meta"><span>❤ <b>5.454</b></span><span>🔁 776</span><span>💬 3.545</span><span>👁 1.106.905</span></div>
+    </div>
+
+    <p>Aluga atenção no CT, no Kaito, no IG, pra <strong>transferir</strong> pra um ativo que é seu. Se a campanha de mindshare não engorda a sua lista, ela só engordou a plataforma. InfoFi acende o holofote. Você decide se, quando ele apaga, ainda existe alguém na sala que é seu.</p>
+
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>InfoFi é alavanca, não lastro. Mensurável é a vantagem; dependência de canal terceiro é o risco. O canal próprio é o seguro contra o dia em que a API for cortada.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cap. 10 · A lição</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>18</b> —</div>
+</section>
+
+<!-- ============================== FECHAMENTO ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Fechamento</div>
+    <h1 class="chap">O QUE LEVAR <span class="ink">DESTE PLAYBOOK</span></h1>
+    <p class="lead">2026 não pediu um marketing cripto melhor. Pediu um marketing cripto diferente. Três mudanças atravessam cada capítulo deste guia, e elas se sustentam mutuamente.</p>
+
+    <h2>1 · Utilidade venceu o hype</h2>
+    <p>A era da especulação acabou; a pergunta saiu de "quanto isso vai render?" pra "o que isso faz?". O token é o maior canal de marketing de um projeto, e comunica os valores antes de qualquer copy. Alinhamento <em>provado</em> on-chain (buyback, fee-share, retenção real) bate qualquer promessa de roadmap. Recompensa atrai; só utilidade retém.</p>
+
+    <h2>2 · Multi-canal substituiu o canal único</h2>
+    <p>Depender só do Crypto Twitter virou fragilidade estrutural: o caso Yaps provou que um canal alugado some sem aviso. Distribuição resiliente é uma carteira: praça (CT) + canal próprio (newsletter/blog) + profundidade (YouTube) + descoberta (short-video). E a fronteira nova, GEO, recompensa exatamente o que research sério já faz: dado, fonte, citação, clareza.</p>
+
+    <h2>3 · Valor superou a vaidade</h2>
+    <p>Likes, headcount de Discord e valor no pico do token são métricas que a imprensa publica e que não pagam conta. O que importa é receita, CAC por carteira, LTV, ativação e retenção. Comunidade comprada evapora; comunidade construída sobrevive ao bear.</p>
+
+    <div class="note" style="margin-top:14px;">Executar isso é trabalho, e é trabalho específico de cripto. Tokenomics que constrói marca, comunidade que vira força de distribuição, conteúdo estruturado pra ser citado pela IA, compliance que vira diferencial. <b>Não é marketing genérico com um logo de blockchain colado.</b></div>
+
+    <p>É exatamente o que a <strong>Kaleidos</strong> faz. Somos a agência cripto-nativa do Brasil: anos lendo o mercado on-chain, traduzindo desenho de incentivo em narrativa e narrativa em crescimento que fica. Este playbook é uma amostra de como pensamos. Se o seu projeto precisa de um marketing à altura de 2026 (utilidade acima de hype, multi-canal por desenho, valor acima de vaidade), a gente ajuda a executar.</p>
+
+    <div class="retain">
+      <div class="lab">Kaleidos</div>
+      <p>A agência cripto-nativa do Brasil. Utilidade acima de hype · multi-canal por desenho · valor acima de vaidade.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Fechamento</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>19</b> —</div>
+</section>
+
+<!-- ============================== NA IMPRENSA ============================== -->
+<section class="page">
+  <div class="content">
+    <div class="chap-num">Cobertura</div>
+    <h1 class="chap">NA <span class="ink">IMPRENSA</span></h1>
+    <p class="lead">Os marcos que estruturam este playbook não são tese: são manchete. Regulação federal de stablecoin, o corte de API que derrubou a economia de atenção do Crypto Twitter e a projeção de US$ 2 trilhões em RWA até 2028 vieram da imprensa primária. A leitura abaixo é a prova documental de cada virada.</p>
+
+    <div class="figgrid">
+      <div class="fig"><img src="assets/news/whitehouse-genius-act-2025.png" alt="White House GENIUS Act fact sheet"><div class="cap"><b>The White House</b> · jul/2025<br>Fact sheet do <span class="pink">GENIUS Act</span>: primeiro marco federal de stablecoin dos EUA, lastro 1:1.</div></div>
+      <div class="fig"><img src="assets/news/coinjournal-kaito-x-api-2026.png" alt="CoinJournal Kaito X API"><div class="cap"><b>CoinJournal</b> · jan/2026<br>O X revoga a API e <span class="pink">derruba os Yaps da Kaito</span>: o risco do canal alugado.</div></div>
+      <div class="fig"><img src="assets/news/theblock-standard-chartered-rwa-2t-2028.png" alt="The Block Standard Chartered RWA"><div class="cap"><b>The Block</b> · out/2025<br>Standard Chartered projeta <span class="pink">RWA tokenizado em US$ 2T até 2028</span>, maioria na Ethereum.</div></div>
+      <div class="fig"><img src="assets/news/coindesk-kaito-sunset-yaps-2026.png" alt="CoinDesk Kaito sunset Yaps"><div class="cap"><b>CoinDesk</b> · jan/2026<br>Kaito encerra os Yaps e leaderboards incentivados; <span class="pink">token cai 17%</span>.</div></div>
+    </div>
+
+    <div class="retain">
+      <div class="lab">Em uma frase</div>
+      <p>Cada afirmação deste playbook carrega fonte primária. A imprensa não ilustra a tese: ela é a prova de que 2026 já chegou.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Cobertura · Na imprensa</span><span>Marketing Cripto em 2026</span></div>
+  <div class="folio">— <b>20</b> —</div>
+</section>
+
+<!-- ============================== LEGAL / CONTRACAPA ============================== -->
+<section class="page dark">
+  <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+  <div class="legal">
+    <div class="brand"><span class="d"></span>KALEIDOS</div>
+    <h2>Quer um marketing cripto<br>à altura de <span class="pink">2026</span>?</h2>
+    <p>Este playbook é uma amostra de como a Kaleidos lê o mercado. Tokenomics que constrói marca, comunidade que distribui, research que a IA cita, compliance que vira diferencial. Se é isso que o seu projeto precisa, a gente executa.</p>
+    <div class="cta-dark">kaleidos.com.br →</div>
+
+    <div class="hr"></div>
+
+    <p style="font-size:9px;color:rgba(244,241,234,.6);"><strong style="color:#fff;">Aviso.</strong> Este material é educacional e de marketing. Não constitui aconselhamento financeiro, jurídico ou de investimento. Dados de terceiros foram coletados em fontes públicas em junho de 2026 e podem mudar. Cite a fonte primária antes de decidir. Cripto envolve risco; faça sua própria pesquisa.</p>
+
+    <div class="hr"></div>
+
+    <div class="src-block">
+      <strong style="color:rgba(244,241,234,.7);">FONTES PRINCIPAIS</strong><br>
+      a16z State of Crypto 2025 · Mastercard Newsroom · RWA.xyz · DefiLlama · Standard Chartered / The Block · CoinDesk · Cointelegraph · crypto.news · zpass (Airdrop Efficiency Crisis) · TechFlow · BeInCrypto · CCN · CoinJournal · CoinGecko · The Defiant · crypto.com research · Semrush · Cryptopolitan · Ventureburn · Aggarwal et al. (Princeton, KDD 2024) · ESMA · The White House (GENIUS Act). Tweets citados verbatim de contas públicas no X.
+    </div>
+
+    <div class="foot">
+      <span>// playbook v.2026</span>
+      <span>Kaleidos · A agência cripto-nativa do Brasil</span>
+    </div>
+  </div>
+</section>
+
+<!-- Chart.js + configs -->
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+</body>
+</html>

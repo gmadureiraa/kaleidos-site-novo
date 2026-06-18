@@ -26,8 +26,30 @@ function getResend(): Resend {
  * 2. Convert content to email HTML template
  * 3. Send as broadcast via Resend
  */
+/**
+ * Auth: this route can create/send a Resend broadcast to the whole audience,
+ * so it must never be callable anonymously. We require the same CRON_SECRET
+ * used by the cron routes, via Authorization: Bearer <secret>, ?token=<secret>,
+ * or the x-vercel-cron header (set automatically by Vercel Cron).
+ */
+function isAuthorized(req: NextRequest): boolean {
+  const secret = process.env.CRON_SECRET;
+  // If no secret is configured, fail closed (deny) rather than open.
+  if (!secret) return false;
+  if (req.headers.get("x-vercel-cron")) return true;
+  const auth = req.headers.get("authorization");
+  if (auth === `Bearer ${secret}`) return true;
+  const token = new URL(req.url).searchParams.get("token");
+  if (token && token === secret) return true;
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   try {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { slug, audienceId } = await req.json();
 
     if (!slug) {

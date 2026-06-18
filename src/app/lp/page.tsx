@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { getAttributionMeta } from "@/lib/attribution";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -243,7 +244,7 @@ function Hero() {
       <div className="mx-auto max-w-6xl">
         <span className="eyebrow">
           <span className="rec-dot" />
-          KALEIDOS · AGÊNCIA BOUTIQUE DE MARKETING + IA
+          KALEIDOS · AGÊNCIA DE MARKETING + IA NATIVA DA CRIPTO
         </span>
 
         <h1 className="serif mt-6 text-[44px] leading-[0.96] sm:text-[72px] md:text-[96px] tracking-tight">
@@ -812,7 +813,7 @@ function CTAFinal() {
       const r = await fetch("/api/lead-ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, _hp: hp }),
+        body: JSON.stringify({ ...form, _hp: hp, metadata: getAttributionMeta() }),
       });
       const data = await r.json();
       if (data.ok) {
@@ -989,7 +990,7 @@ function Footer() {
         <div className="flex items-center gap-3">
           <span className="rec-dot" />
           <span className="mono text-[11px] uppercase tracking-[0.18em]">
-            Kaleidos · agência boutique de marketing + IA
+            Kaleidos · agência de marketing + IA nativa da cripto
           </span>
         </div>
         <div className="flex items-center gap-5 mono text-[11px] uppercase tracking-[0.18em]">

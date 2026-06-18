@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X } from "lucide-react";
-import { getAllCases, type CaseData } from "@/lib/case-data";
+import { Search, X, ArrowRight } from "lucide-react";
+import { getAllCases, ROUTED_CASE_IDS, type CaseData } from "@/lib/case-data";
 import { FooterDemo } from "@/components/ui/footer-demo";
 
 // Categorias canônicas para filtro — agrupamos as tags reais em buckets que fazem sentido
@@ -37,7 +37,9 @@ export default function CasesPage() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  // Definir ordem específica dos cases
+  // Definir ordem específica dos cases.
+  // Primeiro os cases com página completa, depois os produtos/projetos ainda
+  // sem material publicado, que aparecem como "Em breve".
   const caseOrder = [
     "investidor-4-20",
     "neobankless",
@@ -54,6 +56,12 @@ export default function CasesPage() {
     "yasmin",
     "defifest",
     "ledger",
+    // Produtos/projetos vivos sem case publicado ainda → "Em breve"
+    "kaleidos-pay",
+    "kai-platform",
+    "defi-radar",
+    "depay",
+    "nbs",
   ];
 
   const allCases = getAllCases();
@@ -121,28 +129,9 @@ export default function CasesPage() {
 
   const isVideo = (url: string) => url.includes('.mp4') || url.includes('.mov') || url.includes('.avi');
 
-  // Cases que estão prontos (têm página completa)
-  const readyCases = [
-    "bit-das-minas",
-    "layla-foz",
-    "defiverso",
-    "crypto-com",
-    "jornal-cripto",
-    "mercado-bitcoin",
-    "orlando",
-    "investidor-4-20",
-    "paradigma-education",
-    "neobankless",
-    "hugo-doria",
-    "buenas-ideias",
-    "yasmin",
-    "defifest",
-    "ledger",
-  ];
-
-  // Função para verificar se o case está pronto
+  // Cases que estão prontos (têm página completa) — fonte única em case-data.ts
   const isCaseReady = (caseId: string): boolean => {
-    return readyCases.includes(caseId);
+    return ROUTED_CASE_IDS.includes(caseId);
   };
 
   // Extrai a primeira linha de "metricas" (headline do resultado) pra mostrar no card
@@ -227,6 +216,13 @@ export default function CasesPage() {
   const heroIntro = locale === "en"
     ? "Stories from clients across crypto, web3, fintech, content and creators. Each card opens the full case: problem, solution and outcome."
     : "Histórias de clientes de cripto, web3, fintech, conteúdo e criadores. Cada card abre o case completo: problema, solução e resultado.";
+
+  // Spotlight — cases âncora exibidos em destaque quando nenhum filtro está ativo
+  const spotlightIds = ["investidor-4-20", "defiverso", "bit-das-minas"];
+  const spotlightCases = spotlightIds
+    .map((id) => allCases.find((c) => c.id === id))
+    .filter(Boolean) as CaseData[];
+  const showSpotlight = !search && !activeCategory;
 
   return (
     <main className="min-h-screen bg-white py-12 px-2 sm:px-4">
@@ -328,6 +324,68 @@ export default function CasesPage() {
         </div>
 
       </section>
+
+      {/* Spotlight — cases âncora em destaque (só quando sem filtro) */}
+      {showSpotlight && spotlightCases.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-14">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="font-accent text-xs uppercase tracking-widest text-pink-500">
+              {locale === "en" ? "In the spotlight" : "Em destaque"}
+            </span>
+            <span className="h-px flex-1 bg-gradient-to-r from-gray-200 to-transparent" />
+          </div>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {spotlightCases.map((proj, i) => {
+              const style = getCardStyle(proj.id);
+              return (
+                <motion.div
+                  key={proj.id}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link href={withLang(`/cases/${proj.id}`)} className="group block h-full">
+                    <motion.div
+                      whileHover={{ y: -6 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                      className="flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+                    >
+                      <div className={`relative flex h-40 items-center justify-center overflow-hidden ${style.bg} ${style.border}`}>
+                        <span className={`px-4 text-center font-display text-3xl font-bold sm:text-4xl ${style.text}`}>
+                          {proj.nome}
+                        </span>
+                      </div>
+                      <div className="flex flex-1 flex-col bg-white p-6">
+                        {getHeadlineMetric(proj) && (
+                          <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                            {getHeadlineMetric(proj)}
+                          </div>
+                        )}
+                        <p className="flex-1 text-sm font-medium text-gray-700">
+                          {locale === "en" && proj.fraseImpactante_en ? proj.fraseImpactante_en : proj.fraseImpactante}
+                        </p>
+                        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+                          {t("casesList", "seeCase")}
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 flex items-center gap-3">
+            <span className="font-accent text-xs uppercase tracking-widest text-gray-400">
+              {locale === "en" ? "All cases" : "Todos os cases"}
+            </span>
+            <span className="h-px flex-1 bg-gradient-to-r from-gray-200 to-transparent" />
+          </div>
+        </section>
+      )}
 
       <motion.div
         initial="hidden"

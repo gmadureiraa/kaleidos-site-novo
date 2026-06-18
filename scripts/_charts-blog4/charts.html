@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; font-family: 'Inter', system-ui, sans-serif; }
+  .chart-card {
+    width: 1000px;
+    background: #F8F6F1;
+    border: 1px solid #E4DED2;
+    border-radius: 18px;
+    padding: 34px 38px 30px;
+    margin: 0;
+  }
+  .chart-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #141414;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .chart-sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: #7A7468;
+    margin: 0 0 22px;
+  }
+  .chart-wrap { position: relative; height: 460px; }
+  .chart-src {
+    font-size: 11px;
+    color: #9A9384;
+    margin-top: 16px;
+    border-top: 1px solid #E4DED2;
+    padding-top: 12px;
+  }
+  .chart-brand { color: #d262b2; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div id="c1" class="chart-card">
+  <p class="chart-title">Orçamento de um TGE por porte de projeto</p>
+  <p class="chart-sub">Faixa de investimento em marketing por fase do lançamento (R$ mil)</p>
+  <div class="chart-wrap"><canvas id="chart1"></canvas></div>
+  <p class="chart-src">Fonte: estimativa de mercado da Kaleidos (2026), com base em projetos cripto BR e benchmarks de agências internacionais. <span class="chart-brand">Kaleidos</span></p>
+</div>
+
+<div id="c2" class="chart-card">
+  <p class="chart-title">Quanto do supply vai para o airdrop</p>
+  <p class="chart-sub">% do supply total alocado em airdrops de referência</p>
+  <div class="chart-wrap"><canvas id="chart2"></canvas></div>
+  <p class="chart-src">Fonte: anúncios oficiais e tokenomics públicos de cada projeto (Uniswap, dYdX, Arbitrum, Optimism, Jupiter, Hyperliquid). Compilação <span class="chart-brand">Kaleidos</span>.</p>
+</div>
+
+<div id="c3" class="chart-card">
+  <p class="chart-title">Mercado de marketing cripto no Brasil</p>
+  <p class="chart-sub">Investimento estimado em marketing/growth de projetos cripto no BR (R$ milhões/ano)</p>
+  <div class="chart-wrap"><canvas id="chart3"></canvas></div>
+  <p class="chart-src">Fonte: estimativa de mercado da Kaleidos (2026), triangulando nº de projetos ativos, ticket médio de agência e gasto em mídia/KOL. <span class="chart-brand">Kaleidos</span></p>
+</div>
+
+<div id="c4" class="chart-card">
+  <p class="chart-title">Funil de growth cripto: taxas de conversão entre etapas</p>
+  <p class="chart-sub">Do awareness à conversão — % que avança em cada estágio (benchmark Kaleidos)</p>
+  <div class="chart-wrap"><canvas id="chart4"></canvas></div>
+  <p class="chart-src">Fonte: estimativa de mercado da Kaleidos (2026), médias observadas em campanhas de TGE/comunidade de clientes. Varia por projeto. <span class="chart-brand">Kaleidos</span></p>
+</div>
+
+<script>
+const K = {
+  ink:     '#141414',
+  sub:     '#7A7468',
+  pink:    '#d262b2',
+  pinkSoft:'rgba(210, 98, 178, 0.18)',
+  green:   '#3FB68B',
+  neutral: '#A89F90',
+  neutral2:'#C9C2B6',
+  amber:   '#E0A12E',
+  grid:    'rgba(20,20,20,0.07)',
+  sans:    "'Inter', system-ui, sans-serif",
+};
+Chart.defaults.font.family = K.sans;
+Chart.defaults.font.size = 13;
+Chart.defaults.color = K.ink;
+
+const moneyBR = (v) => 'R$ ' + v.toLocaleString('pt-BR');
+
+// ---- Chart 1: orçamento TGE por porte (stacked bar) ----
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: ['Pré-TGE\n(narrativa+comunidade)', 'TGE\n(lançamento)', 'Pós-TGE\n(retenção 90d)'],
+    datasets: [
+      { label: 'Projeto enxuto', data: [60, 90, 70], backgroundColor: K.neutral2, borderRadius: 6, barPercentage: 0.7 },
+      { label: 'Projeto médio',  data: [180, 280, 200], backgroundColor: K.pink, borderRadius: 6, barPercentage: 0.7 },
+      { label: 'Projeto robusto',data: [450, 700, 550], backgroundColor: K.ink, borderRadius: 6, barPercentage: 0.7 },
+    ],
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { boxWidth: 14, padding: 16, font: { size: 13, weight: '600' } } },
+      tooltip: { callbacks: { label: (c) => c.dataset.label + ': R$ ' + c.parsed.y + ' mil' } },
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' } } },
+      y: { grid: { color: K.grid }, ticks: { callback: (v) => 'R$ ' + v + ' mil' }, beginAtZero: true },
+    },
+  },
+});
+
+// ---- Chart 2: % supply para airdrop (horizontal bar) ----
+new Chart(document.getElementById('chart2'), {
+  type: 'bar',
+  data: {
+    labels: ['Uniswap', 'dYdX', 'Arbitrum', 'Optimism (1ª)', 'Jupiter (1ª)', 'Hyperliquid'],
+    datasets: [{
+      label: '% do supply no airdrop',
+      data: [15, 7.5, 11.6, 5, 4, 31],
+      backgroundColor: ['#C9C2B6','#C9C2B6','#C9C2B6','#C9C2B6','#C9C2B6', K.pink],
+      borderRadius: 6,
+    }],
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (c) => c.parsed.x + '% do supply total' } },
+    },
+    scales: {
+      x: { grid: { color: K.grid }, ticks: { callback: (v) => v + '%' }, beginAtZero: true, suggestedMax: 35 },
+      y: { grid: { display: false }, ticks: { font: { size: 13, weight: '600' } } },
+    },
+  },
+});
+
+// ---- Chart 3: mercado BR ao longo do tempo (line) ----
+new Chart(document.getElementById('chart3'), {
+  type: 'line',
+  data: {
+    labels: ['2021', '2022', '2023', '2024', '2025', '2026e'],
+    datasets: [{
+      label: 'Investimento em marketing cripto BR (R$ mi/ano)',
+      data: [120, 95, 70, 130, 210, 320],
+      borderColor: K.pink,
+      backgroundColor: K.pinkSoft,
+      fill: true,
+      tension: 0.35,
+      pointRadius: 5,
+      pointBackgroundColor: K.pink,
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2,
+      borderWidth: 3,
+    }],
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { boxWidth: 14, padding: 14, font: { size: 13, weight: '600' } } },
+      tooltip: { callbacks: { label: (c) => 'R$ ' + c.parsed.y + ' milhões' } },
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 13, weight: '600' } } },
+      y: { grid: { color: K.grid }, ticks: { callback: (v) => 'R$ ' + v + ' mi' }, beginAtZero: true },
+    },
+  },
+});
+
+// ---- Chart 4: funil de conversão (bar, decrescente) ----
+new Chart(document.getElementById('chart4'), {
+  type: 'bar',
+  data: {
+    labels: ['Awareness', 'Interesse', 'Comunidade', 'Ativação', 'Conversão'],
+    datasets: [{
+      label: '% que avança',
+      data: [100, 28, 12, 5, 2.2],
+      backgroundColor: [K.neutral2, K.neutral, K.amber, K.green, K.pink],
+      borderRadius: 8,
+      barPercentage: 0.62,
+    }],
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (c) => c.parsed.y + '% da base do topo' } },
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 13, weight: '600' } } },
+      y: { grid: { color: K.grid }, ticks: { callback: (v) => v + '%' }, beginAtZero: true, suggestedMax: 105 },
+    },
+  },
+});
+</script>
+</body>
+</html>

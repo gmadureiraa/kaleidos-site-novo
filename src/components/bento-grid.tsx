@@ -150,7 +150,7 @@ function getBentoItems(locale: 'pt'|'en'): BentoItem[] {
             description: isEn
                 ? "Landing pages, corporate sites and hotsites optimized for conversion."
                 : "Criação de landing pages, sites institucionais e hotsites otimizados para conversão.",
-            href: "#sites",
+            href: "/servicos/ia-automacoes-completa",
             feature: "spotlight",
             spotlightItems: isEn
                 ? ["UX/UI Design", "Next.js Development", "SEO and performance", "Integrations and automations"]
@@ -540,6 +540,7 @@ const BentoCard = ({ item }: { item: BentoItem }) => {
                     hover:border-neutral-300/50 dark:hover:border-neutral-700/50
                     hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)]
                     hover:backdrop-blur-[6px]
+                    hover:-translate-y-1
                     hover:bg-gradient-to-b hover:from-neutral-50/60 hover:via-neutral-50/30 hover:to-neutral-50/20
                     dark:hover:from-neutral-800/60 dark:hover:via-neutral-800/30 dark:hover:to-neutral-800/20
                     transition-all duration-500 ease-out ${item.className}

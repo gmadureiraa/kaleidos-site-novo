@@ -222,7 +222,6 @@ export default function SobrePage() {
                     description: "É o nosso escritor e criador sênior. Já passou por várias big techs do mercado cripto e, com milhares de conteúdos em seu histórico, consegue entregar cada texto da melhor forma possível.",
                     social: {
                       instagram: "https://www.instagram.com/caiocrispim",
-                      twitter: "https://twitter.com/caiocrispim",
                       linkedin: "https://www.linkedin.com/in/caiocrispim",
                       email: "caio@kaleidos.digital"
                     }

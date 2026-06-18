@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLANA — A ressurreição · Kaleidos Paper Vol. 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+<style>
+:root{
+  --cream:#F4F1EC;
+  --cream-2:#EDE8DF;
+  --paper:#FBF9F4;
+  --ink:#111111;
+  --ink-soft:#3A352E;
+  --ink-mute:#6B655B;
+  --line:#D8D1C4;
+  --pink:#d262b2;
+  --pink-soft:#f3d9ec;
+  --pink-deep:#a8418a;
+  --purple:#9945FF;
+  --purple-soft:#ece0ff;
+  --purple-deep:#6b22c4;
+  --green:#14F195;
+  --green-deep:#0a9e63;
+  --orange:#D98841;
+  --dark:#111111;
+  --shadow:0 10px 30px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.05);
+  --shadow-card:0 1px 2.5px rgba(17,17,17,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:#cfc8ba;
+  font-size:10.5pt;
+  line-height:1.55;
+}
+@page{ size:A4; margin:0; }
+
+.page.compact .pad{ padding-top:14mm; padding-bottom:12mm; }
+.page.compact .prose p{ font-size:9.5pt; line-height:1.5; margin-bottom:7px; }
+
+/* ---------- PAGE SHELL ---------- */
+.page{
+  position:relative;
+  width:210mm;
+  min-height:297mm;
+  background:var(--cream);
+  margin:0 auto;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex;
+  flex-direction:column;
+}
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:16mm 18mm 14mm; flex:1; display:flex; flex-direction:column; }
+
+.rhead{
+  position:absolute; top:10mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Fraunces',serif; font-size:8pt; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--ink-mute);
+}
+.rhead .dash{ flex:1; height:1px; background:var(--line); margin:0 12px; }
+.rhead .sec{ color:var(--purple-deep); }
+.rfoot{
+  position:absolute; bottom:9mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.08em;
+  color:var(--ink-mute); text-transform:uppercase;
+}
+.rfoot .pg{ font-weight:600; color:var(--ink-soft); }
+
+/* ---------- TYPO ---------- */
+h1,h2,h3,h4{ font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.06; letter-spacing:-.01em;}
+.kicker{
+  font-family:'IBM Plex Mono',monospace; font-size:8pt; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--purple-deep);
+  margin-bottom:14px; display:inline-block;
+}
+.section-title{ position:relative; display:inline-block; }
+.section-title .dot{
+  position:absolute; left:-14px; top:50%; width:60px; height:60px; border-radius:50%;
+  transform:translate(-50%,-50%); z-index:0; background:var(--purple-soft);
+}
+.section-title h2{ position:relative; z-index:1; }
+p{ margin-bottom:11px; color:var(--ink-soft); }
+p:last-child{ margin-bottom:0; }
+strong{ color:var(--ink); font-weight:700; }
+em{ font-style:italic; }
+.lead{ font-size:11.5pt; color:var(--ink-soft); }
+.muted{ color:var(--ink-mute); }
+.mono{ font-family:'IBM Plex Mono',monospace; }
+.hl{ background:linear-gradient(transparent 58%, var(--purple-soft) 58%); padding:0 1px; }
+.hlg{ background:linear-gradient(transparent 58%, rgba(20,241,149,.32) 58%); padding:0 1px; }
+.kale-mark{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:.04em; font-size:13pt; }
+.kale-mark .k{ color:var(--pink); }
+.lin{ color:var(--ink); font-weight:700; }
+
+/* ---------- COVER ---------- */
+.cover{
+  color:var(--cream); padding:18mm 18mm 15mm;
+  background:radial-gradient(120% 80% at 50% -10%, #2a1450 0%, #170a2e 52%, #0b0518 100%);
+}
+.cover .cgrid{ position:absolute; inset:0; opacity:.06; z-index:0;
+  background-image:linear-gradient(var(--green) 1px, transparent 1px), linear-gradient(90deg, var(--purple) 1px, transparent 1px);
+  background-size:26px 26px; }
+.cover .ctop{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; }
+.cover .ctop .cseal{ font-family:'Fraunces',serif; font-weight:600; font-size:15pt; letter-spacing:.04em; color:var(--cream); }
+.cover .ctop .cseal .cdot{ color:var(--pink); }
+.cover .ctop .cvol{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.28em; text-transform:uppercase; color:var(--green); }
+.cover .cstage{ position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; margin:5mm 0; }
+.cover .medallion{ position:relative; width:116mm; height:116mm; }
+.cover .offset{ position:absolute; width:104mm; height:104mm; border-radius:50%; left:14mm; top:9mm;
+  background:var(--pink); opacity:.9; box-shadow:0 30px 70px rgba(0,0,0,.5); }
+.cover .ring{ position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 40% 32%, #2b1a52 0%, #1a0f38 52%, #100826 100%);
+  border:2.5px solid rgba(153,69,255,.55);
+  box-shadow:inset 0 0 60px rgba(0,0,0,.5), 0 24px 60px rgba(0,0,0,.55); overflow:hidden;
+  display:flex; align-items:center; justify-content:center; }
+.cover .ring::after{ content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow:inset 0 0 0 9mm rgba(20,241,149,.06); }
+/* Solana glyph — três barras inclinadas, gradiente roxo→verde */
+.sol-glyph{ position:relative; width:58mm; height:46mm; transform:rotate(-2deg); filter:drop-shadow(0 12px 26px rgba(0,0,0,.5)); }
+.sol-glyph .bar{ position:absolute; left:0; right:0; height:11mm; border-radius:2.5mm;
+  background:linear-gradient(95deg, #9945FF 0%, #14F195 100%);
+  transform:skewX(-22deg); }
+.sol-glyph .b1{ top:0; }
+.sol-glyph .b2{ top:17.5mm; background:linear-gradient(95deg, #14F195 0%, #9945FF 100%); }
+.sol-glyph .b3{ top:35mm; }
+.cover .chip{ position:absolute; z-index:4; right:5mm; top:7mm; width:18mm; height:18mm; border-radius:50%;
+  background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.45);
+  font-family:'IBM Plex Mono',monospace; font-size:7pt; font-weight:600; letter-spacing:.12em; color:#0b0518; text-align:center; line-height:1.1; }
+.cover .ctitle{ position:relative; z-index:3; }
+.cover .ckicker{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+.cover h1{ font-family:'Fraunces',serif; font-weight:700; font-size:56pt; line-height:.92; letter-spacing:-.01em; color:var(--cream); margin:0; }
+.cover h1 .pin{ color:var(--green); }
+.cover .csub{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:16pt; line-height:1.32; color:#d8cdf0; margin-top:14px; max-width:158mm; }
+.cover .cfootrow{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; margin-top:18px; padding-top:12px; border-top:1px solid rgba(153,69,255,.3); }
+.cover .cfootrow .obj{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:#9a86c4; line-height:1.5; }
+.cover .cfootrow .nums{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.06em; color:var(--green); text-align:right; }
+
+/* ---------- INTRO ---------- */
+.letter{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:30px 36px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column;}
+.letter p{ font-size:10.5pt; color:var(--ink-soft); line-height:1.6;}
+.letter .dropcap::first-letter{
+  font-family:'Fraunces',serif; font-weight:700; color:var(--purple);
+  font-size:52pt; line-height:.78; float:left; margin:6px 12px 0 0;
+}
+.sig{ margin-top:auto; padding-top:18px; }
+.sig .name{ font-family:'Fraunces',serif; font-style:italic; font-size:21pt; color:var(--ink); }
+.sig .role{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px;}
+.sig-pfp{ width:54px; height:54px; border-radius:50%; overflow:hidden; flex:none; border:2px solid var(--purple); box-shadow:var(--shadow-card); }
+.sig-pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+.meta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+.meta-chip{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:11px 16px; flex:1; min-width:140px; box-shadow:var(--shadow-card); }
+.meta-chip .lbl{ font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; color:var(--purple-deep); }
+.meta-chip .val{ font-family:'Fraunces',serif; font-size:12.5pt; margin-top:5px; color:var(--ink); }
+
+/* ---------- KALEIDOS CTA BLOCK ---------- */
+.kblock{ background:linear-gradient(135deg, #fbeaf6 0%, #f3d9ec 100%); border:1px solid var(--pink); border-radius:18px; padding:20px 24px; box-shadow:var(--shadow-card); margin-top:14px; position:relative; overflow:hidden;}
+.kblock::before{ content:""; position:absolute; right:-30px; bottom:-30px; width:120px; height:120px; border-radius:50%; background:rgba(210,98,178,.18);}
+.kblock .kb-tag{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.2em; text-transform:uppercase; color:var(--pink-deep); font-weight:600;}
+.kblock .kb-h{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--ink); margin:6px 0 8px; line-height:1.1;}
+.kblock p{ font-size:9.4pt; color:var(--ink-soft); position:relative; z-index:1;}
+.kblock .kb-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; position:relative; z-index:1;}
+.kblock .kb-btn{ font-family:'IBM Plex Mono',monospace; font-size:8.5pt; font-weight:600; letter-spacing:.04em; padding:9px 16px; border-radius:30px; text-decoration:none;}
+.kblock .kb-btn.wa{ background:var(--ink); color:#fff;}
+.kblock .kb-btn.site{ background:#fff; color:var(--pink-deep); border:1px solid var(--pink);}
+
+/* ---------- OVERVIEW big numbers ---------- */
+.bn-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:13px; margin-top:6px; }
+.bn{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 16px; box-shadow:var(--shadow-card); overflow:hidden; }
+.bn::before{ content:""; position:absolute; right:-26px; top:-26px; width:80px; height:80px; border-radius:50%; background:var(--purple-soft); opacity:.8;}
+.bn .fig{ position:relative; font-family:'Fraunces',serif; font-weight:700; font-size:27pt; line-height:1; color:var(--ink); letter-spacing:-.02em;}
+.bn .fig .unit{ font-size:13pt; color:var(--purple-deep); }
+.bn .cap{ position:relative; font-size:8.8pt; color:var(--ink-soft); margin-top:8px; line-height:1.4;}
+.bn.wide{ grid-column:1 / -1; }
+.bn.dark{ background:var(--dark); border-color:var(--dark); }
+.bn.dark .fig,.bn.dark .cap{ color:#F4F1EC;}
+.bn.dark::before{ background:rgba(153,69,255,.32);}
+.bn.dark .fig .unit{ color:var(--green);}
+.bn.dark strong{ color:#fff; }
+.bn.aster{ background:#1a1414; border-color:#3a2a2a;}
+.bn.aster::before{ background:rgba(185,74,74,.3);}
+.bn.aster .fig,.bn.aster .cap{ color:#f0e2e2;}
+.bn.aster .fig .unit{ color:#e08a8a;}
+.bn.aster strong{ color:#fff;}
+
+/* ---------- CHART ---------- */
+.chart-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 14px; box-shadow:var(--shadow-card); margin-top:4px; }
+.chart-card .ct{ font-family:'Fraunces',serif; font-size:13pt; color:var(--ink); margin-bottom:2px;}
+.chart-card .cs{ font-size:8.5pt; color:var(--ink-mute); margin-bottom:12px;}
+.chart-box{ position:relative; width:100%; }
+.chart-src{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:10px; letter-spacing:.02em; text-align:right;}
+
+/* ---------- JOGADA HEAD ---------- */
+.jog-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:13px; }
+.jog-num{ font-family:'Fraunces',serif; font-weight:700; font-size:52pt; line-height:.82; color:var(--purple); letter-spacing:-.03em; flex:none;}
+.jog-head .ttl .kk{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:5px;}
+.jog-head .ttl h3{ font-size:22pt; line-height:1.04;}
+.jog-resumo{ font-family:'Fraunces',serif; font-style:italic; font-size:11pt; color:var(--ink-mute); margin-top:6px; line-height:1.3;}
+
+.jog-body .blk{ margin-bottom:11px;}
+.jog-body .blk:last-child{ margin-bottom:0;}
+.blk-lbl{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin-bottom:5px; display:flex; align-items:center; gap:7px;}
+.blk-lbl::before{ content:""; width:8px; height:8px; border-radius:50%; }
+.blk.fez .blk-lbl::before{ background:var(--purple);} .blk.fez .blk-lbl{ color:var(--purple-deep);}
+.blk.pq .blk-lbl::before{ background:var(--green);}  .blk.pq .blk-lbl{ color:var(--green-deep);}
+.blk.ev .blk-lbl::before{ background:var(--orange);}  .blk.ev .blk-lbl{ color:#b46a2a;}
+.blk p{ font-size:9.4pt; margin-bottom:5px; line-height:1.5;}
+
+.prose p{ font-size:9.9pt; line-height:1.56; }
+.licao-tag{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--purple-deep); font-weight:600; border:1px dashed var(--purple); padding:4px 10px; border-radius:10px; display:block; margin-top:8px; line-height:1.4;}
+
+.bigquote{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--purple); border-radius:14px; padding:16px 20px; margin:10px 0; box-shadow:var(--shadow-card);}
+.bigquote .q{ font-family:'Fraunces',serif; font-style:italic; font-size:13.5pt; color:var(--ink); line-height:1.4;}
+.bigquote .by{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--ink-mute); margin-top:9px; text-transform:uppercase; letter-spacing:.1em;}
+
+.stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0;}
+.stat-strip.s3{ grid-template-columns:repeat(3,1fr);}
+.stat{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow-card);}
+.stat .v{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--ink); line-height:1;}
+.stat .v .u{ font-size:9pt; color:var(--purple-deep);}
+.stat .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:5px; line-height:1.3;}
+
+/* ---------- FIGURE (manchete cards) ---------- */
+.figure{ border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card); background:var(--paper);}
+.headlines{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:12px 0;}
+.hcard{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow-card); position:relative; overflow:hidden;}
+.hcard::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--purple);}
+.hcard .src{ font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--purple-deep); font-weight:600;}
+.hcard .hl-t{ font-family:'Fraunces',serif; font-weight:600; font-size:12pt; color:var(--ink); margin-top:7px; line-height:1.2;}
+.hcard .dt{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:8px;}
+
+/* timeline rail */
+.rail{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:10px;}
+.rail .rc{ background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:11px 12px;}
+.rail .rc.hot{ border-color:var(--purple); background:var(--purple-soft);}
+.rail .rc .rk{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--purple-deep); letter-spacing:.1em;}
+.rail .rc .rt{ font-size:8.4pt; color:var(--ink-soft); margin-top:5px; line-height:1.35;}
+.rail .rc .rt b{ color:var(--ink);}
+
+/* ---------- DARK pages ---------- */
+.dark-page{ background:var(--dark); color:#E7E1D6;}
+.dark-page .pad{ color:#D8D1C4;}
+.dark-page .rhead,.dark-page .rfoot{ color:#7d766b;}
+.dark-page .rhead .dash{ background:#332f29;}
+.dark-page .rhead .sec{ color:var(--green);}
+.dark-page .rfoot .pg{ color:#b8b0a4;}
+.dark-page .kicker{ color:var(--green);}
+.dark-page h2,.dark-page h3{ color:#fff;}
+.dark-page p{ color:#C9C2B6;}
+.dark-page strong{ color:#fff;}
+.dark-page .section-title .dot{ background:rgba(153,69,255,.35);}
+.dark-page .jog-num{ color:var(--green);}
+.dark-page .blk p{ color:#C9C2B6;}
+.crit-card{ background:#191919; border:1px solid #2c2c2c; border-left:3px solid var(--purple); border-radius:14px; padding:15px 20px; margin:10px 0;}
+.crit-card .ch{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--green); letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px; font-weight:600;}
+.crit-card p{ color:#C9C2B6; font-size:9.2pt; line-height:1.5;}
+.crit-card p strong{ color:#fff;}
+.bigquote.dark{ background:#191919; border-color:#2c2c2c; border-left-color:var(--green);}
+.bigquote.dark .q{ color:#F0E6D8;}
+.bigquote.dark .by{ color:#8d857a;}
+
+/* ---------- NUMBERS panel ---------- */
+.panel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;}
+.panel-grid .chart-card.span{ grid-column:1 / -1;}
+
+/* ---------- LIÇÕES ---------- */
+.take{ display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
+.take:last-child{ border-bottom:none;}
+.take .tn{ font-family:'Fraunces',serif; font-weight:700; font-size:20pt; color:var(--purple); line-height:1; min-width:30px;}
+.take .tb b{ font-family:'Inter'; font-size:10pt; color:var(--ink); display:block; margin-bottom:2px;}
+.take .tb p{ font-size:8.9pt; margin:0; color:var(--ink-soft);}
+
+/* ---------- LEGAL / backcover ---------- */
+.legal{ background:var(--dark); color:#C9C2B6;}
+.legal .pad{ color:#B9B2A6;}
+.legal .rhead,.legal .rfoot{ color:#6d665c;}
+.legal .rhead .dash{ background:#2c2820;}
+.legal .rhead .sec{ color:var(--green);}
+.legal h2{ color:#fff;}
+.legal .kicker{ color:var(--green);}
+.legal p{ color:#A89F90; font-size:8.6pt; line-height:1.6;}
+.legal .src-list{ columns:2; column-gap:26px; margin-top:10px;}
+.legal .src-list li{ font-family:'IBM Plex Mono',monospace; font-size:7.4pt; color:#9a9388; list-style:none; padding:5px 0; border-bottom:1px solid #242424; line-height:1.4; break-inside:avoid;}
+.legal .src-list li b{ color:#cfc8ba;}
+.legal .disc{ border:1px solid #2c2c2c; border-radius:14px; padding:14px 18px; margin-top:12px; background:#181818;}
+.backcover{ background:var(--pink); color:#1a1a1a; display:flex; align-items:center; justify-content:center; text-align:center;}
+.backcover .bc-inner{ z-index:2;}
+.backcover .bc-mark{ font-family:'Fraunces',serif; font-weight:600; font-size:34pt; letter-spacing:.02em; color:#1a1a1a;}
+.backcover .bc-seal{ font-family:'IBM Plex Mono',monospace; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; margin-top:14px; color:#5a1f49;}
+.backcover .bc-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:#5a1f49; margin-bottom:18px;}
+.backcover .bc-tag{ font-family:'Fraunces',serif; font-style:italic; font-size:14pt; margin-top:24px; max-width:430px; color:#2a0f22; line-height:1.4;}
+.backcover .bc-foot{ font-family:'IBM Plex Mono',monospace; font-size:8.5pt; letter-spacing:.06em; color:#5a1f49; margin-top:22px; max-width:380px; line-height:1.6;}
+
+@media print{
+  body{ background:#fff; }
+  .page{ margin:0; box-shadow:none; }
+  .chart-box canvas{ max-width:100%; }
+}
+@media screen{
+  .page{ margin:14px auto; box-shadow:0 18px 50px rgba(0,0,0,.28);}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== PÁG 1 — CAPA ===================== -->
+<section class="page cover">
+  <div class="cgrid"></div>
+  <div class="ctop">
+    <span class="cseal">Kaleidos <span class="cdot">·</span> <span style="font-size:8pt; letter-spacing:.18em; text-transform:uppercase; font-family:'IBM Plex Mono',monospace; color:var(--green);">Agência Cripto-Nativa</span></span>
+    <span class="cvol">Vol. 03 — Estudo de Caso</span>
+  </div>
+
+  <div class="cstage">
+    <div class="medallion">
+      <div class="offset"></div>
+      <div class="ring">
+        <div class="sol-glyph"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div></div>
+      </div>
+      <div class="chip">we're<br>so<br>back</div>
+    </div>
+  </div>
+
+  <div class="ctitle">
+    <div class="ckicker">O objeto de estudo</div>
+    <h1>SOLANA<span class="pin">.</span></h1>
+    <p class="csub">A ressurreição. Como uma chain dada como morta voltou pela comunidade, e como o mesmo motor que a ressuscitou também a feriu.</p>
+  </div>
+
+  <div class="cfootrow">
+    <div class="obj">Lente: marketing &amp; growth<br>Sujeito: SOL · Solana / Solana Foundation</div>
+    <div class="nums">De &lt;US$ 9 a ~US$ 295 · #1 em novos devs (2024)</div>
+  </div>
+</section>
+
+<!-- ===================== PÁG 2 — INTRO ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Intro</span></div>
+  <div class="pad">
+    <span class="kicker">Kaleidos Paper · Vol. 03</span>
+    <div class="section-title" style="margin-bottom:16px;"><span class="dot"></span><h2 style="font-size:26pt;">A marca que sobreviveu<br>ao próprio atestado de óbito.</h2></div>
+    <div class="letter">
+      <p class="dropcap">Em novembro de 2022, o mercado decretou a morte da Solana. A FTX tinha acabado de implodir, e a Solana era "a chain do Sam Bankman-Fried". Quando a casa caiu, o SOL caiu junto: de algo perto de US$ 260 pra menos de US$ 9, uma perda na casa de 97%. As manchetes foram curtas e cruéis. Solana morreu com a FTX.</p>
+      <p>Dois anos depois, o SOL bateu um topo histórico perto de US$ 295. A chain que era pra ter desaparecido virou a rede que mais atraiu desenvolvedor novo no mundo, a casa do superciclo de memecoin, e uma das comunidades mais leais do setor. Este paper destrincha como.</p>
+      <p>E o caso é diferente dos dois anteriores. A Hyperliquid mostrou um produto que era o próprio anúncio. A Pudgy mostrou um personagem que virou cultura mainstream. A Solana mostra a coisa mais difícil de construir e a mais difícil de matar: um povo. Porque a Solana não voltou por causa de uma campanha. Voltou porque um grupo recusou aceitar o atestado de óbito e transformou a recusa em movimento.</p>
+      <p>A lente é marketing. O sujeito é a Solana. O objetivo é separar o mecanismo que vale a pena roubar do mecanismo que custou caro a gente de verdade.</p>
+      <div class="meta-row">
+        <div class="meta-chip"><div class="lbl">Leitura</div><div class="val">16 a 22 minutos</div></div>
+        <div class="meta-chip"><div class="lbl">Formato</div><div class="val">Breakdown · projeto</div></div>
+        <div class="meta-chip"><div class="lbl">Dados</div><div class="val">Públicos · jun/2026</div></div>
+      </div>
+      <div class="sig" style="display:flex; align-items:center; gap:14px;">
+        <div class="sig-pfp"><img src="assets/pulled/gabriel-pfp.jpg" alt="Gabriel Madureira"></div>
+        <div>
+          <div class="name" style="font-size:18pt;">Gabriel Madureira</div>
+          <div class="role">Fundador · Kaleidos — agência cripto-nativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03</span><span class="pg">02</span></div>
+</section>
+
+<!-- ===================== PÁG 3 — KALEIDOS (abertura) + OVERVIEW ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Overview</span></div>
+  <div class="pad">
+    <div class="kblock">
+      <div class="kb-tag">Por que a Kaleidos escreve isso</div>
+      <div class="kb-h">A gente não escreve paper pra parecer inteligente.</div>
+      <p>A Kaleidos é a agência de marketing nativa de cripto do Brasil. Escreve pra mostrar como pensa marketing on-chain: dado real, jogada real, e a honestidade de mostrar onde o case fura. Se você constrói um projeto cripto ou web3 e quer marca de verdade, não só barulho, a gente conversa.</p>
+      <div class="kb-cta">
+        <a class="kb-btn wa" href="https://wa.me/5512997796835">WhatsApp · wa.me/5512997796835</a>
+        <a class="kb-btn site" href="https://kaleidos.com.br">kaleidos.com.br</a>
+      </div>
+    </div>
+
+    <span class="kicker" style="margin-top:18px;">Overview · o arco em seis números</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:23pt;">A queda, a volta<br>e o preço da volta.</h2></div>
+
+    <div class="bn-grid">
+      <div class="bn">
+        <div class="fig">-97<span class="unit">%</span></div>
+        <div class="cap"><strong>A queda pós-FTX.</strong> De ~US$ 260 pra menos de US$ 9 (fundo dez/2022). O mercado decretou a morte da chain.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">~<span class="unit">US$</span>295</div>
+        <div class="cap"><strong>O topo histórico (jan/2025).</strong> Do fundo ao topo, valorização na casa de <strong>+2.600%</strong>. A redenção em número.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">7.625</div>
+        <div class="cap"><strong>Novos devs em 2024.</strong> Solana superou o Ethereum como rede que mais atrai dev novo, 1ª vez desde 2016. Alta de 83%. Builder não fica em chain morta.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">6.000<span class="unit">+</span></div>
+        <div class="cap"><strong>Breakpoint 2024.</strong> De 114 países, a maior conferência do ecossistema, somada a <strong>100+ hacker houses</strong>. A cola física da comunidade.</div>
+      </div>
+      <div class="bn dark">
+        <div class="fig"><span class="unit">US$</span>1<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Receita da Pump.fun.</strong> 1º app da história da Solana a cruzar o marco. O motor memecoin que reacendeu a atividade.</div>
+      </div>
+      <div class="bn aster">
+        <div class="fig"><span class="unit">US$</span>3,94<span class="unit"> bi</span></div>
+        <div class="cap"><strong>O asterisco.</strong> O prejuízo de quem comprou TRUMP e LIBRA. O mesmo combustível que ressuscitou a chain queimou bilhões de gente real.</div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:8.4pt; margin-top:12px;">Régua de honestidade: os picos (US$ 295, TVL de dois dígitos em bilhões) são de jan–ago/2025. Em 2026 preço e TVL recuaram (TVL voltou pra casa de US$ 5,5 bi). Citar só o topo é fanboyismo. O arco real é queda, ressurreição e nova volatilidade.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03</span><span class="pg">03</span></div>
+</section>
+
+<!-- ===================== PÁG 4 — O QUE É + ORIGEM ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O projeto</span></div>
+  <div class="pad">
+    <span class="kicker">O que é · a origem</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">A chain construída<br>pra cultura caber.</h2></div>
+    <div class="prose">
+      <p><span class="lin">O que é a Solana.</span> Uma blockchain de camada 1 com uma promessa só: rápida e barata. Onde o Ethereum priorizou descentralização máxima e pagou em taxa e velocidade, a Solana escolheu o outro lado da balança. Confirmação em frações de segundo, custo em frações de centavo, vazão alta o bastante pra sustentar aplicativos que parecem aplicativos de internet, não experimentos de cripto.</p>
+      <p>No marketing, isso importa por um motivo: a chain rápida e barata é a chain onde a cultura da internet cabe. Memecoin, NFT, jogo, micro-pagamento, especulação em massa. Tudo que precisa de muita transação pequena e instantânea encontra na Solana o terreno certo. Essa decisão técnica do início é o que torna possível tudo que vem depois. <span class="hl">A Solana virou o playground da especulação cultural não por acaso. Foi construída pra isso, sem saber que seria isso.</span></p>
+      <p>Hoje lidera volume de DEX entre as chains, processa milhões de carteiras ativas por dia, tem ETF spot negociando na bolsa americana com staking embutido e nomes como Goldman Sachs e BlackRock na rede. Nada disso parecia possível em dezembro de 2022.</p>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">O pitch da Solana nunca foi "descentralização acima de tudo". Foi "isto funciona rápido". Engenharia de performance, não ideologia.</div>
+      <div class="by">A origem · Anatoly Yakovenko · Proof of History</div>
+    </div>
+
+    <div class="prose" style="margin-top:12px;">
+      <p><span class="lin">O pecado original.</span> No bull de 2021, a Solana cresceu colada a um nome: a FTX, de Sam Bankman-Fried, e a Alameda Research. Os dois eram apoiadores barulhentos e carregavam posição pesada em SOL. Pra fora, "Solana" e "FTX" viraram quase sinônimos. Foi ótimo na subida. Foi catastrófico na descida.</p>
+      <p class="licao-tag">Lição de marca, antes mesmo da ressurreição: associar a sua marca a um único patrono poderoso é alavanca na subida e corda no pescoço na queda. A Solana aprendeu isso do jeito mais caro possível.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">04</span></div>
+</section>
+
+<!-- ===================== PÁG 5 — ATESTADO DE ÓBITO (dark) ===================== -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fase 1 · A queda</span></div>
+  <div class="pad">
+    <span class="kicker">Nov/2022 · o atestado de óbito</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:26pt;">A morte anunciada.</h2></div>
+    <div class="prose">
+      <p>A FTX colapsou em novembro de 2022 e levou a Solana pro fundo do poço. O dano não foi só de preço. Foi de reputação, que é mais difícil de consertar.</p>
+      <p><strong>O preço primeiro.</strong> O SOL caiu de ~US$ 260, no topo de 2021, pra menos de US$ 9 no fundo de dezembro de 2022. As liquidações forçadas do espólio da FTX e da Alameda, vendendo SOL pra cobrir buracos, jogaram gasolina na queda.</p>
+      <p><strong>A reputação depois.</strong> A narrativa colou e endureceu: Solana é a chain do SBF, é projeto manchado, é "VC chain" que morreu com o patrono. Liquidez fugiu. Builders foram cortejados por chains concorrentes. "Solana morreu" virou consenso, repetido como fato.</p>
+    </div>
+
+    <div class="bigquote dark">
+      <div class="q">"A lot of people left Solana for dead, for dead, certain it was road kill. But what never really changed was no one left and everyone kept building."</div>
+      <div class="by">Lily Liu · presidente da Solana Foundation</div>
+    </div>
+
+    <div class="crit-card">
+      <div class="ch">Por que esse ponto de partida importa</div>
+      <p>A Solana não foi uma chain pequena que cresceu do zero. Foi uma chain grande dada como morta que teve que ressuscitar carregando um estigma. E aqui mora a distinção de marketing: <strong>recuperar uma marca a partir de reputação destruída é mais difícil que construir do zero.</strong> Do zero você preenche um vazio. A partir do destroço, você combate uma crença que o mercado já fechou. E crença formada é pegajosa: ninguém quer reabrir um julgamento que já deu por encerrado.</p>
+    </div>
+    <div class="prose">
+      <p>A parte contraintuitiva: a Solana não mudou essa narrativa com comunicação. Não contratou agência pra dizer "voltamos". A narrativa mudou porque os fatos por baixo dela mudaram, e os fatos mudaram porque um grupo se recusou a sair. Detalhe técnico que virou ativo: <span class="hlg" style="background:linear-gradient(transparent 58%, rgba(20,241,149,.25) 58%);">mesmo no pânico, a rede nunca parou de rodar.</span> A diferença entre "a empresa que apoiava a chain faliu" e "a chain faliu" é gigante. Foi nela que a comunidade plantou a bandeira da volta.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">05</span></div>
+</section>
+
+<!-- ===================== PÁG 6 — JOGADA 1 + 2 ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogadas 1 · 2</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">1</div>
+      <div class="ttl"><div class="kk">A narrativa de redenção</div><h3>"We're so back" como ativo de marca.</h3>
+      <div class="jog-resumo">O arco de ressurreição é a história mais vendável que existe. E a comunidade soube nomear o arco.</div></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk fez"><div class="blk-lbl">O que a Solana fez</div><p>A comunidade não fugiu do passado vergonhoso. Fez dele o enredo. "We're so back" não nasceu de briefing de agência, nasceu como grito coletivo de quem apostou no fundo e foi recompensado. A chain assumiu, em vez de esconder, que tinha sido dada como morta. E transformou a quase-morte na identidade inteira.</p></div>
+      <div class="blk pq"><div class="blk-lbl">Por que funcionou</div><p>"De ressurreição" é o arco mais poderoso que existe, do cinema à religião: ascensão, queda quase fatal, fundo, volta triunfal. A Solana viveu o arco completo, em tempo real, na frente de todo mundo. E quando uma comunidade tem uma frase própria pra resumir a própria história, ela tem um fosso. "We're so back" é meme, grito de guerra e tese de investimento ao mesmo tempo.</p></div>
+      <p class="licao-tag">Lição: vulnerabilidade assumida cria laço que o discurso de perfeição nunca cria. Se a sua marca sobreviveu a algo, esse "algo" provavelmente é o melhor ativo de narrativa que ela tem e não usa.</p>
+    </div>
+
+    <div class="jog-head" style="margin-top:18px;">
+      <div class="jog-num">2</div>
+      <div class="ttl"><div class="kk">A comunidade que recusou sair</div><h3>Builder não fica em chain morta.</h3></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk ev"><div class="blk-lbl">A evidência</div><p>No fundo do poço, a maioria dos times teria debandado. Os builders da Solana, em peso, ficaram. O número que prova a tese veio dois anos depois: em 2024, a Solana superou o Ethereum como o ecossistema que mais atraiu novos devs, 1ª vez desde 2016. <strong>7.625 novos devs, 19,5% de todos os novos do ano, contra 6.456 do Ethereum</strong> (Electric Capital, sobre 902 milhões de commits em 1,7 milhão de repos). Alta de 83% no ano.</p></div>
+      <div class="stat-strip s3">
+        <div class="stat"><div class="v">7.625</div><div class="l">novos devs Solana 2024</div></div>
+        <div class="stat"><div class="v">+83<span class="u">%</span></div><div class="l">crescimento no ano</div></div>
+        <div class="stat"><div class="v">#1</div><div class="l">em novos devs, 1ª vez desde 2016</div></div>
+      </div>
+      <p class="licao-tag">Lição: a pergunta de marketing certa não é "quantos seguidores eu tenho", é "quantos ficariam se eu parasse de pagar pela atenção amanhã?". Preço é vaidade. Builder no fundo é convicção que não se fabrica. (Honestidade: o Ethereum manteve liderança em atividade mensal e commits totais. Solana liderou em novos entrantes, o indicador de pra onde o futuro olha.)</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">06</span></div>
+</section>
+
+<!-- ===================== PÁG 7 — A FAÍSCA BONK ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A faísca</span></div>
+  <div class="pad">
+    <span class="kicker">25/dez/2022 · BONK, a dog coin de Natal</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Um presente pra um<br>povo derrotado.</h2></div>
+    <div class="prose">
+      <p>A comunidade não se manteve só na fé. Teve um ato fundador concreto, e ele é uma aula de marketing de comunidade. No dia de Natal de 2022, no pior momento do ecossistema, nasceu o BONK: "a primeira dog coin da Solana, pelo povo, para o povo", com a missão declarada de reanimar a comunidade depois do trauma da FTX.</p>
+      <p><span class="lin">A jogada de distribuição foi o ponto.</span> Metade do supply total foi distribuída via airdrop direto pra comunidade: ~20% pra holders de NFT da Solana, 15% pra traders antigos do OpenBook, 10% pra artistas e colecionadores, 5% pra desenvolvedores. Não foi pra VC. Não foi pra insider. Foi pra quem estava no campo de batalha.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">50<span class="u">%</span></div><div class="l">do supply distribuído à comunidade</div></div>
+      <div class="stat"><div class="v">+2.000<span class="u">%</span></div><div class="l">na 1ª semana de trading</div></div>
+      <div class="stat"><div class="v">+34<span class="u">%</span></div><div class="l">no SOL em 48h após a estreia</div></div>
+      <div class="stat"><div class="v">2022</div><div class="l">melhor retorno do ano em 2023</div></div>
+    </div>
+
+    <div class="prose">
+      <p>O efeito foi imediato e desproporcional. Na primeira semana, o BONK subiu mais de 2.000% e fechou 2023 como um dos ativos de melhor retorno do ano. O SOL ganhou ~34% em 48 horas depois da estreia. Uma dog coin de Natal reacendeu o preço, a atenção e, mais importante, o moral. O BONK virou o mascote não-oficial da volta da Solana.</p>
+      <p><span class="lin">A lição é fina.</span> O BONK não foi um produto. Foi um ritual de pertencimento com forma de token. Deu à comunidade um símbolo compartilhado, um motivo pra rir junto no fundo, e uma recompensa pra quem tinha ficado. <span class="hl">"Estamos juntos no fundo, vamos construir mesmo assim" deixou de ser sentimento e virou ativo negociável que toda a tribo podia segurar.</span> Foi aí que a sobrevivência virou identidade, e identidade é a matéria-prima de toda marca que dura.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">07</span></div>
+</section>
+
+<!-- ===================== PÁG 8 — JOGADA 3 (founder) ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 3</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">3</div>
+      <div class="ttl"><div class="kk">O founder dentro da tribo</div><h3>Presente, não polido.</h3>
+      <div class="jog-resumo">Anatoly virou parte da comunidade de um jeito que CMO nenhum scripta. O líder dentro da tribo, não acima dela.</div></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk fez"><div class="blk-lbl">O que a Solana fez</div><p>Anatoly Yakovenko, acessível, postando, presente, respondendo, falando de meme e de robustez de rede na mesma frase. Founder-led no sentido mais cru. Numa comunidade ferida, presença vale mais que polimento: o fundador que aparece no fundo, brinca com a própria situação e ainda sustenta a visão técnica humaniza a marca e ancora a convicção ao mesmo tempo.</p></div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">"Blessed are the memecoin traders, for those who can overcome their spam will inherit the metaverse."</div>
+      <div class="by">Anatoly Yakovenko · no palco da Emergence, Praga</div>
+    </div>
+    <div class="bigquote">
+      <div class="q">"In almost all digital economies, entertainment is the biggest place where money is made. When I start to think of it backwards, it's almost obvious in retrospect."</div>
+      <div class="by">Anatoly Yakovenko · sobre por que a memecoin pegou</div>
+    </div>
+
+    <div class="jog-body">
+      <div class="blk pq"><div class="blk-lbl">A honestidade que dá credibilidade</div><p>Anatoly não é torcedor cego. Já pediu publicamente pra comunidade <strong>parar de investir em pré-vendas de memecoin</strong> e chegou a chamar boa parte de memecoin e NFT de "digital slop". Um founder que abraça a energia da cultura e ao mesmo tempo aponta o risco dela tem credibilidade que o hype puro nunca alcança. É a diferença entre liderar uma comunidade e bajular ela.</p></div>
+      <p class="licao-tag">Lição: founder-brand não é ser polido, é estar presente e dizer a verdade, inclusive a desconfortável. Comunidade fareja autenticidade e pune teatro.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">08</span></div>
+</section>
+
+<!-- ===================== PÁG 9 — JOGADA 4 (caos memecoin) ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 4</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">4</div>
+      <div class="ttl"><div class="kk">Abraçar o caos cultural</div><h3>Pump.fun e a memecoin como motor.</h3>
+      <div class="jog-resumo">A jogada mais corajosa foi de posicionamento. Tratar o cassino cultural como caso de uso, teste de estresse e motor de atenção.</div></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk fez"><div class="blk-lbl">O que a Solana fez</div><p>Em janeiro de 2024 nasceu a Pump.fun, launchpad que deixa qualquer pessoa criar um memecoin em segundos. A Solana podia ter torcido o nariz pra preservar a "seriedade" de infraestrutura financeira. Fez o oposto: abraçou. Uma marca quase nunca controla a narrativa que pega, só escolhe se abraça ou nega. Negar o que o público faz com você raramente funciona.</p></div>
+      <div class="blk ev"><div class="blk-lbl">A evidência</div><p>A Pump.fun virou um dos apps mais usados de qualquer blockchain. Desde o lançamento, gerou <strong>+11,9 milhões de tokens</strong> e chegou a responder por <strong>até 71% dos lançamentos diários</strong> da Solana. Foi o app cripto mais rápido a bater US$ 100 mi de receita, e o <strong>1º app da história da Solana a cruzar US$ 1 bilhão de receita acumulada.</strong> O caso de uso devolveu volume, taxa e atenção, exatamente o que tinha sumido no fundo.</p></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="ct">O motor memecoin reacendeu a atividade</div>
+      <div class="cs">Receita acumulada Pump.fun · 1º app da Solana a cruzar US$ 1 bi</div>
+      <div class="chart-box" style="height:150px;"><canvas id="cv_devs"></canvas></div>
+      <div class="chart-src">Fonte: Electric Capital (novos devs 2024) · research §E</div>
+    </div>
+
+    <div class="jog-body" style="margin-top:10px;">
+      <div class="blk pq"><div class="blk-lbl">Engenharia que virou marketing</div><p>Anatoly virou os antigos apagões em prova de fortalecimento: a rede foi "abençoada", segundo ele, por resolver problemas reais sob o estresse do tráfego memecoin, com inovações como os localized fee markets. Em vez de esconder a fragilidade, a Solana contou a história de como o caos a deixou mais forte.</p></div>
+      <p class="licao-tag">Lição (com reverso anunciado): a Solana abraçou o caos e venceu a batalha de atenção. Mas abraçar o caos tem preço, e o preço foi alto. O reverso é o teste de estresse, adiante. Combustível e veneno na mesma lata.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">09</span></div>
+</section>
+
+<!-- ===================== PÁG 10 — JOGADA 5 (eventos) ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 5</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">5</div>
+      <div class="ttl"><div class="kk">Eventos como cola física</div><h3>O online escala, o offline aprofunda.</h3></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk fez"><div class="blk-lbl">O que a Solana fez</div><p>A comunidade não se manteve só online. A Solana investiu pesado em encontro físico. O Breakpoint virou a conferência-âncora anual, e as Hacker Houses levaram builders pra cidades do mundo inteiro.</p></div>
+      <div class="blk ev"><div class="blk-lbl">A evidência</div><p>O Breakpoint cresceu na velocidade da própria volta: <strong>~3.000</strong> em Amsterdam (2023), saltando pra <strong>6.000+ de 114 países</strong> em Singapura (2024), a maior edição da história, com 8 summits paralelos. Em paralelo, a comunidade hospedou <strong>100+ hacker houses</strong> e moveu <strong>400+ devs</strong> entre países. Encontros como mtnDAO, IslandDAO e Solana After Breakpoint viraram cultura própria.</p></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="ct">A conferência cresceu na velocidade da volta</div>
+      <div class="cs">Participantes do Breakpoint · Amsterdam 2023 → Singapura 2024</div>
+      <div class="chart-box" style="height:155px;"><canvas id="cv_breakpoint"></canvas></div>
+      <div class="chart-src">Fonte: Solana Compass · research §F</div>
+    </div>
+
+    <div class="jog-body" style="margin-top:10px;">
+      <div class="blk pq"><div class="blk-lbl">Por que funcionou</div><p>Encontro físico cria laço que o feed não cria. Quem construiu junto numa hacker house madrugada adentro vira defensor de outro nível. Numa comunidade que tinha acabado de sobreviver a um trauma coletivo, juntar as pessoas no mesmo lugar transformou sobreviventes dispersos em tribo organizada.</p></div>
+      <p class="licao-tag">Lição: comunidade de verdade quase sempre precisa de um momento offline. No Brasil, onde o relacionamento próximo pesa, isso é subestimado e barato comparado ao que entrega.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">10</span></div>
+</section>
+
+<!-- ===================== PÁG 11 — JOGADA 6 + 7 ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogadas 6 · 7</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">6</div>
+      <div class="ttl"><div class="kk">O produto distribuído pela cultura</div><h3>A comunidade vendeu o hardware.</h3></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk ev"><div class="blk-lbl">O caso Saga / Seeker</div><p>A Solana Mobile lançou o Saga (mai/2023). Começou mal: ~2.200 a 2.500 unidades, preço cortado 40% pra US$ 599. Era pra ser um fracasso de hardware. Cada Saga vinha com airdrop de <strong>30 milhões de BONK</strong>. Quando o BONK disparou, o airdrop ultrapassou <strong>US$ 1.000</strong>, acima do preço do telefone. A arbitragem óbvia (comprar, claimar, lucrar) viralizou no Crypto Twitter, e em 48 horas as vendas subiram <strong>+10x</strong> e o aparelho esgotou. O sucessor Seeker repetiu: <strong>140.000+ pré-vendas em 57 países</strong>, de novo turbinado por airdrop de memecoin.</p></div>
+      <p class="licao-tag">Lição: quando você tem uma comunidade viva, ela vira o seu canal de distribuição mais barato e crível, inclusive pra coisas que não têm a ver com o motivo dela existir. A Solana não vendeu o hardware. A comunidade vendeu.</p>
+    </div>
+
+    <div class="jog-head" style="margin-top:16px;">
+      <div class="jog-num">7</div>
+      <div class="ttl"><div class="kk">O institucional como selo</div><h3>O sistema confirma a volta.</h3></div>
+    </div>
+    <div class="jog-body">
+      <div class="blk ev"><div class="blk-lbl">Os carimbos, em ordem</div><p>Em set/2023, ainda perto do fundo, a <strong>Visa</strong> expandiu a liquidação de USDC pra Solana, com Worldpay e Nuvei. Em out/2025, os <strong>ETFs spot de Solana</strong> começaram a negociar na bolsa americana (3ª cripto aprovada pra ETP nos EUA, com staking embutido), inflows passando de <strong>US$ 900 mi</strong>. <strong>Goldman Sachs</strong> declarou US$ 108 mi em SOL; o fundo BUIDL da <strong>BlackRock</strong> liquidou US$ 550 mi na rede.</p></div>
+      <div class="blk pq"><div class="blk-lbl">Por que funcionou</div><p>Numa ressurreição, validação externa vale ouro. A comunidade prova convicção de dentro pra fora. A instituição prova legitimidade de fora pra dentro. Quando Visa, SEC e BlackRock entram, a manchete deixa de ser "a chain do SBF voltou" e vira "a chain que o mercado tradicional adotou".</p></div>
+      <p class="licao-tag">Lição: marca em recuperação precisa dos dois lados da prova: a convicção de quem fica (dentro) e o selo de quem chega (fora). Comunidade sem validação parece bolha; validação sem comunidade parece encomenda.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">11</span></div>
+</section>
+
+<!-- ===================== PÁG 12 — A COROAÇÃO ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A coroação</span></div>
+  <div class="pad">
+    <span class="kicker">Jan/2025 · o ápice do "we're so back"</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:26pt;">No ponto mais alto.</h2></div>
+    <div class="prose">
+      <p>Em janeiro de 2025, a redenção virou manchete global. O TRUMP, memecoin oficial lançado na Solana, explodiu pra um market cap recorde na casa de <strong>US$ 8,7 bilhões</strong>. A TVL da Solana cruzou <strong>US$ 10 bilhões</strong> pela primeira vez desde a FTX. O SOL bateu o topo histórico perto de <strong>US$ 295</strong>, uma valorização na casa de 2.600% a partir do fundo. A chain que era pra estar morta estava no centro do palco do cripto mundial.</p>
+    </div>
+
+    <div class="chart-card" style="margin-top:6px;">
+      <div class="ct">O arco completo: queda, ressurreição, correção</div>
+      <div class="cs">Preço SOL (USD) · de ~US$ 260 (2021) a &lt;US$ 9 (dez/22) a ~US$ 295 (jan/25)</div>
+      <div class="chart-box" style="height:165px;"><canvas id="cv_preco"></canvas></div>
+      <div class="chart-src">Fonte: MEXC / CoinShares / CoinDesk · marcos reais, meses interpolados (ver DADOS.md)</div>
+    </div>
+
+    <div class="prose" style="margin-top:12px;">
+      <p>Esse foi o ápice. A comunidade que segurou a barra no fundo viu o gráfico provar que estava certa. <span class="hl">E aí, no exato ponto mais alto, começou a parte que o marketing honesto não pode esconder.</span></p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">12</span></div>
+</section>
+
+<!-- ===================== PÁG 13 — TESTE DE ESTRESSE (dark) ===================== -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Teste de estresse</span></div>
+  <div class="pad">
+    <span class="kicker">Onde a tese fica frágil</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:24pt;">O combustível que salvou<br>também queimou.</h2></div>
+    <p style="font-size:9.2pt; margin-bottom:8px;">Marketing honesto mostra o asterisco. A Solana tem vários, todos ligados ao mesmo motor que a ressuscitou. Quem lê pra copiar a parte boa precisa ler isto com a mesma atenção.</p>
+
+    <div class="crit-card">
+      <div class="ch">1 · O cassino fez vítimas em massa</div>
+      <p>O TRUMP disparou pra US$ 8,7 bi e despencou <strong>-90%+</strong>. O LIBRA, promovido pelo presidente argentino Javier Milei (14/fev/2025), subiu a um market cap na casa de <strong>US$ 4,5–4,6 bi</strong> e caiu <strong>-80%+ em horas</strong> enquanto os fundadores, com ~70% do supply, sacavam. A Nansen estimou que <strong>86% de quem comprou LIBRA perdeu</strong>, US$ 251 mi em perdas, com 9 contas embolsando ~US$ 87 mi de ~50 mil investidores. Somados, <strong>TRUMP + LIBRA queimaram US$ 3,94 bilhões.</strong> Crescer em cima de um cassino é crescer em cima de quem perde.</p>
+    </div>
+    <div class="chart-card" style="background:#191919; border-color:#2c2c2c;">
+      <div class="ct" style="color:#fff;">O outro lado da métrica</div>
+      <div class="cs" style="color:#9a9388;">Perda de quem comprou (US$ bi) · TRUMP+LIBRA vs LIBRA isolado</div>
+      <div class="chart-box" style="height:120px;"><canvas id="cv_perdas"></canvas></div>
+      <div class="chart-src" style="color:#8d857a;">Fonte: FXStreet (3,94 bi) · Nansen/The Block (LIBRA 251 mi)</div>
+    </div>
+
+    <div class="rail" style="margin-top:12px;">
+      <div class="rc" style="background:#191919; border-color:#2c2c2c;"><div class="rk" style="color:var(--green);">2 · Pró-cíclico</div><div class="rt" style="color:#C9C2B6;">Atividade atrelada ao apetite por memecoin. Em 2026 a TVL caiu de >US$ 11,5 bi (ago/25) pra ~US$ 5,5 bi. Some quando você mais precisa de base.</div></div>
+      <div class="rc" style="background:#191919; border-color:#2c2c2c;"><div class="rk" style="color:var(--green);">3 · Outages</div><div class="rt" style="color:#C9C2B6;">7 apagões em 5 anos, 5 por bug de cliente. Melhorou muito (1 ano sem falha em fev/25), mas "chain que cai" leva anos pra apagar.</div></div>
+      <div class="rc" style="background:#191919; border-color:#2c2c2c;"><div class="rk" style="color:var(--green);">4 · Cliente único</div><div class="rt" style="color:#C9C2B6;">Firedancer foi pra mainnet (dez/24), mas 70–92% do stake ainda roda o mesmo cliente. Risco sistêmico reconhecido.</div></div>
+      <div class="rc" style="background:#191919; border-color:#2c2c2c;"><div class="rk" style="color:var(--green);">5 · Cicatriz FTX</div><div class="rt" style="color:#C9C2B6;">Parte do mercado ainda vê pela lente do estigma e da venda de SOL do espólio. A volta apaga a manchete, não a memória.</div></div>
+    </div>
+
+    <div class="bigquote dark" style="margin-top:12px;">
+      <div class="q">O mecanismo a roubar é o da comunidade que recusou sair. O mecanismo a evitar é o de crescer em cima de quem perde. As duas lições convivem no mesmo case.</div>
+      <div class="by">O recado honesto · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">13</span></div>
+</section>
+
+<!-- ===================== PÁG 14 — NÚMEROS QUE PROVAM ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números</span></div>
+  <div class="pad">
+    <span class="kicker">O painel · tudo verificável</span>
+    <div class="section-title" style="margin-bottom:10px;"><span class="dot"></span><h2 style="font-size:24pt;">Os números que provam a volta.</h2></div>
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">TVL da Solana (US$ bi)</div>
+        <div class="cs">Fundo pós-FTX → 10 bi (jan/25) → pico >11,5 (ago/25) → ~5,5 (2026)</div>
+        <div class="chart-box" style="height:145px;"><canvas id="cv_tvl"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama / BYDFi</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Novos devs em 2024</div>
+        <div class="cs">Solana superou o Ethereum, 1ª vez desde 2016</div>
+        <div class="chart-box" style="height:145px;"><canvas id="cv_devs2"></canvas></div>
+        <div class="chart-src">Fonte: Electric Capital</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Share de novos devs 2024</div>
+        <div class="cs">Solana = 19,5% de todos os novos devs de cripto</div>
+        <div class="chart-box" style="height:145px;"><canvas id="cv_sharedevs"></canvas></div>
+        <div class="chart-src">Fonte: Electric Capital</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Breakpoint, participantes</div>
+        <div class="cs">A conferência-âncora dobrou de Amsterdam a Singapura</div>
+        <div class="chart-box" style="height:145px;"><canvas id="cv_breakpoint2"></canvas></div>
+        <div class="chart-src">Fonte: Solana Compass</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">14</span></div>
+</section>
+
+<!-- ===================== PÁG 15 — O QUE ISSO ENSINA ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que ensina</span></div>
+  <div class="pad">
+    <span class="kicker">7 lições transferíveis</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">O que dá pra roubar,<br>inclusive no Brasil.</h2></div>
+    <div>
+      <div class="take"><div class="tn">1</div><div class="tb"><b>Comunidade real é a única vantagem que sobrevive à crise.</b><p>A Solana voltou porque um grupo recusou sair no fundo. Construa relacionamento com quem fica no momento ruim, não só com quem aplaude no bom.</p></div></div>
+      <div class="take"><div class="tn">2</div><div class="tb"><b>A história de queda e volta é a mais vendável que existe.</b><p>Se a sua marca tem uma superação real, conte. Vulnerabilidade assumida cria laço que o discurso de perfeição nunca cria.</p></div></div>
+      <div class="take"><div class="tn">3</div><div class="tb"><b>Builder, não preço, é a métrica de valor.</b><p>Preço é vaidade, fácil de manipular. Quem fica construindo no fundo é convicção que não se fabrica. Meça pelo que é caro de falsificar.</p></div></div>
+      <div class="take"><div class="tn">4</div><div class="tb"><b>Founder presente vale mais que founder polido.</b><p>Anatoly apareceu no pior momento, falou como gente e disse a verdade desconfortável sobre o próprio motor. Founder-brand é presença e honestidade, não release.</p></div></div>
+      <div class="take"><div class="tn">5</div><div class="tb"><b>Encontro físico aprofunda o que o digital só escala.</b><p>Hacker house, evento, conferência. Comunidade de verdade quase sempre precisa de um momento offline. No Brasil, vale ainda mais.</p></div></div>
+      <div class="take"><div class="tn">6</div><div class="tb"><b>Às vezes você não escolhe a narrativa que pega, só se abraça ou nega.</b><p>A Solana abraçou o caos memecoin e capturou a energia. Mas o preço de abraçar o caos precisa entrar na conta antes, não depois.</p></div></div>
+      <div class="take"><div class="tn">7</div><div class="tb"><b>Honestidade sobre o motor define se você faz autoridade ou pega carona em hype.</b><p>Comunidade ressuscitou, memecoin queimou bilhões. Separar o saudável de replicar do dano a pessoas reais é o trabalho de quem leva marketing a sério.</p></div></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">15</span></div>
+</section>
+
+<!-- ===================== PÁG 16 — KALEIDOS (fechamento) ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A Kaleidos</span></div>
+  <div class="pad">
+    <span class="kicker">Como a Kaleidos pensa esse case</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Comunidade é estratégia,<br>não fofura.</h2></div>
+    <div class="prose">
+      <p>A gente não vende "construa uma comunidade" como fofura de slide. A Solana provou que comunidade real é o ativo mais difícil de matar, e que a história de superação é o melhor ativo de marca que quase todo cliente já tem e não usa. No Brasil, onde a confiança é escassa e cara, o núcleo de gente que fica vale mais que qualquer pico de alcance comprado.</p>
+      <p>E a gente desenha crescimento com honestidade sobre o motor: separando o que é saudável de replicar do que é dano a pessoas reais. É essa diferença que define se a sua marca faz autoridade de verdade ou só pega carona em hype.</p>
+    </div>
+
+    <div class="kblock" style="margin-top:16px;">
+      <div class="kb-tag">Fale com a Kaleidos</div>
+      <div class="kb-h">Marca que sobrevive à próxima crise.</div>
+      <p>Se você constrói um projeto cripto ou web3 e quer marca de verdade, não só barulho, a Kaleidos é a agência cripto-nativa do Brasil pra isso. Growth, narrativa e conteúdo embasados em dado real on-chain.</p>
+      <div class="kb-cta">
+        <a class="kb-btn wa" href="https://wa.me/5512997796835">WhatsApp · wa.me/5512997796835</a>
+        <a class="kb-btn site" href="https://kaleidos.com.br">kaleidos.com.br</a>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">16</span></div>
+</section>
+
+<!-- ===================== PÁG 17 — NA IMPRENSA ===================== -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Na imprensa</span></div>
+  <div class="pad">
+    <span class="kicker">Cobertura espontânea</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Manchete sem assessoria.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:14px;">A volta da Solana foi coberta pelos maiores veículos sem release pago. Os dois lados da história, a redenção e o estrago, viraram pauta. O paper reproduz os títulos verbatim, sob uso editorial.</p>
+
+    <div class="headlines">
+      <div class="hcard"><div class="src">CoinDesk · Dez/2024</div><div class="hl-t">"Solana Was the Biggest Draw for New Crypto Developers in 2024: Electric Capital"</div><div class="dt">A prova de que builder não fica em chain morta.</div></div>
+      <div class="hcard"><div class="src">Blockworks · Dez/2022</div><div class="hl-t">"BONK: Solana's Own Dog Coin Sparks Joy for Weathered Community"</div><div class="dt">A dog coin de Natal que reanimou a tribo.</div></div>
+      <div class="hcard"><div class="src">The Block · Fev/2025</div><div class="hl-t">"Traders of Solana-based LIBRA memecoin lost $251 million: Nansen"</div><div class="dt">O asterisco: o cassino fez vítimas em massa.</div></div>
+      <div class="hcard"><div class="src">Fortune · Fev/2025</div><div class="hl-t">"Solana hits five-month low as memecoin traders back off after $LIBRA scandal"</div><div class="dt">A pró-ciclicidade do motor especulativo.</div></div>
+      <div class="hcard"><div class="src">Charles Schwab · Out/2025</div><div class="hl-t">"Solana ETPs Cleared to Trade"</div><div class="dt">O selo institucional da redenção: 3ª cripto com ETF spot.</div></div>
+      <div class="hcard"><div class="src">The Block · Yahoo Finance</div><div class="hl-t">"Solana's founder on how memecoins help make the network more robust"</div><div class="dt">Anatoly transformando o caos em narrativa de robustez.</div></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">17</span></div>
+</section>
+
+<!-- ===================== PÁG 18 — FONTES (dark) ===================== -->
+<section class="page legal">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fontes</span></div>
+  <div class="pad">
+    <span class="kicker">Fontes &amp; metodologia</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot" style="background:rgba(153,69,255,.35)"></span><h2 style="font-size:24pt;">Tudo verificável.</h2></div>
+    <p>Todo número deste paper vem de fonte pública, datada de junho de 2026. Onde a metodologia diverge, citamos a faixa, não o ponto (TVL de pico 10–11,5 bi; fundo do preço ~US$ 8–9; concentração de cliente 70–92%; market cap do LIBRA 4,5–4,6 bi). Quotes reproduzidos verbatim (Lily Liu, Anatoly Yakovenko). Os números de pico são de jan–ago/2025; em 2026 preço e TVL recuaram, e o paper registra isso.</p>
+
+    <ul class="src-list">
+      <li><b>Preço / topo / fundo:</b> MEXC, CoinShares, CoinDesk, CoinGecko</li>
+      <li><b>Queda pós-FTX (-97%):</b> MEXC, CoinShares, Crypto Times</li>
+      <li><b>"Left for dead" (Lily Liu):</b> YouTube (verbatim), CoinShares</li>
+      <li><b>Novos devs 2024:</b> CoinDesk, Blockworks, Coinspeaker (Electric Capital)</li>
+      <li><b>BONK / dog coin / airdrop:</b> Blockchain Council, Blockworks, CoinCentral</li>
+      <li><b>Anatoly / memecoin teste de estresse:</b> The Block, Yahoo Finance, CryptoSlate</li>
+      <li><b>Pump.fun:</b> SolanaFloor, The Block, 21Shares, Phemex, Wikipedia</li>
+      <li><b>Breakpoint / hacker houses:</b> Solana Compass, Solana, CoinFabrik</li>
+      <li><b>Solana Mobile (Saga/Seeker):</b> SolanaFloor, The Block, Bitget/PANews</li>
+      <li><b>TVL / atividade 2025–26:</b> DefiLlama, BYDFi, CoinLaw, State of Solana</li>
+      <li><b>TRUMP / LIBRA / perdas:</b> DL News, FXStreet, Invezz, Fortune, Nansen, Wikipedia</li>
+      <li><b>Institucional (Visa/ETF/Goldman/BlackRock):</b> CoinShares, Charles Schwab, Helius</li>
+      <li><b>Outages / Firedancer / cliente único:</b> Helius, CryptoSlate, Cherry Servers</li>
+    </ul>
+
+    <div class="disc">
+      <p style="font-size:8.4pt;">Este documento é um estudo editorial de marketing produzido pela Kaleidos. Não constitui recomendação de investimento, aconselhamento financeiro ou endosso ao token SOL, à Solana, ao BONK, ao TRUMP, ao LIBRA ou a qualquer ativo citado. Marcas, logos e declarações citadas pertencem a seus respectivos donos e são reproduzidas sob uso editorial. Dados sujeitos a variação de mercado.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 03 · Solana</span><span class="pg">18</span></div>
+</section>
+
+<!-- ===================== PÁG 19 — CONTRACAPA ===================== -->
+<section class="page backcover">
+  <div class="bc-inner">
+    <div class="bc-eyebrow">Kaleidos · Agência Cripto-Nativa</div>
+    <div class="bc-mark"><span style="font-style:italic;">K</span>aleidos</div>
+    <div class="bc-seal">Paper · Vol. 03 · Solana</div>
+    <div class="bc-tag">A agência de marketing nativa de cripto do Brasil. Growth, narrativa e conteúdo para projetos de cripto e web3 que querem construir marca de verdade, não só barulho.</div>
+    <div class="bc-foot">wa.me/5512997796835 · kaleidos.com.br</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof Chart === 'undefined' || !window.KaleidosCharts) return;
+  var KC = window.KaleidosCharts;
+  function mount(id, cfg){
+    var el = document.getElementById(id);
+    if (el && cfg) new Chart(el.getContext('2d'), JSON.parse(JSON.stringify(cfg)));
+  }
+  mount('cv_devs',        KC.chartDevs);
+  mount('cv_breakpoint',  KC.chartBreakpoint);
+  mount('cv_preco',       KC.chartPreco);
+  mount('cv_perdas',      KC.chartPerdas);
+  mount('cv_tvl',         KC.chartTVL);
+  mount('cv_devs2',       KC.chartDevs);
+  mount('cv_sharedevs',   KC.chartShareDevs);
+  mount('cv_breakpoint2', KC.chartBreakpoint);
+})();
+</script>
+</body>
+</html>

@@ -1,21 +1,47 @@
 import type { Metadata } from "next";
+import { getPublishedPostsAsync } from "@/lib/blog-data";
+import { BlogIndexJsonLd } from "@/components/blog/blog-jsonld";
+
+const TITLE = "Blog — Marketing Cripto, Web3, IA e Growth | Kaleidos";
+const DESCRIPTION =
+  "Estudos e análises densas sobre marketing cripto e web3, lançamento de token, IA e growth. Por que projetos crescem — e como aplicar no seu.";
 
 export const metadata: Metadata = {
-  title: "Blog — Marketing Digital, IA e Cripto | Kaleidos Digital",
-  description:
-    "Artigos sobre marketing digital para cripto e web3, automação com IA, growth hacking e cases reais. Estratégias que funcionam no mercado cripto.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/blog",
+    types: {
+      "application/rss+xml": "/blog/rss.xml",
+    },
+  },
   openGraph: {
-    title: "Blog — Marketing Digital, IA e Cripto | Kaleidos Digital",
-    description:
-      "Artigos sobre marketing digital para cripto e web3, automação com IA, growth hacking e cases reais. Estratégias que funcionam no mercado cripto.",
-    url: "https://kaleidos.com.br/blog",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/blog",
+    type: "website",
+    siteName: "Kaleidos Digital",
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
-export default function BlogLayout({
+export default async function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  // Posts publicados (estáticos + KAI). Agendados ficam fora.
+  const posts = await getPublishedPostsAsync();
+  return (
+    <>
+      {/* JSON-LD de índice só com posts já publicados (agendados ficam fora). */}
+      <BlogIndexJsonLd posts={posts} />
+      {children}
+    </>
+  );
 }

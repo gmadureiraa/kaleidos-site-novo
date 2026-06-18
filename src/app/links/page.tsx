@@ -116,15 +116,15 @@ const heroProducts: Hero[] = [
 const secondaryProducts: Secondary[] = [
   {
     name: "AutoBlogger",
-    href: "https://template-brutalist-saas.vercel.app",
+    href: "https://autoblogger.kaleidos.com.br",
     domain: "autoblogger.kaleidos.com.br",
     tagline: "Posts de blog SEO automáticos com IA.",
     Icon: PenLine,
-    status: "live",
+    status: "soon",
   },
   {
     name: "AdFlow",
-    href: "https://kaleidos.com.br/links",
+    href: "https://adflow.kaleidos.com.br",
     domain: "adflow.kaleidos.com.br",
     tagline: "IA pra ads Meta — criativo, copy e variantes.",
     Icon: Megaphone,
@@ -132,7 +132,7 @@ const secondaryProducts: Secondary[] = [
   },
   {
     name: "Folio",
-    href: "https://kaleidos.com.br/links",
+    href: "https://folio.kaleidos.com.br",
     domain: "folio.kaleidos.com.br",
     tagline: "Portfolio investidor cripto consolidado.",
     Icon: Wallet,
@@ -140,8 +140,8 @@ const secondaryProducts: Secondary[] = [
   },
   {
     name: "DeFi Radar",
-    href: "https://kaleidos.com.br/links",
-    domain: "defi-radar",
+    href: "https://radar.kaleidos.com.br",
+    domain: "radar.kaleidos.com.br",
     tagline: "Yield scanner DeFi.",
     Icon: LineChart,
     status: "soon",

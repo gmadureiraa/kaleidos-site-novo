@@ -3,49 +3,29 @@
 import { useEffect } from "react";
 
 export function useSmoothScroll() {
-  useEffect(() => {
-    // Adicionar scroll suave para todos os links internos
-    const handleClick = (e: Event) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest('a[href^="#"]') as HTMLAnchorElement;
-      
-      if (link) {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          const targetId = href.substring(1);
-          const targetElement = document.getElementById(targetId);
-          
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          }
-        }
-      }
-    };
-
-    document.addEventListener('click', handleClick);
-    
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, []);
+  // Âncoras internas agora são tratadas pelo SmoothScrollProvider (Lenis).
+  // Mantido como no-op pra não duplicar handlers de clique.
+  useEffect(() => {}, []);
 }
 
 // Hook para scroll suave programático
 export function scrollToElement(elementId: string, offset = 0) {
   const element = document.getElementById(elementId);
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+  if (!element) return;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
+  // Usa o Lenis (momentum) quando disponível; senão, fallback nativo.
+  const lenis = typeof window !== "undefined" ? window.__lenis : undefined;
+  if (lenis) {
+    lenis.scrollTo(element, { offset: -offset });
+    return;
   }
+
+  const elementPosition = element.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.pageYOffset - offset;
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
 }
 
 // Hook para scroll suave com offset para navbar fixa

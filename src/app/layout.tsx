@@ -4,18 +4,20 @@ import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
 import { GoogleAnalytics } from "@/components/analytics";
+import { AnalyticsRouter } from "@/components/analytics-router";
 import { Clarity } from "@/components/clarity";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
 import { SkipToContent } from "@/components/ui/skip-to-content";
+import { LeadPopup } from "@/components/lead-popup";
 import "./globals.css";
 
 // Fontes locais otimizadas
 const atelier = localFont({
   src: [
     {
-      path: '../../public/Kaleidos/fonts/Atelier/OpenType-TT/Atelier.ttf',
+      path: '../../public/Kaleidos/fonts/Atelier/OpenType-TT/Atelier.woff2',
       weight: '400',
       style: 'normal',
     },
@@ -27,12 +29,12 @@ const atelier = localFont({
 const inter = localFont({
   src: [
     {
-      path: '../../public/Kaleidos/fonts/Inter/Inter-VariableFont_opsz,wght.ttf',
+      path: '../../public/Kaleidos/fonts/Inter/Inter-VariableFont_opsz,wght.woff2',
       weight: '100 900',
       style: 'normal',
     },
     {
-      path: '../../public/Kaleidos/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf',
+      path: '../../public/Kaleidos/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2',
       weight: '100 900',
       style: 'italic',
     },
@@ -44,7 +46,7 @@ const inter = localFont({
 const gridlite = localFont({
   src: [
     {
-      path: '../../public/Kaleidos/fonts/Gridlite/Gridlite.otf',
+      path: '../../public/Kaleidos/fonts/Gridlite/Gridlite.woff2',
       weight: '400',
       style: 'normal',
     },
@@ -133,23 +135,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        {/* Preload fontes críticas */}
-        <link
-          rel="preload"
-          href="/Kaleidos/fonts/Inter/Inter-VariableFont_opsz,wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/Kaleidos/fonts/Atelier/OpenType-TT/Atelier.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-      </head>
+      {/*
+        Sem preload manual de fonte: next/font/local já injeta o <link rel="preload">
+        com o arquivo hasheado (/_next/static/media/...). Apontar pro arquivo cru do
+        public/ causava download duplicado e desperdiçado.
+      */}
       <body className={`${atelier.variable} ${inter.variable} ${gridlite.variable} font-sans`}>
         <SkipToContent />
         <SmoothScrollProvider>
@@ -162,8 +152,14 @@ export default function RootLayout({
               {children}
             </Suspense>
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
+            <Suspense fallback={null}>
+              <AnalyticsRouter />
+            </Suspense>
             <Clarity />
             <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID || ''} />
+            <Suspense fallback={null}>
+              <LeadPopup />
+            </Suspense>
           </ErrorBoundary>
         </SmoothScrollProvider>
       </body>

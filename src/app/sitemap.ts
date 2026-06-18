@@ -1,16 +1,24 @@
 import { MetadataRoute } from 'next'
-import { getAllCases } from '@/lib/case-data'
-import { blogPosts } from '@/lib/blog-data'
+import { getRoutedCases } from '@/lib/case-data'
+import { getPublishedPostsAsync, getModifiedAt } from '@/lib/blog-data'
+import { papers } from '@/lib/papers-data'
+import { getAllServicePages } from '@/lib/service-pages-data'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Páginas de serviço descontinuadas (rota retorna notFound) — não entram no sitemap.
+const RETIRED_SERVICE_SLUGS = new Set(['eventos-cripto'])
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaleidos.com.br'
   const now = new Date()
 
-  // Last modified inferida do post mais recente do blog (representa "atividade recente")
+  // Só posts já publicados entram no sitemap (estáticos + KAI; agendados ficam fora).
+  const blogPosts = await getPublishedPostsAsync(now)
+
+  // Last modified inferida da revisão mais recente do blog (freshness real, não new Date() cego).
   const latestBlogDate = blogPosts.length
     ? new Date(
         blogPosts
-          .map((p) => new Date(p.publishedAt).getTime())
+          .map((p) => new Date(getModifiedAt(p)).getTime())
           .reduce((a, b) => Math.max(a, b), 0)
       )
     : now
@@ -42,15 +50,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/apresentacao`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/links`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/papers`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ]
 
   // Páginas de serviços
   const servicePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/servicos`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
     {
       url: `${baseUrl}/servicos/marketing-conteudo`,
       lastModified: now,
@@ -69,11 +95,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Páginas de serviço (estilo Lunar) vindas de service-pages-data — exceto as descontinuadas.
+    ...getAllServicePages()
+      .filter((s) => !RETIRED_SERVICE_SLUGS.has(s.id))
+      .map((s) => ({
+        url: `${baseUrl}/servicos/${s.id}`,
+        lastModified: now,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      })),
   ]
 
-  // Páginas de cases (dinâmico)
-  const allCases = getAllCases()
-  const casePages: MetadataRoute.Sitemap = allCases.map((caseData) => ({
+  // Páginas legais (LGPD + termos)
+  const legalPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/privacidade`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/termos`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ]
+
+  // Páginas de cases — apenas as que têm rota dedicada (evita URLs 404 no sitemap)
+  const routedCases = getRoutedCases()
+  const casePages: MetadataRoute.Sitemap = routedCases.map((caseData) => ({
     url: `${baseUrl}/cases/${caseData.id}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
@@ -92,10 +143,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogArticles: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    lastModified: new Date(getModifiedAt(post)),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    // Posts em destaque ganham prioridade levemente maior (sinal de relevância).
+    priority: post.featured ? 0.8 : 0.7,
   }))
 
-  return [...mainPages, ...servicePages, ...casePages, ...blogIndex, ...blogArticles]
+  // Papers — rotas individuais dos volumes públicos (omite os hidden pra não gerar URL pré-lançamento)
+  const paperPages: MetadataRoute.Sitemap = papers
+    .filter((p) => !p.hidden)
+    .map((paper) => ({
+      url: `${baseUrl}/papers/${paper.slug}`,
+      lastModified: new Date(paper.publishedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+
+  return [
+    ...mainPages,
+    ...servicePages,
+    ...legalPages,
+    ...casePages,
+    ...blogIndex,
+    ...blogArticles,
+    ...paperPages,
+  ]
 }

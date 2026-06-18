@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   BlogPost,
   categoryLabels,
   formatDate,
 } from "@/lib/blog-data";
+import { BlogCover } from "@/components/blog/blog-cover";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -23,14 +23,8 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
     >
       <Link href={`/blog/${post.slug}`} className="group block">
         {/* Cover */}
-        <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5 bg-gray-100 border border-gray-200">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+        <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-5 border border-gray-200 transition-transform duration-500 ease-out group-hover:scale-[1.02] group-hover:shadow-lg">
+          <BlogCover post={post} variant="card" />
         </div>
 
         {/* Meta */}

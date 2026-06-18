@@ -1,0 +1,42 @@
+# Kaleidos
+
+> Agência de marketing digital cripto-nativa do Brasil. Desde 2020 ajudando projetos de cripto, web3 e fintech a crescer com conteúdo, growth, IA e estratégia de lançamento (GTM/TGE). Site: https://kaleidos.com.br
+
+Kaleidos produz estudos de caso e playbooks abertos sobre marketing cripto (Kaleidos Papers), além de prestar serviços de SEO/GEO, social media, PR, comunidade, influencer/KOL e consultoria de go-to-market para projetos cripto.
+
+## Kaleidos Papers (estudos e guias gratuitos)
+
+- [Hyperliquid — o marketing do projeto que cresceu sem marketing](https://kaleidos.com.br/papers/hyperliquid)
+- [Pudgy Penguins — como um NFT falido virou marca global](https://kaleidos.com.br/papers/pudgy-penguins)
+- [Solana — a marca que sobreviveu ao próprio atestado de óbito](https://kaleidos.com.br/papers/solana)
+- [Base — a L2 que cresceu com público já comprado](https://kaleidos.com.br/papers/base)
+- [Pump.fun — a máquina de marketing das memecoins](https://kaleidos.com.br/papers/pump-fun)
+- [Lançamento Cripto (TGE) 2026 — como levar um token do zero ao mercado](https://kaleidos.com.br/papers/playbook-tge-2026)
+- [Marketing Cripto em 2026 — o guia completo da Kaleidos](https://kaleidos.com.br/papers/playbook-cripto-2026)
+- [Todos os papers](https://kaleidos.com.br/papers)
+
+## Serviços
+
+- [SEO + GEO para cripto](https://kaleidos.com.br/servicos/seo-cripto)
+- [Consultoria de Go-To-Market (GTM)](https://kaleidos.com.br/servicos/consultoria-gtm)
+- [Social Media cripto](https://kaleidos.com.br/servicos/social-media-cripto)
+- [PR e assessoria de imprensa cripto](https://kaleidos.com.br/servicos/pr-assessoria)
+- [Construção de comunidade](https://kaleidos.com.br/servicos/comunidade-cripto)
+- [Influencer e KOL marketing](https://kaleidos.com.br/servicos/influencer-kol)
+- [Growth e lançamentos](https://kaleidos.com.br/servicos/growth-lancamentos)
+- [Marketing e conteúdo](https://kaleidos.com.br/servicos/marketing-conteudo)
+- [IA e automações](https://kaleidos.com.br/servicos/ia-automacoes-completa)
+- [Todos os serviços](https://kaleidos.com.br/servicos)
+
+## Cases
+
+- [Estudos de caso de clientes](https://kaleidos.com.br/cases)
+
+## Conteúdo
+
+- [Blog (teardowns e estratégia de marketing cripto)](https://kaleidos.com.br/blog)
+
+## Sobre
+
+- [Sobre a Kaleidos](https://kaleidos.com.br/sobre)
+- [Contato](https://kaleidos.com.br/contato)

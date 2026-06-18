@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYPERLIQUID — O marketing do projeto que cresceu sem marketing · Kaleidos Paper Vol. 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+<style>
+:root{
+  --cream:#F4F1EC;
+  --cream-2:#EDE8DF;
+  --paper:#FBF9F4;
+  --ink:#111111;
+  --ink-soft:#3A352E;
+  --ink-mute:#6B655B;
+  --line:#D8D1C4;
+  --pink:#d262b2;
+  --pink-soft:#f3d9ec;
+  --pink-deep:#a8418a;
+  --olive:#8A8A4A;
+  --orange:#D98841;
+  --green:#7CF067;
+  --dark:#111111;
+  --shadow:0 10px 30px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.05);
+  --shadow-card:0 1px 2.5px rgba(17,17,17,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:#cfc8ba;
+  font-size:10.5pt;
+  line-height:1.55;
+}
+@page{ size:A4; margin:0; }
+
+/* compact: tighten vertical rhythm on content-dense pages */
+.page.compact .pad{ padding-top:14mm; padding-bottom:12mm; }
+.page.compact .jog-head{ margin-bottom:10px; }
+.page.compact .prose p{ font-size:9.5pt; line-height:1.5; margin-bottom:7px; }
+.page.compact .blk p{ font-size:9pt; line-height:1.46; }
+.page.compact .stat-strip{ margin:9px 0; }
+.page.compact .tweet{ margin:8px 0; padding:13px 16px; }
+.page.compact .bigquote{ padding:14px 18px; }
+.page.compact .bigquote .q{ font-size:12.5pt; }
+
+/* ---------- PAGE SHELL ---------- */
+.page{
+  position:relative;
+  width:210mm;
+  min-height:297mm;
+  background:var(--cream);
+  margin:0 auto;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex;
+  flex-direction:column;
+}
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:16mm 18mm 14mm; flex:1; display:flex; flex-direction:column; }
+
+/* running header / footer */
+.rhead{
+  position:absolute; top:10mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Fraunces',serif; font-size:8pt; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--ink-mute);
+}
+.rhead .dash{ flex:1; height:1px; background:var(--line); margin:0 12px; }
+.rhead .sec{ color:var(--pink-deep); }
+.rfoot{
+  position:absolute; bottom:9mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.08em;
+  color:var(--ink-mute); text-transform:uppercase;
+}
+.rfoot .pg{ font-weight:600; color:var(--ink-soft); }
+
+/* ---------- TYPO ---------- */
+h1,h2,h3,h4{ font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.06; letter-spacing:-.01em;}
+.kicker{
+  font-family:'IBM Plex Mono',monospace; font-size:8pt; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--pink-deep);
+  margin-bottom:14px; display:inline-block;
+}
+.section-title{ position:relative; display:inline-block; }
+.section-title .dot{
+  position:absolute; left:-14px; top:50%; width:60px; height:60px; border-radius:50%;
+  transform:translate(-50%,-50%); z-index:0; background:var(--pink-soft);
+}
+.section-title h2{ position:relative; z-index:1; }
+p{ margin-bottom:11px; color:var(--ink-soft); }
+p:last-child{ margin-bottom:0; }
+strong{ color:var(--ink); font-weight:700; }
+em{ font-style:italic; }
+.lead{ font-size:11.5pt; color:var(--ink-soft); }
+.muted{ color:var(--ink-mute); }
+.mono{ font-family:'IBM Plex Mono',monospace; }
+.hl{ background:linear-gradient(transparent 58%, var(--pink-soft) 58%); padding:0 1px; }
+.kale-mark{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:.04em; font-size:13pt; }
+.kale-mark .k{ color:var(--pink); }
+
+/* lead-in label inside paragraphs */
+.lin{ color:var(--ink); font-weight:700; }
+
+/* ---------- COVER (Capa A — Hypurr Editorial) ---------- */
+.cover{
+  --c-dark:#0d1f1a; --c-dark2:#102a23; --c-mint:#97FCE4;
+  color:var(--cream); padding:20mm 18mm 16mm;
+  background:radial-gradient(120% 80% at 50% -10%, #14342b 0%, #0d1f1a 55%, #081512 100%);
+}
+.cover .cgrid{ position:absolute; inset:0; opacity:.05; z-index:0;
+  background-image:linear-gradient(var(--c-mint) 1px, transparent 1px), linear-gradient(90deg, var(--c-mint) 1px, transparent 1px);
+  background-size:26px 26px; }
+.cover .ctop{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; }
+.cover .ctop .cseal{ font-family:'Fraunces',serif; font-weight:600; font-size:15pt; letter-spacing:.04em; color:var(--cream); }
+.cover .ctop .cseal .cdot{ color:var(--pink); }
+.cover .ctop .cvol{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.28em; text-transform:uppercase; color:var(--c-mint); }
+.cover .cstage{ position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; margin:6mm 0; }
+.cover .medallion{ position:relative; width:118mm; height:118mm; }
+.cover .offset{ position:absolute; width:108mm; height:108mm; border-radius:50%; left:14mm; top:8mm;
+  background:var(--pink); opacity:.92; box-shadow:0 30px 70px rgba(0,0,0,.45); }
+.cover .ring{ position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 42% 34%, #3f7d6c 0%, #2c6153 48%, #1c4639 100%);
+  border:2.5px solid rgba(151,252,228,.7);
+  box-shadow:inset 0 0 50px rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.5); overflow:hidden; }
+.cover .ring::after{ content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow:inset 0 0 0 9mm rgba(151,252,228,.08); }
+.cover .ring img{ position:absolute; width:94%; left:50%; top:55%; transform:translate(-50%,-50%); filter:drop-shadow(0 14px 26px rgba(0,0,0,.55)); }
+.cover .chip{ position:absolute; z-index:4; right:6mm; top:8mm; width:18mm; height:18mm; border-radius:50%;
+  background:var(--c-mint); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.4); }
+.cover .chip svg{ width:11mm; height:11mm; }
+.cover .ctitle{ position:relative; z-index:3; }
+.cover .ckicker{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--c-mint); margin-bottom:8px; }
+.cover h1{ font-family:'Fraunces',serif; font-weight:700; font-size:54pt; line-height:.92; letter-spacing:-.01em; color:var(--cream); margin:0; }
+.cover h1 .pin{ color:var(--pink); }
+.cover .csub{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:17pt; line-height:1.32; color:#cfe9e0; margin-top:14px; max-width:150mm; }
+.cover .cfootrow{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; padding-top:12px; border-top:1px solid rgba(151,252,228,.22); }
+.cover .cfootrow .obj{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:#8fb6ab; line-height:1.5; }
+.cover .cfootrow .nums{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.06em; color:var(--c-mint); text-align:right; }
+
+/* ---------- INTRO ---------- */
+.letter{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:32px 38px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column;}
+.letter p{ font-size:11pt; color:var(--ink-soft); line-height:1.62;}
+.letter .dropcap::first-letter{
+  font-family:'Fraunces',serif; font-weight:700; color:var(--pink);
+  font-size:52pt; line-height:.78; float:left; margin:6px 12px 0 0;
+}
+.sig{ margin-top:auto; padding-top:22px; }
+.sig .name{ font-family:'Fraunces',serif; font-style:italic; font-size:21pt; color:var(--ink); }
+.sig .role{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px;}
+.sig-pfp{ width:58px; height:58px; border-radius:50%; overflow:hidden; flex:none; border:2px solid var(--pink); box-shadow:var(--shadow-card); }
+.sig-pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+.meta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
+.meta-chip{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:13px 18px; flex:1; min-width:150px; box-shadow:var(--shadow-card); }
+.meta-chip .lbl{ font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; color:var(--pink-deep); }
+.meta-chip .val{ font-family:'Fraunces',serif; font-size:13pt; margin-top:5px; color:var(--ink); }
+
+/* ---------- OVERVIEW big numbers ---------- */
+.bn-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+.bn{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 20px 18px; box-shadow:var(--shadow-card); overflow:hidden; }
+.bn::before{ content:""; position:absolute; right:-26px; top:-26px; width:80px; height:80px; border-radius:50%; background:var(--pink-soft); opacity:.7;}
+.bn .fig{ position:relative; font-family:'Fraunces',serif; font-weight:700; font-size:29pt; line-height:1; color:var(--ink); letter-spacing:-.02em;}
+.bn .fig .unit{ font-size:14pt; color:var(--pink-deep); }
+.bn .cap{ position:relative; font-size:9pt; color:var(--ink-soft); margin-top:9px; line-height:1.4;}
+.bn.wide{ grid-column:1 / -1; }
+.bn.dark{ background:var(--dark); border-color:var(--dark); }
+.bn.dark .fig,.bn.dark .cap{ color:#F4F1EC;}
+.bn.dark::before{ background:rgba(210,98,178,.28);}
+.bn.dark .fig .unit{ color:var(--pink);}
+.bn.dark strong{ color:#fff; }
+
+/* ---------- CHART ---------- */
+.chart-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 14px; box-shadow:var(--shadow-card); margin-top:4px; }
+.chart-card .ct{ font-family:'Fraunces',serif; font-size:13pt; color:var(--ink); margin-bottom:2px;}
+.chart-card .cs{ font-size:8.5pt; color:var(--ink-mute); margin-bottom:12px;}
+.chart-box{ position:relative; width:100%; }
+.chart-src{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:10px; letter-spacing:.02em; text-align:right;}
+.annot{ display:inline-block; background:var(--pink); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:7.5pt; font-weight:600; padding:3px 9px; border-radius:20px; letter-spacing:.05em;}
+
+/* ---------- SECTION / JOGADA HEAD ---------- */
+.jog-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:14px; }
+.jog-num{ font-family:'Fraunces',serif; font-weight:700; font-size:54pt; line-height:.82; color:var(--pink); letter-spacing:-.03em; flex:none;}
+.jog-head .ttl .kk{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:5px;}
+.jog-head .ttl h3{ font-size:23pt; line-height:1.04;}
+.jog-resumo{ font-family:'Fraunces',serif; font-style:italic; font-size:11.5pt; color:var(--ink-mute); margin-top:6px; line-height:1.3;}
+
+/* two-col body w/ opening art */
+.jog-grid{ display:grid; grid-template-columns:1.05fr 1.55fr; gap:20px; align-items:start; }
+.jog-art{ border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); border:1px solid var(--line); background:var(--paper);}
+.jog-art img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover;}
+.jog-body .blk{ margin-bottom:12px;}
+.jog-body .blk:last-child{ margin-bottom:0;}
+.blk-lbl{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin-bottom:5px; display:flex; align-items:center; gap:7px;}
+.blk-lbl::before{ content:""; width:8px; height:8px; border-radius:50%; }
+.blk.fez .blk-lbl::before{ background:var(--pink);} .blk.fez .blk-lbl{ color:var(--pink-deep);}
+.blk.pq .blk-lbl::before{ background:var(--olive);}  .blk.pq .blk-lbl{ color:#6c6c34;}
+.blk.ev .blk-lbl::before{ background:var(--orange);}  .blk.ev .blk-lbl{ color:#b46a2a;}
+.blk p{ font-size:9.4pt; margin-bottom:5px; line-height:1.5;}
+
+/* full-width prose block */
+.prose p{ font-size:9.9pt; line-height:1.56; }
+.licao-tag{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--pink-deep); font-weight:600; border:1px dashed var(--pink); padding:3px 9px; border-radius:10px; display:inline-block; margin-top:8px;}
+
+/* quote */
+.bigquote{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--pink); border-radius:14px; padding:18px 22px; margin:10px 0; box-shadow:var(--shadow-card);}
+.bigquote .q{ font-family:'Fraunces',serif; font-style:italic; font-size:14pt; color:var(--ink); line-height:1.4;}
+.bigquote .by{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--ink-mute); margin-top:9px; text-transform:uppercase; letter-spacing:.1em;}
+
+/* stat strip */
+.stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0;}
+.stat{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow-card);}
+.stat .v{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--ink); line-height:1;}
+.stat .v .u{ font-size:9pt; color:var(--pink-deep);}
+.stat .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:5px; line-height:1.3;}
+
+/* ---------- TWEET CARD ---------- */
+.tweet{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:15px 18px; box-shadow:var(--shadow-card); margin:10px 0; }
+.tweet.dark{ background:#191919; border-color:#2c2c2c; }
+.tweet-top{ display:flex; align-items:center; gap:11px; margin-bottom:10px;}
+.tw-av{ width:42px; height:42px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.tw-av.mint{ background:#0b2e27;}
+.tw-av.mint img{ width:26px; height:26px;}
+.tw-av.ph{ background:#e7ddd0; color:var(--pink-deep); font-family:'Fraunces',serif; font-weight:700; font-size:16pt;}
+.tweet.dark .tw-av.ph{ background:#333; color:#bbb;}
+.tw-meta{ flex:1; min-width:0;}
+.tw-name{ font-weight:700; font-size:10pt; color:var(--ink); display:flex; align-items:center; gap:5px;}
+.tweet.dark .tw-name{ color:#fff;}
+.tw-name .vrf{ color:var(--pink); font-size:11pt; }
+.tw-handle{ font-family:'IBM Plex Mono',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-x{ font-family:'Fraunces',serif; font-weight:700; font-size:15pt; color:var(--ink-mute);}
+.tweet.dark .tw-x{ color:#777;}
+.tw-body{ font-family:'Inter',sans-serif; font-size:11pt; line-height:1.42; color:var(--ink); font-weight:500;}
+.tweet.dark .tw-body{ color:#F0E6D8;}
+.tw-body em{ font-style:normal; }
+.tw-media{ margin-top:11px; border-radius:12px; overflow:hidden; border:1px solid var(--line);}
+.tweet.dark .tw-media{ border-color:#2c2c2c;}
+.tw-media img{ width:100%; display:block; max-height:175px; object-fit:cover; object-position:top;}
+.tw-stats{ display:flex; gap:16px; margin-top:11px; padding-top:10px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:8pt; color:var(--ink-mute);}
+.tweet.dark .tw-stats{ border-top-color:#2c2c2c; color:#9a9388;}
+.tw-stats b{ color:var(--ink); font-weight:600;}
+.tweet.dark .tw-stats b{ color:#e7ddd0;}
+.tw-stats .date{ margin-left:auto;}
+
+/* ---------- FIGURE ---------- */
+.figure{ border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card); background:#0b1310;}
+.figure.light{ background:var(--paper);}
+.figure img{ width:100%; display:block; max-height:240px; object-fit:cover; object-position:top;}
+/* tall full-width screenshots: clamp height so they never blow past A4 */
+.figure.tall img{ max-height:300px; object-fit:cover; object-position:top;}
+.figure.crop-sm img{ max-height:150px; object-fit:cover; object-position:top;}
+.fig-cap{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:6px; line-height:1.4;}
+.fig-cap b{ color:var(--ink-soft);}
+
+/* hypurr pose grid */
+.hypurr-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.hypurr-grid .hp{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:12px; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:var(--shadow-card);}
+.hypurr-grid .hp img{ width:82%; height:82%; object-fit:contain; }
+.hypurr-grid .hp .hpl{ position:absolute; bottom:5px; left:50%; transform:translateX(-50%); font-family:'IBM Plex Mono',monospace; font-size:6.2pt; letter-spacing:.06em; color:var(--ink-mute); background:rgba(251,249,244,.85); padding:1px 6px; border-radius:8px; text-transform:lowercase;}
+
+/* headlines strip */
+.headlines{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.headlines .figure img{ aspect-ratio:4/3; object-fit:cover; background:#fff;}
+
+/* founder grid */
+.founder-grid{ display:grid; grid-template-columns:0.85fr 1.4fr; gap:18px; align-items:start;}
+.founder-portrait{ border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card);}
+.founder-portrait img{ width:100%; display:block; aspect-ratio:4/5; object-fit:cover;}
+.stat-float{ display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+.stat-float .sf{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow-card);}
+.stat-float .sf .v{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--pink-deep); line-height:1;}
+.stat-float .sf .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:4px; line-height:1.3;}
+
+/* timeline (seasons / mono) */
+.tline{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.tline .tl{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:13px 14px; box-shadow:var(--shadow-card);}
+.tline .tl .tk{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.12em; text-transform:uppercase;}
+.tline .tl .tv{ font-family:'Fraunces',serif; font-weight:700; font-size:13pt; color:var(--ink); margin-top:5px; line-height:1;}
+.tline .tl .td{ font-size:8pt; color:var(--ink-mute); margin-top:5px; line-height:1.35;}
+
+/* full timeline rail */
+.rail{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:10px;}
+.rail .rc{ background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:11px 12px;}
+.rail .rc.hot{ border-color:var(--pink); background:var(--pink-soft);}
+.rail .rc .rk{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.1em;}
+.rail .rc .rt{ font-size:8.4pt; color:var(--ink-soft); margin-top:5px; line-height:1.35;}
+.rail .rc .rt b{ color:var(--ink);}
+
+/* competitor icons */
+.competitor-icons{ display:flex; gap:8px; align-items:center; margin-top:10px; flex-wrap:wrap;}
+.competitor-icons img{ width:22px; height:22px; border-radius:5px; object-fit:cover;}
+.competitor-icons .lbl{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); text-transform:uppercase; letter-spacing:.1em;}
+
+/* ---------- JELLY dark ---------- */
+.dark-page{ background:var(--dark); color:#E7E1D6;}
+.dark-page .pad{ color:#D8D1C4;}
+.dark-page .rhead,.dark-page .rfoot{ color:#7d766b;}
+.dark-page .rhead .dash{ background:#332f29;}
+.dark-page .rhead .sec{ color:var(--pink);}
+.dark-page .rfoot .pg{ color:#b8b0a4;}
+.dark-page .kicker{ color:var(--pink);}
+.dark-page h2,.dark-page h3{ color:#fff;}
+.dark-page p{ color:#C9C2B6;}
+.dark-page strong{ color:#fff;}
+.dark-page .section-title .dot{ background:rgba(210,98,178,.3);}
+.dark-page .jog-num{ color:var(--pink);}
+.dark-page .jog-head .ttl .kk{ color:#8d857a;}
+.dark-page .blk p{ color:#C9C2B6;}
+.crit-card{ background:#191919; border:1px solid #2c2c2c; border-left:3px solid var(--pink); border-radius:14px; padding:16px 20px; margin:11px 0;}
+.crit-card .who{ display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+.crit-card .who .av{ width:38px; height:38px; border-radius:50%; background:#333; color:#aaa; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:15pt; flex:none;}
+.crit-card .who .nm{ font-weight:700; color:#fff; font-size:10pt;}
+.crit-card .who .rl{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:#8d857a; text-transform:uppercase; letter-spacing:.1em;}
+.crit-card .quote{ font-family:'Fraunces',serif; font-style:italic; font-size:13.5pt; color:#F0E6D8; line-height:1.4;}
+.mono-card{ background:#191919; border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin:11px 0;}
+.mono-card .mch{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--pink); letter-spacing:.16em; text-transform:uppercase; margin-bottom:11px;}
+.mono-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px;}
+.mono-steps .ms{ background:#111; border:1px solid #2c2c2c; border-radius:10px; padding:11px;}
+.mono-steps .ms .n{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink);}
+.mono-steps .ms .t{ font-size:8.4pt; color:#D8D1C4; margin-top:5px; line-height:1.35;}
+
+/* ---------- NUMBERS panel ---------- */
+.panel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;}
+.panel-grid .chart-card.span{ grid-column:1 / -1;}
+
+/* ---------- AUTHORITY / RESEARCH ---------- */
+.auth-grid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:6px;}
+.auth{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow-card); position:relative; overflow:hidden;}
+.auth::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--pink);}
+.auth .src{ font-family:'Fraunces',serif; font-weight:700; font-size:12.5pt; color:var(--ink); line-height:1.05;}
+.auth .src .tag{ font-family:'IBM Plex Mono',monospace; font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase; color:var(--pink-deep); display:block; margin-bottom:4px;}
+.auth .th{ font-size:8.7pt; color:var(--ink-soft); margin-top:7px; line-height:1.46;}
+.auth .th b{ color:var(--ink);}
+.auth.acc{ background:var(--dark); border-color:var(--dark);}
+.auth.acc::before{ background:var(--green);}
+.auth.acc .src,.auth.acc .th{ color:#F4F1EC;}
+.auth.acc .src .tag{ color:var(--green);}
+.auth.acc .th b{ color:#fff;}
+.auth.acc .th em{ color:var(--green); font-style:normal; font-weight:600;}
+
+/* ---------- LIÇÕES ---------- */
+.take{ display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
+.take:last-child{ border-bottom:none;}
+.take .tn{ font-family:'Fraunces',serif; font-weight:700; font-size:21pt; color:var(--pink); line-height:1; min-width:32px;}
+.take .tb b{ font-family:'Inter'; font-size:10.5pt; color:var(--ink); display:block; margin-bottom:2px;}
+.take .tb p{ font-size:9.2pt; margin:0; color:var(--ink-soft);}
+
+/* ---------- LEGAL / backcover ---------- */
+.legal{ background:var(--dark); color:#C9C2B6;}
+.legal .pad{ color:#B9B2A6;}
+.legal .rhead,.legal .rfoot{ color:#6d665c;}
+.legal .rhead .dash{ background:#2c2820;}
+.legal .rhead .sec{ color:var(--pink);}
+.legal h2{ color:#fff;}
+.legal .kicker{ color:var(--pink);}
+.legal p{ color:#A89F90; font-size:8.6pt; line-height:1.6;}
+.legal .src-list{ columns:2; column-gap:26px; margin-top:10px;}
+.legal .src-list li{ font-family:'IBM Plex Mono',monospace; font-size:7.4pt; color:#9a9388; list-style:none; padding:5px 0; border-bottom:1px solid #242424; line-height:1.4; break-inside:avoid;}
+.legal .src-list li b{ color:#cfc8ba;}
+.legal .disc{ border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin-top:14px; background:#181818;}
+.backcover{ background:var(--pink); color:#1a1a1a; display:flex; align-items:center; justify-content:center; text-align:center;}
+.backcover .bc-inner{ z-index:2;}
+.backcover .bc-mark{ font-family:'Fraunces',serif; font-weight:600; font-size:34pt; letter-spacing:.02em; color:#1a1a1a;}
+.backcover .bc-seal{ font-family:'IBM Plex Mono',monospace; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; margin-top:14px; color:#5a1f49;}
+.backcover .bc-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:#5a1f49; margin-bottom:18px;}
+.backcover .bc-tag{ font-family:'Fraunces',serif; font-style:italic; font-size:14pt; margin-top:26px; max-width:420px; color:#2a0f22; line-height:1.4;}
+.backcover .bc-foot{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.06em; color:#5a1f49; margin-top:20px; max-width:380px; line-height:1.5;}
+
+/* print / screen */
+@media print{
+  body{ background:#fff; }
+  .page{ margin:0; box-shadow:none; }
+  .chart-box canvas{ max-width:100%; }
+}
+@media screen{
+  .page{ margin:14px auto; box-shadow:0 18px 50px rgba(0,0,0,.28);}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁG 1 — CAPA (Hypurr Editorial) ============================ -->
+<section class="page cover">
+  <div class="cgrid"></div>
+  <div class="ctop">
+    <span class="cseal">Kaleidos <span class="cdot">·</span> <span style="font-size:8pt; letter-spacing:.18em; text-transform:uppercase; font-family:'IBM Plex Mono',monospace; color:var(--c-mint);">Agência Cripto-Nativa</span></span>
+    <span class="cvol">Vol. 01 — Estudo de Caso</span>
+  </div>
+
+  <div class="cstage">
+    <div class="medallion">
+      <div class="offset"></div>
+      <div class="ring">
+        <img src="assets/pulled/hypurr-mascot-throne.png" alt="Hypurr no trono">
+      </div>
+      <div class="chip">
+        <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg"><path d="M144 71.6991C144 119.306 114.866 134.582 99.5156 120.98C86.8804 109.889 83.1211 86.4521 64.116 84.0456C39.9942 81.0113 37.9057 113.133 22.0334 113.133C3.5504 113.133 0 86.2428 0 72.4315C0 58.3063 3.96809 39.0542 19.736 39.0542C38.1146 39.0542 39.1588 66.5722 62.132 65.1073C85.0007 63.5379 85.4184 34.8689 100.247 22.6271C113.195 12.0593 144 23.4641 144 71.6991Z" fill="#0d1f1a"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctitle">
+    <div class="ckicker">O objeto de estudo</div>
+    <h1>HYPERLIQUID<span class="pin">.</span></h1>
+    <p class="csub">O marketing do projeto que cresceu sem marketing.</p>
+  </div>
+
+  <div class="cfootrow">
+    <div class="obj">Lente: marketing &amp; growth<br>Sujeito: HYPE · Hyperliquid L1</div>
+    <div class="nums">$1,1B receita anual · 0 VC · 0 marketing</div>
+  </div>
+</section>
+
+<!-- ============================ PÁG 2 — INTRO ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Intro</span></div>
+  <div class="pad">
+    <span class="kicker">Kaleidos Paper · Vol. 01</span>
+    <div class="section-title" style="margin-bottom:18px;"><span class="dot"></span><h2 style="font-size:28pt;">O paradoxo de uma marca<br>que diz não fazer marketing.</h2></div>
+    <div class="letter">
+      <p class="dropcap">A Hyperliquid não tem departamento de marketing. Não tem KOL pago, não tem campanha, não tem agência. Mesmo assim, em pouco mais de um ano, virou uma das marcas mais fortes do cripto: a corretora descentralizada que tomou conta da conversa e do volume de um mercado inteiro.</p>
+      <p>Esse é o paradoxo que este paper destrincha. Porque "sem marketing" é uma meia verdade conveniente. O que a Hyperliquid fez foi mais difícil do que comprar tráfego: ela transformou o próprio produto em anúncio, o lançamento do token no maior ato de relações públicas da história do setor, e a comunidade no time de growth que nenhum orçamento compra. Cada decisão de engenharia, de tokenomics e de narrativa carregava uma função de marca. O marketing estava em todo lugar, só que invisível na forma de departamento.</p>
+      <p>Este não é um paper de teoria. É o estudo de um projeto real: a história, o produto, a economia e as jogadas concretas que a Hyperliquid fez, em ordem causal, com a prova de cada uma. A lente é marketing. O sujeito é a Hyperliquid.</p>
+      <p>Vamos olhar como um projeto de onze pessoas, sem um dólar de fundo de risco, construiu uma máquina de crescimento que se alimenta sozinha, e o que isso revela sobre o que marca de verdade significa em 2026.</p>
+      <div class="meta-row">
+        <div class="meta-chip"><div class="lbl">Tempo de leitura</div><div class="val">14 a 20 minutos</div></div>
+        <div class="meta-chip"><div class="lbl">Formato</div><div class="val">Breakdown · estudo de projeto</div></div>
+        <div class="meta-chip"><div class="lbl">Dados</div><div class="val">Fontes públicas · jun/2026</div></div>
+      </div>
+      <div class="sig" style="display:flex; align-items:center; gap:16px;">
+        <div class="sig-pfp"><img src="assets/pulled/gabriel-pfp.jpg" alt="Gabriel Madureira"></div>
+        <div>
+          <div class="name" style="font-size:18pt;">Gabriel Madureira</div>
+          <div class="role">Fundador · Kaleidos — agência cripto-nativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">02</span></div>
+</section>
+
+<!-- ============================ PÁG 3 — OVERVIEW ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Overview</span></div>
+  <div class="pad">
+    <span class="kicker">Overview · os números-choque</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:26pt;">Seis números que, juntos,<br>não deveriam coexistir.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:16px;">Antes do teardown, o retrato em seis dados. Cada um é desenvolvido nas jogadas a seguir, com a prova.</p>
+
+    <div class="bn-grid">
+      <div class="bn">
+        <div class="fig">~<span class="unit">US$</span>1,2<span class="unit"> bi</span></div>
+        <div class="cap"><strong>O maior airdrop da história.</strong> Em novembro de 2024, 31% do supply foi para os usuários. No pico, esse mesmo airdrop valeu uma fortuna, cada dólar indo direto pra quem usava o produto.</div>
+      </div>
+      <div class="bn">
+        <div class="fig"><span class="unit">US$</span>1,1<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Receita em 2025.</strong> 4º protocolo cripto por receita do ano, atrás só de Tether, TRON e Circle. À frente do Pump.fun.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">11<span class="unit"> pessoas</span></div>
+        <div class="cap"><strong>O time que construiu tudo.</strong> Começou com cerca de 11 (hoje ~14). A maior receita por funcionário do mundo saiu de um time menor que muita startup em pre-seed.</div>
+      </div>
+      <div class="bn dark">
+        <div class="fig">33–70<span class="unit">%</span></div>
+        <div class="cap"><strong>Market share entre perp DEXs.</strong> Conforme a metodologia, a Hyperliquid detém de ~33% a ~70% de todo o volume de perpétuos on-chain (DefiLlama, jun/2026). O 2º histórico, dYdX, faz cerca de um décimo do volume dela.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">Zero<span class="unit"> VC</span></div>
+        <div class="cap"><strong>Nenhum investidor privado.</strong> Recusou um aporte que avaliava o projeto em US$ 1 bilhão pra preservar a neutralidade. Bancado pelo lucro da firma de market making do fundador.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">Zero<span class="unit"> mkt</span></div>
+        <div class="cap"><strong>Nenhum departamento de marketing.</strong> Sem KOL pago, sem campanha, sem anúncio. E ainda assim, cobertura espontânea na Fortune, na CoinDesk e na Grayscale.</div>
+      </div>
+      <div class="bn wide" style="background:var(--dark); border-color:var(--dark);">
+        <div class="fig" style="color:#fff;">$6 <span class="unit">bi de TVL · zero captação externa</span></div>
+        <div class="cap" style="color:#E7E1D6;">A Hyperliquid chegou a $6 bilhões de TVL e 1,4 milhão de usuários sem levantar uma única rodada, sem listing fee e sem alocação para corretora. O resto do paper explica, jogada por jogada, como esses números nasceram um do outro.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">03</span></div>
+</section>
+
+<!-- ============================ PÁG 4 — O QUE É A HYPERLIQUID ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que é a Hyperliquid</span></div>
+  <div class="pad">
+    <span class="kicker">Contexto do projeto</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Antes do marketing,<br>o produto é o argumento.</h2></div>
+
+    <div class="jog-grid" style="grid-template-columns:1.5fr 1fr;">
+      <div class="prose">
+        <p><span class="lin">O básico: o que é um perp DEX.</span> "Perp" é contrato perpétuo, um derivativo que permite apostar na alta ou na baixa de um ativo com alavancagem, sem vencimento. É o instrumento mais negociado do cripto, historicamente domínio quase total das corretoras centralizadas (CEXs, como Binance e Bybit). Um "DEX" é uma corretora descentralizada: sem cadastro, sem intermediário custodiando o dinheiro, tudo em código aberto na blockchain. Juntar a liquidez de uma CEX com a autocustódia de um DEX era considerado quase impossível. Foi exatamente isso que a Hyperliquid resolveu.</p>
+        <p><span class="lin">O que a Hyperliquid é.</span> Uma corretora de perpétuos 100% on-chain, rodando numa blockchain própria (uma L1) construída sob medida. O motor de consenso, o HyperBFT, dá finalidade em torno de 0,2 segundo e processa até 200 mil ordens por segundo. O livro de ordens vive on-chain, não num servidor privado. São 300+ mercados, sem KYC, non-custodial, 24 horas por dia. A experiência é de clicar e operar, como numa CEX, mas você nunca abre mão das suas chaves.</p>
+        <p><span class="lin">O mercado em que ela joga.</span> De um lado, as CEXs gigantes, opacas, marcadas pelo trauma do colapso da FTX em 2022. Do outro, os DEXs antigos, descentralizados mas lentos, caros e de experiência ruim. A Hyperliquid se posicionou no vão entre os dois: a soberania do DeFi com a fluidez do CeFi.</p>
+        <p><span class="lin">Onde ela está hoje.</span> TVL de US$ 5,87 bilhões. Detém de ~33% a ~70% do volume de perpétuos on-chain conforme a metodologia (cerca de 57% entre os principais perp DEX, DefiLlama jun/2026). Em junho de 2026 chegou a superar a Ethereum em volume em alguns dias.</p>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screens/app-trade.png" alt="App Hyperliquid"></div>
+        <div class="fig-cap"><b>app.hyperliquid.xyz</b> — order book on-chain, candlestick e execução single-click. Fonte: Hyperliquid (2026).</div>
+        <div class="figure light" style="margin-top:12px;"><img src="assets/pulled/screens/coingecko-hype.png" alt="HYPE no CoinGecko"></div>
+        <div class="fig-cap"><b>HYPE / market cap</b> — onde o token está hoje. Fonte: CoinGecko (jun/2026).</div>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">A Hyperliquid não precisou <em>prometer</em> que era melhor. Ela só precisou existir, funcionar e deixar que cada trade fosse a prova. Quando o produto é bom o suficiente, a demonstração substitui a propaganda.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">04</span></div>
+</section>
+
+<!-- ============================ PÁG 5 — A ORIGEM ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A origem</span></div>
+  <div class="pad">
+    <span class="kicker">A decisão fundadora</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Tudo nasce de uma recusa.</h2></div>
+
+    <div class="founder-grid">
+      <div>
+        <div class="founder-portrait"><img src="assets/pulled/real/jeff-profile.png" alt="Perfil de Jeff Yan no X"></div>
+        <div class="fig-cap"><b>Jeff Yan (@chameleon_jeff)</b> — perfil real no X. Sem foto pessoal: o fundador usa a própria marca como avatar. Fonte: x.com/chameleon_jeff (2026).</div>
+        <div class="stat-float" style="margin-top:12px;">
+          <div class="sf"><div class="v">11</div><div class="l">pessoas no time inicial (~14 hoje)</div></div>
+          <div class="sf"><div class="v">$13bi+</div><div class="l">de market cap gerados por esse punhado de gente</div></div>
+        </div>
+      </div>
+      <div class="prose">
+        <p><span class="lin">Jeff Yan.</span> Nascido em Palo Alto, filho de imigrantes chineses. Medalhista da Olimpíada Internacional de Física (prata em 2012, ouro em 2013). Formado em matemática e ciência da computação por Harvard em 2017. Foi trader quantitativo na Hudson River Trading, onde microssegundos valem milhões. Em 2018, teve um projeto incubado pela Binance Labs que deu errado, algo que CZ, o fundador da Binance, faria questão de relembrar anos depois. Em seguida fundou a Chameleon Trading, firma de market-making em Porto Rico, e foi com o lucro dela que bancou a Hyperliquid.</p>
+        <p><span class="lin">O time.</span> Em 2022, Yan fundou a Hyperliquid Labs ao lado de um cofundador sob o pseudônimo iliensinc, colega de Harvard. Começou com 11 pessoas, recrutadas de Caltech, MIT, Citadel e da própria Hudson River. Engenheiros de elite, não profissionais de growth. Essa proporção, $13 bilhões de valor por um punhado de gente, viraria um dos ativos de marca mais memáveis do projeto.</p>
+        <p><span class="lin">A decisão que definiu tudo.</span> No início de 2024, fundos de venture capital ofereceram aporte avaliando a Hyperliquid em US$ 1 bilhão. Yan recusou. A lógica não era financeira, era de posicionamento: aceitar dinheiro de VC significaria dar alocação a insiders, e isso contaminaria a neutralidade que o projeto precisava ter.</p>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">"If we're going to build something that's really going to be a credibly neutral platform on which everyone else can build, then a really important principle is to sort of not have insiders."</div>
+      <div class="by">Jeff Yan · à Fortune</div>
+    </div>
+
+    <!-- CARD Tweet 9 — Jeff genesis -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av mint"><img src="assets/pulled/logo-official-symbol.svg" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Jeff Yan <span class="vrf">✦</span></div>
+          <div class="tw-handle">@chameleon_jeff · 30 nov 2024</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">It's inspiring to see tens of thousands of community members secure life-changing wealth as part of the Hyperliquid genesis event. Importantly, <em>none of these people were insiders.</em> Ownership goes to the believers and doers, not rent-seeking insiders.</div>
+      <div class="tw-stats"><span><b>5.6k</b> ❤</span><span><b>1.1k</b> ↺</span><span><b>909k</b> 👁</span><span class="date">@chameleon_jeff</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">05</span></div>
+</section>
+
+<!-- ============================ PÁG 6 — JOGADA 1 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 1</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">1</div>
+      <div class="ttl">
+        <div class="kk">Jogada 1 · a demanda antes do token</div>
+        <h3>Construir demanda<br>ANTES do token.</h3>
+        <div class="jog-resumo">Como criaram fila de espera sem prometer absolutamente nada.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><img src="assets/pulled/extra/brand/hypurr-pack-2/crystalball.png" alt="Hypurr com bola de cristal"></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>A Hyperliquid não lançou um token e depois saiu atrás de usuários. Fez o contrário. Em outubro de 2023 abriu um closed beta restrito, que acumulou 446 milhões de credits entre 11.500 usuários. Por cima, montou um programa de pontos: a Season 1 distribuía 1 milhão de pontos por semana, a Season 1.5 dobrou, a Season 2 rodava 700 mil. E ninguém nunca disse, oficialmente, quanto cada ponto valeria. O critério de conversão pontos→token foi mantido ambíguo de propósito.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>A ambiguidade não foi descuido, foi design. Ao não prometer preço nem alocação, a Hyperliquid filtrou o público errado: especulador que só quer farmar e dumpar não tem âncora numérica pra calcular ROI. A mecânica penalizava wash trading, blindando o snapshot. E criou uma espera psicológica sem promessa legal: as pessoas usavam o produto todo dia, na expectativa de um upside que existia só como possibilidade.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tline">
+      <div class="tl"><div class="tk">Out 2023</div><div class="tv">11.500</div><div class="td">usuários no closed beta · 446M de credits</div></div>
+      <div class="tl"><div class="tk">Season 1 → 1.5</div><div class="tv">1M → 2x</div><div class="td">pontos por semana, conversão indefinida</div></div>
+      <div class="tl"><div class="tk">Season 2</div><div class="tv">700k/sem</div><div class="td">demanda real medida em on-chain</div></div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> O snapshot do airdrop saiu direto dessa base de pontos. Os 11.500 do closed alpha e os usuários das Seasons formaram a população que, em novembro de 2024, recebeu 310 milhões de HYPE em cerca de 94 mil carteiras. Quando o token chegou, ele não precisou criar comunidade: a comunidade já estava lá, ativa e investida emocionalmente meses antes de qualquer preço existir.</p>
+      <span class="licao-tag">Lição → ambiguidade calibrada atrai quem fica; promessa numérica atrai quem some no 1º dump.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">06</span></div>
+</section>
+
+<!-- ============================ PÁG 7 — JOGADA 2 ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 2</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">2</div>
+      <div class="ttl">
+        <div class="kk">Jogada 2 · o airdrop como ato fundacional</div>
+        <h3>O airdrop como<br>o maior ato de marketing.</h3>
+        <div class="jog-resumo">31% do supply, ~94 mil carteiras, zero VC. O lançamento que virou press release global.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">O que eles fizeram.</span> Em 29 de novembro de 2024, a Hyperliquid distribuiu 31% do supply total, 310 milhões de HYPE, para aproximadamente 94 mil carteiras. Distribuição automática, sem claim manual, sem lockup, sem condições, sem vesting. Zero alocação pra VC, pra private investor, pra market maker pago, pra CEX. O time não pegou um único token: se quisesse HYPE, comprava no mercado ao mesmo preço de todo mundo. No dia, o token valia ~US$ 3,90, o que colocava o airdrop em ~US$ 1,2 bilhão de valor base (a Decrypt cita US$ 1,6 bi).</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">31<span class="u">%</span></div><div class="l">do supply pra usuários</div></div>
+      <div class="stat"><div class="v">~94<span class="u">k</span></div><div class="l">carteiras elegíveis</div></div>
+      <div class="stat"><div class="v">~US$45<span class="u">k</span></div><div class="l">média por carteira</div></div>
+      <div class="stat"><div class="v">$9,56<span class="u">M</span></div><div class="l">maior claim individual</div></div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+      <div class="jog-body">
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Um airdrop dessa escala dado a quem usa o produto é o press release mais convincente que dinheiro pode comprar, e a Hyperliquid não pagou por ele em mídia. Pagou em token, direto pro usuário, e deixou o usuário ser o canal. Cada carteira premiada virou um anúncio andante. Num mercado pós-FTX cansado de insiders saindo na frente, "ninguém saiu na frente de você" é uma mensagem que se propaga sozinha.</p>
+        </div>
+        <div class="blk ev">
+          <div class="blk-lbl">A evidência</div>
+          <p>O airdrop que, pela lógica de qualquer analista, deveria ter sido dumpado, não dumpou: o HYPE saiu de ~$4 e foi a ~$16 enquanto a pressão vendedora teórica era máxima. Dar o token pra quem usa não foi generosidade. Foi a campanha de aquisição mais barata e de mais alta conversão que o setor já viu.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Distribuição do supply</div>
+        <div class="cs">~70% pra comunidade (genesis + future) · zero VC</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_supply"></canvas></div>
+        <div class="chart-src">Fonte: tokenomist.ai · research §A</div>
+      </div>
+    </div>
+
+    <!-- CARD Tweet 13 -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av ph">d</div>
+        <div class="tw-meta">
+          <div class="tw-name">django</div>
+          <div class="tw-handle">@djangohl · 12 ago 2025</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Taking this moment to thank @chameleon_jeff and everyone on the @HyperliquidX team for their airdrop. <em>You guys changed my life.</em> Hyperliquid.</div>
+      <div class="tw-media"><img src="assets/pulled/tweet-media/djangohl_1955282430677455207_0.jpg" alt=""></div>
+      <div class="tw-stats"><span><b>138</b> ❤</span><span><b>1</b> ↺</span><span><b>6.6k</b> 👁</span><span class="date">prova social espontânea</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">07</span></div>
+</section>
+
+<!-- ============================ PÁG 8 — JOGADA 3 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 3</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">3</div>
+      <div class="ttl">
+        <div class="kk">Jogada 3 · product-led growth</div>
+        <h3>O produto é o anúncio.</h3>
+        <div class="jog-resumo">UX tipo-CEX com self-custody. A demonstração no lugar da promessa.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Um perp DEX 100% on-chain rodando numa L1 própria (HyperBFT), com finalidade de ~0,2 segundo, até 200 mil ordens por segundo, order book on-chain de verdade, zero gas por ordem e zero listing fee. Tudo com self-custody, sem KYC, 24/7. A experiência é de CEX, single-click, mas o usuário nunca larga a chave.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Em cripto, todo mundo promete. "Descentralizado", "rápido", "sem custódia" são palavras que perderam o significado. A Hyperliquid trocou a promessa pela demonstração. Você não precisa acreditar que é rápido: clica e sente os 0,2 segundos. O produto faz o argumento que o anúncio faria, sem o desconto de credibilidade que todo anúncio carrega. É product-led growth no sentido mais puro: o produto é a aquisição, a ativação e a retenção.</p>
+        </div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screens/app-trade.png" alt=""></div>
+        <div class="fig-cap"><b>Interface de trading</b> — latência e order book on-chain. Fonte: Hyperliquid (2026).</div>
+      </div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">"Our philosophy is simple: create a product that users genuinely like and are willing to use."</div>
+      <div class="by">Jeff Yan</div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> A prova mais cara de comprar veio de graça, num momento de pânico. No crash do BTC de $122k pra $102k, a Hyperliquid processou US$ 50 a 70 bilhões em volume sem nenhum downtime, enquanto corretoras centralizadas travavam. Nenhuma campanha consegue dizer "somos mais confiáveis que a Binance" com a força de um order book que não caiu durante uma liquidação em massa. O resultado composto: chegou a $6 bilhões de TVL e 1,4 milhão de usuários, tudo sem VC.</p>
+    </div>
+
+    <!-- CARD Tweet 2 -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av mint"><img src="assets/pulled/logo-official-symbol.svg" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Hyperliquid <span class="vrf">✦</span></div>
+          <div class="tw-handle">@HyperliquidX · 11 out 2025</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">During the recent market volatility, the Hyperliquid blockchain had <em>zero downtime or latency issues</em> despite record traffic and volumes. This was an important stress test proving that a fully onchain financial system can be robust and scalable.</div>
+      <div class="tw-stats"><span><b>9.6k</b> ❤</span><span><b>1.1k</b> ↺</span><span><b>1.3M</b> 👁</span><span class="date">o produto como prova</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">08</span></div>
+</section>
+
+<!-- ============================ PÁG 9 — JOGADA 4 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 4</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">4</div>
+      <div class="ttl">
+        <div class="kk">Jogada 4 · o flywheel econômico</div>
+        <h3>O buyback como marketing.</h3>
+        <div class="jog-resumo">~97% das fees recompram HYPE todo dia. "A corretora que devolve", provada on-chain.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><img src="assets/pulled/extra/brand/hypurr-pack-1/cash.png" alt="Hypurr cercado de dinheiro"></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>A Hyperliquid montou o Assistance Fund: cerca de 97% das fees do protocolo são usadas pra recomprar HYPE no mercado aberto, de forma automática e diária. Não é promessa de recompra futura, não é programa discricionário. É código rodando todo dia, comprando o próprio token com a receita real do negócio. A narrativa que sai disso é direta: "the exchange that gives back", a corretora que devolve.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Esse é o flywheel mais difícil de copiar da Hyperliquid: alinhamento que qualquer um audita on-chain. Qualquer projeto escreve "alinhamos os incentivos" no whitepaper. A Hyperliquid executou onde qualquer pessoa pode auditar cada compra. Quando o usuário enxerga que cada taxa que paga volta como pressão compradora no token que segura, o flywheel fecha: usar gera fee, fee gera buyback, buyback sustenta o preço, preço atrai mais usuário.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1fr 1fr; align-items:start; margin-top:6px;">
+      <div class="chart-card">
+        <div class="ct">Buyback acumulado de HYPE</div>
+        <div class="cs">US$ 716M em 2025 → &gt;US$ 1,3 bi acumulado em mai/2026</div>
+        <div class="chart-box" style="height:170px;"><canvas id="cv_buyback"></canvas></div>
+        <div class="chart-src">Fonte: crypto.news / DL News · research §A</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screens/defillama-protocol.png" alt=""></div>
+        <div class="fig-cap"><b>Prova on-chain do flywheel</b> — receita e fees reais do protocolo. Fonte: DefiLlama (2026).</div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:8px;">
+      <p><span class="lin">A evidência.</span> O acumulado em buyback passou de US$ 1,3 bilhão até maio de 2026, sendo US$ 716 milhões só em 2025. O Fund chegou a acumular ~28,5 milhões de HYPE, perto de 13% do circulante, com intensidade de recompra 4 a 5x mais intensa que ETH ou BNB. Há uma proposta (HIP-3) de queimar esses ~13%, mas é proposta, não foi executada. Mesmo sem o burn, o mecanismo já provou o ponto: "a corretora que devolve" não é frase de campanha, é fato auditável. E fato auditável converte mais que qualquer slogan.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">09</span></div>
+</section>
+
+<!-- ============================ PÁG 10 — JOGADA 5 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 5</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">5</div>
+      <div class="ttl">
+        <div class="kk">Jogada 5 · posicionamento por oposição</div>
+        <h3>Marca sem inimigo<br>é commodity.</h3>
+        <div class="jog-resumo">Anti-VC, anti-CEX, pós-FTX. O inimigo como combustível de identidade.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Hyperliquid fez</div>
+          <p>Em vez de se vender como "mais uma exchange melhor", a Hyperliquid se construiu contra alguém. Nasceu logo depois do colapso da FTX e fez disso a tese inteira: enquanto a corretora opaca guardava o dinheiro do usuário e quebrava com ele dentro, a Hyperliquid era on-chain, non-custodial, transparente por código. O posicionamento ficou cristalino num tweet da própria conta: três negações, três inimigos nomeados.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Marca forte precisa de um vilão claro. A Hyperliquid escolheu três: os insiders (VCs que pegam fatia no early e dumpam no varejo), os gatekeepers (o "departamento de listagem" que cobra pra deixar você existir) e as CEXs (Binance à frente). Quando você tem um inimigo definido, o usuário não compra só um produto, ele entra num lado. Vira identidade tribal: "eu sou Hyperliquid" passa a significar "eu não sou aquilo".</p>
+        </div>
+      </div>
+      <div>
+        <div class="chart-card">
+          <div class="ct">Hyperliquid vs Binance</div>
+          <div class="cs">% do volume da Binance · 5x em 6 meses</div>
+          <div class="chart-box" style="height:155px;"><canvas id="cv_vsbinance"></canvas></div>
+          <div class="chart-src">Fonte: FalconX / CoinDesk / The Block</div>
+        </div>
+        <div class="competitor-icons">
+          <span class="lbl">Resposta do CZ:</span>
+          <img src="assets/pulled/icon-aster-perps.png" alt="Aster">
+          <span class="lbl">Aster</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD Tweet 1 — official -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av mint"><img src="assets/pulled/logo-official-symbol.svg" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Hyperliquid <span class="vrf">✦</span></div>
+          <div class="tw-handle">@HyperliquidX · 15 out 2025</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">On Hyperliquid, there is <em>no listing fee, no listing department, and no gatekeepers.</em> Spot deployment is permissionless. Everything is transparent and verifiable onchain.</div>
+      <div class="tw-stats"><span><b>10.9k</b> ❤</span><span><b>1.4k</b> ↺</span><span><b>1.8M</b> 👁</span><span class="date">três inimigos nomeados</span></div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> O conflito não ficou na retórica. CZ, fundador da Binance, lançou a Aster como concorrente direta, validando que a Hyperliquid já era ameaça suficiente pra merecer resposta de um titã. E o histórico pessoal pesava: em 2018 o próprio CZ tinha exposto um projeto anterior falho de Yan no Binance Labs. A oposição, nesse caso, tinha CPF.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">10</span></div>
+</section>
+
+<!-- ============================ PÁG 11 — JOGADA 6 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 6</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">6</div>
+      <div class="ttl">
+        <div class="kk">Jogada 6 · a comunidade como growth</div>
+        <h3>A comunidade como<br>departamento de marketing.</h3>
+        <div class="jog-resumo">Memes, Hypurr, $JEFF/$BUDDY. O loop buzz → volume → buzz.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.05fr 1.4fr;">
+      <div>
+        <div class="hypurr-grid">
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-1/gm.png" alt="Hypurr gm"><span class="hpl">gm</span></div>
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-1/saiyan.png" alt="Hypurr saiyan"><span class="hpl">saiyan</span></div>
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-2/samurai.png" alt="Hypurr samurai"><span class="hpl">samurai</span></div>
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-2/hearteyes.png" alt="Hypurr hearteyes"><span class="hpl">hearteyes</span></div>
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-1/this is fine.png" alt="Hypurr this is fine"><span class="hpl">this is fine</span></div>
+          <div class="hp"><img src="assets/pulled/extra/brand/hypurr-pack-2/sherlock.png" alt="Hypurr sherlock"><span class="hpl">sherlock</span></div>
+        </div>
+        <div class="fig-cap"><b>Hypurr</b> — 6 de 40+ poses do brand kit oficial (GitBook), publicadas pra comunidade reusar à vontade. O mascote vira avatar de tribo na Crypto Twitter.</div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Hyperliquid fez</div>
+          <p>Não montou um time de marketing. Deixou a comunidade fazer o trabalho, e ela fez melhor. Em vez de campanha paga, cultivou um ecossistema de memes, NFTs e threads que se reproduzia sozinho: o mascote Hypurr (com brand kit aberto no GitBook), memecoins como $JEFF (homenagem ao fundador) e $BUDDY (auto-ironia degen do "alright buddy"), alpha no Discord e threads infinitas no Crypto Twitter.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Cada meme gerava buzz, o buzz trazia trader novo, o trader gerava volume, o volume virava manchete, a manchete gerava mais meme. Um loop fechado, buzz → volume → buzz, que se alimenta sem orçamento. Quando a sua base produz conteúdo melhor que o seu time pagaria pra produzir, marketing deixa de ser custo e vira efeito de rede.</p>
+        </div>
+        <div class="blk ev">
+          <div class="blk-lbl">A frase que virou tese</div>
+          <p>A Castle Labs resumiu num título: <em>"Hyperliquid is not a company, it's a movement."</em> Quando a marca é movimento, a própria base é o departamento de marketing, e ela não cobra hora.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">"We don't have a marketing department. I think our community does a great job, better than the marketing departments of all those centralized exchanges."</div>
+      <div class="by">Jeff Yan</div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> Até as desgraças viravam combustível. Quando Andrew Tate perdeu US$ 727 mil tradando na plataforma, a comunidade transformou o prejuízo em onda de memes que rodaram CT inteiro, PR orgânico que nenhuma assessoria conseguiria comprar. O incidente provou a regra: na Hyperliquid, qualquer evento, bom ou ruim, alimenta a máquina.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">11</span></div>
+</section>
+
+<!-- ============================ PÁG 11B — CULTURA COMO DISTRIBUIÇÃO ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 6 · aprofundamento</span></div>
+  <div class="pad">
+    <span class="kicker">A cultura virou o canal de aquisição</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Quando o meme<br>é a distribuição.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:14px;">A Hyperliquid não fez campanha. Fez algo mais difícil de copiar: um crachá de pertencimento que vale dinheiro, uma economia de memecoins-bandeira e uma base que escreve "Hyperliquid" no fim de cada post como se fosse assinatura de tribo.</p>
+
+    <!-- HYPURR NFT — o crachá que vale $58k -->
+    <div class="jog-grid" style="grid-template-columns:1.45fr 1fr; align-items:start;">
+      <div class="prose">
+        <p><span class="lin">O crachá que não dá direito a nada e vale ~$58 mil.</span> Em setembro de 2025, a Hyperliquid distribuiu a coleção <strong>Hypurr</strong>: 4.600 NFTs, sendo ~4.300 entregues aos usuários por airdrop on-chain automático, sem claim. O NFT <strong>não dá utilidade oficial, não promete retorno, não desbloqueia nada</strong>. É um crachá de "eu estava aqui no começo". Mesmo assim o piso ficou em ~$58 mil e o market cap da coleção passou de <strong>$300 milhões</strong>. A venda recorde, o Hypurr #21, saiu por ~$467 mil. A PANews cravou o enquadramento: é "um símbolo de identidade da comunidade de $60.000".</p>
+        <p><span class="lin">A leitura de marca.</span> É o teste mais limpo de força de marca que existe: tira a utilidade, tira a promessa de upside, e mede quanto a pessoa paga só pra sinalizar que pertence. A resposta foi ~$58 mil de piso. A comunidade paga, em dinheiro real, pelo direito de mostrar que é parte. Isso é marca pura, não produto.</p>
+      </div>
+      <div>
+        <div class="stat-strip" style="grid-template-columns:1fr 1fr; margin:0;">
+          <div class="stat"><div class="v">$300<span class="u">M+</span></div><div class="l">market cap da coleção Hypurr</div></div>
+          <div class="stat"><div class="v">~$58<span class="u">k</span></div><div class="l">piso do NFT (sem utilidade)</div></div>
+          <div class="stat"><div class="v">$467<span class="u">k</span></div><div class="l">venda recorde (Hypurr #21)</div></div>
+          <div class="stat"><div class="v">4.600</div><div class="l">NFTs · ~4.300 pros usuários</div></div>
+        </div>
+        <div class="bigquote" style="margin:10px 0 0; padding:13px 16px;">
+          <div class="q" style="font-size:11pt;">"hypurr is grateful for everyone who supported the hyperliquid eco. <em>looking forward to 2026! hyperliquid</em>"</div>
+          <div class="by">@Hypurr · a marca fala pelo mascote</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMECOINS como distribuição -->
+    <div style="margin-top:14px;">
+      <div class="blk-lbl pq" style="color:#6c6c34; margin-bottom:8px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--olive);display:inline-block;"></span> A economia de memecoins-bandeira</div>
+      <div class="stat-strip">
+        <div class="stat"><div class="v">$52,3<span class="u">M</span></div><div class="l"><b>PURR</b> · 1º spot listado, mascote nativo</div></div>
+        <div class="stat"><div class="v">$23,8<span class="u">M</span></div><div class="l"><b>$BUDDY</b> · "alright buddy", o memecoin-bandeira</div></div>
+        <div class="stat"><div class="v">$11,4<span class="u">M</span></div><div class="l"><b>HFUN</b> · Hypurr Fun, 30% pros holders de PURR</div></div>
+        <div class="stat"><div class="v">~$2<span class="u">M</span></div><div class="l"><b>$JEFF</b> · tributo da base ao fundador</div></div>
+      </div>
+      <p class="muted" style="font-size:8.4pt; margin-top:6px;">Market cap, snapshot jun/2026 (ordem de grandeza). Fonte: CoinMarketCap, FXEmpire, CoinGecko. $BUDDY nasceu de inside joke de CT e virou movimento; $JEFF foi criado pela comunidade, não pelo time, a base monumentalizou o fundador sozinha.</p>
+    </div>
+
+    <!-- 1 card de tweet de meme verbatim (o mais forte) -->
+    <div class="tweet" style="margin-top:12px;">
+      <div class="tweet-top">
+        <div class="tw-av ph">a</div>
+        <div class="tw-meta">
+          <div class="tw-name">alex hunter</div>
+          <div class="tw-handle">@alex_hunter20 · 10,3k seg</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Hey @cz_binance, you failed with the jelly attack. You failed to launch a decent DEX. But Hyperliquid is still alive and standing. <em>There is no second best. Hyperliquid.</em></div>
+      <div class="tw-stats"><span><b>993</b> ❤</span><span><b>76</b> ↺</span><span><b>246k</b> 👁</span><span class="date">energia de torcida</span></div>
+    </div>
+
+    <div class="bigquote" style="margin-top:12px;">
+      <div class="q">Produto forte + marca fraca = você compete em feature e preço. A Hyperliquid tem as duas. O produto domina o volume; a marca cria a tribo que faz o marketing de graça. É o oposto de uma CEX: uma exchange com alma de marca.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">11B</span></div>
+</section>
+
+<!-- ============================ PÁG 12 — JOGADA 7 ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 7</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">7</div>
+      <div class="ttl">
+        <div class="kk">Jogada 7 · o fundador anti-celebridade</div>
+        <h3>A mística da ausência.</h3>
+        <div class="jog-resumo">Jeff Yan low-profile, métricas memáveis, imprensa que veio sem PR.</div>
+      </div>
+    </div>
+
+    <div class="founder-grid">
+      <div>
+        <div class="founder-portrait"><img src="assets/pulled/extra/brand/hypurr-pack-2/meditation.png" alt="Hypurr meditando"></div>
+        <div class="fig-cap"><b>Hypurr · "meditation"</b> — sticker oficial do brand kit.</div>
+        <div class="stat-float" style="margin-top:12px;">
+          <div class="sf"><div class="v">$102,4M</div><div class="l">receita por funcionário (Q1/26), a maior do mundo</div></div>
+          <div class="sf"><div class="v">$0</div><div class="l">de captação externa</div></div>
+        </div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Hyperliquid fez</div>
+          <p>Construiu mística pela ausência. Jeff Yan raramente dá entrevistas, quase não aparece, e deixa o produto falar. Onde outros fundadores cripto vivem de holofote, Yan cultivou o oposto. E o que vazava eram métricas tão absurdas que se carregavam sozinhas: time de 11 pessoas, zero funding externo, $102,4 milhões de receita por funcionário, o airdrop que já vimos, volume que em alguns dias de junho de 2026 bateu o do Ethereum.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Métrica memável é distribuição embutida. "11 pessoas, zero captação, $102M por funcionário" é uma frase que jornalista, trader e investidor repetem sem precisar de press release, porque ela própria é a manchete. A escassez do fundador, somada à abundância dos números, criou um vácuo que a imprensa correu pra preencher.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:4px;">
+      <div class="q">"This sort of celebrity is foreign to me."</div>
+      <div class="by">Jeff Yan</div>
+    </div>
+
+    <div class="headlines" style="margin:8px 0;">
+      <div><div class="figure light"><img src="assets/pulled/screens/headline-fortune.png" alt="Fortune"></div><div class="fig-cap"><b>Fortune</b> — "11 people, no funding"</div></div>
+      <div><div class="figure light"><img src="assets/pulled/screens/headline-coindesk.png" alt="CoinDesk"></div><div class="fig-cap"><b>CoinDesk</b> — Most Influential 2025</div></div>
+      <div><div class="figure light"><img src="assets/pulled/screens/headline-grayscale.png" alt="Grayscale"></div><div class="fig-cap"><b>Grayscale</b> — "Breaks the Mold"</div></div>
+    </div>
+
+    <!-- CARD Tweet 12 — Grayscale -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av ph">G</div>
+        <div class="tw-meta">
+          <div class="tw-name">Grayscale <span class="vrf">✦</span></div>
+          <div class="tw-handle">@Grayscale · 27 mai 2026</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Grayscale Research: Hyperliquid is the breakout success story of modern digital assets. ↳ ~$800M in 2025 revenue · 8th largest crypto asset · <em>No VC backing</em> · Still geoblocked in the U.S.</div>
+      <div class="tw-stats"><span><b>1k</b> ❤</span><span><b>215</b> ↺</span><span><b>142k</b> 👁</span><span class="date">validação institucional</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">12</span></div>
+</section>
+
+<!-- ============================ PÁG 13 — JOGADA 8 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 8</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">8</div>
+      <div class="ttl">
+        <div class="kk">Jogada 8 · usuário vira construtor</div>
+        <h3>Transformar usuário<br>em construtor.</h3>
+        <div class="jog-resumo">HyperEVM, Builder Codes, HIP-3: 170+ projetos construindo em cima, fãs com fee-share.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Hyperliquid fez</div>
+          <p>Subiu o teto da participação. Não bastava usar a Hyperliquid, agora dava pra construir em cima dela e lucrar. A HyperEVM entrou em mainnet em fevereiro de 2025 e atraiu mais de 170 projetos. Os Builder Codes deixaram qualquer dev plugar a liquidez da Hyperliquid no próprio app. E o HIP-3, em mainnet desde outubro de 2025, deixou qualquer um lançar um perp DEX próprio (ações, FX, commodities) com stake de 500 mil HYPE e até 50% de fee-share. Esses mercados de terceiros já respondem por mais de 35% do volume.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Existe um teto pra lealdade de quem só consome. Não existe teto pra lealdade de quem é sócio. Ao dar fee-share e infraestrutura aberta, a Hyperliquid converteu fã em co-construtor com upside financeiro real. O bordão de Yan, "AWS of liquidity", captura a jogada: cada construtor novo é um vendedor novo, com incentivo direto pra trazer volume.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Market share entre perp DEX</div>
+        <div class="cs">~57% entre os principais (faixa 33–70% por metodologia)</div>
+        <div class="chart-box" style="height:185px;"><canvas id="cv_share"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama (jun/2026) · faixa 33–70%</div>
+      </div>
+    </div>
+
+    <div class="figure light crop-sm" style="margin-top:8px;"><img src="assets/pulled/screens/defillama-perps.png" alt="DefiLlama perps"></div>
+    <div class="fig-cap"><b>DefiLlama · Perps</b> — Hyperliquid em 1º lugar, ~45% do volume entre todos os perp DEX. A camada virou padrão de fato. Fonte: DefiLlama (2026).</div>
+
+    <div class="prose" style="margin-top:8px;">
+      <p><span class="lin">A evidência.</span> 170+ projetos na HyperEVM, mais de 35% do volume vindo de mercados deployados por terceiros via HIP-3, e validação institucional de peso: a Coinbase virou deployer oficial de USDC na rede em maio de 2026 e a OpenSea passou a rodar perps "powered by Hyperliquid".</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">13</span></div>
+</section>
+
+<!-- ============================ PÁG 14 — JELLY (dark) ============================ -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O teste de estresse</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num" style="font-size:44pt;">⚠</div>
+      <div class="ttl">
+        <div class="kk">O teste de estresse · gestão de crise</div>
+        <h3>JELLY: o dia em que<br>a tese quase caiu.</h3>
+        <div class="jog-resumo" style="color:#9a9388;">26 de março de 2025. Toda marca forte um dia leva um soco.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin" style="color:#fff;">O incidente.</span> Um atacante manipulou a liquidação do token JELLY de propósito, jogando a posição contra o cofre de market-making do protocolo, o HLP. Em pouco tempo, o vault carregava cerca de US$ 13,5 milhões de perda não realizada. O ataque não explorava um bug de código, explorava o próprio mecanismo de liquidação: era o desenho funcionando contra a casa.</p>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">G</div><div><div class="nm">Gracy Chen</div><div class="rl">CEO · Bitget</div></div></div>
+      <div class="quote">"immature, unethical, unprofessional" — alertou para o risco de a Hyperliquid virar uma "FTX 2.0".</div>
+    </div>
+    <div class="crit-card">
+      <div class="who"><div class="av">S</div><div><div class="nm">SmarDex</div><div class="rl">Protocolo · crítica pública</div></div></div>
+      <div class="quote">O episódio expunha uma "facade of decentralization", uma fachada de descentralização.</div>
+    </div>
+
+    <div class="mono-card">
+      <div class="mch">A resposta · curto-circuito em ~2 minutos</div>
+      <div class="mono-steps">
+        <div class="ms"><div class="n">01</div><div class="t">Validators formaram quórum em ~2 min, sem dissidência</div></div>
+        <div class="ms"><div class="n">02</div><div class="t">Override do oracle e delisting do JELLY</div></div>
+        <div class="ms"><div class="n">03</div><div class="t">Reembolso integral dos usuários afetados</div></div>
+        <div class="ms"><div class="n">04</div><div class="t">Depois: votação de delisting 100% on-chain</div></div>
+      </div>
+    </div>
+
+    <p style="font-size:9.4pt;"><span class="lin" style="color:#fff;">Gestão de crise como marketing.</span> A Hyperliquid não escondeu o episódio nem se defendeu na retórica. Pegou a crítica mais afiada, a de centralização, e a transformou em roadmap: implementou votação de delisting 100% on-chain, exatamente o mecanismo cuja ausência a SmarDex tinha apontado. "Nós erramos, ouvimos, e descentralizamos o ponto exato que vocês criticaram" é uma história de marca mais forte do que "nunca erramos". A honestidade virou o ativo.</p>
+
+    <!-- CARD Tweet 10 — Jeff JELLY -->
+    <div class="tweet dark">
+      <div class="tweet-top">
+        <div class="tw-av mint"><img src="assets/pulled/logo-official-symbol.svg" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Jeff Yan <span class="vrf">✦</span></div>
+          <div class="tw-handle">@chameleon_jeff · 11 out 2025</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Hyperliquid had <em>100% uptime with zero bad debt.</em> Solvency and uptime are the two most important properties of a financial system. Gaslighting to convince users otherwise is unethical and irresponsible.</div>
+      <div class="tw-stats"><span><b>5.4k</b> ❤</span><span><b>984</b> ↺</span><span><b>1.2M</b> 👁</span><span class="date">a resposta do fundador</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">14</span></div>
+</section>
+
+<!-- ============================ PÁG 15 — OS NÚMEROS (painel A) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:25pt;">A tese, em dados.</h2></div>
+
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">Preço do HYPE (USD)</div>
+        <div class="cs">$3,90 no lançamento → $75,51 (ATH, jun/26)</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_preco"></canvas></div>
+        <div class="chart-src">Fonte: CoinGecko / CoinMarketCap / CoinLore</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">TVL (US$ bi)</div>
+        <div class="cs">$0,56bi → pico $6bi → $5,87bi atual</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_tvl"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Volume perp mensal (US$ bi)</div>
+        <div class="cs">de $46bi (nov/24) a picos de ~$400bi</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_volume"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama / The Block</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Usuários (milhões)</div>
+        <div class="cs">~300k (fim 2024) → 1,4M (fim 2025), ~4x</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_usuarios"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama / Hyperliquid</div>
+      </div>
+    </div>
+
+    <div class="chart-card span" style="margin-top:14px;">
+      <div class="ct">Ranking de receita 2025 (US$ bi)</div>
+      <div class="cs">Hyperliquid = 4º protocolo cripto por receita, à frente do Pump.fun</div>
+      <div class="chart-box" style="height:130px;"><canvas id="cv_receita"></canvas></div>
+      <div class="chart-src">Fonte: research §B (VanEck / AMBCrypto)</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">15</span></div>
+</section>
+
+<!-- ============================ PÁG 16 — OS NÚMEROS (painel B + prints) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam · prova de terceiros</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:24pt;">Não é a Hyperliquid<br>dizendo. São os dashboards.</h2></div>
+
+    <div class="panel-grid" style="grid-template-columns:1fr 1fr;">
+      <div>
+        <div class="figure light"><img src="assets/pulled/screens/theblock-vs-binance.png" alt="The Block"></div>
+        <div class="fig-cap"><b>The Block</b> — volume mensal Hyperliquid (DEX) vs Binance (CEX). Fonte: The Block (2026).</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screens/artemis.png" alt="Artemis"></div>
+        <div class="fig-cap"><b>Artemis</b> — dashboard de terceiro com fundamentos e valuation. Fonte: Artemis (2026).</div>
+      </div>
+    </div>
+
+    <div class="figure light crop-sm" style="margin-top:10px;"><img src="assets/pulled/extra/screens/dune-hl-stats.png" alt="Dune Hyperliquid Stats"></div>
+    <div class="fig-cap"><b>Dune · Hyperliquid Stats</b> — <b>1.199.467 usuários</b> totais, 3.299 novos no dia e 3,53 milhões de trades acumulados. A curva de crescimento da comunidade, on-chain e auditável. Fonte: Dune / x3research (2026).</div>
+
+    <!-- CARD Tweet 8 — Jeff BTC liquidity -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av mint"><img src="assets/pulled/logo-official-symbol.svg" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Jeff Yan <span class="vrf">✦</span></div>
+          <div class="tw-handle">@chameleon_jeff · 26 jan 2026</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Hyperliquid has quietly achieved an important milestone of becoming the <em>most liquid venue for crypto price discovery in the world.</em> See below for a side by side of BTC perps on Binance (left) and Hyperliquid (right).</div>
+      <div class="tw-media"><img src="assets/pulled/tweet-media/chameleon_jeff_2015820241524379991_0.jpg" alt=""></div>
+      <div class="tw-stats"><span><b>6.2k</b> ❤</span><span><b>1k</b> ↺</span><span><b>1.3M</b> 👁</span><span class="date">order book BTC: Binance vs HL</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">16</span></div>
+</section>
+
+<!-- ============================ PÁG 16B — O QUE A PESQUISA SÉRIA DIZ ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que a pesquisa séria diz</span></div>
+  <div class="pad">
+    <span class="kicker">O lastro · não é opinião de agência</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">O que a pesquisa<br>séria diz.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:14px;">A tese deste paper, airdrop e comunidade como motor de crescimento, não é leitura nossa. É o consenso de research institucional e tem até validação acadêmica de peer-review.</p>
+
+    <div class="auth-grid">
+      <div class="auth">
+        <div class="src"><span class="tag">Grayscale Research</span>Breaks the Mold</div>
+        <div class="th">Chama a Hyperliquid de <b>"the breakout success story of modern digital assets"</b>: 1º projeto on-chain a tomar fatia material de volume e OI de perps das CEXs.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">VanEck</span>12,5x P/S</div>
+        <div class="th">Valuation comparável a exchanges (<b>12,5x P/S</b>, em linha com Coinbase), mas demanda do token <b>estruturalmente ligada ao uso</b> via buyback (&gt;97% das fees). Lançou um ETN de HYPE.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">Cantor Fitzgerald</span>Alvo $200B</div>
+        <div class="th">Relatório de 62 páginas: Hyperliquid como <b>"exchange of all exchanges"</b>, com caminho realista pra <b>$200 bilhões de market cap em 10 anos</b>.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">FalconX</span>Challenger</div>
+        <div class="th">Hyperliquid virando <b>challenger das exchanges tradicionais</b> e dos prediction markets, expandindo pra pre-IPO, contratos de previsão e RWA tokenizado.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">Messari</span>Lucro por funcionário</div>
+        <div class="th">Em recorte de 30d, <b>TRX + HYPE = 51% da receita</b> da amostra com só 4% do market cap combinado. Entre as empresas <b>mais lucrativas por funcionário</b> da história.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">Bankless</span>Community-led</div>
+        <div class="th">Caso-modelo de crescimento orgânico sem VC: <b>70% de todo o volume on-chain de perps</b> até mai/2025, e 4º em receita de toda a cripto em 2025 (&gt;$650M).</div>
+      </div>
+      <div class="auth acc" style="grid-column:1 / -1;">
+        <div class="src"><span class="tag">Acadêmico · peer-review</span>Makridis et al. — Journal of Corporate Finance (2023)</div>
+        <div class="th">"The Rise of Decentralized Cryptocurrency Exchanges": evidência empírica (2014–2021) de que DEXs que fizeram airdrop ganharam <em>+16,1% na taxa de crescimento de market cap</em> e <em>+7,3% na de transações</em> versus CEXs. É o paper que valida, na ciência, a jogada central da Hyperliquid: o airdrop como motor de crescimento, não como custo.</div>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size:8.2pt; margin-top:12px;">Fontes: Grayscale Research, VanEck, Cantor Fitzgerald, FalconX (via CoinDesk), Messari, Bankless · Makridis, Fröwis, Sridhar & Böhme (2023), <i>Journal of Corporate Finance</i>, SSRN/ScienceDirect. Delphi Digital e OAK Research corroboram a tese de "perp DEX → venue financeiro on-chain amplo".</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">16B</span></div>
+</section>
+
+<!-- ============================ PÁG 17 — O QUE ISSO ENSINA ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que isso ensina</span></div>
+  <div class="pad">
+    <span class="kicker">O que isso ensina</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Sete jogadas transferíveis.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:12px;">A Hyperliquid não é replicável inteira: teve produto excepcional, timing pós-FTX e um fundador raro. Mas as jogadas por trás do crescimento servem pra qualquer marca, cripto ou não.</p>
+
+    <div>
+      <div class="take"><div class="tn">1</div><div class="tb"><b>Tenha um vilão nomeado.</b><p>Marca sem inimigo é commodity. Defina contra quem você existe e deixe explícito. O usuário não compra um produto, ele escolhe um lado, e lado vira identidade.</p></div></div>
+      <div class="take"><div class="tn">2</div><div class="tb"><b>Faça o produto ser o anúncio.</b><p>Antes de gastar em campanha, pergunte se o produto demonstra a promessa sozinho. Prova verificável vale mais que adjetivo.</p></div></div>
+      <div class="take"><div class="tn">3</div><div class="tb"><b>Transforme métrica em manchete.</b><p>Encontre o número absurdo e verdadeiro do seu negócio (receita por funcionário, tempo de resposta, % devolvido ao cliente) e construa a comunicação ao redor dele. Métrica memável se distribui sozinha.</p></div></div>
+      <div class="take"><div class="tn">4</div><div class="tb"><b>Deixe a comunidade fazer o marketing, e dê o que ela precisa.</b><p>Mascote, meme, NFT, alpha, espaço pra criar. Você não controla o loop buzz → volume → buzz, mas pode plantá-lo.</p></div></div>
+      <div class="take"><div class="tn">5</div><div class="tb"><b>Dê upside a quem te ajuda a crescer.</b><p>Converta fã em sócio. Fee-share, infraestrutura aberta, programa de construtor: cada terceiro alinhado vende por você por conta própria.</p></div></div>
+      <div class="take"><div class="tn">6</div><div class="tb"><b>Escassez do fundador também é marca.</b><p>Aparecer menos, com substância, pode valer mais que estar em todo lugar. Funciona só se houver número real por trás, ausência sem substância é só silêncio.</p></div></div>
+      <div class="take"><div class="tn">7</div><div class="tb"><b>Gerencie crise virando a crítica em upgrade.</b><p>Não esconda o erro nem se defenda na retórica. Pegue a acusação mais afiada e responda com produto. A honestidade no pior dia constrói mais confiança que dez bons dias sem sustos.</p></div></div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <span class="kicker" style="margin-bottom:8px;">Linha do tempo · nov/24 → jun/26</span>
+      <div class="rail">
+        <div class="rc"><div class="rk">Out 2023</div><div class="rt"><b>Closed beta</b> + programa de pontos</div></div>
+        <div class="rc hot"><div class="rk">Nov 2024</div><div class="rt"><b>Airdrop</b> 31% do supply</div></div>
+        <div class="rc"><div class="rk">Fev 2025</div><div class="rt"><b>HyperEVM</b> em mainnet</div></div>
+        <div class="rc"><div class="rk">Mar 2025</div><div class="rt"><b>JELLY</b> · teste de estresse</div></div>
+        <div class="rc"><div class="rk">Out 2025</div><div class="rt"><b>HIP-3</b> perps de terceiros</div></div>
+        <div class="rc"><div class="rk">Mai 2026</div><div class="rt"><b>Coinbase</b> deployer de USDC</div></div>
+        <div class="rc"><div class="rk">Jun 2026</div><div class="rt"><b>&gt; Ethereum</b> em volume</div></div>
+        <div class="rc hot"><div class="rk">Hoje</div><div class="rt"><b>$75,51</b> ATH do HYPE</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">17</span></div>
+</section>
+
+<!-- ============================ PÁG 18 — NA IMPRENSA ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Na imprensa</span></div>
+  <div class="pad">
+    <span class="kicker">Cobertura espontânea</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Manchete sem assessoria.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:14px;">Sem departamento de marketing e sem release pago, a Hyperliquid virou pauta dos maiores veículos cripto. Airdrop, buyback, research institucional e até a crise do JELLY: cada movimento foi coberto por jornalistas que correram pra preencher o vácuo dos números.</p>
+
+    <div class="headlines" style="grid-template-columns:1fr 1fr; gap:16px;">
+      <div><div class="figure light"><img src="assets/news/airdrop-decrypt.png" alt="Decrypt"></div><div class="fig-cap"><b>Decrypt</b> — "Hyperliquid Gives Out $1.6 Billion in One of the Largest Airdrops Ever". Nov/2024.</div></div>
+      <div><div class="figure light"><img src="assets/news/buyback-dlnews.png" alt="DL News"></div><div class="fig-cap"><b>DL News</b> — "Hyperliquid's token buyback machine just hit $1b, is it sustainable?". 2025.</div></div>
+      <div><div class="figure light"><img src="assets/news/grayscale-breaks-mold.png" alt="Grayscale"></div><div class="fig-cap"><b>Grayscale Research</b> — "Hyperliquid Breaks the Mold". 2025.</div></div>
+      <div><div class="figure light"><img src="assets/news/jelly-ftx2-cryptonews.png" alt="crypto.news"></div><div class="fig-cap"><b>crypto.news</b> — "Bitget CEO says Hyperliquid could become FTX 2.0 amid JELLY incident". Mar/2025.</div></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01</span><span class="pg">18</span></div>
+</section>
+
+<!-- ============================ PÁG 19 — FONTES (dark) ============================ -->
+<section class="page legal">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fontes</span></div>
+  <div class="pad">
+    <span class="kicker">Fontes &amp; metodologia</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot" style="background:rgba(210,98,178,.3)"></span><h2 style="font-size:24pt;">Tudo verificável.</h2></div>
+    <p>Todo número deste paper vem de fonte pública, datada de junho de 2026. Quando uma metodologia diverge (caso do market share, 33–70%), citamos a faixa, não o ponto. Tweets reproduzidos verbatim. Distribuição de supply, buyback e burn conforme tokenomist.ai e propostas de governança (HIP-3); o burn dos ~13% é proposta, não execução.</p>
+
+    <ul class="src-list">
+      <li><b>Preço/TVL/volume:</b> DefiLlama, CoinGecko, CoinMarketCap, CoinLore</li>
+      <li><b>Market share perp DEX:</b> DefiLlama · Perps (faixa 33–70%)</li>
+      <li><b>Receita 2025:</b> VanEck, AMBCrypto, Grayscale Research</li>
+      <li><b>Buyback / Assistance Fund:</b> crypto.news, DL News</li>
+      <li><b>Supply / tokenomics:</b> tokenomist.ai, OKX</li>
+      <li><b>Origem / fundador:</b> Fortune, CoinDesk Most Influential 2025</li>
+      <li><b>JELLY:</b> declarações verbatim de Bitget (Gracy Chen) e SmarDex</li>
+      <li><b>Tweets:</b> @HyperliquidX, @chameleon_jeff, @Grayscale, @djangohl (verbatim, jun/2026)</li>
+      <li><b>Produto / app:</b> app.hyperliquid.xyz, Artemis, The Block, Dune (x3research)</li>
+      <li><b>Comunidade / Hypurr:</b> hypurr.co, brand kit oficial (GitBook), Datawallet, PANews, CoinMarketCap Academy</li>
+      <li><b>Memecoins:</b> CoinMarketCap, CoinGecko, FXEmpire ($BUDDY/PURR/HFUN/$JEFF)</li>
+      <li><b>Research de autoridade:</b> Grayscale, VanEck, Cantor Fitzgerald, FalconX, Messari, Bankless, Delphi</li>
+      <li><b>Acadêmico:</b> Makridis et al. (2023), Journal of Corporate Finance · SSRN / ScienceDirect</li>
+      <li><b>Tweets de comunidade:</b> @Hypurr, @alex_hunter20, @alrightbuddyHL (verbatim)</li>
+    </ul>
+
+    <div class="disc">
+      <p style="font-size:8.4pt;">Este documento é um estudo editorial de marketing produzido pela Kaleidos. Não constitui recomendação de investimento, aconselhamento financeiro ou endosso ao token HYPE ou à Hyperliquid. Marcas, logos e tweets citados pertencem a seus respectivos donos e são reproduzidos sob uso editorial. Dados sujeitos a variação de mercado.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 01 · Hyperliquid</span><span class="pg">18</span></div>
+</section>
+
+<!-- ============================ PÁG 19 — CONTRACAPA (rosa) ============================ -->
+<section class="page backcover">
+  <div class="bc-inner">
+    <div class="bc-eyebrow">Kaleidos · Agência Cripto-Nativa</div>
+    <div class="bc-mark"><span style="font-style:italic;">K</span>aleidos</div>
+    <div class="bc-seal">Paper · Vol. 01 · Hyperliquid</div>
+    <div class="bc-tag">A agência de marketing nativa de cripto do Brasil. Growth, narrativa e conteúdo para projetos de cripto e web3 que querem construir marca de verdade, não só barulho.</div>
+    <div class="bc-foot">Este paper é uma amostra de como a gente pensa marketing on-chain.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof Chart === 'undefined' || !window.KaleidosCharts) return;
+  var KC = window.KaleidosCharts;
+  function mount(id, cfg){
+    var el = document.getElementById(id);
+    if (el && cfg) new Chart(el.getContext('2d'), JSON.parse(JSON.stringify(cfg)));
+  }
+  mount('cv_supply',    KC.chartSupply);
+  mount('cv_buyback',   KC.chartBuyback);
+  mount('cv_vsbinance', KC.chartVsBinance);
+  mount('cv_share',     KC.chartShare);
+  mount('cv_preco',     KC.chartPreco);
+  mount('cv_tvl',       KC.chartTVL);
+  mount('cv_volume',    KC.chartVolume);
+  mount('cv_usuarios',  KC.chartUsuarios);
+  mount('cv_receita',   KC.chartReceita);
+})();
+</script>
+</body>
+</html>

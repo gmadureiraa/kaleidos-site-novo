@@ -93,7 +93,7 @@ export default function KaleidosGrowthPage() {
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 font-display tracking-tight leading-tight">Kaleidos Growth</h1>
                   
                   <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-                    {locale==='en' ? 'Launches that go viral and sell like crazy. Organic growth strategies on social networks that turn products into phenomena.' : 'Lançamentos que viralizam e vendem como loucos. Estratégias de growth orgânico nas redes sociais que transformam produtos em fenômenos.'}
+                    {locale==='en' ? 'Launches that go viral and actually sell. Organic growth strategies on social that turn products into phenomena.' : 'Lançamentos que viralizam e vendem de verdade. Estratégias de growth orgânico nas redes que transformam produtos em fenômenos.'}
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -149,9 +149,9 @@ export default function KaleidosGrowthPage() {
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
                     {locale==='en' ? (
-                      <>We develop <strong>tailored launch strategies</strong> that turn products into sales phenomena. Our approach combines <strong>strategic planning</strong>, <strong>creatives that convert</strong> and <strong>smart automations</strong> to create launches that sell like crazy.</>
+                      <>We develop <strong>tailored launch strategies</strong> that turn products into sales phenomena. Our approach combines <strong>strategic planning</strong>, <strong>creatives that convert</strong> and <strong>smart automations</strong> to create launches that actually sell.</>
                     ) : (
-                      <>Desenvolvemos <strong>estratégias de lançamento personalizadas</strong> que transformam produtos em fenômenos de vendas. Nossa abordagem combina <strong>planejamento estratégico</strong>, <strong>criativos que convertem</strong> e <strong>automações inteligentes</strong> para criar lançamentos que vendem como loucos.</>
+                      <>Desenvolvemos <strong>estratégias de lançamento personalizadas</strong> que transformam produtos em fenômenos de vendas. Nossa abordagem combina <strong>planejamento estratégico</strong>, <strong>criativos que convertem</strong> e <strong>automações inteligentes</strong> para criar lançamentos que vendem de verdade.</>
                     )}
                   </p>
                 </div>
@@ -173,12 +173,12 @@ export default function KaleidosGrowthPage() {
                     <div className="text-sm text-gray-600">{locale==='en' ? 'Launches' : 'Lançamentos'}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-black mb-2">200%</div>
-                    <div className="text-sm text-gray-600">{locale==='en' ? 'Average increase' : 'Aumento médio'}</div>
+                    <div className="text-3xl font-bold text-black mb-2">30M+</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Views generated' : 'Views gerados'}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-black mb-2">98%</div>
-                    <div className="text-sm text-gray-600">{locale==='en' ? 'Success rate' : 'Taxa de sucesso'}</div>
+                    <div className="text-3xl font-bold text-black mb-2">Desde 2020</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'In crypto' : 'No mercado cripto'}</div>
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default function KaleidosGrowthPage() {
                     {locale==='en' ? 'Organic growth on social networks' : 'Growth orgânico nas redes sociais'}
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    {locale==='en' ? 'We build loyal organic audiences and sustainable growth on social networks. Our strategy of organic content and authentic engagement ensures your brand grows naturally and durably.' : 'Construímos <strong>audiências orgânicas fiéis</strong> e <strong>crescimento sustentável</strong> nas redes sociais. Nossa estratégia de <strong>conteúdo orgânico</strong> e <strong>engajamento autêntico</strong> garante que sua marca cresça de forma natural e duradoura.'}
+                    {locale==='en' ? (<>We build <strong>loyal organic audiences</strong> and <strong>sustainable growth</strong> on social. Our strategy of <strong>organic content</strong> and <strong>authentic engagement</strong> makes your brand grow naturally and durably.</>) : (<>Construímos <strong>audiências orgânicas fiéis</strong> e <strong>crescimento sustentável</strong> nas redes sociais. Nossa estratégia de <strong>conteúdo orgânico</strong> e <strong>engajamento autêntico</strong> garante que sua marca cresça de forma natural e duradoura.</>)}
                   </p>
                 </div>
 
@@ -246,12 +246,12 @@ export default function KaleidosGrowthPage() {
                     <div className="text-sm text-gray-600">{locale==='en' ? 'Presence' : 'Presença'}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-black mb-2">500%</div>
-                    <div className="text-sm text-gray-600">{locale==='en' ? 'Organic growth' : 'Crescimento orgânico'}</div>
+                    <div className="text-3xl font-bold text-black mb-2">120+</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Pieces / month' : 'Peças por mês'}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-black mb-2">100k+</div>
-                    <div className="text-sm text-gray-600">{locale==='en' ? 'Organic followers' : 'Seguidores orgânicos'}</div>
+                    <div className="text-3xl font-bold text-black mb-2">8</div>
+                    <div className="text-sm text-gray-600">{locale==='en' ? 'Active clients' : 'Clientes ativos'}</div>
                   </div>
                 </div>
               </div>
@@ -323,7 +323,7 @@ export default function KaleidosGrowthPage() {
                   back: {
                      title: locale==='en' ? 'Smart Segmentation' : 'Segmentação Inteligente',
                      description: locale==='en' ? 'Identification and attraction of the ideal audience' : 'Identificação e atração do público ideal',
-                     features: locale==='en' ? ["Defined persona", "Automatic qualification", "Effective warming"] : ["Persona definido", "Qualificação automática", "Aquecimento eficaz"],
+                     features: locale==='en' ? ["Defined persona", "Automatic qualification", "Effective warming"] : ["Persona definida", "Qualificação automática", "Aquecimento eficaz"],
                      service: locale==='en' ? 'audience segmentation' : "segmentação de público",
                     bgGradient: "from-purple-500 to-violet-600",
                     borderColor: "border-purple-400"
@@ -357,9 +357,9 @@ export default function KaleidosGrowthPage() {
                     borderColor: "border-pink-400"
                   },
                   back: {
-                     title: locale==='en' ? 'Guaranteed Positive ROI' : 'ROI Positivo Garantido',
+                     title: locale==='en' ? 'ROI-Focused' : 'Foco em ROI Positivo',
                      description: locale==='en' ? 'Systems that pay for themselves' : 'Sistemas que pagam por si mesmos',
-                     features: locale==='en' ? ["Continuous optimization", "Real‑time metrics", "Automatic adjustments"] : ["Otimização contínua", "Métricas em tempo real", "Ajustes automáticos"],
+                     features: locale==='en' ? ["Continuous optimization", "Real‑time metrics", "Measurable results"] : ["Otimização contínua", "Métricas em tempo real", "Resultados mensuráveis"],
                      service: locale==='en' ? 'positive ROI' : "ROI positivo",
                     bgGradient: "from-indigo-500 to-blue-600",
                     borderColor: "border-indigo-400"
@@ -395,7 +395,7 @@ export default function KaleidosGrowthPage() {
                   back: {
                      title: locale==='en' ? 'Proven Formula' : 'Fórmula Comprovada',
                      description: locale==='en' ? 'Tested and validated strategies' : 'Estratégias testadas e validadas',
-                     features: locale==='en' ? ["Proven methodology", "A/B testing", "Guaranteed results"] : ["Metodologia comprovada", "Testes A/B", "Resultados garantidos"],
+                     features: locale==='en' ? ["Proven methodology", "A/B testing", "Measurable results"] : ["Metodologia comprovada", "Testes A/B", "Resultados mensuráveis"],
                      service: locale==='en' ? 'effective strategies' : "estratégias eficazes",
                     bgGradient: "from-orange-500 to-red-600",
                     borderColor: "border-orange-400"
@@ -457,12 +457,12 @@ export default function KaleidosGrowthPage() {
               {(locale==='en' ? [
                 'Launches that sell',
                 'Exponential growth',
-                'Guaranteed positive ROI',
+                'ROI-focused',
                 'Repeatable strategy'
               ] : [
                 "Lançamentos que vendem",
-                "Crescimento exponencial",
-                "ROI positivo garantido",
+                "Crescimento orgânico real",
+                "Foco em ROI positivo",
                 "Estratégia replicável"
               ]).map((benefit, index) => (
                 <div key={index} className="flex items-center space-x-3">

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BASE — A L2 que a Coinbase usou pra levar 110 milhões de pessoas onchain · Kaleidos Paper Vol. 04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+<style>
+@font-face{ font-family:'Atelier'; src:url('fonts/Atelier.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face{ font-family:'Gridlite'; src:url('fonts/Gridlite.otf') format('opentype'); font-weight:400; font-display:swap; }
+:root{
+  --cream:#0A0A0A; --cream-2:#0f0f0f; --paper:#101010;
+  --ink:#F4F1EC; --ink-soft:#cfcabf; --ink-mute:#8d877c; --line:#262626;
+  --pink:#d262b2; --pink-soft:#3a1830; --pink-deep:#e58fce;
+  --blue:#4d8cff; --blue-soft:#13233f; --blue-deep:#7eaaff;
+  --olive:#b8b86a; --orange:#e09a52; --green:#7CF067; --dark:#000000;
+  --shadow:0 14px 40px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.4);
+  --shadow-card:0 1px 2.5px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:#000; font-size:10.5pt; line-height:1.55; }
+@page{ size:A4; margin:0; }
+.cover .csub, .jog-resumo, .bigquote .q, .crit-card .quote, .backcover .bc-tag, .sig .name{ font-family:'Inter',sans-serif !important; font-style:italic; font-weight:500; }
+
+.page.compact .pad{ padding-top:13mm; padding-bottom:10mm; }
+.page.compact .jog-head{ margin-bottom:8px; }
+.page.compact .jog-grid{ gap:16px; }
+.page.compact .prose p{ font-size:9.4pt; line-height:1.46; margin-bottom:6px; }
+.page.compact .blk p{ font-size:8.9pt; line-height:1.44; margin-bottom:4px; }
+.page.compact .blk{ margin-bottom:9px; }
+.page.compact .stat-strip{ margin:8px 0; }
+.page.compact .tweet{ margin:7px 0; padding:12px 16px; }
+.page.compact .bigquote{ padding:13px 18px; margin:8px 0; }
+.page.compact .bigquote .q{ font-size:12.5pt; }
+.page.dark-page.compact .prose p{ font-size:9.1pt; line-height:1.44; margin-bottom:5px; }
+.page.dark-page.compact .crit-card{ padding:11px 16px; margin:8px 0; }
+.page.dark-page.compact .crit-card .quote{ font-size:11.5pt; }
+.page.dark-page.compact .crit-card .who{ margin-bottom:7px; }
+.page.dark-page.compact .mono-card{ padding:13px 16px; margin:9px 0; }
+.page.dark-page.compact .jog-head{ margin-bottom:10px; }
+
+.page{ position:relative; width:210mm; min-height:297mm; background:var(--cream); margin:0 auto; overflow:hidden; page-break-after:always; break-after:page; display:flex; flex-direction:column; }
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:16mm 18mm 14mm; flex:1; display:flex; flex-direction:column; }
+
+.rhead{ position:absolute; top:10mm; left:18mm; right:18mm; display:flex; justify-content:space-between; align-items:center; font-family:'Atelier',sans-serif; font-size:8pt; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-mute); }
+.rhead .dash{ flex:1; height:1px; background:var(--line); margin:0 12px; }
+.rhead .sec{ color:var(--pink-deep); }
+.rfoot{ position:absolute; bottom:9mm; left:18mm; right:18mm; display:flex; justify-content:space-between; align-items:center; font-family:'Gridlite',monospace; font-size:7pt; letter-spacing:.08em; color:var(--ink-mute); text-transform:uppercase; }
+.rfoot .pg{ font-weight:600; color:var(--ink-soft); }
+
+h1,h2,h3,h4{ font-family:'Atelier',sans-serif; font-weight:600; color:var(--ink); line-height:1.06; letter-spacing:-.01em;}
+.kicker{ font-family:'Gridlite',monospace; font-size:8pt; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--pink-deep); margin-bottom:14px; display:inline-block; }
+.section-title{ position:relative; display:inline-block; }
+.section-title .dot{ position:absolute; left:-14px; top:50%; width:60px; height:60px; border-radius:50%; transform:translate(-50%,-50%); z-index:0; background:var(--pink-soft); }
+.section-title h2{ position:relative; z-index:1; }
+p{ margin-bottom:11px; color:var(--ink-soft); }
+p:last-child{ margin-bottom:0; }
+strong{ color:var(--ink); font-weight:700; }
+em{ font-style:italic; }
+.lead{ font-size:11.5pt; color:var(--ink-soft); }
+.muted{ color:var(--ink-mute); }
+.mono{ font-family:'Gridlite',monospace; }
+.hl{ background:linear-gradient(transparent 58%, var(--pink-soft) 58%); padding:0 1px; }
+.kale-mark{ font-family:'Atelier',sans-serif; font-weight:600; letter-spacing:.04em; font-size:13pt; }
+.kale-mark .k{ color:var(--pink); }
+.lin{ color:var(--ink); font-weight:700; }
+
+/* ---------- COVER ---------- */
+.cover{ --c-blue:#4d8cff; color:#F4F1EC; padding:20mm 18mm 16mm; background:radial-gradient(120% 80% at 50% -8%, #0b1730 0%, #060810 52%, #000 100%); }
+.cover .cgrid{ position:absolute; inset:0; opacity:.05; z-index:0; background-image:linear-gradient(var(--c-blue) 1px, transparent 1px), linear-gradient(90deg, var(--c-blue) 1px, transparent 1px); background-size:26px 26px; }
+.cover .ctop{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; }
+.cover .ctop .cseal{ font-family:'Atelier',sans-serif; font-weight:600; font-size:15pt; letter-spacing:.04em; color:#F4F1EC; }
+.cover .ctop .cseal .cdot{ color:var(--pink); }
+.cover .ctop .cvol{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.28em; text-transform:uppercase; color:var(--c-blue); }
+.cover .cstage{ position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; margin:6mm 0; }
+.cover .medallion{ position:relative; width:118mm; height:118mm; }
+.cover .offset{ position:absolute; width:108mm; height:108mm; border-radius:50%; left:14mm; top:8mm; background:var(--pink); opacity:.92; box-shadow:0 30px 70px rgba(0,0,0,.45); }
+.cover .ring{ position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 42% 34%, #2f63c9 0%, #1d4aa8 48%, #0e2c6e 100%); border:2.5px solid rgba(126,170,255,.7); box-shadow:inset 0 0 50px rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.5); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.cover .ring::after{ content:""; position:absolute; inset:0; border-radius:50%; box-shadow:inset 0 0 0 9mm rgba(126,170,255,.08); }
+/* Base logo glyph (circle with notch) */
+.cover .basemark{ width:52%; height:52%; border-radius:50%; background:#0A0A0A; position:relative; box-shadow:0 14px 26px rgba(0,0,0,.55); }
+.cover .basemark::before{ content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:64%; height:64%; border-radius:50%; background:#F4F1EC; }
+.cover .basemark::after{ content:""; position:absolute; left:50%; top:50%; transform:translate(0,-50%); width:42%; height:64%; background:#0A0A0A; }
+.cover .chip{ position:absolute; z-index:4; right:6mm; top:8mm; width:18mm; height:18mm; border-radius:50%; background:var(--c-blue); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.4); font-family:'Atelier',sans-serif; font-weight:700; font-size:18pt; color:#06122c; }
+.cover .ctitle{ position:relative; z-index:3; }
+.cover .ckicker{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--c-blue); margin-bottom:8px; }
+.cover h1{ font-family:'Atelier',sans-serif; font-weight:700; font-size:58pt; line-height:.92; letter-spacing:0; color:#F4F1EC; margin:0; }
+.cover h1 .pin{ color:var(--pink); }
+.cover .csub{ font-family:'Atelier',sans-serif; font-style:italic; font-weight:500; font-size:17pt; line-height:1.32; color:#d3e0f5; margin-top:14px; max-width:155mm; }
+.cover .cfootrow{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; padding-top:12px; border-top:1px solid rgba(126,170,255,.22); }
+.cover .cfootrow .obj{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:#8fa9d6; line-height:1.5; }
+.cover .cfootrow .nums{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.06em; color:var(--c-blue); text-align:right; }
+
+/* ---------- INTRO ---------- */
+.letter{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:32px 38px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column;}
+.letter p{ font-size:11pt; color:var(--ink-soft); line-height:1.62;}
+.letter .dropcap::first-letter{ font-family:'Atelier',sans-serif; font-weight:700; color:var(--pink); font-size:52pt; line-height:.78; float:left; margin:6px 12px 0 0; }
+.sig{ margin-top:auto; padding-top:22px; }
+.sig .name{ font-family:'Atelier',sans-serif; font-style:italic; font-size:21pt; color:var(--ink); }
+.sig .role{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px;}
+.sig-pfp{ width:58px; height:58px; border-radius:50%; overflow:hidden; flex:none; border:2px solid var(--pink); box-shadow:var(--shadow-card); }
+.sig-pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+.meta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
+.meta-chip{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:13px 18px; flex:1; min-width:150px; box-shadow:var(--shadow-card); }
+.meta-chip .lbl{ font-family:'Gridlite',monospace; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; color:var(--pink-deep); }
+.meta-chip .val{ font-family:'Atelier',sans-serif; font-size:13pt; margin-top:5px; color:var(--ink); }
+
+/* ---------- OVERVIEW big numbers ---------- */
+.bn-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+.bn{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 20px 18px; box-shadow:var(--shadow-card); overflow:hidden; }
+.bn::before{ content:""; position:absolute; right:-26px; top:-26px; width:80px; height:80px; border-radius:50%; background:var(--pink-soft); opacity:.7;}
+.bn .fig{ position:relative; font-family:'Atelier',sans-serif; font-weight:700; font-size:29pt; line-height:1; color:var(--ink); letter-spacing:-.02em;}
+.bn .fig .unit{ font-size:14pt; color:var(--pink-deep); }
+.bn .cap{ position:relative; font-size:9pt; color:var(--ink-soft); margin-top:9px; line-height:1.4;}
+.bn.wide{ grid-column:1 / -1; }
+.bn.dark{ background:var(--dark); border-color:var(--dark); }
+.bn.dark .fig,.bn.dark .cap{ color:#F4F1EC;}
+.bn.dark::before{ background:rgba(77,140,255,.28);}
+.bn.dark .fig .unit{ color:var(--blue-deep);}
+.bn.dark strong{ color:#fff; }
+
+/* ---------- CHART ---------- */
+.chart-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 14px; box-shadow:var(--shadow-card); margin-top:4px; }
+.chart-card .ct{ font-family:'Atelier',sans-serif; font-size:13pt; color:var(--ink); margin-bottom:2px;}
+.chart-card .cs{ font-size:8.5pt; color:var(--ink-mute); margin-bottom:12px;}
+.chart-box{ position:relative; width:100%; }
+.chart-src{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--ink-mute); margin-top:10px; letter-spacing:.02em; text-align:right;}
+
+/* ---------- JOGADA HEAD ---------- */
+.jog-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:14px; }
+.jog-num{ font-family:'Atelier',sans-serif; font-weight:700; font-size:54pt; line-height:.82; color:var(--pink); letter-spacing:-.03em; flex:none;}
+.jog-head .ttl .kk{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:5px;}
+.jog-head .ttl h3{ font-size:23pt; line-height:1.04;}
+.jog-resumo{ font-family:'Atelier',sans-serif; font-style:italic; font-size:11.5pt; color:var(--ink-mute); margin-top:6px; line-height:1.3;}
+
+.jog-grid{ display:grid; grid-template-columns:1.05fr 1.55fr; gap:20px; align-items:start; }
+.jog-body .blk{ margin-bottom:12px;}
+.jog-body .blk:last-child{ margin-bottom:0;}
+.blk-lbl{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin-bottom:5px; display:flex; align-items:center; gap:7px;}
+.blk-lbl::before{ content:""; width:8px; height:8px; border-radius:50%; }
+.blk.fez .blk-lbl::before{ background:var(--pink);} .blk.fez .blk-lbl{ color:var(--pink-deep);}
+.blk.pq .blk-lbl::before{ background:var(--olive);}  .blk.pq .blk-lbl{ color:#9a9a4e;}
+.blk.ev .blk-lbl::before{ background:var(--orange);}  .blk.ev .blk-lbl{ color:#d08a4a;}
+.blk p{ font-size:9.4pt; margin-bottom:5px; line-height:1.5;}
+
+.prose p{ font-size:9.9pt; line-height:1.56; }
+.licao-tag{ font-family:'Gridlite',monospace; font-size:7.5pt; color:var(--pink-deep); font-weight:600; border:1px dashed var(--pink); padding:3px 9px; border-radius:10px; display:inline-block; margin-top:8px;}
+
+.bigquote{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--pink); border-radius:14px; padding:18px 22px; margin:10px 0; box-shadow:var(--shadow-card);}
+.bigquote .q{ font-family:'Atelier',sans-serif; font-style:italic; font-size:14pt; color:var(--ink); line-height:1.4;}
+.bigquote .by{ font-family:'Gridlite',monospace; font-size:7.5pt; color:var(--ink-mute); margin-top:9px; text-transform:uppercase; letter-spacing:.1em;}
+
+.stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0;}
+.stat{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow-card);}
+.stat .v{ font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt; color:var(--ink); line-height:1;}
+.stat .v .u{ font-size:9pt; color:var(--pink-deep);}
+.stat .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:5px; line-height:1.3;}
+
+/* art tile (CSS, no external image) */
+.art-tile{ border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); border:1px solid var(--line); aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:18px; position:relative;}
+.art-tile.blue{ background:radial-gradient(circle at 40% 32%, #1d4aa8 0%, #0e2c6e 70%, #06122c 100%); }
+.art-tile.pink{ background:radial-gradient(circle at 42% 34%, #3a1830 0%, #20101b 70%, #0c0710 100%); }
+.art-tile .glyph{ width:60px; height:60px; border-radius:50%; background:#0A0A0A; position:relative; }
+.art-tile.pink .glyph{ background:var(--pink); }
+.art-tile .glyph::before{ content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:62%; height:62%; border-radius:50%; background:#F4F1EC;}
+.art-tile .glyph::after{ content:""; position:absolute; left:50%; top:50%; transform:translate(0,-50%); width:42%; height:62%; background:#0A0A0A;}
+.art-tile.pink .glyph::after{ background:var(--pink);}
+.art-tile .gt{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.82); line-height:1.5;}
+.art-tile .gn{ font-family:'Atelier',sans-serif; font-weight:700; font-size:21pt; color:#fff; line-height:1;}
+
+/* tweet card */
+.tweet{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:15px 18px; box-shadow:var(--shadow-card); margin:10px 0; }
+.tweet.dark{ background:#191919; border-color:#2c2c2c; }
+.tweet-top{ display:flex; align-items:center; gap:11px; margin-bottom:10px;}
+.tw-av{ width:42px; height:42px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.tw-av.blue{ background:var(--blue); color:#06122c; font-family:'Atelier',sans-serif; font-weight:700; font-size:17pt;}
+.tw-av.ph{ background:#2a2a2a; color:var(--pink-deep); font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt;}
+.tw-meta{ flex:1; min-width:0;}
+.tw-name{ font-weight:700; font-size:10pt; color:var(--ink); display:flex; align-items:center; gap:5px;}
+.tw-name .vrf{ color:var(--blue); font-size:11pt; }
+.tw-handle{ font-family:'Gridlite',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-x{ font-family:'Atelier',sans-serif; font-weight:700; font-size:15pt; color:var(--ink-mute);}
+.tw-body{ font-family:'Inter',sans-serif; font-size:11pt; line-height:1.42; color:var(--ink); font-weight:500;}
+.tw-body em{ font-style:normal; }
+.tw-stats{ display:flex; gap:16px; margin-top:11px; padding-top:10px; border-top:1px solid var(--line); font-family:'Gridlite',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-stats .date{ margin-left:auto;}
+
+/* timeline cards */
+.tline{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.tline .tl{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:13px 14px; box-shadow:var(--shadow-card);}
+.tline .tl .tk{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.12em; text-transform:uppercase;}
+.tline .tl .tv{ font-family:'Atelier',sans-serif; font-weight:700; font-size:13pt; color:var(--ink); margin-top:5px; line-height:1;}
+.tline .tl .td{ font-size:8pt; color:var(--ink-mute); margin-top:5px; line-height:1.35;}
+
+.rail{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:10px;}
+.rail .rc{ background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:11px 12px;}
+.rail .rc.hot{ border-color:var(--pink); background:var(--pink-soft);}
+.rail .rc .rk{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.1em;}
+.rail .rc .rt{ font-size:8.4pt; color:var(--ink-soft); margin-top:5px; line-height:1.35;}
+.rail .rc .rt b{ color:var(--ink);}
+
+/* founder grid */
+.founder-grid{ display:grid; grid-template-columns:0.85fr 1.4fr; gap:18px; align-items:start;}
+.stat-float{ display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+.stat-float .sf{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow-card);}
+.stat-float .sf .v{ font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt; color:var(--pink-deep); line-height:1;}
+.stat-float .sf .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:4px; line-height:1.3;}
+
+/* ---------- DARK stress page ---------- */
+.dark-page{ background:var(--dark); color:#E7E1D6;}
+.dark-page .pad{ color:#D8D1C4;}
+.dark-page .rhead,.dark-page .rfoot{ color:#7d766b;}
+.dark-page .rhead .dash{ background:#332f29;}
+.dark-page .rhead .sec{ color:var(--pink);}
+.dark-page .rfoot .pg{ color:#b8b0a4;}
+.dark-page .kicker{ color:var(--pink);}
+.dark-page h2,.dark-page h3{ color:#fff;}
+.dark-page p{ color:#C9C2B6;}
+.dark-page strong{ color:#fff;}
+.dark-page .jog-num{ color:var(--pink);}
+.dark-page .jog-head .ttl .kk{ color:#8d857a;}
+.dark-page .blk p{ color:#C9C2B6;}
+.crit-card{ background:#191919; border:1px solid #2c2c2c; border-left:3px solid var(--pink); border-radius:14px; padding:16px 20px; margin:11px 0;}
+.crit-card .who{ display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+.crit-card .who .av{ width:38px; height:38px; border-radius:50%; background:#333; color:#aaa; display:flex; align-items:center; justify-content:center; font-family:'Atelier',sans-serif; font-weight:700; font-size:15pt; flex:none;}
+.crit-card .who .nm{ font-weight:700; color:#fff; font-size:10pt;}
+.crit-card .who .rl{ font-family:'Gridlite',monospace; font-size:7.5pt; color:#8d857a; text-transform:uppercase; letter-spacing:.1em;}
+.crit-card .quote{ font-family:'Atelier',sans-serif; font-style:italic; font-size:13.5pt; color:#F0E6D8; line-height:1.4;}
+.mono-card{ background:#191919; border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin:11px 0;}
+.mono-card .mch{ font-family:'Gridlite',monospace; font-size:7.5pt; color:var(--pink); letter-spacing:.16em; text-transform:uppercase; margin-bottom:11px;}
+.mono-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px;}
+.mono-steps .ms{ background:#111; border:1px solid #2c2c2c; border-radius:10px; padding:11px;}
+.mono-steps .ms .n{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--pink);}
+.mono-steps .ms .t{ font-size:8.4pt; color:#D8D1C4; margin-top:5px; line-height:1.35;}
+
+/* numbers panel */
+.panel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;}
+.panel-grid .chart-card.span{ grid-column:1 / -1;}
+
+/* authority */
+.auth-grid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:6px;}
+.auth{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow-card); position:relative; overflow:hidden;}
+.auth::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--pink);}
+.auth .src{ font-family:'Atelier',sans-serif; font-weight:700; font-size:12.5pt; color:var(--ink); line-height:1.05;}
+.auth .src .tag{ font-family:'Gridlite',monospace; font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase; color:var(--pink-deep); display:block; margin-bottom:4px;}
+.auth .th{ font-size:8.7pt; color:var(--ink-soft); margin-top:7px; line-height:1.46;}
+.auth .th b{ color:var(--ink);}
+.auth.acc{ background:var(--dark); border-color:var(--dark);}
+.auth.acc::before{ background:var(--blue);}
+.auth.acc .src,.auth.acc .th{ color:#F4F1EC;}
+.auth.acc .src .tag{ color:var(--blue-deep);}
+.auth.acc .th b{ color:#fff;}
+.auth.acc .th em{ color:var(--blue-deep); font-style:normal; font-weight:600;}
+
+/* lições */
+.take{ display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
+.take:last-child{ border-bottom:none;}
+.take .tn{ font-family:'Atelier',sans-serif; font-weight:700; font-size:21pt; color:var(--pink); line-height:1; min-width:32px;}
+.take .tb b{ font-family:'Inter'; font-size:10.5pt; color:var(--ink); display:block; margin-bottom:2px;}
+.take .tb p{ font-size:9.2pt; margin:0; color:var(--ink-soft);}
+
+/* legal / backcover */
+.legal{ background:var(--dark); color:#C9C2B6;}
+.legal .pad{ color:#B9B2A6;}
+.legal .rhead,.legal .rfoot{ color:#6d665c;}
+.legal .rhead .dash{ background:#2c2820;}
+.legal .rhead .sec{ color:var(--pink);}
+.legal h2{ color:#fff;}
+.legal .kicker{ color:var(--pink);}
+.legal p{ color:#A89F90; font-size:8.6pt; line-height:1.6;}
+.legal .src-list{ columns:2; column-gap:26px; margin-top:10px;}
+.legal .src-list li{ font-family:'Gridlite',monospace; font-size:7.4pt; color:#9a9388; list-style:none; padding:5px 0; border-bottom:1px solid #242424; line-height:1.4; break-inside:avoid;}
+.legal .src-list li b{ color:#cfc8ba;}
+.legal .disc{ border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin-top:14px; background:#181818;}
+.backcover{ background:var(--pink); color:#1a1a1a; display:flex; align-items:center; justify-content:center; text-align:center;}
+.backcover .bc-inner{ z-index:2;}
+.backcover .bc-mark{ font-family:'Atelier',sans-serif; font-weight:600; font-size:34pt; letter-spacing:.02em; color:#1a1a1a;}
+.backcover .bc-seal{ font-family:'Gridlite',monospace; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; margin-top:14px; color:#5a1f49;}
+.backcover .bc-eyebrow{ font-family:'Gridlite',monospace; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:#5a1f49; margin-bottom:18px;}
+.backcover .bc-tag{ font-family:'Atelier',sans-serif; font-style:italic; font-size:14pt; margin-top:26px; max-width:420px; color:#2a0f22; line-height:1.4;}
+.backcover .bc-foot{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.06em; color:#5a1f49; margin-top:20px; max-width:380px; line-height:1.5;}
+
+@media print{ body{ background:#fff; } .page{ margin:0; box-shadow:none; } .chart-box canvas{ max-width:100%; } }
+@media screen{ .page{ margin:14px auto; box-shadow:0 18px 50px rgba(0,0,0,.28);} }
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁG 1 — CAPA ============================ -->
+<section class="page cover">
+  <div class="cgrid"></div>
+  <div class="ctop">
+    <span class="cseal">Kaleidos <span class="cdot">·</span> <span style="font-size:8pt; letter-spacing:.18em; text-transform:uppercase; font-family:'Gridlite',monospace; color:var(--c-blue);">Agência Cripto-Nativa</span></span>
+    <span class="cvol">Vol. 04 — Estudo de Caso</span>
+  </div>
+
+  <div class="cstage">
+    <div class="medallion">
+      <div class="offset"></div>
+      <div class="ring">
+        <div class="basemark"></div>
+      </div>
+      <div class="chip">▲</div>
+    </div>
+  </div>
+
+  <div class="ctitle">
+    <div class="ckicker">O objeto de estudo</div>
+    <h1>BASE<span class="pin">.</span></h1>
+    <p class="csub">A L2 que a Coinbase usou pra transformar 110 milhões de clientes em usuários onchain.</p>
+  </div>
+
+  <div class="cfootrow">
+    <div class="obj">Lente: marketing &amp; growth<br>Sujeito: Base · L2 da Coinbase (OP Stack)</div>
+    <div class="nums">#2 L2 por TVL · ~110M de distribuição · sem token (ainda)</div>
+  </div>
+</section>
+
+<!-- ============================ PÁG 2 — INTRO ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Intro</span></div>
+  <div class="pad">
+    <span class="kicker">Kaleidos Paper · Vol. 04</span>
+    <div class="section-title" style="margin-bottom:18px;"><span class="dot"></span><h2 style="font-size:28pt;">A blockchain que cresceu<br>com público já comprado.</h2></div>
+    <div class="letter">
+      <p class="dropcap">A Hyperliquid cresceu sem marketing e sem dinheiro. A Base fez o oposto: nasceu dentro da maior corretora dos Estados Unidos, com cento e dez milhões de clientes verificados do outro lado da porta. Onde a maioria dos projetos cripto começa gritando pra um deserto, a Base começou com a plateia já sentada.</p>
+      <p>Esse é o caso que este paper destrincha. Porque "ter distribuição" parece fácil, e quase nunca é. A Coinbase tinha a audiência, mas precisou inventar um motivo pra ela atravessar a ponte, um produto pra ela usar do outro lado, e uma cultura pra ela ficar. A Base é o estudo de como uma empresa de capital aberto usou marca, campanha e narrativa pra converter clientes de uma corretora em cidadãos de uma rede, e o que deu certo, o que colapsou no caminho, e o que sobrou de pé.</p>
+      <p>A lente é marketing. O sujeito é a Base. Não é teoria: é a sequência real de jogadas, em ordem causal, com a prova pública de cada uma, e com as rachaduras expostas no mesmo nível de honestidade dos acertos.</p>
+      <p>Vamos olhar como o Onchain Summer, o Jesse Pollak, os Basenames, o Base App e a ponte da Coinbase formaram uma máquina de aquisição, por que ela surfou uma fila de ondas de hype que subiram e despencaram, e o que isso ensina sobre construir marca quando a distribuição já é sua.</p>
+      <div class="meta-row">
+        <div class="meta-chip"><div class="lbl">Tempo de leitura</div><div class="val">14 a 20 minutos</div></div>
+        <div class="meta-chip"><div class="lbl">Formato</div><div class="val">Breakdown · estudo de projeto</div></div>
+        <div class="meta-chip"><div class="lbl">Dados</div><div class="val">Fontes públicas · jun/2026</div></div>
+      </div>
+      <div class="sig" style="display:flex; align-items:center; gap:16px;">
+        <div class="sig-pfp"><img src="assets/pulled/gabriel-pfp.jpg" alt="Gabriel Madureira"></div>
+        <div>
+          <div class="name" style="font-size:18pt;">Gabriel Madureira</div>
+          <div class="role">Fundador · Kaleidos — agência cripto-nativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">02</span></div>
+</section>
+
+<!-- ============================ PÁG 3 — OVERVIEW ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Overview</span></div>
+  <div class="pad">
+    <span class="kicker">Overview · os números-choque</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:26pt;">Seis números que explicam<br>uma vantagem injusta.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:16px;">Antes do teardown, o retrato em seis dados. Cada um é desenvolvido nas jogadas a seguir, com a prova.</p>
+
+    <div class="bn-grid">
+      <div class="bn">
+        <div class="fig">~110<span class="unit"> mi</span></div>
+        <div class="cap"><strong>A distribuição que ninguém mais tem.</strong> A Coinbase reportou cerca de 108 a 110 milhões de usuários verificados (fim de 2024). A Base nasceu com essa audiência do outro lado da ponte, antes de gastar um dólar em mídia.</div>
+      </div>
+      <div class="bn">
+        <div class="fig"><span class="unit">~US$</span>5,58<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Pico de TVL (out/2025).</strong> A Base saiu de ~US$ 50 milhões no lançamento (ago/2023) pro topo de ~US$ 5,58 bilhões em dois anos, virando a #2 L2 do Ethereum. Em out/2024 chegou a flipar a Arbitrum no #1.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">700<span class="unit"> mil</span></div>
+        <div class="cap"><strong>NFTs no Onchain Summer 2023.</strong> A campanha de lançamento minerou 700 mil NFTs entre 268 mil carteiras em 23 dias, com Coca-Cola, Atari e OpenSea a bordo. O marketing virou o produto.</div>
+      </div>
+      <div class="bn dark">
+        <div class="fig">~12<span class="unit"> mi/dia</span></div>
+        <div class="cap"><strong>Pico de transações diárias (jan/2025).</strong> A Base virou a L2 #1 em atividade e, em jun/2024, chegou a superar a própria Ethereum em endereços ativos diários. Em 2024, foram 22 milhões de endereços ativos (a16z).</div>
+      </div>
+      <div class="bn">
+        <div class="fig">Zero<span class="unit"> token</span></div>
+        <div class="cap"><strong>Nenhum token de rede (ainda).</strong> Por dois anos a Base disse não ter token. Em set/2025, passou a "explorar" um. Sem TGE até jun/2026, o vácuo virou ao mesmo tempo combustível e tensão com a base.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">7,5<span class="unit"> mil</span></div>
+        <div class="cap"><strong>Builders no Onchain Summer 2024.</strong> O Buildathon reuniu mais de 7.500 builders e 1.250 projetos, com US$ 2 milhões em prêmios e sponsors como Stripe e Shopify. A campanha virou funil de construtor.</div>
+      </div>
+      <div class="bn wide" style="background:var(--dark); border-color:var(--dark);">
+        <div class="fig" style="color:#fff;">87,2<span class="unit">% da receita de sequencer da Superchain · sequencer único</span></div>
+        <div class="cap" style="color:#E7E1D6;">No H1 de 2025, a Base gerou 87,2% de toda a receita de sequencer da Superchain Optimism (US$ 42,4 milhões, Messari), pagando uma fração disso de "aluguel". O resto do paper explica, jogada por jogada, como distribuição virou marca, e onde a marca racha.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">03</span></div>
+</section>
+
+<!-- ============================ PÁG 4 — O QUE É A BASE ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que é a Base</span></div>
+  <div class="pad">
+    <span class="kicker">Contexto do projeto</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Uma rede com dona,<br>uma marca com missão.</h2></div>
+
+    <div class="jog-grid" style="grid-template-columns:1.5fr 1fr;">
+      <div class="prose">
+        <p><span class="lin">O básico: o que é uma L2.</span> A Ethereum é segura, mas cara e lenta quando lotada. Uma "L2" (camada 2) é uma blockchain que roda em cima da Ethereum, herdando a segurança dela, mas processando transações fora da rede principal pra ficar rápida e barata. A Base é uma L2 construída sobre o OP Stack, o software aberto da Optimism. Em termos de marketing, a L2 é o produto; a Ethereum é a infraestrutura emprestada.</p>
+        <p><span class="lin">O que a Base é.</span> Lançada em agosto de 2023, é a L2 incubada pela Coinbase, a maior corretora de capital aberto dos EUA (NASDAQ: COIN). O diferencial não é técnico, é de origem: ela nasce acoplada a uma empresa com cerca de 110 milhões de usuários verificados e um app que já está no bolso de milhões de pessoas. A Base é o caminho que a Coinbase abriu pra levar esse público "onchain".</p>
+        <p><span class="lin">O mercado em que ela joga.</span> Do lado das L2s, a briga é com a Arbitrum e a própria Optimism, que juntas com a Base processam cerca de 90% das transações de camada 2. A Base entrou tarde nessa corrida e, mesmo assim, em pouco mais de um ano virou #1 ou #2 em quase toda métrica. A arma não foi tecnologia superior. Foi distribuição e marca.</p>
+        <p><span class="lin">Onde ela está hoje.</span> #2 L2 por TVL (faixa de ~US$ 10,7 a 12,8 bilhões conforme a fonte, jun/2026), atrás da Arbitrum. Rebrand pra "Basechain" em 2025, upgrade Azul em mainnet (mai/2026) rumo a mais descentralização. E ainda sem token de rede lançado.</p>
+      </div>
+      <div>
+        <div class="art-tile blue">
+          <div class="glyph"></div>
+          <div class="gn">Base</div>
+          <div class="gt">L2 · OP Stack<br>incubada pela Coinbase</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">A Hyperliquid teve que criar a própria audiência do zero. A Base começou com a audiência pronta e o desafio inverso: dar a 110 milhões de pessoas um motivo pra cruzar a ponte. Distribuição não é vitória, é a linha de partida. O marketing é o que faz a multidão atravessar.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">04</span></div>
+</section>
+
+<!-- ============================ PÁG 5 — A ORIGEM ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A origem</span></div>
+  <div class="pad">
+    <span class="kicker">A decisão fundadora</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Distribuição é a tese.</h2></div>
+
+    <div class="founder-grid">
+      <div>
+        <div class="art-tile pink" style="aspect-ratio:4/5;">
+          <div class="glyph"></div>
+          <div class="gn" style="font-size:17pt;">Jesse Pollak</div>
+          <div class="gt">@jessepollak<br>"the Base builder"</div>
+        </div>
+        <div class="fig-cap" style="font-family:'Gridlite',monospace; font-size:7pt; color:var(--ink-mute); margin-top:6px; line-height:1.4;">Jesse Pollak lidera a Base e virou o rosto da marca. Fonte: x.com/jessepollak (2026).</div>
+        <div class="stat-float" style="margin-top:12px;">
+          <div class="sf"><div class="v">~110M</div><div class="l">usuários verificados da Coinbase (fim 2024)</div></div>
+          <div class="sf"><div class="v">2023</div><div class="l">ano de lançamento da mainnet (ago)</div></div>
+        </div>
+      </div>
+      <div class="prose">
+        <p><span class="lin">A Coinbase.</span> Fundada por Brian Armstrong, a Coinbase é a corretora cripto de capital aberto mais conhecida dos EUA e, por anos, a porta de entrada padrão de quem comprava sua primeira cripto. O problema estratégico: a Coinbase ganhava taxa quando você comprava e vendia, mas perdia você no momento em que você queria fazer qualquer coisa "onchain", em DeFi, NFT, apps. A Base resolve isso: em vez de mandar o usuário pra fora, ela constrói o "fora" dentro de casa.</p>
+        <p><span class="lin">Jesse Pollak.</span> Engenheiro que entrou na Coinbase em 2018 e passou a liderar a Base, Pollak fez algo raro num projeto de empresa grande: virou fundador-personagem. Escreve o próprio X ("não é um freelancer aleatório do Fiverr"), encarnou o bordão "stay based" e construiu uma identidade de builder que dá rosto humano a uma iniciativa corporativa. A CoinDesk o colocou entre os mais influentes de 2025.</p>
+        <p><span class="lin">A decisão que definiu tudo.</span> A aposta não foi em ser a L2 mais rápida ou mais barata, várias eram. Foi em ser a L2 com a melhor distribuição. Toda a estratégia de marca, do Onchain Summer ao Base App, parte de uma premissa só: já temos o público; precisamos de marca, cultura e produto bons o bastante pra ele atravessar e ficar.</p>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">"all my X posts are my own, not some random freelancer from Fiverr."</div>
+      <div class="by">Jesse Pollak · sobre escrever o próprio conteúdo (Cointelegraph)</div>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av blue">J</div>
+        <div class="tw-meta">
+          <div class="tw-name">Jesse Pollak <span class="vrf">✦</span></div>
+          <div class="tw-handle">@jessepollak · jan 2025</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">to based builders: THIS IS THE BEGINNING. time to buckle down, keep building, <em>stay based.</em></div>
+      <div class="tw-stats"><span class="date">o fundador como engine de conteúdo · texto verbatim, jan/2025</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">05</span></div>
+</section>
+
+<!-- ============================ PÁG 6 — JOGADA 1 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 1</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">1</div>
+      <div class="ttl">
+        <div class="kk">Jogada 1 · o lançamento como festival</div>
+        <h3>Onchain Summer:<br>o lançamento virou festival.</h3>
+        <div class="jog-resumo">Em vez de um anúncio, uma temporada de eventos onchain com marcas globais.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="art-tile blue">
+        <div class="glyph"></div>
+        <div class="gn" style="font-size:16pt;">Onchain Summer</div>
+        <div class="gt">ago/2023 · 23 dias<br>Coca-Cola · Atari · OpenSea</div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>A Base não lançou com um post de "estamos no ar". Lançou com o Onchain Summer: uma temporada de 23 dias de drops, mints e experiências onchain, curada como um festival cultural. Trouxe marcas mainstream pra dentro, Coca-Cola, Atari, OpenSea, Zora, FWB, mais de 50 empresas e artistas, cada uma com um motivo concreto pro usuário clicar, conectar a carteira e fazer a primeira transação na rede.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Lançamento de blockchain normalmente é abstrato: "rede rápida e barata", ninguém sente. A Base trocou o conceito por um evento com data, marcas conhecidas e coisas pra fazer. O usuário da Coinbase não precisava entender de L2; precisava só querer o NFT da Coca-Cola. Cada marca emprestou sua audiência e sua credibilidade, e a Base coletou a primeira transação de centenas de milhares de carteiras.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">700<span class="u">k</span></div><div class="l">NFTs minerados em 23 dias</div></div>
+      <div class="stat"><div class="v">268<span class="u">k</span></div><div class="l">carteiras únicas participantes</div></div>
+      <div class="stat"><div class="v">$242<span class="u">M</span></div><div class="l">bridgeado nas 2 primeiras semanas</div></div>
+      <div class="stat"><div class="v">~$500<span class="u">k</span></div><div class="l">arrecadado só pelo drop da Coca-Cola</div></div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> O Onchain Summer 2023 produziu 700 mil NFTs minerados entre 268 mil carteiras, com pico de 145 mil usuários e 1,4 milhão de transações em um único dia. Foram US$ 242 milhões bridgeados nas duas primeiras semanas. O drop "Masterpiece" da Coca-Cola sozinho arrecadou cerca de US$ 500 mil. A campanha não foi um custo de aquisição: foi um evento que pagou parte da própria conta e entregou a base inicial de usuários da rede.</p>
+      <span class="licao-tag">Lição → transforme o lançamento num evento com data, marcas e coisas pra fazer; conceito não converte, experiência sim.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">06</span></div>
+</section>
+
+<!-- ============================ PÁG 7 — JOGADA 2 ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 2</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">2</div>
+      <div class="ttl">
+        <div class="kk">Jogada 2 · a campanha vira funil de construtor</div>
+        <h3>De festival a Buildathon:<br>recrutar quem constrói.</h3>
+        <div class="jog-resumo">O Onchain Summer evoluiu de mints pra um funil de aquisição de developers.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">O que eles fizeram.</span> Na segunda edição (2024), a Base transformou a campanha cultural num funil de construtor. O Onchain Summer II trouxe um Buildathon com US$ 2 milhões (mais de 600 ETH) em prêmios, grants e créditos de gás, sponsors de peso como Stripe, Shopify, Zora e Farcaster, e oito trilhas de competição. Em 2025, a campanha virou um modelo retroativo de prêmios (Onchain Summer Awards, US$ 250 mil) que premia apps que já geraram engajamento real. Em paralelo, os programas Base Batches e Base Around The World levaram o recrutamento de builders pra seis regiões do mundo.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">7.500<span class="u">+</span></div><div class="l">builders no Buildathon 2024</div></div>
+      <div class="stat"><div class="v">1.250<span class="u">+</span></div><div class="l">projetos inscritos</div></div>
+      <div class="stat"><div class="v">$2<span class="u">M</span></div><div class="l">em prêmios e grants (600+ ETH)</div></div>
+      <div class="stat"><div class="v">24<span class="u">M+</span></div><div class="l">assets minerados na edição</div></div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+      <div class="jog-body">
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Usuário traz volume; builder traz produto, e produto traz mais usuário. Ao gastar em hackathon em vez de só em anúncio, a Base comprou o ativo que se compõe: cada app novo construído na rede é um motivo novo pra alguém usar a rede. O prêmio em dinheiro é o gancho; o verdadeiro retorno é o ecossistema que passa a vender a Base por conta própria.</p>
+        </div>
+        <div class="blk ev">
+          <div class="blk-lbl">A evidência</div>
+          <p>O Buildathon de 2024 foi anunciado como "o maior hackathon onchain da história": 7.500+ builders e 1.250+ projetos. A edição inteira somou mais de 2 milhões de carteiras e 24 milhões de assets minerados. Recrutar construtor virou tão estratégico quanto recrutar usuário.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Crescimento de builders</div>
+        <div class="cs">Onchain Summer 2023 → 2024 (escala log)</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_summer"></canvas></div>
+        <div class="chart-src">Fonte: Base blog · research §C</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">07</span></div>
+</section>
+
+<!-- ============================ PÁG 8 — JOGADA 3 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 3</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">3</div>
+      <div class="ttl">
+        <div class="kk">Jogada 3 · a vantagem injusta</div>
+        <h3>A ponte da Coinbase<br>é o canal de aquisição.</h3>
+        <div class="jog-resumo">Distribuição embutida: 110 milhões de usuários a um clique da rede.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Base fez</div>
+          <p>Integrou a rede no produto que a audiência já usava. Comprar cripto na Coinbase e mandar pra Base virou questão de poucos toques, sem ponte manual complicada, sem buscar a rede certa. O onramp, a carteira e o "comece na Base" passaram a viver dentro do app da Coinbase. A jogada de marketing mais subestimada da Base não é uma campanha, é a ausência de atrito entre ter o público e ativar o público.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Em cripto, o gargalo nunca foi interesse, foi fricção. A maioria dos projetos morre no "como eu coloco dinheiro nisso?". A Base herdou o canal que resolve exatamente esse passo, o canal regulado pelo qual milhões de americanos já tinham passado. Distribuição embutida transforma o custo de aquisição em quase zero: você não anuncia pra estranhos, você abre uma porta pra quem já está na sua casa.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">A vantagem de distribuição</div>
+        <div class="cs">Usuários, em milhões (escala log)</div>
+        <div class="chart-box" style="height:185px;"><canvas id="cv_moat"></canvas></div>
+        <div class="chart-src">Fonte: CoinLaw / a16z / Base · research §B</div>
+      </div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">Quase todo projeto cripto gasta a maior parte do orçamento tentando resolver o primeiro passo: tirar a pessoa do mundo normal e colocar dinheiro na rede. A Base não tinha esse problema. Tinha o passo seguinte: dar à pessoa que já estava lá um motivo pra atravessar. Distribuição não vence sozinha, mas muda completamente qual jogo você está jogando.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> A combinação de canal pronto e campanha agressiva deu resultado raro em velocidade: a Base flipou a própria Ethereum em endereços ativos diários em junho de 2024, atingiu pico de ~12 milhões de transações por dia em janeiro de 2025 e somou 22 milhões de endereços ativos em 2024 (a16z, 3ª maior do mundo). Crescimento desse porte, em pouco mais de um ano, não se compra só com anúncio. Compra-se com distribuição mais marca.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">08</span></div>
+</section>
+
+<!-- ============================ PÁG 9 — JOGADA 4 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 4</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">4</div>
+      <div class="ttl">
+        <div class="kk">Jogada 4 · identidade onchain</div>
+        <h3>Basenames: o crachá<br>que vira identidade.</h3>
+        <div class="jog-resumo">.base.eth transformou endereço de carteira em nome próprio e bandeira de tribo.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="art-tile pink">
+        <div class="glyph"></div>
+        <div class="gn" style="font-size:15pt;">jesse.base.eth</div>
+        <div class="gt">Basenames · ago/2024<br>identidade onchain</div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Base fez</div>
+          <p>Lançou os Basenames em agosto de 2024: nomes legíveis no formato seu-nome.base.eth pra substituir endereços de carteira impronunciáveis. Pollak adotou jesse.base.eth publicamente, e a comunidade seguiu. O que parecia um detalhe técnico (resolução de nome) virou um ato de marca: assinar "alguma-coisa.base.eth" é declarar a que rede você pertence.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Nome é identidade, e identidade é pertencimento. Quando milhares de pessoas trocam o avatar e o handle por algo.base.eth, cada uma vira um outdoor ambulante da rede. É o mesmo mecanismo de uma marca de roupa cujo logo o cliente paga pra exibir: a Base deu à comunidade um símbolo de tribo e a comunidade o vestiu de graça, espalhando a marca em cada perfil.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">70<span class="u">k</span></div><div class="l">nomes nas primeiras 36 horas</div></div>
+      <div class="stat"><div class="v">400<span class="u">k</span></div><div class="l">registrados em poucos dias</div></div>
+      <div class="stat"><div class="v">750<span class="u">k+</span></div><div class="l">Basenames registrados (acum.)</div></div>
+      <div class="stat"><div class="v">-45<span class="u">%</span></div><div class="l">de transações falhas nas 1ªs semanas</div></div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> Foram 70 mil nomes nas primeiras 36 horas, 400 mil em poucos dias e mais de 750 mil registrados desde então. Além do efeito de marca, os Basenames melhoraram a usabilidade da rede (reportou-se queda de 45% em transações falhas nas primeiras semanas). Identidade e função andaram juntas: cada nome é, ao mesmo tempo, uma melhoria de produto e uma peça de marketing que o próprio usuário carrega.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">09</span></div>
+</section>
+
+<!-- ============================ PÁG 10 — JOGADA 5 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 5</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">5</div>
+      <div class="ttl">
+        <div class="kk">Jogada 5 · o fundador como marca</div>
+        <h3>"Stay based":<br>narrativa de builder.</h3>
+        <div class="jog-resumo">Pollak deu rosto humano e bordão de tribo a uma iniciativa corporativa.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Base fez</div>
+          <p>Personificou a marca num fundador. Em vez de comunicar como "Coinbase L2", a Base falou pela boca de Jesse Pollak: posts diários, presença constante, o bordão "stay based" e a estética do construtor que ama o que faz. "Based" virou ao mesmo tempo o nome da rede, um trocadilho com a gíria de internet ("based", autêntico, sem se importar com a opinião alheia) e uma identidade que a comunidade adotou como sua.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Empresa não gera lealdade emocional; pessoa gera. Um departamento de marketing soa institucional; um fundador que aparece todo dia, escreve o próprio texto e repete um bordão constrói algo que parece movimento. A Base pegou o calor humano que normalmente só projetos pequenos têm e injetou numa iniciativa de empresa de capital aberto, o melhor dos dois mundos: a distribuição de uma gigante com a alma de uma comunidade.</p>
+        </div>
+      </div>
+      <div>
+        <div class="art-tile blue">
+          <div class="glyph"></div>
+          <div class="gn">stay based</div>
+          <div class="gt">bordão · identidade<br>de tribo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">O nome "based" foi um achado de marca: rede, gíria e atitude na mesma palavra. Quando a comunidade adota o seu nome como adjetivo pra elogiar gente ("isso é tão based"), a marca deixou de ser nome de produto e virou parte do vocabulário. Esse é o teto da marca: virar linguagem.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> A força do personagem se mede pelo reconhecimento de fora: a CoinDesk colocou Pollak na lista de mais influentes de 2025. E pela linguagem de dentro: "based" circula em Crypto Twitter como adjetivo independente da rede. Quando o nome da sua marca vira gíria de elogio, você comprou um espaço mental que nenhum anúncio aluga.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">10</span></div>
+</section>
+
+<!-- ============================ PÁG 11 — JOGADA 6 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 6</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">6</div>
+      <div class="ttl">
+        <div class="kk">Jogada 6 · a cultura como aquisição</div>
+        <h3>Surfar as ondas<br>de hype da cultura.</h3>
+        <div class="jog-resumo">friend.tech, memecoins, AI agents: a Base virou o palco onde a cultura cripto acontece.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.05fr 1.4fr;">
+      <div>
+        <div class="tline" style="grid-template-columns:1fr; margin:0;">
+          <div class="tl"><div class="tk">2023</div><div class="tv">friend.tech</div><div class="td">SocialFi · pico &gt;$50M em depósitos</div></div>
+          <div class="tl"><div class="tk">2024</div><div class="tv">memecoins</div><div class="td">$DEGEN e a onda de tokens culturais</div></div>
+          <div class="tl"><div class="tk">fim 2024</div><div class="tv">Clanker / AI</div><div class="td">3.500+ tokens via bot em ~18 dias</div></div>
+          <div class="tl"><div class="tk">2025</div><div class="tv">Zora · content coins</div><div class="td">posts viram tokens; Base App SocialFi</div></div>
+        </div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Base fez</div>
+          <p>Em vez de empurrar um único caso de uso, a Base se posicionou como o palco onde a próxima onda da cultura cripto aconteceria, e cultivou cada uma. O friend.tech (SocialFi, 2023) estourou na Base e trouxe uma multidão. Depois vieram as memecoins e o $DEGEN, o boom de tokens de AI agents via Clanker, e os "content coins" da Zora. A Base se aliou a Farcaster e Zora, deu trilhos pra cada nova febre e colheu a atenção e o volume de cada ciclo.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Atenção em cripto é cíclica: cada temporada tem sua febre. Quem tenta criar a febre sozinho quase sempre erra. A Base fez algo mais esperto, ser a infraestrutura padrão de qualquer febre que surgisse. Não importava qual onda viesse, ela quebrava na Base. Isso manteve a rede no centro da conversa, mês após mês, sem depender de uma aposta única dar certo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> O friend.tech sozinho levou os depósitos da Base de quase nada a mais de US$ 50 milhões e 136 mil usuários ativos diários no pico de 2023, alimentando o primeiro salto de TVL da rede. Cada ciclo seguinte renovou a atenção. Mas, como o teste de estresse vai mostrar, essa estratégia tem um custo embutido: quase toda onda que sobe, desce, e às vezes some.</p>
+      <span class="licao-tag">Lição → não aposte numa febre, vire o palco onde toda febre acontece; assim você ganha em qualquer cenário.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">11</span></div>
+</section>
+
+<!-- ============================ PÁG 12 — JOGADA 7 ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 7</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">7</div>
+      <div class="ttl">
+        <div class="kk">Jogada 7 · de rede a super app</div>
+        <h3>O Base App: virar<br>o "everything app".</h3>
+        <div class="jog-resumo">A Coinbase Wallet vira Base App e tenta fechar o loop: social, pagamento e trade num lugar.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">O que a Base fez.</span> Em julho de 2025, no evento "A New Day One", a Coinbase rebatizou a Coinbase Wallet como Base App e a vendeu como um "everything app": rede social (via Farcaster), publicações que viram tokens (via Zora), trade no feed, mini-apps e o Base Pay, pagamento por aproximação em USDC (via Circle). A ideia: empacotar tudo o que a rede oferece num único produto de consumo, do jeito que o WeChat empacotou a vida digital chinesa.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">&gt;1<span class="u">M</span></div><div class="l">na waitlist do Base App</div></div>
+      <div class="stat"><div class="v">$500<span class="u">k+</span></div><div class="l">pagos a criadores (beta)</div></div>
+      <div class="stat"><div class="v">&gt;40<span class="u">%</span></div><div class="l">dos beta users usaram mini-apps</div></div>
+      <div class="stat"><div class="v">dez<span class="u">/25</span></div><div class="l">abertura geral ao público</div></div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+      <div class="jog-body">
+        <div class="blk pq">
+          <div class="blk-lbl">Por que a aposta fazia sentido</div>
+          <p>Uma rede vale pelo que se faz nela. Empacotar social, pagamento e trade num app de consumo poderia transformar a Base de "infraestrutura pra developer" em "app pra pessoa comum", o passo que de fato levaria os 110 milhões pra dentro. A waitlist de mais de 1 milhão mostrou que o apetite existia.</p>
+        </div>
+        <div class="blk ev">
+          <div class="blk-lbl">A evidência (e a ressalva)</div>
+          <p>O beta pagou mais de US$ 500 mil a criadores e teve adoção alta de mini-apps. Mas, como o próximo capítulo detalha, a aposta SocialFi do Base App foi revertida em poucos meses. A lição honesta: nem toda jogada de marketing vira acerto, e a coragem de pivotar faz parte do jogo.</p>
+        </div>
+      </div>
+      <div>
+        <div class="art-tile blue" style="aspect-ratio:4/3;">
+          <div class="glyph"></div>
+          <div class="gn" style="font-size:15pt;">Base App</div>
+          <div class="gt">social · pay · trade<br>jul/2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">12</span></div>
+</section>
+
+<!-- ============================ PÁG 13 — JOGADA 8 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 8</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">8</div>
+      <div class="ttl">
+        <div class="kk">Jogada 8 · marca como missão</div>
+        <h3>"Bring everyone onchain"<br>como bandeira.</h3>
+        <div class="jog-resumo">Uma missão grande o bastante pra dar sentido a cada campanha, e atrair quem acredita.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.55fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que a Base fez</div>
+          <p>Amarrou tudo numa missão única e repetível: trazer o próximo bilhão de pessoas pra onchain. Não é slogan de produto, é causa. Cada campanha (Onchain Summer, Basenames, Base App) deixou de ser uma ação solta e virou um capítulo da mesma história. E a missão tinha lastro de marca: a Base devolve parte da receita do sequencer ao Optimism Collective, posicionando-se como construtora de bem público, não extrativista.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Missão grande faz três coisas que anúncio não faz: dá coerência (toda campanha aponta pro mesmo norte), atrai talento (gente boa quer construir algo que importa) e gera tolerância (quando você erra, a causa segura a confiança). "Levar todo mundo onchain" é ambicioso o suficiente pra justificar campanha atrás de campanha sem soar repetitivo, porque cada uma é um passo no mesmo caminho.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Receita do sequencer da Base</div>
+        <div class="cs">US$ M · 87,2% da Superchain no H1/25</div>
+        <div class="chart-box" style="height:185px;"><canvas id="cv_revenue"></canvas></div>
+        <div class="chart-src">Fonte: Fortune / Messari · research §E</div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:8px;">
+      <p><span class="lin">A evidência.</span> A missão deu coerência a uma execução de marketing que poderia ter virado uma colcha de campanhas desconexas. E o lado "bem público" tem números: no H1 de 2025, a Base gerou 87,2% da receita de sequencer da Superchain Optimism (US$ 42,4 milhões, Messari), contribuindo de volta ao Collective. A contribuição de volta segue uma fórmula: o maior entre 2,5% da receita do sequencer ou 15% do lucro. Daí a manchete crítica que pegou (The Block): a Base puxa a maior fatia da atividade da Superchain, mas devolve só esses 2,5% de "aluguel". A crítica de que essa contribuição é pequena demais é real, e voltamos a ela no teste de estresse.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">13</span></div>
+</section>
+
+<!-- ============================ PÁG 14 — TESTE DE ESTRESSE (dark) ============================ -->
+<section class="page dark-page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O teste de estresse</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num" style="font-size:44pt;">⚠</div>
+      <div class="ttl">
+        <div class="kk">O teste de estresse · honestidade</div>
+        <h3>Onde a tese racha.</h3>
+        <div class="jog-resumo" style="color:#9a9388;">Toda marca forte tem um lado fraco. A Base tem quatro, e nenhum é pequeno.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin" style="color:#fff;">1. O sequencer é centralizado.</span> A Base roda num "sequencer" único, controlado pela Coinbase, ou seja, uma única empresa ordena as transações da rede. É ponto único de falha, vetor de censura e de extração de valor. Provou-se na prática: a rede teve um halt de 43 minutos logo após o lançamento (set/2023) e outro de 33 minutos em ago/2025, por falha no handoff do sequencer sob congestionamento. A Base atingiu o "Stage 1" da L2BEAT (abr/2025) e prepara o caminho pro Stage 2, mas, até lá, "descentralizada" tem asterisco.</p>
+      <p><span class="lin" style="color:#fff;">2. O vácuo do token virou ressentimento.</span> Anos de atividade sem airdrop criaram uma base que farmou na expectativa de um prêmio que nunca veio. A "exploração" anunciada em set/2025 não tem data nem alocação: "explorar" não é "lançar". E há um nó estrutural, a Coinbase precisa recompensar usuários sem prejudicar o acionista da COIN. O que pra uns é prudência, pra outros é extração.</p>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">B</div><div><div class="nm">Brian Armstrong</div><div class="rl">CEO · Coinbase</div></div></div>
+      <div class="quote">Sobre a aposta de rede social do Base App: "didn't quite work" — admitiu publicamente que o pilar SocialFi não funcionou como esperado.</div>
+    </div>
+    <div class="crit-card">
+      <div class="who"><div class="av">R</div><div><div class="nm">Rob Hadick</div><div class="rl">Dragonfly · investidor</div></div></div>
+      <div class="quote">"Base may have been the last meaningful holdout" — a Base teria sido o último grande aposta-tudo no social web3, e ela recuou.</div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin" style="color:#fff;">3. A cultura que atrai também queima.</span> A estratégia de surfar toda onda tem um custo: quase toda onda colapsou. O friend.tech foi de US$ 50 milhões em depósitos a US$ 21 de receita em 30 dias antes de fechar. O token FRIEND caiu ~98%. O $NORMIE despencou ~99% num exploit. E em abr/2025, o próprio X oficial da Base tokenizou um post via Zora ("Base is for everyone"), que subiu +962% e desabou ~90% em minutos, lido por muitos como pump-and-dump. Atenção barata vem com qualidade duvidosa embutida.</p>
+      <p><span class="lin" style="color:#fff;">4. A virada do SocialFi expôs o improviso.</span> O pilar social do Base App, vendido com pompa em jul/2025, foi desmontado em cerca de seis meses: o feed "Talk" do Farcaster saiu, o programa de Creator Rewards (que pagou US$ 450 mil+) foi encerrado, e o app pivotou pra "trading-first". Mostra que nem a Base sabia, de antemão, qual jogada ia colar.</p>
+    </div>
+
+    <div class="mono-card">
+      <div class="mch">A leitura honesta · o que sobra de pé</div>
+      <div class="mono-steps">
+        <div class="ms"><div class="n">01</div><div class="t">O hype alugou os usuários (e muito hype colapsou)</div></div>
+        <div class="ms"><div class="n">02</div><div class="t">A infra compôs: Aerodrome, USDC, a chain</div></div>
+        <div class="ms"><div class="n">03</div><div class="t">A distribuição Coinbase segurou a retenção</div></div>
+        <div class="ms"><div class="n">04</div><div class="t">Sequencer único + token vazio = dívida em aberto</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">14</span></div>
+</section>
+
+<!-- ============================ PÁG 15 — OS NÚMEROS (painel A) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:25pt;">A tese, em dados.</h2></div>
+
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">TVL da Base (US$ bi)</div>
+        <div class="cs">~$50M no lançamento → pico ~$5,58bi (out/25)</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_tvl"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Market share entre L2s</div>
+        <div class="cs">por TVL · mid-2026 · Base #2 atrás da Arbitrum</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_share"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama / BlockEden</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Transações diárias (pico, milhões)</div>
+        <div class="cs">pico de ~12M/dia em jan/2025, #1 L2</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_tx"></canvas></div>
+        <div class="chart-src">Fonte: The Block / a16z</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Curvas de hype que colapsaram</div>
+        <div class="cs">queda do pico · o custo de surfar a cultura</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_hype"></canvas></div>
+        <div class="chart-src">Fonte: DLNews / CertiK / Blockworks</div>
+      </div>
+    </div>
+
+    <div class="chart-card span" style="margin-top:14px;">
+      <div class="ct">A infraestrutura que compôs (US$ bi, escala log)</div>
+      <div class="cs">enquanto o hype subia e descia, infra durável se acumulou</div>
+      <div class="chart-box" style="height:130px;"><canvas id="cv_infra"></canvas></div>
+      <div class="chart-src">Fonte: DefiLlama / Aerodrome · research §E</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">15</span></div>
+</section>
+
+<!-- ============================ PÁG 16 — O QUE A PESQUISA SÉRIA DIZ ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que a pesquisa séria diz</span></div>
+  <div class="pad">
+    <span class="kicker">O lastro · não é opinião de agência</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">O que a pesquisa<br>séria diz.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:14px;">A leitura deste paper, distribuição mais marca como motor de crescimento, é corroborada por research institucional e pela imprensa que cobriu a Base sem release pago.</p>
+
+    <div class="auth-grid">
+      <div class="auth">
+        <div class="src"><span class="tag">a16z</span>State of Crypto 2024</div>
+        <div class="th">Coloca a Base entre as redes mais ativas do mundo: <b>22 milhões de endereços ativos em 2024</b>, a 3ª maior globalmente em atividade.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">Messari</span>State of the Superchain</div>
+        <div class="th">No H1/2025, a Base respondeu por <b>65,9% do TVL e 87,2% da receita de sequencer</b> de toda a Superchain Optimism (US$ 42,4 milhões).</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">Fortune</span>"Game changer"</div>
+        <div class="th">Tratou o Base App como um <b>"super app"</b> capaz de virar fonte de receita relevante: empacotar social, pagamento e trade num produto de consumo de massa.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">CoinDesk</span>Most Influential 2025</div>
+        <div class="th">Incluiu <b>Jesse Pollak</b> na lista dos mais influentes de 2025, validando a aposta de personificar a marca num fundador-personagem.</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">The Block</span>#1 L2</div>
+        <div class="th">Documentou a Base <b>flipando a Arbitrum como maior rollup por TVL</b> (out/2024) e o pico de <b>~12M de transações/dia</b> (jan/2025).</div>
+      </div>
+      <div class="auth">
+        <div class="src"><span class="tag">DWF Labs</span>The Case for Base</div>
+        <div class="th">Research dedicado: a Base como <b>"open stack for the global economy"</b>, com a tese de pagamentos e stablecoins (USDC) como vetor de escala.</div>
+      </div>
+      <div class="auth acc" style="grid-column:1 / -1;">
+        <div class="src"><span class="tag">A síntese honesta · Kaleidos</span>Distribuição rende; só marca retém</div>
+        <div class="th">A Base prova que <b>distribuição embutida muda o jogo</b>, mas não o vence sozinha. O hype <em>alugou</em> os usuários (e a maior parte colapsou 80–99%); foi a <em>infraestrutura durável</em> (Aerodrome, USDC, a chain) somada à <em>retenção via Coinbase</em> que segurou o crescimento. As rachaduras (sequencer único, token vazio, SocialFi revertido) são a conta que ainda não venceu.</div>
+      </div>
+    </div>
+
+    <p class="muted" style="font-size:8.2pt; margin-top:12px;">Fontes: a16z (State of Crypto 2024), Messari (State of the Superchain H1 2025), Fortune, CoinDesk (Most Influential 2025), The Block, DWF Labs. Dados de TVL/atividade cruzados com DefiLlama, L2BEAT e growthepie.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">16</span></div>
+</section>
+
+<!-- ============================ PÁG 17 — O QUE ISSO ENSINA ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que isso ensina</span></div>
+  <div class="pad">
+    <span class="kicker">O que isso ensina</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Sete jogadas transferíveis.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:12px;">A Base não é replicável inteira: poucos têm uma Coinbase de canal. Mas as jogadas de marca por trás do crescimento servem pra qualquer empresa que já tenha (ou queira ativar) uma audiência.</p>
+
+    <div>
+      <div class="take"><div class="tn">1</div><div class="tb"><b>Distribuição é a linha de partida, não a chegada.</b><p>Ter o público não converte sozinho. Se você já tem uma base (clientes, lista, seguidores), o trabalho de marca é dar a ela um motivo concreto pra dar o próximo passo.</p></div></div>
+      <div class="take"><div class="tn">2</div><div class="tb"><b>Lance com um evento, não com um anúncio.</b><p>O Onchain Summer trocou "estamos no ar" por um festival com data, marcas e coisas pra fazer. Experiência converte; conceito não.</p></div></div>
+      <div class="take"><div class="tn">3</div><div class="tb"><b>Recrute construtor, não só cliente.</b><p>Quem usa traz volume; quem constrói traz produto, e produto traz mais cliente. Investir em quem cria em cima de você multiplica os canais de venda.</p></div></div>
+      <div class="take"><div class="tn">4</div><div class="tb"><b>Dê à comunidade um símbolo pra vestir.</b><p>Basenames, bordão, identidade. Quando a pessoa exibe a sua marca de graça no próprio perfil, ela vira distribuição. Marca que vira linguagem é o teto.</p></div></div>
+      <div class="take"><div class="tn">5</div><div class="tb"><b>Personifique a marca num rosto.</b><p>Empresa não gera lealdade emocional; pessoa gera. Um fundador presente, que escreve o próprio texto, dá alma de comunidade a uma operação grande.</p></div></div>
+      <div class="take"><div class="tn">6</div><div class="tb"><b>Seja o palco, não a aposta única.</b><p>Em vez de apostar numa febre, vire a infraestrutura padrão de qualquer febre. Assim você ganha relevância em todo ciclo, sem depender de um acerto só.</p></div></div>
+      <div class="take"><div class="tn">7</div><div class="tb"><b>Tenha a coragem de pivotar, e de admitir.</b><p>O SocialFi do Base App não colou e foi revertido em meses, com o CEO admitindo em público. Errar rápido e honesto preserva mais marca que insistir no errado.</p></div></div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <span class="kicker" style="margin-bottom:8px;">Linha do tempo · ago/23 → jun/26</span>
+      <div class="rail">
+        <div class="rc hot"><div class="rk">Ago 2023</div><div class="rt"><b>Mainnet</b> + Onchain Summer</div></div>
+        <div class="rc"><div class="rk">Jun 2024</div><div class="rt"><b>&gt; Ethereum</b> em endereços ativos</div></div>
+        <div class="rc"><div class="rk">Ago 2024</div><div class="rt"><b>Basenames</b> (.base.eth)</div></div>
+        <div class="rc"><div class="rk">Out 2024</div><div class="rt"><b>#1 L2</b> por TVL (flip Arbitrum)</div></div>
+        <div class="rc"><div class="rk">Jul 2025</div><div class="rt"><b>Base App</b> "everything app"</div></div>
+        <div class="rc"><div class="rk">Set 2025</div><div class="rt"><b>Token</b> em "exploração"</div></div>
+        <div class="rc"><div class="rk">Mai 2026</div><div class="rt"><b>Azul</b> upgrade em mainnet</div></div>
+        <div class="rc hot"><div class="rk">Hoje</div><div class="rt"><b>#2 L2</b> por TVL · ~$11bi</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04</span><span class="pg">17</span></div>
+</section>
+
+<!-- ============================ PÁG 18 — FONTES (dark) ============================ -->
+<section class="page legal">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fontes</span></div>
+  <div class="pad">
+    <span class="kicker">Fontes &amp; metodologia</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot" style="background:rgba(210,98,178,.3)"></span><h2 style="font-size:24pt;">Tudo verificável.</h2></div>
+    <p>Todo número deste paper vem de fonte pública, datada de junho de 2026. Quando uma metodologia diverge (caso do TVL atual, faixa de ~US$ 10,7 a 12,8 bilhões conforme a fonte), citamos a faixa, não o ponto. Tweets reproduzidos verbatim em texto; engajamento (likes/RTs) não foi confirmado e, por isso, não é reportado. O token de rede está em "exploração" anunciada (set/2025), não lançado: tratamos como vácuo, não como fato consumado.</p>
+
+    <ul class="src-list">
+      <li><b>TVL / atividade:</b> DefiLlama, L2BEAT, growthepie, The Block</li>
+      <li><b>Market share L2:</b> DefiLlama, BlockEden, spotedcrypto</li>
+      <li><b>Receita de sequencer:</b> Coinbase (Q1'24), Fortune, Messari</li>
+      <li><b>Onchain Summer:</b> Cointelegraph, CoinDesk, Base blog (blog.base.org)</li>
+      <li><b>Basenames:</b> CryptoTimes, Coinmonks</li>
+      <li><b>Base App / "everything app":</b> CoinDesk, Fortune, Base blog</li>
+      <li><b>Distribuição Coinbase:</b> CoinLaw, Backlinko (usuários verificados)</li>
+      <li><b>Token / exploração:</b> CoinDesk, The Block, Bankless</li>
+      <li><b>Superchain / Optimism:</b> The Block, Messari, KuCoin</li>
+      <li><b>friend.tech / hype:</b> DLNews, CryptoSlate, CoinGecko</li>
+      <li><b>$NORMIE / Clanker:</b> CertiK, The Defiant</li>
+      <li><b>Content coin / Zora:</b> Blockworks, DLNews</li>
+      <li><b>SocialFi revertido:</b> The Defiant, The Block (Armstrong, Hadick)</li>
+      <li><b>Aerodrome / stablecoins:</b> DefiLlama, PANews</li>
+      <li><b>Research de autoridade:</b> a16z, Messari, DWF Labs, CoinDesk Most Influential 2025</li>
+    </ul>
+
+    <div class="disc">
+      <p style="font-size:8.4pt;">Este documento é um estudo editorial de marketing produzido pela Kaleidos. Não constitui recomendação de investimento, aconselhamento financeiro ou endosso à Base, à Coinbase ou a qualquer token. Marcas, logos e tweets citados pertencem a seus respectivos donos e são reproduzidos sob uso editorial. Dados sujeitos a variação de mercado. A Base não tinha token de rede lançado na data desta publicação.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 04 · Base</span><span class="pg">18</span></div>
+</section>
+
+<!-- ============================ PÁG 19 — CONTRACAPA (rosa) ============================ -->
+<section class="page backcover">
+  <div class="bc-inner">
+    <div class="bc-eyebrow">Kaleidos · Agência Cripto-Nativa</div>
+    <div class="bc-mark"><span style="font-style:italic;">K</span>aleidos</div>
+    <div class="bc-seal">Paper · Vol. 04 · Base</div>
+    <div class="bc-tag">A agência de marketing nativa de cripto do Brasil. Growth, narrativa e conteúdo para projetos de cripto e web3 que querem construir marca de verdade, não só barulho.</div>
+    <div class="bc-foot">Este paper é uma amostra de como a gente pensa marketing on-chain.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof Chart === 'undefined' || !window.KaleidosCharts) return;
+  var KC = window.KaleidosCharts;
+  function mount(id, cfg){
+    var el = document.getElementById(id);
+    if (el && cfg) new Chart(el.getContext('2d'), JSON.parse(JSON.stringify(cfg)));
+  }
+  mount('cv_summer',  KC.chartSummer);
+  mount('cv_moat',    KC.chartMoat);
+  mount('cv_revenue', KC.chartRevenue);
+  mount('cv_tvl',     KC.chartTVL);
+  mount('cv_share',   KC.chartShare);
+  mount('cv_tx',      KC.chartTx);
+  mount('cv_hype',    KC.chartHype);
+  mount('cv_infra',   KC.chartInfra);
+})();
+</script>
+</body>
+</html>

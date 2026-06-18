@@ -9,6 +9,7 @@ import { useState } from "react";
 import { WHATSAPP_NUMBER, SERVICOS } from "@/lib/constants";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
+import { getAttributionMeta } from "@/lib/attribution";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 
 export default function ContatoPage() {
@@ -72,6 +73,7 @@ export default function ContatoPage() {
           servicos: selectedServices,
           locale,
           _hp: hp,
+          metadata: getAttributionMeta(),
         }),
       });
       const data = await res.json().catch(() => ({}));

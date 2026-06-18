@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { getCaseData } from "./case-data";
+import { getServiceData } from "./service-pages-data";
 
 interface SEOProps {
   title: string;
@@ -202,6 +203,25 @@ export function generateServiceMetadata(serviceId: string, serviceName: string, 
     description: description,
     keywords: keywords,
     ogImage: "/Kaleidos/imagens/Capa.png",
+    url: `/servicos/${serviceId}`,
+    type: "website",
+  });
+}
+
+// Helper para gerar metadata das páginas de serviço estilo Lunar (lê service-pages-data)
+export function generateServicePageMetadata(serviceId: string): Metadata {
+  const data = getServiceData(serviceId);
+  if (!data) {
+    return generateSEOMetadata({
+      title: "Serviço",
+      description: "Serviço da Kaleidos Digital para cripto e web3.",
+      url: `/servicos/${serviceId}`,
+    });
+  }
+  return generateSEOMetadata({
+    title: data.pt.metaTitle,
+    description: data.pt.metaDescription,
+    keywords: data.pt.keywords,
     url: `/servicos/${serviceId}`,
     type: "website",
   });

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUDGY PENGUINS — Como um NFT falido virou marca global · Kaleidos Paper Vol. 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+<style>
+:root{
+  --cream:#F4F1EC;
+  --cream-2:#EDE8DF;
+  --paper:#FBF9F4;
+  --ink:#111111;
+  --ink-soft:#3A352E;
+  --ink-mute:#6B655B;
+  --line:#D8D1C4;
+  --pink:#d262b2;
+  --pink-soft:#f3d9ec;
+  --pink-deep:#a8418a;
+  --olive:#8A8A4A;
+  --orange:#D98841;
+  --green:#7CF067;
+  --dark:#111111;
+  /* Pudgy ice-blue accent (secundário) */
+  --ice:#9be3ec;
+  --ice-soft:#d6f1f5;
+  --ice-deep:#2f8fa6;
+  --c-dark:#0c2230;
+  --shadow:0 10px 30px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.05);
+  --shadow-card:0 1px 2.5px rgba(17,17,17,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:#cfc8ba;
+  font-size:10.5pt;
+  line-height:1.55;
+}
+@page{ size:A4; margin:0; }
+
+/* compact: tighten vertical rhythm on content-dense pages */
+.page.compact .pad{ padding-top:14mm; padding-bottom:12mm; }
+.page.compact .jog-head{ margin-bottom:10px; }
+.page.compact .prose p{ font-size:9.5pt; line-height:1.5; margin-bottom:7px; }
+.page.compact .blk p{ font-size:9pt; line-height:1.46; }
+.page.compact .stat-strip{ margin:9px 0; }
+.page.compact .tweet{ margin:8px 0; padding:13px 16px; }
+.page.compact .bigquote{ padding:14px 18px; }
+.page.compact .bigquote .q{ font-size:12.5pt; }
+
+/* ---------- PAGE SHELL ---------- */
+.page{
+  position:relative;
+  width:210mm;
+  min-height:297mm;
+  background:var(--cream);
+  margin:0 auto;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex;
+  flex-direction:column;
+}
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:16mm 18mm 14mm; flex:1; display:flex; flex-direction:column; }
+
+/* running header / footer */
+.rhead{
+  position:absolute; top:10mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Fraunces',serif; font-size:8pt; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--ink-mute);
+}
+.rhead .dash{ flex:1; height:1px; background:var(--line); margin:0 12px; }
+.rhead .sec{ color:var(--pink-deep); }
+.rfoot{
+  position:absolute; bottom:9mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.08em;
+  color:var(--ink-mute); text-transform:uppercase;
+}
+.rfoot .pg{ font-weight:600; color:var(--ink-soft); }
+
+/* ---------- TYPO ---------- */
+h1,h2,h3,h4{ font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.06; letter-spacing:-.01em;}
+.kicker{
+  font-family:'IBM Plex Mono',monospace; font-size:8pt; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--pink-deep);
+  margin-bottom:14px; display:inline-block;
+}
+.section-title{ position:relative; display:inline-block; }
+.section-title .dot{
+  position:absolute; left:-14px; top:50%; width:60px; height:60px; border-radius:50%;
+  transform:translate(-50%,-50%); z-index:0; background:var(--pink-soft);
+}
+.section-title .dot.ice{ background:var(--ice-soft); }
+.section-title h2{ position:relative; z-index:1; }
+p{ margin-bottom:11px; color:var(--ink-soft); }
+p:last-child{ margin-bottom:0; }
+strong{ color:var(--ink); font-weight:700; }
+em{ font-style:italic; }
+.lead{ font-size:11.5pt; color:var(--ink-soft); }
+.muted{ color:var(--ink-mute); }
+.mono{ font-family:'IBM Plex Mono',monospace; }
+.hl{ background:linear-gradient(transparent 58%, var(--pink-soft) 58%); padding:0 1px; }
+.hl-ice{ background:linear-gradient(transparent 58%, var(--ice-soft) 58%); padding:0 1px; }
+.kale-mark{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:.04em; font-size:13pt; }
+.kale-mark .k{ color:var(--pink); }
+
+/* lead-in label inside paragraphs */
+.lin{ color:var(--ink); font-weight:700; }
+
+/* ---------- COVER (Capa — Pudgy Editorial) ---------- */
+.cover{
+  --cc-dark:#0c2230;
+  color:var(--cream); padding:20mm 18mm 16mm;
+  background:radial-gradient(120% 80% at 50% -10%, #15425a 0%, #0c2230 55%, #07161f 100%);
+}
+.cover .cgrid{ position:absolute; inset:0; opacity:.06; z-index:0;
+  background-image:linear-gradient(var(--ice) 1px, transparent 1px), linear-gradient(90deg, var(--ice) 1px, transparent 1px);
+  background-size:26px 26px; }
+.cover .cglow{ position:absolute; left:50%; bottom:-30mm; transform:translateX(-50%);
+  width:160mm; height:90mm; border-radius:50%; z-index:0;
+  background:radial-gradient(circle, rgba(155,227,236,.16) 0%, rgba(155,227,236,0) 70%); }
+.cover .ctop{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; }
+.cover .ctop .cseal{ font-family:'Fraunces',serif; font-weight:600; font-size:15pt; letter-spacing:.04em; color:var(--cream); }
+.cover .ctop .cseal .cdot{ color:var(--pink); }
+.cover .ctop .cseal .csub-seal{ font-size:8pt; letter-spacing:.18em; text-transform:uppercase; font-family:'IBM Plex Mono',monospace; color:var(--ice); }
+.cover .ctop .cvol{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.28em; text-transform:uppercase; color:var(--ice); }
+.cover .cstage{ position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; margin:6mm 0; }
+.cover .medallion{ position:relative; width:118mm; height:118mm; }
+.cover .offset{ position:absolute; width:110mm; height:110mm; border-radius:50%; left:16mm; top:11mm;
+  background:var(--pink); opacity:.95; box-shadow:0 30px 70px rgba(0,0,0,.45); }
+.cover .ring{ position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 42% 30%, #bdeef4 0%, #7fd2e0 46%, #3f9fb4 100%);
+  border:3px solid rgba(155,227,236,.9);
+  box-shadow:inset 0 0 60px rgba(7,30,42,.40), 0 24px 60px rgba(0,0,0,.55); overflow:hidden; }
+.cover .ring::after{ content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow:inset 0 0 0 9mm rgba(255,255,255,.10); }
+.cover .ring img{ position:absolute; width:100%; height:100%; left:0; top:0; object-fit:cover;
+  filter:drop-shadow(0 14px 26px rgba(0,0,0,.45)) saturate(1.04); }
+.cover .chip{ position:absolute; z-index:4; right:6mm; top:8mm; width:18mm; height:18mm; border-radius:50%;
+  background:var(--ice); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.4); }
+.cover .chip svg{ width:11mm; height:11mm; }
+.cover .ctitle{ position:relative; z-index:3; }
+.cover .ckicker{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--ice); margin-bottom:8px; }
+.cover h1{ font-family:'Fraunces',serif; font-weight:700; font-size:50pt; line-height:.92; letter-spacing:-.01em; color:var(--cream); margin:0; }
+.cover h1 .pin{ color:var(--pink); }
+.cover .csub{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:16pt; line-height:1.34; color:#cbe9f0; margin-top:14px; max-width:158mm; }
+.cover .cfootrow{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; padding-top:12px; border-top:1px solid rgba(155,227,236,.24); }
+.cover .cfootrow .obj{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:#8fc3d2; line-height:1.5; }
+.cover .cfootrow .nums{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.06em; color:var(--ice); text-align:right; }
+
+/* ---------- INTRO ---------- */
+.letter{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:32px 38px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column;}
+.letter p{ font-size:11pt; color:var(--ink-soft); line-height:1.62;}
+.letter .dropcap::first-letter{
+  font-family:'Fraunces',serif; font-weight:700; color:var(--pink);
+  font-size:52pt; line-height:.78; float:left; margin:6px 12px 0 0;
+}
+.sig{ margin-top:auto; padding-top:22px; }
+.sig .name{ font-family:'Fraunces',serif; font-style:italic; font-size:21pt; color:var(--ink); }
+.sig .role{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px;}
+.sig-pfp{ width:58px; height:58px; border-radius:50%; overflow:hidden; flex:none; border:2px solid var(--pink); box-shadow:var(--shadow-card); }
+.sig-pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+.meta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
+.meta-chip{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:13px 18px; flex:1; min-width:150px; box-shadow:var(--shadow-card); }
+.meta-chip .lbl{ font-family:'IBM Plex Mono',monospace; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; color:var(--pink-deep); }
+.meta-chip .val{ font-family:'Fraunces',serif; font-size:13pt; margin-top:5px; color:var(--ink); }
+
+/* ---------- OVERVIEW big numbers ---------- */
+.bn-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+.bn{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 20px 18px; box-shadow:var(--shadow-card); overflow:hidden; }
+.bn::before{ content:""; position:absolute; right:-26px; top:-26px; width:80px; height:80px; border-radius:50%; background:var(--pink-soft); opacity:.7;}
+.bn.ice::before{ background:var(--ice-soft); opacity:.85;}
+.bn .fig{ position:relative; font-family:'Fraunces',serif; font-weight:700; font-size:29pt; line-height:1; color:var(--ink); letter-spacing:-.02em;}
+.bn .fig .unit{ font-size:14pt; color:var(--pink-deep); }
+.bn.ice .fig .unit{ color:var(--ice-deep); }
+.bn .cap{ position:relative; font-size:9pt; color:var(--ink-soft); margin-top:9px; line-height:1.4;}
+.bn.wide{ grid-column:1 / -1; }
+.bn.dark{ background:var(--dark); border-color:var(--dark); }
+.bn.dark .fig,.bn.dark .cap{ color:#F4F1EC;}
+.bn.dark::before{ background:rgba(210,98,178,.28);}
+.bn.dark .fig .unit{ color:var(--pink);}
+.bn.dark strong{ color:#fff; }
+
+/* ---------- CHART ---------- */
+.chart-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 14px; box-shadow:var(--shadow-card); margin-top:4px; }
+.chart-card .ct{ font-family:'Fraunces',serif; font-size:13pt; color:var(--ink); margin-bottom:2px;}
+.chart-card .cs{ font-size:8.5pt; color:var(--ink-mute); margin-bottom:12px;}
+.chart-box{ position:relative; width:100%; }
+.chart-src{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:10px; letter-spacing:.02em; text-align:right;}
+.annot{ display:inline-block; background:var(--pink); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:7.5pt; font-weight:600; padding:3px 9px; border-radius:20px; letter-spacing:.05em;}
+
+/* ---------- SECTION / JOGADA HEAD ---------- */
+.jog-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:14px; }
+.jog-num{ font-family:'Fraunces',serif; font-weight:700; font-size:54pt; line-height:.82; color:var(--pink); letter-spacing:-.03em; flex:none;}
+.jog-head .ttl .kk{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:5px;}
+.jog-head .ttl h3{ font-size:23pt; line-height:1.04;}
+.jog-resumo{ font-family:'Fraunces',serif; font-style:italic; font-size:11.5pt; color:var(--ink-mute); margin-top:6px; line-height:1.3;}
+
+/* two-col body w/ opening art */
+.jog-grid{ display:grid; grid-template-columns:1.05fr 1.55fr; gap:20px; align-items:start; }
+.jog-art{ border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); border:1px solid var(--line); background:var(--paper);}
+.jog-art img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover;}
+.jog-body .blk{ margin-bottom:12px;}
+.jog-body .blk:last-child{ margin-bottom:0;}
+.blk-lbl{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin-bottom:5px; display:flex; align-items:center; gap:7px;}
+.blk-lbl::before{ content:""; width:8px; height:8px; border-radius:50%; }
+.blk.fez .blk-lbl::before{ background:var(--pink);} .blk.fez .blk-lbl{ color:var(--pink-deep);}
+.blk.pq .blk-lbl::before{ background:var(--ice-deep);}  .blk.pq .blk-lbl{ color:#247184;}
+.blk.ev .blk-lbl::before{ background:var(--orange);}  .blk.ev .blk-lbl{ color:#b46a2a;}
+.blk p{ font-size:9.4pt; margin-bottom:5px; line-height:1.5;}
+
+/* full-width prose block */
+.prose p{ font-size:9.9pt; line-height:1.56; }
+.licao-tag{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--pink-deep); font-weight:600; border:1px dashed var(--pink); padding:3px 9px; border-radius:10px; display:inline-block; margin-top:8px;}
+
+/* quote */
+.bigquote{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--pink); border-radius:14px; padding:18px 22px; margin:10px 0; box-shadow:var(--shadow-card);}
+.bigquote.ice{ border-left-color:var(--ice-deep); }
+.bigquote .q{ font-family:'Fraunces',serif; font-style:italic; font-size:14pt; color:var(--ink); line-height:1.4;}
+.bigquote .by{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--ink-mute); margin-top:9px; text-transform:uppercase; letter-spacing:.1em;}
+
+/* stat strip */
+.stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0;}
+.stat{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow-card);}
+.stat .v{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--ink); line-height:1;}
+.stat .v .u{ font-size:9pt; color:var(--pink-deep);}
+.stat .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:5px; line-height:1.3;}
+
+/* ---------- TWEET CARD ---------- */
+.tweet{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:15px 18px; box-shadow:var(--shadow-card); margin:10px 0; }
+.tweet.dark{ background:#191919; border-color:#2c2c2c; }
+.tweet-top{ display:flex; align-items:center; gap:11px; margin-bottom:10px;}
+.tw-av{ width:42px; height:42px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.tw-av.pudgy{ background:var(--ice-soft); border:1px solid var(--line); }
+.tw-av.pudgy img{ width:100%; height:100%; object-fit:cover;}
+.tw-av.ph{ background:#e7ddd0; color:var(--pink-deep); font-family:'Fraunces',serif; font-weight:700; font-size:16pt;}
+.tweet.dark .tw-av.ph{ background:#333; color:#bbb;}
+.tw-meta{ flex:1; min-width:0;}
+.tw-name{ font-weight:700; font-size:10pt; color:var(--ink); display:flex; align-items:center; gap:5px;}
+.tweet.dark .tw-name{ color:#fff;}
+.tw-name .vrf{ color:var(--pink); font-size:11pt; }
+.tw-handle{ font-family:'IBM Plex Mono',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-x{ font-family:'Fraunces',serif; font-weight:700; font-size:15pt; color:var(--ink-mute);}
+.tweet.dark .tw-x{ color:#777;}
+.tw-body{ font-family:'Inter',sans-serif; font-size:10.5pt; line-height:1.42; color:var(--ink); font-weight:500;}
+.tweet.dark .tw-body{ color:#F0E6D8;}
+.tw-body em{ font-style:normal; background:linear-gradient(transparent 58%, var(--pink-soft) 58%); }
+.tweet.dark .tw-body em{ background:none; color:var(--ice); font-weight:600; }
+.tw-trans{ font-size:8.4pt; color:var(--ink-mute); margin-top:8px; font-style:italic; line-height:1.4; }
+.tweet.dark .tw-trans{ color:#9a9388; }
+.tw-stats{ display:flex; gap:16px; margin-top:11px; padding-top:10px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:8pt; color:var(--ink-mute);}
+.tweet.dark .tw-stats{ border-top-color:#2c2c2c; color:#9a9388;}
+.tw-stats b{ color:var(--ink); font-weight:600;}
+.tweet.dark .tw-stats b{ color:#e7ddd0;}
+.tw-stats .date{ margin-left:auto;}
+
+/* ---------- FIGURE ---------- */
+.figure{ border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card); background:var(--paper);}
+.figure.light{ background:var(--paper);}
+.figure img{ width:100%; display:block; max-height:240px; object-fit:cover; object-position:top;}
+.figure.tall img{ max-height:300px; object-fit:cover; object-position:top;}
+.figure.crop-sm img{ max-height:150px; object-fit:cover; object-position:top;}
+.fig-cap{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--ink-mute); margin-top:6px; line-height:1.4;}
+.fig-cap b{ color:var(--ink-soft);}
+
+/* pudgy art grid (variedade do IP) */
+.pudgy-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.pudgy-grid .pp{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:12px; aspect-ratio:1/1; overflow:hidden; box-shadow:var(--shadow-card);}
+.pudgy-grid .pp img{ width:100%; height:100%; object-fit:cover; }
+.pudgy-grid .pp .ppl{ position:absolute; bottom:5px; left:50%; transform:translateX(-50%); font-family:'IBM Plex Mono',monospace; font-size:6.2pt; letter-spacing:.06em; color:var(--ink-mute); background:rgba(251,249,244,.88); padding:1px 6px; border-radius:8px; text-transform:lowercase;}
+
+/* headlines strip */
+.headlines{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.headlines .figure img{ aspect-ratio:4/3; object-fit:cover; background:#fff;}
+
+/* founder grid */
+.founder-grid{ display:grid; grid-template-columns:0.85fr 1.4fr; gap:18px; align-items:start;}
+.founder-portrait{ border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card);}
+.founder-portrait img{ width:100%; display:block; aspect-ratio:4/5; object-fit:cover;}
+.stat-float{ display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+.stat-float .sf{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow-card);}
+.stat-float .sf .v{ font-family:'Fraunces',serif; font-weight:700; font-size:16pt; color:var(--pink-deep); line-height:1;}
+.stat-float .sf .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:4px; line-height:1.3;}
+
+/* timeline (mono cards) */
+.tline{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.tline .tl{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:13px 14px; box-shadow:var(--shadow-card);}
+.tline .tl .tk{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.12em; text-transform:uppercase;}
+.tline .tl .tv{ font-family:'Fraunces',serif; font-weight:700; font-size:13pt; color:var(--ink); margin-top:5px; line-height:1;}
+.tline .tl .td{ font-size:8pt; color:var(--ink-mute); margin-top:5px; line-height:1.35;}
+
+/* full timeline rail */
+.rail{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:10px;}
+.rail .rc{ background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:11px 12px;}
+.rail .rc.hot{ border-color:var(--pink); background:var(--pink-soft);}
+.rail .rc .rk{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.1em;}
+.rail .rc .rt{ font-size:8.4pt; color:var(--ink-soft); margin-top:5px; line-height:1.35;}
+.rail .rc .rt b{ color:var(--ink);}
+
+/* partner pills (Disney-do-web3 proof) */
+.partners{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+.partners .pill{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; letter-spacing:.06em; color:var(--ink-soft); background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:5px 11px; box-shadow:var(--shadow-card); }
+.partners .pill b{ color:var(--pink-deep); }
+
+/* ---------- DARK page (teste de estresse) ---------- */
+.dark-page{ background:var(--dark); color:#E7E1D6;}
+.dark-page .pad{ color:#D8D1C4;}
+.dark-page .rhead,.dark-page .rfoot{ color:#7d766b;}
+.dark-page .rhead .dash{ background:#332f29;}
+.dark-page .rhead .sec{ color:var(--pink);}
+.dark-page .rfoot .pg{ color:#b8b0a4;}
+.dark-page .kicker{ color:var(--pink);}
+.dark-page h2,.dark-page h3{ color:#fff;}
+.dark-page p{ color:#C9C2B6;}
+.dark-page strong{ color:#fff;}
+.dark-page .section-title .dot{ background:rgba(210,98,178,.3);}
+.dark-page .jog-num{ color:var(--pink);}
+.dark-page .jog-head .ttl .kk{ color:#8d857a;}
+.dark-page .blk p{ color:#C9C2B6;}
+.crit-card{ background:#191919; border:1px solid #2c2c2c; border-left:3px solid var(--pink); border-radius:14px; padding:16px 20px; margin:11px 0;}
+.crit-card .who{ display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+.crit-card .who .av{ width:38px; height:38px; border-radius:50%; background:#333; color:#aaa; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:15pt; flex:none;}
+.crit-card .who .nm{ font-weight:700; color:#fff; font-size:10pt;}
+.crit-card .who .rl{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:#8d857a; text-transform:uppercase; letter-spacing:.1em;}
+.crit-card .quote{ font-family:'Fraunces',serif; font-style:italic; font-size:13pt; color:#F0E6D8; line-height:1.4;}
+.mono-card{ background:#191919; border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin:11px 0;}
+.mono-card .mch{ font-family:'IBM Plex Mono',monospace; font-size:7.5pt; color:var(--pink); letter-spacing:.16em; text-transform:uppercase; margin-bottom:11px;}
+.mono-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px;}
+.mono-steps .ms{ background:#111; border:1px solid #2c2c2c; border-radius:10px; padding:11px;}
+.mono-steps .ms .n{ font-family:'IBM Plex Mono',monospace; font-size:7pt; color:var(--pink);}
+.mono-steps .ms .t{ font-size:8.4pt; color:#D8D1C4; margin-top:5px; line-height:1.35;}
+.dark-chart{ background:#191919; border:1px solid #2c2c2c; border-radius:18px; padding:18px 20px 14px; }
+.dark-chart .ct{ font-family:'Fraunces',serif; font-size:13pt; color:#fff; margin-bottom:2px;}
+.dark-chart .cs{ font-size:8.5pt; color:#9a9388; margin-bottom:12px;}
+.dark-chart .chart-src{ color:#7d766b; }
+
+/* ---------- NUMBERS panel ---------- */
+.panel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;}
+.panel-grid .chart-card.span{ grid-column:1 / -1;}
+
+/* ---------- LIÇÕES ---------- */
+.take{ display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
+.take:last-child{ border-bottom:none;}
+.take .tn{ font-family:'Fraunces',serif; font-weight:700; font-size:20pt; color:var(--pink); line-height:1; min-width:30px;}
+.take .tb b{ font-family:'Inter'; font-size:10pt; color:var(--ink); display:block; margin-bottom:2px;}
+.take .tb p{ font-size:9pt; margin:0; color:var(--ink-soft);}
+
+/* ---------- LEGAL / backcover ---------- */
+.legal{ background:var(--dark); color:#C9C2B6;}
+.legal .pad{ color:#B9B2A6;}
+.legal .rhead,.legal .rfoot{ color:#6d665c;}
+.legal .rhead .dash{ background:#2c2820;}
+.legal .rhead .sec{ color:var(--pink);}
+.legal h2{ color:#fff;}
+.legal .kicker{ color:var(--pink);}
+.legal p{ color:#A89F90; font-size:8.6pt; line-height:1.6;}
+.legal .src-list{ columns:2; column-gap:26px; margin-top:10px;}
+.legal .src-list li{ font-family:'IBM Plex Mono',monospace; font-size:7.4pt; color:#9a9388; list-style:none; padding:5px 0; border-bottom:1px solid #242424; line-height:1.4; break-inside:avoid;}
+.legal .src-list li b{ color:#cfc8ba;}
+.legal .disc{ border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin-top:14px; background:#181818;}
+.backcover{ background:var(--pink); color:#1a1a1a; display:flex; align-items:center; justify-content:center; text-align:center;}
+.backcover .bc-inner{ z-index:2;}
+.backcover .bc-mark{ font-family:'Fraunces',serif; font-weight:600; font-size:34pt; letter-spacing:.02em; color:#1a1a1a;}
+.backcover .bc-seal{ font-family:'IBM Plex Mono',monospace; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; margin-top:14px; color:#5a1f49;}
+.backcover .bc-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:#5a1f49; margin-bottom:18px;}
+.backcover .bc-tag{ font-family:'Fraunces',serif; font-style:italic; font-size:14pt; margin-top:26px; max-width:420px; color:#2a0f22; line-height:1.4;}
+.backcover .bc-foot{ font-family:'IBM Plex Mono',monospace; font-size:8pt; letter-spacing:.06em; color:#5a1f49; margin-top:20px; max-width:380px; line-height:1.5;}
+
+/* print / screen */
+@media print{
+  body{ background:#fff; }
+  .page{ margin:0; box-shadow:none; }
+  .chart-box canvas{ max-width:100%; }
+}
+@media screen{
+  .page{ margin:14px auto; box-shadow:0 18px 50px rgba(0,0,0,.28);}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁG 1 — CAPA (Pudgy Editorial) ============================ -->
+<section class="page cover">
+  <div class="cgrid"></div>
+  <div class="cglow"></div>
+  <div class="ctop">
+    <span class="cseal">Kaleidos <span class="cdot">·</span> <span class="csub-seal">Agência Cripto-Nativa</span></span>
+    <span class="cvol">Vol. 02 — Estudo de Caso</span>
+  </div>
+
+  <div class="cstage">
+    <div class="medallion">
+      <div class="offset"></div>
+      <div class="ring">
+        <img src="assets/pulled/art-pudgy-avatar-beanie-hero.png" alt="Pudgy Penguin">
+      </div>
+      <div class="chip">
+        <svg viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg"><path d="M144 71.6991C144 119.306 114.866 134.582 99.5156 120.98C86.8804 109.889 83.1211 86.4521 64.116 84.0456C39.9942 81.0113 37.9057 113.133 22.0334 113.133C3.5504 113.133 0 86.2428 0 72.4315C0 58.3063 3.96809 39.0542 19.736 39.0542C38.1146 39.0542 39.1588 66.5722 62.132 65.1073C85.0007 63.5379 85.4184 34.8689 100.247 22.6271C113.195 12.0593 144 23.4641 144 71.6991Z" fill="#0c2230"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctitle">
+    <div class="ckicker">KALEIDOS PAPER · Vol. 02</div>
+    <h1>PUDGY PENGUINS<span class="pin">.</span></h1>
+    <p class="csub">Como um NFT falido virou marca global. O cavalo de Troia físico: a marca que entrou na Walmart pela porta da frente e usou a cripto como backend.</p>
+  </div>
+
+  <div class="cfootrow">
+    <div class="obj">Lente: marca &amp; growth<br>Sujeito: Pudgy Penguins · PENGU</div>
+    <div class="nums">Walmart · 1,5M brinquedos · 65B views</div>
+  </div>
+</section>
+
+<!-- ============================ PÁG 2 — INTRO ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Intro</span></div>
+  <div class="pad">
+    <span class="kicker">Kaleidos Paper · Vol. 02</span>
+    <div class="section-title" style="margin-bottom:18px;"><span class="dot"></span><h2 style="font-size:27pt;">O paradoxo de uma marca<br>construída de fora pra dentro.</h2></div>
+    <div class="letter">
+      <p class="dropcap">Quase todo projeto de cripto faz a mesma sequência: lança o token, promete utilidade, contrata influenciador, reza pelo hype. A Pudgy Penguins fez o caminho contrário. Começou como um NFT (um certificado digital de propriedade registrado numa blockchain), mas em vez de viver disso, colocou um pinguim de pelúcia de quinze dólares na prateleira da Walmart, espalhou GIF fofo no GIPHY até bater Disney, Pokémon e Hello Kitty somados, e só depois, anos depois, lançou o token. A criança que abraça o brinquedo não sabe que está sendo trazida para o mundo cripto (onboardada). E é exatamente esse o ponto.</p>
+      <p>Esse é o paradoxo que este paper destrincha. A Pudgy inverteu a ordem do setor: em vez de vender cripto pra cripto-nativo, construiu uma marca de consumo de verdade, com IP, personagem e distribuição física, e deixou a blockchain invisível no backend. A marca virou o produto. A cripto virou infraestrutura. É o oposto exato do token-primeiro que matou os concorrentes da safra de 2021.</p>
+      <p>Este não é um paper de teoria. É o estudo de um projeto real: um NFT dado como morto, comprado por 750 ETH por um ex-CMO de empresa de brinquedo, reconstruído jogada por jogada até virar uma das marcas mais distribuídas do web3. A lente é marketing. O sujeito é a Pudgy.</p>
+      <div class="meta-row">
+        <div class="meta-chip"><div class="lbl">Tempo de leitura</div><div class="val">14 a 20 minutos</div></div>
+        <div class="meta-chip"><div class="lbl">Formato</div><div class="val">Breakdown · estudo de projeto</div></div>
+        <div class="meta-chip"><div class="lbl">Dados</div><div class="val">Fontes públicas · jun/2026</div></div>
+      </div>
+      <div class="sig" style="display:flex; align-items:center; gap:16px;">
+        <div class="sig-pfp"><img src="assets/pulled/gabriel-pfp.jpg" alt="Gabriel Madureira"></div>
+        <div>
+          <div class="name" style="font-size:18pt;">Gabriel Madureira</div>
+          <div class="role">Fundador · Kaleidos — agência cripto-nativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">02</span></div>
+</section>
+
+<!-- ============================ PÁG 3 — OVERVIEW ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Overview</span></div>
+  <div class="pad">
+    <span class="kicker">Overview · os números-choque</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:26pt;">Seis números que o web3<br>não estava acostumado a ouvir.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:16px;">Antes do teardown, o retrato em seis dados. Cada um é desenvolvido nas jogadas a seguir, com a prova e a fonte.</p>
+
+    <div class="bn-grid">
+      <div class="bn">
+        <div class="fig">3.100<span class="unit"> lojas</span></div>
+        <div class="cap"><strong>Walmart.</strong> Um brinquedo de NFT chegou à maior rede de varejo do mundo, e depois somou Target, Amazon e mais 2.000 lojas Walgreens. A distribuição física virou o canal de aquisição. <span class="muted">[Decrypt; The Defiant]</span></div>
+      </div>
+      <div class="bn">
+        <div class="fig">1,5<span class="unit"> mi</span></div>
+        <div class="cap"><strong>Brinquedos vendidos.</strong> Mais de US$ 13 milhões em vendas de varejo até o fim de 2024, com a receita de pelúcia crescendo a um CAGR de 123% entre 2023 e 2025. <span class="muted">[Wikipedia; Forbes; CoinDesk Research]</span></div>
+      </div>
+      <div class="bn ice">
+        <div class="fig">65,1<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Views no GIPHY.</strong> Mais que Disney (23,3B), Pokémon (10,8B) e Hello Kitty (7,4B) somados. Líder de mercado em GIF viral, batendo marcas Web2 com décadas de vantagem. <span class="muted">[CoinDesk Research]</span></div>
+      </div>
+      <div class="bn">
+        <div class="fig">~<span class="unit">US$</span>2,3<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Debut do PENGU.</strong> Lançado em dezembro de 2024, airdropado para mais de 6 milhões de carteiras, cerca de US$ 1,5 bilhão distribuído. Uma das maiores bases de usuários já criadas no web3. <span class="muted">[CoinDesk; CoinDesk Research]</span></div>
+      </div>
+      <div class="bn">
+        <div class="fig">750<span class="unit"> ETH</span></div>
+        <div class="cap"><strong>A compra (~US$ 2,5M).</strong> Foi o que Luca Netz pagou em abril de 2022 para comprar um projeto que o mercado tinha dado como morto, com floor abaixo de 1 ETH. <span class="muted">[Fortune; LuckyTrader]</span></div>
+      </div>
+      <div class="bn">
+        <div class="fig">&gt;<span class="unit">US$</span>50<span class="unit"> mi</span></div>
+        <div class="cap"><strong>Receita anual.</strong> Merch físico, licenciamento e conteúdo, com guidance do próprio fundador de US$ 60M em 2025 e US$ 120M em 2026 <em>(projeção, não realizado)</em>. <span class="muted">[Gate News; Bloomingbit]</span></div>
+      </div>
+      <div class="bn wide" style="background:var(--dark); border-color:var(--dark);">
+        <div class="fig" style="color:#fff;">A marca virou o produto. <span class="unit" style="color:var(--pink);">A cripto virou o backend.</span></div>
+        <div class="cap" style="color:#E7E1D6;">Seis números que, juntos, contam uma história que o web3 não estava acostumado a ouvir: a de uma marca de consumo construída de fora pra dentro. O resto do paper explica, jogada por jogada, como cada um nasceu dessa inversão.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">03</span></div>
+</section>
+
+<!-- ============================ PÁG 4 — O QUE É A PUDGY ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que é a Pudgy</span></div>
+  <div class="pad">
+    <span class="kicker">Contexto do projeto</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">De JPEG especulativo<br>a personagem global.</h2></div>
+
+    <div class="jog-grid" style="grid-template-columns:1.5fr 1fr;">
+      <div class="prose">
+        <p><span class="lin">O que ela era (2021).</span> A Pudgy Penguins nasceu em julho de 2021 como uma coleção de 8.888 NFTs de pinguins no Ethereum, criados (mintados) por quatro estudantes da Universidade da Flórida. Lançados a 0,03 ETH cada, esgotados em menos de vinte minutos, cobertura no New York Times, na CNBC e no The Verge. Era, na essência, mais um JPEG especulativo da bolha de NFT, um arquivo de imagem cujo único valor era a aposta de que alguém pagaria mais caro depois. E, como quase toda a safra de 2021, ela quase morreu junto com o ciclo.</p>
+        <p><span class="lin">O que ela virou.</span> Hoje a Pudgy não é um NFT. É uma marca de propriedade intelectual com presença global. O pinguim deixou de ser um colecionável digital e virou um personagem, no sentido em que Mickey Mouse e Hello Kitty são personagens: uma figura cultural que vive em pelúcia na prateleira, em GIF no celular de gente que nunca ouviu falar em blockchain, em série animada, em livro infantil da Random House, em parceria com a Lufthansa. Em cima dessa marca foram empilhadas camadas de cripto: o token PENGU, uma blockchain própria (a Abstract), jogos, um ecossistema de licenciamento. Mas a base, o ativo que sustenta tudo, é a marca de consumo, não o token.</p>
+        <p><span class="lin">Onde ela está hoje.</span> A empresa-mãe é a Igloo, Inc., que levantou mais de US$ 11 milhões liderados pelo Founders Fund, de Peter Thiel, em julho de 2024. A Pudgy está em mais de 10.000 pontos de venda físicos, acumula mais de 2,7 milhões de seguidores nas redes sociais, e reporta receita anual acima de US$ 50 milhões vinda majoritariamente de produto físico e licenciamento, não de especulação on-chain. A ambição declarada é virar uma empresa de entretenimento global, com IPO até 2027.</p>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/art-pengus-lineup.jpg" alt="Lineup de Pengus"></div>
+        <div class="fig-cap"><b>O elenco</b> — arte oficial do lineup de Pengus. O pinguim como personagem, não como ativo. Fonte: Pudgy Penguins (2026).</div>
+        <div class="figure light" style="margin-top:12px;"><img src="assets/pulled/screen-opensea-collection.png" alt="Coleção no OpenSea"></div>
+        <div class="fig-cap"><b>OpenSea · coleção oficial</b> — floor 4,24 ETH, 510,8K ETH de volume total. Fonte: OpenSea (jun/2026).</div>
+      </div>
+    </div>
+
+    <div class="bigquote ice" style="margin-top:14px;">
+      <div class="q">O brinquedo de US$ 15 não é merch, é funil. O GIF gratuito não é conteúdo, é topo de funil. A cripto não é o produto, é a monetização que vem depois que o vínculo emocional já existe. Na Pudgy, a marca é o produto e a cripto é o backend.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">04</span></div>
+</section>
+
+<!-- ============================ PÁG 5 — A VIRADA (Luca Netz) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A virada</span></div>
+  <div class="pad">
+    <span class="kicker">O turnaround</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">A Pudgy de hoje existe<br>porque alguém comprou um cadáver.</h2></div>
+
+    <div class="founder-grid">
+      <div>
+        <div class="founder-portrait"><img src="assets/pulled/photo-luca-netz-fortune.webp" alt="Luca Netz"></div>
+        <div class="fig-cap"><b>Luca Netz</b> — fundador e CEO. Retrato editorial. Fonte: Fortune / cortesia Luca Netz.</div>
+        <div class="stat-float" style="margin-top:12px;">
+          <div class="sf"><div class="v">750 ETH</div><div class="l">~US$ 2,5M pela coleção inteira (abr/2022)</div></div>
+          <div class="sf"><div class="v">&lt;1 ETH</div><div class="l">floor quando ele comprou, projeto dado como morto</div></div>
+        </div>
+      </div>
+      <div class="prose">
+        <p><span class="lin">O quase-fracasso.</span> Depois do mint, o floor chegou a 2,4 ETH na primeira semana. Aí o ciclo virou. Até o fim de 2021 tinha despencado para cerca de 0,5 ETH. Pior que o preço, era a falta de entrega: os fundadores prometeram jogo, token e livro educativo, e não entregaram. Em janeiro de 2022, a comunidade votou no Discord para expulsar os próprios fundadores. O projeto era tratado como "dead in the water". Para qualquer observador racional, a Pudgy estava acabada.</p>
+        <p><span class="lin">A compra.</span> Foi exatamente esse o ativo que Luca Netz decidiu comprar. Em abril de 2022, adquiriu o projeto inteiro por 750 ETH. O motivo que ele deu não era de investidor de cripto, era de marqueteiro frustrado: cansaço de ver projetos de NFT levantarem fortunas e entregarem quase nada.</p>
+        <p><span class="lin">Quem é Luca Netz.</span> E aqui está o detalhe que explica a virada inteira: Netz não vinha da cripto. Cresceu sem-teto, dropout do décimo ano, fez o primeiro milhão com dropshipping no Shopify e construiu carreira como executivo de marketing, CMO da Von Dutch e da Gel Blaster, uma empresa de brinquedo. O background dele era varejo, marca e brinquedo. Quando olhou para a Pudgy, não viu um token quebrado. Viu uma propriedade intelectual barata, esperando para ser tratada como marca de consumo.</p>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">"Companies like Disney are masters at emotional utility — how do you impact people in a way that drives them to be emotionally attached to your product? That's through content, that's through messaging, that's through branding, and that's through community."</div>
+      <div class="by">Luca Netz · à Bloomingbit · A "emotional utility" importada da Disney</div>
+    </div>
+
+    <!-- CARD Tweet — Luca trojan horse -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av pudgy"><img src="assets/pulled/art-pudgy-avatar-mohawk.png" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Luca Netz <span class="vrf">✦</span></div>
+          <div class="tw-handle">@LucaNetz · 13 set</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">IP was always the trojan horse... the top NFT companies are <em>breaking through into mass</em> in a way that crypto has never seen before.</div>
+      <div class="tw-trans">O "cavalo de Troia" dito pelo próprio fundador: o IP era a porta de entrada o tempo todo.</div>
+      <div class="tw-stats"><span class="date">@LucaNetz · 13/set · verbatim</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">05</span></div>
+</section>
+
+<!-- ============================ PÁG 6 — JOGADA 1 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 1</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">1</div>
+      <div class="ttl">
+        <div class="kk">Jogada 1 · marca antes de token</div>
+        <h3>Tratar o pinguim<br>como IP, não como JPEG.</h3>
+        <div class="jog-resumo">Vender o afeto primeiro e a cripto depois. A "Disney do Web3".</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><img src="assets/pulled/art-pudgy-ethos.png" alt="Pudgy Penguins Ethos"></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Quando Netz comprou o projeto por 750 ETH, não herdou um token nem um roadmap de utilidade on-chain. Herdou 8.888 desenhos de pinguim gordo. E decidiu que aquilo não era um JPEG especulativo: era um personagem. A tese que ele repetiria em toda entrevista foi explícita até o desconforto: transformar a Pudgy na Disney do Web3. O pinguim viria primeiro como IP, rosto reconhecível de uma marca de consumo, e a cripto ficaria escondida no backend.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>O Web3 de 2021 vendia o mecanismo: "compre o NFT porque o floor vai subir". A Pudgy inverteu a ordem. Vendeu o afeto primeiro e a cripto depois, porque o background de Netz não era cripto, era marketing e brinquedo. Quem vem do consumo sabe que ninguém ama uma marca pelo seu modelo de receita: ama pelo personagem. Ao tratar o pinguim como Mickey Mouse, a Pudgy se libertou da gravidade do preço. O valor parou de depender do floor e passou a depender de quanta gente gostava do pinguim, dentro e fora da cripto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> A prova mais limpa veio anos depois, no teste de estresse. Em 2026, com o token PENGU 90% abaixo do topo e o mercado de NFT global encolhendo (de US$ 304M em fevereiro para ~US$ 175M em abril), o floor (preço mínimo de um NFT da coleção) do Pudgy Penguins seguiu resiliente, em torno de ~4,2 ETH, com quase 10 mil owners (donos) únicos sustentando uma coleção de dezenas de milhões em market cap (valor de mercado: preço × quantidade). O ativo financeiro despencou. A marca, não. O porquê fica para a página do teste de estresse.</p>
+      <span class="licao-tag">Lição → marca ancorada em personagem sobrevive ao gráfico cair; marca ancorada em preço some no 1º bear.</span>
+    </div>
+
+    <!-- partner pills -->
+    <div class="partners">
+      <span class="pill">Prova "Disney do web3":</span>
+      <span class="pill"><b>×</b> Random House</span>
+      <span class="pill"><b>×</b> Lufthansa</span>
+      <span class="pill"><b>×</b> TheSoul (série Lil Pudgys)</span>
+      <span class="pill"><b>×</b> Don Quijote · 7-Eleven (Japão)</span>
+    </div>
+    <p class="muted" style="font-size:7.6pt; margin-top:6px;">Licenciamentos e parcerias de marca da Pudgy: livro infantil da Random House, marca em produtos da Lufthansa, série animada com a TheSoul Publishing e QR-toys nas redes de varejo japonesas. Sinais de que o pinguim virou IP de consumo, não só ativo cripto.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">06</span></div>
+</section>
+
+<!-- ============================ PÁG 7 — JOGADA 2 (GIPHY) ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 2</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">2</div>
+      <div class="ttl">
+        <div class="kk">Jogada 2 · GIPHY como topo de funil</div>
+        <h3>O topo de funil<br>mais barato que existe.</h3>
+        <div class="jog-resumo">65,1 bilhões de views, custo de aquisição praticamente zero.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">O que eles fizeram.</span> Logo depois de comprar o projeto, o time fez a coisa menos cripto possível: subiu GIFs dos pinguins no GIPHY e começou a fazer short-form no Instagram. Não anúncios pagos, não influencer de cripto, não thread de alpha. GIFs de pinguim feliz, pinguim abraçando, pinguim frustrado, o tipo de figurinha que qualquer pessoa manda numa conversa de WhatsApp sem fazer ideia de que aquilo é um NFT. Em seis meses, foram mais de 1 bilhão de views de GIF e 100 mil seguidores no Instagram. De lá, a curva só subiu: 10B de views em nov/2023, 16,5B em abr/2024 (ultrapassando a Disney), e 65,1 bilhões acumulados.</p>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+      <div class="chart-card">
+        <div class="ct">Views no GIPHY (bilhões)</div>
+        <div class="cs">Pudgy 65,1B &gt; Disney + Pokémon + Hello Kitty somados (41,5B)</div>
+        <div class="chart-box" style="height:170px;"><canvas id="cv_giphy"></canvas></div>
+        <div class="chart-src">Fonte: CoinDesk Research (primária)</div>
+      </div>
+      <div class="jog-body">
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>65,1 bilhões de views é mais do que Disney, Pokémon e Hello Kitty somados. Uma marca nascida de um NFT de 2021 bateu três dos maiores IPs do planeta no canal de figurinha viral, e o custo disso é praticamente zero. Cada pessoa que manda um pinguim numa conversa faz marketing de marca sem ser paga e sem saber. O afeto vem antes da conversão.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1fr 1fr; align-items:start; margin-top:4px;">
+      <div>
+        <div class="figure light"><img src="assets/pulled/screen-giphy-pudgy-channel.png" alt="Canal Pudgy no GIPHY"></div>
+        <div class="fig-cap"><b>giphy.com/pudgypenguins</b> — o canal oficial: stickers, stories, clips e collections. Fonte: GIPHY (2026).</div>
+      </div>
+      <!-- CARD Tweet — 30B views -->
+      <div class="tweet" style="margin-top:0;">
+        <div class="tweet-top">
+          <div class="tw-av pudgy"><img src="assets/pulled/art-pudgy-avatar-mohawk.png" alt=""></div>
+          <div class="tw-meta">
+            <div class="tw-name">Luca Netz <span class="vrf">✦</span></div>
+            <div class="tw-handle">@LucaNetz · 03 out</div>
+          </div>
+          <div class="tw-x">𝕏</div>
+        </div>
+        <div class="tw-body">30 billion views is insane. I think it's safe to say that Pudgy Penguins is <em>the most adopted crypto native IP in the world.</em></div>
+        <div class="tw-trans">"30 bilhões de views é insano. É seguro dizer que a Pudgy é o IP cripto-nativo mais adotado do mundo."</div>
+        <div class="tw-stats"><span class="date">@LucaNetz · 03/out · verbatim</span></div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> O impacto agregado chega a 2 bilhões de impressões e 100 mil de tráfego mensal puxados pela estratégia de conteúdo, com presença social total na casa de 2,7M+ (2M+ no Instagram, 800k+ no TikTok, 700k+ no X). O GIF não foi vaidade: foi o canal que encheu o topo do funil de gente que nunca tinha ouvido a palavra "blockchain". É o oposto do marketing de cripto tradicional, que grita pra dentro da própria bolha. A Pudgy gritou pra fora dela, de graça.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">07</span></div>
+</section>
+
+<!-- ============================ PÁG 8 — JOGADA 3 (Walmart) ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 3</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">3</div>
+      <div class="ttl">
+        <div class="kk">Jogada 3 · o cavalo de Troia físico</div>
+        <h3>O brinquedo é a porta.<br>A cripto é o backend.</h3>
+        <div class="jog-resumo">Um plush de US$ 15 na prateleira do Walmart onboarda quem nunca baixaria uma carteira.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1fr 1.4fr;">
+      <div>
+        <div class="figure light"><img src="assets/pulled/photo-pudgy-perchies-plush.png" alt="Pudgy plush"></div>
+        <div class="fig-cap"><b>Produto de prateleira</b> — set de plush Pudgy com embalagem e logo. O SKU físico que entra no varejo americano. Fonte: Pudgy Penguins (2026).</div>
+        <div class="figure light crop-sm" style="margin-top:10px;"><img src="assets/pulled/screen-decrypt-walmart-toys.png" alt="Decrypt Walmart"></div>
+        <div class="fig-cap"><b>Decrypt</b> — "Sold $10 Million Worth of Toys, Now Walmart Wants More". Fonte: Decrypt.</div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Em maio de 2023, a Pudgy lançou os Pudgy Toys com a fabricante PMI Kids' World: plushies físicos vendidos em loja, com preço de brinquedo (~US$ 15), não de NFT. As primeiras 48 horas fizeram mais de US$ 500 mil em vendas e levaram o produto ao #1 de trending na Amazon. Em setembro de 2023 veio o salto: estreia em 2.000 lojas Walmart, depois expandidas para 3.100, mais Target, Walgreens (deal de 2.000 lojas) e Amazon. Cada brinquedo trazia um QR code que destravava traits no jogo Pudgy World. O bicho de pelúcia era, literalmente, a porta de entrada pra cripto.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Aqui está o coração do case. Todo projeto Web3 tenta arrastar o usuário mainstream pra dentro da cripto: ensina carteira, seed phrase, gas. A Pudgy fez o caminho contrário. Colocou um brinquedo fofo de US$ 15 na prateleira do Walmart, onde mães e crianças já estão, e deixou o QR code fazer o onboarding silencioso depois. O Walmart, o Target e o Walgreens são canais de distribuição com décadas de confiança que nenhuma campanha cripto consegue comprar. É o cavalo de Troia perfeito: o produto que entra pela porta da frente é inofensivo e querido, e a tecnologia viaja escondida dentro dele.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.2fr 1fr; align-items:start; margin-top:8px;">
+      <!-- CARD Tweet — Walmart marco -->
+      <div class="tweet" style="margin-top:0;">
+        <div class="tweet-top">
+          <div class="tw-av pudgy"><img src="assets/pulled/art-pudgy-avatar-beanie-hero.png" alt=""></div>
+          <div class="tw-meta">
+            <div class="tw-name">Luca Netz <span class="vrf">✦</span></div>
+            <div class="tw-handle">@LucaNetz · 26 set</div>
+          </div>
+          <div class="tw-x">𝕏</div>
+        </div>
+        <div class="tw-body">One small step for Pudgy Penguins, one giant leap for Web3. Web3 IP and blockchain technology are now front and center in <em>the world's biggest retailer.</em></div>
+        <div class="tw-trans">"Um pequeno passo pra Pudgy, um salto gigante pro Web3. IP de Web3 agora no centro da maior varejista do mundo."</div>
+        <div class="tw-stats"><span>O marco da estreia no varejo</span><span class="date">@LucaNetz · 26/set · verbatim</span></div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Alcance de varejo (nº de lojas)</div>
+        <div class="cs">Walmart 3.100 · Walgreens 2.000 · Target/Amazon presentes</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_toys"></canvas></div>
+        <div class="chart-src">Fonte: Decrypt / The Defiant / PRNewswire</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">08</span></div>
+</section>
+
+<!-- ============================ PÁG 9 — JOGADA 4 (IP/licensing) ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 4</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">4</div>
+      <div class="ttl">
+        <div class="kk">Jogada 4 · IP/licensing alinhado à comunidade</div>
+        <h3>A comunidade vira<br>sócia da receita real.</h3>
+        <div class="jog-resumo">Cada holder licencia o IP do seu pinguim e ganha royalty quando ele vira produto.</div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-bottom:10px;">
+      <p><span class="lin">A evidência do físico.</span> Os números da Jogada 3 provam que o brinquedo não foi gimmick: mais de 1,5 milhão de unidades vendidas, US$ 13M+ em vendas de varejo até out/2024, com CAGR (taxa de crescimento anual) de receita de plush de 123% entre 2023 e 2025. E o efeito sobre a cripto foi medível: quando saiu a notícia da estreia no Walmart, as vendas de NFT dobraram. O brinquedo físico não competia com o NFT, alimentava ele. A distribuição física virou o maior canal de aquisição de uma marca nativa de web3.</p>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1fr 1.4fr;">
+      <div>
+        <div class="figure light"><img src="assets/pulled/photo-pudgy-plush-bouquet.png" alt="Plush Bouquet"></div>
+        <div class="fig-cap"><b>Plush Bouquet</b> — um SKU físico nascido de um IP licenciado da comunidade. Cada pinguim que vira produto pode gerar royalty pro holder. Fonte: Pudgy Penguins (2026).</div>
+        <div class="stat-float" style="grid-template-columns:1fr 1fr; margin-top:12px;">
+          <div class="sf"><div class="v">~5%</div><div class="l">net revenues de royalty por deal (varia)</div></div>
+          <div class="sf"><div class="v">~US$1M</div><div class="l">já pago em royalties a holders (est.)</div></div>
+        </div>
+      </div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>A Pudgy criou a OverpassIP, uma plataforma de licenciamento onde cada detentor de NFT pode licenciar o IP do seu pinguim específico. Quando um pinguim de um holder vira um brinquedo, um produto, uma estampa, esse holder ganha royalty real, em torno de 5% das net revenues. Não é airdrop simbólico, não é "utility" vaga: é fluxo de caixa de receita de varejo de verdade, vinculado ao ativo que a pessoa já tem na carteira. Estima-se cerca de US$ 1M já pago em royalties, com valor total ganho por holders na casa de US$ 1,3M.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>O NFT de 2021 vendia status e a promessa de que "a comunidade é dona". Na prática, ser dono não significava nada além do direito de torcer pelo floor. A OverpassIP transformou essa promessa vazia em sociedade econômica. Um detentor que ganha royalty quando a marca cresce vira advogado da marca com stake financeiro, não um especulador esperando o momento de vender. O incentivo deixa de ser "dump no topo" e passa a ser "ajude a marca a vender mais brinquedo, porque parte daquilo é meu".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD Tweet — Pudgy Toys = community IP -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av pudgy"><img src="assets/pulled/art-pudgy-nft-avatar-1.png" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Pudgy Penguins <span class="vrf">✦</span></div>
+          <div class="tw-handle">@pudgypenguins · 26 set</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Pudgy Toys are not just toys. They are a toy-line <em>licensed directly from our community</em> that gives buyers their first NFTs and Web3 experience.</div>
+      <div class="tw-trans">"Pudgy Toys não são só brinquedos. São uma linha licenciada diretamente da nossa comunidade que dá aos compradores seus primeiros NFTs e a primeira experiência Web3."</div>
+      <div class="tw-stats"><span>Comunidade dona do IP + onboarding</span><span class="date">@pudgypenguins · 26/set · verbatim</span></div>
+    </div>
+
+    <div class="prose" style="margin-top:4px;">
+      <p><span class="lin">A evidência.</span> O contraste com os NFTs do bull de 2021 é o argumento todo. Enquanto coleções inteiras viraram pó porque o único valor era o próximo comprador, o Pudgy ancorou o valor do detentor em cash-flow de IP de varejo, um fluxo que existe independente do hype. É por isso que o floor seguiu em ~4,2 ETH em 2026 mesmo com o mercado de NFT encolhendo: o holder de Pudgy não está segurando uma aposta, está segurando uma cota num negócio de licenciamento que vende brinquedo no Walmart. Quando a comunidade é dona da receita, ela para de se comportar como plateia e começa a se comportar como sócia.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">09</span></div>
+</section>
+
+<!-- ============================ PÁG 10 — JOGADA 5 (PENGU) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 5</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">5</div>
+      <div class="ttl">
+        <div class="kk">Jogada 5 · o token PENGU como camada de comunidade</div>
+        <h3>O token veio por último,<br>de propósito.</h3>
+        <div class="jog-resumo">Três anos depois do mint, sobre uma base de marca que já existia.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.4fr 1fr;">
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Só em dezembro de 2024, três anos depois do mint e mais de dois depois da compra de Netz, a Pudgy finalmente lançou seu token. O PENGU estreou em 17/dez na Solana (multichain com Ethereum e Abstract), com supply de 88,88 bilhões e debut de ~US$ 2,3 bilhões de market cap (pico de ~$2,7B no dia). O airdrop foi um dos maiores da história do Web3: 23,5% do supply distribuído para mais de 6 milhões de carteiras, valor estimado em ~US$ 1,5 bilhão no preço inicial. E parte disso roda sobre a Abstract, a blockchain própria da Pudgy (uma L2: rede mais rápida e barata construída sobre a Ethereum), focada em consumidor, que a Igloo lançou em jan/2025, com US$ 11M do Founders Fund de Peter Thiel.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>A ordem importa: a Pudgy lançou o token por último, depois de já ter marca, GIF viral, brinquedo no Walmart e comunidade alinhada por royalty. O PENGU não foi o produto que precisava criar uma comunidade do zero, foi a camada de comunidade e monetização colocada sobre uma base que já existia. Distribuído para 6M de carteiras, ele estende a participação muito além dos 8.888 holders de NFT. No dia do airdrop, o volume de trading da Pudgy foi mais de 50% de todo o volume de NFT do Ethereum.</p>
+        </div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screen-pengu-site.png" alt="Site PENGU"></div>
+        <div class="fig-cap"><b>pengu.pudgypenguins.com</b> — o hub do token e do ecossistema. Fonte: Pudgy Penguins (2026).</div>
+        <div class="figure light" style="margin-top:10px;"><img src="assets/pulled/screen-abstract-chain.png" alt="Abstract chain"></div>
+        <div class="fig-cap"><b>abs.xyz</b> — a Abstract, L2 própria do ecossistema Igloo/Pudgy. Fonte: Abstract (2026).</div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top:8px;">
+      <div class="ct">PENGU · market cap (US$ bi)</div>
+      <div class="cs">debut $2,3B (dez/24) → picos ~$4B → ~$424M (jun/26), ≈90% abaixo do ATH</div>
+      <div class="chart-box" style="height:150px;"><canvas id="cv_pengu_a"></canvas></div>
+      <div class="chart-src">Fonte: CoinDesk / CoinGecko / CoinLore</div>
+    </div>
+
+    <div class="prose" style="margin-top:8px;">
+      <p><span class="lin">A evidência, e a honestidade.</span> Aqui o paper não pode fingir. O PENGU é a parte fraca do case. Em jun/2026 o token está ~90% abaixo do ATH, com market cap de ~US$ 424M (de US$ 2,3B no debut), batido por unlock de 41% do supply, probe da SEC sobre o backer Shima Capital e dumps de whales. A tração on-chain real é baixíssima: ~25 mil endereços ativos por dia. A tese de "social currency" ainda não se provou. O contraste é a lição: a marca sustentou o golpe que o token não sustentou. Construir marca antes de token funcionou justamente porque, quando o token caiu, ainda havia uma marca de pé embaixo dele.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">10</span></div>
+</section>
+
+<!-- ============================ PÁG 11 — TESTE DE ESTRESSE (dark) ============================ -->
+<section class="page dark-page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O teste de estresse</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num" style="font-size:44pt;">⚠</div>
+      <div class="ttl">
+        <div class="kk">O teste de estresse · a hora da honestidade</div>
+        <h3>O gráfico que não cola<br>na narrativa: o PENGU.</h3>
+        <div class="jog-resumo" style="color:#9a9388;">Toda tese bonita um dia encara o número que a contradiz.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin" style="color:#fff;">O desmonte.</span> Em junho de 2026, o token está cerca de 90% abaixo do topo histórico, num market cap de ~$424 milhões (rank #113). Não foi uma correção, foi um desmonte: depois do pico de julho de 2025, o PENGU desabou mais de 90% até o fundo de $0,003715 em abril, apagando bilhões em meses. E não faltam motivos concretos: unlock de 41% do supply despejando oferta, probe da SEC sobre a Shima Capital (um dos backers), baleia vendendo 176 milhões de tokens (mais de $9M) de uma vez, dependência absurda de USDT (82,5% do volume em CEX, as corretoras centralizadas tipo Binance) e a maré virando contra memecoin no geral.</p>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">⚑</div><div><div class="nm">A falta de tração</div><div class="rl">~25 mil endereços ativos / dia</div></div></div>
+      <div class="quote">Para um projeto que airdropou (distribuiu tokens grátis) para mais de 6 milhões de carteiras, é uma retenção de menos de 0,5%. A "social currency" não se provou on-chain: é aposta de futuro vendida como tração presente.</div>
+    </div>
+
+    <div class="mono-card">
+      <div class="mch">O valuation esticado · múltiplo de growth-tech numa toy company</div>
+      <div class="mono-steps">
+        <div class="ms"><div class="n">PUDGY</div><div class="t">~22x a receita (FDV, valor totalmente diluído, agregado NFTs + PENGU ~$1,1B)</div></div>
+        <div class="ms"><div class="n">DISNEY</div><div class="t">~2,5x a receita</div></div>
+        <div class="ms"><div class="n">HASBRO</div><div class="t">~2x a receita</div></div>
+        <div class="ms"><div class="n">FUNKO</div><div class="t">~1x a receita</div></div>
+      </div>
+    </div>
+
+    <div class="dark-chart" style="margin-top:11px;">
+      <div class="ct">A divergência: floor NFT (ETH) vs PENGU (mcap)</div>
+      <div class="cs">O floor segurou em ~4,2 ETH enquanto o token caía 90%. A divergência foi pública.</div>
+      <div class="chart-box" style="height:140px;"><canvas id="cv_floor_dark"></canvas></div>
+      <div class="chart-src">Fonte: NFTPriceFloor / CoinGecko / CoinDesk · ver charts/DADOS.md</div>
+    </div>
+
+    <p style="font-size:9.4pt; margin-top:10px;"><span class="lin" style="color:#fff;">A lição do teste de estresse.</span> Enquanto o token sangrava, o floor do NFT segurou, chegando a subir 20% numa única semana de abril. Por quê? Porque o valor do NFT está ancorado em IP e receita real (royalty de licenciamento, vendas de brinquedo, direito de marca), enquanto o token está ancorado em narrativa especulativa que ainda não virou fluxo de caixa. A lição é desconfortável: marca de verdade aguenta o token cair. Mas o contraponto honesto vale o mesmo: a Pudgy ainda não provou que o token captura esse valor.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">11</span></div>
+</section>
+
+<!-- ============================ PÁG 12 — OS NÚMEROS (painel A) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">O que é lastro,<br>o que é especulação.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:12px;">Não dá pra discutir essa tese na retórica. Ou os números mostram uma marca real por baixo do token, ou não mostram. O painel separa os dois.</p>
+
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">Floor price do NFT (ETH)</div>
+        <div class="cs">0,03 (mint) → &lt;1 (jan/22) → 20,5 (fev/24) → ~4,2 (jun/26), resiliente</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_floor"></canvas></div>
+        <div class="chart-src">Fonte: NFTPriceFloor / Decrypt / PANews</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">PENGU · market cap (US$ bi)</div>
+        <div class="cs">debut $2,3bi (dez/24) → ~$424M (jun/26), -90% do ATH</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_pengu_b"></canvas></div>
+        <div class="chart-src">Fonte: CoinGecko / CoinLore</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Views no GIPHY (bilhões)</div>
+        <div class="cs">Pudgy 65,1 vs Disney 23,3 · Pokémon 10,8 · Hello Kitty 7,4</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_giphy_b"></canvas></div>
+        <div class="chart-src">Fonte: CoinDesk Research</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Receita da marca (US$ mi)</div>
+        <div class="cs">$10M (23) → &gt;$50M marca · guidance $60M(25) → $120M(26, meta)</div>
+        <div class="chart-box" style="height:150px;"><canvas id="cv_receita"></canvas></div>
+        <div class="chart-src">Fonte: Gate News / CoinDesk Research / Bloomingbit</div>
+      </div>
+    </div>
+
+    <div class="chart-card span" style="margin-top:14px;">
+      <div class="ct">Alcance de varejo dos Pudgy Toys (nº de lojas)</div>
+      <div class="cs">&gt;1,5M unidades vendidas · CAGR de plush 123% (2023–2025)</div>
+      <div class="chart-box" style="height:120px;"><canvas id="cv_toys_b"></canvas></div>
+      <div class="chart-src">Fonte: Decrypt / The Defiant / PRNewswire</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">12</span></div>
+</section>
+
+<!-- ============================ PÁG 13 — OS NÚMEROS (prova de terceiros) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam · prova de terceiros</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:24pt;">Não é a Pudgy dizendo.<br>São os dashboards.</h2></div>
+
+    <div class="panel-grid" style="grid-template-columns:1fr 1fr;">
+      <div>
+        <div class="figure light"><img src="assets/pulled/screen-coingecko-nft-floor.png" alt="CoinGecko NFT floor"></div>
+        <div class="fig-cap"><b>CoinGecko · coleção NFT</b> — floor 4,20 ETH, 9.888 owners, ATH 38,51 ETH (pico intradiário registrado; o ATH de floor <i>sustentado</i> foi ~20,5 ETH em fev/24). O lastro que segurou. Fonte: CoinGecko (jun/2026).</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/pulled/screen-coingecko-pengu.png" alt="CoinGecko PENGU"></div>
+        <div class="fig-cap"><b>CoinGecko · token PENGU</b> — preço ~$0,0068, market cap ~$426M, FDV ~$530M. A parte fraca. Fonte: CoinGecko (jun/2026).</div>
+      </div>
+    </div>
+
+    <div class="figure light crop-sm" style="margin-top:10px;"><img src="assets/pulled/screen-theblock-walmart-toys.png" alt="The Block Walmart"></div>
+    <div class="fig-cap"><b>The Block</b> — cobertura independente da entrada dos Pudgy NFT toys no varejo Walmart. A imprensa cobrindo o que nenhum projeto cripto tinha feito antes. Fonte: The Block.</div>
+
+    <!-- CARD Tweet — re-order Walmart -->
+    <div class="tweet">
+      <div class="tweet-top">
+        <div class="tw-av pudgy"><img src="assets/pulled/art-pudgy-nft-avatar-1.png" alt=""></div>
+        <div class="tw-meta">
+          <div class="tw-name">Luca Netz <span class="vrf">✦</span></div>
+          <div class="tw-handle">@LucaNetz · 20 fev</div>
+        </div>
+        <div class="tw-x">𝕏</div>
+      </div>
+      <div class="tw-body">Today marks one of the most historic days in Web3. The Pudgy Penguins <em>re-order in Walmart</em> is an industry defining moment for NFTs... the door to the masses is now open.</div>
+      <div class="tw-trans">O re-order do Walmart é a prova de sell-through: o varejo recomprou porque o brinquedo vendeu. Validação que dado nenhum compra.</div>
+      <div class="tw-stats"><span>Prova de sell-through</span><span class="date">@LucaNetz · 20/fev · verbatim</span></div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">13</span></div>
+</section>
+
+<!-- ============================ PÁG 14 — O QUE ISSO ENSINA ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que isso ensina</span></div>
+  <div class="pad">
+    <span class="kicker">O que isso ensina</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Sete jogadas transferíveis.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:10px;">A Pudgy não é replicável inteira: teve um operador raro (Luca Netz, background de toy/marketing e não de cripto), timing pós-bear de NFT e um personagem fofo o bastante pra virar GIF de WhatsApp. Mas as jogadas por trás da virada servem pra qualquer marca, cripto ou não.</p>
+
+    <div>
+      <div class="take"><div class="tn">1</div><div class="tb"><b>Marca é o produto, token é o backend.</b><p>A Pudgy construiu uma marca de consumo primeiro e deixou a cripto invisível por baixo. Se a sua marca só existe enquanto o token sobe, você não tem marca, tem um gráfico. Construa o ativo que sobrevive ao gráfico cair.</p></div></div>
+      <div class="take"><div class="tn">2</div><div class="tb"><b>Distribuição física é o onboarding mainstream mais subestimado.</b><p>Um brinquedo de ~$15 na prateleira do Walmart, com QR code que destrava o digital, onboarda gente que jamais baixaria uma carteira. Ache o canal mainstream onde seu público já está e faça a tecnologia ser a segunda etapa, nunca a primeira.</p></div></div>
+      <div class="take"><div class="tn">3</div><div class="tb"><b>Dê utilidade emocional de graça no topo do funil.</b><p>Os 65,1 bilhões de views no GIPHY não venderam nada diretamente. Eram GIFs que as pessoas usavam sem saber que era Web3. Emotional utility gratuita é o topo de funil mais barato que existe: a marca entra na cultura sem pedir conversão na primeira interação.</p></div></div>
+      <div class="take"><div class="tn">4</div><div class="tb"><b>Faça a comunidade dona do IP, não só do status.</b><p>Via OverpassIP, cada holder licencia o IP do seu pinguim e ganha royalty (~5%) quando ele vira brinquedo. Isso transforma o detentor de "fã com JPEG" em sócio com fluxo de caixa real. Comunidade com stake vira força de vendas.</p></div></div>
+      <div class="take"><div class="tn">5</div><div class="tb"><b>Alinhe incentivo com receita real, não com especulação.</b><p>O holder de Pudgy ganha quando a marca vende brinquedo no mundo físico, não quando o token bomba. Receita que vem de fora do sistema é o que segura o valor quando o sistema balança.</p></div></div>
+      <div class="take"><div class="tn">6</div><div class="tb"><b>Resiliência de modelo bate hype.</b><p>Quando o token caiu 90%, havia receita real por trás segurando a marca. A CoinDesk Research resumiu: "business model resilience can matter more than speculative hype." Construa o negócio que continua de pé quando o componente especulativo desaba.</p></div></div>
+      <div class="take"><div class="tn">7</div><div class="tb"><b>Seja honesto sobre o que ainda não se provou.</b><p>A tese da "social currency" roda em ~25 mil endereços por dia depois de um airdrop pra 6 milhões. Reconhecer a lacuna não enfraquece o case, fortalece. Marca que admite o que ainda é aposta constrói mais confiança que marca que finge que tudo virou tração.</p></div></div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <span class="kicker" style="margin-bottom:8px;">Linha do tempo · jul/21 → jun/26</span>
+      <div class="rail">
+        <div class="rc"><div class="rk">Jul 2021</div><div class="rt"><b>Mint</b> 8.888 NFTs · 0,03 ETH</div></div>
+        <div class="rc"><div class="rk">Jan 2022</div><div class="rt"><b>Founders out</b> · floor &lt;1 ETH</div></div>
+        <div class="rc hot"><div class="rk">Abr 2022</div><div class="rt"><b>Netz compra</b> por 750 ETH</div></div>
+        <div class="rc"><div class="rk">Mai 2023</div><div class="rt"><b>Pudgy Toys</b> · $500k em 48h</div></div>
+        <div class="rc"><div class="rk">Set 2023</div><div class="rt"><b>Walmart</b> · 2.000 lojas</div></div>
+        <div class="rc"><div class="rk">Fev 2024</div><div class="rt"><b>Floor ATH</b> 20,5 ETH</div></div>
+        <div class="rc"><div class="rk">Dez 2024</div><div class="rt"><b>PENGU</b> · debut $2,3B</div></div>
+        <div class="rc hot"><div class="rk">Jun 2026</div><div class="rt"><b>Floor ~4,2 ETH</b> · PENGU -90%</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">14</span></div>
+</section>
+
+<!-- ============================ PÁG · NA IMPRENSA (cobertura) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Na imprensa</span></div>
+  <div class="pad">
+    <span class="kicker">Na imprensa · cobertura</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">O que a imprensa<br>registrou em tempo real.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:16px;">Cada virada do Pudgy foi coberta pela imprensa de cripto fora da bolha do projeto. A compra do cadáver, a estreia no Walmart, o debut do token e a rodada do Founders Fund: quatro marcos, quatro veículos independentes.</p>
+
+    <div class="headlines" style="grid-template-columns:1fr 1fr; gap:14px;">
+      <div>
+        <div class="figure light"><img src="assets/news/coindesk-netz-acquisition-750eth.png" alt="CoinDesk · aquisição por 750 ETH"></div>
+        <div class="fig-cap"><b>CoinDesk · abr/2022</b> — a compra do projeto por Luca Netz: 750 ETH (~US$ 2,5 milhões) por um NFT que o mercado tinha dado como morto.</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/news/coindesk-walmart-toys-2023.png" alt="CoinDesk · Walmart toys"></div>
+        <div class="fig-cap"><b>CoinDesk · set/2023</b> — a estreia dos Pudgy Toys em 2.000 lojas Walmart: a primeira vez que uma marca nascida de NFT entrou no maior varejo do mundo.</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/news/coindesk-pengu-debut-dec2024.png" alt="CoinDesk · debut PENGU"></div>
+        <div class="fig-cap"><b>CoinDesk · dez/2024</b> — o debut do token PENGU: market cap de bilhões e airdrop para milhões de carteiras logo no primeiro dia.</div>
+      </div>
+      <div>
+        <div class="figure light"><img src="assets/news/thedefiant-abstract-11m.png" alt="The Defiant · Abstract US$ 11M"></div>
+        <div class="fig-cap"><b>The Defiant · 2024</b> — a Igloo levanta US$ 11 milhões liderados pelo Founders Fund de Peter Thiel para a Abstract, a blockchain própria do Pudgy.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02</span><span class="pg">15</span></div>
+</section>
+
+<!-- ============================ PÁG 15 — FONTES (dark) ============================ -->
+<section class="page legal">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fontes</span></div>
+  <div class="pad">
+    <span class="kicker">Fontes &amp; metodologia</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot" style="background:rgba(210,98,178,.3)"></span><h2 style="font-size:24pt;">Tudo verificável.</h2></div>
+    <p>Todo número deste paper vem de fonte pública, datada de junho de 2026. Quando uma metodologia diverge ou um valor é ponte de tendência, marcamos como interpolado em charts/DADOS.md. O guidance de receita ($60M em 2025, $120M em 2026) é projeção do fundador, não realizado. A queda de 90% do PENGU é reportada de forma honesta. Tweets reproduzidos verbatim, em inglês original com tradução de apoio na legenda.</p>
+
+    <ul class="src-list">
+      <li><b>Floor NFT:</b> NFTPriceFloor, CoinGecko, Decrypt, PANews, Cryptopolitan</li>
+      <li><b>PENGU / token:</b> CoinDesk, CoinGecko, CoinLore, ainvest</li>
+      <li><b>GIPHY (65,1B views):</b> CoinDesk Research (primária)</li>
+      <li><b>Walmart / Pudgy Toys:</b> Decrypt, The Block, The Defiant, PRNewswire</li>
+      <li><b>Receita / guidance:</b> Gate News, CoinDesk Research, Bloomingbit, Forbes</li>
+      <li><b>Origem / Luca Netz:</b> Fortune (2023), TheChainsaw, IQ.wiki</li>
+      <li><b>Turnaround / floor history:</b> Wikipedia, BanklessTimes, Crypto Briefing</li>
+      <li><b>IP / OverpassIP / royalties:</b> CoinDesk Research, anúncios oficiais</li>
+      <li><b>Abstract / Igloo / Founders Fund:</b> The Block, Decrypt</li>
+      <li><b>Valuation (22x receita):</b> CoinDesk Research (comp. Disney/Hasbro/Funko)</li>
+      <li><b>Tração on-chain (~25k/dia):</b> CoinDesk Research</li>
+      <li><b>Tweets:</b> @LucaNetz, @pudgypenguins (verbatim, jun/2026)</li>
+      <li><b>Coleção on-chain:</b> OpenSea, CoinGecko NFT</li>
+      <li><b>Parcerias de marca:</b> Random House, Lufthansa, TheSoul Publishing (Lil Pudgys), varejo APAC</li>
+    </ul>
+
+    <div class="disc">
+      <p style="font-size:8.4pt;">Este documento é um estudo editorial de marketing produzido pela Kaleidos. Não constitui recomendação de investimento, aconselhamento financeiro ou endosso ao token PENGU ou à Pudgy Penguins / Igloo, Inc. Marcas, logos, arte oficial e tweets citados pertencem a seus respectivos donos e são reproduzidos sob uso editorial. Dados sujeitos a variação de mercado.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Vol. 02 · Pudgy Penguins</span><span class="pg">15</span></div>
+</section>
+
+<!-- ============================ PÁG 16 — CONTRACAPA (rosa) ============================ -->
+<section class="page backcover">
+  <div class="bc-inner">
+    <div class="bc-eyebrow">Kaleidos · Agência Cripto-Nativa</div>
+    <div class="bc-mark"><span style="font-style:italic;">K</span>aleidos</div>
+    <div class="bc-seal">Paper · Vol. 02 · Pudgy Penguins</div>
+    <div class="bc-tag">A agência de marketing nativa de cripto do Brasil. Growth, narrativa e conteúdo para projetos de cripto e web3 que querem construir marca de verdade, não só barulho.</div>
+    <div class="bc-foot">Este paper é uma amostra de como a gente pensa marca on-chain.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof Chart === 'undefined' || !window.KaleidosCharts) return;
+  var KC = window.KaleidosCharts;
+  function mount(id, cfg){
+    var el = document.getElementById(id);
+    if (el && cfg) new Chart(el.getContext('2d'), JSON.parse(JSON.stringify(cfg)));
+  }
+  // Jogada 2 + painel
+  mount('cv_giphy',     KC.chartGiphy);
+  mount('cv_giphy_b',   KC.chartGiphy);
+  // Jogada 3 + painel
+  mount('cv_toys',      KC.chartToys);
+  mount('cv_toys_b',    KC.chartToys);
+  // Jogada 5 + painel
+  mount('cv_pengu_a',   KC.chartPengu);
+  mount('cv_pengu_b',   KC.chartPengu);
+  // Teste de estresse + painel
+  mount('cv_floor_dark',KC.chartFloor);
+  mount('cv_floor',     KC.chartFloor);
+  // Receita
+  mount('cv_receita',   KC.chartReceita);
+})();
+</script>
+</body>
+</html>

@@ -90,7 +90,7 @@ export function Navbar() {
                         <NavigationMenuLink asChild>
                            <Link
                             className="from-[#7CFF6B]/10 to-[#7CFF6B]/5 flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                             href={withLang('/#servicos')}
+                             href={withLang('/servicos')}
                           >
                              <div className="mt-4 mb-2 text-lg font-medium text-gray-900">
                                {t('nav','ourServices')}
@@ -113,13 +113,6 @@ export function Navbar() {
                   <NavigationMenuLink asChild>
                     <Link href={withLang('/cases')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
                       {t('nav','cases')}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href={withLang('/portfolio')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
-                      {t('nav','portfolio')}
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -223,12 +216,6 @@ export function Navbar() {
               <div>
                 <Link href={withLang('/cases')} className="block text-sm font-medium text-white py-1">
                   {t('nav','cases')}
-                </Link>
-              </div>
-              {/* Portfolio */}
-              <div>
-                <Link href={withLang('/portfolio')} className="block text-sm font-medium text-white py-1">
-                  {t('nav','portfolio')}
                 </Link>
               </div>
               {/* Blog */}

@@ -16,7 +16,7 @@ export function getPostHogClient(): PostHog {
   return posthogClient;
 }
 
-type Props = Record<string, string | number | boolean | null | undefined>;
+type Props = Record<string, unknown>;
 
 export async function captureServerEvent(
   distinctId: string,

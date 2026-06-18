@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUMP.FUN — A máquina de marketing das memecoins · Kaleidos Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="charts/chart.umd.min.js"></script>
+<script src="charts/charts.js"></script>
+<style>
+@font-face{ font-family:'Atelier'; src:url('fonts/Atelier.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face{ font-family:'Gridlite'; src:url('fonts/Gridlite.otf') format('opentype'); font-weight:400; font-display:swap; }
+:root{
+  --cream:#0A0A0A;
+  --cream-2:#0f0f0f;
+  --paper:#101010;
+  --ink:#F4F1EC;
+  --ink-soft:#cfcabf;
+  --ink-mute:#8d877c;
+  --line:#262626;
+  --pink:#d262b2;
+  --pink-soft:#3a1830;
+  --pink-deep:#e58fce;
+  --olive:#b8b86a;
+  --orange:#e09a52;
+  --green:#7CF067;
+  --dark:#000000;
+  --shadow:0 14px 40px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.4);
+  --shadow-card:0 1px 2.5px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:#000;
+  font-size:10.5pt;
+  line-height:1.55;
+}
+@page{ size:A4; margin:0; }
+.cover .csub, .jog-resumo, .bigquote .q, .crit-card .quote, .backcover .bc-tag, .sig .name{ font-family:'Inter',sans-serif !important; font-style:italic; font-weight:500; }
+
+.page.compact .pad{ padding-top:13mm; padding-bottom:10mm; }
+.page.compact .jog-head{ margin-bottom:8px; }
+.page.compact .jog-grid{ gap:16px; }
+.page.compact .prose p{ font-size:9.4pt; line-height:1.46; margin-bottom:6px; }
+.page.compact .blk p{ font-size:8.9pt; line-height:1.44; margin-bottom:4px; }
+.page.compact .blk{ margin-bottom:9px; }
+.page.compact .stat-strip{ margin:8px 0; }
+.page.compact .tweet{ margin:7px 0; padding:12px 16px; }
+.page.compact .bigquote{ padding:13px 18px; margin:8px 0; }
+.page.compact .bigquote .q{ font-size:12.5pt; }
+
+.page{
+  position:relative;
+  width:210mm;
+  min-height:297mm;
+  background:var(--cream);
+  margin:0 auto;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex;
+  flex-direction:column;
+}
+.page:last-child{ page-break-after:auto; }
+.pad{ padding:16mm 18mm 14mm; flex:1; display:flex; flex-direction:column; }
+
+.rhead{
+  position:absolute; top:10mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Atelier',sans-serif; font-size:8pt; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--ink-mute);
+}
+.rhead .dash{ flex:1; height:1px; background:var(--line); margin:0 12px; }
+.rhead .sec{ color:var(--pink-deep); }
+.rfoot{
+  position:absolute; bottom:9mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Gridlite',monospace; font-size:7pt; letter-spacing:.08em;
+  color:var(--ink-mute); text-transform:uppercase;
+}
+.rfoot .pg{ font-weight:600; color:var(--ink-soft); }
+
+h1,h2,h3,h4{ font-family:'Atelier',sans-serif; font-weight:600; color:var(--ink); line-height:1.06; letter-spacing:-.01em;}
+.kicker{
+  font-family:'Gridlite',monospace; font-size:8pt; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--pink-deep);
+  margin-bottom:14px; display:inline-block;
+}
+.section-title{ position:relative; display:inline-block; }
+.section-title .dot{
+  position:absolute; left:-14px; top:50%; width:60px; height:60px; border-radius:50%;
+  transform:translate(-50%,-50%); z-index:0; background:var(--pink-soft);
+}
+.section-title h2{ position:relative; z-index:1; }
+p{ margin-bottom:11px; color:var(--ink-soft); }
+p:last-child{ margin-bottom:0; }
+strong{ color:var(--ink); font-weight:700; }
+em{ font-style:italic; }
+.lead{ font-size:11.5pt; color:var(--ink-soft); }
+.muted{ color:var(--ink-mute); }
+.mono{ font-family:'Gridlite',monospace; }
+.hl{ background:linear-gradient(transparent 58%, var(--pink-soft) 58%); padding:0 1px; }
+.kale-mark{ font-family:'Atelier',sans-serif; font-weight:600; letter-spacing:.04em; font-size:13pt; }
+.kale-mark .k{ color:var(--pink); }
+.lin{ color:var(--ink); font-weight:700; }
+
+/* ---------- COVER ---------- */
+.cover{
+  --c-dark:#0a0a0a; --c-acc:#7CF067; color:#F4F1EC; padding:20mm 18mm 16mm;
+  background:radial-gradient(120% 80% at 50% -8%, #1a0a16 0%, #090408 52%, #000 100%);
+}
+.cover .cgrid{ position:absolute; inset:0; opacity:.05; z-index:0;
+  background-image:linear-gradient(var(--pink) 1px, transparent 1px), linear-gradient(90deg, var(--pink) 1px, transparent 1px);
+  background-size:26px 26px; }
+.cover .ctop{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; }
+.cover .ctop .cseal{ font-family:'Atelier',sans-serif; font-weight:600; font-size:15pt; letter-spacing:.04em; color:#F4F1EC; }
+.cover .ctop .cseal .cdot{ color:var(--pink); }
+.cover .ctop .cvol{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.28em; text-transform:uppercase; color:var(--pink-deep); }
+.cover .cstage{ position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; margin:6mm 0; }
+.cover .medallion{ position:relative; width:118mm; height:118mm; }
+.cover .offset{ position:absolute; width:108mm; height:108mm; border-radius:50%; left:14mm; top:8mm;
+  background:var(--pink); opacity:.92; box-shadow:0 30px 70px rgba(0,0,0,.45); }
+.cover .ring{ position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 42% 34%, #2a2730 0%, #1a1820 48%, #0d0c10 100%);
+  border:2.5px solid rgba(210,98,178,.55);
+  box-shadow:inset 0 0 50px rgba(0,0,0,.4), 0 24px 60px rgba(0,0,0,.5); overflow:hidden; display:flex; align-items:center; justify-content:center;}
+.cover .ring::after{ content:""; position:absolute; inset:0; border-radius:50%;
+  box-shadow:inset 0 0 0 9mm rgba(210,98,178,.07); }
+.cover .ring .pf-curve{ position:absolute; inset:0; }
+.cover .ring img{ position:relative; width:46%; border-radius:22px; filter:drop-shadow(0 14px 26px rgba(0,0,0,.6)); z-index:2; box-shadow:0 0 0 4px rgba(210,98,178,.35), 0 14px 30px rgba(0,0,0,.55); }
+.cover .chip{ position:absolute; z-index:4; right:6mm; top:8mm; width:18mm; height:18mm; border-radius:50%;
+  background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.4); }
+.cover .chip span{ font-family:'Atelier',sans-serif; font-weight:700; font-size:18pt; color:#0a1f05; }
+.cover .ctitle{ position:relative; z-index:3; }
+.cover .ckicker{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--pink-deep); margin-bottom:8px; }
+.cover h1{ font-family:'Atelier',sans-serif; font-weight:700; font-size:54pt; line-height:.92; letter-spacing:0; color:#F4F1EC; margin:0; }
+.cover h1 .pin{ color:var(--pink); }
+.cover .csub{ font-family:'Atelier',sans-serif; font-style:italic; font-weight:500; font-size:16pt; line-height:1.32; color:#e8d4e2; margin-top:14px; max-width:158mm; }
+.cover .cfootrow{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; padding-top:12px; border-top:1px solid rgba(210,98,178,.22); }
+.cover .cfootrow .obj{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:#b08aa6; line-height:1.5; }
+.cover .cfootrow .nums{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.06em; color:var(--pink-deep); text-align:right; }
+
+/* ---------- INTRO ---------- */
+.letter{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:32px 38px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column;}
+.letter p{ font-size:11pt; color:var(--ink-soft); line-height:1.62;}
+.letter .dropcap::first-letter{
+  font-family:'Atelier',sans-serif; font-weight:700; color:var(--pink);
+  font-size:52pt; line-height:.78; float:left; margin:6px 12px 0 0;
+}
+.sig{ margin-top:auto; padding-top:22px; }
+.sig .name{ font-family:'Atelier',sans-serif; font-style:italic; font-size:21pt; color:var(--ink); }
+.sig .role{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px;}
+.sig-pfp{ width:58px; height:58px; border-radius:50%; overflow:hidden; flex:none; border:2px solid var(--pink); box-shadow:var(--shadow-card); }
+.sig-pfp img{ width:100%; height:100%; object-fit:cover; display:block; }
+.meta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
+.meta-chip{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:13px 18px; flex:1; min-width:150px; box-shadow:var(--shadow-card); }
+.meta-chip .lbl{ font-family:'Gridlite',monospace; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; color:var(--pink-deep); }
+.meta-chip .val{ font-family:'Atelier',sans-serif; font-size:13pt; margin-top:5px; color:var(--ink); }
+
+/* ---------- OVERVIEW big numbers ---------- */
+.bn-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+.bn{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 20px 18px; box-shadow:var(--shadow-card); overflow:hidden; }
+.bn::before{ content:""; position:absolute; right:-26px; top:-26px; width:80px; height:80px; border-radius:50%; background:var(--pink-soft); opacity:.7;}
+.bn .fig{ position:relative; font-family:'Atelier',sans-serif; font-weight:700; font-size:29pt; line-height:1; color:var(--ink); letter-spacing:-.02em;}
+.bn .fig .unit{ font-size:14pt; color:var(--pink-deep); }
+.bn .cap{ position:relative; font-size:9pt; color:var(--ink-soft); margin-top:9px; line-height:1.4;}
+.bn.wide{ grid-column:1 / -1; }
+.bn.dark{ background:var(--dark); border-color:var(--dark); }
+.bn.dark .fig,.bn.dark .cap{ color:#F4F1EC;}
+.bn.dark::before{ background:rgba(210,98,178,.28);}
+.bn.dark .fig .unit{ color:var(--pink);}
+.bn.dark strong{ color:#fff; }
+
+/* ---------- CHART ---------- */
+.chart-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:18px 20px 14px; box-shadow:var(--shadow-card); margin-top:4px; }
+.chart-card .ct{ font-family:'Atelier',sans-serif; font-size:13pt; color:var(--ink); margin-bottom:2px;}
+.chart-card .cs{ font-size:8.5pt; color:var(--ink-mute); margin-bottom:12px;}
+.chart-box{ position:relative; width:100%; }
+.chart-src{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--ink-mute); margin-top:10px; letter-spacing:.02em; text-align:right;}
+.annot{ display:inline-block; background:var(--pink); color:#fff; font-family:'Gridlite',monospace; font-size:7.5pt; font-weight:600; padding:3px 9px; border-radius:20px; letter-spacing:.05em;}
+
+/* ---------- SECTION / JOGADA HEAD ---------- */
+.jog-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:14px; }
+.jog-num{ font-family:'Atelier',sans-serif; font-weight:700; font-size:54pt; line-height:.82; color:var(--pink); letter-spacing:-.03em; flex:none;}
+.jog-head .ttl .kk{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:5px;}
+.jog-head .ttl h3{ font-size:23pt; line-height:1.04;}
+.jog-resumo{ font-family:'Atelier',sans-serif; font-style:italic; font-size:11.5pt; color:var(--ink-mute); margin-top:6px; line-height:1.3;}
+
+.jog-grid{ display:grid; grid-template-columns:1.05fr 1.55fr; gap:20px; align-items:start; }
+.jog-art{ border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); border:1px solid var(--line); background:var(--paper); aspect-ratio:1/1; position:relative;}
+.jog-body .blk{ margin-bottom:12px;}
+.jog-body .blk:last-child{ margin-bottom:0;}
+.blk-lbl{ font-family:'Gridlite',monospace; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin-bottom:5px; display:flex; align-items:center; gap:7px;}
+.blk-lbl::before{ content:""; width:8px; height:8px; border-radius:50%; }
+.blk.fez .blk-lbl::before{ background:var(--pink);} .blk.fez .blk-lbl{ color:var(--pink-deep);}
+.blk.pq .blk-lbl::before{ background:var(--olive);}  .blk.pq .blk-lbl{ color:#9a9a52;}
+.blk.ev .blk-lbl::before{ background:var(--orange);}  .blk.ev .blk-lbl{ color:#cf8a4a;}
+.blk p{ font-size:9.4pt; margin-bottom:5px; line-height:1.5;}
+
+.prose p{ font-size:9.9pt; line-height:1.56; }
+.licao-tag{ font-family:'Gridlite',monospace; font-size:7.5pt; color:var(--pink-deep); font-weight:600; border:1px dashed var(--pink); padding:3px 9px; border-radius:10px; display:inline-block; margin-top:8px;}
+
+.bigquote{ background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--pink); border-radius:14px; padding:18px 22px; margin:10px 0; box-shadow:var(--shadow-card);}
+.bigquote .q{ font-family:'Atelier',sans-serif; font-style:italic; font-size:14pt; color:var(--ink); line-height:1.4;}
+.bigquote .by{ font-family:'Gridlite',monospace; font-size:7.5pt; color:var(--ink-mute); margin-top:9px; text-transform:uppercase; letter-spacing:.1em;}
+
+.stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0;}
+.stat{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow-card);}
+.stat .v{ font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt; color:var(--ink); line-height:1;}
+.stat .v .u{ font-size:9pt; color:var(--pink-deep);}
+.stat .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:5px; line-height:1.3;}
+
+/* ---------- TWEET CARD ---------- */
+.tweet{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:15px 18px; box-shadow:var(--shadow-card); margin:10px 0; }
+.tweet.dark{ background:#191919; border-color:#2c2c2c; }
+.tweet-top{ display:flex; align-items:center; gap:11px; margin-bottom:10px;}
+.tw-av{ width:42px; height:42px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.tw-av.mint{ background:#2a0c22;}
+.tw-av.mint img{ width:28px; height:28px;}
+.tw-av.ph{ background:#33222e; color:var(--pink-deep); font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt;}
+.tw-meta{ flex:1; min-width:0;}
+.tw-name{ font-weight:700; font-size:10pt; color:var(--ink); display:flex; align-items:center; gap:5px;}
+.tw-name .vrf{ color:var(--pink); font-size:11pt; }
+.tw-handle{ font-family:'Gridlite',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-x{ font-family:'Atelier',sans-serif; font-weight:700; font-size:15pt; color:var(--ink-mute);}
+.tw-body{ font-family:'Inter',sans-serif; font-size:11pt; line-height:1.42; color:var(--ink); font-weight:500;}
+.tw-body em{ font-style:normal; }
+.tw-stats{ display:flex; gap:16px; margin-top:11px; padding-top:10px; border-top:1px solid var(--line); font-family:'Gridlite',monospace; font-size:8pt; color:var(--ink-mute);}
+.tw-stats b{ color:var(--ink); font-weight:600;}
+.tw-stats .date{ margin-left:auto;}
+
+/* ---------- FIGURE ---------- */
+.figure{ border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card); background:#101010;}
+.figure img{ width:100%; display:block; max-height:240px; object-fit:cover; object-position:top;}
+.fig-cap{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--ink-mute); margin-top:6px; line-height:1.4;}
+.fig-cap b{ color:var(--ink-soft);}
+
+/* ---------- CSS conceptual art (substitui imagem gerada) ---------- */
+.art{ position:absolute; inset:0; overflow:hidden; background:radial-gradient(120% 120% at 30% 20%, #15131a 0%, #0c0b10 60%, #070608 100%); }
+.art svg{ position:absolute; inset:0; width:100%; height:100%; }
+.art .lbl{ position:absolute; bottom:8px; left:10px; font-family:'Gridlite',monospace; font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); }
+.art-wide{ width:100%; aspect-ratio:16/6; border-radius:14px; overflow:hidden; border:1px solid var(--line); position:relative; box-shadow:var(--shadow-card); }
+.art-wide .art{ position:absolute; inset:0; }
+
+/* ---------- founder grid ---------- */
+.founder-grid{ display:grid; grid-template-columns:0.85fr 1.4fr; gap:18px; align-items:start;}
+.founder-art{ border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-card); aspect-ratio:4/5; position:relative;}
+.stat-float{ display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+.stat-float .sf{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow-card);}
+.stat-float .sf .v{ font-family:'Atelier',sans-serif; font-weight:700; font-size:16pt; color:var(--pink-deep); line-height:1;}
+.stat-float .sf .l{ font-size:7.6pt; color:var(--ink-mute); margin-top:4px; line-height:1.3;}
+
+/* ---------- timeline ---------- */
+.tline{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0;}
+.tline .tl{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:13px 14px; box-shadow:var(--shadow-card);}
+.tline .tl .tk{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.12em; text-transform:uppercase;}
+.tline .tl .tv{ font-family:'Atelier',sans-serif; font-weight:700; font-size:13pt; color:var(--ink); margin-top:5px; line-height:1;}
+.tline .tl .td{ font-size:8pt; color:var(--ink-mute); margin-top:5px; line-height:1.35;}
+
+.rail{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:10px;}
+.rail .rc{ background:var(--paper); border:1px solid var(--line); border-radius:11px; padding:11px 12px;}
+.rail .rc.hot{ border-color:var(--pink); background:var(--pink-soft);}
+.rail .rc .rk{ font-family:'Gridlite',monospace; font-size:7pt; color:var(--pink-deep); letter-spacing:.1em;}
+.rail .rc .rt{ font-size:8.4pt; color:var(--ink-soft); margin-top:5px; line-height:1.35;}
+.rail .rc .rt b{ color:var(--ink);}
+
+/* ---------- STRESS dark ---------- */
+.dark-page{ background:var(--dark); color:#E7E1D6;}
+.dark-page .pad{ color:#D8D1C4;}
+.dark-page .rhead,.dark-page .rfoot{ color:#7d766b;}
+.dark-page .rhead .dash{ background:#332f29;}
+.dark-page .rhead .sec{ color:var(--pink);}
+.dark-page .rfoot .pg{ color:#b8b0a4;}
+.dark-page .kicker{ color:var(--pink);}
+.dark-page h2,.dark-page h3{ color:#fff;}
+.dark-page p{ color:#C9C2B6;}
+.dark-page strong{ color:#fff;}
+.dark-page .section-title .dot{ background:rgba(210,98,178,.3);}
+.dark-page .jog-num{ color:var(--pink);}
+.dark-page .blk p{ color:#C9C2B6;}
+.crit-card{ background:#191919; border:1px solid #2c2c2c; border-left:3px solid var(--pink); border-radius:14px; padding:16px 20px; margin:11px 0;}
+.crit-card .who{ display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+.crit-card .who .av{ width:38px; height:38px; border-radius:50%; background:#33222e; color:var(--pink-deep); display:flex; align-items:center; justify-content:center; font-family:'Atelier',sans-serif; font-weight:700; font-size:15pt; flex:none;}
+.crit-card .who .nm{ font-weight:700; color:#fff; font-size:10pt;}
+.crit-card .who .rl{ font-family:'Gridlite',monospace; font-size:7.5pt; color:#8d857a; text-transform:uppercase; letter-spacing:.1em;}
+.crit-card .quote{ font-family:'Atelier',sans-serif; font-style:italic; font-size:13pt; color:#F0E6D8; line-height:1.4;}
+.crit-card .resp{ font-size:8.6pt; color:#A89F90; margin-top:10px; padding-top:9px; border-top:1px solid #2c2c2c; line-height:1.45;}
+.crit-card .resp b{ color:#cfc8ba;}
+
+/* ---------- NUMBERS panel ---------- */
+.panel-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;}
+.panel-grid .chart-card.span{ grid-column:1 / -1;}
+
+/* ---------- AUTHORITY ---------- */
+.auth-grid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:6px;}
+.auth{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow-card); position:relative; overflow:hidden;}
+.auth::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--pink);}
+.auth .src{ font-family:'Atelier',sans-serif; font-weight:700; font-size:12.5pt; color:var(--ink); line-height:1.05;}
+.auth .src .tag{ font-family:'Gridlite',monospace; font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase; color:var(--pink-deep); display:block; margin-bottom:4px;}
+.auth .th{ font-size:8.7pt; color:var(--ink-soft); margin-top:7px; line-height:1.46;}
+.auth .th b{ color:var(--ink);}
+.auth.acc{ background:var(--dark); border-color:var(--dark);}
+.auth.acc::before{ background:var(--green);}
+.auth.acc .src,.auth.acc .th{ color:#F4F1EC;}
+.auth.acc .src .tag{ color:var(--green);}
+.auth.acc .th b{ color:#fff;}
+
+/* ---------- LIÇÕES ---------- */
+.take{ display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
+.take:last-child{ border-bottom:none;}
+.take .tn{ font-family:'Atelier',sans-serif; font-weight:700; font-size:21pt; color:var(--pink); line-height:1; min-width:32px;}
+.take .tb b{ font-family:'Inter'; font-size:10.5pt; color:var(--ink); display:block; margin-bottom:2px;}
+.take .tb p{ font-size:9.2pt; margin:0; color:var(--ink-soft);}
+
+/* ---------- LEGAL / backcover ---------- */
+.legal{ background:var(--dark); color:#C9C2B6;}
+.legal .pad{ color:#B9B2A6;}
+.legal .rhead,.legal .rfoot{ color:#6d665c;}
+.legal .rhead .dash{ background:#2c2820;}
+.legal .rhead .sec{ color:var(--pink);}
+.legal h2{ color:#fff;}
+.legal .kicker{ color:var(--pink);}
+.legal p{ color:#A89F90; font-size:8.6pt; line-height:1.6;}
+.legal .src-list{ columns:2; column-gap:26px; margin-top:10px;}
+.legal .src-list li{ font-family:'Gridlite',monospace; font-size:7.4pt; color:#9a9388; list-style:none; padding:5px 0; border-bottom:1px solid #242424; line-height:1.4; break-inside:avoid;}
+.legal .src-list li b{ color:#cfc8ba;}
+.legal .disc{ border:1px solid #2c2c2c; border-radius:14px; padding:16px 20px; margin-top:14px; background:#181818;}
+.backcover{ background:var(--pink); color:#1a1a1a; display:flex; align-items:center; justify-content:center; text-align:center;}
+.backcover .bc-inner{ z-index:2;}
+.backcover .bc-mark{ font-family:'Atelier',sans-serif; font-weight:600; font-size:34pt; letter-spacing:.02em; color:#1a1a1a;}
+.backcover .bc-seal{ font-family:'Gridlite',monospace; font-size:9pt; letter-spacing:.34em; text-transform:uppercase; margin-top:14px; color:#5a1f49;}
+.backcover .bc-eyebrow{ font-family:'Gridlite',monospace; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:#5a1f49; margin-bottom:18px;}
+.backcover .bc-tag{ font-family:'Atelier',sans-serif; font-style:italic; font-size:14pt; margin-top:26px; max-width:420px; color:#2a0f22; line-height:1.4;}
+.backcover .bc-foot{ font-family:'Gridlite',monospace; font-size:8pt; letter-spacing:.06em; color:#5a1f49; margin-top:20px; max-width:380px; line-height:1.5;}
+
+@media print{
+  body{ background:#fff; }
+  .page{ margin:0; box-shadow:none; }
+  .chart-box canvas{ max-width:100%; }
+}
+@media screen{
+  .page{ margin:14px auto; box-shadow:0 18px 50px rgba(0,0,0,.28);}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁG 1 — CAPA ============================ -->
+<section class="page cover">
+  <div class="cgrid"></div>
+  <div class="ctop">
+    <span class="cseal">Kaleidos <span class="cdot">·</span> <span style="font-size:8pt; letter-spacing:.18em; text-transform:uppercase; font-family:'Gridlite',monospace; color:var(--pink-deep);">Agência Cripto-Nativa</span></span>
+    <span class="cvol">Estudo de Caso</span>
+  </div>
+
+  <div class="cstage">
+    <div class="medallion">
+      <div class="offset"></div>
+      <div class="ring">
+        <svg class="pf-curve" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <g fill="#cfcabf" opacity="0.16">
+            <circle cx="40" cy="330" r="2.2"/><circle cx="80" cy="350" r="1.6"/><circle cx="120" cy="320" r="2"/>
+            <circle cx="60" cy="290" r="1.4"/><circle cx="160" cy="345" r="1.8"/><circle cx="100" cy="300" r="1.5"/>
+            <circle cx="200" cy="335" r="1.6"/><circle cx="240" cy="350" r="2"/><circle cx="280" cy="325" r="1.4"/>
+            <circle cx="320" cy="345" r="1.8"/><circle cx="360" cy="330" r="1.5"/><circle cx="140" cy="300" r="1.4"/>
+            <circle cx="180" cy="310" r="1.3"/><circle cx="220" cy="305" r="1.5"/><circle cx="300" cy="300" r="1.4"/>
+          </g>
+          <path d="M30 360 C 150 358, 250 320, 320 120 C 335 80, 345 60, 360 40" fill="none" stroke="#d262b2" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="360" cy="40" r="7" fill="#7CF067"/>
+        </svg>
+        <img src="assets/pulled/pump-logo-conv.png" alt="Pump.fun">
+      </div>
+      <div class="chip"><span>↑</span></div>
+    </div>
+  </div>
+
+  <div class="ctitle">
+    <div class="ckicker">O objeto de estudo</div>
+    <h1>PUMP.FUN<span class="pin">.</span></h1>
+    <p class="csub">A máquina de marketing das memecoins: como 1 clique virou US$ 1 bilhão de receita, e por que o lucro veio com processo.</p>
+  </div>
+
+  <div class="cfootrow">
+    <div class="obj">Lente: marketing &amp; growth<br>Sujeito: Pump.fun · launchpad Solana</div>
+    <div class="nums">US$ 1B receita · 12M tokens · ~1% sobrevive</div>
+  </div>
+</section>
+
+<!-- ============================ PÁG 2 — INTRO ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Intro</span></div>
+  <div class="pad">
+    <span class="kicker">Kaleidos Paper · Pump.fun</span>
+    <div class="section-title" style="margin-bottom:18px;"><span class="dot"></span><h2 style="font-size:27pt;">A máquina de distribuição<br>mais eficiente, e mais<br>controversa, da cripto.</h2></div>
+    <div class="letter">
+      <p class="dropcap">A Pump.fun não fez campanha, não comprou tráfego, não montou um time de growth. Ela fez algo mais raro: transformou o próprio ato de lançar um token em um produto de marketing. Qualquer pessoa, em segundos, por centavos, podia criar uma memecoin e jogá-la num cassino global aberto 24 horas. Em pouco mais de um ano, isso virou mais de US$ 1 bilhão de receita.</p>
+      <p>Este paper destrincha a mecânica de distribuição que fez a Pump.fun explodir, com a mesma lente fria que usamos em qualquer marca: o que ela fez, por que funcionou, e a prova de cada jogada. O fenômeno é real e os números são públicos. Mas a história só é honesta se contada inteira, e a Pump.fun é o caso mais polêmico que já estudamos.</p>
+      <p>Porque a mesma engenharia que criou a máquina de growth criou uma máquina de extração de varejo. Cerca de 98% dos tokens lançados morreram ou foram fraude. Mais da metade dos traders perdeu dinheiro. A feature de livestream virou palco de conteúdo extremo e foi desligada às pressas. O próprio token de governança despencou abaixo do preço de venda. Há processos com acusação de RICO e de "cassino não licenciado".</p>
+      <p>Você não precisa aprovar a Pump.fun pra aprender com ela. As jogadas de distribuição são transferíveis. Os limites éticos e o teste de estresse são o aviso. Vamos olhar os dois lados, jogada por jogada, com a fonte de cada número.</p>
+      <div class="meta-row">
+        <div class="meta-chip"><div class="lbl">Tempo de leitura</div><div class="val">15 a 20 minutos</div></div>
+        <div class="meta-chip"><div class="lbl">Formato</div><div class="val">Breakdown · estudo de projeto</div></div>
+        <div class="meta-chip"><div class="lbl">Dados</div><div class="val">Fontes públicas · jun/2026</div></div>
+      </div>
+      <div class="sig" style="display:flex; align-items:center; gap:16px;">
+        <div class="sig-pfp"><img src="assets/pulled/gabriel-pfp.jpg" alt="Gabriel Madureira"></div>
+        <div>
+          <div class="name" style="font-size:18pt;">Gabriel Madureira</div>
+          <div class="role">Fundador · Kaleidos — agência cripto-nativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">02</span></div>
+</section>
+
+<!-- ============================ PÁG 3 — OVERVIEW ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Overview</span></div>
+  <div class="pad">
+    <span class="kicker">Overview · os números-choque</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:26pt;">Seis números que explicam<br>o fenômeno e o escândalo.</h2></div>
+    <p class="muted" style="font-size:9.4pt; margin-bottom:16px;">Antes do teardown, o retrato em seis dados. Cada um é desenvolvido nas jogadas e no teste de estresse a seguir, com a fonte.</p>
+
+    <div class="bn-grid">
+      <div class="bn">
+        <div class="fig">~<span class="unit">US$</span>1,04<span class="unit"> bi</span></div>
+        <div class="cap"><strong>Receita acumulada.</strong> Primeiro app da Solana a passar de US$ 1 bilhão em receita. Saiu de US$ 50 milhões no fim de 2024 para US$ 1B+ em cerca de dois anos. Fonte: DefiLlama.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">~12<span class="unit"> mi</span></div>
+        <div class="cap"><strong>Tokens criados.</strong> Mais de 12 milhões de memecoins lançadas, em certo momento um terço de todos os tokens da Solana. No pico, ~70 mil novos por dia. Fonte: CoinDesk / STORM.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">~1<span class="unit"> %</span></div>
+        <div class="cap"><strong>A taxa de sobrevivência.</strong> Menos de 1% dos tokens "se gradua" para uma DEX. A Solidus Labs estimou que 98,6% foram rug pull ou fraude. A máquina de criar é também a máquina de matar. Fonte: Cryptopolitan / Solidus Labs.</div>
+      </div>
+      <div class="bn dark">
+        <div class="fig">US$ 4<span class="unit"> bi</span></div>
+        <div class="cap"><strong>FDV no ICO.</strong> Em 12 de julho de 2025, a venda pública do token PUMP esgotou em 12 minutos, levantando US$ 500M (US$ 1B com a rodada privada) a um FDV de US$ 4 bilhões. O 3º maior ICO da história. Fonte: CoinDesk.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">−82<span class="unit"> %</span></div>
+        <div class="cap"><strong>A queda do token.</strong> O PUMP caiu 82% do topo e 56% abaixo do preço de ICO. O lançamento mais vangloriado virou o caso de estudo de varejo machucado. Fonte: CoinGecko / CoinMarketCap.</div>
+      </div>
+      <div class="bn">
+        <div class="fig">#5<span class="unit"> cripto</span></div>
+        <div class="cap"><strong>No ranking de receita 2025.</strong> 5º maior protocolo de toda a cripto por receita, atrás só de Tether, TRON, Circle e Hyperliquid. O único launchpad de memecoin no top-10. Fonte: CoinGecko.</div>
+      </div>
+      <div class="bn wide" style="background:var(--dark); border-color:var(--dark);">
+        <div class="fig" style="color:#fff;">US$ 4–5,5 <span class="unit">bi · perdas estimadas de varejo (alegação em processo)</span></div>
+        <div class="cap" style="color:#E7E1D6;">Uma class-action consolidada na justiça de Nova York descreve a Pump.fun como "um gabinete de caça-níquel" e estima entre US$ 4 e 5,5 bilhões em perdas de varejo. São alegações ainda não julgadas, mas resumem a tensão que percorre este paper: distribuição genial, externalidade brutal.</div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">03</span></div>
+</section>
+
+<!-- ============================ PÁG 4 — O QUE É ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que é a Pump.fun</span></div>
+  <div class="pad">
+    <span class="kicker">Contexto do projeto</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Uma gráfica de tokens,<br>com um cassino embutido.</h2></div>
+
+    <div class="jog-grid" style="grid-template-columns:1.5fr 1fr;">
+      <div class="prose">
+        <p><span class="lin">O que é uma memecoin e um launchpad.</span> Memecoin é um token sem promessa de produto, cujo valor vem de cultura, atenção e especulação pura. Um launchpad é a ferramenta que cria e lista esses tokens. Antes da Pump.fun, lançar uma memecoin exigia código, pool de liquidez na Raydium e dinheiro parado, o que abria espaço pra golpes de "rug pull", quando o criador some com a liquidez. A Pump.fun colapsou isso num clique.</p>
+        <p><span class="lin">A mecânica da bonding curve.</span> Cada token tem 1 bilhão de unidades. Cerca de 800 milhões ficam numa "bonding curve": uma curva matemática onde o preço sobe automaticamente conforme as pessoas compram, sem livro de ordens, sem contraparte, o próprio contrato é o market maker. Quando a curva esgota e o token acumula o valor-alvo (na era original, cerca de US$ 69 mil de market cap / 85 SOL), ele "se gradua" e migra para uma DEX. Esse número em dólar variou no tempo; o SOL ficou estável.</p>
+        <p><span class="lin">O pitch do "fair launch".</span> O argumento de marca: "sem presale, sem alocação de time, sem insider". Todo comprador entra pela mesma curva, ao mesmo tempo. A Pump.fun se vendeu como a correção justa para a era dos rug pulls. Guarde essa promessa, ela reaparece, com uma trinca, no teste de estresse.</p>
+        <p><span class="lin">Como ela ganha dinheiro.</span> Uma taxa sobre cada trade (originalmente 1%, hoje 1,25% pré-graduação, com fatia para o criador). Multiplicada por milhões de tokens e bilhões em volume, virou uma das máquinas de receita mais rentáveis da cripto. Em março de 2025 lançou a PumpSwap, sua própria DEX, para capturar também a receita pós-graduação que ia para a Raydium.</p>
+      </div>
+      <div>
+        <div class="figure"><div style="position:relative; aspect-ratio:1/1;"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g fill="#cfcabf" opacity="0.14"><circle cx="30" cy="250" r="2"/><circle cx="60" cy="270" r="1.6"/><circle cx="90" cy="255" r="1.8"/><circle cx="120" cy="265" r="1.4"/><circle cx="150" cy="248" r="1.6"/><circle cx="180" cy="262" r="1.5"/><circle cx="210" cy="250" r="1.7"/><circle cx="240" cy="268" r="1.4"/><circle cx="270" cy="255" r="1.5"/><circle cx="45" cy="230" r="1.3"/><circle cx="200" cy="225" r="1.4"/></g><path d="M20 270 C 120 268, 190 230, 240 100 C 252 60, 262 42, 280 28" fill="none" stroke="#d262b2" stroke-width="3.4" stroke-linecap="round"/><circle cx="280" cy="28" r="5" fill="#7CF067"/><path d="M20 270 L 280 270" stroke="#262626" stroke-width="1"/></svg><div class="lbl">bonding curve · preço × compra</div></div></div></div>
+        <div class="fig-cap"><b>A bonding curve</b> — o preço sobe sozinho a cada compra; a maioria nunca chega ao topo (graduação). Esquema conceitual Kaleidos sobre mecânica pública.</div>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">A Pump.fun não vendeu um token. Vendeu a possibilidade de qualquer um virar fundador de token em dez segundos. O produto era a esperança, e a esperança se distribui sozinha.</div>
+      <div class="by">A lente de marketing · Kaleidos</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">04</span></div>
+</section>
+
+<!-- ============================ PÁG 5 — A ORIGEM ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">A origem</span></div>
+  <div class="pad">
+    <span class="kicker">A decisão fundadora</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot"></span><h2 style="font-size:25pt;">Nasceu pra matar o rug pull.<br>Virou o maior cassino.</h2></div>
+
+    <div class="founder-grid">
+      <div>
+        <div class="founder-art"><div class="art"><svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid slice"><g fill="#cfcabf" opacity="0.13"><circle cx="40" cy="60" r="2"/><circle cx="180" cy="80" r="1.6"/><circle cx="90" cy="40" r="1.5"/><circle cx="200" cy="140" r="1.7"/><circle cx="60" cy="160" r="1.4"/><circle cx="150" cy="200" r="1.6"/><circle cx="110" cy="240" r="1.5"/><circle cx="40" cy="220" r="1.4"/></g><circle cx="120" cy="150" r="42" fill="none" stroke="#d262b2" stroke-width="2.2" opacity="0.8"/><circle cx="120" cy="150" r="68" fill="none" stroke="#7CF067" stroke-width="1.4" opacity="0.4"/><circle cx="120" cy="150" r="9" fill="#d262b2"/></svg><div class="lbl">o ponto que virou rede</div></div></div>
+        <div class="fig-cap"><b>Baton Corporation Ltd.</b> — a empresa por trás da Pump.fun, sediada no Reino Unido. Esquema conceitual Kaleidos.</div>
+        <div class="stat-float" style="margin-top:12px;">
+          <div class="sf"><div class="v">3</div><div class="l">fundadores · empreendedores do Reino Unido</div></div>
+          <div class="sf"><div class="v">jan/24</div><div class="l">lançamento (19 jan 2024)</div></div>
+        </div>
+      </div>
+      <div class="prose">
+        <p><span class="lin">Os fundadores.</span> A Pump.fun nasceu em 19 de janeiro de 2024, criada por três empreendedores do Reino Unido, todos diretores da Baton Corporation Ltd.: Noah Tweedale (CEO segundo o registro corporativo), Dylan Kerler (líder de desenvolvimento, handle @outdoteth) e Alon Cohen, co-fundador e o rosto público do projeto (@a1lon9). A imprensa frequentemente chama o Alon de CEO; os autos do processo o descrevem como COO. Por segurança, tratamos como "co-fundador e rosto público".</p>
+        <p><span class="lin">A tese.</span> Democratizar a criação de tokens e resolver o problema do insider. Em vez de cada memecoin ser um possível golpe com alocação secreta pro time, a Pump.fun tornaria todo lançamento permissionless, padronizado e "divertido". A bonding curve e o fair launch eram a expressão mecânica dessa promessa: sem presale, sem alocação, todo mundo na mesma curva. Era um discurso de justiça embrulhado num produto de jogo.</p>
+        <p><span class="lin">Como bancaram.</span> Apoio inicial da Alliance DAO, mas essencialmente bootstrapped: a plataforma virou geradora de caixa via taxas em poucos meses. Em setembro de 2024 já era apontada como "o app de cripto de crescimento mais rápido da história", cruzando US$ 100 milhões de receita em tempo recorde. O grande capital só viria depois, com o ICO próprio de julho de 2025, não de fundos de venture.</p>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">"Coins lançadas instantaneamente negociáveis numa bonding curve transparente. Sem liquidez para semear, sem presales, sem alocações de time."</div>
+      <div class="by">Pump.fun · homepage oficial (verbatim)</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">05</span></div>
+</section>
+
+<!-- ============================ PÁG 6 — JOGADA 1 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 1</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">1</div>
+      <div class="ttl">
+        <div class="kk">Jogada 1 · a fricção colapsada</div>
+        <h3>Lançar um token<br>em um clique.</h3>
+        <div class="jog-resumo">A gráfica de memecoins: nome, ticker, imagem, go.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect x="120" y="130" width="60" height="40" rx="8" fill="none" stroke="#d262b2" stroke-width="2.4"/><circle cx="150" cy="150" r="6" fill="#d262b2"/><g fill="#cfcabf" opacity="0.5"><circle cx="60" cy="60" r="3"/><circle cx="90" cy="40" r="2.4"/><circle cx="220" cy="55" r="2.8"/><circle cx="250" cy="80" r="2.2"/><circle cx="40" cy="120" r="2.4"/><circle cx="260" cy="140" r="2.6"/><circle cx="55" cy="200" r="2.2"/><circle cx="80" cy="240" r="2.6"/><circle cx="200" cy="230" r="2.4"/><circle cx="240" cy="250" r="2.8"/><circle cx="150" cy="270" r="2.2"/><circle cx="120" cy="250" r="2"/><circle cx="180" cy="255" r="2.2"/></g><g stroke="#7CF067" stroke-width="1" opacity="0.35"><line x1="150" y1="150" x2="60" y2="60"/><line x1="150" y1="150" x2="220" y2="55"/><line x1="150" y1="150" x2="40" y2="120"/><line x1="150" y1="150" x2="260" y2="140"/><line x1="150" y1="150" x2="240" y2="250"/><line x1="150" y1="150" x2="80" y2="240"/></g></svg><div class="lbl">um clique → supply infinito</div></div></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Reduziram a criação de um token a um clique. Sem código, sem pool de liquidez, sem presale: nome, ticker, imagem e go. A taxa de criação, originalmente ~0,02 SOL, foi zerada em agosto de 2024. Criar virou de graça. Qualquer pessoa com uma carteira Solana e poucos segundos podia emitir um ativo financeiro negociável globalmente.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Marketing é, no fundo, redução de fricção entre desejo e ação. A Pump.fun pegou um desejo latente, "e se eu lançasse minha própria moeda", e removeu todas as barreiras técnicas e de custo de uma vez. Cada lançamento gratuito era também um ato de aquisição: o criador recrutava sua própria audiência pra comprar. O produto se distribuía pela ambição de milhões de pessoas, sem que a empresa gastasse um centavo em mídia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tline">
+      <div class="tl"><div class="tk">Jan 2024</div><div class="tv">1 clique</div><div class="td">lançamento da plataforma, criação em segundos</div></div>
+      <div class="tl"><div class="tk">Ago 2024</div><div class="tv">grátis</div><div class="td">taxa de criação zerada, fricção a zero</div></div>
+      <div class="tl"><div class="tk">Pico jan/25</div><div class="tv">~70k/dia</div><div class="td">novos tokens criados por dia no ápice</div></div>
+    </div>
+
+    <div class="prose" style="margin-top:6px;">
+      <p><span class="lin">A evidência.</span> Em cerca de um ano, mais de 6 milhões de memecoins haviam sido lançadas; até o fim de 2025, mais de 12 milhões, em certo momento um terço de todos os tokens da Solana. No pico de janeiro de 2025, eram aproximadamente 70 mil novos tokens por dia e 183 mil novos usuários em um único dia. Nenhuma campanha publicitária da cripto chegou perto desse volume de criação. A fricção zero foi o anúncio.</p>
+      <span class="licao-tag">Lição → quando você remove toda a fricção de um desejo latente, o produto vira o canal de aquisição.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">06</span></div>
+</section>
+
+<!-- ============================ PÁG 7 — JOGADA 2 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 2</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">2</div>
+      <div class="ttl">
+        <div class="kk">Jogada 2 · o loop gamificado</div>
+        <h3>O cassino como<br>mecânica de retenção.</h3>
+        <div class="jog-resumo">Bonding curve, leaderboard e a coroa: o loop que não solta.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g stroke="#cfcabf" stroke-width="1.6" fill="none" opacity="0.4"><rect x="70" y="110" width="48" height="90" rx="6"/><rect x="126" y="110" width="48" height="90" rx="6"/><rect x="182" y="110" width="48" height="90" rx="6"/></g><line x1="60" y1="155" x2="240" y2="155" stroke="#d262b2" stroke-width="2.4"/><path d="M150 70 l 10 22 l -20 0 z" fill="#7CF067" opacity="0.8"/><g fill="#cfcabf" opacity="0.5"><circle cx="94" cy="135" r="3"/><circle cx="150" cy="175" r="3"/><circle cx="206" cy="135" r="3"/><circle cx="94" cy="175" r="2.4"/><circle cx="206" cy="175" r="2.4"/></g></svg><div class="lbl">reels · linha premiada · coroa</div></div></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Transformaram a interface em um loop de jogo. A bonding curve dá feedback instantâneo: cada compra empurra o preço pra cima, na sua frente, em tempo real. Por cima, o "King of the Hill": um leaderboard ao vivo que coroa o token de melhor performance por volume, com a coroa trocando de mãos a cada surto. Tabelas, gráficos subindo, recompensa variável, o vocabulário do caça-níquel aplicado ao token.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Recompensa variável é o mecanismo de retenção mais poderoso que existe, é o que prende o jogador na máquina e o usuário na rede social. A Pump.fun importou isso pro trading. O leaderboard adicionou status público e FOMO: ver a coroa trocar de mãos cria a urgência de "entrar antes". O resultado é um produto que não precisa de notificação paga pra te trazer de volta, a própria mecânica é o gancho.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bigquote">
+      <div class="q">"Um gabinete de caça-níquel de fachada, operando um jogo de azar não licenciado e de soma zero, onde as chances são esmagadoramente contra o participante médio."</div>
+      <div class="by">Class-action consolidada · SDNY (descrição em processo, jul/2025)</div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência, e o aviso.</span> O loop funcionou tão bem que virou a peça central da acusação judicial. A mesma gamificação que reteve milhões de usuários é descrita, no processo, como engenharia de extração. Aqui o marketing e a ética se cruzam: o gancho que prende é o mesmo que machuca. Voltamos a isso no teste de estresse, com os dados de perda.</p>
+      <span class="licao-tag">Lição → recompensa variável retém como nenhuma outra mecânica. E é por isso que ela exige limite ético, não só de produto.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">07</span></div>
+</section>
+
+<!-- ============================ PÁG 8 — JOGADA 3 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 3</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">3</div>
+      <div class="ttl">
+        <div class="kk">Jogada 3 · a atenção como combustível</div>
+        <h3>Livestream: vender<br>o token ao vivo.</h3>
+        <div class="jog-resumo">A jogada que dobrou a atenção, e quase afundou a marca.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><circle cx="150" cy="150" r="30" fill="none" stroke="#cfcabf" stroke-width="1.8" opacity="0.5"/><path d="M142 138 l 20 12 l -20 12 z" fill="#d262b2"/><circle cx="150" cy="150" r="60" fill="none" stroke="#d262b2" stroke-width="1.2" opacity="0.45"/><circle cx="150" cy="150" r="92" fill="none" stroke="#d262b2" stroke-width="1" opacity="0.25"/><circle cx="226" cy="86" r="5" fill="#7CF067"/><g fill="#cfcabf" opacity="0.45"><circle cx="70" cy="90" r="2.4"/><circle cx="230" cy="220" r="2.4"/><circle cx="90" cy="230" r="2.2"/><circle cx="210" cy="70" r="2"/><circle cx="60" cy="180" r="2"/><circle cx="245" cy="160" r="2.2"/></g></svg><div class="lbl">stream · ondas de atenção</div></div></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Adicionaram livestreaming nativo: o criador transmite ao vivo para promover sua própria coin, com a audiência comprando em tempo real conforme assiste. Era a fusão de creator economy, trading e reality show. A Pump.fun chegou a posicionar a feature como uma jogada para "derrubar a Twitch", afirmando rivalizar com plataformas de streaming concorrentes.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou (e desandou)</div>
+          <p>Atenção é o combustível de uma memecoin, e a live concentra atenção como nada. Mas, ao atrelar preço de token a espetáculo ao vivo, a plataforma criou um incentivo perverso: quanto mais extremo o conteúdo, mais atenção, mais compra. O design recompensava o limite. E o limite foi rompido.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> Em 25 de novembro de 2024, depois de incidentes com conteúdo extremo, incluindo um stunt de suicídio falso encenado para bombar uma coin, ameaças a animais e armas, a Pump.fun desligou a feature por tempo indefinido. Relançou em abril de 2025, com política de moderação, restrição a maiores de 18 e banimento estrito de conteúdo de risco. A atenção foi recuperada; a cicatriz reputacional, não totalmente. É a jogada mais didática do paper: a mesma mecânica que multiplica alcance pode incendiar a marca quando o incentivo aponta pro abismo.</p>
+      <span class="licao-tag">Lição → atrelar receita a atenção sem governança transforma o seu maior canal na sua maior crise.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">08</span></div>
+</section>
+
+<!-- ============================ PÁG 9 — JOGADA 4 ============================ -->
+<section class="page compact">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 4</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">4</div>
+      <div class="ttl">
+        <div class="kk">Jogada 4 · a narrativa como posicionamento</div>
+        <h3>"Fair launch":<br>o anti-rug pull.</h3>
+        <div class="jog-resumo">Vender justiça num mercado traumatizado por golpes.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">O que eles fizeram.</span> Construíram a marca inteira em torno de duas palavras: "fair launch". Homepage, interface e redes sociais martelavam "sem presale", "sem alocação de insider", "lançamentos à prova de rug pull". Num mercado de memecoins marcado por golpes em que o criador some com a liquidez, a Pump.fun se posicionou como o lugar onde todos entram pela mesma porta, ao mesmo tempo, na mesma curva.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">0<span class="u">presale</span></div><div class="l">a promessa central de marca</div></div>
+      <div class="stat"><div class="v">800<span class="u">M</span></div><div class="l">tokens na curva aberta a todos</div></div>
+      <div class="stat"><div class="v">1<span class="u">curva</span></div><div class="l">mesma entrada pra todo comprador</div></div>
+      <div class="stat"><div class="v">~69<span class="u">k</span></div><div class="l">market cap-alvo de graduação (era original)</div></div>
+    </div>
+
+    <div class="jog-grid" style="grid-template-columns:1.25fr 1fr; align-items:start;">
+      <div class="jog-body">
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Posicionamento forte se define contra um inimigo. O inimigo da Pump.fun era o rug pull, e o trauma era real e fresco. Ao oferecer uma estrutura onde a mecânica garantia, por padrão, que ninguém entrava antes, a marca transformou uma característica técnica (a bonding curve) em uma bandeira moral. "Justo" é uma palavra que se distribui sozinha em um mercado cansado de ser enganado.</p>
+        </div>
+        <div class="blk ev">
+          <div class="blk-lbl">A trinca na narrativa</div>
+          <p>Honestidade obriga: a mesma narrativa virou alvo. O processo alega que tutoriais recomendavam que criadores usassem software de sniping (Jito) para comprar uma fatia desproporcional da própria coin primeiro, minando o "fair". A promessa de justiça e a prática nem sempre coincidiram, e isso voltaria como acusação central.</p>
+        </div>
+      </div>
+      <div>
+        <div class="figure"><div style="position:relative; aspect-ratio:1/1;"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g fill="#cfcabf" opacity="0.5"><circle cx="70" cy="150" r="4"/><circle cx="105" cy="150" r="4"/><circle cx="140" cy="150" r="4"/><circle cx="175" cy="150" r="4"/><circle cx="210" cy="150" r="4"/><circle cx="245" cy="150" r="4"/></g><circle cx="45" cy="150" r="13" fill="#d262b2"/><line x1="30" y1="185" x2="270" y2="185" stroke="#262626" stroke-width="1.4"/><text x="45" y="215" fill="#8d877c" font-family="monospace" font-size="9" text-anchor="middle">sniper</text></svg><div class="lbl">a entrada "justa" com 1 falha</div></div></div></div>
+        <div class="fig-cap"><b>O fair launch, com a trinca</b> — distribuição simétrica, mas um nó entra grande primeiro. Esquema Kaleidos.</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;"><span class="licao-tag">Lição → narrativa de justiça é arma poderosa, e perigosa: o mercado cobra que a prática bata com a promessa.</span></div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">09</span></div>
+</section>
+
+<!-- ============================ PÁG 10 — JOGADA 5 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 5</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">5</div>
+      <div class="ttl">
+        <div class="kk">Jogada 5 · alinhar o creator</div>
+        <h3>Pagar quem traz<br>a audiência.</h3>
+        <div class="jog-resumo">Project Ascend: transformar o criador em time de growth.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><g stroke="#cfcabf" stroke-width="1.6" fill="none" opacity="0.4"><path d="M50 250 L 110 250 L 110 200 L 170 200 L 170 150 L 230 150 L 230 90"/></g><g stroke="#d262b2" stroke-width="1.4" opacity="0.7"><line x1="80" y1="250" x2="80" y2="220"/><line x1="140" y1="200" x2="140" y2="170"/><line x1="200" y1="150" x2="200" y2="120"/></g><circle cx="80" cy="220" r="6" fill="#d262b2"/><circle cx="140" cy="170" r="6" fill="#d262b2"/><circle cx="200" cy="120" r="6" fill="#7CF067"/></svg><div class="lbl">escada de incentivo · creator</div></div></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Em maio de 2025 a Pump.fun lançou revenue sharing para criadores; em 3 de setembro de 2025, o Project Ascend, com "Dynamic Fees": taxas que escalam pelo market cap do token. Tokens menores e emergentes pagam uma fatia maior pro criador (descrito como aumento de 10x nas recompensas), enquanto os já estabelecidos afunilam. O criador deixou de só lançar e passou a ganhar com a tração.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou</div>
+          <p>Você não escala marketing pagando anúncio; você escala alinhando incentivo. Ao dar upside financeiro real ao criador, a Pump.fun transformou cada lançador em vendedor da própria plataforma. O criador agora tinha motivo pra trazer audiência, manter a coin viva e voltar pra lançar de novo. É o mesmo princípio de programa de afiliado, mas embutido na mecânica do produto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="v">set/25<span class="u"></span></div><div class="l">Project Ascend / Dynamic Fees V1</div></div>
+      <div class="stat"><div class="v">10<span class="u">x</span></div><div class="l">recompensa pra criadores emergentes</div></div>
+      <div class="stat"><div class="v">US$2<span class="u">M</span></div><div class="l">pago a criadores no 1º dia da nova estrutura</div></div>
+      <div class="stat"><div class="v">US$350<span class="u">M+</span></div><div class="l">pago a criadores no acumulado</div></div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência.</span> Sob a nova estrutura, criadores ganharam cerca de US$ 2 milhões já no primeiro dia, e mais de US$ 350 milhões no acumulado. O Project Ascend foi também a arma da retomada de mercado depois que a concorrente LetsBonk roubou a liderança, recompensar melhor o criador foi o que trouxe a atividade de volta. Incentivo alinhado venceu marketing pago.</p>
+      <span class="licao-tag">Lição → o melhor time de growth são os criadores que ganham quando você ganha. Alinhe o incentivo e eles vendem por você.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">10</span></div>
+</section>
+
+<!-- ============================ PÁG 11 — JOGADA 6 ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Jogada 6</span></div>
+  <div class="pad">
+    <div class="jog-head">
+      <div class="jog-num">6</div>
+      <div class="ttl">
+        <div class="kk">Jogada 6 · o flywheel tokenizado</div>
+        <h3>O token como<br>evento de marketing.</h3>
+        <div class="jog-resumo">ICO recorde, buyback e burn: receita virando narrativa.</div>
+      </div>
+    </div>
+
+    <div class="jog-grid">
+      <div class="jog-art"><div class="art"><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><circle cx="150" cy="150" r="70" fill="none" stroke="#cfcabf" stroke-width="1.6" opacity="0.4"/><path d="M150 80 A 70 70 0 0 1 220 150" fill="none" stroke="#d262b2" stroke-width="3" stroke-linecap="round"/><path d="M150 220 A 70 70 0 0 1 95 110" fill="none" stroke="#d262b2" stroke-width="3" stroke-linecap="round" opacity="0.5"/><path d="M205 145 l 8 -14 l -16 2 z" fill="#d262b2"/><path d="M150 80 l 14 -8 l -2 16 z" fill="#7CF067" opacity="0.9"/><g stroke="#e09a52" stroke-width="2.4" opacity="0.7" stroke-linecap="round"><line x1="95" y1="110" x2="108" y2="124"/></g></svg><div class="lbl">loop · receita → buyback → burn</div></div></div>
+      <div class="jog-body">
+        <div class="blk fez">
+          <div class="blk-lbl">O que eles fizeram</div>
+          <p>Em 12 de julho de 2025 lançaram o token PUMP num ICO que esgotou a venda pública em 12 minutos: US$ 500 milhões (US$ 1 bilhão com a rodada privada e CEXs) a um FDV de US$ 4 bilhões, o 3º maior ICO da história. Depois, direcionaram a receita do protocolo para recomprar PUMP no mercado, e em abril de 2026 queimaram US$ 370 milhões em tokens (36% do supply circulante), travando metade da receita líquida em buyback-and-burn.</p>
+        </div>
+        <div class="blk pq">
+          <div class="blk-lbl">Por que funcionou (como marketing)</div>
+          <p>O ICO foi um megaevento de mídia: 12 minutos viraram manchete global e renovaram a atenção sobre a marca. Buyback e burn são narrativa de "skin in the game": a empresa recomprando o próprio token sinaliza confiança e gera fluxo constante de notícia. Cada movimento de tesouraria virou conteúdo. A receita deixou de ser só lucro e passou a ser combustível de relações públicas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p><span class="lin">A evidência, e a tensão.</span> A jogada de mídia funcionou; a de mercado, não, ao menos para quem comprou. O PUMP caiu abaixo do preço de ICO em uma semana e acumulou queda de 82% do topo. A própria mudança de política, de 100% para 50% da receita em buyback, foi admissão de que o modelo anterior não sustentava o preço. O flywheel girou para a marca e para o caixa; girou contra o holder de varejo.</p>
+      <span class="licao-tag">Lição → um lançamento de token é um evento de mídia poderoso. Mas se a economia não sustenta o preço, o evento vira passivo de reputação.</span>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">11</span></div>
+</section>
+
+<!-- ============================ PÁG 12 — TESTE DE ESTRESSE 1 (dark) ============================ -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Teste de estresse</span></div>
+  <div class="pad">
+    <span class="kicker">Teste de estresse · 1 de 3 · o cassino</span>
+    <div class="section-title" style="margin-bottom:10px;"><span class="dot"></span><h2 style="font-size:25pt;">A casa sempre ganha.<br>O varejo quase nunca.</h2></div>
+    <p style="font-size:9.6pt; margin-bottom:12px;">Nenhum estudo de marketing honesto da Pump.fun pode parar nas jogadas. A mesma máquina que distribui esperança é, em agregado, uma máquina de soma negativa para o varejo. Os números são públicos, e são duros.</p>
+
+    <div class="art-wide" style="margin-bottom:14px;"><div class="art"><svg viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice"><g fill="#5a564e" opacity="0.6"><circle cx="30" cy="40" r="2"/><circle cx="70" cy="70" r="2"/><circle cx="110" cy="35" r="2"/><circle cx="150" cy="80" r="2"/><circle cx="190" cy="45" r="2"/><circle cx="230" cy="75" r="2"/><circle cx="270" cy="40" r="2"/><circle cx="310" cy="85" r="2"/><circle cx="350" cy="50" r="2"/><circle cx="390" cy="70" r="2"/><circle cx="430" cy="38" r="2"/><circle cx="470" cy="82" r="2"/><circle cx="510" cy="48" r="2"/><circle cx="550" cy="72" r="2"/><circle cx="50" cy="120" r="2"/><circle cx="130" cy="130" r="2"/><circle cx="210" cy="125" r="2"/><circle cx="290" cy="135" r="2"/><circle cx="370" cy="122" r="2"/><circle cx="450" cy="132" r="2"/><circle cx="530" cy="128" r="2"/></g><line x1="20" y1="185" x2="580" y2="185" stroke="#d262b2" stroke-width="3" stroke-linecap="round"/><text x="20" y="205" fill="#8d877c" font-family="monospace" font-size="10">~1% sobrevive (linha rosa) · ~99% vira cinza</text></svg></div></div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">S</div><div><div class="nm">Solidus Labs · firma de compliance on-chain</div><div class="rl">Relatório · 8 mai 2025</div></div></div>
+      <div class="quote">Dos mais de 7 milhões de tokens lançados na Pump.fun, apenas cerca de 97 mil mantiveram US$ 1.000 de liquidez. 98,6% foram classificados como rug pull ou pump-and-dump.</div>
+      <div class="resp"><b>O outro lado:</b> o porta-voz Troy Gravitt rebateu que o relatório "carece de um entendimento básico de memecoins", argumentando que valor de longo prazo baixo é esperado, e que a plataforma oferece expressão cultural, não valor intrínseco de token. Fonte: CoinDesk (7 mai 2025).</div>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">↘</div><div><div class="nm">Análises on-chain · perfil de resultado dos traders</div><div class="rl">2025</div></div></div>
+      <div class="quote">Mais de 50% dos traders de tokens da Pump.fun terminaram no prejuízo; a esmagadora maioria das carteiras lucrou menos de US$ 500 em um mês. É a definição literal de um jogo de soma negativa.</div>
+      <div class="resp"><b>A honestidade do dado:</b> relatos de indivíduos que faturam dezenas de milhares por semana "ruggando" coins existem, mas são autorrelato, não dataset auditado. Tratamos como ilustração da mecânica, não como estatística de mercado. Fonte: CryptoPotato / CryptoSlate.</div>
+    </div>
+
+    <p style="font-size:9pt; margin-top:6px;"><span style="color:#fff; font-weight:700;">A leitura de marca.</span> Para um anunciante, isso não é detalhe: é o risco existencial do modelo. Um produto cuja unidade econômica depende de o usuário, em agregado, perder dinheiro, carrega uma bomba-relógio reputacional e regulatória. A genialidade da distribuição não anula a fragilidade da fundação.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">12</span></div>
+</section>
+
+<!-- ============================ PÁG 13 — TESTE DE ESTRESSE 2 (dark) ============================ -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Teste de estresse</span></div>
+  <div class="pad">
+    <span class="kicker">Teste de estresse · 2 de 3 · conteúdo e justiça</span>
+    <div class="section-title" style="margin-bottom:10px;"><span class="dot"></span><h2 style="font-size:25pt;">A live que afundou,<br>e o processo que veio.</h2></div>
+    <p style="font-size:9.6pt; margin-bottom:12px;">Dois flancos abertos pelo design de incentivo: o conteúdo extremo que a livestream premiava, e a alegação judicial de que a plataforma operava um cassino não licenciado.</p>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">▶</div><div><div class="nm">O colapso da livestream</div><div class="rl">25 nov 2024</div></div></div>
+      <div class="quote">"É falso. Nós derrubamos as livestreams da Pump.fun com um stunt encenado."</div>
+      <div class="resp"><b>O caso:</b> um suicídio falso encenado ao vivo para pressionar traders a comprar uma coin viralizou e forçou a Pump.fun a desligar a feature no mesmo dia. Houve outros incidentes, ameaças a animais, armas, menores. <b>O outro lado:</b> a plataforma relançou em abril de 2025 com moderação, restrição a +18 e banimento estrito de conteúdo de risco. Mesmo assim, o padrão reincidiu na plataforma de bounties "GO" em junho de 2026, o que sugere falha estrutural de incentivo, não bug pontual. Fonte: DL News / Decrypt / Crypto Briefing.</div>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">§</div><div><div class="nm">Class-action consolidada · SDNY (Burwick Law + Wolf Popper)</div><div class="rl">jan/2025 · emenda RICO jul/2025</div></div></div>
+      <div class="quote">A Pump.fun é descrita como "gabinete de caça-níquel de fachada", operando "jogo de azar não licenciado e de soma zero", com acesso anônimo de carteiras e "trading prioritário para insiders e bots".</div>
+      <div class="resp"><b>As cifras alegadas:</b> perdas de varejo estimadas entre US$ 4 e 5,5 bilhões; a complaint emendada adicionou RICO e nomeou até Solana Labs, Solana Foundation e Jito. <b>O outro lado:</b> a Pump.fun contratou time jurídico de peso (Brown Rudnick) para a defesa. <b>Honestidade obrigatória:</b> são alegações ainda não julgadas em corte, não fatos provados. Fonte: Decrypt / Wolf Popper LLP.</div>
+    </div>
+
+    <p style="font-size:9pt; margin-top:6px;"><span style="color:#fff; font-weight:700;">A leitura de marca.</span> Crise gerenciada vira ativo; crise estrutural vira passivo. A Pump.fun corrigiu a livestream com produto, o jeito certo de gerir crise. Mas a reincidência mostra que, quando o incentivo central recompensa o extremo, política de moderação trata o sintoma, não a causa.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">13</span></div>
+</section>
+
+<!-- ============================ PÁG 14 — TESTE DE ESTRESSE 3 (dark) ============================ -->
+<section class="page dark-page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Teste de estresse</span></div>
+  <div class="pad">
+    <span class="kicker">Teste de estresse · 3 de 3 · token e concorrência</span>
+    <div class="section-title" style="margin-bottom:10px;"><span class="dot"></span><h2 style="font-size:25pt;">O token que caiu,<br>e o trono que vacilou.</h2></div>
+    <p style="font-size:9.6pt; margin-bottom:12px;">A trajetória não foi linear. O lançamento mais vangloriado machucou compradores, e a liderança que parecia inquebrável foi perdida, ainda que temporariamente.</p>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">↓</div><div><div class="nm">O crash do token PUMP</div><div class="rl">jul/2025 →</div></div></div>
+      <div class="quote">O "fair launch" excluiu compradores dos EUA e do Reino Unido; mais de 60% dos participantes venderam em uma semana, e o PUMP caiu abaixo do preço de ICO (US$ 0,004 → ~US$ 0,0016).</div>
+      <div class="resp"><b>A crítica:</b> distribuição enviesada (cerca de 18% em rodada privada e ~20% para o time), pressão vendedora de insiders e ausência de utility/airdrop afundaram o preço. O 3º maior ICO da história virou caso de "varejo que comprou na largada ficou no vermelho". <b>Drawdown atual:</b> −56% vs ICO, −82% vs ATH. Fonte: Cryptopolitan / CoinMarketCap.</div>
+    </div>
+
+    <div class="crit-card">
+      <div class="who"><div class="av">⚔</div><div><div class="nm">O flip da LetsBonk</div><div class="rl">jul/2025</div></div></div>
+      <div class="quote">Pela primeira vez desde o lançamento, a Pump.fun perdeu a liderança: a LetsBonk (ecossistema BONK) derrubou seu market share de ~90% para cerca de 24% em aproximadamente um mês.</div>
+      <div class="resp"><b>O outro lado (resiliência):</b> a Pump.fun reagiu rápido, já em agosto de 2025 retomou ~73,6% de share, impulsionada pelo Project Ascend e pelos buybacks. Mas o episódio prova que o monopólio era contestável, e que a concorrência se posicionou explicitamente como "o anti-Pump.fun", mais justo com o criador. Fonte: The Block / Cointelegraph.</div>
+    </div>
+
+    <p style="font-size:9pt; margin-top:6px;"><span style="color:#fff; font-weight:700;">A leitura de marca.</span> A reputação de "predatório" teve custo competitivo concreto: parte da migração para a BONK.fun foi atribuída a usuários desiludidos com a imagem da Pump.fun. Marca tóxica não é só risco moral, é vetor de churn.</p>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">14</span></div>
+</section>
+
+<!-- ============================ PÁG 15 — OS NÚMEROS (painel A) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam · 1 de 2</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:24pt;">Não é a Pump.fun<br>dizendo. São os dashboards.</h2></div>
+
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">Receita trimestral (US$ M)</div>
+        <div class="cs">pico Q1/25 (US$ 264M), depois normalização</div>
+        <div class="chart-box" style="height:152px;"><canvas id="cv_rev_tri"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Receita acumulada (US$ M)</div>
+        <div class="cs">de ~US$ 50M (fim/24) a US$ 1B+ em ~2 anos</div>
+        <div class="chart-box" style="height:152px;"><canvas id="cv_rev_acum"></canvas></div>
+        <div class="chart-src">Fonte: DefiLlama / The Block</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Lançamentos por dia</div>
+        <div class="cs">pico de ~70k/dia (jan/25), depois ~30k</div>
+        <div class="chart-box" style="height:152px;"><canvas id="cv_lanc"></canvas></div>
+        <div class="chart-src">Fonte: STORM Partners / MEXC</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Buyback &amp; burn de PUMP (US$ M)</div>
+        <div class="cs">~US$ 350M recomprado + burn de US$ 370M (abr/26)</div>
+        <div class="chart-box" style="height:152px;"><canvas id="cv_buyback"></canvas></div>
+        <div class="chart-src">Fonte: The Block / CoinDesk / KuCoin</div>
+      </div>
+    </div>
+
+    <div class="chart-card span" style="margin-top:14px;">
+      <div class="ct">O funil de extinção (tokens, escala log)</div>
+      <div class="cs">de ~7 milhões lançados a ~97 mil com liquidez real e ~1% que se gradua</div>
+      <div class="chart-box" style="height:128px;"><canvas id="cv_funil"></canvas></div>
+      <div class="chart-src">Fonte: Solidus Labs · taxa de graduação Cryptopolitan</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">15</span></div>
+</section>
+
+<!-- ============================ PÁG 16 — OS NÚMEROS (painel B) ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Os números que provam</span></div>
+  <div class="pad">
+    <span class="kicker">Os números que provam · 2 de 2</span>
+    <div class="section-title" style="margin-bottom:12px;"><span class="dot"></span><h2 style="font-size:24pt;">Onde ela está no mapa<br>da cripto, e do token.</h2></div>
+
+    <div class="panel-grid">
+      <div class="chart-card">
+        <div class="ct">Share Solana launchpad: o flip</div>
+        <div class="cs">Pump.fun vs LetsBonk · ~90% → ~24% → ~73%</div>
+        <div class="chart-box" style="height:158px;"><canvas id="cv_share"></canvas></div>
+        <div class="chart-src">Fonte: DL News / Coinpaper / Cointelegraph</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Preço do token PUMP (marcos)</div>
+        <div class="cs">ICO US$0,004 → ATH US$0,0089 → US$0,0016</div>
+        <div class="chart-box" style="height:158px;"><canvas id="cv_pump"></canvas></div>
+        <div class="chart-src">Fonte: CoinDesk / CoinGecko / CoinMarketCap</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Distribuição do supply PUMP</div>
+        <div class="cs">público ~13% · time+private ~38% · resto tesouro</div>
+        <div class="chart-box" style="height:158px;"><canvas id="cv_supply"></canvas></div>
+        <div class="chart-src">Fonte: Blockworks / CoinDCX</div>
+      </div>
+      <div class="chart-card">
+        <div class="ct">Ranking de receita 2025 (US$ bi)</div>
+        <div class="cs">Pump.fun = 5º protocolo cripto, único launchpad no top-10</div>
+        <div class="chart-box" style="height:158px;"><canvas id="cv_rank"></canvas></div>
+        <div class="chart-src">Fonte: CoinGecko</div>
+      </div>
+    </div>
+
+    <div class="bigquote" style="margin-top:14px;">
+      <div class="q">Em 2025, a Pump.fun gerou mais receita que a Ethereum. Um launchpad de memecoins, construído por três pessoas, ficou à frente da maior blockchain de contratos inteligentes do mundo em arrecadação.</div>
+      <div class="by">CoinGecko · Top Revenue-Generating Protocols 2025</div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">16</span></div>
+</section>
+
+<!-- ============================ PÁG 17 — O QUE ISSO ENSINA ============================ -->
+<section class="page">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">O que isso ensina</span></div>
+  <div class="pad">
+    <span class="kicker">O que isso ensina</span>
+    <div class="section-title" style="margin-bottom:8px;"><span class="dot"></span><h2 style="font-size:25pt;">Sete lições, e dois limites.</h2></div>
+    <p class="muted" style="font-size:9.2pt; margin-bottom:12px;">A Pump.fun não é um modelo a copiar inteiro, é um caso a estudar com cuidado. As jogadas de distribuição são transferíveis para qualquer marca. Os dois últimos itens são o aviso que nenhum estudo honesto pode omitir.</p>
+
+    <div>
+      <div class="take"><div class="tn">1</div><div class="tb"><b>Remova toda a fricção do desejo.</b><p>O maior canal de aquisição não é o anúncio, é um produto tão fácil de usar que o próprio usuário vira o canal. A Pump.fun colapsou "lançar um token" a um clique gratuito, e milhões fizeram o marketing por ela.</p></div></div>
+      <div class="take"><div class="tn">2</div><div class="tb"><b>Recompensa variável retém como nada.</b><p>O loop de feedback instantâneo e o leaderboard prendem mais que qualquer notificação. Use o mecanismo, mas saiba que ele exige limite ético, não só de produto.</p></div></div>
+      <div class="take"><div class="tn">3</div><div class="tb"><b>Posicione-se contra um inimigo real.</b><p>"Fair launch" venceu porque o trauma do rug pull era concreto. Marca sem inimigo é commodity; defina contra o que você existe e o mercado escolhe um lado.</p></div></div>
+      <div class="take"><div class="tn">4</div><div class="tb"><b>Alinhe o incentivo de quem te distribui.</b><p>Pagar o criador (Project Ascend) transformou cada lançador em vendedor. O melhor time de growth é o terceiro que ganha quando você ganha.</p></div></div>
+      <div class="take"><div class="tn">5</div><div class="tb"><b>Transforme métrica e evento em mídia.</b><p>O ICO de 12 minutos e cada buyback viraram manchete. Encontre o número e o momento que se distribuem sozinhos, e construa narrativa ao redor deles.</p></div></div>
+      <div class="take"><div class="tn">6</div><div class="tb"><b>A promessa precisa bater com a prática.</b><p>Narrativa de justiça é arma poderosa e perigosa. Se o "fair" não for fair de verdade, o mercado e a justiça cobram. Coerência é parte da marca.</p></div></div>
+      <div class="take"><div class="tn">7</div><div class="tb"><b>Cuidado com o modelo que depende do usuário perder.</b><p>O limite ético: se a unidade econômica exige que o varejo, em agregado, perca dinheiro, você construiu um passivo reputacional e regulatório embutido. Distribuição genial não compensa fundação frágil.</p></div></div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <span class="kicker" style="margin-bottom:8px;">Linha do tempo · jan/24 → jun/26</span>
+      <div class="rail">
+        <div class="rc"><div class="rk">Jan 2024</div><div class="rt"><b>Lançamento</b> · criação 1-clique</div></div>
+        <div class="rc"><div class="rk">Nov 2024</div><div class="rt"><b>Livestream</b> desligada na crise</div></div>
+        <div class="rc"><div class="rk">Jan 2025</div><div class="rt"><b>Pico</b> ~70k tokens/dia</div></div>
+        <div class="rc"><div class="rk">Mar 2025</div><div class="rt"><b>PumpSwap</b> · DEX própria</div></div>
+        <div class="rc hot"><div class="rk">Jul 2025</div><div class="rt"><b>ICO</b> US$500M em 12 min</div></div>
+        <div class="rc"><div class="rk">Jul 2025</div><div class="rt"><b>LetsBonk</b> rouba a liderança</div></div>
+        <div class="rc"><div class="rk">Set 2025</div><div class="rt"><b>Project Ascend</b> · retomada</div></div>
+        <div class="rc hot"><div class="rk">Abr 2026</div><div class="rt"><b>Burn</b> US$370M (36% supply)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">17</span></div>
+</section>
+
+<!-- ============================ PÁG 18 — FONTES (dark) ============================ -->
+<section class="page legal">
+  <div class="rhead"><span class="kale-mark"><span class="k">K</span>aleidos</span><span class="dash"></span><span class="sec">Fontes</span></div>
+  <div class="pad">
+    <span class="kicker">Fontes &amp; metodologia</span>
+    <div class="section-title" style="margin-bottom:14px;"><span class="dot" style="background:rgba(210,98,178,.3)"></span><h2 style="font-size:24pt;">Tudo verificável,<br>os dois lados.</h2></div>
+    <p>Todo número deste paper vem de fonte pública, datada de junho de 2026. Quando uma metodologia diverge (caso da receita 2025, US$ 536M no ranking CoinGecko vs US$ 664M net no DefiLlama), citamos a fonte usada, não misturamos. Citações de processo são reproduzidas verbatim e tratadas como alegações ainda não julgadas em corte. O threshold de graduação (~US$ 69k) e as taxas variaram no tempo, tratamos como dependentes da data.</p>
+
+    <ul class="src-list">
+      <li><b>Receita / volume / fees:</b> DefiLlama · protocol/pump.fun</li>
+      <li><b>Ranking de receita 2025:</b> CoinGecko · Top Revenue Protocols</li>
+      <li><b>Preço / mcap / ATH PUMP:</b> CoinGecko, CoinMarketCap</li>
+      <li><b>ICO:</b> CoinDesk, Blockworks, Fortune, Unchained</li>
+      <li><b>Buyback / burn:</b> The Block, CoinDesk, KuCoin, BeInCrypto</li>
+      <li><b>Tokens / graduação:</b> Solidus Labs, Cryptopolitan, STORM Partners, MEXC</li>
+      <li><b>Origem / fundadores:</b> Wikipedia, PANews, autos da class-action</li>
+      <li><b>Mecânica / fees / PumpSwap:</b> pump.fun/docs, Bitget Academy, blocmates, The Block</li>
+      <li><b>Project Ascend / creator fees:</b> KuCoin, Brave New Coin, CoinMarketCap Academy</li>
+      <li><b>Livestream:</b> DL News, Decrypt, Cryptopolitan, Blockworks, Crypto Briefing</li>
+      <li><b>Processos / RICO:</b> Wolf Popper LLP, Decrypt, Cryptonews, FinanceFeeds</li>
+      <li><b>LetsBonk / share:</b> The Block, Coinpaper, DropsTab, Cointelegraph</li>
+      <li><b>Perdas de varejo:</b> Solidus Labs (via CoinDesk), CryptoPotato, CryptoSlate</li>
+      <li><b>Citações verbatim:</b> Pump.fun (homepage), Troy Gravitt, trader "Jazzy", autos do processo</li>
+    </ul>
+
+    <div class="disc">
+      <p style="font-size:8.4pt;">Este documento é um estudo editorial de marketing produzido pela Kaleidos. Não constitui recomendação de investimento, aconselhamento financeiro ou endosso ao token PUMP ou à Pump.fun. Os processos citados estão em andamento e suas alegações não foram julgadas. Marcas, logos e declarações citadas pertencem a seus respectivos donos e são reproduzidos sob uso editorial. Dados sujeitos a variação de mercado.</p>
+    </div>
+  </div>
+  <div class="rfoot"><span>© Kaleidos · Pump.fun</span><span class="pg">18</span></div>
+</section>
+
+<!-- ============================ PÁG 19 — CONTRACAPA (rosa) ============================ -->
+<section class="page backcover">
+  <div class="bc-inner">
+    <div class="bc-eyebrow">Kaleidos · Agência Cripto-Nativa</div>
+    <div class="bc-mark"><span style="font-style:italic;">K</span>aleidos</div>
+    <div class="bc-seal">Paper · Estudo de Caso · Pump.fun</div>
+    <div class="bc-tag">A agência de marketing nativa de cripto do Brasil. Growth, narrativa e conteúdo para projetos de cripto e web3 que querem construir marca de verdade, com responsabilidade, não só barulho.</div>
+    <div class="bc-foot">Este paper é uma amostra de como a gente pensa marketing on-chain: o que funciona, e onde está o limite.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof Chart === 'undefined' || !window.KaleidosCharts) return;
+  var KC = window.KaleidosCharts;
+  function mount(id, cfg){
+    var el = document.getElementById(id);
+    if (el && cfg) new Chart(el.getContext('2d'), JSON.parse(JSON.stringify(cfg)));
+  }
+  mount('cv_rev_tri',  KC.chartReceitaTri);
+  mount('cv_rev_acum', KC.chartRevAcum);
+  mount('cv_lanc',     KC.chartLancamentos);
+  mount('cv_buyback',  KC.chartBuyback);
+  mount('cv_funil',    KC.chartFunil);
+  mount('cv_share',    KC.chartShareFlip);
+  mount('cv_pump',     KC.chartPump);
+  mount('cv_supply',   KC.chartSupplyPump);
+  mount('cv_rank',     KC.chartReceita2025);
+})();
+</script>
+</body>
+</html>

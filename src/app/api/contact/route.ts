@@ -7,6 +7,16 @@ import {
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
 
+/** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
+function esc(v: unknown): string {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(request: Request) {
   try {
     // Rate limit: 5 reqs / 10min por IP.
@@ -25,7 +35,31 @@ export async function POST(request: Request) {
       servicos = [],
       locale = "pt",
       _hp,
+      metadata = {},
     } = data || {};
+
+    // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
+    const ATTR_KEYS = [
+      "channel",
+      "source",
+      "referrer",
+      "path",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "first_channel",
+      "first_source",
+      "first_referrer",
+      "first_utm_source",
+      "first_utm_campaign",
+    ] as const;
+    const attr: Record<string, string> = {};
+    for (const k of ATTR_KEYS) {
+      const v = (metadata || {})[k];
+      if (typeof v === "string" && v) attr[k] = v.slice(0, 300);
+    }
 
     // Honeypot: 200 silencioso pra não dar feedback pro bot.
     if (isHoneypotTriggered(_hp)) {
@@ -66,15 +100,17 @@ Serviços: ${(servicos || []).join(", ")}
 Mensagem:
 ${mensagem}
 `;
+    // Limita tamanho da mensagem livre pra evitar payloads abusivos.
+    const mensagemSafe = String(mensagem).slice(0, 5000);
     const html = `
       <div style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #111">
-        <h2 style="margin:0 0 12px 0;">${subject}</h2>
-        <p><strong>Nome:</strong> ${nome}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${empresa ? `<p><strong>Empresa:</strong> ${empresa}</p>` : ""}
-        ${(servicos || []).length ? `<p><strong>Serviços:</strong> ${(servicos || []).join(", ")}</p>` : ""}
+        <h2 style="margin:0 0 12px 0;">${esc(subject)}</h2>
+        <p><strong>Nome:</strong> ${esc(nome)}</p>
+        <p><strong>Email:</strong> ${esc(email)}</p>
+        ${empresa ? `<p><strong>Empresa:</strong> ${esc(empresa)}</p>` : ""}
+        ${(servicos || []).length ? `<p><strong>Serviços:</strong> ${esc((servicos || []).join(", "))}</p>` : ""}
         <hr style="border:none;border-top:1px solid #eee;margin:12px 0;"/>
-        <p style="white-space:pre-wrap">${mensagem}</p>
+        <p style="white-space:pre-wrap">${esc(mensagemSafe)}</p>
       </div>
     `;
 
@@ -100,6 +136,18 @@ ${mensagem}
       empresa: empresa || null,
       servicos_count: (servicos || []).length,
       locale,
+      ...attr,
+      // last-touch sempre atualiza; first-touch fixa na primeira conversão
+      $set: {
+        last_channel: attr.channel ?? null,
+        last_source: attr.source ?? null,
+        last_path: attr.path ?? null,
+      },
+      $set_once: {
+        first_channel: attr.first_channel ?? attr.channel ?? null,
+        first_source: attr.first_source ?? attr.source ?? null,
+        first_referrer: attr.first_referrer ?? attr.referrer ?? null,
+      },
     });
 
     return new Response(JSON.stringify({ ok: true }), {

@@ -1,63 +1,43 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
-import { motion } from "framer-motion"
-import { ArrowDown } from "lucide-react"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowDown, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import { useI18n } from "@/i18n/useI18n"
-import { scrollToSection } from "@/hooks/use-smooth-scroll"
 import { useAnalytics } from "@/components/analytics"
-import { KALEIDOS_METRICS } from "@/lib/metrics"
+import { CalendlyIcon } from "@/components/ui/calendly-icon"
 
-function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
-  const [count, setCount] = useState(0)
-  const numericTarget = parseInt(target.replace(/[^0-9]/g, ""))
-
-  useEffect(() => {
-    let raf = 0
-    const duration = 2000
-    const start = performance.now()
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration)
-      setCount(Math.floor(numericTarget * t))
-      if (t < 1) {
-        raf = requestAnimationFrame(tick)
-      } else {
-        setCount(numericTarget)
-      }
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [numericTarget])
-
-  return (
-    <span className="tabular-nums">
-      {count}{suffix}
-    </span>
-  )
-}
+const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min"
 
 export default function HeroKaleidos() {
   const { locale } = useI18n()
   const isEn = locale === "en"
   const { trackClick } = useAnalytics()
-  const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?'}lang=en` : path
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleContact = useCallback(() => {
-    trackClick("hero_contact", "hero")
-    scrollToSection("ajuda-section")
-  }, [trackClick])
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+  // Parallax sutil: fundo drifta mais devagar, grid um pouco mais rápido.
+  const gradientY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"])
+  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"])
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
-    <section className="relative min-h-[85vh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden bg-black hero-section">
+    <section ref={sectionRef} className="relative min-h-[88vh] lg:min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-16 lg:py-0 overflow-hidden bg-black hero-section">
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-500/15 via-black to-black" />
+      <motion.div
+        style={{ y: gradientY, opacity: bgOpacity }}
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-500/15 via-black to-black"
+      />
 
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 -z-10 opacity-[0.03]" style={{
+      <motion.div className="absolute inset-0 -z-10 opacity-[0.03]" style={{
+        y: gridY,
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
         backgroundSize: '60px 60px'
       }} />
@@ -103,9 +83,11 @@ export default function HeroKaleidos() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-4 font-display font-semibold leading-tight max-w-4xl mx-auto"
         >
-          {isEn
-            ? "We create content that truly builds attention."
-            : "Criamos conteúdo que realmente constrói atenção."}
+          {isEn ? (
+            <>Your <span className="text-[#7CFF6B]">crypto-market</span> agency.</>
+          ) : (
+            <>Sua agência do mercado <span className="text-[#7CFF6B]">cripto</span>.</>
+          )}
         </motion.p>
 
         {/* Subheadline */}
@@ -116,93 +98,84 @@ export default function HeroKaleidos() {
           className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 sm:mb-14 max-w-2xl mx-auto font-sans leading-relaxed"
         >
           {isEn
-            ? "Strategy, content and growth for crypto, DeFi and Web3 projects that take their own work seriously."
-            : "Estratégia, conteúdo e growth para projetos cripto, DeFi e Web3 que levam o próprio trabalho a sério."}
+            ? "Since 2020 creating content, strategy and bringing growth and results to projects, exchanges, creators and founders in the crypto market."
+            : "Desde 2020 criando conteúdo, estratégia e trazendo crescimento e resultados para projetos, exchanges, creators e founders do mercado cripto."}
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTA único — consultoria grátis */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center mb-16"
+          className="flex justify-center items-center"
         >
-          <Link
-            href="https://wa.me/5512997796835?text=Oi%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os"
+          <a
+            href={CALENDLY}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackClick("hero_calendly", "hero")}
+            className="w-full sm:w-auto"
           >
             <Button
               size="lg"
-              className="bg-[#7CFF6B] hover:bg-[#5be04d] text-black font-bold px-8 py-4 text-lg w-full sm:w-auto shadow-lg shadow-[#7CFF6B]/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B] focus:ring-offset-2 focus:ring-offset-black"
-              aria-label={isEn ? "Talk to Kaleidos" : "Falar com a Kaleidos"}
+              className="group/cta bg-[#7CFF6B] hover:bg-[#6ae85a] text-black font-bold px-9 py-4 text-lg w-full sm:w-auto shadow-lg shadow-[#7CFF6B]/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B] focus:ring-offset-2 focus:ring-offset-black"
+              aria-label={isEn ? "Book a free consultation" : "Agendar consultoria grátis"}
             >
-              {isEn ? "Talk to Kaleidos" : "Falar com a Kaleidos"}
+              <CalendlyIcon className="mr-2 h-5 w-5" />
+              {isEn ? "Free consultation" : "Consultoria grátis"}
             </Button>
-          </Link>
-          <Link href={withLang("/cases")}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg w-full sm:w-auto bg-transparent transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-              aria-label={isEn ? "See our cases" : "Ver cases"}
-            >
-              {isEn ? "See our cases" : "Ver cases"}
-            </Button>
-          </Link>
-        </motion.div>
-
-        {/* Social proof counters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.85 }}
-          className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center"
-        >
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">
-              <AnimatedCounter target={KALEIDOS_METRICS.projetosAtendidos} suffix="+" />
-            </div>
-            <div className="text-sm text-gray-500 mt-1">
-              {isEn ? "Projects" : "Projetos"}
-            </div>
-          </div>
-          <div className="w-px h-12 bg-neutral-800 hidden sm:block" />
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">
-              <AnimatedCounter target={KALEIDOS_METRICS.videosEditados} suffix="+" />
-            </div>
-            <div className="text-sm text-gray-500 mt-1">
-              {isEn ? "Videos edited" : "Vídeos editados"}
-            </div>
-          </div>
-          <div className="w-px h-12 bg-neutral-800 hidden sm:block" />
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">
-              <AnimatedCounter target={KALEIDOS_METRICS.viewsReels} suffix="M+" />
-            </div>
-            <div className="text-sm text-gray-500 mt-1">
-              {isEn ? "Views on reels" : "Views nos reels"}
-            </div>
-          </div>
-          <div className="w-px h-12 bg-neutral-800 hidden sm:block" />
-          <div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">
-              <AnimatedCounter target={KALEIDOS_METRICS.satisfacaoCliente} suffix="%" />
-            </div>
-            <div className="text-sm text-gray-500 mt-1">
-              {isEn ? "Satisfaction" : "Satisfação"}
-            </div>
-          </div>
+          </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Floating playbook card — vertical (capa em cima, texto embaixo), bottom-right no desktop */}
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+        className="relative mt-12 w-full max-w-[240px] mx-auto lg:absolute lg:top-28 xl:top-32 lg:right-8 lg:bottom-auto lg:mt-0 lg:mx-0 lg:w-[244px] lg:max-w-none z-20"
+      >
+        <Link
+          href="/papers/playbook-cripto-2026"
+          onClick={() => trackClick("hero_playbook_cover", "hero")}
+          aria-label={isEn ? "Crypto Marketing in 2026 playbook" : "Playbook Marketing Cripto em 2026"}
+          className="group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-3 backdrop-blur-md shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] transition-colors hover:border-[#D262B2]/40"
+        >
+          {/* glow rosa */}
+          <div
+            className="absolute -inset-px -z-10 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style={{ background: "radial-gradient(180px 180px at 50% 0%, rgba(210,98,178,0.20), transparent 70%)" }}
+          />
+          {/* capa em cima */}
+          <Image
+            src="/papers/cover-playbook.png"
+            alt={isEn ? "Crypto Marketing in 2026" : "Marketing Cripto em 2026"}
+            width={400}
+            height={533}
+            className="w-full rounded-lg object-cover ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+          {/* texto embaixo */}
+          <div className="mt-3 text-left">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#D262B2]/15 px-2 py-0.5 text-[10px] font-mono uppercase tracking-[0.14em] text-[#E486C7]">
+              {isEn ? "Free playbook" : "Playbook grátis"}
+            </span>
+            <p className="mt-2 font-display text-[16px] font-bold leading-snug text-white">
+              {isEn ? "Crypto Marketing in 2026" : "Marketing Cripto em 2026"}
+            </p>
+            <span className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#7CFF6B] px-3 py-2 text-[13px] font-bold text-black transition-colors group-hover:bg-[#9bff8e]">
+              {isEn ? "Download for free" : "Baixar grátis"}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </div>
+        </Link>
+      </motion.div>
+
+      {/* Scroll indicator (só desktop, pra não brigar com o card no mobile) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-8"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block"
       >
         <div className="text-white/40 animate-bounce" aria-hidden="true">
           <ArrowDown className="h-5 w-5" />

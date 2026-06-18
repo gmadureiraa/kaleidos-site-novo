@@ -133,7 +133,7 @@ export default function KaleidosContentPage() {
               {locale==='en' ? 'What we can ' : 'O que podemos '}<span className="text-black">{locale==='en' ? 'do' : 'fazer'}</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              {locale==='en' ? 'Data‑driven content that turns your marketing into real results' : 'Conteúdo fundamento em dados que transformam seu marketing em resultados reais'}
+              {locale==='en' ? 'Data‑driven content that turns your marketing into real results' : 'Conteúdo fundamentado em dados que transforma seu marketing em resultados reais'}
             </p>
           </motion.div>
 
@@ -153,7 +153,7 @@ export default function KaleidosContentPage() {
                       </>
                     ) : (
                       <>
-                        Desenvolvemos <strong>conteúdo personalizado</strong> que transformam sua marca em uma máquina de engajamento. Nossa abordagem combina <strong>copywriting avançado</strong>, <strong>roteiros inteligentes</strong> e <strong>edição criativa</strong> para criar conteúdo que as pessoas querem consumir e compartilhar.
+                        Desenvolvemos <strong>conteúdo personalizado</strong> que transforma sua marca em uma máquina de engajamento. Nossa abordagem combina <strong>copywriting avançado</strong>, <strong>roteiros inteligentes</strong> e <strong>edição criativa</strong> para criar conteúdo que as pessoas querem consumir e compartilhar.
                       </>
                     )}
                   </p>
@@ -222,7 +222,7 @@ export default function KaleidosContentPage() {
               <div className="space-y-8 order-1 lg:order-2">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold text-black font-display">
-                    {locale==='en' ? 'Design and editing that impress' : 'Design e edição que impressiona'}
+                    {locale==='en' ? 'Design and editing that impress' : 'Design e edição que impressionam'}
                   </h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
                     {locale==='en' ? (

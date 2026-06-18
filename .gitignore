@@ -42,3 +42,7 @@ next-env.d.ts
 
 # Security audits — local-only, contém detalhes de vulnerabilidades
 .security/
+SECURITY-AUDIT-*.md
+
+# backups de build dos restarts de dev (não versionar)
+.next-*

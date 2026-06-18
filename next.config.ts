@@ -58,6 +58,12 @@ const nextConfig: NextConfig = {
         destination: "/cases",
         permanent: true,
       },
+      {
+        // Atalho amigável pro playbook flagship.
+        source: "/bull-market",
+        destination: "/papers/bull-market-2026",
+        permanent: false,
+      },
     ];
   },
 

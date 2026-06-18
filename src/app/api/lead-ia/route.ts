@@ -10,6 +10,16 @@ import {
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
 
+/** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
+function esc(v: unknown): string {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(request: Request) {
   try {
     // Rate limit: 5 reqs / 10min por IP. Forms são raros, limite apertado.
@@ -29,7 +39,31 @@ export async function POST(request: Request) {
       whatsapp = "",
       locale = "pt",
       _hp,
+      metadata = {},
     } = data || {};
+
+    // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
+    const ATTR_KEYS = [
+      "channel",
+      "source",
+      "referrer",
+      "path",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "first_channel",
+      "first_source",
+      "first_referrer",
+      "first_utm_source",
+      "first_utm_campaign",
+    ] as const;
+    const attr: Record<string, string> = {};
+    for (const k of ATTR_KEYS) {
+      const v = (metadata || {})[k];
+      if (typeof v === "string" && v) attr[k] = v.slice(0, 300);
+    }
 
     // Honeypot: se preenchido, retorna 200 silencioso (não dá pista pro bot).
     if (isHoneypotTriggered(_hp)) {
@@ -85,19 +119,19 @@ ${gargalo}
 
     const html = `
       <div style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #111">
-        <h2 style="margin:0 0 12px 0;">${subject}</h2>
+        <h2 style="margin:0 0 12px 0;">${esc(subject)}</h2>
         <p style="color:#666;font-size:14px;margin:0 0 16px 0">Lead capturado pela página /servicos/ia-automacoes-completa</p>
         <table style="border-collapse:collapse;width:100%;font-size:14px">
-          <tr><td style="padding:6px 0;color:#666;width:140px">Nome</td><td style="padding:6px 0"><strong>${nome}</strong></td></tr>
-          <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0">${email}</td></tr>
-          ${whatsapp ? `<tr><td style="padding:6px 0;color:#666">WhatsApp</td><td style="padding:6px 0">${whatsapp}</td></tr>` : ""}
-          ${empresa ? `<tr><td style="padding:6px 0;color:#666">Empresa</td><td style="padding:6px 0">${empresa}</td></tr>` : ""}
-          ${tamanho ? `<tr><td style="padding:6px 0;color:#666">Tamanho do time</td><td style="padding:6px 0">${tamanho}</td></tr>` : ""}
+          <tr><td style="padding:6px 0;color:#666;width:140px">Nome</td><td style="padding:6px 0"><strong>${esc(nome)}</strong></td></tr>
+          <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0">${esc(email)}</td></tr>
+          ${whatsapp ? `<tr><td style="padding:6px 0;color:#666">WhatsApp</td><td style="padding:6px 0">${esc(whatsapp)}</td></tr>` : ""}
+          ${empresa ? `<tr><td style="padding:6px 0;color:#666">Empresa</td><td style="padding:6px 0">${esc(empresa)}</td></tr>` : ""}
+          ${tamanho ? `<tr><td style="padding:6px 0;color:#666">Tamanho do time</td><td style="padding:6px 0">${esc(tamanho)}</td></tr>` : ""}
         </table>
         ${gargalo ? `
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0;"/>
         <p style="color:#666;font-size:13px;margin:0 0 6px 0">Gargalo principal</p>
-        <p style="white-space:pre-wrap;margin:0">${gargalo}</p>
+        <p style="white-space:pre-wrap;margin:0">${esc(String(gargalo).slice(0, 5000))}</p>
         ` : ""}
       </div>
     `;
@@ -194,6 +228,17 @@ ${gargalo}
       has_gargalo: Boolean(gargalo),
       welcome_sent: welcomeSent,
       audience_added: audienceAdded,
+      ...attr,
+      $set: {
+        last_channel: attr.channel ?? null,
+        last_source: attr.source ?? null,
+        last_path: attr.path ?? null,
+      },
+      $set_once: {
+        first_channel: attr.first_channel ?? attr.channel ?? null,
+        first_source: attr.first_source ?? attr.source ?? null,
+        first_referrer: attr.first_referrer ?? attr.referrer ?? null,
+      },
     });
 
     return new Response(

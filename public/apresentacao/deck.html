@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kaleidos · Apresentação</title>
+<meta name="description" content="Kaleidos — agência de marketing nativa do mercado cripto. Founder-led, time sênior, stack completa de ponta a ponta." />
+<meta name="theme-color" content="#0A0A0A" />
+<link rel="icon" href="/Kaleidos/logo/Logos-11.svg" />
+<style>
+/* ============================================================
+   FONTES LOCAIS (self-contained, sem CDN — respeita CSP)
+   ============================================================ */
+@font-face {
+  font-family: 'Atelier';
+  src: url('/Kaleidos/fonts/Atelier/OpenType-TT/Atelier.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gridlite';
+  src: url('/Kaleidos/fonts/Gridlite/Gridlite.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'InterKld';
+  src: url('/Kaleidos/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --green: #7CFF6B;
+  --green-logo: #7cf067;
+  --pink: #d262b2;
+  --ink: #0A0A0A;
+  --ink-2: #141414;
+  --paper: #ffffff;
+  --paper-2: #f6f6f4;
+  --muted-dark: #9a9a9a;
+  --muted-light: #555;
+  --font-display: 'Atelier', Georgia, serif;
+  --font-sans: 'InterKld', -apple-system, system-ui, sans-serif;
+  --font-accent: 'Gridlite', 'InterKld', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.font-display { font-family: var(--font-display); }
+.font-accent  { font-family: var(--font-accent); letter-spacing: 0.06em; }
+
+/* ============================================================
+   DECK / TRACK — scroll horizontal com snap
+   ============================================================ */
+#deck {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+#track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+#track::-webkit-scrollbar { display: none; }
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100vw;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(48px, 7vh, 96px) clamp(24px, 6vw, 110px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.slide::-webkit-scrollbar { width: 0; }
+
+.slide.dark   { background: var(--ink);   color: #fff; }
+.slide.light  { background: var(--paper); color: var(--ink); }
+.slide.accent { background: var(--green); color: var(--ink); }
+
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; }
+.wrap.center { text-align: center; }
+
+/* ============================================================
+   BACKDROPS (parallax + grid)
+   ============================================================ */
+.backdrop { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.slide > .wrap, .slide > .deck-num, .slide > .scrollhint { position: relative; z-index: 2; }
+
+.grid-bg {
+  position: absolute; inset: -2px;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  will-change: transform;
+}
+.light .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+}
+.accent .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+}
+.glow {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); opacity: 0.5; will-change: transform;
+}
+.glow.green { background: var(--green); }
+.glow.pink  { background: var(--pink); }
+
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-accent);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
+  padding: 7px 14px; border-radius: 999px; margin-bottom: 22px;
+  border: 1px solid;
+}
+.eyebrow.green { color: var(--green); border-color: rgba(124,255,107,0.3); background: rgba(124,255,107,0.08); }
+.eyebrow.pink  { color: var(--pink);  border-color: rgba(210,98,178,0.3); background: rgba(210,98,178,0.08); }
+.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.8s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+h1.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 88px);
+  line-height: 1.02; letter-spacing: -0.02em; font-weight: 400;
+}
+h2.title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.6vw, 58px);
+  line-height: 1.06; letter-spacing: -0.015em; font-weight: 400;
+}
+.lead { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; max-width: 640px; }
+.dark .lead   { color: var(--muted-dark); }
+.light .lead  { color: var(--muted-light); }
+.accent .lead { color: rgba(10,10,10,0.72); }
+.txt-green { color: var(--green); }
+.txt-pink  { color: var(--pink); }
+
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+.grid { display: grid; gap: 22px; }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.items-center { align-items: center; }
+
+.card {
+  border-radius: 22px; padding: 30px;
+  border: 1px solid; transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.3s;
+}
+.dark .card  { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
+.light .card { background: #fff; border-color: #ececec; box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
+.card:hover { transform: translateY(-6px); }
+.dark .card:hover  { border-color: rgba(124,255,107,0.45); }
+.light .card:hover { border-color: rgba(124,255,107,0.7); box-shadow: 0 18px 44px rgba(0,0,0,0.1); }
+
+.ico {
+  width: 50px; height: 50px; border-radius: 15px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 18px; transition: background 0.3s, color 0.3s;
+}
+.dark .ico  { background: rgba(124,255,107,0.1); color: var(--green); }
+.light .ico { background: var(--ink); color: var(--green); }
+.card:hover .ico { background: var(--green); color: #000; }
+.ico svg { width: 24px; height: 24px; }
+
+.card h3 { font-family: var(--font-display); font-size: 21px; font-weight: 400; margin-bottom: 10px; letter-spacing: -0.01em; }
+.card p  { font-size: 14.5px; line-height: 1.6; }
+.dark .card p  { color: var(--muted-dark); }
+.light .card p { color: var(--muted-light); }
+
+/* métricas */
+.metric { text-align: center; border-radius: 22px; padding: 30px 18px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
+.metric .num { font-family: var(--font-display); font-size: clamp(34px, 4vw, 52px); color: var(--green); line-height: 1; font-weight: 400; }
+.metric .lab { margin-top: 10px; font-size: 13.5px; color: var(--muted-dark); }
+
+/* tabela time sênior x fábrica */
+.versus-head { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 6px; margin-bottom: 12px; }
+.versus-head span { font-family: var(--font-accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; }
+.versus-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.vs-cell { display: flex; align-items: center; gap: 12px; border-radius: 16px; padding: 16px; font-size: 14px; }
+.vs-no  { border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); color: #777; text-decoration: line-through; text-decoration-color: rgba(210,98,178,0.4); }
+.vs-yes { border: 1px solid rgba(124,255,107,0.25); background: rgba(124,255,107,0.06); color: #fff; font-weight: 500; }
+.vs-mark { width: 22px; height: 22px; flex: 0 0 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none; }
+.vs-no .vs-mark  { background: rgba(210,98,178,0.12); color: #d97fc0; }
+.vs-yes .vs-mark { color: var(--green); }
+
+/* lista de problemas */
+.prob-list { display: flex; flex-direction: column; gap: 12px; }
+.prob {
+  display: flex; align-items: flex-start; gap: 16px;
+  border-radius: 16px; padding: 18px; border: 1px solid #eee; background: #fafafa;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.04); font-size: 15px; line-height: 1.5; color: #444;
+}
+.prob .x { flex: 0 0 24px; width: 24px; height: 24px; border-radius: 50%; background: rgba(210,98,178,0.12); color: var(--pink); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; margin-top: 1px; }
+
+/* método / passos */
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.step { border-radius: 22px; padding: 24px; border: 1px solid #eee; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,0.05); transition: transform 0.4s var(--ease), border-color 0.3s; }
+.step:hover { transform: translateY(-6px); border-color: rgba(124,255,107,0.6); }
+.step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.step-ico { width: 44px; height: 44px; border-radius: 14px; background: var(--ink); color: var(--green); display: inline-flex; align-items: center; justify-content: center; transition: background 0.3s, color 0.3s; }
+.step:hover .step-ico { background: var(--green); color: #000; }
+.step-ico svg { width: 20px; height: 20px; }
+.step-n { font-family: var(--font-accent); font-size: 13px; letter-spacing: 0.2em; color: #cfcfcf; }
+.step h3 { font-family: var(--font-display); font-size: 16px; font-weight: 400; margin-bottom: 7px; }
+.step p  { font-size: 12.5px; line-height: 1.55; color: #666; }
+
+/* cases */
+.case-card { display: flex; flex-direction: column; height: 100%; border-radius: 22px; padding: 28px; border: 1px solid #eee; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,0.05); transition: transform 0.4s var(--ease), border-color 0.3s; }
+.case-card:hover { transform: translateY(-6px); border-color: rgba(124,255,107,0.6); }
+.case-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; }
+.case-badge { display: inline-flex; align-items: center; gap: 6px; width: fit-content; margin-top: 12px; border-radius: 999px; border: 1px solid rgba(124,255,107,0.4); background: rgba(124,255,107,0.15); padding: 5px 12px; font-size: 12px; font-weight: 600; color: #0a0a0a; }
+.case-badge .d { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.case-card p { margin-top: 16px; font-size: 14px; line-height: 1.6; color: #555; flex: 1; }
+
+/* time */
+.team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.member { text-align: center; }
+.member .photo {
+  width: 100%; aspect-ratio: 1/1; border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12); margin-bottom: 14px; background: #1a1a1a;
+  transition: transform 0.4s var(--ease), border-color 0.3s;
+}
+.member:hover .photo { transform: translateY(-6px); border-color: rgba(124,255,107,0.5); }
+.member .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.member .name { font-family: var(--font-display); font-size: 18px; font-weight: 400; }
+.member .role { font-size: 12.5px; color: var(--green); margin-top: 3px; font-family: var(--font-accent); letter-spacing: 0.04em; }
+.member .bio { font-size: 12px; color: var(--muted-dark); margin-top: 9px; line-height: 1.5; }
+
+/* parceria */
+.plan-card { display: flex; flex-direction: column; height: 100%; border-radius: 22px; padding: 32px; border: 1px solid #eee; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,0.05); transition: transform 0.4s var(--ease); }
+.plan-card:hover { transform: translateY(-6px); }
+.plan-card.feat { background: var(--ink); color: #fff; border-color: var(--green); box-shadow: 0 22px 54px rgba(0,0,0,0.2); }
+.plan-tag { display: inline-flex; width: fit-content; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; margin-bottom: 16px; background: #f0f0f0; color: #555; }
+.plan-card.feat .plan-tag { background: var(--green); color: #000; }
+.plan-card h3 { font-family: var(--font-display); font-size: 25px; font-weight: 400; }
+.plan-card > p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: #555; }
+.plan-card.feat > p { color: #cfcfcf; }
+.plan-points { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.plan-points li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: #444; }
+.plan-card.feat .plan-points li { color: #ddd; }
+.plan-points svg { width: 16px; height: 16px; flex: 0 0 16px; color: var(--pink); }
+.plan-card.feat .plan-points svg { color: var(--green); }
+
+/* próximos passos */
+.steps-next { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.next-card { border-radius: 22px; padding: 28px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
+.next-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.next-num { width: 36px; height: 36px; border-radius: 12px; border: 1px solid rgba(124,255,107,0.3); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-accent); color: var(--green); }
+.next-when { font-family: var(--font-accent); font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--green); }
+.next-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 400; margin-bottom: 8px; }
+.next-card p  { font-size: 14px; line-height: 1.6; color: var(--muted-dark); }
+
+/* botões */
+.btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 36px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: 1px solid transparent;
+  transition: transform 0.2s, background 0.25s, opacity 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-green { background: var(--green); color: #000; box-shadow: 0 8px 24px rgba(124,255,107,0.2); }
+.btn-green:hover { background: #5be04d; }
+.btn-dark  { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #262626; }
+.btn-ghost-w { border-color: rgba(255,255,255,0.3); color: #fff; background: transparent; }
+.btn-ghost-w:hover { background: rgba(255,255,255,0.1); }
+.btn-ghost-d { border-color: rgba(0,0,0,0.3); color: #000; background: transparent; }
+.btn-ghost-d:hover { background: rgba(0,0,0,0.06); }
+.btn svg { width: 18px; height: 18px; }
+
+.deck-logo { height: 42px; width: auto; margin-bottom: 30px; }
+.cover-logo { height: 30px; width: auto; opacity: 0.9; }
+
+/* numeração do slide */
+.deck-num { display: none; } /* substituído pelo contador global da toolbar */
+
+.scrollhint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); text-align: center; color: rgba(255,255,255,0.4); }
+.scrollhint .arrow { display: inline-block; margin-top: 6px; animation: nudge 1.6s infinite; }
+.scrollhint span { font-family: var(--font-accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; }
+@keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+
+/* ============================================================
+   NAVEGAÇÃO (setas, dots, barra)
+   ============================================================ */
+.nav-arrow {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  z-index: 50; width: 52px; height: 52px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(20,20,20,0.55); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18); color: #fff;
+  cursor: pointer; transition: background 0.2s, opacity 0.3s, transform 0.2s;
+}
+.nav-arrow:hover { background: var(--green); color: #000; border-color: var(--green); }
+.nav-arrow.left  { left: 18px; }
+.nav-arrow.right { right: 18px; }
+.nav-arrow:disabled { opacity: 0; pointer-events: none; }
+.nav-arrow svg { width: 22px; height: 22px; }
+
+/* quando slide ativo é light/accent, escurece as setas */
+body.on-light .nav-arrow { background: rgba(255,255,255,0.7); color: #000; border-color: rgba(0,0,0,0.12); }
+body.on-light .nav-arrow:hover { background: var(--green); }
+
+.progress-track { position: fixed; left: 0; top: 0; height: 3px; width: 100%; background: rgba(125,125,125,0.18); z-index: 60; }
+.progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--green), var(--pink)); transition: width 0.45s var(--ease); }
+
+.dots { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 55; display: flex; gap: 9px; padding: 9px 14px; border-radius: 999px; background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); }
+body.on-light .dots { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.1); }
+.dot { width: 9px; height: 9px; border-radius: 50%; border: none; cursor: pointer; padding: 0; background: rgba(160,160,160,0.5); transition: background 0.3s, transform 0.3s, width 0.3s; }
+.dot.active { background: var(--green); width: 26px; border-radius: 999px; }
+.dot:hover { transform: scale(1.25); }
+.dot.active:hover { transform: none; }
+
+/* ============================================================
+   TOOLBAR (contador + fullscreen + ajuda) + PAPERS + HELP
+   ============================================================ */
+.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.paper-card { display: flex; flex-direction: column; border-radius: 18px; padding: 22px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); transition: transform 0.4s var(--ease), border-color 0.3s; }
+.paper-card:hover { transform: translateY(-6px); border-color: rgba(124,255,107,0.45); }
+.paper-vol { font-family: var(--font-accent); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); }
+.paper-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 400; margin: 10px 0 8px; letter-spacing: -0.01em; }
+.paper-card p { font-size: 13px; line-height: 1.5; color: var(--muted-dark); flex: 1; }
+.paper-pages { margin-top: 14px; font-family: var(--font-accent); font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
+
+.toolbar { position: fixed; top: clamp(16px, 4vh, 32px); right: clamp(18px, 5vw, 56px); z-index: 56; display: flex; align-items: center; gap: 10px; }
+.tb-count { font-family: var(--font-accent); font-size: 13px; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); }
+body.on-light .tb-count { color: rgba(0,0,0,0.45); }
+.tb-btn { width: 38px; height: 38px; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-accent); font-size: 15px; background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.16); color: #fff; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.tb-btn:hover { background: var(--green); color: #000; border-color: var(--green); }
+body.on-light .tb-btn { background: rgba(255,255,255,0.7); color: #000; border-color: rgba(0,0,0,0.12); }
+.tb-btn svg { width: 18px; height: 18px; }
+
+.help { position: fixed; inset: 0; z-index: 80; display: none; align-items: center; justify-content: center; background: rgba(5,5,5,0.82); backdrop-filter: blur(10px); }
+.help.show { display: flex; }
+.help-panel { max-width: 460px; width: calc(100% - 48px); border-radius: 22px; padding: 34px; background: var(--ink-2); border: 1px solid rgba(255,255,255,0.12); color: #fff; }
+.help-panel h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin-bottom: 20px; }
+.help-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 14px; color: #cfcfcf; }
+.help-row:last-child { border-bottom: none; }
+.help-row kbd { font-family: var(--font-accent); font-size: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 7px; padding: 4px 9px; color: #fff; margin-left: 6px; }
+.help-close { margin-top: 22px; width: 100%; justify-content: center; }
+
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA (IntersectionObserver)
+   ============================================================ */
+[data-anim] { opacity: 0; transform: translateY(26px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+[data-anim].in { opacity: 1; transform: none; }
+[data-anim][data-d="1"] { transition-delay: 0.08s; }
+[data-anim][data-d="2"] { transition-delay: 0.16s; }
+[data-anim][data-d="3"] { transition-delay: 0.24s; }
+[data-anim][data-d="4"] { transition-delay: 0.32s; }
+[data-anim][data-d="5"] { transition-delay: 0.40s; }
+[data-anim][data-d="6"] { transition-delay: 0.48s; }
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 900px) {
+  .cols-3, .cols-4, .cols-5, .steps, .team-grid, .steps-next { grid-template-columns: repeat(2, 1fr); }
+  .cols-2 { grid-template-columns: 1fr; }
+  h1.title { font-size: clamp(34px, 11vw, 52px); }
+  .nav-arrow { width: 44px; height: 44px; }
+  .slide { padding: 64px 22px; }
+}
+@media (max-width: 560px) {
+  .cols-3, .cols-4, .cols-5, .steps, .team-grid, .steps-next, .metric-grid { grid-template-columns: 1fr 1fr; }
+  .versus-head, .versus-row { grid-template-columns: 1fr; }
+  .nav-arrow { display: none; }
+  .case-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #track { scroll-behavior: auto; }
+  [data-anim] { transition: opacity 0.2s linear; transform: none; }
+  .glow, .grid-bg { transition: none !important; }
+  .eyebrow .dot, .scrollhint .arrow { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<div id="deck">
+  <div id="track">
+
+    <!-- ============================ 01 — CAPA ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="backdrop">
+        <div class="glow green" data-px="0.5" style="width:520px;height:520px;top:-160px;left:50%;transform:translateX(-50%);opacity:0.22;"></div>
+        <div class="grid-bg" data-px="0.2"></div>
+      </div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim><span class="dot"></span>Apresentação institucional</span>
+        <h1 class="title font-display" data-anim data-d="1">
+          A agência de marketing<br /><span class="txt-green">nativa da cripto.</span>
+        </h1>
+        <p class="lead" data-anim data-d="2" style="margin:28px auto 0;text-align:center;">
+          A Kaleidos é um time sênior e enxuto, founder-led, que transforma projetos de cripto, web3 e fintech em autoridade e pipeline. Não é fábrica de conteúdo: estratégia, narrativa e growth de quem já vive o mercado.
+        </p>
+        <div class="btns" data-anim data-d="3">
+          <a class="btn btn-green" href="https://wa.me/5512997796835?text=Oi%2C%20vim%20pela%20apresenta%C3%A7%C3%A3o%20e%20quero%20saber%20mais" target="_blank" rel="noopener">
+            Falar com a Kaleidos
+          </a>
+          <a class="btn btn-ghost-w" href="/cases">Ver os cases</a>
+        </div>
+      </div>
+      <div class="scrollhint" data-anim data-d="5">
+        <span>Arraste ou use as setas</span><br /><span class="arrow">→</span>
+      </div>
+    </section>
+
+    <!-- ============================ 02 — O QUE É ============================ -->
+    <section class="slide light" data-tone="light">
+      <div class="deck-num">02 / 13</div>
+      <div class="wrap">
+        <div class="grid cols-2 items-center" style="gap:48px;">
+          <div>
+            <span class="eyebrow pink" data-anim><span class="dot"></span>O que é a Kaleidos</span>
+            <h2 class="title font-display" data-anim data-d="1">
+              Uma agência <span class="txt-pink">cripto-nativa</span>, de ponta a ponta.
+            </h2>
+            <p class="lead" data-anim data-d="2" style="margin-top:22px;">
+              A Kaleidos é um estúdio de marketing que nasceu dentro do mercado cripto. Cuida da operação inteira da sua marca: estratégia e narrativa, conteúdo, vídeo e design, growth e tráfego, sites e produtos com IA. Tudo no mesmo time, sem orquestrar cinco fornecedores.
+            </p>
+          </div>
+          <div class="grid" style="gap:14px;" data-anim data-d="3">
+            <div class="card" style="padding:24px;"><h3>Cripto-nativa</h3><p>Já vive de DeFi a exchanges e web3. Contexto, narrativa e compliance vêm embutidos.</p></div>
+            <div class="card" style="padding:24px;"><h3>Founder-led</h3><p>Liderada pelo Gabriel Madureira, operador com audiência e instinto de quem constrói no mercado.</p></div>
+            <div class="card" style="padding:24px;"><h3>Stack completa</h3><p>Da estratégia ao produto: conteúdo, growth, sites e IA numa só operação.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 03 — O PROBLEMA ============================ -->
+    <section class="slide light" data-tone="light">
+      <div class="deck-num">03 / 13</div>
+      <div class="wrap">
+        <div class="grid cols-2 items-center" style="gap:48px;">
+          <div>
+            <span class="eyebrow pink" data-anim><span class="dot"></span>O problema</span>
+            <h2 class="title font-display" data-anim data-d="1">Marketing genérico não funciona em cripto.</h2>
+            <p class="lead" data-anim data-d="2" style="margin-top:22px;">
+              O mercado cripto é rápido, fala a própria língua e pune playbook genérico. A maioria dos projetos acaba com os mesmos problemas.
+            </p>
+          </div>
+          <ul class="prob-list" data-anim data-d="3">
+            <li class="prob"><span class="x">✕</span>Agência genérica aprende cripto no seu orçamento, e isso aparece.</li>
+            <li class="prob"><span class="x">✕</span>Compliance, narrativa e contexto do ecossistema se perdem na tradução.</li>
+            <li class="prob"><span class="x">✕</span>Cinco fornecedores separados, estratégia nenhuma, entregas desencontradas.</li>
+            <li class="prob"><span class="x">✕</span>Volume sem voz: conteúdo que é postado mas nunca constrói atenção.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 04 — COMO PENSA ============================ -->
+    <section class="slide dark" data-tone="dark">
+      <div class="deck-num">04 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div><div class="glow green" data-px="0.4" style="width:380px;height:380px;bottom:-120px;right:-80px;opacity:0.16;"></div></div>
+      <div class="wrap">
+        <div style="max-width:760px;">
+          <span class="eyebrow green" data-anim><span class="dot"></span>Como a Kaleidos pensa</span>
+          <h2 class="title font-display" data-anim data-d="1">Estratégia e narrativa primeiro. Sempre.</h2>
+          <p class="lead" data-anim data-d="2" style="margin-top:22px;">
+            A Kaleidos vive dentro do mercado cripto e traduz isso em conteúdo que constrói atenção real e converte. Tudo começa pelo ângulo certo, não pelo volume de post.
+          </p>
+        </div>
+        <div class="grid cols-3" style="margin-top:48px;" data-anim data-d="3">
+          <div class="card">
+            <span class="ico">$BRAIN</span>
+            <h3>Estratégia &amp; narrativa</h3>
+            <p>Posicionamento, linha editorial e os ângulos que fazem o seu projeto fazer sentido. A parte que a maioria das agências pula.</p>
+          </div>
+          <div class="card">
+            <span class="ico">$PEN</span>
+            <h3>Conteúdo &amp; produção</h3>
+            <p>Vídeo, design, copy e criativos feitos pra compor autoridade, não só preencher feed.</p>
+          </div>
+          <div class="card">
+            <span class="ico">$ROCKET</span>
+            <h3>Growth</h3>
+            <p>Funis, tráfego pago e captação que transformam atenção em pipeline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 05 — SÊNIOR vs FÁBRICA ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="deck-num">05 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.18"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>A diferença</span>
+        <h2 class="title font-display" data-anim data-d="1">Time sênior, não fábrica de conteúdo.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">
+          A maioria dos projetos cripto não precisa de mais post. Precisa de um time sênior que pensa, e de um dono que atende o telefone.
+        </p>
+        <div style="margin-top:40px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;" data-anim data-d="3">
+          <div class="versus-head">
+            <span style="color:#777;">Fábrica de conteúdo</span>
+            <span style="color:var(--green);text-align:right;display:block;">Estúdio Kaleidos</span>
+          </div>
+          <div id="versusRows"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 06 — NÚMEROS ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="deck-num">06 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div><div class="glow green" data-px="0.5" style="width:420px;height:420px;top:-140px;left:-100px;opacity:0.14;"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Números</span>
+        <h2 class="title font-display" data-anim data-d="1">Volume que vira atenção.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Produção agregada ao longo do portfólio cripto.</p>
+        <div class="grid cols-3 metric-grid" style="margin-top:44px;" data-anim data-d="3" id="metricGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 07 — CASES ============================ -->
+    <section class="slide light center" data-tone="light">
+      <div class="deck-num">07 / 13</div>
+      <div class="wrap center">
+        <span class="eyebrow pink" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Cases selecionados</span>
+        <h2 class="title font-display" data-anim data-d="1">Prova, não promessa.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Algumas histórias de clientes de cripto, conteúdo e produto. Todo número é real e atribuído ao trabalho.</p>
+        <div class="grid cols-3 case-grid" style="margin-top:40px;text-align:left;" data-anim data-d="3" id="caseGrid"></div>
+        <div data-anim data-d="4" style="margin-top:36px;">
+          <a class="btn btn-ghost-d" href="/cases" style="font-size:15px;padding:13px 26px;">Ver todos os cases →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ AUTORIDADE / PAPERS ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div><div class="glow pink" data-px="0.45" style="width:420px;height:420px;top:-150px;right:-90px;opacity:0.14;"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Autoridade</span>
+        <h2 class="title font-display" data-anim data-d="1">A Kaleidos produz a <span class="txt-green">análise que o mercado lê</span>.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Não é só marketing de cripto. São papers de research e teardowns que viram referência, a prova viva do nível de quem vai cuidar da sua marca.</p>
+        <div class="grid cols-4" style="margin-top:42px;text-align:left;" data-anim data-d="3">
+          <div class="paper-card"><span class="paper-vol">Vol. 01</span><h3>Hyperliquid</h3><p>Como um DEX de perpétuos desafiou as maiores corretoras centralizadas do mundo.</p><span class="paper-pages">Paper · 21 págs</span></div>
+          <div class="paper-card"><span class="paper-vol">Vol. 02</span><h3>Pudgy Penguins</h3><p>De coleção de NFT a marca de consumo global: o playbook de brand em web3.</p><span class="paper-pages">Paper · 16 págs</span></div>
+          <div class="paper-card"><span class="paper-vol">Vol. 03</span><h3>Solana</h3><p>A cadeia dada como morta que voltou e reorganizou a narrativa do mercado.</p><span class="paper-pages">Paper · 19 págs</span></div>
+          <div class="paper-card"><span class="paper-vol">Playbook</span><h3>Cripto 2026</h3><p>O manual de marketing on-chain: narrativas, canais e growth pra projetos web3.</p><span class="paper-pages">Guia · 20 págs</span></div>
+        </div>
+        <div class="btns" data-anim data-d="4">
+          <a class="btn btn-green" href="/papers">Ler os papers</a>
+          <a class="btn btn-ghost-w" href="/blog">Ver o blog de research</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 08 — SERVIÇOS ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="deck-num">08 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>O que a Kaleidos entrega</span>
+        <h2 class="title font-display" data-anim data-d="1">Estratégia primeiro, depois a stack inteira.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Tudo começa pela narrativa. Depois vêm produção, growth e produto, tudo feito especificamente pro mercado cripto.</p>
+        <div class="grid cols-3" style="margin-top:40px;text-align:left;" data-anim data-d="3" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 09 — MÉTODO ============================ -->
+    <section class="slide light" data-tone="light">
+      <div class="deck-num">09 / 13</div>
+      <div class="wrap">
+        <span class="eyebrow pink" data-anim><span class="dot"></span>Como funciona</span>
+        <h2 class="title font-display" data-anim data-d="1">O método Kaleidos, passo a passo.</h2>
+        <p class="lead" data-anim data-d="2" style="margin-top:18px;">Um processo repetível feito pra entregar e compor resultado ciclo após ciclo.</p>
+        <div class="steps" style="margin-top:44px;" data-anim data-d="3" id="stepGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 10 — TIME ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="deck-num">10 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div><div class="glow pink" data-px="0.4" style="width:360px;height:360px;bottom:-120px;left:-60px;opacity:0.12;"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>O time</span>
+        <h2 class="title font-display" data-anim data-d="1">Gente sênior, cara a cara com o seu projeto.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Um time enxuto onde quem pensa a estratégia é quem executa. Sem camada júnior diluindo a sua voz.</p>
+        <div class="team-grid" style="margin-top:42px;" data-anim data-d="3" id="teamGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 11 — PARCERIA ============================ -->
+    <section class="slide light center" data-tone="light">
+      <div class="deck-num">11 / 13</div>
+      <div class="wrap center">
+        <span class="eyebrow pink" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Modelos de parceria</span>
+        <h2 class="title font-display" data-anim data-d="1">Escolha como a Kaleidos se encaixa.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:18px auto 0;text-align:center;">Escopo e investimento são desenhados após a primeira conversa. Nenhum projeto cripto precisa do mesmo plano.</p>
+        <div class="grid cols-3" style="margin-top:40px;text-align:left;" data-anim data-d="3" id="planGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 12 — PRÓXIMOS PASSOS ============================ -->
+    <section class="slide dark center" data-tone="dark">
+      <div class="deck-num">12 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.15"></div></div>
+      <div class="wrap center">
+        <span class="eyebrow green" data-anim style="margin-left:auto;margin-right:auto;"><span class="dot"></span>Próximos passos</span>
+        <h2 class="title font-display" data-anim data-d="1">Do oi ao ar em duas semanas.</h2>
+        <div class="steps-next" style="margin-top:44px;text-align:left;" data-anim data-d="3" id="nextGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================ 13 — CTA FINAL ============================ -->
+    <section class="slide accent center" data-tone="accent">
+      <div class="deck-num">13 / 13</div>
+      <div class="backdrop"><div class="grid-bg" data-px="0.2"></div></div>
+      <div class="wrap center" style="max-width:760px;">
+        <img class="deck-logo" src="/Kaleidos/logo/Logos-01.svg" alt="Kaleidos" data-anim style="margin-left:auto;margin-right:auto;display:block;" />
+        <h2 class="title font-display" data-anim data-d="1" style="font-size:clamp(34px,5.5vw,68px);">Vamos transformar seu projeto em autoridade.</h2>
+        <p class="lead" data-anim data-d="2" style="margin:22px auto 0;text-align:center;color:rgba(10,10,10,0.72);">
+          A Kaleidos pega poucos projetos cripto por vez. Fale direto com o fundador. A primeira conversa é por nossa conta.
+        </p>
+        <div class="btns" data-anim data-d="3">
+          <a class="btn btn-dark" href="https://wa.me/5512997796835?text=Oi%2C%20vim%20pela%20apresenta%C3%A7%C3%A3o%20e%20quero%20conversar%20sobre%20um%20projeto" target="_blank" rel="noopener">
+            Falar com a Kaleidos →
+          </a>
+          <a class="btn btn-ghost-d" href="/contato">Formulário de contato</a>
+        </div>
+        <p class="font-accent" data-anim data-d="4" style="margin-top:44px;font-size:12px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(10,10,10,0.55);">kaleidos.com.br</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- navegação -->
+<button class="nav-arrow left" id="prevBtn" aria-label="Slide anterior">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+<button class="nav-arrow right" id="nextBtn" aria-label="Próximo slide">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
+<nav class="dots" id="dots" aria-label="Navegação dos slides"></nav>
+
+<!-- toolbar: contador + tela cheia + atalhos -->
+<div class="toolbar">
+  <span class="tb-count" id="tbCount">01 / 14</span>
+  <button class="tb-btn" id="fsBtn" aria-label="Tela cheia" title="Tela cheia (F)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/></svg>
+  </button>
+  <button class="tb-btn" id="helpBtn" aria-label="Atalhos do teclado" title="Atalhos (?)">?</button>
+</div>
+
+<!-- overlay de atalhos -->
+<div class="help" id="help" role="dialog" aria-label="Atalhos do teclado">
+  <div class="help-panel">
+    <h3 class="font-display">Atalhos</h3>
+    <div class="help-row"><span>Próximo slide</span><span><kbd>→</kbd><kbd>espaço</kbd></span></div>
+    <div class="help-row"><span>Slide anterior</span><span><kbd>←</kbd><kbd>shift+espaço</kbd></span></div>
+    <div class="help-row"><span>Primeiro / último</span><span><kbd>Home</kbd><kbd>End</kbd></span></div>
+    <div class="help-row"><span>Tela cheia</span><kbd>F</kbd></div>
+    <div class="help-row"><span>Esta ajuda</span><kbd>?</kbd></div>
+    <button class="btn btn-green help-close" id="helpClose">Entendi</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- ícones SVG inline ---------- */
+  var ICONS = {
+    BRAIN: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-5.997.142M12 5a3 3 0 0 1 5.997.142M12 5v14M6.003 5.142A4 4 0 0 0 4 9c0 1.092.437 2.082 1.146 2.804M18 5.142A4 4 0 0 1 20 9c0 1.092-.437 2.082-1.146 2.804M5.146 11.804A4 4 0 0 0 7 19a3 3 0 0 0 5 .5 3 3 0 0 0 5-.5 4 4 0 0 0 1.854-7.196"/></svg>',
+    PEN: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',
+    ROCKET: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
+    MAIL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    FLOW: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M3 9v6a3 3 0 0 0 3 3h6"/><path d="M15 6h3a3 3 0 0 1 3 3v3"/></svg>',
+    LAYERS: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>',
+    SEARCH: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+    SEND: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>',
+    CHART: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>',
+    CHECK: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+  };
+  // injeta ícones nas marcações $TOKEN do slide 04
+  document.querySelectorAll('.ico').forEach(function (el) {
+    var key = el.textContent.replace('$', '').trim();
+    if (ICONS[key]) el.innerHTML = ICONS[key];
+  });
+
+  /* ---------- DADOS (espelham case-data / metrics reais) ---------- */
+  var VERSUS = [
+    ["Time júnior executando briefing", "Operadores sêniores pensando a estratégia"],
+    ["Aprende cripto no seu orçamento", "Já vive de DeFi a exchanges e web3"],
+    ["Volume de post pra encher calendário", "Conteúdo feito pra construir autoridade"],
+    ["Um playbook colado pra todo mundo", "Narrativa sob medida por projeto, founder-led"],
+    ["Você é um número de conta", "Carteira selecionada, linha direta com o fundador"]
+  ];
+  var METRICS = [
+    ["500", "+", "Vídeos editados"],
+    ["600", "+", "Peças de design"],
+    ["30", "M+", "Views nos reels"],
+    ["50", "+", "Lançamentos"],
+    ["20", "+", "Projetos"],
+    ["98", "%", "Satisfação"]
+  ];
+  var CASES = [
+    ["Investidor 4.20", "5x no faturamento", "Faturamento aumentou mais de 5 vezes desde nossa entrada.", "investidor-4-20"],
+    ["Defiverso", "29K+ inscrições", "29.000+ inscrições no Minicurso, 26.554 assinantes na Newsletter e 12 Milhões de views orgânicas em 90 dias.", "defiverso"],
+    ["Bit das Minas", "+200% faturamento", "200% de aumento no faturamento dos lançamentos e 50% menos custo por lead.", "bit-das-minas"],
+    ["Layla Foz", "20M+ views", "Mais de 20 milhões de views nos reels.", "layla-foz"],
+    ["Ledger", "25+ criativos", "Campanha Black Friday para a maior marca de hardware wallets do mundo.", "ledger"],
+    ["Neobankless", "Site + vídeos + social", "Site, vídeos de manifesto e conteúdo para a fintech cripto-nativa do Brasil.", "neobankless"]
+  ];
+  var SERVICES = [
+    ["BRAIN", "Estratégia editorial &amp; narrativa", "Posicionamento, voz e os ângulos que fazem um projeto cripto fazer sentido pro público certo. É por aqui que todo trabalho começa."],
+    ["PEN", "Conteúdo de autoridade", "Threads, reels, roteiros, papers e carrosséis feitos pra compor atenção no X, LinkedIn e YouTube, não só preencher calendário."],
+    ["MAIL", "Newsletter como ativo", "Newsletters do zero e relatórios editoriais que transformam leitores em audiência própria e um relacionamento que você controla."],
+    ["ROCKET", "Growth &amp; lançamentos", "Funis, páginas de captura, criativos pra tráfego e operação completa de lançamento, desenhados pra virar atenção em pipeline."],
+    ["FLOW", "Direção de vídeo premium", "Você grava, a Kaleidos dirige e edita até o arquivo final. Vídeo de craft sem o peso operacional de social media."],
+    ["LAYERS", "Sites &amp; ferramentas de IA", "Sites em Next.js, dashboards e agentes de IA que escalam a operação. A mesma stack com que construímos nossos próprios produtos."]
+  ];
+  var STEPS = [
+    ["SEARCH", "01", "Imersão &amp; auditoria", "A Kaleidos mapeia projeto, audiência, concorrência e canais nas primeiras semanas."],
+    ["PEN", "02", "Linha editorial", "Posicionamento, pilares, voz e um calendário de conteúdo desenhado em torno do ecossistema."],
+    ["LAYERS", "03", "Produção em escala", "Vídeo, design, copy e criativos toda semana, com craft humano acelerado por IA."],
+    ["SEND", "04", "Distribuição", "Publicação, tráfego pago e captação de leads rodando em sincronia em todos os canais."],
+    ["CHART", "05", "Otimização", "Performance alimenta o próximo ciclo: dobra no que funciona, corta o que não."]
+  ];
+  var TEAM = [
+    ["Gabriel Madureira", "Co-Founder", "Madureira", "Lado criativo do cérebro da Kaleidos. Especialista em cripto e copywriter, trouxe um novo paradigma pro marketing do mundo cripto."],
+    ["Nathalia Maciente", "Co-founder", "Nathalia", "Lado atento e organizado do time. Editora de vídeo e organizadora maior, garante que cada conteúdo saia com extrema perfeição."],
+    ["Caio Crispim", "Copywriter", "Caio", "Escritor e criador sênior. Passou por várias big techs do mercado cripto e entrega cada texto da melhor forma possível."],
+    ["Alef Damacena", "Editor de vídeo e Motion", "Alef", "Especialista em edição de vídeo e motion, traz as melhores animações para os conteúdos visuais."],
+    ["Gabriel Rebelo", "Social Media", "Rebelo", "O social media criativo do time. Todos os posts passam por ele e entende o mercado cripto como poucos."]
+  ];
+  var PLANS = [
+    ["Recorrente", "Retainer", "Operação mensal de conteúdo, social e growth. A agência vira o seu time de marketing interno.", ["Linha editorial &amp; calendário", "Produção semanal de conteúdo", "Relatórios de performance"], true],
+    ["Projeto", "Lançamento", "Operação completa de lançamento: estratégia, criativos, funil e tráfego pago do kickoff ao fecha-carrinho.", ["Estratégia &amp; funil de lançamento", "Criativos &amp; roteiros para ads", "Páginas de captura &amp; automações"], false],
+    ["Build", "Produto &amp; Web", "Landing pages, dashboards e web apps completos, desenhados e entregues pelo time.", ["Sites &amp; apps em Next.js", "Design system", "Automações com IA"], false]
+  ];
+  var NEXT = [
+    ["Dia 0", "Primeira conversa", "Uma call gratuita pra entender o projeto, as metas e os gargalos atuais."],
+    ["Semana 1", "Diagnóstico &amp; proposta", "A Kaleidos volta com escopo sob medida, plano e o modelo de parceria certo."],
+    ["Semana 2", "Kickoff", "Começa a imersão, a linha editorial é definida e a produção entra no ar."]
+  ];
+
+  function el(html) { var t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; }
+
+  /* versus */
+  var vr = document.getElementById("versusRows");
+  VERSUS.forEach(function (r) {
+    vr.appendChild(el(
+      '<div class="versus-row">' +
+        '<div class="vs-cell vs-no"><span class="vs-mark">✕</span><span>' + r[0] + '</span></div>' +
+        '<div class="vs-cell vs-yes"><span class="vs-mark">' + ICONS.CHECK + '</span><span>' + r[1] + '</span></div>' +
+      '</div>'
+    ));
+  });
+
+  /* métricas */
+  var mg = document.getElementById("metricGrid");
+  METRICS.forEach(function (m) {
+    mg.appendChild(el(
+      '<div class="metric"><div class="num" data-count="' + m[0] + '" data-suffix="' + m[1] + '">0' + m[1] + '</div><div class="lab">' + m[2] + '</div></div>'
+    ));
+  });
+
+  /* cases */
+  var cg = document.getElementById("caseGrid");
+  CASES.forEach(function (c) {
+    cg.appendChild(el(
+      '<a class="case-card" href="/cases/' + c[3] + '">' +
+        '<h3>' + c[0] + '</h3>' +
+        '<span class="case-badge"><span class="d"></span>' + c[1] + '</span>' +
+        '<p>' + c[2] + '</p>' +
+        '<span style="margin-top:18px;font-size:14px;font-weight:600;color:#0a0a0a;">Abrir case →</span>' +
+      '</a>'
+    ));
+  });
+
+  /* serviços */
+  var sg = document.getElementById("serviceGrid");
+  SERVICES.forEach(function (s) {
+    sg.appendChild(el(
+      '<div class="card"><span class="ico">' + ICONS[s[0]] + '</span><h3>' + s[1] + '</h3><p>' + s[2] + '</p></div>'
+    ));
+  });
+
+  /* método */
+  var stg = document.getElementById("stepGrid");
+  STEPS.forEach(function (s) {
+    stg.appendChild(el(
+      '<div class="step"><div class="step-top"><span class="step-ico">' + ICONS[s[0]] + '</span><span class="step-n">' + s[1] + '</span></div><h3>' + s[2] + '</h3><p>' + s[3] + '</p></div>'
+    ));
+  });
+
+  /* time */
+  var tg = document.getElementById("teamGrid");
+  TEAM.forEach(function (m) {
+    tg.appendChild(el(
+      '<div class="member"><div class="photo"><img src="/Kaleidos/imagens/Equipe/' + m[2] + '.png" alt="' + m[0] + '" loading="lazy" /></div><div class="name">' + m[0] + '</div><div class="role">' + m[1] + '</div><div class="bio">' + m[3] + '</div></div>'
+    ));
+  });
+
+  /* parceria */
+  var pg = document.getElementById("planGrid");
+  PLANS.forEach(function (p) {
+    var pts = p[3].map(function (x) { return '<li>' + ICONS.CHECK + '<span>' + x + '</span></li>'; }).join("");
+    pg.appendChild(el(
+      '<div class="plan-card' + (p[4] ? ' feat' : '') + '"><span class="plan-tag">' + p[0] + '</span><h3>' + p[1] + '</h3><p>' + p[2] + '</p><ul class="plan-points">' + pts + '</ul></div>'
+    ));
+  });
+
+  /* próximos passos */
+  var ng = document.getElementById("nextGrid");
+  NEXT.forEach(function (n, i) {
+    ng.appendChild(el(
+      '<div class="next-card"><div class="next-top"><span class="next-num">' + (i + 1) + '</span><span class="next-when">' + n[0] + '</span></div><h3>' + n[1] + '</h3><p>' + n[2] + '</p></div>'
+    ));
+  });
+
+  /* ---------- NAVEGAÇÃO ---------- */
+  var track = document.getElementById("track");
+  var slides = Array.prototype.slice.call(track.querySelectorAll(".slide"));
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var progressBar = document.getElementById("progressBar");
+  var dotsWrap = document.getElementById("dots");
+  var current = 0;
+
+  var LABELS = ["Capa","O que é","Problema","Como pensa","Sênior vs fábrica","Números","Cases","Autoridade","Serviços","Método","Time","Parceria","Próximos passos","Vamos conversar"];
+  slides.forEach(function (s, i) {
+    var b = document.createElement("button");
+    b.className = "dot" + (i === 0 ? " active" : "");
+    b.setAttribute("aria-label", LABELS[i] || ("Slide " + (i + 1)));
+    b.addEventListener("click", function () { goTo(i); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[i].offsetLeft, behavior: reduce ? "auto" : "smooth" });
+  }
+
+  function update() {
+    var idx = Math.round(track.scrollLeft / track.clientWidth);
+    idx = Math.max(0, Math.min(slides.length - 1, idx));
+    if (idx !== current) {
+      current = idx;
+      dots.forEach(function (d, i) { d.classList.toggle("active", i === idx); });
+    }
+    progressBar.style.width = ((idx) / (slides.length - 1) * 100) + "%";
+    setCount(idx);
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === slides.length - 1;
+    var tone = slides[idx].getAttribute("data-tone");
+    document.body.classList.toggle("on-light", tone === "light" || tone === "accent");
+    document.body.style.background = tone === "light" ? "#fff" : (tone === "accent" ? "#7CFF6B" : "#0A0A0A");
+  }
+
+  prevBtn.addEventListener("click", function () { goTo(current - 1); });
+  nextBtn.addEventListener("click", function () { goTo(current + 1); });
+
+  var ticking = false;
+  track.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(function () { update(); parallax(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { toggleHelp(false); return; }
+    if (e.key === "?" || (e.key === "/" && e.shiftKey)) { e.preventDefault(); toggleHelp(); return; }
+    if (e.key === "f" || e.key === "F") { e.preventDefault(); toggleFs(); return; }
+    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); goTo(e.shiftKey ? current - 1 : current + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === "Home") { e.preventDefault(); goTo(0); }
+    else if (e.key === "End") { e.preventDefault(); goTo(slides.length - 1); }
+  });
+
+  /* wheel vertical -> horizontal (deixa scroll vertical interno quando o slide tem overflow) */
+  track.addEventListener("wheel", function (e) {
+    var active = slides[current];
+    var canScrollY = active.scrollHeight > active.clientHeight + 4;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      if (canScrollY) {
+        var atTop = active.scrollTop <= 0;
+        var atBot = active.scrollTop + active.clientHeight >= active.scrollHeight - 1;
+        if ((e.deltaY > 0 && !atBot) || (e.deltaY < 0 && !atTop)) return; // deixa rolar conteúdo
+      }
+      e.preventDefault();
+      track.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+
+  /* ---------- PARALLAX sutil ---------- */
+  function parallax() {
+    if (reduce) return;
+    var w = track.clientWidth;
+    document.querySelectorAll("[data-px]").forEach(function (node) {
+      var slide = node.closest(".slide");
+      var rel = (slide.offsetLeft - track.scrollLeft) / w; // -1..1 enquanto entra/sai
+      var amt = parseFloat(node.getAttribute("data-px")) || 0.3;
+      node.style.transform = (node.dataset.baseTransform || "") + " translate3d(" + (rel * 40 * amt) + "px,0,0)";
+    });
+  }
+  // preserva translateX de centralização dos glows
+  document.querySelectorAll("[data-px]").forEach(function (n) {
+    var st = n.getAttribute("style") || "";
+    if (st.indexOf("translateX(-50%)") > -1) n.dataset.baseTransform = "translateX(-50%)";
+  });
+
+  /* ---------- ANIMAÇÕES de entrada por slide ---------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var slide = entry.target;
+      if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+        slide.querySelectorAll("[data-anim]").forEach(function (n) { n.classList.add("in"); });
+        var counters = slide.querySelectorAll("[data-count]");
+        counters.forEach(runCounter);
+      }
+    });
+  }, { root: track, threshold: [0, 0.45, 0.7] });
+  slides.forEach(function (s) { io.observe(s); });
+
+  /* contadores animados */
+  function runCounter(node) {
+    if (node.dataset.done) return;
+    node.dataset.done = "1";
+    var target = parseFloat(node.getAttribute("data-count"));
+    var suffix = node.getAttribute("data-suffix") || "";
+    if (reduce) { node.textContent = target + suffix; return; }
+    var start = null, dur = 1100;
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      node.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // garante 1ª slide visível mesmo se IO atrasar
+  slides[0].querySelectorAll("[data-anim]").forEach(function (n) { setTimeout(function(){ n.classList.add("in"); }, 60); });
+
+  // resync ao redimensionar (mantém slide atual centralizado)
+  window.addEventListener("resize", function () { track.scrollLeft = slides[current].offsetLeft; });
+
+  /* ---------- contador global, tela cheia e ajuda ---------- */
+  var help = document.getElementById("help");
+  var countEl = document.getElementById("tbCount");
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function setCount(idx) { if (countEl) countEl.textContent = pad(idx + 1) + " / " + pad(slides.length); }
+  function toggleFs() {
+    if (!document.fullscreenElement) { if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); }
+    else { if (document.exitFullscreen) document.exitFullscreen(); }
+  }
+  function toggleHelp(force) { help.classList.toggle("show", force === undefined ? !help.classList.contains("show") : force); }
+  var fsBtn = document.getElementById("fsBtn");       if (fsBtn)     fsBtn.addEventListener("click", toggleFs);
+  var helpBtn = document.getElementById("helpBtn");   if (helpBtn)   helpBtn.addEventListener("click", function () { toggleHelp(); });
+  var helpClose = document.getElementById("helpClose"); if (helpClose) helpClose.addEventListener("click", function () { toggleHelp(false); });
+  help.addEventListener("click", function (e) { if (e.target === help) toggleHelp(false); });
+  setCount(0);
+
+  update();
+  parallax();
+})();
+</script>
+</body>
+</html>
