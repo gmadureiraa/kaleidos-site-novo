@@ -4,6 +4,17 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>O Playbook do Lançamento Cripto (TGE) 2026 — Kaleidos</title>
+<!-- SEO/GEO injected -->
+<meta name="description" content="Guia operacional de quem quer levar um token do zero ao mercado em 2026 sem virar exit liquidity. 10 capítulos cobrindo o TGE moderno na ordem real: narrativa, pontos, airdrop honesto, KOL com disclosure, tokenomics como marketing, listagem e o pós-TGE.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://kaleidos.com.br/papers/playbook-tge-2026/read.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lançamento Cripto (TGE) 2026: Como levar um token do zero ao mercado">
+<meta property="og:description" content="Guia operacional de quem quer levar um token do zero ao mercado em 2026 sem virar exit liquidity. 10 capítulos cobrindo o TGE moderno na ordem real: narrativa, pontos, airdrop honesto, KOL com disclosure, tokenomics como marketing, listagem e o pós-TGE.">
+<meta property="og:image" content="https://kaleidos.com.br/papers/cover-tge.png">
+<meta property="og:url" content="https://kaleidos.com.br/papers/playbook-tge-2026/read.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Report","headline":"Lançamento Cripto (TGE) 2026: Como levar um token do zero ao mercado","description":"Guia operacional de quem quer levar um token do zero ao mercado em 2026 sem virar exit liquidity. 10 capítulos cobrindo o TGE moderno na ordem real: narrativa, pontos, airdrop honesto, KOL com disclosure, tokenomics como marketing, listagem e o pós-TGE.","inLanguage":"pt-BR","url":"https://kaleidos.com.br/papers/playbook-tge-2026/read.html","image":"https://kaleidos.com.br/papers/cover-tge.png","datePublished":"2026-06-16","author":{"@type":"Organization","name":"Kaleidos Digital","url":"https://kaleidos.com.br"},"publisher":{"@type":"Organization","name":"Kaleidos Digital","logo":{"@type":"ImageObject","url":"https://kaleidos.com.br/logo.png"}},"isPartOf":{"@type":"CreativeWorkSeries","name":"Kaleidos Papers","url":"https://kaleidos.com.br/papers"}}</script>
+<!-- /SEO/GEO injected -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -233,6 +244,17 @@ table.cmp tr:last-child td{ border-bottom:0; }
 .content.compact .tbl-wrap, .content.compact .chartbox, .content.compact .tweet, .content.compact .case{ margin-top:9px; margin-bottom:9px; }
 .content.compact .retain{ padding:11px 16px; }
 .content.compact .retain p{ font-size:10.2px; line-height:1.45; }
+
+/* H1-DEMOTE shim — demoted h1->h2 keep original h1 styling, base h2{} neutralized */
+.toc h2{ font-family:var(--disp); font-size:34px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin:0 0 4px; }
+.toc h2 .pk{ color:var(--pink); }
+.gloss h2{ font-family:var(--disp); font-size:30px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; color:var(--ink); line-height:1; margin:0 0 4px; }
+.gloss h2 .pk{ color:var(--pink); }
+h2.chap{ font-family:var(--disp); font-weight:800; font-size:27px; line-height:1.05; letter-spacing:-.015em; text-transform:uppercase; color:var(--pink); margin:0 0 16px; max-width:92%; }
+h2.chap .ink{ color:var(--ink); }
+.content.compact h2.chap{ margin-bottom:11px; font-size:25px; }
+h2.chap, .toc h2, .gloss h2{ display:block; }
+h2.chap::before, .toc h2::before, .gloss h2::before{ content:none; display:none; }
 </style>
 </head>
 <body>
@@ -272,7 +294,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content gloss">
     <div class="kick">[ Glossário rápido ]</div>
-    <h1>OS <span class="pk">TERMOS</span></h1>
+    <h2>OS <span class="pk">TERMOS</span></h2>
     <div class="desc">Lançar um token tem dialeto próprio. Os termos que mais aparecem neste guia, em uma linha cada, pra você ler sem travar.</div>
     <dl>
       <div class="gi"><dt>TGE (Token Generation Event)</dt><dd>O momento em que o token passa a existir e é distribuído. Não é o mesmo que a listagem em exchange.</dd></div>
@@ -303,7 +325,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content intro">
     <div class="chap-num">Introdução</div>
-    <h1 class="chap"><span class="ink">LANÇAR UM TOKEN</span><br>É A PARTE FÁCIL</h1>
+    <h2 class="chap"><span class="ink">LANÇAR UM TOKEN</span><br>É A PARTE FÁCIL</h2>
     <p class="big">Gerar um token leva minutos. Fazer ele sobreviver à própria distribuição é onde 9 em cada 10 projetos quebram. O TGE não é a linha de chegada do marketing, é a largada do teste mais duro que o projeto vai enfrentar.</p>
     <p>O padrão é cruel e se repete. Um projeto passa meses farmando hype, monta um programa de pontos, distribui um airdrop gigante e celebra o dia do lançamento como vitória. Aí o gráfico despenca. Dos 50 maiores airdrops, <strong>46% bateram o topo de preço em até duas semanas</strong>, e sete bateram no primeiro dia. <span class="src">Fonte: <a href="https://www.coingecko.com/research/publications/when-to-sell-airdrops">CoinGecko</a></span></p>
     <p>A Kaleidos lê esse movimento de dentro. São anos analisando lançamentos cripto, destrinchando os que viraram comunidade durável e os que viraram exit liquidity, documentando o que separa um do outro. Nossa base de papers existe pra isso: virar padrão repetível, não opinião de timeline. Não vendemos achismo. Vendemos leitura.</p>
@@ -329,7 +351,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 01</div>
-    <h1 class="chap">LANÇAR EM 2026 <span class="ink">É OUTRO JOGO</span></h1>
+    <h2 class="chap">LANÇAR EM 2026 <span class="ink">É OUTRO JOGO</span></h2>
     <p class="lead">O playbook de lançamento que funcionou em 2021 mata projeto em 2026. O mercado amadureceu, o capital ficou cético e a régua subiu. Antes de falar de tática, é preciso entender em que terreno você está lançando.</p>
 
     <h2>O que mudou no terreno</h2>
@@ -365,7 +387,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 02</div>
-    <h1 class="chap">A ANATOMIA <span class="ink">DE UM TGE</span></h1>
+    <h2 class="chap">A ANATOMIA <span class="ink">DE UM TGE</span></h2>
     <p class="lead">Um lançamento não é um botão. É um funil de seis fases, e cada uma tem um objetivo de marketing distinto. Confundir as fases é o erro mais comum: tratar a listagem como o evento, quando ela costuma ser o topo, não a largada.</p>
 
     <div class="flow">
@@ -405,7 +427,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 03</div>
-    <h1 class="chap">NARRATIVA E <span class="ink">PRÉ-LANÇAMENTO</span></h1>
+    <h2 class="chap">NARRATIVA E <span class="ink">PRÉ-LANÇAMENTO</span></h2>
     <p class="lead">A demanda que sustenta um lançamento não nasce no dia do TGE. Nasce meses ou anos antes, na narrativa certa e numa comunidade que já quer o token antes de ele existir. O pré-lançamento é onde o jogo se decide silenciosamente.</p>
 
     <h2>Narrative-market-fit vem antes de tudo</h2>
@@ -436,7 +458,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 04</div>
-    <h1 class="chap">PONTOS COMO MOTOR <span class="ink">DE LANÇAMENTO</span></h1>
+    <h2 class="chap">PONTOS COMO MOTOR <span class="ink">DE LANÇAMENTO</span></h2>
     <p class="lead">O programa de pontos virou a primitiva de lançamento padrão entre 2023 e 2025. A ideia é elegante: recompense uso antes do token, bootstrappe TVL sem pressão de venda. O problema é que pontos transparentes e gamificáveis atraem exatamente o usuário errado.</p>
 
     <h2>Por que pontos funcionam (até funcionarem demais)</h2>
@@ -461,7 +483,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 04 · cont.</div>
-    <h1 class="chap">A OPACIDADE <span class="ink">QUE BLINDA O AIRDROP</span></h1>
+    <h2 class="chap">A OPACIDADE <span class="ink">QUE BLINDA O AIRDROP</span></h2>
     <p class="lead">Se o problema do ponto é que ele é farmável, a solução da Hyperliquid foi radical: tornar o programa propositalmente opaco. Sem fórmula pública, ninguém faz engenharia reversa, e o jeito de maximizar o airdrop vira simplesmente usar o produto de verdade.</p>
 
     <h2>O contra-exemplo Hyperliquid</h2>
@@ -505,7 +527,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 05</div>
-    <h1 class="chap">O AIRDROP SEM VIRAR <span class="ink">EXIT LIQUIDITY</span></h1>
+    <h2 class="chap">O AIRDROP SEM VIRAR <span class="ink">EXIT LIQUIDITY</span></h2>
     <p class="lead">O airdrop é um evento de liquidez front-loaded. Você entrega tokens com custo zero a quem não tem motivo pra ficar, e a maioria vende na primeira oferta. O dado é implacável e a pergunta certa não é "como distribuir mais", é "como reter quem recebeu".</p>
 
     <h2>A matemática do dump</h2>
@@ -533,7 +555,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 05 · cont.</div>
-    <h1 class="chap">COMO PROJETAR <span class="ink">UM AIRDROP QUE FICA</span></h1>
+    <h2 class="chap">COMO PROJETAR <span class="ink">UM AIRDROP QUE FICA</span></h2>
     <p class="lead">Se o dump é inevitável, o que dá pra controlar é quem você atrai, quanto despeja de uma vez e o que oferece pra quem não vende. Quatro alavancas separam o airdrop que vira comunidade do que vira gráfico despencando.</p>
 
     <ol class="bul">
@@ -565,7 +587,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 06</div>
-    <h1 class="chap">KOL E INFLUÊNCIA <span class="ink">COM DISCLOSURE</span></h1>
+    <h2 class="chap">KOL E INFLUÊNCIA <span class="ink">COM DISCLOSURE</span></h2>
     <p class="lead">Influenciador move preço e atenção, e por isso virou peça central de lançamento. Mas o KOL round, a venda privada e descontada de tokens a influencers, carrega um incentivo embutido de dump e um risco regulatório que pós-FTX ninguém pode mais ignorar.</p>
 
     <h2>Como funciona o KOL round</h2>
@@ -590,7 +612,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 07</div>
-    <h1 class="chap">A COMUNIDADE <span class="ink">QUE DISTRIBUI</span></h1>
+    <h2 class="chap">A COMUNIDADE <span class="ink">QUE DISTRIBUI</span></h2>
     <p class="lead">A distribuição mais barata e mais resiliente de um lançamento não é paga, é a comunidade que carrega a mensagem por convicção. Mas comunidade não se compra no mês do TGE: se constrói antes, e os melhores casos vêm de anos de antecedência.</p>
 
     <div class="chartbox">
@@ -626,7 +648,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 08</div>
-    <h1 class="chap">TOKENOMICS <span class="ink">COMO MARKETING</span></h1>
+    <h2 class="chap">TOKENOMICS <span class="ink">COMO MARKETING</span></h2>
     <p class="lead">O token é o maior canal de marketing de um projeto: ele comunica os valores antes de qualquer copy. Como você distribui o supply, quanto coloca em circulação e o que faz com a receita diz mais sobre o alinhamento do time do que qualquer thread.</p>
 
     <h2>A armadilha do low float, high FDV</h2>
@@ -653,7 +675,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 08 · cont.</div>
-    <h1 class="chap">O TOKEN QUE <span class="ink">COMPRA A SI MESMO</span></h1>
+    <h2 class="chap">O TOKEN QUE <span class="ink">COMPRA A SI MESMO</span></h2>
     <p class="lead">Se distribuição comunica alinhamento na largada, o que você faz com a receita depois comunica alinhamento no longo prazo. O buyback financiado por receita real virou a prova on-chain mais forte de que o projeto trabalha pro holder, não contra ele.</p>
 
     <h2>O buyback da Hyperliquid</h2>
@@ -687,7 +709,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 09</div>
-    <h1 class="chap">LISTAGEM, LIQUIDEZ <span class="ink">E MARKET MAKER</span></h1>
+    <h2 class="chap">LISTAGEM, LIQUIDEZ <span class="ink">E MARKET MAKER</span></h2>
     <p class="lead">A listagem em exchange é o momento mais visível do lançamento e o mais incompreendido. O "pump da Binance" é real, mas frequentemente é o topo, não a largada. Entender o que a listagem faz com o preço evita transformar o auge em armadilha.</p>
 
     <h2>O efeito da listagem</h2>
@@ -712,7 +734,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Capítulo 10</div>
-    <h1 class="chap">PÓS-TGE: RETENÇÃO <span class="ink">&gt; RECOMPENSA</span></h1>
+    <h2 class="chap">PÓS-TGE: RETENÇÃO <span class="ink">&gt; RECOMPENSA</span></h2>
     <p class="lead">O lançamento de verdade começa quando o airdrop é vendido. A fase pós-TGE é a mais longa, a menos planejada e a que decide se o token vira ativo ou pó. A regra que atravessa todos os casos: recompensa atrai, só utilidade retém.</p>
 
     <div class="case">
@@ -746,7 +768,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Síntese operacional</div>
-    <h1 class="chap">O CHECKLIST <span class="ink">DO LANÇAMENTO</span></h1>
+    <h2 class="chap">O CHECKLIST <span class="ink">DO LANÇAMENTO</span></h2>
     <p class="lead">Os dez capítulos destilados num checklist por fase. Não é fórmula mágica: é o conjunto de perguntas que separa o lançamento que vira comunidade do que vira gráfico despencando.</p>
 
     <div class="pubgrid">
@@ -778,7 +800,7 @@ table.cmp tr:last-child td{ border-bottom:0; }
 <section class="page">
   <div class="content">
     <div class="chap-num">Fechamento</div>
-    <h1 class="chap">O QUE LEVAR <span class="ink">DESTE PLAYBOOK</span></h1>
+    <h2 class="chap">O QUE LEVAR <span class="ink">DESTE PLAYBOOK</span></h2>
     <p class="lead">Lançar um token em 2026 não pede um marketing de lançamento melhor. Pede um diferente. Três ideias atravessam cada capítulo deste guia, e elas se sustentam mutuamente.</p>
 
     <h2>1 · O airdrop é o gatilho, não o evento</h2>

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cases de Sucesso — Marketing Cripto e Web3 | Kaleidos Digital",
-  description: "Cases reais de marketing digital para cripto, DeFi e Web3. Crypto.com, Mercado Bitcoin, Jornal Cripto e mais. Resultados comprovados em conteúdo, growth e lançamentos.",
+  description: "Cases reais de marketing cripto, DeFi e Web3: Crypto.com, Mercado Bitcoin, Jornal Cripto e mais. Resultados em conteúdo, growth e lançamentos.",
   keywords: "cases marketing cripto, cases web3, marketing digital cripto resultados, crypto.com case, mercado bitcoin marketing, agência cripto cases",
+  alternates: { canonical: "/cases" },
   openGraph: {
     title: "Cases de Sucesso — Marketing Cripto e Web3 | Kaleidos Digital",
     description: "Cases reais de marketing digital para cripto, DeFi e Web3. Crypto.com, Mercado Bitcoin, Jornal Cripto e mais.",

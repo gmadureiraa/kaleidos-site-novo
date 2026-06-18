@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Kaleidos Papers · Estudos de marketing cripto",
   description:
     "Estudos de caso e playbooks de marketing cripto da Kaleidos. Como projetos web3 reais construíram crescimento, marca e comunidade. PDFs liberados por email.",
+  alternates: { canonical: "/papers" },
   openGraph: {
     title: "Kaleidos Papers · Estudos de marketing cripto",
     description:

@@ -58,9 +58,10 @@ export function generateSEOMetadata({
     },
     alternates: {
       canonical: fullUrl,
+      // hreflang `en` removido: ?lang=en é client-only (mesma URL, conteúdo PT),
+      // logo hreflang inválido. Reintroduzir só quando existir rota /en real.
       languages: {
         'pt-BR': fullUrl,
-        'en': `${fullUrl}${fullUrl.includes('?') ? '&' : '?'}lang=en`,
       },
     },
   };
@@ -198,8 +199,15 @@ export function generateServiceMetadata(serviceId: string, serviceName: string, 
     ...description.toLowerCase().split(" ").slice(0, 5),
   ].join(", ");
 
+  // Título limpo ≤60 chars: evita o duplo suffix de marca ("... - Kaleidos
+  // Digital" + concat em generateSEOMetadata). Se o nome já cita Kaleidos,
+  // mantém como está; senão acrescenta " | Kaleidos".
+  const cleanTitle = serviceName.includes("Kaleidos")
+    ? serviceName
+    : `${serviceName} | Kaleidos`;
+
   return generateSEOMetadata({
-    title: `${serviceName} - Kaleidos Digital`,
+    title: cleanTitle,
     description: description,
     keywords: keywords,
     ogImage: "/Kaleidos/imagens/Capa.png",

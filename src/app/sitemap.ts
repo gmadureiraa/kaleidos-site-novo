@@ -159,6 +159,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
+  // Conteúdo completo dos papers (read.html) — onde de fato vive o texto denso e
+  // citável. Expor no sitemap torna os papers indexáveis por Google e citáveis
+  // por IA (GEO). Só os públicos (hidden ficam fora). Cada slug visível tem
+  // /papers/<slug>/read.html (confirmado: 7 arquivos).
+  const paperReadPages: MetadataRoute.Sitemap = papers
+    .filter((p) => !p.hidden)
+    .map((paper) => ({
+      url: `${baseUrl}/papers/${paper.slug}/read.html`,
+      lastModified: new Date(paper.publishedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }))
+
   return [
     ...mainPages,
     ...servicePages,
@@ -167,5 +180,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogIndex,
     ...blogArticles,
     ...paperPages,
+    ...paperReadPages,
   ]
 }

@@ -20,6 +20,11 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// Slugs desconhecidos caem direto no 404 estático (sem render dinâmico que
+// crashava o boundary not-found → HTTP 500). generateStaticParams cobre todos
+// os posts; qualquer outro slug = 404 real.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const all = await getAllPostsAsync();
   return all.map((post) => ({ slug: post.slug }));

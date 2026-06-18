@@ -323,10 +323,18 @@ export function ArticleContent({
                     <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
                   </a>
                   <Link
+                    href="/servicos"
+                    data-cta="blog-article-servicos"
+                    data-post={post.slug}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/20 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
+                  >
+                    <Globe className="w-4 h-4" /> Ver nossos serviços
+                  </Link>
+                  <Link
                     href="/contato"
                     className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/20 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
                   >
-                    <Globe className="w-4 h-4" /> Conhecer a Kaleidos
+                    Conhecer a Kaleidos
                   </Link>
                 </div>
               </div>
