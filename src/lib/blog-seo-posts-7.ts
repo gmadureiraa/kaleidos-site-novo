@@ -15,134 +15,170 @@ const AUTHOR = {
 export const seoPosts7: BlogPost[] = [
   {
     slug: "melhores-agencias-marketing-cripto-brasil-2026",
-    title: "10 melhores agências de marketing cripto no Brasil 2026",
-    seoTitle: "10 melhores agências de marketing cripto no Brasil 2026",
-    excerpt: "Ranking honesto das melhores agências de marketing cripto e web3 no Brasil em 2026: critérios de avaliação, perfil de cada uma e como escolher a certa.",
-    seoDescription: "Ranking honesto das melhores agências de marketing cripto e web3 no Brasil em 2026: critérios de avaliação, perfil de cada uma e como escolher a certa.",
+    title: "As melhores agências de marketing cripto e web3 em 2026 (Brasil e mundo)",
+    seoTitle: "Melhores agências de marketing cripto e web3 em 2026 (Brasil e mundo)",
+    excerpt: "Guia honesto das melhores agências de marketing cripto e web3 de 2026, do Brasil ao mundo: o que cada uma faz de verdade, pra quem serve e como escolher a certa.",
+    seoDescription: "As melhores agências de marketing cripto e web3 de 2026, do mundo e do Brasil: perfil real de cada uma (PR, conteúdo, growth, comunidade), pra quem serve e como escolher.",
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-06-09",
-    updatedAt: "2026-06-09",
-    readTime: 7,
+    updatedAt: "2026-06-18",
+    readTime: 9,
     featured: false,
-    tags: ["marketing cripto", "web3", "agência cripto", "marketing brasil", "growth cripto", "kaleidos"],
-    tldr: "O mercado cripto brasileiro é um dos maiores do mundo, mas a oferta de agências que entendem de verdade de web3 ainda é rasa. A maioria é agência tradicional com 'mesa cripto' improvisada ou estúdio gringo sem contexto local. Listamos 10 nomes que disputam esse espaço em 2026, com critérios honestos (incluindo a Kaleidos), e explicamos como não contratar a errada.",
+    tags: ["marketing cripto", "web3", "agência cripto", "agência web3", "growth cripto", "marketing brasil", "kaleidos"],
+    tldr: "Cripto é um mercado global, e as melhores agências de marketing web3 também são. Reunimos as agências reais e reconhecidas que dominam o setor em 2026 (MarketAcross, Serotonin, Coinbound, Lunar Strategy, Wachsman, Luna PR, GuerrillaBuzz, NinjaPromo, Blockwiz, TokenMinds, Coinpresso) com o que cada uma faz de verdade e pra quem serve. No final, posicionamos a Kaleidos como a opção boutique cripto-nativa do Brasil, com critérios honestos pra você não contratar a errada.",
     faq: [
       {
-        question: "Quanto custa contratar uma agência de marketing cripto no Brasil?",
-        answer: "Varia muito por escopo. Projetos pontuais (um paper, uma campanha de lançamento) costumam ficar na casa de R$ 5 mil a R$ 30 mil. Retainers mensais de conteúdo e growth para projetos cripto sérios geralmente partem de R$ 8 mil/mês e podem passar de R$ 50 mil/mês quando envolvem mídia paga, comunidade e produção contínua de autoridade. Desconfie de quem cobra 'pacote fechado de viralização' sem diagnóstico.",
+        question: "Quais são as melhores agências de marketing cripto e web3 do mundo em 2026?",
+        answer: "Entre as mais reconhecidas globalmente estão MarketAcross e Wachsman (fortes em PR e comunicação), Serotonin (go-to-market de protocolos), Coinbound (influência e comunidade), Lunar Strategy (growth boutique europeu), Luna PR (PR com foco em Oriente Médio), GuerrillaBuzz (crescimento orgânico) e NinjaPromo (full-service por assinatura). No Brasil, a Kaleidos é uma opção boutique cripto-nativa. A melhor depende do seu momento, não existe ranking único.",
       },
       {
         question: "Qual a diferença entre uma agência de marketing cripto e uma agência tradicional?",
-        answer: "A tradicional sabe rodar funil, mídia paga e conteúdo, mas não entende narrativa de token, tokenomics como marketing, comunidade on-chain, regulação (CVM, Receita) nem o jargão que constrói confiança no nicho. A agência cripto especializada combina a base de marketing com contexto de mercado, o que reduz o risco de campanha tecnicamente boa e culturalmente errada.",
+        answer: "A tradicional sabe rodar funil, mídia paga e conteúdo, mas não entende narrativa de token, tokenomics como marketing, comunidade on-chain nem o jargão que constrói confiança no nicho. A agência cripto especializada combina a base de marketing com contexto de mercado, o que reduz o risco de campanha tecnicamente boa e culturalmente errada.",
       },
       {
-        question: "Vale a pena contratar agência gringa ou uma brasileira?",
-        answer: "Agências internacionais costumam ter portfólio maior e acesso a veículos globais, mas cobram em dólar, não falam ao público brasileiro com naturalidade e ignoram regulação e cultura local. Para projetos que querem captar o investidor BR, uma agência nativa com fluência em português e contexto regulatório tende a converter melhor pelo mesmo orçamento.",
+        question: "Vale a pena contratar uma agência cripto global ou uma brasileira?",
+        answer: "Agências internacionais costumam ter portfólio maior e acesso a veículos globais, ideais para projetos que miram o mercado mundial desde o dia zero. Já uma agência nativa do Brasil tende a converter melhor com o investidor local, por falar português com naturalidade e conhecer a cultura e a regulação (CVM, Banco Central, Receita). Muitos projetos combinam as duas: uma global para alcance e uma local para o público BR.",
       },
       {
         question: "Como saber se uma agência cripto é boa de verdade?",
-        answer: "Peça cases com números reais (não prints soltos de engajamento), pergunte como medem resultado além de likes, veja se produzem material de autoridade próprio (não só repost), e cheque se entendem de compliance. Agência boa fala de retenção, custo por lead qualificado e narrativa, não só de 'alcance'.",
+        answer: "Peça cases com números reais (não prints soltos de engajamento), pergunte como medem resultado além de likes, veja se produzem material de autoridade próprio (não só repost) e cheque o portfólio público no site da própria agência. Agência boa fala de retenção, custo por lead qualificado e narrativa, não só de alcance.",
       },
       {
-        question: "A Kaleidos atende só cripto?",
-        answer: "A Kaleidos é uma agência de marketing digital com especialização forte em cripto, web3 e fintech, mas também atende projetos adjacentes. O diferencial é tratar conteúdo de autoridade (papers, estudos de caso, blog técnico) como ativo de aquisição, não como enfeite institucional.",
+        question: "Existe agência de marketing cripto e web3 no Brasil?",
+        answer: "Sim. A maioria das grandes agências cripto é estrangeira e cobra em dólar, mas existem opções brasileiras. A Kaleidos é uma agência de marketing digital com especialização em cripto, web3 e fintech, posicionada como boutique cripto-nativa: o diferencial é tratar conteúdo de autoridade (papers, estudos de caso, blog técnico) como ativo de aquisição, não como enfeite institucional.",
       },
     ],
     coverImage: "",
-    content: `# As 10 melhores agências de marketing cripto do Brasil em 2026
+    content: `# As melhores agências de marketing cripto e web3 em 2026 (Brasil e mundo)
 
-> **TL;DR:** O Brasil é um dos maiores mercados de cripto do planeta, mas a oferta de agências que entendem web3 de verdade ainda é rasa. A maioria é agência tradicional com "mesa cripto" improvisada ou estúdio gringo sem contexto local. Abaixo, 10 nomes que disputam esse espaço em 2026, os critérios honestos que usamos pra ranquear (a Kaleidos incluída) e como não contratar a errada.
+> **TL;DR:** Cripto é um mercado global, e as melhores agências de marketing web3 também são. Abaixo estão as agências reais e reconhecidas que dominam o setor em 2026, com o que cada uma faz de verdade e pra quem serve. No final, posicionamos a Kaleidos como a opção boutique cripto-nativa do Brasil. Antes da lista, os critérios honestos pra você não contratar a errada.
 
-## Por que o Brasil precisa de agências de marketing cripto especializadas
+## Por que marketing cripto exige uma agência especializada
 
-O tamanho do mercado não é opinião. O Brasil aparece de forma recorrente entre os 10 países que mais movimentam criptomoedas no mundo no *Global Crypto Adoption Index* da Chainalysis, e a América Latina segue como uma das regiões de crescimento mais rápido no relatório de 2024. Internamente, a Receita Federal acompanha milhões de declarações de operações com criptoativos por meio da Instrução Normativa 1.888, e o Banco Central conduz o sandbox e a regulação de prestadoras de serviço de ativos virtuais sob o Marco Legal das Criptomoedas (Lei 14.478/2022).
+Marketing cripto não é "marketing normal com bitcoin no banner". Envolve narrativa de token, comunidade on-chain (Discord, Telegram, X), timing de lançamento e TGE, gestão de hype sem cair em promessa de retorno (que reguladores como a SEC nos EUA e a CVM no Brasil observam de perto) e a capacidade de construir confiança num mercado onde o ceticismo é a configuração padrão.
 
-Tradução: existe público, existe dinheiro e existe regulação ficando séria. O que não existe em abundância é gente que saiba comunicar isso. Marketing cripto não é "marketing normal com bitcoin no banner". Envolve narrativa de token, comunidade on-chain, timing de lançamento, gestão de hype sem cair em promessa de retorno (que a CVM observa de perto) e a capacidade de construir confiança num mercado onde o ceticismo é a configuração padrão.
+É por isso que a maioria das agências generalistas tropeça. Elas sabem rodar funil e mídia paga, mas não falam a língua do nicho. As agências cripto-nativas, por outro lado, nasceram dentro desse mercado, e por isso entendem que confiança e narrativa pesam mais do que alcance bruto.
 
-É por isso que a maioria das agências generalistas tropeça. Elas sabem rodar funil e mídia paga, mas não falam a língua do nicho. E os estúdios internacionais, que sabem a língua, cobram em dólar e não conhecem o investidor brasileiro.
+Outra distinção importante: a maior parte das grandes agências de marketing web3 é estrangeira, atende projetos globais e cobra em dólar. Isso é ótimo pra quem mira o mundo desde o dia zero, mas deixa um espaço claro pra quem quer falar com o investidor brasileiro com naturalidade, em português e com contexto local. Voltaremos a esse ponto.
 
-## Critérios para avaliar uma agência de marketing cripto
+## Como escolher uma agência de marketing cripto
 
-Antes da lista, os critérios. Não dá pra ranquear agência cripto por "vibe":
+Antes da lista, os critérios. Não dá pra avaliar agência cripto por "vibe":
 
-- **Especialização real em web3**, não cripto como linha de produto adicionada em 2024.
+- **Especialização real em web3**, não cripto como linha de produto adicionada ontem.
 - **Material de autoridade próprio.** Quem produz papers, estudos de caso e análise de verdade entende mais do que quem só reposta thread alheia.
-- **Fluência no público brasileiro:** português nativo, contexto regulatório, cultura do mercado local.
+- **Encaixe com o seu momento.** PR pré-lançamento, comunidade no TGE, performance pós-PMF: cada perfil serve a uma fase.
 - **Mensuração além de vaidade.** Falam de lead qualificado, retenção e custo de aquisição, não só de alcance.
-- **Compliance no radar.** Sabem onde a linha da CVM passa.
-- **Portfólio verificável**, com números, não só prints de engajamento.
+- **Compliance no radar.** Sabem onde a linha do regulador passa, no mercado onde você vai operar.
+- **Portfólio verificável**, com clientes públicos no próprio site, não só prints de engajamento.
 
-Aviso de transparência: a Kaleidos está nessa lista porque é nossa. Você vai descontar isso na régua. Justo. Por isso colocamos os critérios antes dos nomes, pra você julgar cada um pelo mesmo padrão.
+Aviso de transparência: a Kaleidos aparece nesta lista porque é nossa. Você vai descontar isso na régua. Justo. Por isso colocamos os critérios antes dos nomes, pra você julgar cada um pelo mesmo padrão, e por isso a Kaleidos vem por último, e não primeiro.
 
-## As 10 agências de marketing cripto que dominam o Brasil em 2026
+## As principais agências de marketing cripto e web3 do mundo em 2026
 
-### 1. Kaleidos: conteúdo de autoridade tratado como ativo de aquisição
+A lista abaixo cruza casas reconhecidas globalmente. Os clientes citados foram verificados nas páginas públicas das próprias agências sempre que possível; quando a relação é apenas auto-reportada ou de terceiros, sinalizamos.
 
-A Kaleidos é uma agência de marketing digital brasileira com especialização forte em cripto, web3 e fintech. O diferencial declarado é a obsessão por **ativos de autoridade**: papers no estilo estudo de caso, playbooks e blog técnico que funcionam como máquina de aquisição de fundo de funil, não como enfeite institucional.
+### 1. MarketAcross — PR e distribuição de conteúdo em escala
 
-Em vez de prometer "viralização", a tese da casa é que projeto cripto sério ganha confiança com profundidade, e profundidade ranqueia, é citada e converte ao longo do tempo. Para quem está avaliando, vale olhar os [Kaleidos Papers](/papers) e o [blog de estudos de caso web3](/blog) para julgar o nível técnico antes de qualquer reunião.
+Sediada em Tel Aviv (Israel) e fundada em 2014, a MarketAcross é uma das casas mais antigas do setor e referência em **PR e distribuição de conteúdo** para cripto. O foco é earned media: thought leadership, presença em portais do setor, parcerias de mídia e marketing de eventos.
+
+O diferencial é o alcance da rede de veículos parceiros e um modelo de retainer baseado em entregáveis definidos, não em mensalidade cega. O site lista publicamente clientes como Binance, Polygon, Cardano, Polkadot, Near, eToro e Avalanche. É a escolha óbvia quando o objetivo é credibilidade e cobertura de imprensa em larga escala. (Fonte: [marketacross.com](https://marketacross.com/))
+
+### 2. Serotonin — go-to-market premium para protocolos
+
+Sediada em Nova York e fundada em 2020 por executivos vindos de lugares como a ConsenSys, a Serotonin se posiciona como uma plataforma **full-service de go-to-market** para web3 (e adjacências como IA). Cobre PR, estratégia de marca, growth e marketing de produto/ecossistema, com DNA de venture studio.
+
+O diferencial é a profundidade estratégica e um dos rosters de protocolos blue-chip mais fortes do mercado: a página de clientes lista nomes como Polygon, Chainlink, Circle, Aptos, Arbitrum, Near e Optimism. Serve melhor a protocolos e infraestrutura que tratam marketing como parte do desenho de produto. (Fonte: [serotonin.co/clients](https://serotonin.co/clients))
+
+### 3. Coinbound — influência e comunidade cripto-nativas
+
+Fundada em 2018 e sediada em Nova York, a Coinbound é uma das marcas mais conhecidas do marketing cripto-nativo. O foco é **influência e comunidade**: rede de influenciadores, gestão de Discord/Telegram/X, PR e geração de leads.
+
+O diferencial declarado é ser uma das agências exclusivamente cripto mais antigas, com uma das maiores redes de influenciadores do setor. O site cita clientes como Cosmos, Litecoin, Immutable, Tron, Nexo e Sui. Boa escolha pra projetos que dependem de creators e de comunidade ativa. (Fonte: [coinbound.io](https://coinbound.io/))
+
+### 4. Lunar Strategy — growth boutique europeu com forte autoridade de conteúdo
+
+Sediada em Portugal e fundada em 2019, a Lunar Strategy é uma agência de **growth full-service** com pegada boutique, conhecida por PR, social, influência, ads e SEO, e por publicar playbooks e conteúdo de autoridade próprios.
+
+O diferencial é justamente esse motor de conteúdo aliado a foco em crescimento de ecossistema. O site destaca cases como Polkadot, ICP (Internet Computer) e OKX. Serve bem projetos europeus e globais que valorizam estratégia e thought leadership. (É também uma das referências que a Kaleidos estuda como benchmark.) (Fonte: [lunarstrategy.com](https://www.lunarstrategy.com/))
+
+### 5. Wachsman — comunicação estratégica de nível institucional
+
+Fundada em 2015 e sediada em Nova York, a Wachsman é uma das casas de **comunicação estratégica e PR** mais respeitadas da cripto. Atende redes blockchain, exchanges, DeFi e DAOs com posicionamento institucional.
+
+O diferencial é a robustez de relações públicas de alto nível. É reportadamente associada a nomes como Cardano, Hedera, Stellar e Cosmos. Serve melhor projetos maduros que precisam de comunicação corporativa séria, não de hype. (Fonte: [wachsman.com](https://wachsman.com/))
+
+### 6. Luna PR — PR web3 com força no Oriente Médio
+
+Sediada em Dubai e fundada em 2019, a Luna PR é uma agência de **PR e comunicação** para web3 e tecnologias emergentes, com escritórios em Miami e Singapura. O foco é mídia, branding, social, marketing de eventos e advisory.
+
+O diferencial é a liderança no mercado MENA (Oriente Médio e Norte da África) e uma rede global de jornalistas, além de premiações do setor. É a escolha natural pra quem quer entrar com força em Dubai e na região do Golfo. (Fonte: [lunapr.com](https://www.lunapr.com/))
+
+### 7. GuerrillaBuzz — crescimento orgânico e marketing de comunidade
+
+Operando desde 2017 a partir de Tel Aviv, a GuerrillaBuzz é uma boutique de **crescimento orgânico** e PR web3. A pegada é grassroots: boca a boca, marketing em comunidades como Reddit, SEO cripto e thought leadership, com posicionamento anti-ads pagos.
+
+O diferencial é a aposta no orgânico e na comunidade em vez de mídia paga. É reportadamente associada a CoinGecko, Bancor e Fetch.ai. Serve projetos que querem construir reputação de forma sustentável, não comprar atenção. (Fonte: [guerrillabuzz.com](https://guerrillabuzz.com/))
+
+### 8. NinjaPromo — full-service por assinatura, multi-vertical
+
+Com sede em Nova York e escritórios em Londres, Amsterdã, Dubai e Singapura, a NinjaPromo é uma agência **full-service por assinatura** que atende cripto, fintech, B2B e SaaS. Cobre social orgânico e pago, SEO, influência, PR, vídeo, web design e branding.
+
+O diferencial é o modelo de "marketing como serviço": você escala o pacote pra cima ou pra baixo mês a mês. Bom pra quem quer muitos canais sob um único retainer e não se incomoda com a agência não ser exclusivamente cripto. (Fonte: [ninjapromo.io](https://ninjapromo.io/industries/crypto-marketing-agency))
+
+### 9. Blockwiz — full-service acessível com rede de influenciadores
+
+Fundada em 2019 no Canadá (Toronto), a Blockwiz é uma agência **full-service** de marketing cripto: campanhas de influência, conteúdo, PR, social, SEO, crescimento de comunidade e ads.
+
+O diferencial é uma grande rede de influenciadores verificados e uma equipe extensa de especialistas em cripto, com proposta de bom custo-benefício pra exchanges e tokens. É reportadamente associada a Bybit, KuCoin e CoinDCX. (Fonte: [blockwiz.com](https://www.blockwiz.com/))
+
+### 10. TokenMinds — híbrido de desenvolvimento e marketing
+
+Fundada em 2016 em Singapura, a TokenMinds é uma agência **híbrida** que combina desenvolvimento (blockchain e IA), tokenomics e assessoria de token sale com marketing (PR, social, influência, comunidade).
+
+O diferencial é entregar "build + market" sob o mesmo teto, o que faz sentido pra projetos early-stage que precisam de produto e de go-to-market ao mesmo tempo. (Fonte: [tokenminds.co](https://tokenminds.co/))
+
+### 11. Coinpresso — especialista em SEO cripto
+
+Sediada na Nova Zelândia (Auckland) e fundada em 2021, a Coinpresso é uma agência **SEO-first** para cripto: SEO técnico e de conteúdo, distribuição de PR, Google Ads e social.
+
+O diferencial é a especialização profunda em busca orgânica, uma escolha de nicho pra quem quer dominar visibilidade no Google em vez de full-service. (Fonte: [coinpresso.io](https://coinpresso.io/))
+
+> Menções honrosas: **Single Grain** (Los Angeles), uma agência de performance Web2 forte que opera uma vertical cripto; **Melrose PR** e **Crowdcreate** (EUA), veteranas de PR e influência/crowdfunding. Boas opções dependendo do escopo, ainda que com credenciais cripto-nativas mais leves que as especialistas acima.
+
+## E no Brasil? A Kaleidos como opção boutique cripto-nativa
+
+Olhando a lista, fica evidente uma coisa: as grandes agências de marketing cripto são estrangeiras. Quase todas atendem em inglês, cobram em dólar e foram desenhadas pra falar com o mercado global. Isso é uma força quando o objetivo é o mundo, e uma fraqueza quando o objetivo é o investidor brasileiro, que tem cultura, linguagem e contexto regulatório próprios (CVM, Banco Central, Receita Federal).
+
+É nesse espaço que a **Kaleidos** se posiciona: uma agência de marketing digital brasileira com especialização forte em cripto, web3 e fintech. Não nos colocamos como "a melhor agência do mundo", isso seria desonesto diante dos nomes acima. Nos colocamos como uma opção **boutique e cripto-nativa do Brasil**, pra quem quer falar com o público BR com profundidade.
+
+O diferencial declarado é a obsessão por **ativos de autoridade**: papers no estilo estudo de caso, playbooks e blog técnico que funcionam como máquina de aquisição de fundo de funil, não como enfeite institucional. Em vez de prometer "viralização", a tese da casa é que projeto cripto sério ganha confiança com profundidade, e profundidade ranqueia, é citada e converte ao longo do tempo.
+
+Pra quem está avaliando, o teste é direto: olhe os [Kaleidos Papers](/papers) e o [blog de estudos de caso web3](/blog) e julgue o nível técnico antes de qualquer reunião.
 
 ![Página de papers da Kaleidos com estudos de caso de marketing cripto de Hyperliquid, Pudgy Penguins e Solana](/blog/melhores-agencias-marketing-cripto-brasil-2026/kaleidos-papers.png)
 *Os Kaleidos Papers: estudos de caso de marketing web3 com fontes públicas, usados como ativo de aquisição. Fonte: kaleidos.com.br/papers.*
 
-### 2. Estúdios web3 globais com operação no Brasil
-
-Há um grupo de agências internacionais consolidadas em web3, conhecidas por trabalhos de growth, PR e comunidade para protocolos e exchanges, que atendem projetos brasileiros remotamente. O ponto forte é o repertório global e o acesso a veículos internacionais. A fraqueza, do ponto de vista de quem quer falar com o investidor BR, é o custo em dólar e a comunicação que soa traduzida, não nativa.
-
-São ótimas para quem mira mercado global desde o dia zero. Menos indicadas para quem precisa captar e reter audiência brasileira.
-
-### 3. Agências de PR e assessoria cripto focadas em mídia
-
-Existem casas especializadas em colocar o projeto em portais de mídia, garantir cobertura em veículos do setor e gerir crise reputacional. Quando o objetivo é credibilidade e *earned media*, esse perfil entrega. O cuidado: PR sem máquina de conteúdo próprio gera pico de visibilidade que evapora. Funciona melhor combinado com uma frente de autoridade contínua.
-
-### 4. Agências tradicionais com mesa cripto
-
-Várias agências de performance e branding consolidadas no Brasil abriram uma "vertical cripto" nos últimos anos. A vantagem é a maturidade operacional: sabem rodar mídia, CRM e funil com rigor. O risco é a profundidade. Mesa cripto improvisada produz campanha tecnicamente competente e culturalmente desafinada, aquela que o público do nicho identifica como "não é dos nossos" em três segundos.
-
-### 5. Estúdios de comunidade e Discord/Telegram
-
-Para projetos com token e comunidade ativa, há equipes especializadas em gestão de Discord, Telegram, moderação, programas de embaixadores e *quests*. É um trabalho subestimado e crítico: comunidade morta mata projeto. A limitação é o escopo. São ótimos parceiros de execução, raramente parceiros de estratégia macro.
-
-### 6. Agências de influência e creators cripto
-
-O marketing cripto brasileiro tem peso enorme de creators. Algumas casas se especializaram em conectar projetos a influenciadores do nicho, negociar campanhas e gerir ativações. Entregam alcance rápido. O perigo é conhecido: influência sem curadoria e sem compliance vira passivo, especialmente depois que a CVM e o Cade passaram a olhar promoções de criptoativos com mais atenção.
-
-### 7. Estúdios de design e branding web3
-
-Projeto cripto vive ou morre pela percepção de seriedade, e identidade visual é parte disso. Há estúdios focados em branding, design de produto e UX para web3. Trabalho essencial, mas pontual. Você contrata para um momento (rebrand, lançamento), não para uma operação contínua de growth.
-
-### 8. Consultorias de tokenomics com braço de comunicação
-
-Algumas consultorias de tokenomics e estratégia de token agregaram comunicação ao serviço. O ângulo é interessante porque tokenomics *é* marketing: a forma como o token distribui valor conta uma história. A ressalva é que comunicação costuma ser o serviço secundário dessas casas, então o output de conteúdo tende a ser tecnicamente correto, porém pouco editorial.
-
-### 9. Agências de growth e performance cripto
-
-Casas focadas em aquisição paga, otimização de funil e CRO aplicadas a cripto. Quando o produto já tem *product-market fit* e o desafio é escalar aquisição, esse perfil entrega ROI mensurável. Pré-PMF, performance pura queima orçamento, porque tráfego pago não conserta narrativa fraca.
-
-### 10. Freelancers sênior e coletivos boutique
-
-Fora das agências estruturadas, há profissionais sênior e coletivos pequenos que entregam acima do peso, em geral por terem vindo de dentro de projetos cripto. Para escopos definidos e orçamentos enxutos, costumam ser a melhor relação custo-benefício. A limitação é escala e continuidade: pessoa-chave fica doente, sai de férias ou pega outro cliente, e a operação para.
-
-## Como escolher a agência cripto certa pro seu momento
+## Como escolher a agência certa pro seu momento
 
 A pergunta não é "qual a melhor agência", é "a melhor pra quê". Um mapa rápido:
 
-- **Pré-lançamento / construindo narrativa:** priorize autoridade e estratégia (perfis 1, 8). Conteúdo profundo antes de mídia.
-- **Lançamento / TGE:** PR, comunidade e influência coordenados (3, 5, 6), com um maestro estratégico no centro.
-- **Pós-PMF, escalando:** growth e performance (9), com base de conteúdo sustentando o topo do funil.
-- **Mira global:** estúdios internacionais (2).
-- **Foco no investidor brasileiro:** agência nativa com fluência local e compliance no radar.
+- **Pré-lançamento / construindo narrativa:** priorize autoridade e estratégia. Conteúdo profundo antes de mídia (Serotonin, Lunar Strategy, Kaleidos para o público BR).
+- **Lançamento / TGE:** PR, comunidade e influência coordenados (MarketAcross, Wachsman, Coinbound, Blockwiz), com um maestro estratégico no centro.
+- **Pós-PMF, escalando:** growth, performance e SEO (NinjaPromo, Coinpresso, Single Grain), com base de conteúdo sustentando o topo do funil.
+- **Crescimento orgânico e comunidade:** GuerrillaBuzz, Coinbound.
+- **Mercado específico:** Luna PR para o Oriente Médio, Kaleidos para o Brasil.
 
-Três red flags que valem mais que qualquer ranking. Fuja de quem **promete viralização ou retorno**, de quem **só mostra print de engajamento** em vez de números de negócio, e de quem **não menciona compliance** num mercado que a CVM, o Banco Central e a Receita já regulam de verdade.
+Três red flags que valem mais que qualquer ranking. Fuja de quem **promete viralização ou retorno garantido**, de quem **só mostra print de engajamento** em vez de números de negócio, e de quem **não menciona compliance** num mercado que reguladores no mundo todo já levam a sério.
 
 E o teste mais barato de todos: peça o material de autoridade da própria agência. Quem não consegue construir a própria reputação dificilmente vai construir a sua.
 
-## Conclusão: profundidade ganha de hype no Brasil de 2026
+## Conclusão: a melhor agência é a que combina com o seu momento
 
-O mercado cripto brasileiro amadureceu. O investidor leu, se queimou, aprendeu. Em 2026, o que converte não é o post mais barulhento, é a fonte mais confiável. Agência cripto boa não é a que grita mais alto, é a que faz seu projeto ser citado, lembrado e procurado quando a decisão de investir aparece.
+Não existe um ranking único de "a melhor agência de marketing cripto". Existe a melhor pra cada objetivo, mercado e estágio. MarketAcross e Wachsman dominam PR; Serotonin e Lunar Strategy, estratégia e growth; Coinbound e Blockwiz, influência e comunidade. E quando o alvo é o investidor brasileiro, faz sentido ter uma casa nativa no time.
 
-Esse é o jogo. E ele se vence com autoridade, não com hype.
+Em 2026, o que converte não é o post mais barulhento, é a fonte mais confiável. Agência cripto boa não é a que grita mais alto, é a que faz seu projeto ser citado, lembrado e procurado quando a decisão de investir aparece. Esse é o jogo, e ele se vence com autoridade, não com hype.
 
 ---
 
