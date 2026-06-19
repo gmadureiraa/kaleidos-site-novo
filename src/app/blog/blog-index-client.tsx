@@ -54,9 +54,18 @@ export function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
     }
   }
 
-  // Posts já publicados (vindos do server, estáticos + KAI), ordenados por data.
+  // Posts já publicados (estáticos + KAI). Ordem EMBARALHADA (não por data nem
+  // por categoria) pra a página não ficar agrupada por tema — muitos posts
+  // compartilham a mesma data, então sort por data caía na ordem do array-fonte
+  // (agrupada por categoria). Hash do slug = embaralho determinístico: mistura
+  // as categorias, estável entre server/client (sem mismatch de hidratação).
+  const shuffleKey = (slug: string) => {
+    let h = 0;
+    for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+    return h;
+  };
   const publishedPosts = [...posts].sort(
-    (a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt)
+    (a, b) => shuffleKey(a.slug) - shuffleKey(b.slug)
   );
   const allFiltered =
     selectedCategory === "all"
