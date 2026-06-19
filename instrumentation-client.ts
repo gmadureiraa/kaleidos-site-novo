@@ -13,11 +13,27 @@ if (token) {
     capture_pageview: "history_change",
     capture_pageleave: true,
     autocapture: true,
-    // Perf: não carregar bundles que não usamos (surveys ~33KB +
-    // exception-autocapture ~6KB) — eram peso de main-thread à toa no PSI.
-    capture_exceptions: false,
+    // DADOS COMPLETOS (substitui GA4 + Clarity):
+    // - session replay = as "gravações" do Clarity (aba Session Replay)
+    // - heatmaps = mapas de clique/scroll (aba Heatmaps / toolbar)
+    // - dead clicks = cliques mortos / rage clicks (estilo Clarity)
+    // - exceptions = erros de JS (aba Error tracking)
+    // - web_vitals + network_timing = performance real
+    capture_exceptions: true,
+    capture_dead_clicks: true,
+    capture_heatmaps: true,
+    capture_performance: { web_vitals: true, network_timing: true },
+    // perfil rico até pra visitante anônimo (origem/UTM/device em todo evento)
+    person_profiles: "always",
+    // session replay com privacidade (mascara inputs; libere texto com data-ph-no-capture inverso se quiser)
+    disable_session_recording: false,
+    session_recording: {
+      maskAllInputs: true,
+      maskTextSelector: "[data-private]",
+      recordCrossOriginIframes: false,
+    },
+    // surveys ficam off (não temos nenhum configurado — não perde dado passivo)
     disable_surveys: true,
-    capture_performance: { web_vitals: true, network_timing: false },
     persistence: "localStorage+cookie",
     debug: process.env.NODE_ENV === "development",
     loaded: (ph) => {
