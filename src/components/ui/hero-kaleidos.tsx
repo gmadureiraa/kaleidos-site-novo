@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useI18n } from "@/i18n/useI18n"
 import { useAnalytics } from "@/components/analytics"
 import { CalendlyIcon } from "@/components/ui/calendly-icon"
+import { EbookPopup } from "@/components/papers/ebook-popup"
 
 const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min"
 
@@ -16,6 +17,7 @@ export default function HeroKaleidos() {
   const { locale } = useI18n()
   const isEn = locale === "en"
   const { trackClick } = useAnalytics()
+  const [ebookOpen, setEbookOpen] = useState(false)
 
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -137,7 +139,11 @@ export default function HeroKaleidos() {
       >
         <Link
           href="/papers/playbook-cripto-2026"
-          onClick={() => trackClick("hero_playbook_cover", "hero")}
+          onClick={(e) => {
+            e.preventDefault()
+            trackClick("hero_playbook_cover", "hero")
+            setEbookOpen(true)
+          }}
           aria-label={isEn ? "Crypto Marketing in 2026 playbook" : "Playbook Marketing Cripto em 2026"}
           className="group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-3 backdrop-blur-md shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] transition-colors hover:border-[#D262B2]/40"
         >
@@ -169,6 +175,9 @@ export default function HeroKaleidos() {
           </div>
         </Link>
       </motion.div>
+
+      {/* Popup do ebook estilo Lunar (capa grande + Baixar grátis) */}
+      <EbookPopup open={ebookOpen} onClose={() => setEbookOpen(false)} />
 
       {/* Scroll indicator (só desktop, pra não brigar com o card no mobile) */}
       <motion.div
