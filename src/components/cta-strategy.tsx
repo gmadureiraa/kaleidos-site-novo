@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CalendlyIcon } from "@/components/ui/calendly-icon";
@@ -25,30 +24,14 @@ function WhatsappIcon({ className }: { className?: string }) {
  * título grande + chips coloridos tipo sticker espalhados + botão
  * "Agendar reunião" → Calendly. Seção escura, on-brand Kaleidos.
  */
-// Seletor leve de intenção: pré-preenche a mensagem do WhatsApp.
-const INTENTS: { id: string; label: string; label_en: string }[] = [
-  { id: "conteudo", label: "Conteúdo", label_en: "Content" },
-  { id: "trafego", label: "Tráfego/Ads", label_en: "Paid traffic" },
-  { id: "lancamento", label: "Lançamento/Funil", label_en: "Launch/Funnel" },
-  { id: "outro", label: "Outro", label_en: "Something else" },
-];
-
 export function CtaStrategy() {
   const { locale } = useI18n();
   const isEn = locale === "en";
   const { trackClick } = useAnalytics();
-  const [intentId, setIntentId] = useState<string>("conteudo");
 
-  const intent = INTENTS.find((i) => i.id === intentId) ?? INTENTS[0];
-  const intentLabel = isEn ? intent.label_en : intent.label;
-  const waMessage =
-    intent.id === "outro"
-      ? isEn
-        ? "Hi! I came from the Kaleidos site and I'd like to talk."
-        : "Oi! Vim do site da Kaleidos e quero falar com vocês."
-      : isEn
-        ? `Hi! I came from the Kaleidos site, I'm looking for help with ${intentLabel}.`
-        : `Oi! Vim do site da Kaleidos, busco ajuda com ${intentLabel}.`;
+  const waMessage = isEn
+    ? "Hi! I came from the Kaleidos site and I'd like to talk."
+    : "Oi! Vim do site da Kaleidos e quero falar com vocês.";
   const waHref = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(waMessage)}`;
 
   // chips "sticker" — paleta da marca (verde / rosa / contorno), sem arco-íris
@@ -141,52 +124,19 @@ export function CtaStrategy() {
             : "30 minutos, sem compromisso. Traz o seu projeto, que a gente traz o plano."}
         </motion.p>
 
-        {/* Seletor leve de intenção — define a mensagem do WhatsApp */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-9"
-        >
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.22em] text-gray-500">
-            {isEn ? "What's it about?" : "Sobre o que é?"}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
-            {INTENTS.map((opt) => {
-              const active = opt.id === intentId;
-              return (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => setIntentId(opt.id)}
-                  aria-pressed={active}
-                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all ${
-                    active
-                      ? "border-[#7CF067] bg-[#7CF067]/15 text-[#7CF067]"
-                      : "border-white/20 text-gray-300 hover:border-white/40 hover:text-white"
-                  }`}
-                >
-                  {isEn ? opt.label_en : opt.label}
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           {/* Primário: WhatsApp (mensagem pré-preenchida pela intenção) */}
           <a
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackClick(`cta_strategy_whatsapp_${intentId}`, "cta_strategy")}
+            onClick={() => trackClick("cta_strategy_whatsapp", "cta_strategy")}
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CFF6B] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CFF6B]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
           >
             <WhatsappIcon className="h-5 w-5" />
