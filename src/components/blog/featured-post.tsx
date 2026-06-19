@@ -8,7 +8,7 @@ import {
   BlogPost,
   categoryLabels,
   formatDate,
-} from "@/lib/blog-data";
+} from "@/lib/blog-shared";
 
 interface FeaturedPostProps {
   post: BlogPost;

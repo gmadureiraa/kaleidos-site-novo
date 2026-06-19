@@ -11,7 +11,7 @@ import {
   categoryLabels,
   formatDate,
   getModifiedAt,
-} from "@/lib/blog-data";
+} from "@/lib/blog-shared";
 import { BlogCover } from "@/components/blog/blog-cover";
 import { ShareButtons } from "@/components/blog/share-buttons";
 import { LeadGate } from "@/components/blog/lead-gate";

@@ -1,0 +1,9 @@
+# Targets modernos — corta polyfills legados (Array.prototype.at, Object.hasOwn,
+# Math.trunc, flat, etc.) do bundle. Next.js lê browserslist pra decidir o
+# polyfills-*.js e o nível de transpile do SWC. Mantido em sincronia com o campo
+# "browserslist" do package.json.
+chrome >= 111
+edge >= 111
+firefox >= 111
+safari >= 16.4
+ios_saf >= 16.4

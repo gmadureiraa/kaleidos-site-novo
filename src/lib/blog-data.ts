@@ -8,60 +8,17 @@ import { seoPosts6 } from "./blog-seo-posts-6";
 import { seoPosts7 } from "./blog-seo-posts-7";
 import { fetchExternalPosts } from "./blog-external";
 
-export type BlogCategory = "marketing" | "ia" | "cases" | "growth" | "cripto";
+// Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
+// SEM imports de conteúdo). Re-exportados aqui pra não quebrar os imports
+// existentes de quem puxava de `blog-data`. Componentes client devem importar
+// DIRETO de `blog-shared` pra não arrastar o markdown completo pro bundle.
+import type { BlogPost, BlogCardMeta, BlogCategory } from "./blog-shared";
+import { toBlogCard, categoryLabels } from "./blog-shared";
 
-export interface BlogFaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  coverImage: string;
-  category: BlogCategory;
-  author: {
-    name: string;
-    avatar: string;
-  };
-  publishedAt: string;
-  readTime: number;
-  featured?: boolean;
-
-  // --- Campos OPCIONAIS de SEO/GEO (não quebram posts existentes) ---
-  /** Data da última revisão. Cai pra publishedAt quando ausente. Alimenta dateModified (freshness GEO). */
-  updatedAt?: string;
-  /** Título otimizado para <title>/SERP. Cai pra title quando ausente. */
-  seoTitle?: string;
-  /** Meta description dedicada (150-160 chars). Cai pra excerpt quando ausente. */
-  seoDescription?: string;
-  /** Imagem OG dedicada (1200x630). Cai pra coverImage quando ausente. */
-  ogImage?: string;
-  /** Tags/entidades nomeadas — alimenta keywords e article:tag (entity SEO). */
-  tags?: string[];
-  /** Resumo answer-first de 1-2 frases (40-60 palavras) — citação extraível por LLM. */
-  tldr?: string;
-  /** Q&A estruturado — vira FAQPage JSON-LD (sinal GEO de alto impacto). */
-  faq?: BlogFaqItem[];
-}
-
-export const categoryLabels: Record<BlogCategory, string> = {
-  marketing: "Marketing",
-  ia: "IA & Automacao",
-  cases: "Cases",
-  growth: "Growth",
-  cripto: "Cripto",
-};
-
-export const categoryColors: Record<BlogCategory, string> = {
-  marketing: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  ia: "bg-violet-500/10 text-violet-400 border-violet-500/20",
-  cases: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  growth: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  cripto: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-};
+// Re-exporta os tipos/helpers client-safe pra manter compatibilidade dos imports
+// existentes (`from "@/lib/blog-data"`). Server code segue funcionando.
+export type { BlogCategory, BlogFaqItem, BlogPost, BlogCardMeta } from "./blog-shared";
+export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt } from "./blog-shared";
 
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
@@ -87,6 +44,23 @@ export function isPublished(post: BlogPost, now: Date = new Date()): boolean {
 
 export function getPublishedPosts(now: Date = new Date()): BlogPost[] {
   return blogPosts.filter((post) => isPublished(post, now));
+}
+
+/**
+ * Cards leves dos posts publicados (estáticos em código). Use em Server
+ * Components que só renderizam cards (home/listagem) e passam pra UI client —
+ * evita serializar `content` (markdown completo) no payload.
+ */
+export function getPublishedPostCards(now: Date = new Date()): BlogCardMeta[] {
+  return getPublishedPosts(now).map(toBlogCard);
+}
+
+/** Igual ao getPublishedPostsAsync(), mas devolve cards leves (sem content). */
+export async function getPublishedPostCardsAsync(
+  now: Date = new Date()
+): Promise<BlogCardMeta[]> {
+  const all = await getPublishedPostsAsync(now);
+  return all.map(toBlogCard);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
@@ -119,9 +93,7 @@ export function getSeoDescription(post: BlogPost): string {
   return (post.seoDescription?.trim() || post.excerpt || "").slice(0, 160);
 }
 
-export function getModifiedAt(post: BlogPost): string {
-  return post.updatedAt?.trim() || post.publishedAt;
-}
+// `getModifiedAt` vive em `blog-shared` (re-exportado abaixo).
 
 export function getOgImage(post: BlogPost): string | undefined {
   return post.ogImage?.trim() || post.coverImage?.trim() || undefined;
@@ -155,13 +127,7 @@ export function getPostsByCategory(category: BlogCategory): BlogPost[] {
   return getPublishedPosts().filter((post) => post.category === category);
 }
 
-export function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString("pt-BR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+// `formatDate` agora vive em `blog-shared` (re-exportado no topo deste arquivo).
 
 // ── Posts publicados pelo KAI (tabela external_blog_posts via feed) ───────────
 //

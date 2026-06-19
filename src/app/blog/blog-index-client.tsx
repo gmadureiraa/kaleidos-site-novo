@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { BlogPost, BlogCategory, categoryLabels, formatDate } from "@/lib/blog-data";
+import { BlogCardMeta, BlogCategory, categoryLabels, formatDate } from "@/lib/blog-shared";
 import { BlogCard } from "@/components/blog/blog-card";
 import { BlogCover } from "@/components/blog/blog-cover";
 import { getLeadMetadata } from "@/lib/lead-meta";
@@ -16,7 +16,7 @@ import { FooterDemo } from "@/components/ui/footer-demo";
  * UI do índice do blog. Recebe os posts JÁ publicados (estáticos + KAI) do
  * server component pai (page.tsx). Mantém o filtro/highlight/grid client-side.
  */
-export function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
+export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
   const [selectedCategory, setSelectedCategory] = useState<
     BlogCategory | "all"
   >("all");

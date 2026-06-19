@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  BlogPost,
+  BlogCardMeta,
   categoryLabels,
   formatDate,
-} from "@/lib/blog-data";
+} from "@/lib/blog-shared";
 import { BlogCover } from "@/components/blog/blog-cover";
 
 interface BlogCardProps {
-  post: BlogPost;
+  post: BlogCardMeta;
   index?: number;
 }
 

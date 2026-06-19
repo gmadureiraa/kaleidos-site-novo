@@ -1,15 +1,30 @@
+import dynamic from "next/dynamic";
 import HeroKaleidos from "@/components/ui/hero-kaleidos";
 import { TrustedBy } from "@/components/ui/trusted-by";
-import { ServicesList } from "@/components/services-list";
-import BentoGrid from "@/components/bento-grid";
-import FAQSection from "@/components/faq-section";
-import ProcessSection from "@/components/process-section";
-import CasesCarousel from "@/components/cases-carousel";
-import { HomeResources } from "@/components/home-resources";
-import { CtaStrategy } from "@/components/cta-strategy";
-import { FooterDemo } from "@/components/ui/footer-demo";
 import { Reveal } from "@/components/ui/reveal";
 import { TrackingProbe } from "@/components/tracking-probe";
+
+// Hero + TrustedBy ficam no bundle inicial (LCP + primeira dobra). Tudo abaixo
+// da dobra é carregado via next/dynamic: mantém o HTML no SSR (ssr: true → bom
+// pra SEO e pro conteúdo aparecer no crawl/no-JS), mas SPLITA o JS de hidratação
+// de cada seção num chunk próprio. Assim a main-thread libera mais cedo pro hero
+// pintar (LCP) e o framer-motion das seções pesadas só hidrata depois.
+const BentoGrid = dynamic(() => import("@/components/bento-grid"));
+const ServicesList = dynamic(() =>
+  import("@/components/services-list").then((m) => m.ServicesList)
+);
+const ProcessSection = dynamic(() => import("@/components/process-section"));
+const CasesCarousel = dynamic(() => import("@/components/cases-carousel"));
+const HomeResources = dynamic(() =>
+  import("@/components/home-resources").then((m) => m.HomeResources)
+);
+const CtaStrategy = dynamic(() =>
+  import("@/components/cta-strategy").then((m) => m.CtaStrategy)
+);
+const FAQSection = dynamic(() => import("@/components/faq-section"));
+const FooterDemo = dynamic(() =>
+  import("@/components/ui/footer-demo").then((m) => m.FooterDemo)
+);
 
 export default function Home() {
   return (

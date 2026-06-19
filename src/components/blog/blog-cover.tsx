@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogCategory } from "@/lib/blog-data";
+import { BlogCategory } from "@/lib/blog-shared";
 
 /**
  * Capa de blog gerada em codigo, estetica premium Kaleidos:

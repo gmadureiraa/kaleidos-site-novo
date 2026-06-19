@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BlogCategory, categoryLabels } from "@/lib/blog-data";
+import { BlogCategory, categoryLabels } from "@/lib/blog-shared";
 
 interface CategoryFilterProps {
   selected: BlogCategory | "all";
