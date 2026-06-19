@@ -3,9 +3,7 @@ import { Suspense } from "react";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
-import { GoogleAnalytics } from "@/components/analytics";
 import { AnalyticsRouter } from "@/components/analytics-router";
-import { Clarity } from "@/components/clarity";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
@@ -151,11 +149,9 @@ export default function RootLayout({
             <Suspense fallback={null}>
               {children}
             </Suspense>
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
             <Suspense fallback={null}>
               <AnalyticsRouter />
             </Suspense>
-            <Clarity />
             <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID || ''} />
             <Suspense fallback={null}>
               <LeadPopup />
