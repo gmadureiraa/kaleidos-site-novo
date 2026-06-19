@@ -86,6 +86,8 @@ export function PlaybookFeature() {
                   alt="Playbook: Marketing Cripto em 2026"
                   width={600}
                   height={800}
+                  sizes="(max-width: 768px) 60vw, 300px"
+                  loading="lazy"
                   className="w-full h-auto"
                 />
               </Link>

@@ -45,7 +45,7 @@ export default function HeroKaleidos() {
       <div className="text-center max-w-5xl mx-auto px-6">
         {/* Badge — crypto-native positioning */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-8"
@@ -58,7 +58,7 @@ export default function HeroKaleidos() {
 
         {/* Logo + Brand */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6"
@@ -78,7 +78,7 @@ export default function HeroKaleidos() {
 
         {/* Headline — positioning statement */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-4 font-display font-semibold leading-tight max-w-4xl mx-auto"
@@ -92,7 +92,7 @@ export default function HeroKaleidos() {
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 sm:mb-14 max-w-2xl mx-auto font-sans leading-relaxed"
@@ -104,7 +104,7 @@ export default function HeroKaleidos() {
 
         {/* CTA único — consultoria grátis */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
           className="flex justify-center items-center"

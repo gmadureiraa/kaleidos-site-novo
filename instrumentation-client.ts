@@ -13,8 +13,11 @@ if (token) {
     capture_pageview: "history_change",
     capture_pageleave: true,
     autocapture: true,
-    capture_exceptions: true,
-    capture_performance: { web_vitals: true, network_timing: true },
+    // Perf: não carregar bundles que não usamos (surveys ~33KB +
+    // exception-autocapture ~6KB) — eram peso de main-thread à toa no PSI.
+    capture_exceptions: false,
+    disable_surveys: true,
+    capture_performance: { web_vitals: true, network_timing: false },
     persistence: "localStorage+cookie",
     debug: process.env.NODE_ENV === "development",
     loaded: (ph) => {

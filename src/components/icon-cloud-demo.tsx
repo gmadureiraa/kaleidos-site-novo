@@ -1,116 +1,68 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import {
-  Cloud,
-  fetchSimpleIcons,
-  ICloud,
-  renderSimpleIcon,
-  SimpleIcon,
-} from "react-icon-cloud";
+  Bot,
+  Workflow,
+  Zap,
+  Sparkles,
+  BarChart3,
+  Mail,
+  MessageCircle,
+  Calendar,
+  PenTool,
+  Share2,
+  Image as ImageIcon,
+  Send,
+} from "lucide-react";
 
-export const cloudProps: Omit<ICloud, "children"> = {
-  containerProps: {
-    style: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "88%", // Aumentado em 10% de 80% para 88%
-      height: "88%", // Aumentado em 10% de 80% para 88%
-      margin: "auto", // Centralização adicional
-    },
-  },
-  options: {
-    reverse: true,
-    depth: 1,
-    wheelZoom: false,
-    imageScale: 0.8,
-    activeCursor: "default",
-    tooltip: "native",
-    initial: [0.1, -0.1],
-    clickToFront: 500,
-    tooltipDelay: 0,
-    outlineColour: "#0000",
-    maxSpeed: 0.03,
-    minSpeed: 0.015,
-  },
-};
+// Antes: react-icon-cloud + fetchSimpleIcons (buscava ~40 SVGs do jsdelivr em
+// runtime). Estava QUEBRADO em prod (bloqueado pela CSP) e pesava no main-thread.
+// Trocado por um cluster de ícones LOCAIS (lucide, já no bundle) com float em CSS
+// puro — zero fetch, zero CSP, zero JS extra. Tema: ferramentas / IA / automação.
+const ICONS = [
+  { Icon: Bot, tone: "green" },
+  { Icon: Workflow, tone: "pink" },
+  { Icon: Sparkles, tone: "green" },
+  { Icon: BarChart3, tone: "ghost" },
+  { Icon: Zap, tone: "pink" },
+  { Icon: Mail, tone: "ghost" },
+  { Icon: MessageCircle, tone: "green" },
+  { Icon: PenTool, tone: "ghost" },
+  { Icon: Calendar, tone: "pink" },
+  { Icon: Share2, tone: "ghost" },
+  { Icon: ImageIcon, tone: "green" },
+  { Icon: Send, tone: "pink" },
+] as const;
 
-export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
-  const minContrastRatio = theme === "dark" ? 2 : 1.2;
-
-  return renderSimpleIcon({
-    icon,
-    bgHex,
-    fallbackHex,
-    minContrastRatio,
-    size: 64, // Dobrado de 32 para 64
-    aProps: {
-      href: undefined,
-      target: undefined,
-      rel: undefined,
-      onClick: (e: React.MouseEvent) => e.preventDefault(),
-    },
-  });
-};
-
-export type DynamicCloudProps = {
-  iconSlugs: string[];
-};
-
-type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
+const TONES = {
+  green: "bg-[#7CFF6B]/12 text-[#3d9e32] ring-[#7CFF6B]/30",
+  pink: "bg-[#D262B2]/12 text-[#b14e96] ring-[#D262B2]/25",
+  ghost: "bg-neutral-100 text-neutral-500 ring-neutral-200",
+} as const;
 
 export function IconCloudDemo() {
-  const slugs = [
-    "instagram", "facebook", "twitter", "linkedin", "youtube", "tiktok", "whatsapp", "telegram", "discord", "slack",
-    "notion", "openai", "chatgpt", "googleanalytics", "facebookads", "googleads", "mailchimp", "canva", "figma", "adobecreativecloud",
-    "clickup", "trello", "asana", "n8n", "zapier", "ifttt", "hubspot", "salesforce", "zendesk", "intercom",
-    "dropbox", "googlecloud", "monday", "jira", "github", "gitlab", "bitbucket", "pinterest", "dribbble", "behance"
-  ];
-  return <IconCloud iconSlugs={slugs.slice(0, 40)} />;
-}
-
-export function IconCloud({ iconSlugs }: DynamicCloudProps) {
-  const [data, setData] = useState<IconData | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-  const theme = "light"; // Site não tem dark mode, sempre usar light
-
-  useEffect(() => {
-    setIsMounted(true);
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
-  }, [iconSlugs]);
-
-  const renderedIcons = useMemo(() => {
-    if (!data) return null;
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme)
-    );
-  }, [data, theme]);
-
-  // Não renderiza no servidor para evitar erro de hidratação
-  if (!isMounted) {
-    return (
-      <div 
-        className="w-full h-64 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "88%",
-          height: "88%",
-          margin: "auto",
-        }}
-      >
-        <div className="text-gray-500">Carregando...</div>
-      </div>
-    );
-  }
-
   return (
-    <Cloud {...cloudProps}>
-      <>{renderedIcons}</>
-    </Cloud>
+    <div className="grid w-full grid-cols-4 place-items-center gap-3 px-2">
+      {ICONS.map(({ Icon, tone }, i) => (
+        <span
+          key={i}
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl ring-1 ${TONES[tone]}`}
+          style={{
+            animation: `kxFloat 3.2s ease-in-out ${(i % 4) * 0.25}s infinite`,
+          }}
+        >
+          <Icon className="h-5 w-5" strokeWidth={1.8} />
+        </span>
+      ))}
+      <style>{`
+        @keyframes kxFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [style*="kxFloat"] { animation: none !important; }
+        }
+      `}</style>
+    </div>
   );
-} 
+}
