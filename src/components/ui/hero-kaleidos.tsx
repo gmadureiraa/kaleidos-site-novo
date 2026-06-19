@@ -158,6 +158,8 @@ export default function HeroKaleidos() {
             alt={isEn ? "Crypto Marketing in 2026" : "Marketing Cripto em 2026"}
             width={400}
             height={533}
+            sizes="244px"
+            loading="lazy"
             className="w-full rounded-lg object-cover ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
           />
           {/* texto embaixo */}
