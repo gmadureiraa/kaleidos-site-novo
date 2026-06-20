@@ -46,3 +46,7 @@ SECURITY-AUDIT-*.md
 
 # backups de build dos restarts de dev (não versionar)
 .next-*
+
+# refs de pesquisa scrapeada (concorrente) — local-only, não versionar em repo público
+_refs-lunar/
+.firecrawl/

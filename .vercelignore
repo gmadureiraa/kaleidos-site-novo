@@ -23,3 +23,7 @@ node_modules
 
 # Não enviar a pasta do Claude Code
 .claude
+
+# Refs de pesquisa scrapeada (concorrente) — nunca no bundle/deploy
+_refs-lunar
+.firecrawl
