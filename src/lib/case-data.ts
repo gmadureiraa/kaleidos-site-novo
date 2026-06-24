@@ -172,12 +172,12 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Copywriting", "Criação de conteúdo"],
     servicos_en: ["Copywriting", "Content creation"],
     media: [
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.37.16.png", type: "image" },
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.37.28.png", type: "image" },
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.45.29.png", type: "image" },
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.46.20.png", type: "image" },
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.46.26.png", type: "image" },
-      { src: "/Cases/crypto-com/conteudo/Captura%20de%20Tela%202025-07-26%20às%2022.46.31.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-1.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-2.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-3.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-4.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-5.png", type: "image" },
+      { src: "/Cases/crypto-com/conteudo/crypto-com-6.png", type: "image" },
     ]
   },
   "jornal-cripto": {
@@ -733,6 +733,59 @@ export const casesData: Record<string, CaseData> = {
       { src: "/Cases/tech-portfolio/nbs-site.png", type: "image", alt: "NBS — Vision Education Foundation" },
       { src: "/Cases/tech-portfolio/nbs-calculadora.png", type: "image", alt: "NBS — Calculadora Meta Ads" }
     ]
+  },
+  "dsec": {
+    id: "dsec",
+    nome: "DSEC Labs",
+    tags: ["Cripto", "Segurança", "E-mail Marketing", "LinkedIn", "Conteúdo", "Bitcoin"],
+    descricao: "Construção de autoridade da DSEC Labs em três frentes — e-mail marketing (newsletter semanal + mini-curso), LinkedIn e artigos — com thought leadership sobre segurança Bitcoin, self-custody e privacidade financeira.",
+    descricao_en: "Building DSEC Labs' authority across three fronts — e-mail marketing (weekly newsletter + mini-course), LinkedIn and articles — with thought leadership on Bitcoin security, self-custody and financial privacy.",
+    fraseImpactante: "Autoridade em segurança Bitcoin em três frentes: e-mail marketing, LinkedIn e artigos.",
+    fraseImpactante_en: "Authority in Bitcoin security across three fronts: e-mail marketing, LinkedIn and articles.",
+    detalhes: "O Desafio\n\nA DSEC Labs constrói hardware wallets air-gapped e open-source (COLDKIT) num mercado dominado por jargão técnico e desconfiança. O desafio era estabelecer a marca como uma referência séria em segurança Bitcoin no Brasil, falando com founders, investidores e pessoas com patrimônio relevante em cripto, sem apelar para medo barato.\n\nNossa Estratégia\n\nDesenhamos uma linha editorial institucional para o LinkedIn, ancorada em quatro pilares: Segurança (40%), Privacidade (25%), Educação (20%) e Mercado/Comunidade (15%). Cada artigo parte de um problema real, traz dados concretos e termina conectando com a tese da DSEC Labs, sem hashtags e em texto nativo.\n\n• Calendário editorial mensal (2 posts por semana)\n• Artigos longos de thought leadership em PT-BR\n• Pauta derivada de blog e newsletter para consistência de mensagem\n• Voz institucional: dados reais, profundidade, zero enrolação\n\nO Resultado\n\nUma biblioteca crescente de artigos que posiciona a DSEC Labs como uma das vozes mais consistentes sobre segurança Bitcoin em português, cobrindo multisig, air-gap, open-source, wrench attacks, Drex e regulação cripto no Brasil.",
+    detalhes_en: "The Challenge\n\nDSEC Labs builds air-gapped, open-source hardware wallets (COLDKIT) in a market dominated by technical jargon and distrust. The challenge was to establish the brand as a serious reference in Bitcoin security in Brazil, speaking to founders, investors and people with significant crypto holdings, without cheap fear-mongering.\n\nOur Strategy\n\nWe designed an institutional editorial line for LinkedIn, anchored in four pillars: Security (40%), Privacy (25%), Education (20%) and Market/Community (15%). Each article starts from a real problem, brings concrete data, and ends by connecting to DSEC Labs' thesis, with no hashtags and native text.\n\n• Monthly editorial calendar (2 posts per week)\n• Long-form thought leadership articles in PT-BR\n• Agenda derived from blog and newsletter for message consistency\n• Institutional voice: real data, depth, zero fluff\n\nThe Result\n\nA growing library of articles positioning DSEC Labs as one of the most consistent voices on Bitcoin security in Portuguese, covering multisig, air-gap, open-source, wrench attacks, Drex and crypto regulation in Brazil.",
+    depoimentos: "",
+    links: ["https://www.dseclab.io", "https://shop.dseclab.io/products/coldkit"],
+    externalLink: "https://www.dseclab.io",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
+    metricas: "Três frentes de conteúdo institucional\n\n• E-mail marketing: newsletter semanal (Resumo Semanal DSEC Labs) + mini-curso de 5 dias\n• LinkedIn: 2 artigos por semana de thought leadership\n• Artigos: multisig, air-gap, open-source, wrench attacks, Drex, regulação\n• 5 pilares editoriais (Bitcoin, Regulação, Segurança, Educação, Comunidade)\n• Pauta integrada entre e-mail, LinkedIn e blog\n• Voz institucional PT-BR, sem hashtags, texto nativo",
+    metricas_en: "Three fronts of institutional content\n\n• E-mail marketing: weekly newsletter (Resumo Semanal DSEC Labs) + 5-day mini-course\n• LinkedIn: 2 thought-leadership articles per week\n• Articles: multisig, air-gap, open-source, wrench attacks, Drex, regulation\n• 5 editorial pillars (Bitcoin, Regulation, Security, Education, Community)\n• Agenda integrated across e-mail, LinkedIn and blog\n• Institutional PT-BR voice, no hashtags, native text",
+    servicos: ["E-mail Marketing", "Newsletter", "Copywriting", "Estratégia de conteúdo", "LinkedIn", "Thought Leadership"],
+    servicos_en: ["E-mail Marketing", "Newsletter", "Copywriting", "Content strategy", "LinkedIn", "Thought Leadership"],
+    media: [
+      { src: "/Cases/dsec/site/landing-1.png", type: "image", alt: "DSEC Labs — landing page" },
+      { src: "/Cases/dsec/emails/dia1-kyc-leak.jpg", type: "image", alt: "DSEC — e-mail mini-curso dia 1" },
+      { src: "/Cases/dsec/conteudo/drex-cbdc-vigilancia.jpg", type: "image", alt: "DSEC — Drex vs Bitcoin" },
+      { src: "/Cases/dsec/site/landing-2.png", type: "image", alt: "DSEC Labs — landing page" },
+      { src: "/Cases/dsec/site/landing-3.png", type: "image", alt: "DSEC Labs — landing page" }
+    ]
+  },
+  "alfred": {
+    id: "alfred",
+    nome: "Alfred",
+    tags: ["Cripto", "Bitcoin", "Twitter", "IA", "Social Media"],
+    descricao: "Criação da persona Alfred para a Alfred P2P (DSEC Labs): identidade visual gerada por IA e operação completa no Twitter/X em duas frentes — posts originais e reply guy (respostas diárias) — com voz PT-BR.",
+    descricao_en: "Creation of the Alfred persona for Alfred P2P (DSEC Labs): AI-generated visual identity and a full Twitter/X operation across two fronts — original posts and reply guy (daily replies) — with a PT-BR voice.",
+    fraseImpactante: "Uma persona cripto do zero: posts originais + reply guy diário no Twitter.",
+    fraseImpactante_en: "A crypto persona from scratch: original posts + a daily reply-guy operation on Twitter.",
+    detalhes: "O Desafio\n\nA Alfred P2P precisava de um rosto e uma voz. Não um logo frio, mas um personagem com quem a comunidade cripto brasileira se identificasse, capaz de falar de segurança e self-custody sem soar corporativo nem vender medo.\n\nNossa Estratégia\n\nCriamos o Alfred: um personagem cripto-nativo com identidade visual consistente, gerada por IA (Gemini / nano banana), em dezenas de cenas, do gm matinal ao wrench attack. Em paralelo, estruturamos a operação de conteúdo no Twitter/X com uma voz reply-guy em PT-BR lowercase, direta e sem jargão.\n\n• Identidade visual da persona gerada por IA (20+ cenas)\n• Biblioteca de imagens temáticas reaproveitáveis\n• Voz e roteiro de tweets diários (segurança, privacidade, educação)\n• Regras de marca: zero altcoin, zero promessa financeira, KYC simplificado\n\nO Resultado\n\nUma persona pronta para escalar: rosto reconhecível, biblioteca visual coesa e um fluxo de tweets que transforma temas áridos de segurança Bitcoin em conteúdo leve, memável e fiel à marca.",
+    detalhes_en: "The Challenge\n\nAlfred P2P needed a face and a voice. Not a cold logo, but a character the Brazilian crypto community could identify with, able to talk about security and self-custody without sounding corporate or selling fear.\n\nOur Strategy\n\nWe created Alfred: a crypto-native character with a consistent AI-generated visual identity (Gemini / nano banana), across dozens of scenes, from the morning gm to the wrench attack. In parallel, we structured the Twitter/X content operation with a PT-BR lowercase reply-guy voice, direct and jargon-free.\n\n• AI-generated persona visual identity (20+ scenes)\n• Reusable themed image library\n• Voice and daily tweet scripting (security, privacy, education)\n• Brand rules: zero altcoins, zero financial promises, simplified KYC\n\nThe Result\n\nA persona ready to scale: a recognizable face, a cohesive visual library, and a tweet flow that turns dry Bitcoin-security topics into light, meme-able, on-brand content.",
+    depoimentos: "",
+    links: ["https://www.alfredp2p.io", "https://x.com/alfredp2p"],
+    externalLink: "https://www.alfredp2p.io",
+    externalLabel: "Ver no site",
+    externalLabel_en: "Visit website",
+    metricas: "Persona cripto completa, do visual à voz\n\n• 20+ cenas de identidade visual geradas por IA\n• Posts: tweets e threads originais no Twitter/X\n• Reply Guy: 10 respostas/dia (seg-sex) em 25 perfis curados, em 5 formatos\n• Voz PT-BR lowercase, fiel às regras de marca\n• Temas: segurança, privacidade, educação Bitcoin",
+    metricas_en: "A complete crypto persona, from visuals to voice\n\n• 20+ AI-generated visual identity scenes\n• Posts: original tweets and threads on Twitter/X\n• Reply Guy: 10 replies/day (Mon-Fri) across 25 curated accounts, in 5 formats\n• PT-BR lowercase voice, true to brand rules\n• Topics: Bitcoin security, privacy, education",
+    servicos: ["Identidade visual", "Geração por IA", "Twitter", "Reply Guy", "Copywriting", "Social Media"],
+    servicos_en: ["Visual identity", "AI generation", "Twitter", "Reply Guy", "Copywriting", "Social Media"],
+    media: [
+      { src: "/Cases/alfred/conteudo/alfred-gm-coffee.jpg", type: "image", alt: "Alfred — gm coffee" },
+      { src: "/Cases/alfred/conteudo/alfred-self-custody.jpg", type: "image", alt: "Alfred — self custody" },
+      { src: "/Cases/alfred/conteudo/alfred-vs-hacker.jpg", type: "image", alt: "Alfred vs hacker" },
+      { src: "/Cases/alfred/conteudo/alfred-wrench-attack.jpg", type: "image", alt: "Alfred — wrench attack" }
+    ]
   }
 };
 // Cases que possuem rota/página completa em /cases/<id> (pasta estática dedicada).
@@ -741,6 +794,8 @@ export const casesData: Record<string, CaseData> = {
 export const ROUTED_CASE_IDS: string[] = [
   "investidor-4-20",
   "neobankless",
+  "dsec",
+  "alfred",
   "hugo-doria",
   "paradigma-education",
   "bit-das-minas",
