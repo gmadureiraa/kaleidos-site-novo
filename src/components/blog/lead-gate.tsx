@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { getLeadMetadata } from "@/lib/lead-meta";
+import { track } from "@/lib/analytics";
 
 /**
  * Caixa de captura de lead inserida no meio do artigo.
@@ -32,6 +33,7 @@ export function LeadGate({ articleSlug }: { articleSlug?: string }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
+      track("lead_captured", { source: "blog-article-gate", article_slug: articleSlug });
       setStatus("success");
       setMsg("Fechou. Os proximos estudos chegam no seu email.");
       setEmail("");
