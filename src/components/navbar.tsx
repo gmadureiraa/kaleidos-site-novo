@@ -18,14 +18,26 @@ import Image from "next/image";
 
 const servicesBase = {
   pt: [
-    { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo", description: "Estratégias de conteúdo que engajam e convertem." },
-    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "Automatize processos com inteligência artificial." },
-    { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos", description: "Estratégias de crescimento e lançamentos de produtos." },
+    { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo", description: "Estratégia, copy, roteiros e design que engajam e convertem." },
+    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "Agentes de IA e automações que multiplicam a produção." },
+    { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos", description: "Funis, tráfego e operação completa de lançamento." },
+    { title: "Social Media Cripto", href: "/servicos/social-media-cripto", description: "Gestão de redes nativa do mercado, no ritmo da narrativa." },
+    { title: "SEO & GEO Cripto", href: "/servicos/seo-cripto", description: "Conteúdo que rankeia no Google e é citado pela IA." },
+    { title: "PR & Assessoria", href: "/servicos/pr-assessoria", description: "Posicionamento, mídia e relações com veículos e research." },
+    { title: "Influencer & KOL", href: "/servicos/influencer-kol", description: "Curadoria e campanhas com KOLs cripto reais." },
+    { title: "Comunidade Cripto", href: "/servicos/comunidade-cripto", description: "Discord, Telegram e programas que retêm a comunidade." },
+    { title: "Consultoria & GTM", href: "/servicos/consultoria-gtm", description: "Go-to-market e estratégia pra entrar no mercado certo." },
   ],
   en: [
-    { title: "Content Marketing", href: "/servicos/marketing-conteudo", description: "Content strategies that engage and convert." },
-    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "Automate processes with artificial intelligence." },
-    { title: "Growth & Launches", href: "/servicos/growth-lancamentos", description: "Growth strategies and product launches." },
+    { title: "Content Marketing", href: "/servicos/marketing-conteudo", description: "Strategy, copy, scripts and design that engage and convert." },
+    { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa", description: "AI agents and automations that multiply output." },
+    { title: "Growth & Launches", href: "/servicos/growth-lancamentos", description: "Funnels, paid traffic and full launch operations." },
+    { title: "Crypto Social Media", href: "/servicos/social-media-cripto", description: "Native social management, at the pace of the narrative." },
+    { title: "Crypto SEO & GEO", href: "/servicos/seo-cripto", description: "Content that ranks on Google and gets cited by AI." },
+    { title: "PR & Press", href: "/servicos/pr-assessoria", description: "Positioning, media and relations with outlets and research." },
+    { title: "Influencer & KOL", href: "/servicos/influencer-kol", description: "Curation and campaigns with real crypto KOLs." },
+    { title: "Crypto Community", href: "/servicos/comunidade-cripto", description: "Discord, Telegram and programs that retain community." },
+    { title: "Consulting & GTM", href: "/servicos/consultoria-gtm", description: "Go-to-market and strategy to enter the right market." },
   ]
 } as const;
 
@@ -40,11 +52,11 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <Link href={href}>
+        <Link href={href} className="block rounded-md p-2.5 hover:bg-gray-100 transition-colors">
           <div className="text-sm leading-none font-medium text-gray-900">
             {title}
           </div>
-          <p className="text-gray-600 line-clamp-2 text-sm leading-snug mt-1">
+          <p className="text-gray-600 line-clamp-2 text-xs leading-snug mt-1">
             {children}
           </p>
         </Link>
@@ -85,34 +97,41 @@ export function Navbar() {
                     {t('nav','services')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-3 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                           <Link
-                            className="from-[#7CFF6B]/10 to-[#7CFF6B]/5 flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                             href={withLang('/servicos')}
-                          >
-                             <div className="mt-4 mb-2 text-lg font-medium text-gray-900">
-                               {t('nav','ourServices')}
-                            </div>
-                             <p className="text-gray-600 text-sm leading-tight">
-                               {t('nav','servicesDesc')}
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      {services.map((service) => (
-                         <ListItem key={service.title} title={service.title} href={withLang(service.href)}>
-                          {service.description}
-                        </ListItem>
-                      ))}
-                    </ul>
+                    <div className="w-[92vw] max-w-[760px] p-4">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          className="mb-3 flex flex-col rounded-lg bg-gradient-to-r from-[#7CFF6B]/15 to-[#D262B2]/10 p-4 no-underline outline-hidden select-none focus:shadow-md"
+                          href={withLang('/servicos')}
+                        >
+                          <div className="text-base font-semibold text-gray-900">
+                            {t('nav','ourServices')}
+                          </div>
+                          <p className="text-gray-600 text-sm leading-tight">
+                            {t('nav','servicesDesc')}
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                      <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+                        {services.map((service) => (
+                          <ListItem key={service.title} title={service.title} href={withLang(service.href)}>
+                            {service.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href={withLang('/cases')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
                       {t('nav','cases')}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link href={withLang('/portfolio')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
+                      {locale === 'en' ? 'Portfolio' : 'Portfólio'}
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -132,11 +151,11 @@ export function Navbar() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            {/* CTA Button */}
+            {/* CTA Button → WhatsApp direto */}
             <Button asChild className="bg-[#7CFF6B] text-black hover:bg-[#64e04d] font-semibold touch-target">
-              <Link href={withLang('/contato')}>
+              <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer">
                 {t('nav','cta')}
-              </Link>
+              </a>
             </Button>
             {/* Language switcher - desktop */}
             <div className="flex items-center gap-1 ml-2" role="group" aria-label="Seletor de idioma">
@@ -218,6 +237,12 @@ export function Navbar() {
                   {t('nav','cases')}
                 </Link>
               </div>
+              {/* Portfólio */}
+              <div>
+                <Link href={withLang('/portfolio')} className="block text-sm font-medium text-white py-1">
+                  {locale === 'en' ? 'Portfolio' : 'Portfólio'}
+                </Link>
+              </div>
               {/* Blog */}
               <div>
                 <Link href="/blog" className="block text-sm font-medium text-white py-1">
@@ -230,12 +255,12 @@ export function Navbar() {
                   {t('nav','about')}
                 </Link>
               </div>
-              {/* Mobile CTA */}
+              {/* Mobile CTA → WhatsApp direto */}
               <div className="pt-4 border-t border-gray-800">
                 <Button asChild className="w-full bg-[#7CFF6B] text-black hover:bg-[#64e04d] font-semibold touch-target">
-                  <Link href={withLang('/contato')}>
+                  <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer">
                     {t('nav','cta')}
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>

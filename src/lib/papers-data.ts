@@ -18,6 +18,8 @@ export interface Paper {
   publishedAt: string; // ISO
   hidden?: boolean; // não aparece em listagens públicas (home/banda); rota direta segue viva
   readHtml?: boolean; // tem /papers/<slug>/read.html (leitura web). false = só PDF (gate/email não oferecem "ler na web")
+  /** Override do framing de card na seção de recursos do /2 (scrapbook | sticker-bomb | polaroid | dark-tech | pop-cor | editorial-emblema). Ausente = determinístico por slug. */
+  coverStyle?: string;
 }
 
 export const papers: Paper[] = [
@@ -41,14 +43,14 @@ export const papers: Paper[] = [
     tag: "Investidor · Ciclos",
     accent: "#E0913A",
     pdf: "/papers/bull-market-2026.pdf",
-    cover: "/papers/cover-bull-market.png",
+    cover: "/papers/cover-bull-market.webp",
     publishedAt: "2026-06-08",
     hidden: true, // pré-lançamento: só via URL direta /papers/bull-market-2026
   },
   {
     slug: "hyperliquid",
     volume: "Vol. 01",
-    title: "Hyperliquid",
+    title: "Como a Hyperliquid cresceu sem gastar com marketing",
     subtitle: "O marketing do projeto que cresceu sem marketing",
     description:
       "Como a Hyperliquid construiu uma das maiores exchanges descentralizadas do mundo sem VC, sem KOL pago e sem campanha. Um estudo das jogadas reais de marketing e produto que viraram o motor de crescimento, do airdrop bilionário ao buyback que recompra a própria narrativa.",
@@ -65,13 +67,13 @@ export const papers: Paper[] = [
     tag: "DeFi · Perps",
     accent: "#7CF067",
     pdf: "/papers/vol-01-hyperliquid.pdf",
-    cover: "/papers/cover-vol-01.png",
+    cover: "/papers/cover-vol-01.webp",
     publishedAt: "2026-06-07",
   },
   {
     slug: "pudgy-penguins",
     volume: "Vol. 02",
-    title: "Pudgy Penguins",
+    title: "Como a Pudgy Penguins foi de NFT esquecido a marca global",
     subtitle: "Como um NFT falido virou marca global",
     description:
       "O Pudgy Penguins era um projeto NFT dado como morto até Luca Netz comprar a coleção por 750 ETH e transformá-la num case de marca e IP: brinquedos em 3.100 lojas do Walmart, 65 bilhões de views no GIPHY e, no fim, o token PENGU. Um estudo de como se constrói marca, distribuição e cultura em cima de um ativo digital.",
@@ -88,13 +90,13 @@ export const papers: Paper[] = [
     tag: "NFT · Marca / IP",
     accent: "#5AC8E0",
     pdf: "/papers/vol-02-pudgy-penguins.pdf",
-    cover: "/papers/cover-vol-02.png",
+    cover: "/papers/cover-vol-02.webp",
     publishedAt: "2026-06-07",
   },
   {
     slug: "solana",
     volume: "Vol. 03",
-    title: "Solana",
+    title: "Como a Solana ressuscitou depois de virem o caixão",
     subtitle: "A marca que sobreviveu ao próprio atestado de óbito",
     description:
       "Em novembro de 2022 o mercado decretou a morte da Solana junto com a FTX: o SOL caiu de ~US$ 260 pra menos de US$ 9, uma perda na casa de 97%. Dois anos depois bateu topo histórico perto de US$ 295 e virou a rede que mais atraiu desenvolvedor novo no mundo. Um estudo de como a comunidade ressuscitou uma chain dada como morta, e de como o mesmo motor memecoin que a salvou também queimou bilhões de gente real.",
@@ -111,13 +113,13 @@ export const papers: Paper[] = [
     tag: "L1 · Comunidade / Marca",
     accent: "#9945FF",
     pdf: "/papers/solana/solana.pdf",
-    cover: "/papers/cover-solana.png",
+    cover: "/papers/cover-solana.webp",
     publishedAt: "2026-06-09",
   },
   {
     slug: "base",
     volume: "Vol. 04",
-    title: "Base",
+    title: "Como a Base virou uma das maiores L2 do mercado cripto",
     subtitle: "A L2 que cresceu com público já comprado",
     description:
       "Onde a maioria dos projetos cripto começa gritando pra um deserto, a Base começou com a plateia já sentada: cento e dez milhões de clientes verificados da Coinbase do outro lado da ponte. Um estudo de como uma empresa de capital aberto usou marca, campanha e narrativa pra converter clientes de uma corretora em cidadãos de uma rede, o que deu certo, o que colapsou no caminho, e o que sobrou de pé.",
@@ -134,13 +136,13 @@ export const papers: Paper[] = [
     tag: "L2 · Marketing / Growth",
     accent: "#2D5BFF",
     pdf: "/papers/vol-04-base.pdf",
-    cover: "/papers/cover-vol-04.png",
+    cover: "/papers/cover-vol-04.webp",
     publishedAt: "2026-06-16",
   },
   {
     slug: "pump-fun",
     volume: "Vol. 05",
-    title: "Pump.fun",
+    title: "Como a Pump.fun virou uma máquina de marketing de memecoin",
     subtitle: "A máquina de marketing das memecoins",
     description:
       "A Pump.fun não fez campanha, não comprou tráfego, não montou time de growth. Ela transformou o próprio ato de lançar um token num produto de marketing: qualquer pessoa, em segundos, por centavos, criando uma memecoin num cassino global aberto 24 horas. Em pouco mais de um ano, isso virou mais de US$ 1 bilhão de receita. Um estudo dos dois lados, jogada por jogada: a distribuição genial e a externalidade brutal.",
@@ -157,14 +159,14 @@ export const papers: Paper[] = [
     tag: "Launchpad · Memecoin",
     accent: "#7CF067",
     pdf: "/papers/vol-05-pump-fun.pdf",
-    cover: "/papers/cover-vol-05.png",
+    cover: "/papers/cover-vol-05.webp",
     publishedAt: "2026-06-16",
   },
   {
     slug: "playbook-tge-2026",
     volume: "Playbook",
-    title: "Lançamento Cripto (TGE) 2026",
-    subtitle: "Como levar um token do zero ao mercado",
+    title: "Como levar um token do zero ao mercado em 2026",
+    subtitle: "O TGE moderno sem virar exit liquidity",
     description:
       "O guia completo de quem quer lançar um token em 2026 sem virar exit liquidity. Os 10 capítulos do TGE moderno, com exemplos reais de quem acertou e de quem queimou a própria comunidade: da narrativa e pré-lançamento aos pontos como motor, do airdrop honesto à tokenomics como marketing, da listagem e market maker ao pós-TGE onde retenção vale mais que recompensa.",
     tldr:
@@ -180,13 +182,13 @@ export const papers: Paper[] = [
     tag: "Guia · Lançamento / TGE",
     accent: "#D262B2",
     pdf: "/papers/playbook-tge-2026.pdf",
-    cover: "/papers/cover-tge.png",
+    cover: "/papers/cover-tge.webp",
     publishedAt: "2026-06-16",
   },
   {
     slug: "playbook-cripto-2026",
     volume: "Playbook",
-    title: "Marketing Cripto em 2026",
+    title: "Para onde vai o marketing cripto em 2026",
     subtitle: "O guia completo da Kaleidos",
     description:
       "Para onde a atenção, os canais e as métricas do mercado cripto estão indo, e como estruturar seu marketing para o que vem. Um guia de 10 capítulos com tudo que a Kaleidos aprendeu lendo o mercado on-chain: da era da utilidade ao InfoFi, passando por métricas de valor, varejo web3, workflows AI-native e compliance como marca.",
@@ -203,7 +205,7 @@ export const papers: Paper[] = [
     tag: "Guia · Setor",
     accent: "#D262B2",
     pdf: "/papers/playbook-cripto-2026.pdf",
-    cover: "/papers/cover-playbook.png",
+    cover: "/papers/cover-playbook.webp",
     publishedAt: "2026-06-07",
   },
 ];

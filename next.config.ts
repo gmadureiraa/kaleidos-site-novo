@@ -16,6 +16,9 @@ const CONTENT_SECURITY_POLICY = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Permite isolar o diretório de build (evita corrupção de .next quando dois
+  // dev servers rodam no mesmo projeto). Sem a env, usa o padrão ".next".
+  ...(process.env.KAL_DIST_DIR ? { distDir: process.env.KAL_DIST_DIR } : {}),
   async rewrites() {
     return [
       {
@@ -51,14 +54,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        // A rota /portfolio nunca foi criada como page, mas o navbar e links
-        // externos apontam pra ela. /cases é a vitrine de trabalhos canônica.
-        // 301 evita 404 e preserva qualquer SEO acumulado.
-        source: "/portfolio",
-        destination: "/cases",
-        permanent: true,
-      },
-      {
         // Atalho amigável pro playbook flagship.
         source: "/bull-market",
         destination: "/papers/bull-market-2026",
@@ -72,7 +67,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
-    unoptimized: false,
+    // Imagens já são WebP pré-otimizadas (script optimize-images-perf) →
+    // desliga a Image Optimization da Vercel pra não gastar cache-writes do
+    // free tier (limite 100k). Serve os arquivos como estão.
+    unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

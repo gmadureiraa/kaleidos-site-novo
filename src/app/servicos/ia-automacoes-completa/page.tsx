@@ -42,7 +42,7 @@ import {
 /**
  * Kaleidos AI — landing de serviço institucional.
  * Promessa: até 70% do dia da operação, recuperado.
- * Tom: 3ª pessoa Kaleidos. Dark + lime #7CFF6B. Padrão visual /lp.
+ * Tom: 3ª pessoa Kaleidos. Dark + lime #7CF067. Padrão visual /lp.
  */
 export default function KaleidosIAPage() {
   const { locale } = useI18n();
@@ -79,7 +79,7 @@ export default function KaleidosIAPage() {
       />
 
       {/* Background gradient + grid (mesmo do /lp) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7CFF6B]/15 via-black to-black" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7CF067]/15 via-black to-black" />
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]"
         style={{
@@ -106,6 +106,11 @@ export default function KaleidosIAPage() {
       {/* 3. PROCESSO                                                       */}
       {/* ================================================================ */}
       <ProcessSection />
+
+      {/* ================================================================ */}
+      {/* 3.5 O QUE ENTREGAMOS                                              */}
+      {/* ================================================================ */}
+      <DeliverablesSection />
 
       {/* ================================================================ */}
       {/* 4. CASES (2 destaques antes/depois)                               */}
@@ -160,7 +165,7 @@ function StickyMobileCTA({ onCta }: { onCta: () => void }) {
 
   return (
     <div
-      className={`fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#7CFF6B] px-5 py-3 text-sm font-semibold text-black shadow-[0_8px_32px_rgba(124,255,107,0.4)] transition-all duration-300 sm:hidden ${
+      className={`fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#7CF067] px-5 py-3 text-sm font-semibold text-black shadow-[0_8px_32px_rgba(124,240,103,0.4)] transition-all duration-300 sm:hidden ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
@@ -183,13 +188,13 @@ function StickyMobileCTA({ onCta }: { onCta: () => void }) {
 function HeroSection({ onCta }: { onCta: () => void }) {
   return (
     <section className="mx-auto flex max-w-5xl flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-28">
-      <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CFF6B] sm:text-sm">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CFF6B]" />
+      <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CF067]/20 bg-[#7CF067]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CF067] sm:text-sm">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CF067]" />
         Kaleidos AI · IA dentro da operação, não em volta dela
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[68px]">
-        Aumente em <span className="text-[#7CFF6B]">3x</span> a produtividade
+        Aumente em <span className="text-[#7CF067]">3x</span> a produtividade
         <br className="hidden sm:block" /> da sua empresa com a Kaleidos.
       </h1>
 
@@ -200,15 +205,15 @@ function HeroSection({ onCta }: { onCta: () => void }) {
       {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
       <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-400 sm:text-sm">
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
           <strong className="text-white">8 marcas</strong> operando
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
           <strong className="text-white">5+ anos</strong> de operação
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7CFF6B]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
           <strong className="text-white">10+ frentes</strong> automatizadas
         </span>
       </div>
@@ -228,7 +233,7 @@ function HeroSection({ onCta }: { onCta: () => void }) {
           className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CF067]/30 hover:bg-white/[0.06] sm:text-base"
         >
           Receber por email
-          <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]" />
+          <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CF067]" />
         </button>
       </div>
 
@@ -286,7 +291,7 @@ function ProcessSection() {
       className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           Processo
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -307,13 +312,69 @@ function ProcessSection() {
               {s.title}
             </h3>
             <p className="mt-2 text-sm text-gray-400 sm:text-[15px]">{s.body}</p>
-            <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/5 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CFF6B]">
+            <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#7CF067]/20 bg-[#7CF067]/5 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CF067]">
               <Clock className="h-3 w-3" /> {s.duration}
             </div>
             {i < steps.length - 1 && (
-              <div className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 -translate-y-1/2 bg-gradient-to-r from-[#7CFF6B]/40 to-transparent md:block" />
+              <div className="pointer-events-none absolute -right-2 top-1/2 hidden h-px w-4 -translate-y-1/2 bg-gradient-to-r from-[#7CF067]/40 to-transparent md:block" />
             )}
           </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* =================================================================== */
+/* O QUE ENTREGAMOS                                                    */
+/* =================================================================== */
+
+function DeliverablesSection() {
+  const items = [
+    "Diagnóstico e mapa de gargalos da operação",
+    "Agente de atendimento N1 (chat, WhatsApp, FAQ)",
+    "Automação de geração de conteúdo (carrossel, posts, roteiros)",
+    "Pipeline de pesquisa e briefing automatizado",
+    "Régua de cobrança automática (Stripe + WhatsApp + email)",
+    "Qualificação e resposta automática de leads",
+    "Cross-post automatizado (1 vídeo → várias redes)",
+    "Dashboards e relatórios automáticos",
+    "Integrações entre ferramentas (n8n, APIs, webhooks)",
+    "Sistema customizado sob escopo (TS + Python + Supabase)",
+    "Código no repositório do cliente, sem lock-in",
+    "Documentação, handoff técnico e iteração mensal",
+  ];
+
+  return (
+    <section
+      aria-label="O que entregamos"
+      className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
+    >
+      <div className="mb-10 max-w-3xl">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
+          Entregáveis
+        </p>
+        <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
+          O que entregamos.
+        </h2>
+        <p className="mt-4 text-base text-gray-400 sm:text-lg">
+          As coisas concretas que saem da operação, sem caixa-preta.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item, i) => (
+          <motion.div
+            key={item}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: (i % 3) * 0.05 }}
+            viewport={{ once: true }}
+            className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+          >
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#7CF067]" />
+            <span className="text-sm text-gray-200 sm:text-[15px]">{item}</span>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -360,7 +421,7 @@ function CasesSection() {
       className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           Cases
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -377,17 +438,17 @@ function CasesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
             viewport={{ once: true }}
-            className="group flex flex-col rounded-2xl border border-[#7CFF6B]/15 bg-gradient-to-br from-[#7CFF6B]/[0.04] via-white/[0.02] to-white/[0.02] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CFF6B]/30 hover:bg-white/[0.05] sm:p-7"
+            className="group flex flex-col rounded-2xl border border-[#7CF067]/15 bg-gradient-to-br from-[#7CF067]/[0.04] via-white/[0.02] to-white/[0.02] p-6 transition-all hover:-translate-y-0.5 hover:border-[#7CF067]/30 hover:bg-white/[0.05] sm:p-7"
           >
             <div className="mb-4 flex items-center justify-between">
-              <span className="rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CFF6B]">
+              <span className="rounded-full border border-[#7CF067]/20 bg-[#7CF067]/10 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-[#7CF067]">
                 {c.vertical}
               </span>
             </div>
             <h3 className="font-display text-2xl font-semibold text-white">
               {c.cliente}
             </h3>
-            <p className="mt-1 font-mono text-xs uppercase tracking-wider text-[#7CFF6B]">
+            <p className="mt-1 font-mono text-xs uppercase tracking-wider text-[#7CF067]">
               {c.stack}
             </p>
             <p className="mt-4 font-display text-lg leading-snug text-white sm:text-xl">
@@ -402,7 +463,7 @@ function CasesSection() {
                 <span className="flex-1">{c.antes}</span>
               </div>
               <div className="flex gap-3 text-gray-300">
-                <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-[#7CFF6B] pt-0.5">
+                <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-[#7CF067] pt-0.5">
                   depois
                 </span>
                 <span className="flex-1">{c.depois}</span>
@@ -521,7 +582,7 @@ function OperationsCarouselSection() {
       className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           Operação rodando hoje
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -538,7 +599,7 @@ function OperationsCarouselSection() {
       >
         {cases.map((c, i) => {
           const isProduct = c.kind === "produto";
-          const accent = isProduct ? "#7CFF6B" : "#FFB347";
+          const accent = isProduct ? "#7CF067" : "#FFB347";
           const cardClass =
             "group relative flex shrink-0 snap-start basis-[280px] flex-col rounded-2xl border bg-white/[0.03] p-5 transition-all hover:-translate-y-0.5 hover:bg-white/[0.06] sm:basis-[320px]";
           const inner = (
@@ -576,7 +637,7 @@ function OperationsCarouselSection() {
                 </span>
               </div>
               {c.url && (
-                <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#7CFF6B] opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#7CF067] opacity-0 transition-opacity group-hover:opacity-100">
                   Abrir <ArrowUpRight className="h-3 w-3" />
                 </span>
               )}
@@ -680,7 +741,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           Modalidades
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -694,18 +755,18 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
             key={t.name}
             className={`group relative flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 ${
               t.highlight
-                ? "border-[#7CFF6B]/30 bg-[#7CFF6B]/[0.04] shadow-[0_0_60px_-30px_rgba(124,255,107,0.4)]"
+                ? "border-[#7CF067]/30 bg-[#7CF067]/[0.04] shadow-[0_0_60px_-30px_rgba(124,240,103,0.4)]"
                 : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]"
             }`}
           >
             {t.highlight && (
-              <span className="absolute right-5 top-5 rounded-full border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#7CFF6B]">
+              <span className="absolute right-5 top-5 rounded-full border border-[#7CF067]/30 bg-[#7CF067]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#7CF067]">
                 Mais buscado
               </span>
             )}
 
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#7CFF6B]/20 bg-[#7CFF6B]/10">
-              <t.Icon className="h-5 w-5 text-[#7CFF6B]" />
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#7CF067]/20 bg-[#7CF067]/10">
+              <t.Icon className="h-5 w-5 text-[#7CF067]" />
             </div>
 
             <h3 className="font-display text-2xl font-semibold text-white">
@@ -724,7 +785,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
                   key={b}
                   className="flex items-start gap-2 text-sm text-gray-300"
                 >
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#7CFF6B]" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#7CF067]" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -734,8 +795,8 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
               onClick={() => onCta(t.tier)}
               className={`mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all ${
                 t.highlight
-                  ? "bg-[#7CFF6B] text-black hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)]"
-                  : "border border-white/15 bg-white/[0.03] text-white hover:border-[#7CFF6B]/30 hover:bg-white/[0.06]"
+                  ? "bg-[#7CF067] text-black hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,240,103,0.7)]"
+                  : "border border-white/15 bg-white/[0.03] text-white hover:border-[#7CF067]/30 hover:bg-white/[0.06]"
               }`}
             >
               {t.ctaLabel}
@@ -916,7 +977,7 @@ function FlipCarouselSection({
       className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           O antes e depois
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -925,7 +986,7 @@ function FlipCarouselSection({
         <p className="mt-4 text-base text-gray-400 sm:text-lg">
           6 frentes recorrentes. Hover pra virar cada card.
         </p>
-        <p className="mt-3 text-sm font-medium text-[#7CFF6B]">
+        <p className="mt-3 text-sm font-medium text-[#7CF067]">
           Qualquer tarefa repetitiva entra no fluxo. A gente audita, mapeia e implementa.
         </p>
       </div>
@@ -1017,7 +1078,7 @@ function FAQSection() {
   return (
     <section aria-label="FAQ" className="mx-auto mt-24 max-w-3xl px-4 sm:px-6">
       <div className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CFF6B]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
           Perguntas frequentes
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -1040,7 +1101,7 @@ function FAQSection() {
                 </span>
                 <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
                   {open ? (
-                    <Minus className="h-3 w-3 text-[#7CFF6B]" />
+                    <Minus className="h-3 w-3 text-[#7CF067]" />
                   ) : (
                     <Plus className="h-3 w-3 text-gray-400" />
                   )}
@@ -1127,14 +1188,14 @@ function FinalCtaSection() {
       aria-label="CTA final"
       className="mx-auto mt-24 max-w-3xl px-4 sm:px-6"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-[#7CFF6B]/20 bg-gradient-to-br from-[#7CFF6B]/[0.08] via-white/[0.02] to-white/[0.02] p-8 sm:p-12">
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#7CFF6B]/20 blur-3xl" />
+      <div className="relative overflow-hidden rounded-3xl border border-[#7CF067]/20 bg-gradient-to-br from-[#7CF067]/[0.08] via-white/[0.02] to-white/[0.02] p-8 sm:p-12">
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#7CF067]/20 blur-3xl" />
 
         <div className="relative">
           <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
             Diagnóstico gratuito em 48h.
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CFF6B]">
+          <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CF067]">
             Sem fidelidade · Sem contrato · LGPD
           </p>
           <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400 sm:text-lg">
@@ -1142,16 +1203,16 @@ function FinalCtaSection() {
           </p>
 
           {status === "ok" ? (
-            <div className="mx-auto mt-10 max-w-md rounded-2xl border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 p-8 text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#7CFF6B]/20">
-                <CheckCircle2 className="h-6 w-6 text-[#7CFF6B]" />
+            <div className="mx-auto mt-10 max-w-md rounded-2xl border border-[#7CF067]/30 bg-[#7CF067]/10 p-8 text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#7CF067]/20">
+                <CheckCircle2 className="h-6 w-6 text-[#7CF067]" />
               </div>
               <h3 className="font-display text-xl font-semibold text-white">
                 Recebido.
               </h3>
               <p className="mt-2 text-sm text-gray-300">
                 Diagnóstico em 48h em{" "}
-                <span className="text-[#7CFF6B]">{form.email}</span>. Especialista (não bot) prepara teu plano.
+                <span className="text-[#7CF067]">{form.email}</span>. Especialista (não bot) prepara teu plano.
               </p>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -1159,7 +1220,7 @@ function FinalCtaSection() {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-5 py-2.5 text-sm font-semibold text-black hover:-translate-y-0.5 transition-transform"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-5 py-2.5 text-sm font-semibold text-black hover:-translate-y-0.5 transition-transform"
               >
                 Falar no WhatsApp agora <ArrowRight className="h-4 w-4" />
               </a>
@@ -1229,7 +1290,7 @@ function FinalCtaSection() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,255,107,0.7)] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,240,103,0.7)] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
                 >
                   {status === "sending" ? "Enviando…" : "Receber diagnóstico em 48h"}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -1251,7 +1312,7 @@ function FinalCtaSection() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#7CFF6B] hover:underline"
+                    className="text-[#7CF067] hover:underline"
                   >
                     fala direto no WhatsApp
                   </a>
@@ -1263,7 +1324,7 @@ function FinalCtaSection() {
       </div>
 
       <div className="mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-500">
-        <Link href="/" className="transition-colors hover:text-[#7CFF6B]">
+        <Link href="/" className="transition-colors hover:text-[#7CF067]">
           kaleidos.com.br
         </Link>
         <span className="text-gray-700" aria-hidden="true">
@@ -1271,7 +1332,7 @@ function FinalCtaSection() {
         </span>
         <Link
           href="/cases"
-          className="transition-colors hover:text-[#7CFF6B]"
+          className="transition-colors hover:text-[#7CF067]"
         >
           Cases
         </Link>
@@ -1280,7 +1341,7 @@ function FinalCtaSection() {
         </span>
         <Link
           href="/sobre"
-          className="transition-colors hover:text-[#7CFF6B]"
+          className="transition-colors hover:text-[#7CF067]"
         >
           Sobre a Kaleidos
         </Link>
@@ -1311,7 +1372,7 @@ function Field({
   return (
     <label className={`flex flex-col gap-2 ${className ?? ""}`}>
       <span className="font-mono text-[10px] uppercase tracking-wider text-gray-400">
-        {label} {required && <span className="text-[#7CFF6B]">*</span>}
+        {label} {required && <span className="text-[#7CF067]">*</span>}
       </span>
       <input
         type={type}
@@ -1319,7 +1380,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-[#7CFF6B]/40 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B]/20"
+        className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-[#7CF067]/40 focus:outline-none focus:ring-2 focus:ring-[#7CF067]/20"
       />
     </label>
   );
@@ -1348,7 +1409,7 @@ function TextareaField({
         rows={4}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="resize-y rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-[#7CFF6B]/40 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B]/20"
+        className="resize-y rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-[#7CF067]/40 focus:outline-none focus:ring-2 focus:ring-[#7CF067]/20"
       />
     </label>
   );

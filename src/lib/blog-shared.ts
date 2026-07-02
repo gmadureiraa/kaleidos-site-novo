@@ -5,6 +5,8 @@
 // bundle client. `blog-data.ts` (server) re-exporta tudo isto pra manter
 // compatibilidade dos imports existentes.
 
+import type { CoverStyle } from "@/lib/cover-style";
+
 export type BlogCategory = "marketing" | "ia" | "cases" | "growth" | "cripto";
 
 export interface BlogFaqItem {
@@ -42,6 +44,8 @@ export interface BlogPost {
   tldr?: string;
   /** Q&A estruturado — vira FAQPage JSON-LD (sinal GEO de alto impacto). */
   faq?: BlogFaqItem[];
+  /** Override do estilo de capa (seção de recursos do /2). Ausente = determinístico por hash do slug. */
+  coverStyle?: CoverStyle;
 }
 
 /**
@@ -59,6 +63,7 @@ export type BlogCardMeta = Pick<
   | "publishedAt"
   | "readTime"
   | "featured"
+  | "coverStyle"
 >;
 
 /** Reduz um BlogPost ao subset de card (descarta content/faq/tldr/seo longos). */
@@ -72,6 +77,7 @@ export function toBlogCard(post: BlogPost): BlogCardMeta {
     publishedAt: post.publishedAt,
     readTime: post.readTime,
     featured: post.featured,
+    coverStyle: post.coverStyle,
   };
 }
 

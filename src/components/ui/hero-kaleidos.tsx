@@ -154,7 +154,7 @@ export default function HeroKaleidos() {
           />
           {/* capa em cima */}
           <Image
-            src="/papers/cover-playbook.png"
+            src="/papers/cover-playbook.webp"
             alt={isEn ? "Crypto Marketing in 2026" : "Marketing Cripto em 2026"}
             width={400}
             height={533}

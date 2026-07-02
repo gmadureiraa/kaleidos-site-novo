@@ -15,6 +15,7 @@ interface CaseLayoutProps {
   caseData: {
     id: string;
     nome: string;
+    status?: "em-andamento";
     tags?: string[];
     descricao: string;
     descricao_en?: string;
@@ -35,6 +36,14 @@ interface CaseLayoutProps {
       type: 'image' | 'video' | 'pdf';
       alt?: string;
       poster?: string;
+      link?: string; // URL externa (publicação real) — torna a peça clicável no carrossel
+    }[];
+    youtubeVideos?: {
+      videoId: string;
+      poster: string;
+      src?: string;
+      title?: string;
+      alt?: string;
     }[];
   };
   clientType?: 'reels' | 'feed';
@@ -188,6 +197,55 @@ function getServiceSectionId(servico: string, caseId: string): string | null {
   return null;
 }
 
+// Embed lazy 16:9 de vídeo do YouTube: mostra a thumb local como capa clicável
+// e só carrega o iframe ao clicar (click-to-load), por performance.
+function YouTubeEmbed({
+  videoId,
+  poster,
+  title,
+}: {
+  videoId: string;
+  poster: string;
+  title?: string;
+}) {
+  const [loaded, setLoaded] = React.useState(false);
+  const label = title || "Assistir no YouTube";
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-xl border border-gray-200 bg-black" style={{ aspectRatio: "16 / 9" }}>
+      {loaded ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          title={label}
+          className="absolute inset-0 h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setLoaded(true)}
+          className="group absolute inset-0 h-full w-full cursor-pointer"
+          aria-label={label}
+        >
+          <Image
+            src={poster}
+            alt={label}
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
+          <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />
+          <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 transition-transform group-hover:scale-110">
+            <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-[#7CFF6B]" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutProps) {
   const { t, locale } = useI18n();
   const {
@@ -210,7 +268,11 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
   const detalhesText = isEn && detalhes_en ? detalhes_en : detalhes;
   const fraseText = isEn && fraseImpactante_en ? fraseImpactante_en : fraseImpactante;
   const metricasText = isEn && metricas_en ? metricas_en : metricas;
-  // Sidebar removida; lista de serviços não é usada na UI atual
+  // O que entregamos: lista de serviços (respeita i18n)
+  const entregaveis = (isEn && caseData.servicos_en?.length ? caseData.servicos_en : caseData.servicos) || [];
+  // Logo de marca: usamos a logo real só para o case da própria Kaleidos.
+  // Para os demais, exibimos o nome do cliente em destaque (sem inventar logo / asset quebrado).
+  const brandLogo = caseData.id === "kaleidos" ? "/Kaleidos/logo/Logos-10.svg" : null;
 
 
 
@@ -264,15 +326,46 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Coluna Principal - Conteúdo */}
           <div className="lg:col-span-2 space-y-12">
-            {/* Título e Descrição */}
+            {/* Topo do case: LOGO/marca do cliente em destaque + descrição curta + CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 leading-tight">
-                {nome}
-              </h1>
+              {caseData.status === "em-andamento" && (
+                <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-700">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500" />
+                  {isEn ? "In progress" : "Em andamento"}
+                </span>
+              )}
+
+              {/* Bloco de marca em destaque */}
+              <div className="mb-6 flex items-center gap-5 rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-white p-6 shadow-sm">
+                {brandLogo ? (
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-black p-3 sm:h-20 sm:w-20">
+                    <Image
+                      src={brandLogo}
+                      alt={`${nome} logo`}
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                ) : (
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-black text-2xl font-bold text-[#7CFF6B] sm:h-20 sm:w-20 sm:text-3xl">
+                    {nome.charAt(0).toUpperCase()}
+                  </span>
+                )}
+                <div className="min-w-0">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    {isEn ? "Case" : "Case"}
+                  </span>
+                  <h1 className="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+                    {nome}
+                  </h1>
+                </div>
+              </div>
+
               {externalLink && (
                 <a
                   href={externalLink}
@@ -285,6 +378,31 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 </a>
               )}
             </motion.div>
+
+            {/* O QUE ENTREGAMOS — claro de cara, antes de desenvolver o case */}
+            {entregaveis.length > 0 && (
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.05 }}
+                className="max-w-4xl"
+              >
+                <h2 className="mb-5 text-2xl font-bold text-gray-900">
+                  {t('case','whatWeDelivered')}
+                </h2>
+                <div className="flex flex-wrap gap-2.5">
+                  {entregaveis.map((item, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/40 bg-[#7CFF6B]/10 px-4 py-2 text-sm font-semibold text-gray-800"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.section>
+            )}
 
             {/* O que fizemos */}
             <motion.section
@@ -392,6 +510,48 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     format={caseData.id === "jornal-cripto" || caseData.id === "mercado-bitcoin" ? "instagram" : caseData.id === "investidor-4-20" ? "reels" : "default"}
                   />
                 )}
+              </motion.section>
+            )}
+
+            {/* Vídeos longos do YouTube (embed lazy 16:9) */}
+            {caseData.youtubeVideos && caseData.youtubeVideos.length > 0 && (
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+              >
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                  {isEn ? "Long-form videos (YouTube)" : "Vídeos longos (YouTube)"}
+                </h2>
+                <div className="grid grid-cols-1 gap-6">
+                  {caseData.youtubeVideos.map((video) => (
+                    <div key={video.videoId} className="space-y-3">
+                      <YouTubeEmbed
+                        videoId={video.videoId}
+                        poster={video.poster}
+                        title={video.title || video.alt}
+                      />
+                      {(video.title || video.src) && (
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                          {video.title && (
+                            <p className="text-sm font-medium text-gray-700">{video.title}</p>
+                          )}
+                          {video.src && (
+                            <a
+                              href={video.src}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-sm font-medium text-[#3d9e32] hover:text-[#2f7a26] transition-colors"
+                            >
+                              {isEn ? "Open on YouTube" : "Abrir no YouTube"}
+                              <ArrowRight className="h-4 w-4" />
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </motion.section>
             )}
 
@@ -714,7 +874,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                   </h3>
                   <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
                     <Image
-                      src="/Cases/defiverso/estudo/Métricas newsletter.png"
+                      src="/Cases/defiverso/estudo/metricas-newsletter.png"
                       alt="Métricas da Newsletter Defiverso"
                       width={1600}
                       height={900}
@@ -854,7 +1014,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                       <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
                         <Image
-                          src="/Cases/defiverso/estudo/Tweet automação.png"
+                          src="/Cases/defiverso/estudo/tweet-automacao.png"
                           alt="Tweet de Automação do Twitter"
                           width={1200}
                           height={800}
@@ -864,7 +1024,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       </div>
                       <div className="relative w-full rounded-lg overflow-hidden border border-gray-200">
                         <Image
-                          src="/Cases/defiverso/estudo/Tweet resultado.png"
+                          src="/Cases/defiverso/estudo/tweet-resultado.png"
                           alt="Tweet de Resultado do Twitter"
                           width={1200}
                           height={800}

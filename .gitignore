@@ -50,3 +50,6 @@ SECURITY-AUDIT-*.md
 # refs de pesquisa scrapeada (concorrente) — local-only, não versionar em repo público
 _refs-lunar/
 .firecrawl/
+
+# stale next build caches
+.next.stale-*

@@ -8,32 +8,32 @@ import Image from "next/image";
 const tweetPrints = [
   {
     id: 1,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.46.31.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-1.png",
     alt: "Print do Tweet Crypto.com 1"
   },
   {
     id: 2,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.46.26.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-2.png",
     alt: "Print do Tweet Crypto.com 2"
   },
   {
     id: 3,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.46.20.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-3.png",
     alt: "Print do Tweet Crypto.com 3"
   },
   {
     id: 4,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.45.29.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-4.png",
     alt: "Print do Tweet Crypto.com 4"
   },
   {
     id: 5,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.37.28.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-5.png",
     alt: "Print do Tweet Crypto.com 5"
   },
   {
     id: 6,
-    src: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.37.16.png",
+    src: "/Cases/crypto-com/conteudo/crypto-com-6.png",
     alt: "Print do Tweet Crypto.com 6"
   }
 ];

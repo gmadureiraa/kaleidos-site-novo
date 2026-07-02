@@ -14,7 +14,9 @@ export function PapersCarousel() {
   const visiblePapers = papers.filter((p) => !p.hidden);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll sutil em loop. Pausa no hover/touch e respeita prefers-reduced-motion.
+  // Auto-scroll sutil em loop + drag-to-scroll com mouse.
+  // Touch e trackpad/wheel já rolam nativamente via overflow-x-auto.
+  // Pausa no hover/drag/touch e respeita prefers-reduced-motion.
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -22,20 +24,26 @@ export function PapersCarousel() {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reduceMotion) return;
 
     let paused = false;
     let rafId = 0;
     const SPEED = 0.4; // px por frame — bem sutil
 
+    // mantém scrollLeft dentro da 1ª cópia (loop infinito) mesmo no drag manual
+    const normalizeLoop = () => {
+      const half = el.scrollWidth / 2;
+      if (half <= 0) return;
+      if (el.scrollLeft >= half) {
+        el.scrollLeft -= half;
+      } else if (el.scrollLeft < 0) {
+        el.scrollLeft += half;
+      }
+    };
+
     const tick = () => {
-      if (!paused && el) {
-        // metade do scroll = fim da 1ª cópia da lista (loop infinito)
-        const half = el.scrollWidth / 2;
+      if (!paused) {
         el.scrollLeft += SPEED;
-        if (el.scrollLeft >= half) {
-          el.scrollLeft -= half;
-        }
+        normalizeLoop();
       }
       rafId = requestAnimationFrame(tick);
     };
@@ -47,12 +55,59 @@ export function PapersCarousel() {
       paused = false;
     };
 
+    // ---- Drag-to-scroll (pointer events: cobre mouse + caneta) ----
+    let isDown = false;
+    let dragged = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    const onPointerDown = (e: PointerEvent) => {
+      // só botão primário do mouse / caneta; touch deixa pro scroll nativo
+      if (e.pointerType === "touch") return;
+      isDown = true;
+      dragged = false;
+      paused = true;
+      startX = e.clientX;
+      startScroll = el.scrollLeft;
+      el.classList.add("cursor-grabbing");
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) dragged = true;
+      el.scrollLeft = startScroll - dx;
+      normalizeLoop();
+    };
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      el.classList.remove("cursor-grabbing");
+      // mantém pausado enquanto o ponteiro estiver em cima; resume no leave
+    };
+
+    // bloqueia o clique no <Link> se foi um arraste (não um clique limpo)
+    const onClickCapture = (e: MouseEvent) => {
+      if (dragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        dragged = false;
+      }
+    };
+
     el.addEventListener("mouseenter", pause);
     el.addEventListener("mouseleave", resume);
     el.addEventListener("touchstart", pause, { passive: true });
     el.addEventListener("touchend", resume, { passive: true });
+    el.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", endDrag);
+    el.addEventListener("click", onClickCapture, true);
 
-    rafId = requestAnimationFrame(tick);
+    if (!reduceMotion) {
+      rafId = requestAnimationFrame(tick);
+    }
 
     return () => {
       cancelAnimationFrame(rafId);
@@ -60,6 +115,10 @@ export function PapersCarousel() {
       el.removeEventListener("mouseleave", resume);
       el.removeEventListener("touchstart", pause);
       el.removeEventListener("touchend", resume);
+      el.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", endDrag);
+      el.removeEventListener("click", onClickCapture, true);
     };
   }, []);
 
@@ -95,7 +154,7 @@ export function PapersCarousel() {
 
         <div
           ref={scrollerRef}
-          className="flex gap-5 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-2 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-5 overflow-x-auto overscroll-x-contain cursor-grab select-none touch-pan-y px-4 sm:px-6 lg:px-8 pb-2 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {loopPapers.map((paper, i) => (
             <Link
@@ -110,6 +169,7 @@ export function PapersCarousel() {
                   alt={`${paper.volume} — ${paper.title}`}
                   fill
                   sizes="180px"
+                  draggable={false}
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
                 <span

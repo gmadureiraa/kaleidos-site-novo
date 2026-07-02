@@ -5,11 +5,14 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   PenTool,
-  Video,
-  Brain,
+  Share2,
   Rocket,
-  Mail,
-  Workflow,
+  Compass,
+  Search,
+  Megaphone,
+  Users,
+  MessagesSquare,
+  Brain,
 } from "lucide-react";
 import { useI18n } from "@/i18n/useI18n";
 import { useAnalytics } from "@/components/analytics";
@@ -19,7 +22,13 @@ import { useAnalytics } from "@/components/analytics";
  * Título gigante à esquerda + lista numerada (01..06) com título, descrição,
  * ícone e "Saiba mais". Seção escura, on-brand Kaleidos.
  */
-export function ServicesList() {
+export function ServicesList({
+  ctaVariant = "services",
+}: {
+  /** "services" (default, home) → botão "Ver todos os serviços" pra /servicos.
+   *  "whatsapp" (rota /2) → botão "Falar com a gente" direto pro WhatsApp. */
+  ctaVariant?: "services" | "whatsapp";
+} = {}) {
   const { locale } = useI18n();
   const isEn = locale === "en";
   const withLang = (path: string) =>
@@ -31,14 +40,50 @@ export function ServicesList() {
         {
           icon: PenTool,
           title: "Content Marketing",
-          desc: "Strategy, copy, scripts, design and reels editing across IG, X, YouTube and LinkedIn — the editorial engine behind the brand.",
+          desc: "Strategy, copy, scripts, design and editing across IG, X, YouTube and LinkedIn. The editorial engine behind the brand's authority.",
           href: "/servicos/marketing-conteudo",
         },
         {
-          icon: Video,
-          title: "Video & Motion",
-          desc: "Reels, ads and institutional videos with motion graphics and kinetic typography, engineered for retention.",
-          href: "/servicos/marketing-conteudo",
+          icon: Share2,
+          title: "Crypto Social Media",
+          desc: "Native social management at the pace of the narrative: daily presence that tracks every move of the cycle.",
+          href: "/servicos/social-media-cripto",
+        },
+        {
+          icon: Rocket,
+          title: "Growth & Launches",
+          desc: "Full launch and paid-traffic operations: funnels, capture pages and creatives that turn into TGE, listing and revenue.",
+          href: "/servicos/growth-lancamentos",
+        },
+        {
+          icon: Compass,
+          title: "Consulting & GTM",
+          desc: "Positioning, narrative and go-to-market that align product, brand and token into one growth system.",
+          href: "/servicos/consultoria-gtm",
+        },
+        {
+          icon: Search,
+          title: "Crypto SEO & GEO",
+          desc: "Content that ranks on Google and becomes the answer ChatGPT and Perplexity cite. Organic demand that doesn't vanish when budget runs out.",
+          href: "/servicos/seo-cripto",
+        },
+        {
+          icon: Megaphone,
+          title: "PR & Press",
+          desc: "Brand positioning across outlets, research and crypto media. Authority built on proof, not empty press releases.",
+          href: "/servicos/pr-assessoria",
+        },
+        {
+          icon: Users,
+          title: "Influencer & KOL",
+          desc: "Curation and campaigns with real crypto KOLs. Reach earned through voices the community actually trusts, no vanity metrics.",
+          href: "/servicos/influencer-kol",
+        },
+        {
+          icon: MessagesSquare,
+          title: "Crypto Community",
+          desc: "Discord, Telegram and programs that turn followers into active members, and short-term attention into retention.",
+          href: "/servicos/comunidade-cripto",
         },
         {
           icon: Brain,
@@ -46,60 +91,60 @@ export function ServicesList() {
           desc: "Custom AI agents, automations and content engines that multiply output without losing brand voice.",
           href: "/servicos/ia-automacoes-completa",
         },
-        {
-          icon: Rocket,
-          title: "Growth & Launches",
-          desc: "Full launch operations: funnels, capture pages, paid-traffic creatives and lead generation built to perform.",
-          href: "/servicos/growth-lancamentos",
-        },
-        {
-          icon: Mail,
-          title: "Newsletter & Authority",
-          desc: "From-scratch newsletters, editorial reports and authority papers that turn attention into trust.",
-          href: "/servicos/marketing-conteudo",
-        },
-        {
-          icon: Workflow,
-          title: "Sites & Web Apps",
-          desc: "Next.js landing pages, dashboards and platforms — design and dev under one roof.",
-          href: "/servicos/ia-automacoes-completa",
-        },
       ]
     : [
         {
           icon: PenTool,
           title: "Marketing de Conteúdo",
-          desc: "Estratégia, copy, roteiros, design e edição de reels no IG, X, YouTube e LinkedIn. O motor editorial por trás da marca.",
+          desc: "Estratégia, copy, roteiros, design e edição no IG, X, YouTube e LinkedIn. O motor editorial que sustenta a autoridade da marca.",
           href: "/servicos/marketing-conteudo",
         },
         {
-          icon: Video,
-          title: "Vídeo & Motion",
-          desc: "Reels, anúncios e institucionais com motion graphics e tipografia cinética, desenhados pra retenção.",
-          href: "/servicos/marketing-conteudo",
-        },
-        {
-          icon: Brain,
-          title: "Kaleidos AI",
-          desc: "Agentes de IA sob medida, automações e engines de conteúdo que multiplicam a produção sem perder voz de marca.",
-          href: "/servicos/ia-automacoes-completa",
+          icon: Share2,
+          title: "Social Media Cripto",
+          desc: "Gestão de redes nativa do mercado, no ritmo da narrativa: presença diária que acompanha cada movimento do ciclo.",
+          href: "/servicos/social-media-cripto",
         },
         {
           icon: Rocket,
           title: "Growth & Lançamentos",
-          desc: "Operação completa de lançamento: funis, páginas de captura, criativos pra tráfego pago e geração de leads.",
+          desc: "Operação completa de lançamento e tráfego pago: funis, páginas de captura e criativos que viram TGE, listagem e receita.",
           href: "/servicos/growth-lancamentos",
         },
         {
-          icon: Mail,
-          title: "Newsletter & Autoridade",
-          desc: "Newsletters do zero, relatórios editoriais e papers de autoridade que transformam atenção em confiança.",
-          href: "/servicos/marketing-conteudo",
+          icon: Compass,
+          title: "Consultoria & GTM",
+          desc: "Posicionamento, narrativa e go-to-market que alinham produto, marca e token num só sistema de crescimento.",
+          href: "/servicos/consultoria-gtm",
         },
         {
-          icon: Workflow,
-          title: "Sites & Web Apps",
-          desc: "Landing pages em Next.js, dashboards e plataformas. Design e dev no mesmo time.",
+          icon: Search,
+          title: "SEO & GEO Cripto",
+          desc: "Conteúdo que rankeia no Google e vira a resposta que ChatGPT e Perplexity citam. Demanda orgânica que não some quando o budget acaba.",
+          href: "/servicos/seo-cripto",
+        },
+        {
+          icon: Megaphone,
+          title: "PR & Assessoria",
+          desc: "Posicionamento de marca em veículos, research e mídia cripto. Autoridade construída com prova, não com press release vazio.",
+          href: "/servicos/pr-assessoria",
+        },
+        {
+          icon: Users,
+          title: "Influencer & KOL",
+          desc: "Curadoria e campanhas com KOLs cripto de verdade. Alcance com voz que a comunidade respeita, sem métrica de vaidade.",
+          href: "/servicos/influencer-kol",
+        },
+        {
+          icon: MessagesSquare,
+          title: "Comunidade Cripto",
+          desc: "Discord, Telegram e programas que transformam seguidor em membro ativo, e atenção de curto prazo em retenção.",
+          href: "/servicos/comunidade-cripto",
+        },
+        {
+          icon: Brain,
+          title: "Kaleidos AI",
+          desc: "Agentes de IA sob medida, automações e engines de conteúdo que multiplicam a produção sem perder a voz da marca.",
           href: "/servicos/ia-automacoes-completa",
         },
       ];
@@ -127,17 +172,30 @@ export function ServicesList() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-gray-400">
               {isEn
-                ? "Content, growth and product under one roof. Pick a front — or let us run the whole engine."
-                : "Conteúdo, growth e produto no mesmo lugar. Escolha uma frente, ou deixe a gente rodar o motor inteiro."}
+                ? "Content, growth and strategy under one roof. Pick a front, or let us run the whole engine."
+                : "Conteúdo, growth e estratégia no mesmo time. Escolha uma frente, ou deixe a gente rodar o motor inteiro."}
             </p>
-            <Link
-              href={withLang("/servicos")}
-              onClick={() => trackClick("services_see_all", "services_list")}
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
-            >
-              {isEn ? "See all services" : "Ver todos os serviços"}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            {ctaVariant === "whatsapp" ? (
+              <a
+                href="https://wa.me/5512997796835"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick("services_whatsapp", "services_list")}
+                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
+              >
+                {isEn ? "Talk to us" : "Falar com a gente"}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            ) : (
+              <Link
+                href={withLang("/servicos")}
+                onClick={() => trackClick("services_see_all", "services_list")}
+                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
+              >
+                {isEn ? "See all services" : "Ver todos os serviços"}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
           </motion.div>
 
           {/* Lista numerada */}

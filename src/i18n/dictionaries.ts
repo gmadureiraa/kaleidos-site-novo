@@ -58,10 +58,11 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
     },
     footer: {
       tagline: "Transformando ideias em experiências digitais",
-      rights: "© 2025 Kaleidos. Todos os direitos reservados.",
+      rights: "© 2026 Kaleidos. Todos os direitos reservados.",
     },
     case: {
       breadcrumb: "Home / Cases",
+      whatWeDelivered: "O que entregamos",
       whatWeDid: "O que fizemos",
       websiteDeveloped: "Website desenvolvido para o evento",
       visitSite: "Visitar o site completo",
@@ -82,7 +83,7 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
     },
     casesList: {
       title: "Resultados & Projetos",
-      seeCase: "Ver case →",
+      seeCase: "Ver case",
       item: "item",
       items: "itens",
     },
@@ -91,7 +92,7 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       heroTitle: "Kaleidos",
       heroTagline: "Transformamos ideias em experiências digitais que viralizam e conectam marcas com suas audiências de forma autêntica e impactante.",
       ourHistory: "Nossa História",
-      since: "Desde 2023",
+      since: "Desde 2020",
       ourTeam: "Nossa Equipe",
       teamSubtitle: "Os talentos por trás de cada projeto de sucesso",
       ourValues: "Nossos Valores",
@@ -182,10 +183,11 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
     },
     footer: {
       tagline: "Turning ideas into digital experiences",
-      rights: "© 2025 Kaleidos. All rights reserved.",
+      rights: "© 2026 Kaleidos. All rights reserved.",
     },
     case: {
       breadcrumb: "Home / Cases",
+      whatWeDelivered: "What we delivered",
       whatWeDid: "What we did",
       websiteDeveloped: "Website developed for the event",
       visitSite: "Visit full site",
@@ -206,7 +208,7 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
     },
     casesList: {
       title: "Results & Projects",
-      seeCase: "See case →",
+      seeCase: "See case",
       item: "item",
       items: "items",
     },
@@ -215,7 +217,7 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       heroTitle: "Kaleidos",
       heroTagline: "We turn ideas into digital experiences that go viral and connect brands with their audiences authentically and impactfully.",
       ourHistory: "Our History",
-      since: "Since 2023",
+      since: "Since 2020",
       ourValues: "Our Values",
       valuesSubtitle: "The pillars that guide every project and decision",
       ourTeam: "Our Team",

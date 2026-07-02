@@ -82,7 +82,7 @@ export function PlaybookFeature() {
             >
               <Link href="/papers/playbook-cripto-2026" aria-label="Marketing Cripto em 2026">
                 <Image
-                  src="/papers/cover-playbook.png"
+                  src="/papers/cover-playbook.webp"
                   alt="Playbook: Marketing Cripto em 2026"
                   width={600}
                   height={800}

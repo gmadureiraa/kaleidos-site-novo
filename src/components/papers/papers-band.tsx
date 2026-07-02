@@ -1,24 +1,80 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, FileText } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/free-mode";
 import { papers } from "@/lib/papers-data";
 
 /**
- * Banda "Estudos Kaleidos · Papers" no topo do blog — agora em CARROSSEL
- * arrastável (drag/swipe pro lado). Cada slide é a capa do paper + título.
+ * Banda "Estudos Kaleidos · Papers" no topo do blog — carrossel arrastável.
+ * Scroll horizontal NATIVO (overflow-x-auto): funciona com touch e trackpad/wheel
+ * de fábrica. Em cima disso, um handler de pointer-drag dá o "arrastar com mouse"
+ * que o scroll nativo não cobre. Sem dependência de lib (saiu do Swiper, que
+ * brigava com autoplay/loop e parecia travado pro usuário).
  */
 export function PapersBand() {
   const visiblePapers = papers.filter((p) => !p.hidden);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  // Drag-to-scroll com mouse/caneta (pointer events). Touch e wheel rolam nativo.
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    let isDown = false;
+    let dragged = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return; // touch usa scroll nativo
+      isDown = true;
+      dragged = false;
+      startX = e.clientX;
+      startScroll = el.scrollLeft;
+      el.classList.add("cursor-grabbing");
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) dragged = true;
+      el.scrollLeft = startScroll - dx;
+    };
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      el.classList.remove("cursor-grabbing");
+    };
+
+    // Se foi arraste, cancela o clique no <Link> pra não navegar sem querer.
+    const onClickCapture = (e: MouseEvent) => {
+      if (dragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        dragged = false;
+      }
+    };
+
+    el.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", endDrag);
+    el.addEventListener("click", onClickCapture, true);
+
+    return () => {
+      el.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", endDrag);
+      el.removeEventListener("click", onClickCapture, true);
+    };
+  }, []);
+
   if (visiblePapers.length === 0) return null;
 
   return (
-    <section className="mb-16 overflow-x-clip border-b border-gray-200 pb-16">
+    <section className="mb-16 border-b border-gray-200 pb-16">
       <div className="flex items-center justify-between mb-7">
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[#d262b2]" />
@@ -31,30 +87,29 @@ export function PapersBand() {
         </span>
       </div>
 
-      <Swiper
-        modules={[Autoplay, FreeMode]}
-        freeMode
-        grabCursor
-        loop
-        autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }}
-        speed={900}
-        slidesPerView={1.3}
-        spaceBetween={18}
-        breakpoints={{
-          480: { slidesPerView: 1.8, spaceBetween: 18 },
-          640: { slidesPerView: 2.4, spaceBetween: 20 },
-          1024: { slidesPerView: 3.2, spaceBetween: 22 },
-          1280: { slidesPerView: 4, spaceBetween: 24 },
-        }}
-        className="w-full !overflow-hidden !py-1"
-      >
-        {visiblePapers.map((paper) => (
-          <SwiperSlide key={paper.slug} className="h-auto">
+      {/* Esteira com máscara de fade nas bordas */}
+      <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 sm:w-14 bg-gradient-to-r from-white to-transparent"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 sm:w-14 bg-gradient-to-l from-white to-transparent"
+          aria-hidden="true"
+        />
+
+        <div
+          ref={scrollerRef}
+          className="flex gap-[18px] sm:gap-5 lg:gap-6 overflow-x-auto overscroll-x-contain cursor-grab select-none touch-pan-y px-4 sm:px-6 lg:px-8 py-1 snap-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {visiblePapers.map((paper) => (
             <Link
+              key={paper.slug}
               href={`/papers/${paper.slug}`}
-              className="group block select-none"
+              className="group block shrink-0 snap-start w-[70vw] min-[480px]:w-[55vw] sm:w-[42vw] md:w-[32vw] lg:w-[30%] xl:w-[23%]"
               draggable={false}
               onDragStart={(e) => e.preventDefault()}
+              aria-label={`${paper.volume} — ${paper.title}`}
             >
               {/* Capa */}
               <div
@@ -101,9 +156,9 @@ export function PapersBand() {
                 </div>
               </div>
             </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

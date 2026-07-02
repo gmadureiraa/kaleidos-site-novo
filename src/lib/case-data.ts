@@ -1,6 +1,8 @@
 export interface CaseData {
   id: string;
   nome: string;
+  /** Marca cases que ainda estão em execução (ex: Crypto.com). Renderiza badge "Em andamento". */
+  status?: "em-andamento";
   tags: string[];
   descricao: string;
   descricao_en?: string;
@@ -24,9 +26,100 @@ export interface CaseData {
     poster?: string; // URL para thumbnail do vídeo
     link?: string; // URL para link externo (ex: Instagram)
   }[];
+  /** Vídeos longos do YouTube (embed lazy 16:9). Renderizados em seção própria no case-layout. */
+  youtubeVideos?: {
+    videoId: string;
+    poster: string; // thumbnail local (1280x720)
+    src?: string; // URL canônica watch (link "abrir no YouTube")
+    title?: string;
+    alt?: string;
+  }[];
 }
 // Dados dos cases com todo o conteúdo disponível
 export const casesData: Record<string, CaseData> = {
+  "kaleidos": {
+    id: "kaleidos",
+    nome: "Kaleidos",
+    tags: ["Agência", "Social Media", "Conteúdo", "Marketing Digital"],
+    descricao: "O conteúdo institucional da própria Kaleidos no Instagram @digitalkaleidos: a agência aplicando em casa o mesmo método que usa nos clientes — marketing, design e conteúdo com intenção.",
+    descricao_en: "Kaleidos' own institutional content on Instagram @digitalkaleidos: the agency applying at home the same method it uses for clients — marketing, design and content with intent.",
+    fraseImpactante: "A agência praticando em casa o que entrega para os clientes.",
+    fraseImpactante_en: "The agency practicing at home what it delivers for clients.",
+    detalhes: "O Desafio\n\nUma agência de conteúdo precisa ser a melhor prova viva do próprio trabalho. O desafio do perfil @digitalkaleidos não é volume nem viralização: é coerência. Mostrar, em cada post, a forma de pensar da Kaleidos sobre marketing, design e produção de conteúdo, sem cair no clichê de agência que fala bonito e entrega genérico.\n\nNossa Estratégia\n\nEstruturamos a linha editorial do perfil em torno de ideias fortes e opinativas sobre o ofício: qualidade acima de quantidade, constância acima de perfeição, e marketing como algo que se faz em ambientes que a gente nem sempre controla. Cada peça é um recorte da mentalidade da agência, em formato de carrossel, reel ou estático.\n\n• Carrosséis editoriais com tese clara (qualidade vs quantidade, método de produção)\n• Reels mostrando o processo: planejamento de perfil de ponta a ponta (SEO, copy, web design, growth)\n• Estáticos de posicionamento: constância, foco em demanda real, antídoto à paralisia por análise\n• Voz institucional da Kaleidos, alinhada à marca e ao tom dos founders\n\nO Resultado\n\nUm perfil ainda jovem, mas com identidade editorial definida: cada post é autossuficiente como manifesto do jeito Kaleidos de trabalhar. É o portfólio aplicado à própria casa, servindo de vitrine de pensamento para quem chega buscando a agência.",
+    detalhes_en: "The Challenge\n\nA content agency needs to be the living proof of its own work. The challenge of the @digitalkaleidos profile is not volume or virality: it's coherence. Showing, in every post, how Kaleidos thinks about marketing, design and content production, without falling into the cliché of an agency that talks beautifully and delivers generic.\n\nOur Strategy\n\nWe structured the profile's editorial line around strong, opinionated ideas about the craft: quality over quantity, consistency over perfection, and marketing as something done in environments we don't always control. Each piece is a slice of the agency's mindset, in carousel, reel or static format.\n\n• Editorial carousels with a clear thesis (quality vs quantity, production method)\n• Reels showing the process: end-to-end profile planning (SEO, copy, web design, growth)\n• Positioning statics: consistency, focus on real demand, an antidote to analysis paralysis\n• Kaleidos' institutional voice, aligned with the brand and the founders' tone\n\nThe Result\n\nA young profile, but with a defined editorial identity: each post stands on its own as a manifesto of the Kaleidos way of working. It's the portfolio applied to its own home, serving as a thought showcase for those who arrive looking for the agency.",
+    depoimentos: "",
+    links: ["https://kaleidos.com.br", "https://www.instagram.com/digitalkaleidos/"],
+    externalLink: "https://www.instagram.com/digitalkaleidos/",
+    externalLabel: "Ver no Instagram",
+    externalLabel_en: "See on Instagram",
+    metricas: "Conteúdo institucional próprio no Instagram\n\nO perfil @digitalkaleidos é a vitrine de pensamento da agência: opinião sobre o ofício, processo de produção e posicionamento, em carrosséis, reels e estáticos.\n\n• Carrosséis editoriais com tese (qualidade > quantidade, método de produção)\n• Reel de processo: planejamento de perfil ponta a ponta (SEO, copy, web design, growth)\n• Estáticos de posicionamento: constância, demanda real, foco antes da perfeição\n• Voz institucional consistente, alinhada à marca Kaleidos\n• Perfil recente: o valor está na qualidade editorial, não nos números",
+    metricas_en: "Own institutional content on Instagram\n\nThe @digitalkaleidos profile is the agency's thought showcase: opinion on the craft, the production process and positioning, in carousels, reels and statics.\n\n• Editorial carousels with a thesis (quality > quantity, production method)\n• Process reel: end-to-end profile planning (SEO, copy, web design, growth)\n• Positioning statics: consistency, real demand, focus before perfection\n• Consistent institutional voice, aligned with the Kaleidos brand\n• Recent profile: the value is in editorial quality, not numbers",
+    servicos: ["Social Media", "Conteúdo", "Design", "Copywriting", "Estratégia de conteúdo"],
+    servicos_en: ["Social Media", "Content", "Design", "Copywriting", "Content strategy"],
+    media: [
+      // Reel — planejamento de perfil ponta a ponta (273 views)
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DXcoNNsiVjM-reel.mp4",
+        type: "video",
+        alt: "Reel Kaleidos — planejamento de perfil ponta a ponta (SEO, copy, web design, growth)",
+        poster: "/Cases/kaleidos/conteudo/instagram/kld-DXcoNNsiVjM-capa.jpg",
+        link: "https://www.instagram.com/reel/DXcoNNsiVjM/"
+      },
+      // Carrossel — qualidade > quantidade (4 slides)
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DXW65NFDnQ1-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Kaleidos — qualidade acima de quantidade (capa)",
+        link: "https://www.instagram.com/p/DXW65NFDnQ1/"
+      },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DXW65NFDnQ1-slide-02.jpg", type: "image", alt: "Carrossel Kaleidos — qualidade > quantidade (2/4)" },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DXW65NFDnQ1-slide-03.jpg", type: "image", alt: "Carrossel Kaleidos — qualidade > quantidade (3/4)" },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DXW65NFDnQ1-slide-04.jpg", type: "image", alt: "Carrossel Kaleidos — qualidade > quantidade (4/4)" },
+      // Carrossel — marketing em ambientes que voce nao controla (3 slides)
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DXpL_NqDu4H-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Kaleidos — marketing em ambientes que voce nao controla (capa)",
+        link: "https://www.instagram.com/p/DXpL_NqDu4H/"
+      },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DXpL_NqDu4H-slide-02.jpg", type: "image", alt: "Carrossel Kaleidos — ambientes que voce nao controla (2/3)" },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DXpL_NqDu4H-slide-03.jpg", type: "image", alt: "Carrossel Kaleidos — ambientes que voce nao controla (3/3)" },
+      // Carrossel — produzir conteudo com metodo (3 slides)
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DYP8NI9lVkv-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Kaleidos — produzir conteudo com metodo (capa)",
+        link: "https://www.instagram.com/p/DYP8NI9lVkv/"
+      },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DYP8NI9lVkv-slide-02.jpg", type: "image", alt: "Carrossel Kaleidos — conteudo com metodo (2/3)" },
+      { src: "/Cases/kaleidos/conteudo/instagram/kld-DYP8NI9lVkv-slide-03.jpg", type: "image", alt: "Carrossel Kaleidos — conteudo com metodo (3/3)" },
+      // Estaticos de posicionamento
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DXhq6g-lQko-slide-01.jpg",
+        type: "image",
+        alt: "Post Kaleidos — coisas que passamos ao trabalhar com marketing e design",
+        link: "https://www.instagram.com/p/DXhq6g-lQko/"
+      },
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DXzOKF2kQc0-slide-01.jpg",
+        type: "image",
+        alt: "Post Kaleidos — constancia acima de conteudo perfeito: apenas comece",
+        link: "https://www.instagram.com/p/DXzOKF2kQc0/"
+      },
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DX6-5emEX7U-slide-01.jpg",
+        type: "image",
+        alt: "Post Kaleidos — quando planejamento vira adiamento (paralisia por analise)",
+        link: "https://www.instagram.com/p/DX6-5emEX7U/"
+      },
+      {
+        src: "/Cases/kaleidos/conteudo/instagram/kld-DYFWcuwCu8j-slide-01.jpg",
+        type: "image",
+        alt: "Post Kaleidos — crescimento como metrica estetica versus demanda real",
+        link: "https://www.instagram.com/p/DYFWcuwCu8j/"
+      }
+    ]
+  },
   "defifest": {
     id: "defifest",
     nome: "Defifest",
@@ -155,6 +248,7 @@ export const casesData: Record<string, CaseData> = {
   "crypto-com": {
     id: "crypto-com",
     nome: "Crypto.com",
+    status: "em-andamento",
     tags: ["Cripto", "Copywriting", "Criação de conteúdo"],
     descricao: "Criação de conteúdo para instagram e twitter para o perfil da crypto.com",
     descricao_en: "Content creation for Instagram and Twitter for Crypto.com’s profile",
@@ -162,7 +256,7 @@ export const casesData: Record<string, CaseData> = {
     fraseImpactante_en: "210% increase in social media likes.",
     detalhes: "O Desafio\n\nA Crypto.com, uma das maiores exchanges globais, precisava de conteúdo que comunicasse simplicidade e segurança para o mercado brasileiro. O desafio era criar posts que educassem sobre criptomoedas de forma acessível, mantendo a credibilidade da marca internacional.\n\nNossa Estratégia\n\nDesenvolvemos uma estratégia de conteúdo multicanal focada em educação e engajamento. Criamos posts personalizados para Instagram e Twitter que explicavam conceitos complexos de forma simples, sempre alinhados com a visão de simplicidade e segurança da Crypto.com.\n\n• Conteúdo educativo sobre BTC, CRO e outras criptomoedas\n• Posts alinhados com a visão de simplicidade e segurança\n• Estratégia multicanal (Instagram e Twitter)\n• Linguagem acessível para o público brasileiro\n• Foco em educação e engajamento\n\nO Resultado\n\nConteúdos personalizados que impulsionaram significativamente o engajamento em Instagram e Twitter. Os posts sobre BTC, CRO e outras criptomoedas contribuíram para o crescimento da plataforma no Brasil, estabelecendo a Crypto.com como uma referência educativa no mercado cripto brasileiro.\n\nO resultado foi um aumento médio de mais de 210% nas curtidas em redes sociais, consolidando a presença da marca no mercado brasileiro.",
     detalhes_en: "The Challenge\n\nCrypto.com, one of the largest global exchanges, needed content that communicated simplicity and security to the Brazilian market. The challenge was to create posts that educated about cryptocurrencies in an accessible way, maintaining the credibility of the international brand.\n\nOur Strategy\n\nWe developed a multi-channel content strategy focused on education and engagement. We created personalized posts for Instagram and Twitter that explained complex concepts in simple ways, always aligned with Crypto.com's vision of simplicity and security.\n\n• Educational content about BTC, CRO and other cryptocurrencies\n• Posts aligned with simplicity and security vision\n• Multi-channel strategy (Instagram and Twitter)\n• Accessible language for Brazilian audience\n• Focus on education and engagement\n\nThe Result\n\nTailored content that significantly boosted engagement on Instagram and Twitter. Posts about BTC, CRO and other cryptocurrencies contributed to platform growth in Brazil, establishing Crypto.com as an educational reference in the Brazilian crypto market.\n\nThe result was an average increase of over 210% in social media likes, consolidating the brand's presence in the Brazilian market.",
-    depoimentos: "Nenhum depoimento específico sobre Kaleidos encontrado, mas a plataforma é elogiada por agências crypto em geral.",
+    depoimentos: "",
     links: ["https://www.instagram.com/cryptocomofficial/?hl=en", "https://twitter.com/cryptocom"],
     externalLink: "https://crypto.com",
     externalLabel: "Ver no site",
@@ -220,7 +314,7 @@ export const casesData: Record<string, CaseData> = {
     fraseImpactante_en: "1,000+ posts in 18 months, more than 3 per business day.",
     detalhes: "Desenvolvemos e executamos uma estratégia completa de conteúdo para o Mercado Bitcoin durante 18 meses consecutivos. Criamos mais de 1.000 posts originais para Instagram, Twitter e LinkedIn, em um ritmo de mais de 3 publicações por dia útil, cobrindo temas como economia digital, legislação pró-cripto, análises de mercado e educação financeira. Nossos conteúdos foram alinhados à visão da plataforma de tornar o mercado cripto acessível ao público brasileiro, resultando em engajamento significativo e fortalecimento da presença digital da marca. O trabalho incluiu criação de copywriting, design de posts, estratégia de calendário editorial e análise de performance para otimização contínua.",
     detalhes_en: "We developed and executed a complete content strategy for Mercado Bitcoin for 18 consecutive months. We created over 1,000 original posts for Instagram, Twitter and LinkedIn, at a pace of more than 3 publications per business day, covering topics like digital economy, pro‑crypto legislation, market analysis and financial education. Our content aligned with the platform’s mission to make crypto accessible to Brazilians, resulting in significant engagement and a stronger digital presence. Work included copywriting, post design, editorial calendar strategy and performance analysis for continuous optimization.",
-    depoimentos: "Nenhum específico sobre Kaleidos, mas elogios gerais à plataforma em buscas.",
+    depoimentos: "",
     links: ["https://www.mercadobitcoin.com.br/", "https://twitter.com/mercadobitcoin"],
     externalLink: "https://www.mercadobitcoin.com.br",
     externalLabel: "Ver no site",
@@ -242,24 +336,20 @@ export const casesData: Record<string, CaseData> = {
   "orlando": {
     id: "orlando",
     nome: "Orlando",
-    tags: ["Cripto", "Educação", "PDF"],
-    descricao: "Revisão e publicação de newsletter diária (crypto today), todos dias 7 da manhã, também escrevemos 3 ebooks, além da revisão e design do ebook",
-    descricao_en: "Review and publication of a daily newsletter (crypto today) at 7am, plus we wrote 3 ebooks and handled review and design.",
-    fraseImpactante: "3 ebooks educativos sobre crypto.",
-    fraseImpactante_en: "3 educational crypto ebooks.",
-    detalhes: "O Desafio\n\nO Orlando precisava de uma estratégia de conteúdo educativa consistente e profissional para estabelecer-se como referência em educação cripto. O desafio era criar materiais que fossem tanto informativos quanto visualmente atrativos, mantendo a qualidade e pontualidade na entrega.\n\nNossa Estratégia\n\nDesenvolvemos uma abordagem completa de educação cripto, incluindo newsletter diária e ebooks educativos. Criamos um sistema de publicação consistente e materiais visuais de alta qualidade que elevavam a credibilidade do conteúdo.\n\n• Newsletter diária publicada às 7h\n• 3 ebooks educativos sobre crypto\n• Design que elevou a qualidade visual\n• Revisão e edição de conteúdo\n• Estratégia de educação contínua\n\nO Resultado\n\nNewsletter publicada diariamente às 7h com conteúdo educativo de qualidade. 3 ebooks educativos sobre crypto que se tornaram referência no mercado. O design elevou significativamente a qualidade visual e legibilidade dos materiais.\n\nO projeto estabeleceu o Orlando como uma fonte confiável de educação cripto, com materiais que combinavam profundidade técnica e apresentação visual profissional.",
-    detalhes_en: "The Challenge\n\nOrlando needed a consistent and professional educational content strategy to establish himself as a reference in crypto education. The challenge was to create materials that were both informative and visually appealing, maintaining quality and punctuality in delivery.\n\nOur Strategy\n\nWe developed a complete crypto education approach, including daily newsletter and educational ebooks. We created a consistent publishing system and high-quality visual materials that elevated content credibility.\n\n• Daily newsletter published at 7am\n• 3 educational crypto ebooks\n• Design that elevated visual quality\n• Content review and editing\n• Continuous education strategy\n\nThe Result\n\nDaily newsletter published at 7am with quality educational content. 3 educational crypto ebooks that became market references. The design significantly elevated the visual quality and readability of materials.\n\nThe project established Orlando as a trusted source of crypto education, with materials that combined technical depth and professional visual presentation.",
-    depoimentos: "Nenhum encontrado, mas buscas destacam newsletters como fontes confiáveis.",
+    tags: ["Cripto", "Educação", "Newsletter"],
+    descricao: "Gestão completa da newsletter do Orlando por mais de um ano: pauta, redação, revisão e publicação recorrente de conteúdo educativo sobre o mercado cripto.",
+    descricao_en: "Full management of Orlando's newsletter for over a year: agenda, writing, editing and recurring publishing of educational crypto-market content.",
+    fraseImpactante: "Mais de um ano cuidando da newsletter, com publicação recorrente.",
+    fraseImpactante_en: "Over a year running the newsletter, with consistent recurring publishing.",
+    detalhes: "O Desafio\n\nO Orlando precisava de uma newsletter consistente para se relacionar com a audiência e se firmar como referência em educação cripto. Manter uma cadência recorrente sem perder qualidade editorial é onde a maioria dos projetos de newsletter trava: a entrega emperra na rotina, o conteúdo perde profundidade e a base esfria.\n\nNossa Estratégia\n\nAssumimos a operação completa da newsletter e cuidamos dela por mais de um ano. Estruturamos um processo editorial que garantia consistência na entrega e densidade no conteúdo, edição após edição.\n\n• Pauta e curadoria das principais notícias e movimentos do mercado cripto\n• Redação e revisão editorial de cada edição\n• Publicação recorrente, mantendo a cadência viva por mais de 12 meses\n• Foco em nutrição de audiência: relacionamento de longo prazo, não só envio\n• Linguagem acessível, transformando análise de mercado em conteúdo claro\n\nO Resultado\n\nUma newsletter rodando de forma consistente por mais de um ano, com a Kaleidos responsável por todo o ciclo editorial. A operação sustentou o relacionamento com a base e manteve o Orlando presente, de forma recorrente, na caixa de entrada da audiência cripto.",
+    detalhes_en: "The Challenge\n\nOrlando needed a consistent newsletter to nurture his audience and cement himself as a reference in crypto education. Keeping a recurring cadence without losing editorial quality is where most newsletter projects stall: delivery breaks under routine, content loses depth and the list goes cold.\n\nOur Strategy\n\nWe took over the full newsletter operation and ran it for over a year. We built an editorial process that ensured both consistency of delivery and density of content, issue after issue.\n\n• Agenda and curation of the main crypto-market news and movements\n• Writing and editorial review of every issue\n• Recurring publishing, keeping the cadence alive for over 12 months\n• Focus on audience nurturing: long-term relationship, not just sending\n• Accessible language, turning market analysis into clear content\n\nThe Result\n\nA newsletter running consistently for over a year, with Kaleidos responsible for the entire editorial cycle. The operation sustained the relationship with the list and kept Orlando present, recurrently, in the inbox of the crypto audience.",
+    depoimentos: "",
     links: [],
-    metricas: "3 ebooks educativos\n\nEstabelecemos o Orlando como uma fonte confiável de educação cripto através de conteúdo consistente e materiais educativos de alta qualidade.\n\n• 3 ebooks educativos sobre crypto\n• Newsletter diária às 7h\n• Design que elevou a qualidade visual\n• Estabelecimento como referência educativa\n• Materiais que combinam profundidade técnica e apresentação profissional\n\nA estratégia de educação contínua e materiais visuais de alta qualidade resultou no estabelecimento do Orlando como uma das principais referências em educação cripto no Brasil.",
-    metricas_en: "3 educational ebooks\n\nWe established Orlando as a trusted source of crypto education through consistent content and high-quality educational materials.\n\n• 3 educational crypto ebooks\n• Daily newsletter at 7am\n• Design that elevated visual quality\n• Establishment as educational reference\n• Materials that combine technical depth and professional presentation\n\nThe continuous education strategy and high-quality visual materials resulted in establishing Orlando as one of the main references in crypto education in Brazil.",
-    servicos: ["Newsletter diária", "Ebooks", "Design"],
-    servicos_en: ["Daily newsletter", "Ebooks", "Design"],
-    media: [
-      { src: "/Cases/orlando/conteudo/Ebook%20custódia.pdf", type: "pdf" },
-      { src: "/Cases/orlando/conteudo/Ebook%20de%20Opções%20e%20Realização%20de%20lucros.pdf", type: "pdf" },
-      { src: "/Cases/orlando/conteudo/Ebook%20DeFi%20e%20Airdrop.pdf", type: "pdf" },
-    ]
+    metricas: "Newsletter gerida por mais de um ano\n\nCuidamos de todo o ciclo editorial da newsletter do Orlando, do começo ao fim, por mais de doze meses consecutivos.\n\n• Mais de um ano de gestão contínua da newsletter\n• Pauta, redação, revisão e publicação a cargo da Kaleidos\n• Cadência recorrente mantida edição após edição\n• Foco em nutrição de audiência e relacionamento de longo prazo\n• Conteúdo educativo sobre o mercado cripto em linguagem acessível",
+    metricas_en: "Newsletter managed for over a year\n\nWe handled the entire editorial cycle of Orlando's newsletter, end to end, for more than twelve consecutive months.\n\n• Over a year of continuous newsletter management\n• Agenda, writing, editing and publishing handled by Kaleidos\n• Recurring cadence maintained issue after issue\n• Focus on audience nurturing and long-term relationship\n• Educational crypto-market content in accessible language",
+    servicos: ["Newsletter", "Copywriting", "Estratégia de conteúdo", "Revisão editorial"],
+    servicos_en: ["Newsletter", "Copywriting", "Content strategy", "Editorial review"],
+    media: []
   },
   "yasmin": {
     id: "yasmin",
@@ -267,16 +357,16 @@ export const casesData: Record<string, CaseData> = {
     tags: ["Influencer", "Reels"],
     descricao: "Edição de reels para criadora de conteúdo cripto.",
     descricao_en: "Reels editing for crypto content creator.",
-    fraseImpactante: "Edição de reels com animação para conteúdo cripto.",
-    fraseImpactante_en: "Reels editing with animation for crypto content.",
-    detalhes: "Edição de reels com técnicas de After Effects para conteúdo cripto no Instagram.",
-    detalhes_en: "Reels editing with After Effects techniques for crypto content on Instagram.",
+    fraseImpactante: "Reels animados de educação cripto, editados com After Effects.",
+    fraseImpactante_en: "Animated crypto-education reels, edited with After Effects.",
+    detalhes: "O Desafio\n\nA Yasmin produz conteúdo de educação cripto para o Instagram. O desafio é manter o conteúdo claro e dinâmico, traduzindo conceitos do mercado em reels que prendem a atenção logo nos primeiros segundos.\n\nNossa Estratégia\n\nAssumimos a edição dos reels com técnicas de motion e animação no After Effects: textos animados, destaques visuais e ritmo pensado para retenção em formato vertical.\n\n• Edição de reels com motion e animação (After Effects)\n• Textos e elementos animados para reforçar a mensagem\n• Ritmo e cortes otimizados para retenção\n• Linguagem visual acessível para o público de cripto\n\nO Resultado\n\nUma série de reels editados com identidade visual consistente e animação, que dão clareza e dinamismo ao conteúdo cripto da Yasmin.",
+    detalhes_en: "The Challenge\n\nYasmin creates crypto-education content for Instagram. The challenge is to keep the content clear and dynamic, translating market concepts into reels that grab attention in the first seconds.\n\nOur Strategy\n\nWe took over reel editing with motion and animation techniques in After Effects: animated text, visual highlights and pacing built for retention in vertical format.\n\n• Reel editing with motion and animation (After Effects)\n• Animated text and elements to reinforce the message\n• Pacing and cuts optimized for retention\n• Accessible visual language for the crypto audience\n\nThe Result\n\nA series of reels edited with consistent visual identity and animation, bringing clarity and dynamism to Yasmin's crypto content.",
     depoimentos: "",
     links: [],
-    metricas: "Edição de reels com After Effects para conteúdo cripto.",
-    metricas_en: "Reels editing with After Effects for crypto content.",
-    servicos: ["Edição de reels"],
-    servicos_en: ["Reels editing"],
+    metricas: "Reels animados de educação cripto\n\nEdição de uma série de reels de educação cripto para o Instagram da Yasmin, com motion e animação.\n\n• Reels editados com After Effects (motion e animação)\n• Textos e elementos animados\n• Cortes e ritmo otimizados para retenção\n• Linguagem visual consistente entre as peças",
+    metricas_en: "Animated crypto-education reels\n\nEditing a series of crypto-education reels for Yasmin's Instagram, with motion and animation.\n\n• Reels edited with After Effects (motion and animation)\n• Animated text and elements\n• Cuts and pacing optimized for retention\n• Consistent visual language across the pieces",
+    servicos: ["Edição de reels", "Motion graphics", "Animação"],
+    servicos_en: ["Reels editing", "Motion graphics", "Animation"],
     media: [
       { 
         src: "/Cases/yasmin/conteudo/Reels-1-Yasmin-1.mp4",
@@ -360,6 +450,63 @@ export const casesData: Record<string, CaseData> = {
         type: "video",
         poster: "/Cases/investidor-4-20/conteudo/posters/Reels-7-Lucas.jpg"
       },
+      // Reels virais do @lucas.amendolaa
+      // "Ganhar em dólar mudou minha vida" (208.247 views / 6.377 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — ganhar em dólar todos os dias",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-capa.jpg",
+        link: "https://www.instagram.com/reel/DZlGIGoRnew/"
+      },
+      // "Liberdade pela descentralização" (150.101 views / 6.348 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — liberdade pela descentralização",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg",
+        link: "https://www.instagram.com/reel/DTi3Re1Eox-/"
+      },
+      // "Eai, o que você faria?" (57.778 views / 1.289 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — o que você faria",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg",
+        link: "https://www.instagram.com/reel/DOO62uUEvMu/"
+      },
+      // "O mundo já usa blockchain" (52.747 views / 2.047 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — o mundo já usa blockchain",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg",
+        link: "https://www.instagram.com/reel/DO9ZQ2_kirU/"
+      },
+      // "A inflação age no silêncio" (25.769 views / 220 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — a inflação age no silêncio",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg",
+        link: "https://www.instagram.com/reel/DTWArqxkhuK/"
+      },
+      // "Renda em dólar > renda em real" (28.506 views / 731 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — foco no fundamento",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg",
+        link: "https://www.instagram.com/reel/DTQy_Bbkkzo/"
+      },
+      // "O próximo passo no mercado cripto" (13.190 views / 343 curtidas)
+      {
+        src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-reel.mp4",
+        type: "video",
+        alt: "Reel Lucas Amendola — o próximo passo no mercado cripto",
+        poster: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg",
+        link: "https://www.instagram.com/reel/DaBYpV9xK7S/"
+      },
       {
         src: "/Cases/lucas-amendola/estudo/pagina-captura.png",
         type: "image",
@@ -368,11 +515,27 @@ export const casesData: Record<string, CaseData> = {
       { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio1.png", type: "image" },
       { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio2.png", type: "image" },
       { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio3.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/pagina%20de%20captura/páginacaptura1.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/pagina%20de%20captura/páginacaptura2.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/pagina%20de%20captura/páginacaptura4.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/pagina%20de%20captura/páginacaptura5.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/pagina%20de%20captura/páginacaptura13.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura1.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura2.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura4.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura5.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura13.png", type: "image" },
+    ],
+    youtubeVideos: [
+      {
+        videoId: "zButbYGl0qo",
+        poster: "/Cases/_youtube-thumbs/lucas-yt-01.jpg",
+        src: "https://www.youtube.com/watch?v=zButbYGl0qo",
+        title: "O FED acaba de dar start no próximo ciclo de alta",
+        alt: "Investidor 4.20 — vídeo longo: o FED e o próximo ciclo de alta"
+      },
+      {
+        videoId: "S8eL_NN3G9c",
+        poster: "/Cases/_youtube-thumbs/lucas-yt-02.jpg",
+        src: "https://www.youtube.com/watch?v=S8eL_NN3G9c",
+        title: "Comprar Bitcoin agora vai mudar sua vida",
+        alt: "Investidor 4.20 — vídeo longo: comprar Bitcoin agora"
+      }
     ]
   },
   "paradigma-education": {
@@ -410,17 +573,17 @@ export const casesData: Record<string, CaseData> = {
       {
         src: "/Cases/paradigma/conteudo/20250717_PARADIGMA_01M20S_V2(1).mp4",
         type: "video",
-        poster: "/Cases/paradigma/conteudo/posters/20250717_PARADIGMA_01M20S_V2(1).jpg"
+        poster: "/Cases/paradigma/conteudo/posters/20250717_PARADIGMA_01M20S_V2-1.jpg"
       },
       {
         src: "/Cases/paradigma/conteudo/20250722_PARADIGMA_01M55S_V2(1).mp4",
         type: "video",
-        poster: "/Cases/paradigma/conteudo/posters/20250722_PARADIGMA_01M55S_V2(1).jpg"
+        poster: "/Cases/paradigma/conteudo/posters/20250722_PARADIGMA_01M55S_V2-1.jpg"
       },
       {
         src: "/Cases/paradigma/conteudo/20250801_PARADIGMA_00M40S_V1(1).mp4",
         type: "video",
-        poster: "/Cases/paradigma/conteudo/posters/20250801_PARADIGMA_00M40S_V1(1).jpg"
+        poster: "/Cases/paradigma/conteudo/posters/20250801_PARADIGMA_00M40S_V1-1.jpg"
       },
     ]
   },
@@ -444,15 +607,167 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Design posts", "Instagram Defiverso", "Newsletter Defiverso", "Curso 7 dias DeFi", "Twitter", "Resultados gerais"],
     servicos_en: ["Design posts", "Instagram Defiverso", "Newsletter Defiverso", "7 Days DeFi Course", "Twitter", "General results"],
     media: [
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso.png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso (1).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso (2).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso (3).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso (4).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Breaking news defiverso (5).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Posts defiverso.png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Posts defiverso (1).png", type: "image" },
-      { src: "/Cases/defiverso/conteudo/Posts defiverso (2).png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-1.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-2.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-3.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-4.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-5.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/posts-defiverso.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/posts-defiverso-1.png", type: "image" },
+      { src: "/Cases/defiverso/conteudo/posts-defiverso-2.png", type: "image" },
+      // Carrossel — "O próximo ciclo de alta" (350 curtidas / 2 comentários) — 7 slides
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Defiverso — o próximo ciclo de alta (capa)",
+        link: "https://www.instagram.com/p/DYM_0kqkXgl/"
+      },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-02.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (2/7)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-03.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (3/7)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-04.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (4/7)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-05.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (5/7)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-06.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (6/7)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-07.jpg", type: "image", alt: "Carrossel Defiverso — próximo ciclo (7/7)" },
+      // Carrossel — "8 motivos sobre o Bitcoin" (248 curtidas / 7 comentários) — 10 slides
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Defiverso — 8 motivos sobre o Bitcoin (capa)",
+        link: "https://www.instagram.com/p/DU8ZciOkcLo/"
+      },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-02.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (2/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-03.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (3/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-04.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (4/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-05.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (5/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-06.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (6/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-07.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (7/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-08.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (8/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-09.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (9/10)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-10.jpg", type: "image", alt: "Carrossel Defiverso — 8 motivos (10/10)" },
+      // Carrossel — "Resumo semanal: BTC nos $80k" (159 curtidas / 2 comentários) — 8 slides
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Defiverso — resumo semanal cripto (capa)",
+        link: "https://www.instagram.com/p/DYFTrH5jGL9/"
+      },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-02.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (2/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-03.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (3/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-04.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (4/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-05.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (5/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-06.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (6/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-07.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (7/8)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-08.jpg", type: "image", alt: "Carrossel Defiverso — resumo semanal (8/8)" },
+      // Carrossel — "Quem é Satoshi Nakamoto" (64 curtidas / 4 comentários) — 9 slides
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Defiverso — quem é Satoshi Nakamoto (capa)",
+        link: "https://www.instagram.com/p/DXeZ4I2EYiE/"
+      },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-02.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (2/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-03.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (3/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-04.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (4/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-05.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (5/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-06.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (6/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-07.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (7/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-08.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (8/9)" },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-09.jpg", type: "image", alt: "Carrossel Defiverso — Satoshi (9/9)" },
+      // Carrossel — "SpaceX e o impacto no mercado" (116 curtidas / 11 comentários) — 2 slides
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DZ7VRWKESte-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel Defiverso — SpaceX e o mercado (capa)",
+        link: "https://www.instagram.com/p/DZ7VRWKESte/"
+      },
+      { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DZ7VRWKESte-slide-02.jpg", type: "image", alt: "Carrossel Defiverso — SpaceX (2/2)" },
+      // Reel — origem da palavra "salário" (1.331 views / 46 curtidas)
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWR70VJEZ55-reel.mp4",
+        type: "video",
+        alt: "Reel Defiverso — a origem da palavra salário",
+        poster: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWR70VJEZ55-capa.jpg",
+        link: "https://www.instagram.com/reel/DWR70VJEZ55/"
+      },
+      // Reel — o surgimento do Bitcoin em 2008 (1.969 views / 35 curtidas)
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWFG0_kCUuF-reel.mp4",
+        type: "video",
+        alt: "Reel Defiverso — o nascimento do Bitcoin",
+        poster: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWFG0_kCUuF-capa.jpg",
+        link: "https://www.instagram.com/reel/DWFG0_kCUuF/"
+      },
+      // Reel — Nixon e o fim do padrão-ouro, 1971 (2.936 views / 88 curtidas)
+      {
+        src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU3yifAEYzs-reel.mp4",
+        type: "video",
+        alt: "Reel Defiverso — 1971, o fim do padrão-ouro",
+        poster: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU3yifAEYzs-capa.jpg",
+        link: "https://www.instagram.com/reel/DU3yifAEYzs/"
+      },
+      // Defifest 2025 — evento presencial do ecossistema Defiverso
+      {
+        src: "/Cases/investidor-4-20/conteudo/Palestrantes-Defifest-2025-Video-1.mp4",
+        type: "video",
+        alt: "Defifest 2025 — palestrantes do evento Defiverso",
+        poster: "/Cases/investidor-4-20/conteudo/posters/Palestrantes-Defifest-2025-Video-1.jpg",
+      },
+      // Newsletter Defiverso (Beehiiv) — capa de cada edicao, clicavel: abre a publicacao real.
+      {
+        src: "/Cases/defiverso/conteudo/news/news-privacidade-cripto.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — Como comprar, usar e movimentar cripto com mais privacidade",
+        link: "https://news.defiverso.com/p/como-comprar-usar-e-movimentar-cripto-com-mais-privacidade"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-fundo-bitcoin.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — Qual sera o preco do fundo do Bitcoin?",
+        link: "https://news.defiverso.com/p/qual-sera-o-preco-do-fundo-do-bitcoin"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-4-meses-bitcoin-barato.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — Voce tem 4 meses para comprar Bitcoin barato",
+        link: "https://news.defiverso.com/p/voce-tem-4-meses-para-comprar-bitcoin-barato"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-claude-cripto.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — Como usar o Claude para ganhar no mercado cripto do jeito certo",
+        link: "https://news.defiverso.com/p/como-usar-o-claude-para-ganhar-no-mercado-cripto-do-jeito-certo"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-narrativa-subestimada.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — A narrativa mais subestimada do mercado cripto e como se expor a ela",
+        link: "https://news.defiverso.com/p/a-narrativa-mais-subestimada-do-mercado-cripto-e-como-se-expor-a-ela"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-mudanca-no-fed.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — A mudanca no Fed que quase ninguem esta prestando atencao",
+        link: "https://news.defiverso.com/p/a-mudanc-a-no-fed-que-quase-ningue-m-esta-prestando-atenc-a-o"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-bitcoin-ethereum-explicados.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — Bitcoin e Ethereum explicados: as diferencas que todo investidor precisa entender",
+        link: "https://news.defiverso.com/p/bitcoin-e-ethereum-explicados-as-diferen-as-que-todo-investidor-cripto-precisa-entender"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-maior-risco-vindo.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — O mercado esta ignorando o maior risco que esta vindo",
+        link: "https://news.defiverso.com/p/o-mercado-esta-ignorando-o-maior-risco-que-esta-vindo"
+      },
+      {
+        src: "/Cases/defiverso/conteudo/news/news-computacao-quantica-bitcoin.webp",
+        type: "image",
+        alt: "Newsletter Defiverso — A computacao quantica vai destruir o Bitcoin?",
+        link: "https://news.defiverso.com/p/a-computac-a-o-qua-ntica-vai-destruir-o-bitcoin"
+      },
     ]
   },
   "ledger": {
@@ -475,14 +790,22 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Design", "Banners", "Display Ads", "Direção Criativa"],
     servicos_en: ["Design", "Banners", "Display Ads", "Creative Direction"],
     media: [
-      { src: "/Cases/ledger/conteudo/ledger-01.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-02.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-03.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-05.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-07.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-10.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-15.png", type: "image" },
-      { src: "/Cases/ledger/conteudo/ledger-20.png", type: "image" },
+      // Banners de Black Friday — 5 campanhas, formato largo (criativo), exibidos inteiros (sem corte).
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-ate-50-1600x360.webp", type: "image", alt: "Banner Ledger Black Friday: ate 50% de desconto e bonus em BTC" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-ganhe-90-btc-1600x360.webp", type: "image", alt: "Banner Ledger Black Friday: ganhe ate $90 em BTC" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-cashback-btc-1600x360.webp", type: "image", alt: "Banner Ledger Black Friday: cashback em BTC nas Stax e Flex" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-evolucao-metade-1600x360.webp", type: "image", alt: "Banner Ledger Black Friday: evolucao pela metade do preco" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-nano-x-50-1600x360.webp", type: "image", alt: "Banner Ledger Black Friday: Ledger Nano X com 50% de desconto" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-ate-50-860x360.webp", type: "image", alt: "Banner Ledger Black Friday (formato medio): ate 50% e bonus em BTC" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-cashback-btc-860x360.webp", type: "image", alt: "Banner Ledger Black Friday (formato medio): cashback em BTC" },
+      { src: "/Cases/ledger/conteudo/black-friday/ledger-bf-evolucao-metade-860x360.webp", type: "image", alt: "Banner Ledger Black Friday (formato medio): evolucao pela metade do preco" },
+      // Criativos originais da campanha.
+      { src: "/Cases/ledger/conteudo/ledger-03.png", type: "image", alt: "Criativo Ledger Black Friday" },
+      { src: "/Cases/ledger/conteudo/ledger-05.png", type: "image", alt: "Criativo Ledger Black Friday" },
+      { src: "/Cases/ledger/conteudo/ledger-07.png", type: "image", alt: "Criativo Ledger Black Friday" },
+      { src: "/Cases/ledger/conteudo/ledger-10.png", type: "image", alt: "Criativo Ledger Black Friday" },
+      { src: "/Cases/ledger/conteudo/ledger-15.png", type: "image", alt: "Criativo Ledger Black Friday" },
+      { src: "/Cases/ledger/conteudo/ledger-20.png", type: "image", alt: "Criativo Ledger Black Friday" },
     ]
   },
   "neobankless": {
@@ -493,18 +816,88 @@ export const casesData: Record<string, CaseData> = {
     descricao_en: "Built neobankless.com, produced manifesto videos and Instagram content strategy for the crypto-native fintech.",
     fraseImpactante: "Site, vídeos e conteúdo para a fintech cripto-nativa do Brasil.",
     fraseImpactante_en: "Website, videos and content for Brazil's crypto-native fintech.",
-    detalhes: "Desenvolvemos o site institucional neobankless.com, produzimos 4 vídeos de manifesto cinematográficos e criamos a estratégia de conteúdo para o Instagram da NBS.",
-    detalhes_en: "We built the neobankless.com institutional website, produced 4 cinematic manifesto videos and created the Instagram content strategy for NBS.",
+    detalhes: "O Desafio\n\nA Neobankless é uma fintech cripto-nativa de dólar digital num mercado onde a maioria das pessoas ainda associa cripto a especulação, não a uma ferramenta prática para dolarizar patrimônio e fugir de IOF e spread bancário. Era preciso explicar produto e benefício de forma clara, sem jargão, e construir presença consistente no Instagram.\n\nNossa Estratégia\n\nDesenvolvemos o site institucional neobankless.com, produzimos vídeos de manifesto cinematográficos (em versão horizontal e vertical) e estruturamos a operação de conteúdo do Instagram, com foco em carrosséis educativos e reels de manifesto.\n\n• Site institucional neobankless.com\n• Vídeos de manifesto em formato horizontal e vertical\n• Carrosséis educativos: cartão sem IOF, dolarização, cashback, custo invisível de anunciar\n• Reels de marca, ancorados na ideia de liberdade financeira\n• Linguagem direta, traduzindo um produto cripto em benefício concreto\n\nO Resultado\n\nUma base de conteúdo que explica o produto e diferencia a NBS: os carrosséis educativos puxam o engajamento mais qualificado (o de melhor desempenho, sobre o cartão, passou de 100 curtidas), enquanto o reel de manifesto sobre liberdade financeira é a peça de maior engajamento do perfil.",
+    detalhes_en: "The Challenge\n\nNeobankless is a crypto-native digital-dollar fintech in a market where most people still associate crypto with speculation, not with a practical tool to dollarize savings and escape IOF tax and bank spreads. The product and its benefit had to be explained clearly, without jargon, while building a consistent Instagram presence.\n\nOur Strategy\n\nWe built the neobankless.com institutional website, produced cinematic manifesto videos (horizontal and vertical versions) and structured the Instagram content operation, focused on educational carousels and manifesto reels.\n\n• neobankless.com institutional website\n• Manifesto videos in horizontal and vertical formats\n• Educational carousels: card with no IOF, dollarization, cashback, the invisible cost of advertising\n• Brand reels anchored on the idea of financial freedom\n• Direct language, turning a crypto product into a concrete benefit\n\nThe Result\n\nA content base that explains the product and differentiates NBS: the educational carousels drive the most qualified engagement (the best one, about the card, passed 100 likes), while the manifesto reel about financial freedom is the profile's highest-engagement piece.",
     depoimentos: "",
     links: ["https://neobankless.com", "https://www.instagram.com/neobankless/"],
     externalLink: "https://neobankless.com",
     externalLabel: "Ver no site",
     externalLabel_en: "Visit website",
-    metricas: "Site institucional + vídeos de manifesto + conteúdo para Instagram.",
-    metricas_en: "Institutional website + manifesto videos + Instagram content.",
+    metricas: "Site, vídeos e conteúdo educativo para Instagram\n\nSite institucional, vídeos de manifesto e uma operação de conteúdo no Instagram ancorada em carrosséis educativos e reels de marca.\n\n• Reel \"liberdade financeira\": 112 curtidas e 20 comentários (maior engajamento do perfil)\n• Carrossel \"4 motivos para usar o cartão\": 105 curtidas e 14 comentários\n• Carrossel \"anúncios sem IOF\" (ângulo B2B): 74 curtidas e 13 comentários\n• Carrossel \"IOF zero vs banco tradicional\": comparativo visual didático\n• Site institucional neobankless.com + vídeos de manifesto (horizontal e vertical)",
+    metricas_en: "Website, videos and educational Instagram content\n\nInstitutional website, manifesto videos and an Instagram content operation anchored on educational carousels and brand reels.\n\n• \"Financial freedom\" reel: 112 likes and 20 comments (profile's highest engagement)\n• \"4 reasons to use the card\" carousel: 105 likes and 14 comments\n• \"Ads with no IOF\" carousel (B2B angle): 74 likes and 13 comments\n• \"Zero IOF vs traditional bank\" carousel: didactic visual comparison\n• neobankless.com institutional website + manifesto videos (horizontal and vertical)",
     servicos: ["Desenvolvimento web", "Edição de vídeo", "Roteiro", "Social Media", "Design"],
     servicos_en: ["Web development", "Video editing", "Scripting", "Social Media", "Design"],
     media: [
+      // Reel de manifesto — maior engajamento do perfil (112 curtidas / 20 comentários)
+      {
+        src: "/Cases/neobankless/conteudo/instagram/reel-liberdade.mp4",
+        type: "video",
+        alt: "Reel NBS — Liberdade financeira",
+        poster: "/Cases/neobankless/conteudo/instagram-novos/nbs-reel-liberdade-capa.jpg",
+        link: "https://www.instagram.com/neobankless/reel/DT21DSFjTtQ/"
+      },
+      // Carrossel — 4 motivos para usar o cartão (105 curtidas / 14 comentários) — 6 slides
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — 4 motivos para usar o cartão (capa)",
+        link: "https://www.instagram.com/p/DT-pchnDWHz/"
+      },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-02.jpg", type: "image", alt: "Carrossel NBS — cartão (2/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-03.jpg", type: "image", alt: "Carrossel NBS — cartão (3/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-04.jpg", type: "image", alt: "Carrossel NBS — cartão (4/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-05.jpg", type: "image", alt: "Carrossel NBS — cartão (5/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-cartao-slide-06.jpg", type: "image", alt: "Carrossel NBS — cartão (6/6)" },
+      // Carrossel — Anúncios sem IOF (74 curtidas / 13 comentários) — 6 slides
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — Anúncios sem IOF (capa)",
+        link: "https://www.instagram.com/p/DVrTgn7FLQo/"
+      },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-02.jpg", type: "image", alt: "Carrossel NBS — anúncios (2/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-03.jpg", type: "image", alt: "Carrossel NBS — anúncios (3/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-04.jpg", type: "image", alt: "Carrossel NBS — anúncios (4/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-05.jpg", type: "image", alt: "Carrossel NBS — anúncios (5/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-06.jpg", type: "image", alt: "Carrossel NBS — anúncios (6/6)" },
+      // Carrossel — IOF zero vs banco tradicional — 6 slides
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — IOF zero vs banco tradicional (capa)",
+        link: "https://www.instagram.com/p/DVebsRFEZBD/"
+      },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-02.jpg", type: "image", alt: "Carrossel NBS — IOF (2/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-03.jpg", type: "image", alt: "Carrossel NBS — IOF (3/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-04.jpg", type: "image", alt: "Carrossel NBS — IOF (4/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-05.jpg", type: "image", alt: "Carrossel NBS — IOF (5/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-iof-slide-06.jpg", type: "image", alt: "Carrossel NBS — IOF (6/6)" },
+      // Carrossel — Como dolarizar patrimônio — 6 slides
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — Como dolarizar patrimônio (capa)",
+        link: "https://www.instagram.com/p/DV1mkzJFOYo/"
+      },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-02.jpg", type: "image", alt: "Carrossel NBS — dolarizar (2/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-03.jpg", type: "image", alt: "Carrossel NBS — dolarizar (3/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-04.jpg", type: "image", alt: "Carrossel NBS — dolarizar (4/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-05.jpg", type: "image", alt: "Carrossel NBS — dolarizar (5/6)" },
+      { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-dolarizar-slide-06.jpg", type: "image", alt: "Carrossel NBS — dolarizar (6/6)" },
+      // Posts estáticos
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-post-cashback.jpg",
+        type: "image",
+        alt: "Post NBS — Cashback em viagens",
+        link: "https://www.instagram.com/p/DVjmFzjk-z1/"
+      },
+      {
+        src: "/Cases/neobankless/conteudo/instagram-novos/nbs-post-global.jpg",
+        type: "image",
+        alt: "Post NBS — App disponível globalmente",
+        link: "https://www.instagram.com/p/DUGpxyKETYN/"
+      },
+      // Vídeos de manifesto (site/marca)
       {
         src: "/Cases/neobankless/conteudo/manifesto-1.mp4",
         type: "video",
@@ -512,65 +905,76 @@ export const casesData: Record<string, CaseData> = {
         poster: "/Cases/neobankless/conteudo/posters/manifesto-1.jpg"
       },
       {
-        src: "/Cases/neobankless/conteudo/manifesto-1-vertical.mp4",
-        type: "video",
-        alt: "Manifesto NBS #1 (vertical)",
-        poster: "/Cases/neobankless/conteudo/posters/manifesto-1-vertical.jpg"
-      },
-      {
         src: "/Cases/neobankless/conteudo/manifesto-2.mp4",
         type: "video",
         alt: "Manifesto NBS #2 (landscape)",
         poster: "/Cases/neobankless/conteudo/posters/manifesto-2.jpg"
       },
+      // Carrossel — Founders Club, como usar a plataforma (77 curtidas / 20 comentários) — 7 slides
       {
-        src: "/Cases/neobankless/conteudo/manifesto-2-vertical.mp4",
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — Founders Club (capa)",
+        link: "https://www.instagram.com/p/DW4jBtalLbH/"
+      },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-02.jpg", type: "image", alt: "Carrossel NBS — Founders Club (2/7)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-03.jpg", type: "image", alt: "Carrossel NBS — Founders Club (3/7)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-04.jpg", type: "image", alt: "Carrossel NBS — Founders Club (4/7)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-05.jpg", type: "image", alt: "Carrossel NBS — Founders Club (5/7)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-06.jpg", type: "image", alt: "Carrossel NBS — Founders Club (6/7)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DW4jBtalLbH-slide-07.jpg", type: "image", alt: "Carrossel NBS — Founders Club (7/7)" },
+      // Carrossel — Dólar abaixo de R$5 e a tese de dolarizar (28 curtidas / 4 comentários) — 5 slides
+      {
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXXheV_FNb4-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — dólar abaixo de R$5 (capa)",
+        link: "https://www.instagram.com/p/DXXheV_FNb4/"
+      },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXXheV_FNb4-slide-02.jpg", type: "image", alt: "Carrossel NBS — dólar (2/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXXheV_FNb4-slide-03.jpg", type: "image", alt: "Carrossel NBS — dólar (3/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXXheV_FNb4-slide-04.jpg", type: "image", alt: "Carrossel NBS — dólar (4/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXXheV_FNb4-slide-05.jpg", type: "image", alt: "Carrossel NBS — dólar (5/5)" },
+      // Carrossel — A evolução de como protegemos o dinheiro (37 curtidas / 9 comentários) — 5 slides
+      {
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXpdHTnkT2T-slide-01.jpg",
+        type: "image",
+        alt: "Carrossel NBS — a evolução do refúgio do dinheiro (capa)",
+        link: "https://www.instagram.com/p/DXpdHTnkT2T/"
+      },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXpdHTnkT2T-slide-02.jpg", type: "image", alt: "Carrossel NBS — refúgio (2/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXpdHTnkT2T-slide-03.jpg", type: "image", alt: "Carrossel NBS — refúgio (3/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXpdHTnkT2T-slide-04.jpg", type: "image", alt: "Carrossel NBS — refúgio (4/5)" },
+      { src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXpdHTnkT2T-slide-05.jpg", type: "image", alt: "Carrossel NBS — refúgio (5/5)" },
+      // Reel — quem controla seu dinheiro no sistema tradicional (4.388 views / 86 curtidas)
+      {
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXZ3k8nE_yA-reel.mp4",
         type: "video",
-        alt: "Manifesto NBS #2 (vertical)",
-        poster: "/Cases/neobankless/conteudo/posters/manifesto-2-vertical.jpg"
+        alt: "Reel NBS — quem controla o seu dinheiro",
+        poster: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXZ3k8nE_yA-capa.jpg",
+        link: "https://www.instagram.com/reel/DXZ3k8nE_yA/"
       },
+      // Reel — a centralização do sistema financeiro (3.971 views / 81 curtidas)
       {
-        src: "/Cases/neobankless/conteudo/instagram/reel-liberdade.mp4",
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXchr_Kk-HU-reel.mp4",
         type: "video",
-        alt: "Reel NBS — Liberdade financeira",
-        poster: "/Cases/neobankless/conteudo/instagram/reel-liberdade-poster.jpg",
-        link: "https://www.instagram.com/neobankless/reel/DT21DSFjTtQ/"
+        alt: "Reel NBS — a centralização do sistema financeiro",
+        poster: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXchr_Kk-HU-capa.jpg",
+        link: "https://www.instagram.com/reel/DXchr_Kk-HU/"
       },
+      // Reel — desafio do cartão NBS (1.727 views / 26 curtidas)
       {
-        src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg",
-        type: "image",
-        alt: "Post NBS — Como dolarizar patrimônio",
-        link: "https://www.instagram.com/neobankless/p/DV1mkzJFOYo/"
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DWmjDO3k5lt-reel.mp4",
+        type: "video",
+        alt: "Reel NBS — desafio do cartão",
+        poster: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DWmjDO3k5lt-capa.jpg",
+        link: "https://www.instagram.com/reel/DWmjDO3k5lt/"
       },
+      // Post estático — onde investir começa pelo entendimento (32 curtidas / 7 comentários)
       {
-        src: "/Cases/neobankless/conteudo/instagram/post-anuncios.jpg",
+        src: "/Cases/neobankless/conteudo/portfolio-novos/dfv-DXzOESHFHVj-slide-01.jpg",
         type: "image",
-        alt: "Post NBS — Anúncios sem IOF",
-        link: "https://www.instagram.com/neobankless/p/DVrTgn7FLQo/"
-      },
-      {
-        src: "/Cases/neobankless/conteudo/instagram/post-cashback.jpg",
-        type: "image",
-        alt: "Post NBS — Cashback em viagens",
-        link: "https://www.instagram.com/neobankless/p/DVjmFzjk-z1/"
-      },
-      {
-        src: "/Cases/neobankless/conteudo/instagram/post-iof.jpg",
-        type: "image",
-        alt: "Post NBS — IOF zero vs banco tradicional",
-        link: "https://www.instagram.com/neobankless/p/DVebsRFEZBD/"
-      },
-      {
-        src: "/Cases/neobankless/conteudo/instagram/post-global.jpg",
-        type: "image",
-        alt: "Post NBS — App disponível globalmente",
-        link: "https://www.instagram.com/neobankless/p/DUGpxyKETYN/"
-      },
-      {
-        src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg",
-        type: "image",
-        alt: "Post NBS — 4 motivos para usar o cartão",
-        link: "https://www.instagram.com/neobankless/p/DT-pchnDWHz/"
+        alt: "Post NBS — investir começa com entendimento",
+        link: "https://www.instagram.com/p/DXzOESHFHVj/"
       }
     ]
   },
@@ -578,22 +982,38 @@ export const casesData: Record<string, CaseData> = {
     id: "hugo-doria",
     nome: "Hugo Dória",
     tags: ["IA", "Desenvolvimento", "Reels", "Vídeo"],
-    descricao: "Edição de reels e vídeos sobre IA, Cursor, Claude Code e vibe coding.",
-    descricao_en: "Reels and video editing about AI, Cursor, Claude Code and vibe coding.",
-    fraseImpactante: "Edição de reels e vídeos sobre IA e desenvolvimento.",
-    fraseImpactante_en: "Reels and video editing about AI and development.",
-    detalhes: "Edição de reels e vídeos para YouTube sobre IA, vibe coding e ferramentas como Cursor, Claude Code e Lovable. Conteúdo técnico com edição dinâmica.",
-    detalhes_en: "Reels and YouTube video editing about AI, vibe coding, and tools like Cursor, Claude Code and Lovable. Technical content with dynamic editing.",
+    descricao: "Edição de reels educativos sobre IA prática, vibe coding e ferramentas como Cursor, Claude Code e Lovable, para uma audiência de devs e empreendedores.",
+    descricao_en: "Editing educational reels about practical AI, vibe coding and tools like Cursor, Claude Code and Lovable, for an audience of developers and entrepreneurs.",
+    fraseImpactante: "Reels de IA prática e vibe coding para devs e empreendedores.",
+    fraseImpactante_en: "Practical-AI and vibe-coding reels for devs and entrepreneurs.",
+    detalhes: "O Desafio\n\nO Hugo Dória produz conteúdo sobre IA aplicada ao desenvolvimento: vibe coding, build-alongs e reviews de ferramentas como Cursor, Claude Code, Lovable e n8n. O desafio é transformar temas técnicos, que normalmente afastam quem não é dev, em reels verticais de ritmo rápido que prendem tanto o programador quanto o empreendedor que quer aplicar IA no negócio.\n\nNossa Estratégia\n\nAssumimos a edição dos reels com foco em retenção: cortes dinâmicos, destaque visual dos comandos e telas, e um ritmo que mantém o espectador até o fim mesmo em conteúdo denso. Cada vídeo é pensado para ser claro no celular, em formato vertical 1080x1920.\n\n• Edição de reels verticais sobre IA prática e vibe coding\n• Destaque de código, prompts e telas de ferramentas (Cursor, Claude Code, Lovable)\n• Cortes e ritmo otimizados para retenção em formato curto\n• Conteúdo técnico traduzido em linguagem acessível para dev e empreendedor\n\nO Resultado\n\nUma série de reels educativos que mantêm a profundidade técnica do Hugo enquanto ganham o ritmo e a clareza visual que o formato curto exige, reforçando seu posicionamento como referência em IA prática e vibe coding.",
+    detalhes_en: "The Challenge\n\nHugo Dória creates content about AI applied to development: vibe coding, build-alongs and reviews of tools like Cursor, Claude Code, Lovable and n8n. The challenge is to turn technical topics, which usually push away non-devs, into fast-paced vertical reels that hold both the programmer and the entrepreneur who wants to apply AI to their business.\n\nOur Strategy\n\nWe took over reel editing with a focus on retention: dynamic cuts, visual emphasis on commands and screens, and a pace that keeps viewers to the end even with dense content. Every video is built to be clear on mobile, in vertical 1080x1920 format.\n\n• Editing of vertical reels about practical AI and vibe coding\n• Emphasis on code, prompts and tool screens (Cursor, Claude Code, Lovable)\n• Cuts and pacing optimized for short-form retention\n• Technical content translated into accessible language for devs and entrepreneurs\n\nThe Result\n\nA series of educational reels that keep Hugo's technical depth while gaining the pace and visual clarity that short-form demands, reinforcing his positioning as a reference in practical AI and vibe coding.",
     depoimentos: "",
     links: ["https://www.instagram.com/hugodoria_dev/"],
     externalLink: "https://www.instagram.com/hugodoria_dev/",
     externalLabel: "Ver no Instagram",
     externalLabel_en: "See on Instagram",
-    metricas: "Edição de reels e vídeos de YouTube sobre IA e desenvolvimento.",
-    metricas_en: "Reels and YouTube video editing about AI and development.",
+    metricas: "Reels educativos de IA prática e vibe coding\n\nEdição de uma série de reels verticais sobre IA aplicada ao desenvolvimento, para a audiência de devs e empreendedores do Hugo Dória.\n\n• Reels verticais 1080x1920 sobre IA prática e vibe coding\n• Ferramentas em destaque: Cursor, Claude Code, Lovable, n8n\n• Edição com cortes dinâmicos e foco em retenção\n• Conteúdo técnico em linguagem acessível\n• Formato curto pensado para consumo no celular",
+    metricas_en: "Educational reels on practical AI and vibe coding\n\nEditing a series of vertical reels about AI applied to development, for Hugo Dória's audience of devs and entrepreneurs.\n\n• Vertical 1080x1920 reels on practical AI and vibe coding\n• Featured tools: Cursor, Claude Code, Lovable, n8n\n• Editing with dynamic cuts and a focus on retention\n• Technical content in accessible language\n• Short-form built for mobile consumption",
     servicos: ["Edição de vídeo", "Edição de reels", "Motion graphics"],
     servicos_en: ["Video editing", "Reels editing", "Motion graphics"],
-    media: []
+    media: [
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-01.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-01.jpg", alt: "Hugo Dória — reel IA prática 01" },
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-02.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-02.jpg", alt: "Hugo Dória — reel IA prática 02" },
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-03.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-03.jpg", alt: "Hugo Dória — reel IA prática 03" },
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-04.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-04.jpg", alt: "Hugo Dória — reel IA prática 04" },
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-05.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-05.jpg", alt: "Hugo Dória — reel IA prática 05" },
+      { src: "/Cases/hugo-doria/conteudo/hugo-reel-06.mp4", type: "video", poster: "/Cases/hugo-doria/conteudo/posters/hugo-reel-06.jpg", alt: "Hugo Dória — reel IA prática 06" }
+    ],
+    youtubeVideos: [
+      {
+        videoId: "5CvJqBTRm5M",
+        poster: "/Cases/_youtube-thumbs/hugo-yt-01.jpg",
+        src: "https://www.youtube.com/watch?v=5CvJqBTRm5M",
+        title: "Por que seu site feito com IA nunca parece profissional",
+        alt: "Hugo Dória — vídeo longo: site feito com IA"
+      }
+    ]
   },
   "buenas-ideias": {
     id: "buenas-ideias",
@@ -755,10 +1175,33 @@ export const casesData: Record<string, CaseData> = {
     servicos_en: ["E-mail Marketing", "Newsletter", "Copywriting", "Content strategy", "LinkedIn", "Thought Leadership"],
     media: [
       { src: "/Cases/dsec/site/landing-1.png", type: "image", alt: "DSEC Labs — landing page" },
-      { src: "/Cases/dsec/emails/dia1-kyc-leak.jpg", type: "image", alt: "DSEC — e-mail mini-curso dia 1" },
-      { src: "/Cases/dsec/conteudo/drex-cbdc-vigilancia.jpg", type: "image", alt: "DSEC — Drex vs Bitcoin" },
       { src: "/Cases/dsec/site/landing-2.png", type: "image", alt: "DSEC Labs — landing page" },
-      { src: "/Cases/dsec/site/landing-3.png", type: "image", alt: "DSEC Labs — landing page" }
+      { src: "/Cases/dsec/site/landing-3.png", type: "image", alt: "DSEC Labs — landing page" },
+      // Posts de LinkedIn (criativos) — cada imagem abre a publicacao real ao clicar.
+      {
+        src: "/Cases/dsec/conteudo/linkedin/dsec-li-stablecoins.webp",
+        type: "image",
+        alt: "DSEC no LinkedIn — Stablecoins e liquidacao global: USDT e USDC criando um trilho paralelo ao SWIFT",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7475540793039052800/"
+      },
+      {
+        src: "/Cases/dsec/conteudo/linkedin/dsec-li-etfs.jpg",
+        type: "image",
+        alt: "DSEC no LinkedIn — ETFs de Bitcoin nos EUA somam US$ 77 bilhoes",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7471204270093160448/"
+      },
+      {
+        src: "/Cases/dsec/conteudo/linkedin/dsec-li-drex.webp",
+        type: "image",
+        alt: "DSEC no LinkedIn — Regulacao cripto no Brasil em 2026: Drex e as novas resolucoes do BCB",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7473005800735793152/"
+      },
+      {
+        src: "/Cases/dsec/conteudo/linkedin/dsec-li-rastreio.jpg",
+        type: "image",
+        alt: "DSEC no LinkedIn — No Brasil, o caminho entre a corretora e a carteira agora e rastreado de ponta a ponta",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7473766107712061440/"
+      }
     ]
   },
   "alfred": {
@@ -772,7 +1215,7 @@ export const casesData: Record<string, CaseData> = {
     detalhes: "O Desafio\n\nA Alfred P2P precisava de um rosto e uma voz. Não um logo frio, mas um personagem com quem a comunidade cripto brasileira se identificasse, capaz de falar de segurança e self-custody sem soar corporativo nem vender medo.\n\nNossa Estratégia\n\nCriamos o Alfred: um personagem cripto-nativo com identidade visual consistente, gerada por IA (Gemini / nano banana), em dezenas de cenas, do gm matinal ao wrench attack. Em paralelo, estruturamos a operação de conteúdo no Twitter/X com uma voz reply-guy em PT-BR lowercase, direta e sem jargão.\n\n• Identidade visual da persona gerada por IA (20+ cenas)\n• Biblioteca de imagens temáticas reaproveitáveis\n• Voz e roteiro de tweets diários (segurança, privacidade, educação)\n• Regras de marca: zero altcoin, zero promessa financeira, KYC simplificado\n\nO Resultado\n\nUma persona pronta para escalar: rosto reconhecível, biblioteca visual coesa e um fluxo de tweets que transforma temas áridos de segurança Bitcoin em conteúdo leve, memável e fiel à marca.",
     detalhes_en: "The Challenge\n\nAlfred P2P needed a face and a voice. Not a cold logo, but a character the Brazilian crypto community could identify with, able to talk about security and self-custody without sounding corporate or selling fear.\n\nOur Strategy\n\nWe created Alfred: a crypto-native character with a consistent AI-generated visual identity (Gemini / nano banana), across dozens of scenes, from the morning gm to the wrench attack. In parallel, we structured the Twitter/X content operation with a PT-BR lowercase reply-guy voice, direct and jargon-free.\n\n• AI-generated persona visual identity (20+ scenes)\n• Reusable themed image library\n• Voice and daily tweet scripting (security, privacy, education)\n• Brand rules: zero altcoins, zero financial promises, simplified KYC\n\nThe Result\n\nA persona ready to scale: a recognizable face, a cohesive visual library, and a tweet flow that turns dry Bitcoin-security topics into light, meme-able, on-brand content.",
     depoimentos: "",
-    links: ["https://www.alfredp2p.io", "https://x.com/alfredp2p"],
+    links: ["https://www.alfredp2p.io", "https://x.com/alfredp2p", "http://curso.alfredp2p.io/"],
     externalLink: "https://www.alfredp2p.io",
     externalLabel: "Ver no site",
     externalLabel_en: "Visit website",
@@ -781,10 +1224,28 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Identidade visual", "Geração por IA", "Twitter", "Reply Guy", "Copywriting", "Social Media"],
     servicos_en: ["Visual identity", "AI generation", "Twitter", "Reply Guy", "Copywriting", "Social Media"],
     media: [
-      { src: "/Cases/alfred/conteudo/alfred-gm-coffee.jpg", type: "image", alt: "Alfred — gm coffee" },
-      { src: "/Cases/alfred/conteudo/alfred-self-custody.jpg", type: "image", alt: "Alfred — self custody" },
-      { src: "/Cases/alfred/conteudo/alfred-vs-hacker.jpg", type: "image", alt: "Alfred vs hacker" },
-      { src: "/Cases/alfred/conteudo/alfred-wrench-attack.jpg", type: "image", alt: "Alfred — wrench attack" }
+      // 10 imagens aprovadas da persona Alfred (geradas por IA, .webp sem corte).
+      // Substituem as 4 antigas (gm-coffee / self-custody / vs-hacker / wrench-attack).
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-01.webp", type: "image", alt: "Alfred — gm com cafe (persona assinatura)" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-02.webp", type: "image", alt: "Alfred patriota com a bandeira do Brasil no Maracana" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-03.webp", type: "image", alt: "Alfred no carnaval da Sapucai" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-04.webp", type: "image", alt: "Alfred em Toquio cyberpunk na chuva neon" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-05.webp", type: "image", alt: "Alfred manuseando uma hardware wallet (self-custody)" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-06.webp", type: "image", alt: "Alfred meditando: not your keys, not your coins" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-07.webp", type: "image", alt: "Alfred num cafe em Havana: stack sats" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-08.webp", type: "image", alt: "Alfred vs Mario: bloco vira Bitcoin" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-09.webp", type: "image", alt: "Alfred vs fiscal do Drex: soberania acima de vigilancia" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-10.webp", type: "image", alt: "Alfred operario numa fazenda de mineracao de Bitcoin" },
+      // Landing do curso Alfred P2P (item clicavel: abre a pagina real do curso).
+      {
+        src: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-05.webp",
+        type: "image",
+        alt: "Curso Alfred P2P (curso.alfredp2p.io) — clique para acessar a landing",
+        link: "http://curso.alfredp2p.io/"
+      },
+      // Prints de tweets reais do Alfred (@AlfredSpaceBR), exibidos inteiros, sem corte.
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-tweet-bitcoin.jpg", type: "image", alt: "Tweet do Alfred: por que voce compra Bitcoin? (so valem respostas erradas)" },
+      { src: "/Cases/alfred/conteudo/aprovadas/alfred-tweet-selfcustody.jpg", type: "image", alt: "Tweet do Alfred: Brasil torna obrigatorio o reporte de self-custody" }
     ]
   }
 };
@@ -792,6 +1253,7 @@ export const casesData: Record<string, CaseData> = {
 // Fonte única de verdade para listagem (cards clicáveis) e sitemap (evita URLs 404).
 // Os demais cases em casesData são tratados como "Em breve" (sem rota ainda).
 export const ROUTED_CASE_IDS: string[] = [
+  "kaleidos",
   "investidor-4-20",
   "neobankless",
   "dsec",

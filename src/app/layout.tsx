@@ -12,6 +12,10 @@ import { LeadPopup } from "@/components/lead-popup";
 import "./globals.css";
 
 // Fontes locais otimizadas
+//
+// Perf mobile (2026-07): a Atelier é a fonte do <h1> do hero = elemento LCP.
+// É a ÚNICA que precisa de preload no caminho crítico. next/font já injeta o
+// <link rel="preload" fetchpriority> com o arquivo hasheado quando preload:true.
 const atelier = localFont({
   src: [
     {
@@ -22,8 +26,13 @@ const atelier = localFont({
   ],
   variable: '--font-atelier',
   display: 'swap',
+  preload: true, // LCP font — prioridade máxima no head
 });
 
+// Inter (corpo) e Gridlite (labels): NÃO precisam pintar antes do LCP.
+// preload:false tira ~730KB (Inter normal+italic) + 49KB da fila do caminho
+// crítico no Moto G/4G, liberando banda pra Atelier trocar o h1 mais cedo.
+// display:swap já mostra o fallback imediatamente; as fontes trocam ao chegar.
 const inter = localFont({
   src: [
     {
@@ -39,6 +48,7 @@ const inter = localFont({
   ],
   variable: '--font-inter',
   display: 'swap',
+  preload: false,
 });
 
 const gridlite = localFont({
@@ -51,6 +61,7 @@ const gridlite = localFont({
   ],
   variable: '--font-gridlite',
   display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {

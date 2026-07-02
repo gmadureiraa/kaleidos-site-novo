@@ -40,10 +40,11 @@ function useFaqData(t: ReturnType<typeof useI18n>["t"]) {
   ]), [t]);
 }
 
-export default function FAQSection() {
+export default function FAQSection({ variant = "default" }: { variant?: "default" | "kaleidos" }) {
   const { t } = useI18n();
   const faqData = useFaqData(t);
   const [openIndex, setOpenIndex] = useState(0);
+  const k = variant === "kaleidos";
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -53,6 +54,13 @@ export default function FAQSection() {
   const renderStyledHeading = (text: string) => {
     const parts = text.split(" ");
     const last = parts.pop();
+    if (k) {
+      return (
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[0.98]" style={{ fontFamily: "Atelier, sans-serif", color: "#14110D" }}>
+          {parts.join(" ")} <span style={{ color: "#D262B2" }}>{last}</span>
+        </h2>
+      );
+    }
     return (
       <div className="text-3xl sm:text-4xl font-bold text-black font-display tracking-tight leading-tight">
         <div>{parts.join(" ")}</div>
@@ -65,6 +73,78 @@ export default function FAQSection() {
 
   // Gerar FAQ schema para SEO
   const faqSchema = generateFAQSchema(faqData);
+
+  if (k) {
+    return (
+      <section id="faq" className="w-full py-16 sm:py-20 px-6" style={{ background: "#FAFAFA", borderTop: "2px solid #14110D" }}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-7">
+            <span style={{ fontFamily: "Gridlite, monospace", fontSize: 12, letterSpacing: "3px", textTransform: "uppercase", color: "#3d9e32", fontWeight: 700 }}>
+              Perguntas frequentes
+            </span>
+            <div className="mt-3">{renderStyledHeading(t("faq", "heading"))}</div>
+          </div>
+          <div className="space-y-4">
+            {faqData.map((item, index) => {
+              const isOpen = openIndex === index;
+              const answerArray = Array.isArray(item.answer) ? item.answer : [item.answer];
+              const accent = index % 2 === 0 ? "#7CF067" : "#D262B2";
+              return (
+                <div
+                  key={index}
+                  style={{ background: "#fff", border: "1.5px solid #14110D", borderRadius: 16, boxShadow: isOpen ? `5px 5px 0 ${accent}` : "3px 3px 0 #14110D", transition: "box-shadow .25s ease" }}
+                >
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full text-left flex items-center justify-between px-5 py-4 sm:px-6 sm:py-5 focus:outline-none"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                    aria-label={isOpen ? `Fechar: ${item.question}` : `Abrir: ${item.question}`}
+                  >
+                    <h3 id={`faq-question-${index}`} className="text-base sm:text-lg font-bold pr-4" style={{ fontFamily: "Atelier, sans-serif", color: "#14110D" }}>
+                      {item.question}
+                    </h3>
+                    <motion.div
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="flex-shrink-0 w-8 h-8 inline-flex items-center justify-center"
+                      style={{ background: accent, border: "1.5px solid #14110D", borderRadius: 999, color: "#14110D" }}
+                      aria-hidden="true"
+                    >
+                      <Plus className="w-4 h-4" strokeWidth={2.5} />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                        role="region"
+                        aria-labelledby={`faq-question-${index}`}
+                      >
+                        <div className="px-5 sm:px-6 pb-5 pt-1 space-y-3">
+                          {answerArray.map((paragraph, pIndex) => (
+                            <p key={pIndex} className="leading-relaxed text-sm sm:text-base" style={{ color: "#6b6258" }}>
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="faq" className="w-full bg-neutral-100 py-16 sm:py-20 px-6">

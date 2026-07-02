@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Download, Check, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Paper } from "@/lib/papers-data";
 import { getLeadMetadata } from "@/lib/lead-meta";
+import { track } from "@/lib/analytics";
 
 const STORAGE_KEY = "kld_papers_unlocked";
 
@@ -42,6 +43,7 @@ export function PaperGate({ paper, articleHtml }: { paper: Paper; articleHtml?: 
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
+      track("lead_captured", { source: "paper-gate", paper_slug: paper.slug });
       try {
         localStorage.setItem(STORAGE_KEY, "1");
       } catch {}

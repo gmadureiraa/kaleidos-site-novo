@@ -250,17 +250,18 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
   return (
     <>
       {/* Carrossel Principal - Responsivo */}
-      <div className="relative group case-carousel-container">
+      <div className="relative group case-carousel-container overflow-hidden">
         {/* Loading state */}
         {!isVisible && (
           <div className="flex justify-center items-center space-x-2 sm:space-x-4 px-4 sm:px-8">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="flex-shrink-0">
-                <div 
-                  className="bg-gray-200 animate-pulse rounded-xl"
+              <div key={i} className={`flex-shrink-0 ${i !== 1 ? "hidden sm:block" : ""}`}>
+                <div
+                  className="bg-gray-200 animate-pulse rounded-xl w-full max-w-[280px]"
                   style={{
                     aspectRatio: aspectRatio,
                     width: isReelsFormat ? (i === 1 ? "280px" : "180px") : "200px",
+                    maxWidth: "100%",
                     height: "auto",
                   }}
                 />

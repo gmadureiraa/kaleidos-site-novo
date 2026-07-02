@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ArrowRight, X, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
+import { track } from "@/lib/analytics";
 
 // Popup de captura de email — NÃO intrusivo:
 // - aparece SÓ em páginas de post do blog (/blog/<slug>), nunca na home/resto do site
@@ -128,6 +129,7 @@ export function LeadPopup() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
+      track("lead_captured", { source: "popup", path: pathname });
       setStatus("success");
       setMsg("Pronto. Você vai receber os próximos estudos no seu email.");
       try {

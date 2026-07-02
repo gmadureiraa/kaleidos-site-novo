@@ -55,6 +55,16 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
 
 const casesCarouselData = [
   {
+    id: "investidor-4-20",
+    title: "Investidor 4.20",
+    tag: "Comercial · Lançamento",
+    description: "Desenvolvimento comercial completo e estratégias de lançamento.",
+    metric: "5x Faturamento",
+    gradient: "linear-gradient(150deg, #7CF067 0%, #1E7A3A 55%, #0A1A0E 100%)",
+    coverImage: "/Cases/investidor-4-20/conteudo/Reels-1-Lucas-1.mp4",
+    href: "/cases/investidor-4-20"
+  },
+  {
     id: "bit-das-minas",
     title: "Bit das Minas",
     tag: "Conteúdo · Lançamento",
@@ -75,68 +85,69 @@ const casesCarouselData = [
     href: "/cases/layla-foz"
   },
   {
-    id: "investidor-4-20",
-    title: "Investidor 4.20",
-    tag: "Comercial · Lançamento",
-    description: "Desenvolvimento comercial completo e estratégias de lançamento.",
-    metric: "5x Faturamento",
-    gradient: "linear-gradient(150deg, #7CF067 0%, #1E7A3A 55%, #0A1A0E 100%)",
-    coverImage: "/Cases/investidor-4-20/conteudo/Reels-1-Lucas-1.mp4",
-    href: "/cases/investidor-4-20"
+    id: "alfred-dsec",
+    title: "Alfred · DSEC",
+    tag: "Persona · Conteúdo",
+    description: "Construção de uma persona-mascote (Alfred) e conteúdo educativo sobre segurança e autocustódia de Bitcoin.",
+    metric: "Persona Própria",
+    gradient: "linear-gradient(150deg, #F7931A 0%, #8A4E12 55%, #1A1208 100%)",
+    coverImage: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-01.jpg",
+    href: "/cases/alfred"
+  },
+  {
+    id: "defiverso",
+    title: "Defiverso",
+    tag: "Social Media · Estratégia",
+    description: "Conteúdo do zero para Instagram, Twitter e WhatsApp, com toda a estratégia de social media.",
+    metric: "12M Views",
+    gradient: "linear-gradient(150deg, #9945FF 0%, #5226A8 55%, #120A24 100%)",
+    coverImage: "/Cases/defiverso/conteudo/posts-defiverso.png",
+    href: "/cases/defiverso"
+  },
+  {
+    id: "hugo-doria",
+    title: "Hugo Doria",
+    tag: "Reels · IA",
+    description: "Edição de reels sobre IA prática e vibe coding para criar autoridade técnica.",
+    metric: "Reels Virais",
+    gradient: "linear-gradient(150deg, #34D399 0%, #1E6E5A 55%, #0A1A16 100%)",
+    coverImage: "/Cases/hugo-doria/conteudo/hugo-reel-01.mp4",
+    href: "/cases/hugo-doria"
   },
   {
     id: "yasmin",
     title: "Yasmin",
     tag: "Reels · Motion",
-    description: "Edição de reels virais com técnicas de After Effects para conteúdo crypto.",
+    description: "Edição de reels virais com técnicas de After Effects para conteúdo cripto.",
     metric: "Reels Virais",
     gradient: "linear-gradient(150deg, #5AC8E0 0%, #2D5BFF 55%, #0A1024 100%)",
     coverImage: "/Cases/yasmin/conteudo/Reels-1-Yasmin-1.mp4",
     href: "/cases/yasmin"
   },
   {
-    id: "paradigma-education",
-    title: "Paradigma Education",
-    tag: "Motion · Educação",
-    description: "Edição de vídeo com motion graphics e animações para conteúdo educativo.",
-    metric: "Motion Design",
-    gradient: "linear-gradient(150deg, #FFB020 0%, #C13E7A 55%, #1A1010 100%)",
-    coverImage: "/Cases/paradigma/conteudo/PARADIGMAv2.mp4",
-    href: "/cases/paradigma-education"
+    id: "neobankless",
+    title: "Neobankless",
+    tag: "Manifesto · Vídeo",
+    description: "Roteiro e produção de vídeos-manifesto para posicionar a marca de dólar digital.",
+    metric: "Brand Film",
+    gradient: "linear-gradient(150deg, #38BDF8 0%, #1E5A8A 55%, #0A141A 100%)",
+    coverImage: "/Cases/neobankless/conteudo/manifesto-1-vertical.mp4",
+    href: "/cases/neobankless"
   },
   {
-    id: "defiverso",
-    title: "Defiverso",
-    tag: "Social Media · Estratégia",
-    description: "Criação de conteúdo do zero para Instagram, Twitter e grupo de WhatsApp. Desenvolvimento de toda estratégia de social media.",
-    metric: "12M Views",
+    id: "defiverso-carrossel",
+    title: "Defiverso · Carrosséis",
+    tag: "Carrossel · Notícias",
+    description: "Carrosséis de notícias e Breaking News que pautaram o mercado cripto e engajaram a comunidade.",
+    metric: "Conteúdo Viral",
     gradient: "linear-gradient(150deg, #9945FF 0%, #5226A8 55%, #120A24 100%)",
-    coverImage: "/Cases/defiverso/conteudo/Breaking news defiverso.png",
+    coverImage: "/Cases/defiverso/conteudo/breaking-news-defiverso.png",
     href: "/cases/defiverso"
-  },
-  {
-    id: "mercado-bitcoin",
-    title: "Mercado Bitcoin",
-    tag: "Conteúdo · 18 meses",
-    description: "Criação de conteúdo para redes sociais durante 18 meses.",
-    metric: "1.000+ Posts",
-    gradient: "linear-gradient(150deg, #F7931A 0%, #A85A12 55%, #1A1208 100%)",
-    coverImage: "/Cases/mercado-bitcoin/conteudo/Instagram.png",
-    href: "/cases/mercado-bitcoin"
-  },
-  {
-    id: "crypto-com",
-    title: "Crypto.com",
-    tag: "Conteúdo · Social",
-    description: "Criação de conteúdo para Instagram e Twitter com estratégia focada.",
-    metric: "+210% Curtidas",
-    gradient: "linear-gradient(150deg, #2D5BFF 0%, #14245E 55%, #070B1A 100%)",
-    coverImage: "/Cases/crypto-com/conteudo/Captura de Tela 2025-07-26 às 22.37.16.png",
-    href: "/cases/crypto-com"
   }
 ];
 
-function CasesCarouselContent() {
+function CasesCarouselContent({ variant = "dark" }: { variant?: "dark" | "light" }) {
+  const light = variant === "light";
   const { locale } = useI18n();
   const { trackClick } = useAnalytics();
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
@@ -158,7 +169,7 @@ function CasesCarouselContent() {
   const isVideo = (src: string) => src.includes('.mp4') || src.includes('.mov') || src.includes('.avi');
 
   return (
-    <div className="w-full flex justify-center py-12 sm:py-16 lg:py-20 bg-black">
+    <div className={`w-full flex justify-center py-12 sm:py-16 lg:py-20 ${light ? "bg-white" : "bg-black"}`}>
       <div className="w-full max-w-7xl px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -167,13 +178,13 @@ function CasesCarouselContent() {
           viewport={{ once: true, amount: 0.7 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.22em] text-[#7CF067]">
+          <p className={`mb-4 font-mono text-xs uppercase tracking-[0.22em] ${light ? "text-[#b14e96]" : "text-[#7CF067]"}`}>
             Cases em destaque
           </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-display tracking-tight">
+          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-display tracking-tight ${light ? "text-[#14110D]" : "text-white"}`}>
             Um resultado vale mais que mil palavras
           </h2>
-          <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-400 leading-relaxed">
+          <p className={`mx-auto max-w-2xl text-base sm:text-lg leading-relaxed ${light ? "text-[#6b6258]" : "text-gray-400"}`}>
             Marcas cripto, web3 e creators que confiaram na Kaleidos pra crescer
             de verdade. Deslize e veja o trabalho.
           </p>
@@ -303,11 +314,11 @@ function CasesCarouselContent() {
   );
 }
 
-export default function CasesCarousel() {
+export default function CasesCarousel({ variant = "dark" }: { variant?: "dark" | "light" }) {
   return (
     <ErrorBoundary>
       <Suspense fallback={<CasesCarouselSkeleton />}>
-        <CasesCarouselContent />
+        <CasesCarouselContent variant={variant} />
       </Suspense>
     </ErrorBoundary>
   );

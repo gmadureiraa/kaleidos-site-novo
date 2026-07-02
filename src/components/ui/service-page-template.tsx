@@ -17,6 +17,7 @@ import {
   WhyMattersSection,
   ApproachSection,
   ProcessTimeline,
+  DeliverablesSection,
   IncludedComparison,
   SignatureBand,
   CasesSection,
@@ -32,6 +33,7 @@ type SectionKey =
   | "whyMatters"
   | "approach"
   | "process"
+  | "deliverables"
   | "included"
   | "signature"
   | "cases"
@@ -57,7 +59,7 @@ const LAYOUTS: Record<ServiceVariant, SectionSpec[]> = {
     { key: "who", tone: "paper" },
     { key: "whyMatters", tone: "white" },
     { key: "approach", tone: "paper" },
-    { key: "process", tone: "mist" },
+    { key: "deliverables", tone: "mist" },
     { key: "signature" },
     { key: "included", tone: "white" },
     { key: "cases" },
@@ -69,7 +71,7 @@ const LAYOUTS: Record<ServiceVariant, SectionSpec[]> = {
     { key: "statement" },
     { key: "approach", tone: "paper" },
     { key: "who", tone: "mist" },
-    { key: "process", tone: "paper" },
+    { key: "deliverables", tone: "paper" },
     { key: "whyMatters", tone: "white" },
     { key: "signature" },
     { key: "included", tone: "paper" },
@@ -81,7 +83,7 @@ const LAYOUTS: Record<ServiceVariant, SectionSpec[]> = {
   3: [
     { key: "statement" },
     { key: "who", tone: "paper" },
-    { key: "process", tone: "mist" },
+    { key: "deliverables", tone: "mist" },
     { key: "whyMatters", tone: "paper" },
     { key: "signature" },
     { key: "included", tone: "white" },
@@ -139,6 +141,10 @@ export function ServicePageTemplate({
       case "process":
         return (
           <ProcessTimeline key={key} c={c} accent={accent} isEn={isEn} tone={tone} />
+        );
+      case "deliverables":
+        return (
+          <DeliverablesSection key={key} c={c} accent={accent} isEn={isEn} tone={tone} />
         );
       case "included":
         return (

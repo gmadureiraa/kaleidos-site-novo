@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, ArrowRight, Download, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
+import { track } from "@/lib/analytics";
 
 // Popup do ebook estilo Lunar Strategy: capa grande centralizada + CTA "Baixar
 // grátis", fundo escurecido. Mobile-first (modal centralizado). Captura email e
@@ -12,7 +13,7 @@ import { getLeadMetadata } from "@/lib/lead-meta";
 
 const PLAYBOOK = {
   slug: "playbook-cripto-2026",
-  cover: "/papers/cover-playbook.png",
+  cover: "/papers/cover-playbook.webp",
   pdf: "/papers/playbook-cripto-2026.pdf",
   readUrl: "/papers/playbook-cripto-2026/read.html",
   title: "Marketing Cripto em 2026",
@@ -21,7 +22,15 @@ const PLAYBOOK = {
 const GREEN = "#7CF067";
 const STORAGE_KEY = "kld_papers_unlocked";
 
-export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function EbookPopup({
+  open,
+  onClose,
+  source = "ebook-popup",
+}: {
+  open: boolean;
+  onClose: () => void;
+  source?: string;
+}) {
   const [email, setEmail] = useState("");
   const [hp, setHp] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error" | "done">("idle");
@@ -60,7 +69,7 @@ export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => vo
           email,
           _hp: hp,
           deliver: { paperSlug: PLAYBOOK.slug },
-          metadata: getLeadMetadata("ebook-popup", PLAYBOOK.slug),
+          metadata: getLeadMetadata(source, PLAYBOOK.slug),
         }),
       });
       const data = await res.json();
@@ -68,6 +77,7 @@ export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => vo
       try {
         localStorage.setItem(STORAGE_KEY, "1");
       } catch {}
+      track("lead_captured", { source, paper_slug: PLAYBOOK.slug });
       setStatus("done");
     } catch (err) {
       setStatus("error");
@@ -100,9 +110,10 @@ export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => vo
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[380px] rounded-3xl bg-white p-3 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
+            className="relative w-full max-w-[380px] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl bg-white p-3 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
           >
-            {/* capa grande (estilo Lunar) */}
+            {/* capa grande (estilo Lunar) — limita a altura em telas baixas pra
+                nunca cortar o formulário/CTA embaixo */}
             <div className="overflow-hidden rounded-2xl ring-1 ring-black/10">
               <Image
                 src={PLAYBOOK.cover}
@@ -111,7 +122,7 @@ export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => vo
                 height={1013}
                 sizes="(max-width: 480px) 90vw, 360px"
                 priority
-                className="w-full h-auto"
+                className="mx-auto h-auto max-h-[44dvh] w-auto max-w-full object-contain"
               />
             </div>
 
@@ -172,11 +183,12 @@ export function EbookPopup({ open, onClose }: { open: boolean; onClose: () => vo
               )}
             </div>
 
-            {/* fechar (X) */}
+            {/* fechar (X) — dentro do modal (sticky) pra não ser cortado
+                quando o conteúdo rola em telas baixas */}
             <button
               onClick={onClose}
               aria-label="Fechar"
-              className="absolute -right-3 -top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-gray-700 shadow-md ring-1 ring-black/10 transition-colors hover:text-black"
+              className="absolute right-2 top-2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-md ring-1 ring-black/10 backdrop-blur-sm transition-colors hover:text-black"
             >
               <X className="h-4.5 w-4.5" />
             </button>

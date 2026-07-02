@@ -1,23 +1,37 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import HeroKaleidos from "@/components/ui/hero-kaleidos";
-import { TrustedBy } from "@/components/ui/trusted-by";
+import { Suspense } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { TrackingProbe } from "@/components/tracking-probe";
+import { Web3V2CtaTracking } from "@/components/web3v2/cta-tracking";
+import { Web3V2Clarity } from "@/components/web3v2/clarity-v2";
+import {
+  Web3V2Defs,
+  Web3V2Hero,
+  Web3V2Manifesto,
+  Web3V2Problema,
+  Web3V2Diferenciais,
+} from "@/components/web3v2/sections";
+import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
+import { Web3V2Processo } from "@/components/web3v2/processo-kaleidos";
+import { Web3V2Resources } from "@/components/web3v2/resources";
+import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
+import { Web3V2PlaybookPopup } from "@/components/web3v2/playbook-popup";
+import { Web3V2PlaybookSticky } from "@/components/web3v2/playbook-sticky";
 
-// Hero + TrustedBy ficam no bundle inicial (LCP + primeira dobra). Tudo abaixo
-// da dobra é carregado via next/dynamic: mantém o HTML no SSR (ssr: true → bom
-// pra SEO e pro conteúdo aparecer no crawl/no-JS), mas SPLITA o JS de hidratação
-// de cada seção num chunk próprio. Assim a main-thread libera mais cedo pro hero
-// pintar (LCP) e o framer-motion das seções pesadas só hidrata depois.
-const BentoGrid = dynamic(() => import("@/components/bento-grid"));
+// ── HOME PRINCIPAL `/` (estética web3v2 promovida 2026-06-29) ────────────────
+// A home antiga (HeroKaleidos + Bento) foi movida para `/2`.
+export const metadata: Metadata = {
+  title: "Kaleidos — Agência nativa do mercado cripto",
+  description:
+    "Conteúdo, estratégia e lançamentos para marcas web3 que querem ser referência, não só mais ruído no feed.",
+};
+
+// Componentes da home real reaproveitados (sem editar destrutivamente).
 const ServicesList = dynamic(() =>
   import("@/components/services-list").then((m) => m.ServicesList)
 );
-const ProcessSection = dynamic(() => import("@/components/process-section"));
 const CasesCarousel = dynamic(() => import("@/components/cases-carousel"));
-const HomeResources = dynamic(() =>
-  import("@/components/home-resources").then((m) => m.HomeResources)
-);
 const CtaStrategy = dynamic(() =>
   import("@/components/cta-strategy").then((m) => m.CtaStrategy)
 );
@@ -26,37 +40,78 @@ const FooterDemo = dynamic(() =>
   import("@/components/ui/footer-demo").then((m) => m.FooterDemo)
 );
 
-export default function Home() {
+export default function HomeV2() {
   return (
-    <main id="main-content" className="min-h-screen bg-white" role="main">
+    <main id="main-content" className="kv2 min-h-screen bg-white" role="main">
       <TrackingProbe />
-      <HeroKaleidos />
-      <Reveal amount={0.3}>
-        <TrustedBy />
-      </Reveal>
+      {/* Previsualizador de tipografia: /2?font=a|b|c|d (avaliação, escopado em .kv2) */}
+      <Suspense fallback={null}>
+        <Web3V2FontPreview />
+      </Suspense>
+      {/* Microsoft Clarity (session replay + heatmap) — só carrega se
+          NEXT_PUBLIC_CLARITY_ID estiver setado na Vercel */}
+      <Web3V2Clarity />
+      {/* Eventos NOMEADOS nos CTAs (wa.me / calendly) injetados via HTML */}
+      <Web3V2CtaTracking />
+      {/* defs (SVG symbols) + CSS escopado das seções novas */}
+      <Web3V2Defs />
+
+      {/* Popup de captura do Playbook Cripto 2026 (entrega o PDF). Abre pelo
+          card fixo (sticky) e pelos CTAs da página — sem auto-trigger. */}
+      <Web3V2PlaybookPopup />
+
+      {/* Card FIXO do Playbook (padrão Lunar Strategy): canto inferior esquerdo,
+          fica até a pessoa fechar. Substitui a antiga banda de isca. */}
+      <Web3V2PlaybookSticky />
+
+      {/* 1 · HERO (sem banda de texto) */}
+      <Web3V2Hero />
+
+      {/* 1b · Marquee de LOGOS de clientes (substitui a banda de texto) */}
+      <Web3V2ClientsMarquee />
+
+      {/* 2 · Manifesto — mãos full-bleed, sem contatos */}
+      <Web3V2Manifesto />
+
+      {/* 3 · Como funciona — processo unificado (vem ANTES dos serviços) */}
       <Reveal>
-        <BentoGrid />
+        <Web3V2Processo />
       </Reveal>
+
+      {/* 4 · Nossos Serviços — design original (estilo Lunar), Bento removido */}
       <Reveal>
-        <ServicesList />
+        <ServicesList ctaVariant="whatsapp" />
       </Reveal>
-      <Reveal>
-        <ProcessSection variant="light" />
-      </Reveal>
+
+      {/* 5 · Cases (fundo claro) */}
       <Reveal>
         <div id="cases-section">
-          <CasesCarousel />
+          <CasesCarousel variant="light" />
         </div>
       </Reveal>
+
+      {/* 6 · Diferenciais — "Por que a Kaleidos" / olho (escuro, quebra o ritmo) */}
+      <Web3V2Diferenciais />
+
+      {/* 7 · Recursos (Playbooks + Blog) — fundo claro */}
       <Reveal>
-        <HomeResources />
+        <Web3V2Resources />
       </Reveal>
+
+      {/* 8 · CTA */}
       <Reveal>
         <CtaStrategy />
       </Reveal>
+
+      {/* 9 · FAQ (re-skin Kaleidos) */}
       <Reveal>
-        <FAQSection />
+        <FAQSection variant="kaleidos" />
       </Reveal>
+
+      {/* 10 · "Post genérico não constrói reputação" — fechamento c/ botões (após o FAQ) */}
+      <Web3V2Problema />
+
+      {/* 12 · Footer / Contato */}
       <Reveal>
         <div id="contact-section">
           <FooterDemo />
