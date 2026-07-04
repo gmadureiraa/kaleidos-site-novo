@@ -6,6 +6,7 @@ import { seoPosts4 } from "./blog-seo-posts-4";
 import { seoPosts5 } from "./blog-seo-posts-5";
 import { seoPosts6 } from "./blog-seo-posts-6";
 import { seoPosts7 } from "./blog-seo-posts-7";
+import { seoPosts8 } from "./blog-seo-posts-8";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -23,7 +24,7 @@ export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt }
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...caseStudies];
+export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...caseStudies];
 
 /**
  * Gate de agendamento (publishedAt <= agora).
