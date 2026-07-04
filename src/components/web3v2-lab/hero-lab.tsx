@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import DOMPurify from "isomorphic-dompurify";
 import { HERO_VARIANTS, type HeroVariant } from "./variants.generated";
 
 // Laboratório visual: renderiza todas as variações de hero em frames rotulados
@@ -176,7 +177,7 @@ function Frame({
           flex: fullHeight ? 1 : undefined,
           display: "flex",
         }}
-        dangerouslySetInnerHTML={{ __html: variant.html }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(variant.html) }}
       />
     </section>
   );

@@ -31,15 +31,11 @@ function daysSince(d: Date) {
   return Math.floor((Date.now() - d.getTime()) / MS_PER_DAY);
 }
 
-function isAuthed(req: Request) {
-  if (req.headers.get("x-vercel-cron")) return true;
-  const token = new URL(req.url).searchParams.get("token");
+function isAuthed(req: Request): boolean {
   const secret = process.env.CRON_SECRET;
-  if (!secret) {
-    // Em dev sem secret, libera só com flag explícita
-    return process.env.NODE_ENV !== "production";
-  }
-  return token === secret;
+  if (!secret) return false;
+  const auth = req.headers.get("authorization");
+  return auth === `Bearer ${secret}`;
 }
 
 export async function GET(req: Request) {

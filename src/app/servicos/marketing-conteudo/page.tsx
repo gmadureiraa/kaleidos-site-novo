@@ -426,19 +426,38 @@ export default function KaleidosContentPage() {
                         viewport={{ once: true }}
                         className="flex justify-center items-center cursor-pointer group"
                         onClick={() => {
-                          // Abrir em modal ou expandir
-                            const media = isImage ?
-                            `<img src="${src}" alt="Trabalho expandido" class="max-w-full max-h-[80vh] object-contain" />` :
-                            `<video src="${src}" controls autoplay loop muted class="max-w-full max-h-[80vh] object-contain" />`;
-
                           const modal = document.createElement('div');
                           modal.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4';
-                          modal.innerHTML = `
-                            <div class="relative">
-                              <button class="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300" onclick="this.parentElement.parentElement.remove()">×</button>
-                              ${media}
-                            </div>
-                          `;
+
+                          const wrapper = document.createElement('div');
+                          wrapper.className = 'relative';
+
+                          const closeBtn = document.createElement('button');
+                          closeBtn.className = 'absolute -top-10 right-0 text-white text-2xl hover:text-gray-300';
+                          closeBtn.textContent = '×';
+                          closeBtn.onclick = () => modal.remove();
+
+                          let mediaEl: HTMLElement;
+                          if (isImage) {
+                            const img = document.createElement('img');
+                            img.src = src;
+                            img.alt = 'Trabalho expandido';
+                            img.className = 'max-w-full max-h-[80vh] object-contain';
+                            mediaEl = img;
+                          } else {
+                            const video = document.createElement('video');
+                            video.src = src;
+                            video.controls = true;
+                            video.autoplay = true;
+                            video.loop = true;
+                            video.muted = true;
+                            video.className = 'max-w-full max-h-[80vh] object-contain';
+                            mediaEl = video;
+                          }
+
+                          wrapper.appendChild(closeBtn);
+                          wrapper.appendChild(mediaEl);
+                          modal.appendChild(wrapper);
                           modal.onclick = (e) => {
                             if (e.target === modal) modal.remove();
                           };

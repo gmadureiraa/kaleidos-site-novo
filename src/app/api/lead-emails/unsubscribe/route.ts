@@ -1,6 +1,10 @@
 import { unsubscribeByEmail } from "@/lib/db/leads";
 import { verifyUnsubToken } from "@/lib/emails/unsubscribe";
 
+function esc(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 function htmlPage(title: string, body: string, ok = true) {
   const accent = ok ? "#16a34a" : "#dc2626";
   return new Response(
@@ -31,12 +35,12 @@ export async function GET(req: Request) {
   if (removed) {
     return htmlPage(
       "Descadastrado",
-      `O email <strong style="color:#fff">${email}</strong> não vai mais receber a sequência Kaleidos AI. Sem rancor — boa sorte com a operação.`
+      `O email <strong style="color:#fff">${esc(email)}</strong> não vai mais receber a sequência Kaleidos AI. Sem rancor — boa sorte com a operação.`
     );
   }
   // Fallback gracioso: se DB ausente ou já não tava na base, ainda confirma
   return htmlPage(
     "Pedido recebido",
-    `Marcamos o pedido pra <strong style="color:#fff">${email}</strong>. Se ainda chegar algum email automático nas próximas 24h, é resíduo da fila — depois disso, silêncio.`
+    `Marcamos o pedido pra <strong style="color:#fff">${esc(email)}</strong>. Se ainda chegar algum email automático nas próximas 24h, é resíduo da fila — depois disso, silêncio.`
   );
 }
