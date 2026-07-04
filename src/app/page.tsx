@@ -14,6 +14,8 @@ import {
 } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
 import { Web3V2Processo } from "@/components/web3v2/processo-kaleidos";
+// desativado até termos mais depoimentos reais — reativar quando tiver
+// import { Web3V2Testimonials } from "@/components/web3v2/testimonials";
 import { Web3V2Resources } from "@/components/web3v2/resources";
 import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
 import { Web3V2PlaybookPopup } from "@/components/web3v2/playbook-popup";
@@ -64,7 +66,9 @@ export default function HomeV2() {
           fica até a pessoa fechar. Substitui a antiga banda de isca. */}
       <Web3V2PlaybookSticky />
 
-      {/* 1 · HERO (sem banda de texto) */}
+      {/* 1 · HERO (sem banda de texto) — os números 30M+/50+ já vivem no
+          subtexto do hero, então a proof-strip foi removida pra não duplicar
+          a prova e deixar o hero respirar direto pros logos. */}
       <Web3V2Hero />
 
       {/* 1b · Marquee de LOGOS de clientes (substitui a banda de texto) */}
@@ -73,15 +77,22 @@ export default function HomeV2() {
       {/* 2 · Manifesto — mãos full-bleed, sem contatos */}
       <Web3V2Manifesto />
 
-      {/* 3 · Como funciona — processo unificado (vem ANTES dos serviços) */}
+      {/* 3 · Nossos Serviços — design original (estilo Lunar), Bento removido (fundo escuro) */}
+      <Reveal>
+        <ServicesList ctaVariant="whatsapp" />
+      </Reveal>
+
+      {/* 4 · Como funciona — processo unificado (vem logo APÓS os serviços, fundo claro) */}
       <Reveal>
         <Web3V2Processo />
       </Reveal>
 
-      {/* 4 · Nossos Serviços — design original (estilo Lunar), Bento removido */}
+      {/* 4b · Depoimentos — desativado até termos mais depoimentos reais —
+          reativar quando tiver. O componente e os dados continuam no código.
       <Reveal>
-        <ServicesList ctaVariant="whatsapp" />
+        <Web3V2Testimonials />
       </Reveal>
+      */}
 
       {/* 5 · Cases (fundo claro) */}
       <Reveal>

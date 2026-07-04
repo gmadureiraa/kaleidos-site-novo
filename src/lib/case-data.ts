@@ -219,29 +219,29 @@ export const casesData: Record<string, CaseData> = {
     servicos: ["Edição de vídeos", "Roteiros de Reels", "Newsletter"],
     servicos_en: ["Video editing", "Reels scripting", "Newsletter"],
     media: [
-      { src: "/Cases/layla-foz/conteudo/Capa_Reels1.png", type: "image" },
-      { src: "/Cases/layla-foz/conteudo/Capa_Reels2.png", type: "image" },
-      { src: "/Cases/layla-foz/conteudo/Capa_Reels3.png", type: "image" },
-      { src: "/Cases/layla-foz/conteudo/Capa_Reels4.png", type: "image" },
+      { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", type: "image" },
+      { src: "/Cases/layla-foz/conteudo/Capa_Reels2.webp", type: "image" },
+      { src: "/Cases/layla-foz/conteudo/Capa_Reels3.webp", type: "image" },
+      { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", type: "image" },
       { 
         src: "/Cases/layla-foz/conteudo/Reels-1-Layla-1.mp4", 
         type: "video", 
-        poster: "/Cases/layla-foz/conteudo/Capa_Reels1.png"
+        poster: "/Cases/layla-foz/conteudo/Capa_Reels1.webp"
       },
       { 
         src: "/Cases/layla-foz/conteudo/Reels-2-Layla-1.mp4", 
         type: "video", 
-        poster: "/Cases/layla-foz/conteudo/Capa_Reels2.png"
+        poster: "/Cases/layla-foz/conteudo/Capa_Reels2.webp"
       },
       { 
         src: "/Cases/layla-foz/conteudo/Reels-3-Layla-1.mp4", 
         type: "video", 
-        poster: "/Cases/layla-foz/conteudo/Capa_Reels3.png"
+        poster: "/Cases/layla-foz/conteudo/Capa_Reels3.webp"
       },
       { 
         src: "/Cases/layla-foz/conteudo/Reels-4-Layla.mp4", 
         type: "video", 
-        poster: "/Cases/layla-foz/conteudo/Capa_Reels4.png"
+        poster: "/Cases/layla-foz/conteudo/Capa_Reels4.webp"
       },
     ]
   },
@@ -512,9 +512,9 @@ export const casesData: Record<string, CaseData> = {
         type: "image",
         alt: "Página de captura desenvolvida para o lançamento Investidor 4.20"
       },
-      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio1.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio2.png", type: "image" },
-      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio3.png", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio1.webp", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio2.webp", type: "image" },
+      { src: "/Cases/investidor-4-20/conteudo/Criativoanuncio3.webp", type: "image" },
       { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura1.png", type: "image" },
       { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura2.png", type: "image" },
       { src: "/Cases/investidor-4-20/conteudo/pagina-de-captura/paginacaptura4.png", type: "image" },
@@ -1048,7 +1048,7 @@ export const casesData: Record<string, CaseData> = {
         alt: "Buenas Ideias — Corte vertical documentário"
       },
       {
-        src: "/Cases/buenas-ideias/conteudo/buenas-thumb-1.png",
+        src: "/Cases/buenas-ideias/conteudo/buenas-thumb-1.webp",
         type: "image",
         alt: "Buenas Ideias — Thumbnail: Quem inventou o 7 de setembro"
       },

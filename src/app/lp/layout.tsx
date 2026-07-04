@@ -4,6 +4,12 @@ export const metadata: Metadata = {
   title: "Kaleidos · Agência de marketing + IA nativa da cripto",
   description:
     "Conteúdo, IA dentro da operação e sites/sistemas. 5+ anos no nicho cripto/web3/fintech, 8 marcas operando, 17 frentes automatizadas com IA.",
+  // Variante de LP dos serviços — não indexar pra não competir/duplicar com
+  // /servicos/ia-automacoes-completa. Continua acessível via link direto de ads.
+  robots: {
+    index: false,
+    follow: false,
+  },
   alternates: {
     canonical: "/lp",
   },

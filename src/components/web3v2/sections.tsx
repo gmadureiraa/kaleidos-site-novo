@@ -57,7 +57,7 @@ const STYLE = `
   .kv2 .w3-pimg{height:auto!important;padding:14px 0!important;}
   .kv2 .w3-dimg img{width:240px!important;}
   .kv2 .w3-pad{padding-top:56px!important;padding-bottom:56px!important;padding-left:20px!important;padding-right:20px!important;}
-  .kv2 .w3-h1{font-size:clamp(34px,9.4vw,48px)!important;letter-spacing:-1px!important;}
+  .kv2 .w3-h1{font-size:clamp(25px,7vw,36px)!important;letter-spacing:-1px!important;}
   .kv2 .w3-h1 span{white-space:normal!important;}
 }
 `;
@@ -107,13 +107,14 @@ const HERO_HTML = `
           <svg style="width:220px;max-width:60vw;height:auto;fill:#14110D;display:block;" viewBox="0 0 2000 262.38"><use href="#kal-word"></use></svg>
         </div>
       </div>
-      <div style="display:flex;justify-content:center;"><div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#14110D;background:#fff;border:1.5px solid #14110D;border-radius:999px;padding:8px 16px;box-shadow:3px 3px 0 #7CF067;margin-bottom:30px;">&#9679; Agência nativa do mercado cripto &middot; desde 2020</div></div>
-      <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(42px,5.4vw,74px);line-height:1.02;letter-spacing:-2px;margin:0;max-width:1040px;margin-inline:auto;">Criatividade que <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;white-space:nowrap;">move o mercado cripto</span>.</h1>
-      <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:600px;margin:26px auto 0;">Conteúdo, estratégia e lançamentos para marcas web3 que querem ser referência, não só mais ruído no feed.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;">
-        <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">Consultoria grátis &rarr;</a>
+      <div style="display:flex;justify-content:center;"><div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#14110D;background:#fff;border:1.5px solid #14110D;border-radius:999px;padding:8px 16px;box-shadow:3px 3px 0 #7CF067;margin-bottom:22px;">&#9679; Criatividade que move o mercado cripto</div></div>
+      <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(31px,4vw,54px);line-height:1.04;letter-spacing:-1.6px;margin:0;max-width:920px;margin-inline:auto;">Conteúdo, estratégia e lançamentos web3 que viram <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;white-space:nowrap;">autoridade</span>.</h1>
+      <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;"><strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong> depois: a Kaleidos faz marcas web3 virarem referência, não só mais ruído no feed.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
+        <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">Agendar reunião &rarr;</a>
         <a href="/cases" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14110D;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">Ver cases</a>
       </div>
+      <div style="margin-top:16px;font-size:14px;color:#6b6258;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></div>
     </div>
   </section>
 `;
@@ -149,10 +150,11 @@ const PROBLEMA_HTML = `
           <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(2deg);">⏱️ tudo pra ontem</span>
           <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-1deg);">📉 zero dado de verdade</span>
         </div>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;">
-          <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Falar com a gente &rarr;</a>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px;">
+          <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Agendar reunião &rarr;</a>
           <a href="/cases" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Ver cases</a>
         </div>
+        <div style="margin-top:14px;font-size:14px;color:#9a9186;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></div>
       </div>
       <div class="w3-pimg" style="position:relative;height:380px;display:flex;align-items:center;justify-content:center;">
         <span style="position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,#7CF06733,transparent 66%);"></span>

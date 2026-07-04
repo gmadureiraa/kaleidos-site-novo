@@ -176,16 +176,27 @@ export function ServicesList({
                 : "Conteúdo, growth e estratégia no mesmo time. Escolha uma frente, ou deixe a gente rodar o motor inteiro."}
             </p>
             {ctaVariant === "whatsapp" ? (
-              <a
-                href="https://wa.me/5512997796835"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackClick("services_whatsapp", "services_list")}
-                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
-              >
-                {isEn ? "Talk to us" : "Falar com a gente"}
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <div className="mt-7 flex flex-col items-start gap-3">
+                <a
+                  href="https://calendly.com/madureira-kaleidosdigital/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackClick("services_calendly", "services_list")}
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
+                >
+                  {isEn ? "Book a meeting" : "Agendar reunião"}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://wa.me/5512997796835"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackClick("services_whatsapp", "services_list")}
+                  className="text-sm font-medium text-gray-400 underline underline-offset-4 transition-colors hover:text-white"
+                >
+                  {isEn ? "Prefer WhatsApp?" : "Prefere WhatsApp?"}
+                </a>
+              </div>
             ) : (
               <Link
                 href={withLang("/servicos")}

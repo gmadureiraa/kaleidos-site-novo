@@ -131,29 +131,29 @@ export function CtaStrategy() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          {/* Primário: WhatsApp (mensagem pré-preenchida pela intenção) */}
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick("cta_strategy_whatsapp", "cta_strategy")}
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CFF6B] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CFF6B]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
-          >
-            <WhatsappIcon className="h-5 w-5" />
-            {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"}
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-          </a>
-
-          {/* Secundário: agendar reunião (Calendly) */}
+          {/* Primário: agendar reunião (Calendly) */}
           <a
             href={CALENDLY}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick("cta_strategy_calendly", "cta_strategy")}
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/25 bg-white/5 px-8 py-4 text-lg font-semibold text-white transition-colors hover:border-white/45 hover:bg-white/10 sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CFF6B] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CFF6B]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
           >
             <CalendlyIcon className="h-5 w-5" />
             {isEn ? "Book a meeting" : "Agendar reunião"}
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+          </a>
+
+          {/* Secundário: WhatsApp (mensagem pré-preenchida pela intenção) */}
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick("cta_strategy_whatsapp", "cta_strategy")}
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/25 bg-white/5 px-8 py-4 text-lg font-semibold text-white transition-colors hover:border-white/45 hover:bg-white/10 sm:w-auto"
+          >
+            <WhatsappIcon className="h-5 w-5" />
+            {isEn ? "Prefer WhatsApp?" : "Prefere WhatsApp?"}
           </a>
         </motion.div>
       </div>

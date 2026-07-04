@@ -18,7 +18,7 @@ export function BlogCover({
   post,
   variant = "card",
 }: {
-  post: { title: string; category: BlogCategory; slug: string };
+  post: { title: string; category: BlogCategory; slug: string; coverPhrase?: string; coverImage?: string };
   variant?: Variant;
   /** Mantido por compatibilidade — a capa-padrão não imprime o título. */
   showTitle?: boolean;
@@ -39,6 +39,7 @@ export function BlogCover({
         index={h}
         look={look}
         title={post.title}
+        phrase={post.coverPhrase}
         fill
         compact={variant === "thumb"}
       />

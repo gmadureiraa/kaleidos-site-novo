@@ -38,7 +38,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = getSeoTitle(post);
   const description = getSeoDescription(post);
   const tags = getPostTags(post);
-  const ogImage = getOgImage(post);
+  // Fallback pra OG default da Kaleidos quando o post não tem coverImage —
+  // garante que TODO post emita og:image + twitter:image (link preview nunca vazio).
+  const DEFAULT_OG_IMAGE = "/Kaleidos/imagens/Capa.png";
+  const ogImage = getOgImage(post) || DEFAULT_OG_IMAGE;
   const canonical = `/blog/${post.slug}`;
 
   return {
@@ -59,15 +62,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author.name],
       section: post.category,
       tags,
-      ...(ogImage
-        ? { images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }] }
-        : {}),
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(ogImage ? { images: [ogImage] } : {}),
+      images: [ogImage],
     },
   };
 }
@@ -80,7 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  const relatedPosts = await getRelatedPostsAsync(slug, 3);
+  const relatedPosts = await getRelatedPostsAsync(slug, 4);
   const rawHtml = markdownToHtml(post.content);
   // Defense in depth: hoje o conteúdo é trusted (hardcoded em blog-data.ts).
   // Se um dia migrar pra CMS, DOMPurify bloqueia <script>, on*=, javascript:.

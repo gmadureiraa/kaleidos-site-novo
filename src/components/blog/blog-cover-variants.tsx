@@ -11,6 +11,11 @@
  * Usado tanto na seção de recursos do `/2` (`web3v2/resources.tsx`, via
  * `BlogCoverVariant`) quanto na `/blog` (via `CoverArt` em `blog-cover.tsx`).
  * Mantém as colagens P&B do design system (`/v2/elements/*.png`).
+ *
+ * 2026-07-03: revertidos os testes de capa "PHRASE" (elemento solto) e "IMAGE"
+ * (imagem de fundo) — ficavam tortos atrás do texto. A capa voltou a ser a
+ * ORIGINAL; `cover_phrase`, quando presente, entra só como uma LINHA DE TEXTO
+ * COMPLEMENTAR menor (kicker) acima do título.
  */
 import type { BlogCategory } from "@/lib/blog-shared";
 import { categoryLabels } from "@/lib/blog-shared";
@@ -21,8 +26,8 @@ const GREEN = "#7CF067";
 const PINK = "#D262B2";
 
 // Pool de colagens do design system (P&B + cor) pra capa VISUAL (sem repetir o
-// título). Escolha determinística por hash do slug, sem 2 adjacentes iguais é
-// garantido pelo próprio mix de temas. Todas existem em /public/v2/elements.
+// título). Escolha determinística por hash do slug. Todas existem em
+// /public/v2/elements.
 const COVER_IMAGE_POOL = [
   "/v2/elements/colagem-cerebro-oculos.webp",
   "/v2/elements/colagem-megafone-mao-pb.webp",
@@ -85,6 +90,9 @@ function Chip({ look, category }: { look: CoverStyle; category: BlogCategory }) 
  *
  * Por padrão usa um FRAME 16/11 com borda inferior (uso no /2). Com `fill`,
  * ocupa 100% do container pai (uso no /blog). `compact` esconde o badge.
+ *
+ * `phrase` (do campo `cover_phrase`): quando presente, entra como uma LINHA DE
+ * TEXTO COMPLEMENTAR menor (kicker) acima do título — não substitui a capa.
  */
 export function CoverArt({
   slug,
@@ -95,6 +103,7 @@ export function CoverArt({
   fill = false,
   compact = false,
   visual = false,
+  phrase,
 }: {
   slug: string;
   category: BlogCategory;
@@ -105,6 +114,8 @@ export function CoverArt({
   compact?: boolean;
   /** Capa VISUAL: colagem do design system no lugar do título tipográfico. */
   visual?: boolean;
+  /** Linha de texto complementar (kicker) acima do título. Vem de `cover_phrase`. */
+  phrase?: string;
 }) {
   void index;
   const dark = look === "dark";
@@ -196,29 +207,36 @@ export function CoverArt({
         <path d="M93.44,342.64c63.42-80.67,161.9-132.49,272.48-132.49v.17c-73.08,0-132.32,59.24-132.32,132.32,0,73.08,59.24,132.32,132.32,132.32v.17c-110.58,0-209.06-51.82-272.48-132.49Z" />
         <path d="M500.02,475.51c.12-73.38,59.62-132.82,133.03-132.83-73.14-.01-132.44-59.04-132.99-132.05-.03,0-.05,0-.08,0-.55,72.69-59.35,131.48-132.05,132,0,.03,0,.06,0,.09,72.97.52,131.98,59.72,132.1,132.79Z" />
       </svg>
-      {/* título grande, editorial — escondido na capa VISUAL (o título já aparece
-          no corpo do card; a capa fica imagética) */}
-      {title && !visual && (
-        <h3
+      {/* TEXTO DA CAPA — a FRASE de capa (`cover_phrase`), que NÃO repete o
+          título do post (o título já aparece no corpo do card). Fallback pro
+          título só se o post ainda não tiver frase. Escondido na capa VISUAL. */}
+      {!visual && (phrase || title) && (
+        <div
           style={{
             position: "relative",
             zIndex: 1,
-            margin: 0,
             padding: compact ? "0 18px" : "0 26px",
-            fontFamily: "Atelier, sans-serif",
-            fontWeight: 700,
-            fontSize: compact ? "clamp(15px,5vw,20px)" : "clamp(19px,3.4vw,30px)",
-            lineHeight: 1.08,
-            letterSpacing: "-0.6px",
-            color: titleColor,
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
           }}
         >
-          {title}
-        </h3>
+          <h3
+            style={{
+              margin: 0,
+              fontFamily: "Atelier, sans-serif",
+              fontWeight: 700,
+              fontSize: compact ? "clamp(15px,4.8vw,20px)" : "clamp(18px,3.2vw,28px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.6px",
+              color: titleColor,
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {phrase || title}
+            {phrase && <span style={{ color: accent }}>.</span>}
+          </h3>
+        </div>
       )}
       {!compact && <Chip look={look} category={category} />}
     </div>

@@ -55,6 +55,20 @@ const JOBS = [
   ["v2/collage/scared-boy.png", 700, 82],
   ["v2/collage/david-bubble.png", 480, 82],
   ["v2/collage/hand-cursor.png", 600, 82],
+  // --- Auditoria perf 2026-07: PNGs pesados servidos crus ---
+  // Capa dark do playbook (4.3MB) — cover exibida ~300-400px, retina 800px.
+  ["papers/cover-playbook.dark.png", 800, 82],
+  // Thumb do case Buenas Ideias (5.9MB) — galeria de conteúdo, retina 1200px.
+  ["Cases/buenas-ideias/conteudo/buenas-thumb-1.png", 1200, 80],
+  // Capas de reels Layla (galeria case) — exibidas em card vertical, retina 1000px.
+  ["Cases/layla-foz/conteudo/Capa_Reels1.png", 1000, 80],
+  ["Cases/layla-foz/conteudo/Capa_Reels2.png", 1000, 80],
+  ["Cases/layla-foz/conteudo/Capa_Reels3.png", 1000, 80],
+  ["Cases/layla-foz/conteudo/Capa_Reels4.png", 1000, 80],
+  // Criativos de anúncio Investidor 4.20 (galeria case) — retina 1000px.
+  ["Cases/investidor-4-20/conteudo/Criativoanuncio1.png", 1000, 80],
+  ["Cases/investidor-4-20/conteudo/Criativoanuncio2.png", 1000, 80],
+  ["Cases/investidor-4-20/conteudo/Criativoanuncio3.png", 1000, 80],
 ];
 
 const kb = (n) => (n / 1024).toFixed(0);

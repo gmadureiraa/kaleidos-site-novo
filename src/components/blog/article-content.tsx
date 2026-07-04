@@ -13,6 +13,8 @@ import {
   getModifiedAt,
 } from "@/lib/blog-shared";
 import { BlogCover } from "@/components/blog/blog-cover";
+import { BlogCard } from "@/components/blog/blog-card";
+import { toBlogCard } from "@/lib/blog-shared";
 import { ShareButtons } from "@/components/blog/share-buttons";
 import { LeadGate } from "@/components/blog/lead-gate";
 import { getLeadMetadata } from "@/lib/lead-meta";
@@ -448,7 +450,7 @@ export function ArticleContent({
                   Descubra mais artigos
                 </p>
                 <div className="space-y-5">
-                  {relatedPosts.map((rp) => (
+                  {relatedPosts.slice(0, 3).map((rp) => (
                     <Link
                       key={rp.slug}
                       href={`/blog/${rp.slug}`}
@@ -471,6 +473,91 @@ export function ArticleContent({
               </div>
             )}
           </aside>
+        </div>
+      </section>
+
+      {/* Relacionados — grid full-width no fim do post (mesma categoria primeiro) */}
+      {relatedPosts.length > 0 && (
+        <section
+          aria-labelledby="relacionados-heading"
+          className="px-4 sm:px-6 lg:px-8 pb-20 border-t border-black/10 pt-16"
+        >
+          <div className="max-w-[1080px] mx-auto">
+            <div className="flex items-end justify-between mb-8 gap-4">
+              <div>
+                <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#b8479a] mb-2">
+                  Continue lendo
+                </p>
+                <h2
+                  id="relacionados-heading"
+                  className="text-[1.6rem] md:text-[2rem] font-bold text-gray-900 font-display tracking-[-0.02em]"
+                >
+                  Relacionados
+                </h2>
+              </div>
+              <Link
+                href="/blog"
+                className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-gray-700 hover:text-[#b8479a] transition-colors shrink-0"
+              >
+                Ver todos os estudos
+                <ArrowLeft className="w-4 h-4 rotate-180" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+              {relatedPosts.slice(0, 3).map((rp, i) => (
+                <BlogCard key={rp.slug} post={toBlogCard(rp)} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Banner de CTA de venda — fim do post */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="max-w-[1080px] mx-auto">
+          <div className="relative overflow-hidden rounded-2xl bg-[#0A0A0A] text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(124,240,103,0.14) 1.5px, transparent 1.6px)",
+                backgroundSize: "13px 13px",
+              }}
+            />
+            <div className="relative max-w-xl">
+              <p className="font-mono uppercase tracking-[0.18em] text-[11px] text-[#7CF067] mb-2.5">
+                Trabalhe com a Kaleidos
+              </p>
+              <h3 className="font-display font-bold text-[1.5rem] md:text-[2rem] leading-tight mb-3">
+                Quer esse nível de estratégia no seu projeto cripto?
+              </h3>
+              <p className="text-[14px] md:text-[15px] text-gray-400 leading-relaxed">
+                Somos a agência cripto-nativa do Brasil. Peça uma proposta grátis e
+                veja como podemos construir atenção, autoridade e growth pro seu
+                projeto.
+              </p>
+            </div>
+            <div className="relative flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+              <Link
+                href="/pacotes"
+                data-cta="blog-related-pacotes"
+                data-post={post.slug}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#7CF067] text-black font-semibold text-sm hover:bg-[#6ae052] transition-colors whitespace-nowrap"
+              >
+                Proposta grátis
+              </Link>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="blog-related-calendly"
+                data-post={post.slug}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-white/20 text-white font-semibold text-sm hover:bg-white/5 transition-colors whitespace-nowrap"
+              >
+                <CalendarCheck className="w-4 h-4" /> Agendar 30min
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

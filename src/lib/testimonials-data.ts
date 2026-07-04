@@ -99,6 +99,18 @@ export const TESTIMONIALS: Testimonial[] = [
     highlight: "+80K seguidores",
     highlight_en: "+80K followers",
   },
+  {
+    id: "neobankless",
+    name: "Matheus Fassheber",
+    role: "Fundador",
+    company: "NeoBankless",
+    quote:
+      "O que mais me tranquiliza na Kaleidos é a confiança. Quando eu passo alguma coisa pra eles, eu sei que vai ser resolvido, sem precisar ficar em cima. O time assume, cuida de cada detalhe e entrega. Isso me libera pra focar no que só eu posso fazer no negócio.",
+    quote_en:
+      "What reassures me most about Kaleidos is the trust. When I hand something over to them, I know it will get done without me having to micromanage. The team takes ownership, handles every detail and delivers. That frees me to focus on what only I can do in the business.",
+    highlight: "Confio de olhos fechados",
+    highlight_en: "Total peace of mind",
+  },
 ];
 
 export function getTestimonials(): Testimonial[] {

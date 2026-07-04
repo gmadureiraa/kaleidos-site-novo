@@ -46,6 +46,13 @@ export interface BlogPost {
   faq?: BlogFaqItem[];
   /** Override do estilo de capa (seção de recursos do /2). Ausente = determinístico por hash do slug. */
   coverStyle?: CoverStyle;
+  /**
+   * TESTE de novo estilo de capa: frase curta e afiada (3-6 palavras) que
+   * DISPARA a variante "phrase" da capa (fundo sóbrio + tipografia forte +
+   * elemento geométrico solto). Ausente = capa-padrão atual (inalterada).
+   * Frontmatter: `cover_phrase:`.
+   */
+  coverPhrase?: string;
 }
 
 /**
@@ -64,6 +71,7 @@ export type BlogCardMeta = Pick<
   | "readTime"
   | "featured"
   | "coverStyle"
+  | "coverPhrase"
 >;
 
 /** Reduz um BlogPost ao subset de card (descarta content/faq/tldr/seo longos). */
@@ -78,6 +86,7 @@ export function toBlogCard(post: BlogPost): BlogCardMeta {
     readTime: post.readTime,
     featured: post.featured,
     coverStyle: post.coverStyle,
+    coverPhrase: post.coverPhrase,
   };
 }
 
