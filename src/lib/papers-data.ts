@@ -24,6 +24,31 @@ export interface Paper {
 
 export const papers: Paper[] = [
   {
+    slug: "bear-market-2026",
+    volume: "Flagship",
+    title: "Como fazer marketing e vender no bear market",
+    subtitle:
+      "A jogada contra-cíclica: enquanto o mercado corta verba e some, você constrói a marca que domina o próximo ciclo",
+    description:
+      "O playbook da Kaleidos sobre a maior arbitragem de atenção do ciclo: no bear todo mundo corta marketing, a atenção fica barata, e quem investe em marca, conteúdo e vendas sai na frente quando o mercado vira. Nove capítulos de marketing e vendas cripto no frio, com dado histórico, casos on-chain e um checklist de ação de uma página. Educacional, aplicável a projeto, fintech e empresa.",
+    tldr:
+      "Playbook operacional de marketing e vendas para o mercado frio. A tese: no bear a maioria corta verba de marketing e some, então o share of voice fica barato, e quem mantém marca e conteúdo domina o próximo ciclo. Ancora em estudos clássicos de publicidade em recessão (ESOV de Les Binet e Peter Field, e o estudo McGraw-Hill que mostra empresas que anunciaram na recessão de 1981-82 crescendo até 275% enquanto as que cortaram ficaram para trás) e traz casos cripto que construíram no frio (Hyperliquid, Ondo, Berachain). Cobre o que muda no comportamento do comprador quando o preço cai, posicionamento que troca hype por fundamento, conteúdo como autoridade barata (SEO e AEO), aquisição de CAC baixo, comunidade e retenção, venda B2B com budget travado, e como lançar um token ou produto no frio. Fecha com um checklist de bear em uma página. Vale ler porque é o anti-instinto: prova, com fonte, que cortar marketing no bear é entregar o próximo ciclo para o concorrente.",
+    highlights: [
+      "A tese contra-cíclica com dado histórico: ESOV (Binet/Field) e o estudo McGraw-Hill (275% vs 132%) de quem anunciou na recessão",
+      "O que morre no bear (hype, farming, mercenário) e o funil que sobra: confiança, utilidade, educação",
+      "Aquisição de CAC baixo, conteúdo como autoridade barata (SEO+AEO) e retenção de comunidade no frio",
+      "Vender e lançar com o mercado travado (B2B, TGE no frio) + o checklist de ação de bear em uma página",
+    ],
+    pages: 13,
+    readTime: "25 min",
+    tag: "Flagship · Marketing / Vendas",
+    accent: "#D262B2",
+    pdf: "/papers/bear-market-2026.pdf",
+    cover: "/papers/cover-bear-market.webp",
+    publishedAt: "2026-07-07",
+    readHtml: true,
+  },
+  {
     slug: "bull-market-2026",
     volume: "Especial",
     title: "Como se Preparar para o Próximo Bull Market",

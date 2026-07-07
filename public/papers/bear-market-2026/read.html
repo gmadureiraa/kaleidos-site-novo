@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Como Fazer Marketing e Vender no Bear Market — Playbook Kaleidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KALEIDOS · PLAYBOOK — MARKETING E VENDAS NO BEAR MARKET
+   Fundo BRANCO · acento rosa #d262b2 + verde #2E9E32 · texto #14110D
+   ============================================================ */
+@font-face{ font-family:'Atelier'; src:url('fonts/Atelier.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face{ font-family:'Gridlite'; src:url('fonts/Gridlite.otf') format('opentype'); font-weight:400; font-display:swap; }
+:root{
+  --bg:#FFFFFF;
+  --ink:#14110D;
+  --body:#3f3a32;
+  --muted:#6b6258;
+  --line:#e9e2d7;
+  --paper:#FFFFFF;
+  --amber:#d262b2;      /* acento primário = ROSA */
+  --amber-d:#b23e94;
+  --amber-soft:#FBEFF7;
+  --pink:#d262b2;
+  --pink-d:#b23e94;
+  --green:#2E9E32;
+  --green-d:#237a26;
+  --red:#cf3d38;
+  --blue:#2f6fd0;
+  --cream:#14110D;
+  --mono:'Gridlite',monospace;
+  --sans:'Inter', sans-serif;
+  --serif:'Atelier',sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ background:#FFFFFF; font-family:var(--sans); color:var(--body); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+@page{ size:A4; margin:0; }
+
+.page{
+  position:relative;
+  width:210mm; min-height:297mm;
+  background:var(--paper);
+  overflow:hidden;
+  margin:0 auto 10px auto;
+  page-break-after:always;
+  break-after:page;
+}
+.page.content-page{ height:auto; min-height:297mm; overflow:visible; }
+.page:last-child{ page-break-after:auto; }
+
+/* ---------- página de conteúdo (branca) ---------- */
+.content{
+  padding:24mm 22mm 22mm 22mm;
+  display:flex; flex-direction:column; min-height:100%;
+}
+.content::before{ /* linha rosa→verde no topo */
+  content:""; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,var(--pink) 0%, var(--green) 100%);
+}
+.runhead{
+  position:absolute; top:9mm; left:22mm; right:22mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.22em;
+  text-transform:uppercase; color:#6b6258;
+}
+.runhead .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--pink); margin-right:7px; vertical-align:middle; }
+.folio{
+  position:absolute; bottom:11mm; left:0; right:0; text-align:center;
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em; color:#6b6258;
+}
+.folio b{ color:var(--pink-d); font-weight:600; }
+
+/* ---------- tipografia de capítulo ---------- */
+.chap-num{
+  font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.30em;
+  text-transform:uppercase; color:var(--pink-d); margin-bottom:9px;
+}
+.chap-num::before{ content:"[ "; color:#8a5679; }
+.chap-num::after{ content:" ]"; color:#8a5679; }
+h1.chap{
+  font-family:var(--serif); font-weight:800; font-size:31px; line-height:1.04;
+  letter-spacing:-.015em; color:var(--pink-d);
+  margin-bottom:16px; max-width:96%;
+}
+h1.chap .ink{ color:var(--ink); }
+h2{
+  font-family:var(--sans); font-weight:700; font-size:14.5px; letter-spacing:-.005em;
+  color:var(--ink); margin:20px 0 8px;
+  display:flex; align-items:baseline; gap:9px;
+}
+h2::before{
+  content:""; display:inline-block; width:14px; height:2px; background:var(--pink);
+  transform:translateY(-4px); flex:0 0 auto;
+}
+p{ font-size:10.8px; line-height:1.62; color:var(--body); margin-bottom:9px; }
+p strong, li strong{ color:var(--ink); font-weight:700; }
+a{ color:var(--pink-d); text-decoration:none; border-bottom:1px solid rgba(178,62,148,.28); }
+code{ font-family:var(--mono); font-size:9.4px; background:#F5EEF2; padding:1px 4px; border-radius:3px; color:var(--pink-d); }
+.src{ font-family:var(--mono); font-size:8.3px; color:var(--muted); }
+.src a{ color:var(--pink-d); }
+em{ font-style:italic; }
+
+ul.bul, ol.bul{ margin:6px 0 11px; padding-left:0; list-style:none; }
+ul.bul li, ol.bul li{
+  font-size:10.6px; line-height:1.55; color:var(--body);
+  padding-left:18px; margin-bottom:7px; position:relative;
+}
+ul.bul li::before{
+  content:""; position:absolute; left:2px; top:7px;
+  width:6px; height:6px; background:var(--pink); border-radius:1px; transform:rotate(45deg);
+}
+ol.bul{ counter-reset:k; }
+ol.bul li{ padding-left:26px; }
+ol.bul li::before{
+  counter-increment:k; content:counter(k);
+  position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:9px; font-weight:600; color:#fff;
+  background:var(--pink); width:16px; height:16px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* checklist list */
+ul.check{ list-style:none; margin:6px 0 12px; }
+ul.check li{
+  font-size:10.6px; line-height:1.5; color:var(--body);
+  padding:7px 0 7px 26px; position:relative; border-bottom:1px dashed var(--line);
+}
+ul.check li::before{
+  content:""; position:absolute; left:0; top:6px;
+  width:15px; height:15px; border:1.6px solid var(--green); border-radius:4px; background:#FFFFFF;
+}
+ul.check li strong{ color:var(--ink); }
+
+/* ---------- quadro "Retenha" ---------- */
+.retain{
+  margin-top:auto; margin-bottom:2mm;
+  background:linear-gradient(100deg, #FBEFF7 0%, #F7E6F1 55%, #F2DBEB 100%);
+  border-left:4px solid var(--pink);
+  border-radius:8px; padding:14px 18px 14px 16px; color:var(--ink);
+}
+.retain .lab{
+  font-family:var(--mono); font-size:9px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--pink-d); margin-bottom:5px;
+}
+.retain p{ color:#3f3a32; font-size:10.8px; line-height:1.5; margin:0; font-weight:500; }
+
+/* ---------- tabelas de dados ---------- */
+.tbl-wrap{ margin:12px 0 14px; border-radius:9px; overflow:hidden; border:1px solid var(--line); box-shadow:0 1px 2.5px rgba(20,17,13,.08); }
+table.data{ width:100%; border-collapse:collapse; font-size:9.9px; }
+table.data thead th{
+  text-align:left; padding:9px 12px; font-weight:700; font-size:9.4px; color:#14110D;
+  background:linear-gradient(135deg, #F6DEEE 0%, #EFCBE3 100%); letter-spacing:.01em;
+}
+table.data thead th:first-child{ background:linear-gradient(135deg,#EFEAE1 0%,#E8E1D6 100%); }
+table.data td{ padding:8px 12px; vertical-align:top; line-height:1.45; border-bottom:1px solid var(--line); color:var(--body); }
+table.data td.k{ font-weight:700; color:var(--ink); }
+table.data tbody tr:nth-child(odd) td{ background:#FBF6F9; }
+table.data tr:last-child td{ border-bottom:0; }
+
+/* ---------- callout / nota / lead / pull ---------- */
+.note{ background:var(--amber-soft); border:1px solid #EFCFE4; border-radius:8px;
+  padding:10px 13px; margin:10px 0; font-size:9.8px; line-height:1.5; color:#3f3a32;
+}
+.note b{ color:var(--pink-d); }
+.lead{
+  font-size:12.4px; line-height:1.55; color:var(--ink); font-weight:500;
+  border-left:3px solid var(--pink); padding-left:13px; margin:2px 0 15px;
+}
+.pull{
+  font-family:var(--serif); font-style:italic; font-weight:600; font-size:15px; line-height:1.4; color:var(--pink-d);
+  margin:14px 0; padding:0 0 0 2px;
+}
+.kicker{ font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--green-d); margin:16px 0 5px; font-weight:600; }
+
+/* ============================================================
+   CAPA / LEGAL
+   ============================================================ */
+.dark{ background:#FFFFFF; color:var(--ink); }
+
+/* ---------- capa (fundo branco) ---------- */
+.cover{ position:absolute; inset:0; background:
+    radial-gradient(120% 75% at 82% 8%, rgba(210,98,178,.10) 0%, rgba(210,98,178,0) 45%),
+    radial-gradient(110% 70% at 8% 96%, rgba(46,158,50,.09) 0%, rgba(46,158,50,0) 50%),
+    #FFFFFF;
+  overflow:hidden; }
+.cover::before{ content:""; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg,var(--pink) 0%, var(--green) 100%); }
+.cover .ctop{ position:absolute; top:24mm; left:22mm; right:22mm; display:flex; justify-content:space-between; align-items:center; }
+.cover .brandmark{ font-family:var(--mono); letter-spacing:.42em; font-size:13px; text-transform:uppercase; color:var(--ink); }
+.cover .brandmark .d{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--pink); margin-right:11px; box-shadow:0 0 14px rgba(210,98,178,.5); vertical-align:middle; }
+.cover .vol{ font-family:var(--mono); font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--muted); }
+.cover .cmid{ position:absolute; left:22mm; right:22mm; top:44%; transform:translateY(-50%); }
+.cover .eyebrow{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink-d); margin-bottom:16px; }
+.cover h1{ font-family:var(--serif); font-weight:800; font-size:52px; line-height:.99; letter-spacing:-.02em; color:var(--ink); margin-bottom:20px; }
+.cover h1 .am{ color:var(--pink-d); }
+.cover h1 .gr{ color:var(--green-d); }
+.cover .sub{ font-size:13px; line-height:1.55; color:var(--body); max-width:80%; margin-bottom:22px; font-weight:500; }
+.cover .sub b{ color:var(--ink); }
+.cover .cbottom{ position:absolute; left:22mm; right:22mm; bottom:24mm; }
+.cover .meta{ display:flex; gap:22px; font-family:var(--mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); border-top:1px solid var(--line); padding-top:14px; flex-wrap:wrap; }
+.cover .meta b{ color:var(--pink-d); font-weight:600; }
+.cover .warncover{ margin-top:14px; font-family:var(--mono); font-size:8px; letter-spacing:.05em; color:var(--muted); line-height:1.6; }
+
+/* ---------- sumário (TOC) ---------- */
+.toc{ padding:30mm 24mm 22mm; }
+.toc .kick{ font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--pink-d); margin-bottom:8px; }
+.toc h1{ font-family:var(--serif); font-size:38px; font-weight:800; letter-spacing:-.02em; color:var(--ink); line-height:1; margin-bottom:6px; }
+.toc h1 .pk{ color:var(--pink-d); }
+.toc .desc{ font-size:11px; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.toc ol{ list-style:none; counter-reset:t; }
+.toc li{
+  counter-increment:t; display:flex; align-items:baseline; gap:12px;
+  padding:8.5px 0; border-bottom:1px dashed var(--line);
+}
+.toc li .n{ font-family:var(--mono); font-size:10px; color:var(--pink-d); width:26px; font-weight:600; }
+.toc li .t{ font-weight:600; font-size:11.5px; color:var(--ink); }
+.toc li .t small{ display:block; font-weight:400; font-size:9px; color:var(--muted); margin-top:2px; }
+.toc li .dots{ flex:1; border-bottom:1px dotted #cbc2b3; transform:translateY(-3px); margin:0 4px; }
+.toc li .pg{ font-family:var(--mono); font-size:11px; color:var(--ink); font-weight:600; }
+
+/* ---------- intro ---------- */
+.intro .big{
+  font-family:var(--serif); font-size:17px; line-height:1.42; color:var(--ink); font-weight:500;
+  margin-bottom:14px; letter-spacing:-.01em;
+}
+.warnbar{
+  background:var(--amber-soft); border:1px solid #EFCFE4; border-radius:8px; padding:9px 13px; margin:0 0 14px;
+  font-size:9.4px; line-height:1.5; color:#3f3a32;
+}
+.warnbar b{ color:var(--pink-d); }
+
+/* ---------- legal / contracapa ---------- */
+.legal{ padding:30mm 26mm; display:flex; flex-direction:column; min-height:100%; }
+.legal::before{ content:""; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg,var(--pink) 0%, var(--green) 100%); }
+.legal .brand{ font-family:var(--mono); letter-spacing:.4em; font-size:15px; text-transform:uppercase; color:#14110D; }
+.legal .brand .d{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--pink); margin-right:12px; box-shadow:0 0 12px rgba(210,98,178,.5); vertical-align:middle; }
+.legal h2{ font-family:var(--serif); color:#14110D; font-size:26px; font-weight:800; line-height:1.08; margin:20px 0 12px; letter-spacing:-.01em; display:block; }
+.legal h2::before{ display:none; }
+.legal h2 .am{ color:var(--pink-d); }
+.legal p{ color:var(--body); font-size:10.4px; line-height:1.6; }
+.legal .amber{ color:var(--pink-d); }
+.legal .hr{ height:1px; background:rgba(20,17,13,.12); margin:18px 0; }
+
+/* números */
+.statsrow{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:6px 0 4px; }
+.statcard{ border:1px solid var(--line); border-radius:12px; padding:16px 14px; text-align:center; background:linear-gradient(160deg,#FFFFFF 0%,#FBF6F9 100%); position:relative; overflow:hidden; }
+.statcard::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--pink),var(--green)); }
+.statcard .big{ font-family:var(--serif); font-weight:800; font-size:30px; color:var(--pink-d); line-height:1; letter-spacing:-.02em; }
+.statcard .lab{ font-family:var(--mono); font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:8px; line-height:1.4; }
+
+.legal .ctas{ display:flex; gap:11px; margin-top:14px; flex-wrap:wrap; }
+.legal .cta-dark{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--pink);
+  padding:12px 20px; border-radius:999px;
+}
+.legal .cta-ghost{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--green-d); border:1.5px solid var(--green);
+  padding:12px 20px; border-radius:999px;
+}
+.legal .src-block{ font-family:var(--mono); font-size:8px; line-height:1.7; color:rgba(20,17,13,.55); }
+.legal .src-block a{ color:var(--pink-d); }
+.legal .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(20,17,13,.48); }
+.legal .sign{ font-family:var(--serif); font-style:italic; font-size:13px; color:var(--pink-d); margin-top:14px; }
+.bracket{ position:absolute; width:30px; height:30px; border:2px solid var(--pink); opacity:.7; }
+.bracket.tl{ top:26px; left:26px; border-right:0; border-bottom:0; }
+.bracket.tr{ top:26px; right:26px; border-left:0; border-bottom:0; }
+.bracket.bl{ bottom:26px; left:26px; border-right:0; border-top:0; }
+.bracket.br{ bottom:26px; right:26px; border-left:0; border-top:0; }
+</style>
+</head>
+<body>
+
+<!-- ============================== CAPA ============================== -->
+<section class="page dark">
+  <div class="cover">
+    <div class="ctop">
+      <div class="brandmark"><span class="d"></span>KALEIDOS</div>
+      <div class="vol">Playbook · Edição Bear Market</div>
+    </div>
+    <div class="cmid">
+      <div class="eyebrow">[ Playbook de marketing &amp; vendas ]</div>
+      <h1>Como fazer<br>marketing e vender<br>no <span class="am">bear market</span></h1>
+      <div class="sub"><b>A jogada contra-cíclica:</b> enquanto o mercado corta verba e some, você constrói a marca que domina o próximo ciclo. A atenção nunca está tão barata quanto no frio.</div>
+    </div>
+    <div class="cbottom">
+      <div class="meta">
+        <span><b>9</b> capítulos</span>
+        <span><b>50+</b> fontes com dado</span>
+        <span>Conteúdo <b>educacional</b></span>
+        <span>kaleidos.com.br</span>
+      </div>
+      <div class="warncover">Material educacional e de marketing. Não é recomendação de investimento. Dados de fontes públicas coletados em 2026 e sujeitos a mudança.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================== -->
+<section class="page">
+  <div class="content toc">
+    <div class="kick">[ Sumário ]</div>
+    <h1>O <span class="pk">PLANO</span></h1>
+    <div class="desc">Enquanto todo mundo corta marketing e espera "o momento certo", o custo de ser lembrado despenca. Este é o playbook de quem constrói no frio pra dominar o próximo ciclo.</div>
+    <ol>
+      <li><span class="n">—</span><span class="t">Introdução<small>Por que marketing no bear é a maior arbitragem de atenção que existe</small></span><span class="dots"></span><span class="pg">03</span></li><li><span class="n">01</span><span class="t">A tese contra-cíclica<small>ESOV, CAC no frio e quem construiu no bear e saiu na frente</small></span><span class="dots"></span><span class="pg">04</span></li><li><span class="n">02</span><span class="t">O que muda no bear<small>O comprador vira cético, o hype/airdrop/mercenário morre, sobe confiança e utilidade</small></span><span class="dots"></span><span class="pg">05</span></li><li><span class="n">03</span><span class="t">Posicionamento e narrativa no frio<small>Parar de vender preço e hype: vender fundamento, utilidade e sobrevivência. Prova &gt; promessa</small></span><span class="dots"></span><span class="pg">06</span></li><li><span class="n">04</span><span class="t">Conteúdo que vira autoridade barata<small>Educação, SEO + AEO, newsletter e papers: o ativo que compõe enquanto todo mundo silencia</small></span><span class="dots"></span><span class="pg">07</span></li><li><span class="n">05</span><span class="t">Aquisição eficiente (CAC baixo)<small>Orgânico, comunidade, PR ganho, KOL de reputação e atribuição on-chain pra provar ROI</small></span><span class="dots"></span><span class="pg">08</span></li><li><span class="n">06</span><span class="t">Comunidade e retenção<small>Segurar quem ficou vale mais que caçar quem sumiu. Points que retêm x points que farmam</small></span><span class="dots"></span><span class="pg">09</span></li><li><span class="n">07</span><span class="t">Vender no bear (B2B)<small>Funil sales-led, fechar com o budget travado, ancorar em ROI e sobrevivência, pricing de bear</small></span><span class="dots"></span><span class="pg">10</span></li><li><span class="n">08</span><span class="t">Lançar no frio<small>Construir a base agora, timing pro próximo ciclo e o press release que a mídia publica no bear</small></span><span class="dots"></span><span class="pg">11</span></li><li><span class="n">09</span><span class="t">O playbook de ação<small>O checklist do bear em uma página: marca, conteúdo, aquisição, comunidade, vendas, lançamento</small></span><span class="dots"></span><span class="pg">12</span></li><li><span class="n">—</span><span class="t">Aviso &amp; quem fez este playbook</span><span class="dots"></span><span class="pg">13</span></li>
+    </ol>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Kaleidos · Marketing e vendas no bear market</span><span>kaleidos.com.br</span></div>
+  <div class="folio">— <b>02</b> —</div>
+</section>
+
+<!-- ============================== INTRODUÇÃO ============================== -->
+<section class="page content-page">
+  <div class="content intro">
+    <div class="chap-num">Introdução</div>
+    <h1 class="chap">A MAIOR ARBITRAGEM DE <span class="ink">ATENÇÃO DO CICLO</span></h1>
+
+    <div class="warnbar"><b>Aviso.</b> Este material é educacional e de marketing. Não é recomendação de investimento nem promessa de retorno. É estratégia de marca, conteúdo e vendas pra quem constrói projeto de verdade.</div>
+
+    <p class="big">Todo ciclo de mercado tem dois tipos de projeto: o que corta marketing quando o preço cai, e o que constrói justamente ali. Um desaparece do radar. O outro sai do bear já dono da atenção que o próximo bull vai precificar.</p>
+    <p>Marketing no bear não é gasto defensivo. É a maior arbitragem de atenção que existe. Enquanto o mercado inteiro corta verba, some das timelines e espera o "momento certo", o custo de ser lembrado despenca. Quem paga esse preço baixo domina o ciclo seguinte. Não é opinião de agência: é padrão histórico, medido em décadas de dado, do ESOV de Binet &amp; Field aos casos cripto do último inverno.</p>
+
+    <h2>O que você sai sabendo, em nove capítulos</h2>
+    <ol class="bul">
+      <li><strong>A tese contra-cíclica.</strong> Por que quem mantém share of voice na baixa sai na frente na alta.</li>
+      <li><strong>O que muda no bear.</strong> O comprador vira outro, e o hype/airdrop/mercenário para de funcionar.</li>
+      <li><strong>Posicionamento e narrativa no frio.</strong> Parar de vender preço, vender prova e sobrevivência.</li>
+      <li><strong>Conteúdo que vira autoridade barata.</strong> SEO + AEO, newsletter e papers que compõem sozinhos.</li>
+      <li><strong>Aquisição eficiente.</strong> Os canais de CAC baixo e a atribuição on-chain que prova o ROI.</li>
+      <li><strong>Comunidade e retenção.</strong> Segurar quem ficou vale mais que caçar quem sumiu.</li>
+      <li><strong>Vender no bear (B2B).</strong> Como fechar com o budget do outro lado travado.</li>
+      <li><strong>Lançar no frio.</strong> Construir a base agora e o timing pro próximo ciclo.</li>
+      <li><strong>O playbook de ação.</strong> Tudo em um checklist de uma página.</li>
+    </ol>
+
+    <p>Vale pra founder de cripto, head de growth de fintech ou qualquer empresa vendendo num mercado retraído. O concorrente que corta marketing não está te dando folga: está te entregando o share of voice de graça. Bear market não é hora de sobreviver escondido, é a única janela do ciclo em que a atenção do seu mercado inteiro está em liquidação.</p>
+
+    <div class="retain">
+      <div class="lab">A promessa do playbook</div>
+      <p>Um plano pra cada frente do frio: marca, conteúdo, aquisição, comunidade, vendas e lançamento. Construir no tédio, colher na euforia. Vamos.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Introdução</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>03</b> —</div>
+</section>
+
+<!-- ============================== CAPÍTULO 01 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 01</div>
+    <h1 class="chap">A TESE <span class="ink">CONTRA-CÍCLICA</span></h1>
+    <p class="lead">Todo ciclo de mercado tem dois tipos de projeto. O que corta marketing quando o preço cai e o que constrói justamente ali. Um desaparece do radar. O outro sai do bear já dono da atenção que o próximo bull vai precificar.</p>
+    <p>Essa é a tese central deste playbook. Marketing no bear não é gasto defensivo. É a maior arbitragem de atenção que existe. Enquanto o mercado inteiro corta verba, some das timelines e espera "o momento certo", o custo de ser lembrado despenca. Quem paga esse preço baixo domina o ciclo seguinte.</p>
+    <p>Não é opinião de agência. É padrão histórico, medido em décadas de dado.</p>
+    <h2>O que a ciência de marca já provou</h2>
+    <p>O trabalho mais sólido sobre isso vem de Les Binet e Peter Field, analisando o databank do IPA (Institute of Practitioners in Advertising). A métrica-chave é o <strong>Excess Share of Voice (ESOV)</strong>, a diferença entre a sua fatia de barulho no mercado (share of voice) e a sua fatia de vendas (share of market).</p>
+    <p>A regra é brutal de simples. Quando o seu share of voice está acima do seu share of market, a marca cresce. Quando está abaixo, encolhe (<a href="https://www.semetis.com/en/resources/articles/using-extra-share-of-voice-esov-to-drive-long%E2%80%91term-growth-balancing-brand-building-and-performance">Semetis</a>).</p>
+    <p>Os números que Binet e Field acharam nos dados:</p>
+    <ul class="bul"><li>Um ESOV de 10% se traduz em cerca de <strong>0,7% de crescimento de market share por ano</strong> (<a href="https://blog.dprandco.com/excess-share-of-voice-a-key-driver-of-increased-market-share">DPR&amp;Co</a>).</li><li>As empresas que mais investiram e conquistaram o maior Excess Share of Voice num período de retração colheram <strong>5x mais efeitos de negócio muito grandes</strong> (lucro, preço, penetração) e <strong>4,5x mais crescimento anual de market share</strong> (<a href="https://www.semetis.com/en/resources/articles/using-extra-share-of-voice-esov-to-drive-long%E2%80%91term-growth-balancing-brand-building-and-performance">Semetis</a>).</li></ul>
+    <p>Aqui mora a arbitragem. Share of voice não é medido em reais absolutos. É medido em relação aos concorrentes. Quando todo mundo corta ao mesmo tempo, o mercado de atenção esvazia. O mesmo orçamento de sempre compra um ESOV que na alta custaria três, quatro vezes mais.</p>
+    <h2>O custo da atenção despenca no frio</h2>
+    <p>Isso não é abstração. Em cripto dá pra ver no custo por carteira adquirida.</p>
+    <p>Um estudo de aquisição em cripto mostrou o Cost Per Wallet nos EUA saltar de <strong>US$ 5,87 no trimestre de bull para US$ 22,81 quando o sentimento virou</strong> (<a href="https://m.theblockbeats.info/en/news/57348">BlockBeats</a>). Na Europa Ocidental a variação foi ainda mais violenta, de US$ 1,18 para US$ 32,79.</p>
+    <p>Parece contra a tese, mas não é. Esse é o custo de tentar comprar atenção quando o mercado já está aquecido e caótico, todo projeto brigando pelo mesmo usuário. A leitura correta separa dois momentos. No topo do bull, a briga por atenção infla o CAC. No bear profundo, ninguém está brigando: os canais pagos, orgânicos e de parceria ficam baratos justamente porque a concorrência sumiu (<a href="https://m.theblockbeats.info/en/news/57348">BlockBeats</a>).</p>
+    <p>Quem constrói marca e conteúdo no vale não está pagando o pico. Está montando o inventário de atenção enquanto ele está em promoção, pra colher quando o CAC de todo mundo explodir de novo.</p>
+    <h2>A prova fora de cripto</h2>
+    <p>O padrão é mais velho que o Bitcoin.</p>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Recessão</th><th>Quem manteve/aumentou verba</th><th>Quem cortou</th></tr></thead><tbody><tr><td class="k">1974 (vendas em 5 anos)</td><td>+132%</td><td>+79%</td></tr><tr><td class="k">Anos 1980, McGraw-Hill, 600 empresas</td><td>+275% de crescimento de vendas</td><td>+19%</td></tr></tbody></table></div>
+    <p>Fontes: <a href="https://info.eventvesta.com/organizer/marketing-spend-during-a-recession/">EventVesta</a> e <a href="https://www.gigasavvy.com/marketing-during-a-recession-and-economic-volatility/">Gigasavvy</a>.</p>
+    <p>A McGraw-Hill acompanhou 600 empresas na retração do início dos anos 80. As que mantiveram ou aumentaram investimento em publicidade cresceram vendas <strong>275% nos cinco anos seguintes</strong>, contra <strong>19%</strong> das que cortaram (<a href="https://www.gigasavvy.com/marketing-during-a-recession-and-economic-volatility/">Gigasavvy</a>). É a mesma física do ESOV, só que rodada no mundo físico décadas antes de alguém falar em web3.</p>
+    <h2>Quem construiu no frio e saiu na frente</h2>
+    <p>Cripto tem seus próprios exemplos, e os mais fortes do último ciclo foram todos gestados no bear.</p>
+    <p><strong>Hyperliquid.</strong> Sem VC, sem venda privada, sem insiders. Jeff Yan e a equipe bootstraparam a DEX no fundo do mercado e devolveram <strong>31% do supply à comunidade</strong> no airdrop de novembro de 2024, uma das maiores distribuições da história de DeFi (<a href="https://www.coingecko.com/learn/what-is-hyperliquid-and-what-the-hyperliquid-airdrop-means-for-defi">CoinGecko</a>). O produto e a comunidade foram construídos no silêncio. O mercado precificou depois.</p>
+    <p><strong>Ondo Finance.</strong> Fundada em 2021, apostou em tokenização de treasuries quando "RWA" ainda não era narrativa. O TVL saiu de <strong>US$ 40 milhões para mais de US$ 534 milhões em 2024</strong>, chegando a <strong>US$ 1,6 bilhão em 2025</strong> (<a href="https://coincub.com/blog/ondo-finance-rwa/">Coincub</a>). Quem plantou autoridade no tema antes do hype colheu a narrativa inteira.</p>
+    <p><strong>Berachain.</strong> Nasceu de uma coleção de NFT, os Bong Bears, em 2021. No auge do bear, em janeiro de 2023, a comunidade The Honey Jar produziu artigos, podcasts, spaces e contests sem parar, montando uma das bases mais ativas de cripto e atraindo <strong>mais de 100 mil usuários</strong> antes do token existir (<a href="https://www.thetokendispatch.com/p/berachain-from-bears-to-billions">The Token Dispatch</a>). O marketing veio primeiro. O preço veio como consequência.</p>
+    <p>O denominador comum não é sorte de timing. É a decisão de investir em marca, conteúdo e comunidade quando ninguém mais estava disposto a pagar por atenção.</p>
+    <h2>A leitura pra quem vende num mercado frio</h2>
+    <p>Vale pra founder de cripto, head de growth de fintech ou qualquer empresa vendendo num mercado retraído. A lógica é idêntica.</p>
+    <p>O concorrente que corta marketing não está te dando uma folga. Está te entregando o share of voice de graça. A atenção que ele abandona não some, ela fica barata e disponível pra quem tiver estômago de comprá-la no pior momento do gráfico.</p>
+    <p>Bear market não é hora de sobreviver escondido. É a única janela do ciclo em que a atenção do seu mercado inteiro está em liquidação.</p>
+    <p>Quem constrói no frio não espera o próximo bull. Chega nele já sendo o nome que o mercado lembra primeiro.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>No bear, a atenção do seu mercado inteiro entra em liquidação. Quem constrói marca, conteúdo e comunidade no frio não espera o próximo bull: chega nele já sendo o nome que o mercado lembra primeiro.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 01 · A tese contra-cíclica</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>04</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 02 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 02</div>
+    <h1 class="chap">O QUE MUDA NO BEAR <span class="ink">(E O QUE PARA DE FUNCIONAR)</span></h1>
+    <p class="lead">O preço não muda só o gráfico. Muda quem aparece, o que a pessoa quer ouvir e o que ela decide comprar. No bull, dinheiro barato compra atenção barata: qualquer coisa com um gráfico verde e a promessa de 100x fecha venda sozinha. No bear, esse motor morre. E a maioria dos projetos descobre, tarde demais, que nunca teve marketing, teve maré.</p>
+    <p>Este capítulo é sobre o que efetivamente muda no comportamento do comprador quando o preço cai, o que para de funcionar de vez, e qual funil sobra de pé.</p>
+    <h2>O comprador do bear é outra pessoa</h2>
+    <p>No topo do ciclo, o comprador é movido por ganância e FOMO. Ele não lê, não compara, não pergunta "isso é seguro?". Ele quer entrar antes do vizinho. No bear, o mesmo ser humano vira cético, avesso a risco e cansado de ter perdido dinheiro.</p>
+    <p>Isso não é opinião, é o rastro que a fraude deixou. Em 2024, as perdas com golpes cripto chegaram a algo entre US$ 9,9 bilhões e US$ 12 bilhões, e os esquemas de "alto rendimento garantido" responderam por 50,2% de tudo que foi roubado (<a href="https://www.chainalysis.com/blog/crypto-scams-2026/">Chainalysis</a>). Traduzindo: metade do dinheiro perdido saiu da mesma promessa que o marketing de bull usa como isca. Quando o ciclo vira, a memória dessas perdas vira o filtro de compra de todo mundo. A pessoa que sobrou no mercado já foi queimada, e agora ela desconfia por padrão.</p>
+    <p>O que ela passa a querer, em ordem:</p>
+    <ul class="bul"><li><strong>Confiança</strong> — "esse projeto vai existir daqui a dois anos? Quem está por trás?"</li><li><strong>Utilidade</strong> — "isso resolve algo real ou é só um token para especular?"</li><li><strong>Educação</strong> — "me ensina, não me empurra. Quero entender antes de arriscar."</li></ul>
+    <p>Quem responde essas três perguntas melhor que a concorrência vende. Quem continua gritando "última chance, 100x" fala com um público que já não existe.</p>
+    <h2>O que para de funcionar</h2>
+    <p>Três motores do bull quebram ao mesmo tempo, e todos eles são a mesma coisa disfarçada: liquidez alugada.</p>
+    <p><strong>O hype puro.</strong> No bull, narrativa sem produto sustenta preço porque tem comprador marginal entrando todo dia. No bear não entra ninguém novo para segurar a ponta. A narrativa vazia colapsa na primeira semana de lateralização.</p>
+    <p><strong>O airdrop-farming como aquisição.</strong> A tática favorita do bull, distribuir token para "crescer comunidade", é uma das mais estudadas e mais furadas que existe. Mais de 80% de quem recebe airdrop vende dentro dos primeiros 90 dias, e 88% dos tokens distribuídos perdem valor em até 3 meses (<a href="https://www.dlnews.com/articles/defi/why-airdrop-farmers-will-find-it-harder-to-make-a-killing/">DL News</a>). Você não comprou comunidade. Você pagou gente para simular comunidade até a hora de sacar.</p>
+    <p><strong>O capital mercenário.</strong> A TVL inflada por incentivo é a maior mentira do bull. O provedor de liquidez médio fica só 14,7 dias num protocolo antes de pular para o próximo rendimento maior, segundo análise de 12 mil LPs em 47 protocolos (<a href="https://thespotlite.net/mercenary-capital-in-liquidity-mining-the-defi-gold-rush-explained">The Spotlite</a>). No minuto em que o incentivo seca, a baleia saca e a métrica desaba da noite pro dia. No bear, o incentivo sempre seca.</p>
+    <p>O padrão é sempre o mesmo: você aluga um número (usuários, TVL, holders) com token, o número sobe, o marketing comemora, e quando o subsídio acaba não restou nada. O bear não criou o problema. Ele só cortou o crédito que escondia o problema.</p>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Alavanca</th><th>No bull</th><th>No bear</th></tr></thead><tbody><tr><td class="k">Hype / narrativa sem produto</td><td>Sustenta preço</td><td>Colapsa sem comprador marginal</td></tr><tr><td class="k">Airdrop para "aquisição"</td><td>Infla holders</td><td>80% vende em 90 dias (<a href="https://www.dlnews.com/articles/defi/why-airdrop-farmers-will-find-it-harder-to-make-a-killing/">DL News</a>)</td></tr><tr><td class="k">Incentivo de liquidez (TVL)</td><td>Infla TVL</td><td>Sai em ~15 dias (<a href="https://thespotlite.net/mercenary-capital-in-liquidity-mining-the-defi-gold-rush-explained">The Spotlite</a>)</td></tr><tr><td class="k">Influencer pago por preço-alvo</td><td>Gera pump</td><td>Vira passivo de reputação</td></tr><tr><td class="k">Marca, conteúdo, confiança</td><td>"Custo desnecessário"</td><td>Único ativo que compõe</td></tr></tbody></table></div>
+    <h2>O que sobe de valor</h2>
+    <p>Enquanto o mercenário some, três coisas ficam raras, e o raro é o que precifica.</p>
+    <p><strong>Confiança vira o ativo de maior retorno.</strong> Não é discurso de guru. É matemática de aquisição: num mercado onde metade das pessoas foi golpeada, ser o projeto óbvio, verificável e presente há anos derruba seu custo de aquisição enquanto o do concorrente explode.</p>
+    <p><strong>Utilidade filtra quem fica.</strong> No bear, o usuário que sobra é o que usa o produto sem ser pago para usar. Marketing no bear é encontrar essas pessoas e falar a língua delas, não subornar carteira vazia.</p>
+    <p><strong>Educação é o novo topo de funil.</strong> Quando a pessoa está com medo, ela não clica em "compre agora", ela busca "como funciona" e "isso é seguro". Quem ensina ocupa o momento exato da dúvida e vira a referência antes da decisão. É o inverso do bull: você não empurra o fim do funil, você constrói o começo dele.</p>
+    <h2>O funil que sobra de pé</h2>
+    <p>O funil de bull é curto e mercenário: anúncio → hype → compra impulsiva → dump. O funil de bear é longo, mais lento e infinitamente mais defensável:</p>
+    <ol class="bul"><li><strong>Atenção via conteúdo e educação</strong> — você aparece no momento da dúvida, não no momento da ganância.</li><li><strong>Confiança via consistência</strong> — presença semanal, transparência, rosto e nome. Você prova que existe.</li><li><strong>Prova de utilidade</strong> — case real, número real, usuário real que não foi pago.</li><li><strong>Conversão sem pressa</strong> — a pessoa compra porque entendeu, não porque teve medo de perder.</li><li><strong>Retenção por relação</strong> — o cliente do bear fica, porque escolheu, não porque foi alugado.</li></ol>
+    <p>A vantagem escondida: enquanto todo mundo corta verba e some, o custo de atenção despenca e a concorrência esvazia o campo. Cerca de 60% das marcas que aumentaram investimento de mídia durante recessão melhoraram o ROI, algumas com 17% a mais de vendas incrementais (<a href="https://www.warc.com/fulltext/Recession/54682.htm">WARC / Analytic Partners</a>). Não é caridade. É a arbitragem de atenção mais barata do ciclo inteiro.</p>
+    <p>O bull te paga para ser preguiçoso. O bear te obriga a construir algo que sobrevive quando o subsídio acaba, e é exatamente isso que vira monopólio no próximo topo.</p>
+    <div class="note"><b>Aviso.</b> Nada aqui é recomendação de investimento. É estratégia de marca e distribuição para quem constrói projeto de verdade.</div>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O bull te paga pra ser preguiçoso. O bear te obriga a construir algo que sobrevive quando o subsídio acaba, e é exatamente isso que vira monopólio no próximo topo.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 02 · O que muda no bear</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>05</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 03 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 03</div>
+    <h1 class="chap">POSICIONAMENTO E <span class="ink">NARRATIVA NO FRIO</span></h1>
+    <p class="lead">No topo do ciclo, qualquer mensagem vende. O gráfico sobe, o FOMO trabalha por você, e "número vai subir" é copy suficiente. No frio, essa mensagem morre. O público que comprava promessa agora está machucado, cético e contando cada real. Vender preço num mercado que caiu 70% é gritar num quarto vazio.</p>
+    <p>A boa notícia: enquanto seus concorrentes insistem no hype que parou de funcionar, o campo de narrativa fica livre. Quem reposiciona a mensagem para <strong>fundamento, utilidade e sobrevivência</strong> captura a atenção que sobra. É a mesma arbitragem do playbook inteiro, aplicada à mensagem em vez do budget.</p>
+    <h2>O frio quebra a mensagem de hype (e por que)</h2>
+    <p>O bear não é só preço caindo. É confiança caindo. Só em 2022, investidores de cripto perderam cerca de US$ 4,2 bilhões para fraudes, hacks e exploits, e foram registrados mais de 188 mil rug pulls em redes como BNB e Ethereum (<a href="https://www.chainalysis.com/blog/2022-crypto-scam-revenue/">Chainalysis</a>). Quando o público acabou de ver projeto com marketing barulhento virar pó, "confie em mim, vai valorizar" não é neutro. É gatilho de desconfiança.</p>
+    <p>O que acontece na cabeça do comprador frio:</p>
+    <ul class="bul"><li>Ele deixou de perguntar "quanto isso multiplica?" e passou a perguntar "isso vai existir daqui a dois anos?"</li><li>Ele desconta promessa automaticamente. Já ouviu todas.</li><li>Ele confia em prova verificável, não em adjetivo.</li></ul>
+    <p>Vender preço pra esse público é falar a língua de um ciclo que acabou.</p>
+    <h2>Reframe: da promessa para o fundamento</h2>
+    <p>Reposicionar não é abandonar o produto. É trocar o <strong>eixo da mensagem</strong>. Três movimentos práticos.</p>
+    <div class="kicker">1. De preço para utilidade</div>
+    <p>Pare de ancorar em valorização. Ancore no problema que você resolve mesmo com o gráfico vermelho. Os projetos que atravessaram o inverno de 2022–2023 fizeram exatamente isso: Lido consolidou mais de 29% de todo o staking de Ethereum e cresceu o TVL de ~US$ 20 bi no pico para US$ 30 bi+ até 2024, resolvendo um problema estrutural real de staking líquido, não uma promessa de retorno (<a href="https://yellow.com/research/bear-market-builders-complete-analysis-of-crypto-projects-that-survived-the-2022-2024-winter">Yellow Research</a>). Solana caiu 94% e ainda assim viu a atividade de desenvolvedores <strong>aumentar</strong> ao longo de 2022–2023. A narrativa deixou de ser "quanto sobe" e virou "o que se constrói aqui".</p>
+    <div class="kicker">2. De hype para prova</div>
+    <p>No topo, promessa basta. No frio, <strong>prova é a moeda</strong>. E prova é o que a maioria dos concorrentes não tem, porque hype não deixa rastro auditável. Métricas on-chain, usuários ativos, TVL real, integrações que funcionam, código auditado: tudo isso vira mensagem. A regra é simples e dura:</p>
+    <p class="pull">Toda afirmação-chave precisa de uma evidência checável do lado dela. Sem evidência, corta a frase.</p>
+    <div class="kicker">3. De curto prazo para sobrevivência</div>
+    <p>O frio premia quem comunica que vai <strong>estar aqui na virada</strong>. Runway, roadmap financiado, time construindo, tesouraria transparente. Isso não é defensivo. É o argumento mais forte que existe quando metade do mercado está fechando as portas. "Sobrevivemos, estamos construindo, e vamos estar de pé quando o ciclo virar" é uma narrativa que o comprador frio entende no osso, porque é exatamente o que ele quer para o próprio capital.</p>
+    <h2>Prova &gt; promessa: a tabela de reframe</h2>
+    <p>Use isto como filtro de qualquer peça de conteúdo, deck ou landing no frio:</p>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Estágio quente (não use no frio)</th><th>Reframe para o frio</th><th>Prova que sustenta</th></tr></thead><tbody><tr><td class="k">"Potencial de 100x"</td><td>"Resolve X problema hoje"</td><td>Usuários ativos, casos de uso reais</td></tr><tr><td class="k">"A próxima grande narrativa"</td><td>"Infraestrutura que já roda"</td><td>Uptime, volume, TVL on-chain</td></tr><tr><td class="k">"Comunidade em explosão"</td><td>"Comunidade que ficou no fundo"</td><td>Retenção, contribuidores ativos</td></tr><tr><td class="k">"Token vai valorizar"</td><td>"Utilidade independe do preço"</td><td>Receita de protocolo, taxas geradas</td></tr><tr><td class="k">"Confia no time"</td><td>"Time entregou no bear"</td><td>Roadmap cumprido, auditorias, commits</td></tr></tbody></table></div>
+    <p>A coluna da direita é o capítulo. Sem ela, o reframe do meio vira só outra promessa com roupa nova.</p>
+    <h2>Por que a janela de reposicionamento é agora</h2>
+    <p>Reposicionar no frio não é só defesa, é aquisição de território. Duas razões estruturais.</p>
+    <p>Primeira: a decisão do comprador acontece muito antes da compra. No B2B, cerca de 95% dos compradores não estão no mercado para o seu produto num dado momento, mas quando entram, escolhem a marca que já reconhecem e em que confiam (<a href="https://marketingscience.info/news-and-insights/ehrenberg-bass-95-of-b2b-buyers-are-not-in-the-market-for-your-products">Ehrenberg-Bass / LinkedIn B2B Institute</a>). Cerca de 78% dos compradores que montam shortlist selecionam produtos que já conheciam antes de pesquisar (<a href="https://www.unboundb2b.com/blog/the-95-5-rule-in-b2b-marketing/">UnboundB2B</a>). Traduzindo pro frio: a mensagem de fundamento que você planta agora é o que faz você entrar na shortlist quando o dinheiro voltar.</p>
+    <p>Segunda: quem constrói marca no downturn compõe vantagem que dura o ciclo inteiro. Uma análise da McKinsey com 1.100 empresas na recessão de 2007–09 mostrou que as mais resilientes entregaram +21% de retorno total ao acionista enquanto o resto ficou em –4%, e essas resilientes <strong>aumentaram</strong> gasto de marketing e operação em 2,2 pontos percentuais no fundo do poço (<a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-brand-is-back-staying-relevant-in-an-accelerating-age">McKinsey</a>). Segundo a Analytic Partners, cerca de 60% das marcas que aumentaram investimento de mídia numa recessão melhoraram o ROI, enquanto quem cortou arriscou perder até 15% de receita (<a href="https://info.eventvesta.com/organizer/marketing-spend-during-a-recession/">EventVesta / Analytic Partners</a>). Marca é ativo que rende com juro composto. O frio é quando ela está barata.</p>
+    <h2>Checklist de posicionamento no frio</h2>
+    <p>Antes de publicar qualquer coisa, passe por aqui:</p>
+    <ul class="bul"><li>A mensagem principal fala de <strong>problema resolvido</strong>, não de preço futuro?</li><li>Cada claim forte tem <strong>prova checável</strong> ao lado (dado on-chain, métrica, auditoria)?</li><li>O conteúdo comunica <strong>permanência</strong> (runway, roadmap, time construindo)?</li><li>Você removeu todo adjetivo que não tem evidência atrás?</li><li>A narrativa faria sentido pra alguém que <strong>acabou de perder dinheiro</strong> no setor?</li></ul>
+    <p>Se algum item falha, a peça ainda está falando a língua do topo.</p>
+    <p>No topo, o mercado compra sua promessa. No frio, ele compra sua prova, e prova é a única coisa que continua de pé quando a maré desce.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>No topo, o mercado compra sua promessa. No frio, ele compra sua prova, e prova é a única coisa que continua de pé quando a maré desce.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 03 · Posicionamento e narrativa no frio</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>06</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 04 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 04</div>
+    <h1 class="chap">CONTEÚDO QUE VIRA <span class="ink">AUTORIDADE BARATA</span></h1>
+    <p class="lead">No topo do ciclo, atenção é cara. Todo mundo tem verba, todo mundo compra tráfego, e o custo de aparecer sobe junto com o preço do token. No bear, o mapa se inverte. Os concorrentes cortam blog, demitem o time de conteúdo e somem do feed. O leilão de atenção esvazia. E é exatamente aí que conteúdo deixa de ser custo e vira o ativo mais barato de autoridade que existe.</p>
+    <p>A tese do playbook inteiro se materializa neste capítulo: enquanto o mercado silencia, quem publica ocupa o espaço. E conteúdo evergreen não gasta, ele <strong>compõe</strong>. Você paga uma vez e ele trabalha por anos.</p>
+    <h2>A matemática do silêncio alheio</h2>
+    <p>Conteúdo não é despesa recorrente como mídia paga. É um ativo que rende juros compostos.</p>
+    <ul class="bul"><li>Content marketing gera <strong>3 leads para cada 1 do outbound, a um custo 62% menor</strong> (<a href="https://contentmarketinginstitute.com/articles/stats-invest-content-marketing/">Content Marketing Institute</a>).</li><li>Cada R$1 investido em conteúdo retorna cerca de <strong>US$3, contra US$1,80 da mídia paga</strong> (<a href="https://genesysgrowth.com/blog/content-marketing-roi-stats-for-marketing-leaders">Genesys Growth</a>).</li><li>Um post publicado hoje continua gerando tráfego orgânico por, em média, <strong>3,5 anos depois da publicação, sem gasto adicional</strong> (<a href="https://genesysgrowth.com/blog/content-marketing-roi-stats-for-marketing-leaders">Genesys Growth</a>).</li></ul>
+    <p>A diferença estrutural está no tempo. O anúncio pago tem retorno idêntico no ano 1 e no ano 3: você paga o CPC daquele instante e não sobra nada do que veio antes. Já um artigo que traz 100 leads no primeiro ano pode trazer 250 no terceiro, à medida que acumula backlinks, autoridade de ranking e citações de IA (<a href="https://genesysgrowth.com/blog/content-marketing-roi-stats-for-marketing-leaders">Genesys Growth</a>). Conteúdo evergreen chega a render <strong>4x mais que conteúdo sazonal ou de trend</strong> (<a href="https://www.amraandelma.com/top-evergreen-content-marketing-statistics/">Amra &amp; Elma</a>).</p>
+    <p>Quando o mercado esfria, o custo de produção não muda, mas o valor relativo de cada peça sobe. Menos gente disputando as mesmas palavras-chave significa que o mesmo esforço rankeia mais alto. Você está comprando território barato num mercado que todo mundo abandonou.</p>
+    <h2>Autoridade tem preço premium</h2>
+    <p>Conteúdo educacional não é só aquisição barata. É poder de precificação.</p>
+    <p>O estudo anual da Edelman com o LinkedIn, na sua sétima edição com quase 2.000 profissionais, achou o número que fecha a conta: <strong>60% dos decisores B2B e da alta liderança dizem estar dispostos a pagar um preço premium por empresas que produzem thought leadership de valor</strong> (<a href="https://www.edelman.com/expertise/Business-Marketing/2025-b2b-thought-leadership-report">Edelman-LinkedIn 2025</a>).</p>
+    <p>Traduzindo para cripto e fintech: o founder que publica um estudo sério sobre o próprio setor não está só atraindo leads, está justificando margem. Num bear, quando todo produto vira commodity e a única conversa do mercado é preço, autoridade é o que te tira da guerra de desconto.</p>
+    <p>O mesmo estudo mostra por que isso importa agora: mais de <strong>40% dos deals B2B travam por desalinhamento interno</strong> no grupo de compra, e thought leadership é o que reengaja os "hidden buyers" que decidem sem falar com vendas (<a href="https://www.edelman.com/insights/hidden-buyer-b2b">Edelman</a>).</p>
+    <h2>SEO + AEO: colher a demanda que continua buscando</h2>
+    <p>O preço cai, mas as buscas não param. Gente continua pesquisando "como funciona X", "vale a pena Y", "qual a diferença entre Z". Essa demanda é evergreen e barata de capturar quando o concorrente parou de publicar.</p>
+    <ul class="bul"><li>SEO entrega <strong>748% de ROI em organizações B2B</strong> e responde por <strong>44,6% da receita B2B</strong>, mais do dobro de qualquer outro canal (<a href="https://genesysgrowth.com/blog/content-marketing-roi-stats-for-marketing-leaders">Genesys Growth</a>).</li><li>Listagens orgânicas recebem <strong>8,5x mais cliques que anúncios pagos</strong> (<a href="https://genesysgrowth.com/blog/content-marketing-roi-stats-for-marketing-leaders">Genesys Growth</a>).</li></ul>
+    <p>Mas a mudança de 2026 é o AEO (Answer Engine Optimization): otimizar para ser citado por ChatGPT, Perplexity, Claude e AI Overviews.</p>
+    <ul class="bul"><li><strong>51% dos compradores B2B começam a pesquisa num chatbot de IA</strong>, contra 29% em abril de 2025, um salto de 22 pontos em doze meses (<a href="https://www.omnibound.ai/blog/answer-engine-optimization-aeo-statistics">Omnibound</a>).</li><li>O estudo GEO de Princeton mostrou que <strong>citar estatísticas eleva a visibilidade em ~30%, e incluir citação de especialista, em ~41%</strong> (<a href="https://blog.hubspot.com/marketing/answer-engine-optimization-trends">HubSpot</a>).</li><li><strong>70% dos marketers acham que AEO vai impactar sua estratégia, mas só 20% começaram</strong> (<a href="https://blog.hubspot.com/marketing/answer-engine-optimization-trends">HubSpot</a>).</li></ul>
+    <p>Essa lacuna de 50 pontos é a arbitragem. O conteúdo que a IA cita hoje é o que define o que ela vai dizer sobre a sua categoria e seus concorrentes amanhã. Quem alimenta o modelo agora, com dados e fontes, vira a resposta padrão do próximo ciclo.</p>
+    <h2>Onde investir enquanto todo mundo corta</h2>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Ativo</th><th>O que faz no bear</th><th>Custo relativo</th></tr></thead><tbody><tr><td class="k"><strong>Papers / estudos</strong></td><td>Autoridade densa, citável por IA e imprensa, justifica premium</td><td>Alto esforço, retorno de anos</td></tr><tr><td class="k"><strong>SEO evergreen</strong></td><td>Colhe demanda que nunca para de buscar, rankeia mais fácil</td><td>Baixo, compõe sozinho</td></tr><tr><td class="k"><strong>Newsletter própria</strong></td><td>Canal direto, imune a algoritmo e a leilão de mídia</td><td>Baixo, cresce por ciclo</td></tr><tr><td class="k"><strong>Thought leadership</strong></td><td>Reengaja hidden buyers, blinda margem</td><td>Tempo do founder</td></tr></tbody></table></div>
+    <p>A newsletter merece destaque. É o único canal que você <strong>possui</strong>: não depende de CPM, de mudança de algoritmo nem de humor de plataforma. No topo você aluga atenção; no bear você constrói uma base que estará lá inteira quando o mercado virar.</p>
+    <h2>Por que a janela é agora</h2>
+    <p>A história repete. Um levantamento clássico da McGraw-Hill com 600 empresas na recessão do início dos anos 1980 achou que as que mantiveram ou aumentaram investimento em marketing tiveram <strong>275% de crescimento de vendas nos cinco anos seguintes, contra 19% das que cortaram</strong> (<a href="https://www.matternow.com/blog/research-shows-that-marketing-through-recessions-pays-off/">Matter</a>). Um estudo posterior com 1.000 empresas nos EUA e Europa mostrou que as que aumentaram gasto em marketing na recuperação tiveram <strong>+4,3% de lucro, contra queda para quem cortou</strong> (<a href="https://www.matternow.com/blog/research-shows-that-marketing-through-recessions-pays-off/">Matter</a>).</p>
+    <p>Conteúdo é a versão mais barata e composta dessa jogada. Não exige recomprar tráfego todo mês. Exige publicar de forma consistente enquanto o feed do seu setor está vazio.</p>
+    <p>O bear não é hora de calar. É a janela em que a autoridade fica em promoção e quase ninguém entra na loja. Quem publica no silêncio dos outros já chega no próximo ciclo dono da conversa.</p>
+    <div class="note"><b>Aviso.</b> Este capítulo é educacional e de marketing, não recomendação de investimento.</div>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O bear não é hora de calar. É a janela em que a autoridade fica em promoção e quase ninguém entra na loja. Quem publica no silêncio dos outros chega no próximo ciclo dono da conversa.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 04 · Conteúdo que vira autoridade barata</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>07</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 05 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 05</div>
+    <h1 class="chap">AQUISIÇÃO EFICIENTE <span class="ink">(CAC BAIXO)</span></h1>
+    <p class="lead">No topo do ciclo, todo mundo compra atenção no leilão. Quando o dinheiro é barato e o token só sobe, o CAC alto se esconde atrás da euforia. Ninguém olha a conta. No bear, a conta chega. É exatamente aí que a aquisição eficiente vira a maior vantagem competitiva que um projeto pode ter: enquanto o concorrente corta verba e some do feed, você compra atenção com desconto e sai do inverno dono do mindshare.</p>
+    <p>Este capítulo é sobre onde colocar cada real quando cada real precisa provar que voltou.</p>
+    <h2>A matemática que ninguém quer encarar</h2>
+    <p>Cortar marketing no bear parece prudência. Os dados dizem que é o erro mais caro que existe.</p>
+    <p>Um estudo clássico da McGraw-Hill com 600 empresas B2B nas recessões de 1980-1985 mostrou que as que mantiveram ou aumentaram investimento em marketing cresceram vendas 256% a mais que as que cortaram (<a href="https://www.thryv.com/blog/lessons-learned-from-advertising-in-a-recession/">Thryv</a>). Na análise da Analytic Partners, cerca de 60% das marcas que aumentaram investimento em mídia durante recessão melhoraram o ROI, com algumas registrando 17% de lift em vendas incrementais, enquanto quem cortou arriscou perder até 15% de receita (<a href="https://www.rockerbox.com/blog/with-a-recession-looming-brands-must-keep-advertising">Rockerbox</a>).</p>
+    <p>A leitura pra cripto é direta. Bear não é hora de parar de gastar. É hora de parar de gastar <em>mal</em>.</p>
+    <h2>Os canais que rendem no frio</h2>
+    <p>A hierarquia de eficiência muda quando o hype some. O que era caro fica caríssimo. O que era lento vira composto.</p>
+    <p><strong>Orgânico e conteúdo.</strong> É o canal de menor CAC estrutural que existe, porque não paga leilão. Em benchmarks B2B, o custo por lead de canais orgânicos fica em torno de US$ 164 contra ~US$ 310 dos canais pagos, e o CPL orgânico chega a ser 67% menor que o de busca paga (<a href="https://firstpagesage.com/reports/average-cost-per-lead-by-industry/">First Page Sage</a>). O contraponto honesto: orgânico exige 6 a 12 meses de consistência antes de escalar. O bear te dá exatamente esse tempo. Cada peça publicada vira ativo que gera lead por meses sem custo marginal.</p>
+    <p><strong>Comunidade.</strong> Um holder que virou defensor tem CAC decrescente: ele traz o próximo sem você pagar por isso. Comunidade real é o único canal que fica mais barato quanto mais você usa. No bear, ela também vira retenção, não só aquisição.</p>
+    <p><strong>PR ganho.</strong> Aparecer porque a história é boa, não porque você comprou o espaço. Uma auditoria de segurança bem comunicada, um dado on-chain relevante, um marco de produto: isso rende cobertura sem custo de mídia e com credibilidade que anúncio nenhum compra.</p>
+    <p><strong>KOL de reputação, não de alcance.</strong> Aqui mora a maior confusão do mercado. Projetos reportam retornos de 4 a 6 vezes acima da mídia paga com KOL bem escolhido (<a href="https://www.blockchain-ads.com/post/crypto-influencer-marketing">Blockchain-Ads</a>). Mas "bem escolhido" no bear muda de significado: no frio, o hype para de funcionar e sobra credibilidade. Quem construiu confiança com análise honesta e disclosure vira guia; quem só empilhava seguidores some (<a href="https://thetradable.com/opinions/kol-leadership-in-bear-markets-how-credibility-is-built-when-hype-stops-working">The Tradable</a>). Escolha por reputação. Alcance sem confiança é audiência que não converte.</p>
+    <h2>O que cortar sem dó</h2>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Corta</th><th>Por quê</th><th>Realoca em</th></tr></thead><tbody><tr><td class="k">Paid caro sem atribuição</td><td>Leilão inflado, ROI que ninguém consegue provar</td><td>Conteúdo evergreen + SEO</td></tr><tr><td class="k">Incentivo mercenário (airdrop farm, APY insustentável)</td><td>Compra usuário que sai no primeiro token melhor</td><td>Programa de comunidade e embaixadores</td></tr><tr><td class="k">KOL de alcance puro</td><td>Seguidor não é comprador; correlação baixa entre follower e ação</td><td>KOL de reputação com histórico</td></tr><tr><td class="k">Patrocínio de vaidade</td><td>Logo em evento não move carteira</td><td>PR ganho com história real</td></tr></tbody></table></div>
+    <p>Incentivo mercenário é o gasto mais traiçoeiro do bull que sangra no bear. Você paga TVL que evapora no dia em que o incentivo acaba. Melhor um usuário orgânico que fica do que dez mercenários que alugam sua liquidez.</p>
+    <h2>Atribuição on-chain: prove o ROI ou não gaste</h2>
+    <p>A regra do capítulo é simples: no bear, todo real precisa provar que voltou. E cripto tem uma vantagem que o marketing tradicional inveja. A carteira é a fonte da verdade.</p>
+    <p>Atribuição on-chain conecta um toque de marketing (um clique, um post de KOL, um release) a uma transação verificável na blockchain, usando endereço de carteira e hash como sinal de conversão, dados que não dá pra falsificar nem apagar com atualização de browser (<a href="https://coinbound.io/what-is-onchain-attribution/">Coinbound</a>). Ferramentas como Cookie3 e Addressable dizem se as carteiras que seguiram um KOL de fato compraram o token ou só conectaram no site (<a href="https://mintfunnel.co/onchain-attribution-crypto-marketing/">Mintfunnel</a>).</p>
+    <p>Por que isso importa agora: um relatório da Naughty Marketing de outubro de 2025 estimou que 70% dos projetos DeFi não conseguem demonstrar o ROI de marketing, consequência direta de medir comportamento web3 com ferramenta web2 (<a href="https://mintfunnel.co/onchain-attribution-crypto-marketing/">Mintfunnel</a>). Ou seja: a maioria gasta no escuro. No bull dá pra esconder. No bear, o projeto que sabe qual carteira veio de qual canal corta o que não rende e dobra no que rende, enquanto o concorrente adivinha.</p>
+    <h2>O playbook em uma frase</h2>
+    <p>Realoque do que você aluga (paid, mercenário, alcance) pro que você constrói (conteúdo, comunidade, reputação), e meça cada movimento na carteira. Enquanto o mercado desliga a máquina de atenção, você compra o mindshare do próximo ciclo pela fração do preço.</p>
+    <div class="note"><b>Aviso.</b> Este capítulo é educacional e de marketing, não recomendação de investimento.</div>
+    <p>O bear não é quando você para de adquirir. É quando você descobre quanto pagava a mais.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O bear não é quando você para de adquirir. É quando você descobre quanto pagava a mais. Realoque do que você aluga pro que você constrói, e meça cada movimento na carteira.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 05 · Aquisição eficiente (CAC baixo)</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>08</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 06 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 06</div>
+    <h1 class="chap">COMUNIDADE E <span class="ink">RETENÇÃO</span></h1>
+    <p class="lead">No bull, todo projeto parece ter comunidade. Preço subindo cobre qualquer buraco. O Discord fervilha, o Telegram estoura, todo tweet vira thread. Aí o mercado esfria e a "comunidade" evapora em uma semana. O que sobra não é comunidade: é uma multidão de mercenários que estava ali pelo número verde.</p>
+    <p>O bear separa as duas coisas. E é exatamente aqui que mora a arbitragem deste playbook: enquanto seus concorrentes gastam o pouco que sobrou tentando recomprar atenção que já perderam, você investe em quem nunca saiu. Reter é mais barato, mais rentável e mais previsível que adquirir. Sempre foi. No frio, é a única jogada que compõe.</p>
+    <h2>A conta que ninguém quer olhar: reter é a maior alavanca de lucro que existe</h2>
+    <p>Fora da cripto, isso está documentado há décadas. A pesquisa clássica da Bain &amp; Company mostra que <strong>aumentar a retenção de clientes em 5% eleva o lucro entre 25% e 95%</strong> (<a href="https://hbr.org/2014/10/the-value-of-keeping-the-right-customers">Harvard Business Review</a>). E o custo joga a favor: <strong>adquirir um cliente novo custa de 5 a 25 vezes mais que manter um existente</strong>, e a probabilidade de vender para quem já é cliente é de <strong>60% a 70%</strong>, contra 5% a 20% para um prospect frio (<a href="https://hbr.org/2014/10/the-value-of-keeping-the-right-customers">Harvard Business Review</a>).</p>
+    <p>Traduzindo pro seu projeto cripto ou fintech: cada holder, cada usuário ativo, cada assinante da newsletter que você já tem é um ativo que você pagou caro pra conquistar no ciclo passado. No bear, o preço de recomprar essa atenção lá fora explode porque o CAC de todo mundo sobe junto. O único canal que fica barato é o que você já possui.</p>
+    <h2>O oposto do farming: por que o incentivo errado destrói comunidade</h2>
+    <p>O bull ensinou uma geração inteira a extrair valor com eficiência máxima e sair. Airdrop virou treinamento de mercenário. Os números são brutais:</p>
+    <ul class="bul"><li><strong>88% dos tokens distribuídos via airdrop perdem valor em até 3 meses</strong> (<a href="https://dappradar.com/blog/88-of-airdropped-tokens-lose-value-within-3-months">DappRadar</a>).</li><li><strong>64% dos recebedores venderam imediatamente no TGE</strong> (<a href="https://dappradar.com/blog/88-of-airdropped-tokens-lose-value-within-3-months">DappRadar</a>).</li><li>No caso da Uniswap, <strong>93% dos recebedores originais venderam todo o UNI</strong>, e mais de <strong>75% despejaram nos primeiros sete dias</strong> (<a href="https://dappradar.com/blog/88-of-airdropped-tokens-lose-value-within-3-months">DappRadar</a>).</li></ul>
+    <p>Quando você premia volume em vez de convicção, você não constrói comunidade, constrói uma fila de gente esperando o cheque pra ir embora (<a href="https://www.techflowpost.com/en-US/article/30835">TechFlow</a>). O farming atrai atividade que some no exato instante em que o incentivo acaba. É o modelo mais frágil possível pra atravessar um inverno.</p>
+    <p>Retenção é o inverso disso. Em vez de perguntar "como faço o número de usuários subir esta semana", você pergunta "por que quem entrou ontem ainda vai estar aqui daqui a seis meses".</p>
+    <h2>Points e incentivo que retêm no frio: o caso Hyperliquid</h2>
+    <p>O contraexemplo mais forte do ciclo é a Hyperliquid. Sem VC, sem venda privada, ela rodou um <strong>programa de points por mais de um ano antes do token existir</strong>, distribuindo pontos semanais para quem realmente usava a plataforma (<a href="https://www.panewslab.com/en/articles/zena4u1n">PANews</a>).</p>
+    <p>O que mudou o jogo não foi o points em si, foi o desenho:</p>
+    <ul class="bul"><li><strong>31% do supply total (310 milhões de tokens) foi pra ~94.000 endereços da comunidade</strong>, não pra investidores (<a href="https://www.panewslab.com/en/articles/zena4u1n">PANews</a>).</li><li>Dar um terço dos tokens para usuários em vez de VCs <strong>criou senso real de propriedade, aumentou a retenção e transformou usuário em advogado da marca</strong> (<a href="https://www.panewslab.com/en/articles/zena4u1n">PANews</a>).</li><li>Um mecanismo anti-baleia garantiu distribuição mais equitativa, o que elevou o sentimento positivo da base (<a href="https://www.panewslab.com/en/articles/zena4u1n">PANews</a>).</li></ul>
+    <p>Resultado: depois do airdrop, o volume diário multiplicou e a fatia da Hyperliquid no mercado de perpétuos DEX passou de <strong>70%</strong> (<a href="https://www.panewslab.com/en/articles/zena4u1n">PANews</a>). A diferença entre isso e um airdrop-farming genérico não foi o tamanho do prêmio. Foi premiar uso real e convição ao longo do tempo, não volume artificial de curto prazo.</p>
+    <div class="kicker">O que separa points que retêm de points que farmam</div>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Points que farmam (mercenário)</th><th>Points que retêm (defensor)</th></tr></thead><tbody><tr><td class="k">Premiam volume bruto e ações repetíveis</td><td>Premiam uso real e continuidade no tempo</td></tr><tr><td class="k">Snapshot único, data conhecida de saída</td><td>Janelas longas, recompensa por permanência</td></tr><tr><td class="k">Baleia domina a distribuição</td><td>Anti-Sybil e teto por carteira equilibram a base</td></tr><tr><td class="k">Incentivo acaba, atividade some</td><td>Ownership cria advogado que fica</td></tr><tr><td class="k">Métrica de vaidade (endereços)</td><td>Métrica de convição (retenção a 90 dias)</td></tr></tbody></table></div>
+    <h2>O playbook prático de retenção no bear</h2>
+    <p><strong>1. Meça retenção, não vaidade.</strong> Pare de olhar total de wallets e membros de Discord. Olhe quantos dos que entraram no mês X ainda estão ativos no mês X+3. Essa curva é a saúde real do projeto.</p>
+    <p><strong>2. Dê propriedade, não brinde.</strong> Holder que sente dono defende o projeto de graça no timeline. Governança real, participação em decisão e upside alinhado valem mais que um NFT de brinde.</p>
+    <p><strong>3. Recompense permanência, não pico.</strong> Desenhe incentivo que paga por ficar (streaks, tiers por tempo, benefícios que crescem com a antiguidade), não por fazer barulho num dia.</p>
+    <p><strong>4. Comunique no frio.</strong> A colapso do engajamento social no bear é sinal de mercado, não sentença (<a href="https://www.ainvest.com/news/crypto-social-engagement-collapse-bear-market-signal-strategic-entry-point-2601/">AInvest</a>). Quem continua aparecendo, ensinando e conversando quando o preço cai vira o nome que a base lembra quando o preço volta.</p>
+    <p><strong>5. Ative sua base contra a próxima aquisição.</strong> Com 60-70% de chance de vender pra quem já é seu, contra 5-20% pra um estranho, seu holder atual é seu melhor canal de crescimento. Trate a comunidade como distribuição, não como plateia.</p>
+    <p>O bear não mata comunidade. Ele revela quem tinha comunidade e quem tinha plateia pagando ingresso. Segura quem ficou: é o único público que ainda vai estar lá quando o mercado voltar a olhar pra você.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O bear não mata comunidade. Ele revela quem tinha comunidade e quem tinha plateia pagando ingresso. Segura quem ficou: é o único público que ainda vai estar lá quando o mercado voltar.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 06 · Comunidade e retenção</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>09</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 07 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 07</div>
+    <h1 class="chap">VENDER NO BEAR <span class="ink">(B2B)</span></h1>
+    <p class="lead">No bull, o produto se vende sozinho. O mercado está eufórico, o dinheiro é barato e qualquer landing page converte. No bear, a verdade aparece: quem depende de demanda quente morre quando a demanda esfria. Vender no bear não é sobre gritar mais alto. É sobre construir um funil que fecha mesmo quando o budget do outro lado travou.</p>
+    <p>E o budget travou mesmo. Ciclos de venda B2B ficaram 22% mais longos desde 2022, e o ciclo médio saltou de 4,9 meses em 2019 para 6,5 meses (<a href="https://optif.ai/learn/questions/sales-cycle-length-benchmark/">Optifai / Gradient Works</a>). Hoje, 75% dos compradores B2B dizem que estão demorando mais pra decidir do que em 2023, e 78% dizem estar mais cautelosos com gasto (<a href="https://corporatevisions.com/blog/b2b-buying-behavior-statistics-trends/">Corporate Visions</a>). Traduzindo: seu prospect não sumiu, ele ficou mais lento, mais desconfiado e cercado de gente pra convencer.</p>
+    <h2>A física da venda muda no bear</h2>
+    <p>Três forças mudam de sinal quando o mercado esfria. Ignorar qualquer uma delas é vender no escuro.</p>
+    <p><strong>1. O comitê cresce.</strong> O deal B2B médio já envolve 6,8 stakeholders, contra 5,4 em 2020 (<a href="https://corporatevisions.com/blog/b2b-buying-behavior-statistics-trends/">Gartner via Corporate Visions</a>). No bear, entra mais um: o CFO. Ele não quer saber da sua feature. Ele quer saber por que essa compra sobrevive ao corte de custo.</p>
+    <p><strong>2. A decisão acontece antes de você entrar.</strong> Compradores B2B percorrem cerca de 70% da jornada sozinhos antes de falar com um vendedor, e 81% já têm um fornecedor preferido no primeiro contato (<a href="https://www.demandgenreport.com/industry-news/80-of-b2b-buyers-initiate-first-contact-once-theyre-70-through-their-buying-journey/48394/">Demand Gen Report</a>). Se você não existe na cabeça dele antes da conversa, você entra pra fazer número na cotação.</p>
+    <p><strong>3. O mercado in-market encolhe.</strong> A regra 95:5 do Ehrenberg-Bass: a qualquer momento, só ~5% dos compradores-alvo estão prontos pra comprar. Os outros 95% estão fora do mercado (<a href="https://marketingscience.info/news-and-insights/the-955-rule-why-b2b-growth-starts-long-before-the-purchase">Ehrenberg-Bass</a>). No bear esse 5% encolhe ainda mais, então quem só caça demanda quente briga por migalhas com todo mundo. Quem constrói memória de marca colhe quando os 95% viram compradores no próximo ciclo.</p>
+    <h2>O funil sales-led de bear</h2>
+    <p>Esqueça o funil de vaidade. No bear, o funil tem que fazer duas coisas ao mesmo tempo: fechar os 5% que estão prontos agora e plantar marca nos 95% que vão comprar depois. É a maior arbitragem de atenção que existe, porque seus concorrentes estão cortando exatamente isso.</p>
+    <ul class="bul"><li><strong>Topo (autoridade, não anúncio).</strong> Conteúdo que prova que você entende o problema melhor que qualquer um. Paper, teardown, análise on-chain, estudo de caso. No cripto, isso é o que separa projeto que sobrevive ao inverno de projeto que some. É aqui que você existe na cabeça do comprador antes dos 70%.</li><li><strong>Meio (educação com nome e sobrenome).</strong> Webinar fechado, diagnóstico gratuito, calculadora de ROI. Captura quem está entrando no mercado e qualifica pelo problema, não pelo cargo.</li><li><strong>Fundo (venda ancorada em sobrevivência).</strong> A conversa de fechamento no bear não é "veja como somos incríveis". É "veja o que você perde se não fizer isso agora".</li></ul>
+    <h2>Como fechar quando o budget travou</h2>
+    <p>A objeção do bear nunca é preço. É risco. O comprador não está pensando "isso é caro", está pensando "e se eu gastar e não funcionar, e eu levar a culpa". Sua venda tem que remover esse risco.</p>
+    <p><strong>Ancore em ROI, não em features.</strong> Toda proposta precisa de um número no topo: quanto isso devolve, em quanto tempo. Quando o CFO está na sala, "aumenta engajamento" perde pra "recupera X em Y meses". Sem número, você é custo. Com número, você é investimento.</p>
+    <p><strong>Ancore em sobrevivência, não em upside.</strong> No bull você vende crescimento. No bear você vende não ficar pra trás. E o dado sustenta o argumento: empresas que mantiveram investimento de marca na recessão de 1982 estavam com vendas 275% acima da base em 1985, contra 19% das que cortaram (<a href="https://www.alexcroucher.com/what-history-teaches-us-about-b2b-marketing-in-recession/">McGraw-Hill via Alex Croucher</a>). A P&amp;G aumentou marketing na crise de 2009 e na pandemia de 2020 e tirou share de quem recuou (<a href="https://www.bol-agency.com/blog/b2b-brands-experience-growth-in-recessions">BOL Agency</a>). Menos de 30% das empresas que cortaram marketing recuperaram a posição pré-recessão depois (<a href="https://www.bol-agency.com/blog/b2b-brands-experience-growth-in-recessions">BOL Agency</a>). Você não está vendendo um serviço. Está vendendo a chance de sair do bear na frente.</p>
+    <p><strong>Encurte o risco, não o preço.</strong> Descontar preço sinaliza desespero e destrói margem. Em vez disso, quebre o risco: piloto pago menor, marco de resultado antes do compromisso cheio, garantia de entrega. O comprador que trava R$50 mil destrava R$8 mil.</p>
+    <h2>Oferta e pricing de bear</h2>
+    <p>O erro clássico é manter a oferta de bull e só dar desconto. O certo é redesenhar a oferta pra caber no budget travado sem queimar seu preço-âncora.</p>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Elemento</th><th>Oferta de bull</th><th>Oferta de bear</th></tr></thead><tbody><tr><td class="k">Porta de entrada</td><td>Contrato cheio, retainer longo</td><td>Projeto enxuto de autoridade (1 paper, 1 diagnóstico)</td></tr><tr><td class="k">Argumento central</td><td>Crescimento e upside</td><td>ROI + sobrevivência competitiva</td></tr><tr><td class="k">Compromisso inicial</td><td>Anual</td><td>Piloto com marco de resultado</td></tr><tr><td class="k">Prova</td><td>Cases e depoimentos</td><td>Diagnóstico que já entrega valor antes de fechar</td></tr><tr><td class="k">Preço</td><td>Tabela cheia</td><td>Tabela cheia + escopo reduzido (nunca desconto puro)</td></tr></tbody></table></div>
+    <p>A porta de entrada por autoridade é o cavalo de Troia do bear. Você não pede pra pessoa comprar o pacote de R$30 mil de cara. Você vende um ativo de autoridade enxuto — um paper, um teardown, um diagnóstico — que já entrega valor e prova competência. Fechou o pequeno, você já está dentro dos 70% da jornada do próximo, maior. É land-and-expand com a economia do bear: entrada baixa, risco baixo, expansão quando o resultado aparece.</p>
+    <p>E o momento joga a seu favor. Com todo mundo cortando budget, o custo de atenção despenca: budgets de marketing B2B estão sendo congelados em várias indústrias, o que derruba o CPM justamente pra quem continua comprando (<a href="https://dreamdata.io/blog/b2b-marketing-budget-freeze-low-cpm-opportunity">Dreamdata</a>). Vender no bear é comprar atenção na promoção enquanto o concorrente fecha a carteira.</p>
+    <p>O bear não fecha vendas. Ele fecha as vendas de quem sumiu. Quem continua aparecendo com autoridade, ROI na mão e uma porta de entrada de baixo risco não está sobrevivendo ao inverno: está comprando o próximo ciclo enquanto ainda está barato.</p>
+    <div class="note"><b>Aviso.</b> Este capítulo é educacional e de marketing. Não é recomendação de investimento.</div>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>O bear não fecha vendas. Ele fecha as vendas de quem sumiu. Quem aparece com autoridade, ROI na mão e uma porta de entrada de baixo risco está comprando o próximo ciclo enquanto ainda está barato.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 07 · Vender no bear (B2B)</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>10</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 08 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 08</div>
+    <h1 class="chap">LANÇAR NO <span class="ink">FRIO</span></h1>
+    <p class="lead">Todo mundo quer lançar no topo. TGE quando o gráfico é verde, timeline pegando fogo, o token subindo no primeiro dia. Parece óbvio. É também o pior conselho de timing que existe.</p>
+    <p>No topo você compete com centenas de outros lançamentos pela mesma atenção, paga o preço mais alto por cada clique, e recruta uma base que só apareceu pelo pump. Quando o mercado vira, essa base evapora. No frio é o contrário: quase ninguém está lançando, a atenção está barata, e quem chega agora constrói a base que vai colher no próximo ciclo.</p>
+    <p>Este capítulo é sobre isso. Como construir a base agora, calibrar o timing pro próximo ciclo, e escrever o press release que a mídia publica mesmo quando ninguém quer falar de cripto.</p>
+    <h2>A tese: o frio é a maior arbitragem de timing que existe</h2>
+    <p>A regra mais consolidada de marketing effectiveness diz que a fatia de atenção que você compra hoje vira fatia de mercado amanhã. Binet e Field, analisando a base de dados do IPA, mostraram que cada 10 pontos de Excess Share of Voice (falar mais do que seu tamanho de mercado justifica) geram cerca de 0,7 ponto de crescimento de market share por ano (<a href="https://blog.dprandco.com/excess-share-of-voice-a-key-driver-of-increased-market-share">DPR&amp;Co / Binet &amp; Field</a>). A Nielsen, olhando 123 marcas, achou número parecido: 10 pontos de ESOV, meio ponto de market share (<a href="https://blog.dprandco.com/excess-share-of-voice-a-key-driver-of-increased-market-share">DPR&amp;Co</a>).</p>
+    <p>Onde o ESOV é mais barato de comprar? No frio. Quando todo mundo corta verba e some, o custo de dominar a conversa despenca. Você não precisa gritar mais alto que os concorrentes. Eles saíram da sala.</p>
+    <p>O caso clássico é a Kellogg's. Nos anos 1920, a Post liderava a categoria de cereal. Veio a Depressão, a Post cortou publicidade pra preservar caixa. A Kellogg's fez o oposto: dobrou o orçamento de anúncio, entrou pesado no rádio e empurrou um produto novo, o Rice Krispies. Em 1933, com a economia no chão, o lucro da Kellogg's tinha crescido quase 30% e ela virou líder da categoria, posição que mantém até hoje (<a href="https://www.net360solutions.com/blog/kelloggs-won-cereal-war-great-depression/">Net 360 Solutions</a>).</p>
+    <p>Cripto não é diferente. Os projetos que dominam o ciclo atual foram construídos no anterior. Solana caiu 94% e ficou colada no colapso da FTX, mas a atividade de desenvolvedores <em>aumentou</em> ao longo de 2022-2023 (<a href="https://yellow.com/research/bear-market-builders-complete-analysis-of-crypto-projects-that-survived-the-2022-2024-winter">Yellow Research</a>). A Aave lançou a V3 em sete chains no meio do inverno e cresceu 180% em usuários ativos diários no Q4 2022 (<a href="https://yellow.com/research/bear-market-builders-complete-analysis-of-crypto-projects-that-survived-the-2022-2024-winter">Yellow Research</a>). Quem construiu no frio colheu no calor.</p>
+    <h2>Construir a base agora: os três ativos que não dependem de preço</h2>
+    <p>Lançar no frio não significa lançar o token no frio. Significa construir os ativos que vão fazer o lançamento funcionar quando o timing chegar. Três deles:</p>
+    <ul class="bul"><li><strong>Comunidade real, não mercenária.</strong> No topo você recruta gente que veio pelo airdrop e some no primeiro dump. No frio quem entra veio pela tese. Base menor, retenção absurdamente maior. É essa base que segura o preço no dia do TGE.</li><li><strong>Autoridade de conteúdo.</strong> Papers, teardowns, thought leadership. O frio é quando você tem tempo (e concorrência baixa de atenção) pra virar referência na sua narrativa antes de ter algo pra vender. Quando o ciclo virar, você já é a voz da categoria.</li><li><strong>Prova de que você constrói.</strong> A Polygon fechou parcerias com Disney, Adobe, Meta, Starbucks, Nike e Mastercard durante o inverno, receita real independente de preço de token (<a href="https://yellow.com/research/bear-market-builders-complete-analysis-of-crypto-projects-that-survived-the-2022-2024-winter">Yellow Research</a>). Enviar ao mercado o sinal "aqui se constrói mesmo sem hype" é o melhor marketing de longo prazo que existe.</li></ul>
+    <p>O dado macro reforça: firmas que aumentaram publicidade em recessão tiveram vendas, market share ou lucro maiores durante <em>e depois</em> da crise, com efeito que persiste por anos (<a href="https://brillmedia.co/resources/recession-marketing-and-business-success-guide/">Tellis &amp; Tellis via Brill Media</a>). O estudo da ABM com 1.000 empresas encontrou que quem <em>aumentou</em> verba em recessão ganhou 1,7% de market share, contra queda de 0,6% de quem cortou (<a href="https://brillmedia.co/resources/recession-marketing-and-business-success-guide/">Brill Media</a>).</p>
+    <h2>Timing: o que faz agora vs. o que segura pro calor</h2>
+    <p>O erro é achar que "lançar no frio" é jogar tudo pra fora agora. Não é. Você separa o que se constrói no frio do que se dispara no calor.</p>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Fazer agora (frio)</th><th>Segurar pro próximo ciclo (calor)</th></tr></thead><tbody><tr><td class="k">Comunidade core e narrativa</td><td>Campanha de aquisição em massa</td></tr><tr><td class="k">Autoridade, papers, conteúdo</td><td>Grande push de listagem / exchange</td></tr><tr><td class="k">Produto e provas de tração</td><td>Incentivos de liquidez agressivos</td></tr><tr><td class="k">Lista de espera / allowlist</td><td>TGE e evento de token</td></tr><tr><td class="k">Relacionamento com mídia</td><td>Press release de lançamento amplo</td></tr></tbody></table></div>
+    <p>A lógica: o frio é para <em>acumular</em> atenção barata e provas. O calor é para <em>converter</em> essa atenção acumulada em preço, liquidez e usuários, quando o custo de aquisição sobe mas a demanda também. Quem chega no calor sem base construída paga caro por atenção que não retém. Quem chega com base construída no frio converte ao custo mais baixo do ciclo.</p>
+    <h2>O press release que a mídia publica mesmo no bear</h2>
+    <p>Cobertura paga sempre existe: Cointelegraph, CoinDesk e 300+ veículos aceitam distribuição paga com publicação em 24-48h (<a href="https://www.blockchain-ads.com/post/crypto-press-release">Blockchain-Ads</a>). Mas a cobertura que constrói autoridade é a <em>ganha</em>, aquela em que um jornalista independente decidiu que a sua história merecia a atenção do leitor (<a href="https://eakdigital.com/crypto-press-release-agency-distribution-2026/">EAK Digital</a>). Essa carrega uma transferência de confiança que nenhum placement pago replica.</p>
+    <p>O problema: no bear a barra da mídia sobe. Um estudo citado pela CoinDesk achou que mais de 60% dos press releases de cripto estão ligados a projetos de alto risco ou scam (<a href="https://www.coindesk.com/business/2026/01/27/over-60-of-crypto-press-releases-are-linked-to-high-risk-or-scam-projects-study-finds">CoinDesk</a>). O jornalista está desconfiado por padrão. Você tem que dar motivo real.</p>
+    <p>O motivo mais comum pra um PR morrer é tratar não-evento como notícia. Site novo, atualização de roadmap, "estamos animados com o futuro" não são notícia (<a href="https://eakdigital.com/crypto-press-release-agency-distribution-2026/">EAK Digital</a>). Cobertura ganha acontece quando você tem um anúncio real, um dado que o leitor liga, uma perspectiva crível sobre uma tendência de mercado, ou um founder cujo histórico é relevante (<a href="https://eakdigital.com/crypto-press-release-agency-distribution-2026/">EAK Digital</a>).</p>
+    <p>O press release que publica no frio tem estas quatro coisas:</p>
+    <ul class="bul"><li><strong>Um dado, não um adjetivo.</strong> "Crescemos 180% em usuários ativos durante o pior trimestre do mercado" é notícia. "Estamos otimistas" não é. Lidere com o número.</li><li><strong>Ângulo de contra-narrativa.</strong> No frio, "construímos enquanto todo mundo desistiu" é uma história que jornalista quer contar, porque contradiz a manchete óbvia. Use o pessimismo do mercado a seu favor.</li><li><strong>Fonte humana com autoridade.</strong> Founder com histórico, tese própria, opinião sobre a categoria. Jornalista cobre pessoas e teses, não features.</li><li><strong>Parceria ou tração verificável.</strong> Nome de empresa real, integração real, número auditável. Como a Polygon fez: a notícia era o parceiro, não o token.</li></ul>
+    <p>Combine as duas frentes: distribuição paga pra garantir baseline de indexação e SEO, e pitch direto e personalizado pros jornalistas de The Block, Decrypt, CoinDesk e Cointelegraph com o ângulo de contra-narrativa. Uma dá alcance, a outra dá autoridade.</p>
+    <p>Lançar no calor é apostar que o topo vai te esperar. Lançar no frio é garantir que, quando o topo chegar, ele já vai chegar falando o seu nome.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>Lançar no calor é apostar que o topo vai te esperar. Lançar no frio é garantir que, quando o topo chegar, ele já vai chegar falando o seu nome.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 08 · Lançar no frio</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>11</b> —</div>
+</section>
+<!-- ============================== CAPÍTULO 09 ============================== -->
+<section class="page content-page">
+  <div class="content">
+    <div class="chap-num">Capítulo 09</div>
+    <h1 class="chap">O PLAYBOOK DE <span class="ink">AÇÃO</span></h1>
+    <p class="lead">Você leu oito capítulos de tese. Agora vem a parte que importa: o que fazer na segunda-feira de manhã, com o mercado no vermelho e o board pedindo corte de verba.</p>
+    <p>A lógica de fundo não mudou desde os anos 70. Um estudo da McGraw-Hill sobre a recessão de 1974 mostrou que empresas que mantiveram ou aumentaram investimento em marketing cresceram vendas 132% ao longo de cinco anos, contra 79% de quem cortou (<a href="https://www.thryv.com/blog/lessons-learned-from-advertising-in-a-recession/">Thryv</a>). A Analytic Partners encontrou o mesmo padrão hoje: cerca de 60% das marcas que aumentaram mídia na recessão melhoraram o ROI, enquanto cortar arriscou perder até 15% de receita (<a href="https://www.kantar.com/inspiration/brands/modern-marketing-dilemmas-how-should-marketers-stand-up-to-recession">Kantar</a>).</p>
+    <p>O mecanismo tem nome. Binet e Field mostraram que a marca que investe acima da própria fatia de mercado (Extra Share of Voice positivo) tende a crescer. No bear, o custo de comprar essa fatia de atenção despenca porque metade dos concorrentes sumiu. A Nielsen mediu: 10 pontos de ESOV positivo geram cerca de 0,5 ponto de crescimento de market share (<a href="https://www.semetis.com/en/resources/articles/using-extra-share-of-voice-esov-to-drive-long%E2%80%91term-growth-balancing-brand-building-and-performance">Semetis</a>). No cripto, essa arbitragem é ainda mais brutal: quando o mercado virou em 2022, o ad spend da Coinbase caiu 98% em um mês e as taxas de KOL despencaram para 30-50% do preço de bull (<a href="https://medium.com/@chainpeak/do-crypto-projects-still-need-marketing-in-a-bear-market-what-to-do-and-what-to-avoid-adf8b863b441">ChainPeak</a>). Atenção nunca esteve tão barata.</p>
+    <p>Abaixo, o checklist. Uma página. Seis frentes. Marque o que já faz, ataque o que falta.</p>
+    <h2>Marca</h2>
+    <ul class="check"><li>Redefina o posicionamento em uma frase que um humano repetiria num bar. Se precisa de slide pra explicar, não é posicionamento.</li><li>Aumente (não corte) o Share of Voice enquanto a mídia está barata. ESOV positivo agora vira market share na virada (<a href="https://www.semetis.com/en/resources/articles/using-extra-share-of-voice-esov-to-drive-long%E2%80%91term-growth-balancing-brand-building-and-performance">Semetis</a>).</li><li>Escolha UM porta-voz humano (founder, head, fundadora). Marca sem rosto não constrói confiança em mercado frio.</li><li>Padronize identidade visual e verbal. Consistência é o que faz o board de 2027 lembrar de você.</li></ul>
+    <h2>Conteúdo</h2>
+    <ul class="check"><li>Publique com frequência fixa e inegociável. Quem publica 16+ posts/mês tira 3,5x mais tráfego (<a href="https://galaxymarketingservices.com/2026/01/29/content-marketing-vs-paid-ads/">Galaxy Marketing</a>).</li><li>Priorize ativos que compõem: SEO e conteúdo evergreen. O CAC orgânico é 60-80% menor que o pago e cai mais a cada mês (<a href="https://www.sangria.tech/blogs/seo/why-seo-slashes-customer-acquisition-costs">Sangria</a>).</li><li>Produza um ativo de autoridade por trimestre (paper, relatório, teardown). No bear, ninguém mais está fazendo, então o seu domina a busca.</li><li>Reaproveite tudo: um paper vira thread, carrossel, newsletter, vídeo. Uma peça, cinco distribuições.</li></ul>
+    <h2>Aquisição</h2>
+    <ul class="check"><li>Corte a mídia paga que só funciona com dinheiro em cima. Realoque para orgânico que continua rendendo depois que você para de pagar.</li><li>Renegocie TUDO: KOLs, mídia, patrocínio. No cripto os KOLs saíram para 30-50% do preço de bull (<a href="https://medium.com/@chainpeak/do-crypto-projects-still-need-marketing-in-a-bear-market-what-to-do-and-what-to-avoid-adf8b863b441">ChainPeak</a>).</li><li>Meça CAC por canal e mate o que não compõe. Bear é para eficiência, não para volume.</li><li>Capture email/lista própria em toda campanha. Audiência alugada some; audiência própria você leva para o próximo ciclo.</li></ul>
+    <h2>Comunidade</h2>
+    <ul class="check"><li>Recompense quem ficou. Os que continuam no Discord/Telegram no fundo do bear são seus evangelistas de 2027.</li><li>Troque hype por utilidade real: educação, suporte, transparência. Ritmo semanal fixo de comunicação.</li><li>Construa em público. Solana teve 83% de crescimento de devs no auge do inverno; a Polymarket cresceu atravessando dois bear markets, não esperando o touro (<a href="https://yellow.com/research/bear-market-builders-complete-analysis-of-crypto-projects-that-survived-the-2022-2024-winter">Yellow</a>).</li><li>Transforme comunidade em conteúdo: cases, depoimentos, dúvidas reais viram pauta.</li></ul>
+    <h2>Vendas</h2>
+    <ul class="check"><li>Reescreva a oferta para o clima de medo: reduza risco, ancore em ROI, não em upside.</li><li>Encurte o funil. Menos etapas, prova social concreta, garantia clara.</li><li>Aqueça a base própria antes de comprar tráfego novo. Vender para quem já te conhece é o menor CAC que existe.</li><li>Documente cada venda fechada como estudo de caso. No bear, prova vale mais que promessa.</li></ul>
+    <h2>Lançamento</h2>
+    <ul class="check"><li>Segure o TGE/produto se o único gatilho for "o mercado vai subir". Lance quando estiver pronto, não quando o gráfico permitir.</li><li>Construa demanda ANTES: 90 dias de conteúdo e lista antes de qualquer botão de compra.</li><li>Aproveite o silêncio dos concorrentes. Com o VC de cripto caindo 68% (de US$ 33,3 bi para US$ 10,7 bi entre 2022 e 2023), pouca gente lança e você tem palco vazio (<a href="https://medium.com/@chainpeak/do-crypto-projects-still-need-marketing-in-a-bear-market-what-to-do-and-what-to-avoid-adf8b863b441">ChainPeak</a>).</li><li>Defina uma métrica de sucesso que não dependa de preço: usuários ativos, retenção, receita real.</li></ul>
+    <h2>O quadro de decisão</h2>
+    <div class="tbl-wrap"><table class="data"><thead><tr><th>Frente</th><th>Corte agora</th><th>Dobre agora</th></tr></thead><tbody><tr><td class="k">Marca</td><td>Rebrandings caros, agências de vaidade</td><td>Share of Voice, porta-voz humano</td></tr><tr><td class="k">Conteúdo</td><td>Produção sem distribuição</td><td>SEO, evergreen, ativo de autoridade</td></tr><tr><td class="k">Aquisição</td><td>Mídia dependente de gasto contínuo</td><td>Orgânico, lista própria, renegociação</td></tr><tr><td class="k">Comunidade</td><td>Airdrop farming, hype vazio</td><td>Utilidade, build in public</td></tr><tr><td class="k">Vendas</td><td>Funil longo, oferta de upside</td><td>Prova social, oferta de baixo risco</td></tr><tr><td class="k">Lançamento</td><td>TGE dependente de bull</td><td>Demanda pré-construída, palco vazio</td></tr></tbody></table></div>
+    <p>A recessão não é o momento de sumir. É o momento em que sumir custa mais caro, porque quem fica compra a atenção que todo mundo largou no chão. Enquanto o concorrente reza pela virada do gráfico, você constrói o ativo que capitaliza quando ela chega. O bear escolhe os líderes do próximo bull, e a lista já está sendo escrita: o único voto que conta é o que você deposita agora.</p>
+    <div class="retain">
+      <div class="lab">Retenha</div>
+      <p>A recessão não é o momento de sumir. É o momento em que sumir custa mais caro. O bear escolhe os líderes do próximo bull, e a lista já está sendo escrita: o único voto que conta é o que você deposita agora.</p>
+    </div>
+  </div>
+  <div class="runhead"><span><span class="dot"></span>Capítulo 09 · O playbook de ação</span><span>Marketing e vendas no bear market</span></div>
+  <div class="folio">— <b>12</b> —</div>
+</section>
+
+<!-- ============================== DISCLAIMER + CONTRACAPA KALEIDOS ============================== -->
+<section class="page dark">
+  <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+  <div class="legal">
+    <div class="brand"><span class="d"></span>KALEIDOS</div>
+
+    <h2>Antes de ir:<br>o aviso que <span class="am">importa</span></h2>
+    <p>Este playbook é <strong style="color:#14110D;">conteúdo educacional e de marketing</strong>. Nada aqui é recomendação de investimento, consultoria financeira, oferta ou promessa de retorno. Os dados, estudos e casos citados são ilustrativos, pra explicar conceitos de marca, conteúdo e vendas, não pra você copiar. Cripto é um ativo volátil e de risco. Estude por conta própria, considere seu contexto e, quando fizer sentido, procure um profissional habilitado. <span class="amber">Desconfie de qualquer um que prometa retorno garantido: no cripto, garantia é o nome do golpe.</span> A responsabilidade pelas suas decisões é só sua.</p>
+
+    <div class="hr"></div>
+
+    <h2 style="font-size:22px;margin-top:0;">Quem fez<br>este playbook</h2>
+    <p>A <strong style="color:#14110D;">Kaleidos</strong> é a agência cripto-nativa do Brasil. A gente não teoriza sobre marketing no bear: opera nele. Transformamos leitura de mercado on-chain em estratégia, conteúdo e crescimento pra projetos de cripto, web3 e fintech, do founder ao head de growth. Se você constrói no cripto, ou quer construir, e precisa de marketing de quem entende o mercado de verdade, fala com a gente.</p>
+
+    <div class="statsrow">
+      <div class="statcard"><div class="big">+R$30mi</div><div class="lab">faturados pra clientes</div></div>
+      <div class="statcard"><div class="big">+100mi</div><div class="lab">views geradas</div></div>
+      <div class="statcard"><div class="big">50+</div><div class="lab">marcas atendidas</div></div>
+    </div>
+
+    <div class="ctas">
+      <span class="cta-dark">WhatsApp · (12) 93618-0547</span>
+      <span class="cta-ghost">Agendar no Calendly →</span>
+    </div>
+
+    <div class="sign">Enquanto o mercado espera a virada, a gente constrói o próximo ciclo.</div>
+
+    <div class="hr"></div>
+
+    <div class="src-block">
+      <strong style="color:#14110D;">FONTES PRINCIPAIS</strong><br>
+      Binet &amp; Field / IPA · Semetis · DPR&amp;Co · Nielsen · McKinsey · McGraw-Hill · Analytic Partners · WARC · Kantar · Edelman-LinkedIn · Ehrenberg-Bass · Gartner · Chainalysis · CoinGecko · Coincub · The Token Dispatch · Yellow Research · DL News · The Spotlite · DappRadar · PANews · Blockchain-Ads · Coinbound · Mintfunnel · First Page Sage · Content Marketing Institute · Genesys Growth · HubSpot · Omnibound · Dreamdata · EAK Digital · CoinDesk · ChainPeak · Brill Media · Net 360 Solutions. Dados coletados em fontes públicas em 2026 e podem mudar.
+    </div>
+
+    <div class="foot">
+      <span>// playbook · edição bear market</span>
+      <span>Kaleidos · A agência cripto-nativa do Brasil</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

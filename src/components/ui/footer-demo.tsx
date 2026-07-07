@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/useI18n";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnalytics } from "@/components/analytics";
+import { AUDIENCES } from "@/lib/audiences";
 
 export function FooterDemo() {
   const { t, locale } = useI18n();
@@ -162,6 +163,24 @@ export function FooterDemo() {
                 </li>
               ))}
             </ul>
+
+            {/* Para quem — variantes de home por público */}
+            <h4 className="text-white font-semibold mb-4 mt-8 text-base">
+              {locale === 'en' ? 'For whom' : 'Para quem'}
+            </h4>
+            <ul className="space-y-3">
+              {AUDIENCES.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/${a.slug}`}
+                    className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                  >
+                    <span>Kaleidos para {a.label}</span>
+                    <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contato */}
@@ -215,18 +234,18 @@ export function FooterDemo() {
               {t('footer','rights')}
             </p>
             <div className="flex items-center space-x-6 text-xs text-gray-500">
-              <a href="/sobre" className="hover:text-[#7CFF6B] transition-colors">
+              <Link href="/sobre" className="hover:text-[#7CFF6B] transition-colors">
                 {locale === 'en' ? 'About' : 'Sobre'}
-              </a>
-              <a href="/contato" className="hover:text-[#7CFF6B] transition-colors">
+              </Link>
+              <Link href="/contato" className="hover:text-[#7CFF6B] transition-colors">
                 {locale === 'en' ? 'Contact' : 'Contato'}
-              </a>
-              <a href="/privacidade" className="hover:text-[#7CFF6B] transition-colors">
+              </Link>
+              <Link href="/privacidade" className="hover:text-[#7CFF6B] transition-colors">
                 {locale === 'en' ? 'Privacy' : 'Privacidade'}
-              </a>
-              <a href="/termos" className="hover:text-[#7CFF6B] transition-colors">
+              </Link>
+              <Link href="/termos" className="hover:text-[#7CFF6B] transition-colors">
                 {locale === 'en' ? 'Terms' : 'Termos'}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

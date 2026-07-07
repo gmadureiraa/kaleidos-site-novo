@@ -6,9 +6,9 @@ import type { NextConfig } from "next";
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
+  "font-src 'self' data: https://fonts.gstatic.com",
   "connect-src 'self' https://www.google-analytics.com https://*.clarity.ms https://*.facebook.com https://*.resend.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
       {
         source: "/ingest/:path*",
         destination: "https://us.i.posthog.com/:path*",
+      },
+      {
+        // Experience Lab — scroll-experience standalone (protótipo nível zero.university).
+        source: "/experience",
+        destination: "/experience-lab.html",
       },
     ];
   },
@@ -57,6 +62,12 @@ const nextConfig: NextConfig = {
         // Atalho amigável pro playbook flagship.
         source: "/bull-market",
         destination: "/papers/bull-market-2026",
+        permanent: false,
+      },
+      {
+        // Atalho amigável pro playbook flagship de marketing (bear market).
+        source: "/bear-market",
+        destination: "/papers/bear-market-2026",
         permanent: false,
       },
     ];
