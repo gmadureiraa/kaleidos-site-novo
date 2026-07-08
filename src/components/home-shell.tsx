@@ -18,6 +18,8 @@ import { Web3V2Resources } from "@/components/web3v2/resources";
 import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
 import { Web3V2PlaybookPopup } from "@/components/web3v2/playbook-popup";
 import { Web3V2PlaybookSticky } from "@/components/web3v2/playbook-sticky";
+import { AudienceSections } from "@/components/audience-sections";
+import type { Audience } from "@/lib/audiences";
 
 // Componentes da home real reaproveitados (sem editar destrutivamente).
 const ServicesList = dynamic(() =>
@@ -36,7 +38,15 @@ export type HeroOpts = { badge?: string; headlineHtml?: string; subHtml?: string
 
 // Corpo da home, compartilhado entre `/` e as variantes por público (/founders etc).
 // heroOpts: quando presente, troca só o texto do hero (badge/headline/sub); resto igual.
-export function HomeShell({ heroOpts }: { heroOpts?: HeroOpts }) {
+// audience: quando presente (rotas de público), injeta <AudienceSections> logo após
+//   o hero. A home `/` não passa audience, então nada muda nela.
+export function HomeShell({
+  heroOpts,
+  audience,
+}: {
+  heroOpts?: HeroOpts;
+  audience?: Audience;
+}) {
   return (
     <main id="main-content" className="kv2 min-h-screen bg-white" role="main">
       <TrackingProbe />
@@ -66,6 +76,13 @@ export function HomeShell({ heroOpts }: { heroOpts?: HeroOpts }) {
 
       {/* 1b · Marquee de LOGOS de clientes */}
       <Web3V2ClientsMarquee />
+
+      {/* 1c · Bloco PERSONALIZADO por público (só nas rotas /founders etc). */}
+      {audience && (
+        <Reveal>
+          <AudienceSections audience={audience} />
+        </Reveal>
+      )}
 
       {/* 2 · Manifesto — mãos full-bleed */}
       <Web3V2Manifesto />

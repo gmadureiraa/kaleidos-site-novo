@@ -39,6 +39,7 @@ export default async function AudienceHome({
   return (
     <HomeShell
       heroOpts={{ badge: a.badge, headlineHtml: a.headlineHtml, subHtml: a.subHtml }}
+      audience={a}
     />
   );
 }
