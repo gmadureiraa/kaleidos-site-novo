@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style>
+</head>
+<body>
+<div id="card">
+  <h1>RWAs on-chain: de US$ 5,5 bi a US$ 29 bi em um ano</h1>
+  <p class="sub">Valor de ativos do mundo real tokenizados on-chain, excluindo stablecoins (início de 2025 → 2026): mais de 5x no intervalo</p>
+  <div class="wrap"><canvas id="c"></canvas></div>
+  <div class="src">Fonte: rwa.xyz — RWAs on-chain, excluindo stablecoins</div>
+</div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+new Chart(document.getElementById('c'), {
+  type:'bar',
+  data:{
+    labels:['Início de 2025','2026'],
+    datasets:[
+      { label:'RWA tokenizados on-chain (ex-stablecoins)',
+        data:[5.5,29],
+        backgroundColor:[K.neutral,K.pink],
+        hoverBackgroundColor:[K.neutral3,K.pinkLine],
+        borderRadius:6, borderSkipped:false, maxBarThickness:120 },
+    ],
+  },
+  options:{ responsive:true, maintainAspectRatio:false, animation:false,
+    plugins:{ legend:{ display:false },
+      tooltip:{ callbacks:{ label:(c)=>` RWA on-chain: US$ ${c.parsed.y} bi` } } },
+    scales:{ x:{ grid:{display:false}, ticks:{ color:K.neutral3, font:{family:K.mono,size:11} } },
+      y:{ grid:{color:K.grid}, beginAtZero:true, ticks:{ color:K.neutral3, font:{family:K.mono,size:11}, callback:(v)=>'$'+v+'bi' } } } },
+});
+</script>
+</body>
+</html>

@@ -91,7 +91,7 @@ const casesCarouselData = [
     description: "Construção de uma persona-mascote (Alfred) e conteúdo educativo sobre segurança e autocustódia de Bitcoin.",
     metric: "Persona Própria",
     gradient: "linear-gradient(150deg, #F7931A 0%, #8A4E12 55%, #1A1208 100%)",
-    coverImage: "/Cases/alfred/conteudo/aprovadas/alfred-aprovada-01.jpg",
+    coverImage: "/Cases/alfred/conteudo/alfred-vs-hacker.jpg",
     href: "/cases/alfred"
   },
   {
@@ -101,7 +101,7 @@ const casesCarouselData = [
     description: "Conteúdo do zero para Instagram, Twitter e WhatsApp, com toda a estratégia de social media.",
     metric: "12M Views",
     gradient: "linear-gradient(150deg, #9945FF 0%, #5226A8 55%, #120A24 100%)",
-    coverImage: "/Cases/defiverso/conteudo/posts-defiverso.png",
+    coverImage: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU3yifAEYzs-reel.mp4",
     href: "/cases/defiverso"
   },
   {

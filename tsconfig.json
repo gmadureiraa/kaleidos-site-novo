@@ -32,9 +32,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next-agent-build/types/**/*.ts",
+    ".next-posthog-audit/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
-    ".next-posthog-audit/types/**/*.ts"
+    ".next-exp/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

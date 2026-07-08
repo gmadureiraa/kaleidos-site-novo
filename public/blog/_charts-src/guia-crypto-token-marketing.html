@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style></head><body>
+<div id="card"><h1>88% dos tokens de airdrop perdem valor em até 3 meses</h1><p class="sub">O token não vende sozinho: distribuir supply não é reter valor</p>
+  <div class="wrap"><canvas id="c"></canvas></div><div class="src">Fonte: DappRadar</div></div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+new Chart(document.getElementById('c'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Perdem valor em até 3 meses', 'Seguram o valor'],
+    datasets: [{
+      data: [88, 12],
+      backgroundColor: [K.pink, K.neutral],
+      borderColor: K.cream,
+      borderWidth: 3
+    }]
+  },
+  options: {
+    animation: false,
+    maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { font: { family: K.sans, size: 13 }, color: K.ink, padding: 18, boxWidth: 12, boxHeight: 12 }
+      },
+      tooltip: {
+        callbacks: { label: (ctx) => ` ${ctx.label}: ${ctx.parsed}%` }
+      }
+    }
+  }
+});
+</script></body></html>

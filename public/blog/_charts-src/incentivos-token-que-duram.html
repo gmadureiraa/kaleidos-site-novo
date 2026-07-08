@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style></head><body>
+<div id="card"><h1>A curva que separa retenção de churn</h1><p class="sub">Conforme o incentivo de token recua, a utilidade do produto precisa subir. As duas linhas têm que se cruzar.</p>
+  <div class="wrap"><canvas id="c"></canvas></div><div class="src">Fonte: Chris Dixon (tese incentivo&rarr;utilidade), ilustrativo &mdash; Kaleidos</div></div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+new Chart(document.getElementById('c'), {
+  type:'line',
+  data:{
+    labels:['TGE','','','','','cruzamento','','','','','maturidade'],
+    datasets:[
+      { label:'Utilidade do produto', data:[8,12,18,26,37,50,63,74,83,90,95],
+        borderColor:K.pink, backgroundColor:K.pinkSoft, borderWidth:3,
+        tension:0.4, pointRadius:0, fill:false },
+      { label:'Incentivo de token', data:[100,88,74,60,47,36,27,20,15,12,10],
+        borderColor:K.neutral, borderWidth:2.5, borderDash:[7,5],
+        tension:0.4, pointRadius:0, fill:false }
+    ]
+  },
+  options:{
+    animation:false, maintainAspectRatio:false, responsive:true,
+    plugins:{
+      legend:{ position:'top', align:'start',
+        labels:{ font:{ family:K.sans, size:13 }, color:K.ink, usePointStyle:true, pointStyle:'line', boxWidth:28, padding:18 } }
+    },
+    scales:{
+      x:{ grid:{ color:K.grid }, border:{ color:K.grid },
+        title:{ display:true, text:'Tempo desde o lançamento →', color:K.neutral3, font:{ family:K.mono, size:11 } },
+        ticks:{ color:K.neutral3, font:{ family:K.mono, size:11 } } },
+      y:{ grid:{ color:K.grid }, border:{ color:K.grid }, min:0, max:105,
+        title:{ display:true, text:'Peso relativo', color:K.neutral3, font:{ family:K.mono, size:11 } },
+        ticks:{ display:false } }
+    }
+  }
+});
+</script></body></html>

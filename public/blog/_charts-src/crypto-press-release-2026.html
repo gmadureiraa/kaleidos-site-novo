@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style></head><body>
+<div id="card"><h1>A anatomia do release que a imprensa publica</h1><p class="sub">Peso relativo dos elementos que decidem a cobertura, não o orçamento de distribuição</p>
+  <div class="wrap"><canvas id="c"></canvas></div><div class="src">Fonte: Ilustrativo — Kaleidos</div></div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+
+const labels = [
+  'Ângulo noticiável (fato datado)',
+  'Dado numérico no corpo',
+  'Lead que entrega a notícia',
+  'Citação com tese estratégica',
+  'Contato de pessoa real',
+  'Manchete factual + dateline',
+  'Boilerplate padronizado',
+  'Subtítulo (opcional)'
+];
+const data = [100, 80, 72, 58, 42, 34, 22, 14];
+const colors = data.map((_, i) => i === 0 ? K.pink : K.neutral);
+
+new Chart(document.getElementById('c'), {
+  type: 'bar',
+  data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 0, borderRadius: 3, barPercentage: 0.72, categoryPercentage: 0.82 }] },
+  options: {
+    indexAxis: 'y',
+    animation: false,
+    maintainAspectRatio: false,
+    responsive: true,
+    layout: { padding: { right: 12 } },
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+    scales: {
+      x: { min: 0, max: 100, grid: { color: K.grid, drawBorder: false }, border: { display: false },
+        ticks: { font: { family: K.mono, size: 11 }, color: K.neutral3, callback: v => v } },
+      y: { grid: { display: false, drawBorder: false }, border: { display: false },
+        ticks: { font: { family: K.sans, size: 13 }, color: K.ink } }
+    }
+  }
+});
+</script></body></html>

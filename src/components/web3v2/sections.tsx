@@ -92,7 +92,19 @@ export function Web3V2Defs() {
   );
 }
 
-const HERO_HTML = `
+const HERO_DEFAULTS = {
+  badge: "Criatividade que move o mercado cripto",
+  headlineHtml:
+    'Conteúdo, estratégia e lançamentos web3 que viram <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;white-space:nowrap;">autoridade</span>.',
+  subHtml:
+    '<strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong> depois: a Kaleidos faz marcas web3 virarem referência, não só mais ruído no feed.',
+};
+
+export function heroHtml(o: { badge?: string; headlineHtml?: string; subHtml?: string } = {}) {
+  const badge = o.badge ?? HERO_DEFAULTS.badge;
+  const headlineHtml = o.headlineHtml ?? HERO_DEFAULTS.headlineHtml;
+  const subHtml = o.subHtml ?? HERO_DEFAULTS.subHtml;
+  return `
 <section id="topo" class="w3-hero" style="position:relative;display:flex;flex-direction:column;justify-content:center;background:#FAFAFA;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;overflow:hidden;">
     <div class="w3-herodeco" style="position:absolute;inset:0;pointer-events:none;">
       <img src="/v2/collage/brain-glasses.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:6%;top:14%;width:170px;mix-blend-mode:multiply;transform:rotate(8deg);animation:floaty 7s ease-in-out infinite;filter:contrast(1.1);">
@@ -107,9 +119,9 @@ const HERO_HTML = `
           <svg style="width:220px;max-width:60vw;height:auto;fill:#14110D;display:block;" viewBox="0 0 2000 262.38"><use href="#kal-word"></use></svg>
         </div>
       </div>
-      <div style="display:flex;justify-content:center;"><div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#14110D;background:#fff;border:1.5px solid #14110D;border-radius:999px;padding:8px 16px;box-shadow:3px 3px 0 #7CF067;margin-bottom:22px;">&#9679; Criatividade que move o mercado cripto</div></div>
-      <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(31px,4vw,54px);line-height:1.04;letter-spacing:-1.6px;margin:0;max-width:920px;margin-inline:auto;">Conteúdo, estratégia e lançamentos web3 que viram <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;white-space:nowrap;">autoridade</span>.</h1>
-      <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;"><strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong> depois: a Kaleidos faz marcas web3 virarem referência, não só mais ruído no feed.</p>
+      <div style="display:flex;justify-content:center;"><div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#14110D;background:#fff;border:1.5px solid #14110D;border-radius:999px;padding:8px 16px;box-shadow:3px 3px 0 #7CF067;margin-bottom:22px;">&#9679; ${badge}</div></div>
+      <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(31px,4vw,54px);line-height:1.04;letter-spacing:-1.6px;margin:0;max-width:920px;margin-inline:auto;">${headlineHtml}</h1>
+      <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;">${subHtml}</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
         <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">Agendar reunião &rarr;</a>
         <a href="/cases" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14110D;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">Ver cases</a>
@@ -118,6 +130,8 @@ const HERO_HTML = `
     </div>
   </section>
 `;
+}
+const HERO_HTML = heroHtml();
 
 const MANIFESTO_HTML = `
 <section style="position:relative;background:#FFFFFF;overflow:hidden;border-bottom:2px solid #14110D;padding:44px 0 56px;">
@@ -131,8 +145,22 @@ const MANIFESTO_HTML = `
     </div>
     <div class="w3-pad" style="max-width:1080px;margin:0 auto;padding:0 28px;">
       <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(22px,3vw,38px);line-height:1.28;letter-spacing:-.5px;color:#14110D;margin:36px 0 0;text-wrap:pretty;text-align:center;">
-        Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, uma agência cripto-nativa que resolve o problema mais difícil do mercado: <span style="color:#2E9E32;font-weight:800;">atenção</span>. A gente cria <span style="color:#D262B2;font-weight:700;">conteúdo</span> que conecta, desenha <span style="color:#D262B2;font-weight:700;">estratégia</span> que sustenta e orquestra <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Dê uma olhada nos nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.
+        Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, uma agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span> que resolve o problema mais difícil do mercado: <span style="color:#2E9E32;font-weight:800;">atenção</span>. A gente cria <span style="color:#D262B2;font-weight:700;">conteúdo</span> que conecta, desenha <span style="color:#D262B2;font-weight:700;">estratégia</span> que sustenta e orquestra <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Dê uma olhada nos nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.
       </p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(24px,5vw,64px);margin:34px auto 0;max-width:880px;">
+        <div style="text-align:center;min-width:150px;">
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#2E9E32;letter-spacing:-1px;">+R$30mi</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">faturados pelos<br>nossos clientes</div>
+        </div>
+        <div style="text-align:center;min-width:150px;">
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#D262B2;letter-spacing:-1px;">+100mi</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">de views geradas<br>em redes sociais</div>
+        </div>
+        <div style="text-align:center;min-width:150px;">
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#14110D;letter-spacing:-1px;">50+</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">marcas cripto<br>atendidas</div>
+        </div>
+      </div>
     </div>
   </section>
 `;
@@ -160,8 +188,7 @@ const PROBLEMA_HTML = `
         <span style="position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,#7CF06733,transparent 66%);"></span>
         <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:6%;top:6%;width:clamp(56px,8vw,84px);animation:starspin2 22s linear infinite;opacity:.9;">
         <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:4%;top:14%;width:clamp(48px,7vw,72px);animation:starspin 28s linear infinite;opacity:.85;">
-        <img src="/v2/collage/scared-boy.webp" loading="lazy" decoding="async" alt="Menino assustado em P&amp;B — o pânico de postar no escuro, sem narrativa" style="position:relative;width:min(72%,300px);filter:drop-shadow(0 14px 30px rgba(0,0,0,.6));animation:floaty 9s ease-in-out infinite;">
-        <img src="/v2/collage/david-bubble.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:1%;bottom:4%;width:clamp(82px,13vw,134px);filter:drop-shadow(0 10px 22px rgba(0,0,0,.55));animation:floaty2 11s ease-in-out infinite;transform:rotate(6deg);">
+        <img src="/v2/collage/scared-boy.webp" loading="lazy" decoding="async" alt="Menino assustado em P&amp;B — o pânico de postar no escuro, sem narrativa" style="position:relative;width:min(92%,392px);filter:drop-shadow(0 14px 30px rgba(0,0,0,.6));animation:floaty 9s ease-in-out infinite;">
         <span style="position:absolute;left:10%;bottom:2%;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2px;color:#7CF067;border:1px dashed #7CF067;padding:6px 10px;border-radius:6px;transform:rotate(-4deg);background:#14110D;">postar no escuro = p&acirc;nico</span>
       </div>
     </div>

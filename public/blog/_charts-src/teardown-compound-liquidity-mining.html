@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style></head><body>
+<div id="card"><h1>O COMP levou o TVL da Compound de ~US$100M a ~US$600M</h1><p class="sub">Total value locked antes e depois do início do liquidity mining, em 15 de junho de 2020</p>
+  <div class="wrap"><canvas id="c"></canvas></div><div class="src">Fonte: a16z crypto</div></div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+function fmtUSD(v){ if(v>=1000){ return 'US$ '+(v/1000)+'bi'; } return 'US$ '+v+'m'; }
+new Chart(document.getElementById('c'), {
+  type:'line',
+  data:{
+    labels:['Antes do COMP','Depois do COMP\n(15/jun/2020)'],
+    datasets:[{
+      label:'TVL da Compound',
+      data:[100,600],
+      borderColor:K.pinkLine,
+      backgroundColor:K.pinkSoft,
+      fill:true,
+      tension:0.25,
+      borderWidth:2.5,
+      pointBackgroundColor:K.pink,
+      pointBorderColor:K.cream,
+      pointBorderWidth:2,
+      pointRadius:6,
+      pointHoverRadius:7
+    }]
+  },
+  options:{
+    animation:false,
+    maintainAspectRatio:false,
+    responsive:true,
+    layout:{ padding:{ top:8, right:12 } },
+    plugins:{
+      legend:{ display:false },
+      tooltip:{ callbacks:{ label:(ctx)=>' '+fmtUSD(ctx.parsed.y) } }
+    },
+    scales:{
+      y:{
+        beginAtZero:true,
+        suggestedMax:700,
+        grid:{ color:K.grid, drawTicks:false },
+        border:{ display:false },
+        ticks:{ color:K.neutral3, font:{ family:K.mono, size:11 }, padding:8, callback:(v)=>fmtUSD(v) }
+      },
+      x:{
+        grid:{ display:false },
+        border:{ color:K.grid },
+        ticks:{ color:K.neutral3, font:{ family:K.mono, size:11 }, padding:6 }
+      }
+    }
+  }
+});
+</script></body></html>
