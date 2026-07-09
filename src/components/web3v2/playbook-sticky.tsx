@@ -93,14 +93,14 @@ export function Web3V2PlaybookSticky() {
       />
       <aside
         className={`kld-sticky${closing ? " is-closing" : ""}`}
-        aria-label="Playbook grátis: Marketing Cripto em 2026"
+        aria-label="Playbook grátis: Marketing e vendas no bear market"
       >
         <button type="button" className="kld-sticky-x" onClick={dismiss} aria-label="Fechar">
           ✕
         </button>
         <Image
-          src="/papers/cover-playbook.webp"
-          alt="Capa do playbook Marketing Cripto em 2026"
+          src="/papers/cover-bear-market.webp"
+          alt="Capa do playbook Como fazer marketing e vender no bear market"
           width={842}
           height={1123}
           sizes="(max-width: 600px) 180px, 230px"
@@ -108,8 +108,8 @@ export function Web3V2PlaybookSticky() {
           onClick={() => openPopup("cover")}
         />
         <div className="kld-sticky-body">
-          <span className="kld-sticky-badge">Estratégias para marketing cripto</span>
-          <h3 className="kld-sticky-title">Marketing Cripto em 2026</h3>
+          <span className="kld-sticky-badge">Playbook contra-cíclico grátis</span>
+          <h3 className="kld-sticky-title">Marketing e vendas no bear market</h3>
           <button type="button" className="kld-sticky-btn" onClick={() => openPopup("button")}>
             Baixar grátis →
           </button>

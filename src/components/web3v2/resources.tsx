@@ -26,7 +26,7 @@ const FEATURED_SLUGS = [
   "narrativas-cripto-2026",
   "airdrop-quanto-alocar-supply-roi",
 ];
-const GUIA_SLUG = "playbook-cripto-2026";
+const GUIA_SLUG = "bear-market-2026";
 
 const GREEN = "#7CF067";
 const PINK = "#D262B2";
@@ -42,6 +42,7 @@ type PlaybookFraming =
   | "editorial-emblema";
 
 const PLAYBOOK_OVERRIDE: Record<string, PlaybookFraming> = {
+  "bear-market-2026": "editorial-emblema",
   "playbook-cripto-2026": "editorial-emblema",
   "playbook-tge-2026": "editorial-emblema",
   hyperliquid: "dark-tech",

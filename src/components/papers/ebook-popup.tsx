@@ -12,11 +12,11 @@ import { track } from "@/lib/analytics";
 // entrega o PDF via a mesma rota do gate (/api/newsletter/subscribe + deliver).
 
 const PLAYBOOK = {
-  slug: "playbook-cripto-2026",
-  cover: "/papers/cover-playbook.webp",
-  pdf: "/papers/playbook-cripto-2026.pdf",
-  readUrl: "/papers/playbook-cripto-2026/read.html",
-  title: "Marketing Cripto em 2026",
+  slug: "bear-market-2026",
+  cover: "/papers/cover-bear-market.webp",
+  pdf: "/papers/bear-market-2026.pdf",
+  readUrl: "/papers/bear-market-2026/read.html",
+  title: "Como fazer marketing e vender no bear market",
 };
 
 const GREEN = "#7CF067";
