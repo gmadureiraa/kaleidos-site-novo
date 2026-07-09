@@ -28,6 +28,26 @@ export function BlogCover({
   let h = 0;
   for (let i = 0; i < post.slug.length; i++) h = (h * 31 + post.slug.charCodeAt(i)) >>> 0;
 
+  // Capa de campanha gerada (fal.ai): quando o post tem `coverImage`, ela ganha
+  // full-bleed em todas as superfícies (card/feature/article/thumb). Sem
+  // coverImage, cai no `CoverArt` padrão de sempre.
+  if (post.coverImage) {
+    return (
+      <div
+        className="relative w-full h-full overflow-hidden select-none bg-black"
+        aria-hidden="true"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={post.coverImage}
+          alt=""
+          className="w-full h-full object-cover"
+          loading={variant === "article" || variant === "feature" ? undefined : "lazy"}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className="relative w-full h-full overflow-hidden select-none"

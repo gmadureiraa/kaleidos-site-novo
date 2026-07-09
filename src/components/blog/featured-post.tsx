@@ -9,6 +9,7 @@ import {
   categoryLabels,
   formatDate,
 } from "@/lib/blog-shared";
+import { BlogCover } from "@/components/blog/blog-cover";
 
 interface FeaturedPostProps {
   post: BlogPost;
@@ -24,14 +25,20 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
       <Link href={`/blog/${post.slug}`} className="group block">
         {/* Full-width cover */}
         <div className="relative aspect-[2.2/1] rounded-2xl overflow-hidden mb-8 bg-[#0a0a0a] border border-white/[0.06]">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-            sizes="100vw"
-            priority
-          />
+          {post.coverImage ? (
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              sizes="100vw"
+              priority
+            />
+          ) : (
+            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.02]">
+              <BlogCover post={post} variant="feature" />
+            </div>
+          )}
         </div>
 
         {/* Content below */}
