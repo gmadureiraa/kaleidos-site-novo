@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { margin:0; background:#F4F1EC; font-family:'Inter',system-ui,sans-serif; }
+  #card { width:880px; height:603px; padding:40px 44px 48px; background:#F4F1EC; box-sizing:border-box; overflow:hidden; }
+  h1 { font-size:22px; color:#111; margin:0 0 4px; letter-spacing:-0.01em; }
+  p.sub { font-size:13px; color:#6B655B; margin:0 0 22px; }
+  .wrap { height:420px; position:relative; }
+  .src { font-size:11px; color:#A89F90; margin-top:14px; font-family:'SFMono-Regular',monospace; }
+</style></head><body>
+<div id="card"><h1>A Solana fez ~3x o volume de DEX do Ethereum</h1><p class="sub">Volume de DEX em janeiro de 2025, em bilhões de dólares</p>
+  <div class="wrap"><canvas id="c"></canvas></div><div class="src">Fonte: Artemis via AInvest</div></div>
+<script>
+const K = { cream:'#F4F1EC', ink:'#111111', pink:'#d262b2', pinkLine:'rgba(210,98,178,1)', pinkSoft:'rgba(210,98,178,0.16)',
+  neutral:'#A89F90', neutral3:'#8d877c', grid:'rgba(17,17,17,0.08)',
+  sans:"'Inter',system-ui,sans-serif", mono:"'SFMono-Regular',monospace" };
+Chart.defaults.font.family = K.sans; Chart.defaults.color = K.ink;
+new Chart(document.getElementById('c'), {
+  type:'bar',
+  data:{
+    labels:['Solana','Ethereum'],
+    datasets:[{
+      label:'Volume de DEX (US$ bi)',
+      data:[262, 86],
+      backgroundColor:[K.pink, K.neutral],
+      borderRadius:6,
+      maxBarThickness:150
+    }]
+  },
+  options:{
+    animation:false,
+    maintainAspectRatio:false,
+    responsive:true,
+    plugins:{
+      legend:{ display:false },
+      tooltip:{ callbacks:{ label:(ctx)=> ' US$ ' + ctx.parsed.y + ' bi' } }
+    },
+    scales:{
+      x:{
+        grid:{ display:false },
+        ticks:{ color:K.neutral3, font:{ family:K.mono, size:11 } }
+      },
+      y:{
+        beginAtZero:true,
+        max:300,
+        grid:{ color:K.grid },
+        ticks:{ color:K.neutral3, font:{ family:K.mono, size:11 }, callback:(v)=> 'US$ ' + v + ' bi' }
+      }
+    }
+  }
+});
+</script></body></html>

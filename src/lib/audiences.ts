@@ -49,7 +49,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pro founder que está construindo em cripto",
     headlineHtml: `O time de marketing que seu projeto cripto ainda não tem, do conteúdo ao <span ${HL}>lançamento</span>.`,
     subHtml:
-      '<strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong>: a Kaleidos vira o braço de marca, conteúdo e go-to-market do seu projeto, pra ele virar referência e não só mais um token no feed.',
+      '<strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong>: a Kaleidos vira o braço de marca, conteúdo e go-to-market do seu projeto, pra ele virar referência de mercado, não um ticker que aparece e some.',
     metaTitle: "Kaleidos para founders — marketing e lançamento de projeto cripto",
     metaDesc:
       "A Kaleidos é o time de marketing, conteúdo e go-to-market do seu projeto cripto. Do posicionamento ao lançamento, com autoridade de verdade.",
@@ -102,6 +102,10 @@ export const AUDIENCES: Audience[] = [
       {
         q: "Cuidam do lançamento inteiro ou só do conteúdo?",
         a: "Dos dois jeitos. Dá pra pegar uma frente (conteúdo, comunidade, criativos) ou a operação completa de go-to-market, do posicionamento à distribuição.",
+      },
+      {
+        q: "Vocês ativam KOLs e influencers do mercado?",
+        a: "Sim, faz parte do go-to-market. A gente ativa as vozes certas do ecossistema com briefing e narrativa alinhados ao projeto, pra não virar aquele post pago genérico que a comunidade fareja de longe.",
       },
     ],
   },
@@ -165,6 +169,10 @@ export const AUDIENCES: Audience[] = [
         q: "Ajudam a criar produto e funil, não só conteúdo?",
         a: "Sim. A gente construiu operação comercial e lançamentos do zero pra creator, do funil ao follow-up, não só a parte de conteúdo.",
       },
+      {
+        q: "Meu conteúdo é de cripto, vocês pegam meu nicho?",
+        a: "Cripto e web3 são a nossa casa. A gente acompanha ciclo, narrativa e vocabulário do mercado no dia a dia, então você não perde tempo explicando o básico do seu nicho pra gente entender.",
+      },
     ],
   },
   {
@@ -226,6 +234,10 @@ export const AUDIENCES: Audience[] = [
       {
         q: "Como equilibram compliance e criatividade?",
         a: "Trabalhando junto do seu jurídico desde a pauta, pra mensagem sair clara e atraente sem prometer o que não pode.",
+      },
+      {
+        q: "Dá pra construir autoridade sem prometer retorno?",
+        a: "É justamente aí que a gente joga. Autoridade de fintech se constrói com educação, dado e clareza sobre risco, que é o que o público cético procura antes de confiar o dinheiro. Promessa de retorno afasta quem entende, prova consistente aproxima.",
       },
     ],
   },
@@ -289,6 +301,10 @@ export const AUDIENCES: Audience[] = [
         q: "Vocês só fazem cripto?",
         a: "A base é cripto e web3, mas o método de content-led growth (SEO, autoridade, distribuição) vale pra qualquer SaaS.",
       },
+      {
+        q: "Como isso conversa com meu time de produto e vendas?",
+        a: "A pauta sai das dores que o seu time de vendas mais escuta e das features que o produto quer destacar. Assim o orgânico não traz visita solta, traz lead que já chega meio educado e mais perto de virar cliente.",
+      },
     ],
   },
   {
@@ -350,6 +366,10 @@ export const AUDIENCES: Audience[] = [
       {
         q: "Trabalham com o time interno ou substituem ele?",
         a: "Dos dois jeitos: a gente vira o braço de marketing completo ou reforça o time que você já tem numa frente específica.",
+      },
+      {
+        q: "Não somos de tecnologia, isso funciona pra gente?",
+        a: "Funciona. O método não depende do setor ser cripto ou tech: depende de ter um ponto de vista e sustentar ele com constância. A gente traduz o que a sua empresa faz numa linha editorial que o seu mercado entende e respeita.",
       },
     ],
   },

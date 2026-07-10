@@ -1,6 +1,10 @@
 import { getPublishedPostCardsAsync } from "@/lib/blog-data";
 import { BlogIndexClient } from "./blog-index-client";
 
+// ISR: revalida a listagem de hora em hora pra que posts agendados apareçam na
+// grade assim que a data chegar, sem redeploy. Casa com o revalidate do [slug].
+export const revalidate = 3600;
+
 // Server component: busca os posts publicados (estáticos em código + publicados
 // pelo KAI via feed). Build-safe — sem o feed, vem só os estáticos. Passa só os
 // CARDS LEVES (sem o markdown `content`) pra UI client — a listagem só renderiza

@@ -25,6 +25,12 @@ type Props = {
 // os posts; qualquer outro slug = 404 real.
 export const dynamicParams = false;
 
+// ISR: revalida de hora em hora pra que posts AGENDADOS (publishedAt no futuro)
+// virem live sozinhos na data, sem depender de redeploy manual. O gate de data
+// vive em getPostBySlugAsync; sem revalidate o 404 do agendado ficaria congelado
+// no build. 3600s = post no ar em até 1h após a data programada.
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const all = await getAllPostsAsync();
   return all.map((post) => ({ slug: post.slug }));
