@@ -147,7 +147,9 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    await captureServerEvent(email, "newsletter_signup", {
+    // distinct_id = email lowercase — MESMO id do identifyLead() no client,
+    // garante que o evento server cai na mesma pessoa do PostHog.
+    await captureServerEvent(email.trim().toLowerCase(), "newsletter_signup", {
       audience_id: AUDIENCE_ID,
       resend_contact_id: data?.id ?? null,
       delivered_paper: deliverSlug || null,

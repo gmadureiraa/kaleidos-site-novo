@@ -9,6 +9,7 @@ import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
 import { SkipToContent } from "@/components/ui/skip-to-content";
 import { LeadPopup } from "@/components/lead-popup";
+import { ConversionTracking } from "@/components/conversion-tracking";
 import "./globals.css";
 
 // Fontes locais otimizadas
@@ -167,6 +168,7 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <LeadPopup />
             </Suspense>
+            <ConversionTracking />
           </ErrorBoundary>
         </SmoothScrollProvider>
       </body>

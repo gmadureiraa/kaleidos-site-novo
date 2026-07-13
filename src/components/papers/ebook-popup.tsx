@@ -5,7 +5,8 @@ import Image from "next/image";
 import { X, ArrowRight, Download, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
-import { track } from "@/lib/analytics";
+import { track, identifyLead } from "@/lib/analytics";
+import { CALENDLY_URL } from "@/lib/constants";
 
 // Popup do ebook estilo Lunar Strategy: capa grande centralizada + CTA "Baixar
 // grátis", fundo escurecido. Mobile-first (modal centralizado). Captura email e
@@ -13,7 +14,7 @@ import { track } from "@/lib/analytics";
 
 const PLAYBOOK = {
   slug: "bear-market-2026",
-  cover: "/papers/cover-bear-market.webp",
+  cover: "/papers/cover-bear-market-v4.webp",
   pdf: "/papers/bear-market-2026.pdf",
   readUrl: "/papers/bear-market-2026/read.html",
   title: "Como fazer marketing e vender no bear market",
@@ -78,6 +79,13 @@ export function EbookPopup({
         localStorage.setItem(STORAGE_KEY, "1");
       } catch {}
       track("lead_captured", { source, paper_slug: PLAYBOOK.slug });
+      track("lead_submit", { source, paper_slug: PLAYBOOK.slug });
+      track("playbook_download", {
+        source,
+        paper_slug: PLAYBOOK.slug,
+        method: "email_delivery",
+      });
+      identifyLead(email);
       setStatus("done");
     } catch (err) {
       setStatus("error");
@@ -118,8 +126,8 @@ export function EbookPopup({
               <Image
                 src={PLAYBOOK.cover}
                 alt={PLAYBOOK.title}
-                width={760}
-                height={1013}
+                width={840}
+                height={1260}
                 sizes="(max-width: 480px) 90vw, 360px"
                 priority
                 className="mx-auto h-auto max-h-[44dvh] w-auto max-w-full object-contain"
@@ -147,6 +155,17 @@ export function EbookPopup({
                     >
                       <Download className="h-4 w-4" /> Baixar o PDF
                     </a>
+                    <p className="text-[12px] text-gray-500">
+                      Quer aplicar no seu projeto?{" "}
+                      <a
+                        href={CALENDLY_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-gray-900 underline underline-offset-2"
+                      >
+                        Agende 30min grátis
+                      </a>
+                    </p>
                   </div>
                 </div>
               ) : (

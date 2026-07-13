@@ -44,7 +44,7 @@ export const papers: Paper[] = [
     tag: "Flagship · Marketing / Vendas",
     accent: "#D262B2",
     pdf: "/papers/bear-market-2026.pdf",
-    cover: "/papers/cover-bear-market.webp",
+    cover: "/papers/cover-bear-market-v4.webp",
     publishedAt: "2026-07-07",
     readHtml: true,
   },

@@ -7,7 +7,8 @@ import { ArrowLeft, ArrowRight, Download, Check, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Paper } from "@/lib/papers-data";
 import { getLeadMetadata } from "@/lib/lead-meta";
-import { track } from "@/lib/analytics";
+import { track, identifyLead } from "@/lib/analytics";
+import { CALENDLY_URL, WHATSAPP_NUMBER } from "@/lib/constants";
 
 const STORAGE_KEY = "kld_papers_unlocked";
 
@@ -44,6 +45,13 @@ export function PaperGate({ paper, articleHtml }: { paper: Paper; articleHtml?: 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
       track("lead_captured", { source: "paper-gate", paper_slug: paper.slug });
+      track("lead_submit", { source: "paper-gate", paper_slug: paper.slug });
+      track("playbook_download", {
+        source: "paper-gate",
+        paper_slug: paper.slug,
+        method: "email_delivery",
+      });
+      identifyLead(email);
       try {
         localStorage.setItem(STORAGE_KEY, "1");
       } catch {}
@@ -181,6 +189,34 @@ export function PaperGate({ paper, articleHtml }: { paper: Paper; articleHtml?: 
                           <Download className="w-4 h-4" /> Baixar PDF
                         </a>
                       )}
+                    </div>
+                    {/* Próximo passo do funil: quem desbloqueou é lead quente —
+                        oferece a call/WhatsApp sem fricção. */}
+                    <div
+                      data-section="paper-unlocked"
+                      className="mt-5 pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
+                    >
+                      <p className="text-[13px] text-gray-600">
+                        Quer aplicar isso no seu projeto?
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <a
+                          href={CALENDLY_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[13px] font-semibold text-gray-900 underline underline-offset-4 hover:text-black"
+                        >
+                          Agendar 30min grátis
+                        </a>
+                        <a
+                          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Oi Kaleidos! Li o estudo "${paper.title}" e quero conversar.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[13px] font-semibold text-gray-900 underline underline-offset-4 hover:text-black"
+                        >
+                          Chamar no WhatsApp
+                        </a>
+                      </div>
                     </div>
                   </div>
                 ) : (

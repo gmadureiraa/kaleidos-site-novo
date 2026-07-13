@@ -2,6 +2,8 @@
 
 export const WHATSAPP_NUMBER = "5512997796835";
 
+export const CALENDLY_URL = "https://calendly.com/madureira-kaleidosdigital/30min";
+
 export const SERVICOS = [
   "Edição de Vídeo",
   "Roteiros",

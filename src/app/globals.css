@@ -638,6 +638,9 @@ select:focus-visible {
   line-height: 1.75;
   max-width: 720px;
   margin: 0 auto;
+  /* URLs longas (listas de fontes etc.) não podem estourar a largura no
+     mobile — quebra em qualquer ponto quando não há espaço. */
+  overflow-wrap: anywhere;
 }
 .study-prose > *:first-child { margin-top: 0; }
 .study-prose p { margin: 0 0 1.25rem; color: #2c261e; }

@@ -42,8 +42,8 @@ export function Web3V2CtaTracking() {
       const location = `home_v2:${section}`;
 
       if (href.includes("wa.me") || href.includes("whatsapp")) {
-        // Evento principal de WhatsApp + cta_clicked pra funil unificado.
-        track("whatsapp_click", { location, context: "home_v2", label });
+        // `whatsapp_click` agora sai do ConversionTracking GLOBAL (layout) —
+        // aqui fica só o cta_clicked com contexto de seção da home.
         track("cta_clicked", { location, cta_type: "whatsapp", label });
       } else if (href.includes("calendly")) {
         track("cta_clicked", { location, cta_type: "calendly", label });

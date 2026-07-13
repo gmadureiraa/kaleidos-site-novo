@@ -132,7 +132,7 @@ ${mensagem}
       html,
     });
 
-    await captureServerEvent(email, "contact_submitted", {
+    await captureServerEvent(String(email).trim().toLowerCase(), "contact_submitted", {
       empresa: empresa || null,
       servicos_count: (servicos || []).length,
       locale,

@@ -5,27 +5,39 @@ import { usePathname } from "next/navigation";
 import { ArrowRight, X, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
-import { track } from "@/lib/analytics";
+import { track, identifyLead } from "@/lib/analytics";
+
+// Mesmo valor de OPEN_PLAYBOOK_EVENT em web3v2/playbook-popup.tsx — inlined
+// aqui pra não puxar o bundle do EbookPopup pro layout global.
+const OPEN_PLAYBOOK_EVENT = "open-playbook-popup";
 
 // Popup de captura de email — NÃO intrusivo:
-// - aparece SÓ em páginas de post do blog (/blog/<slug>), nunca na home/resto do site
-// - 1x por sessão, por scroll (~45%) OU exit-intent (desktop)
+// - aparece na HOME (/), no índice do blog (/blog) e nos posts (/blog/<slug>)
+// - 1x por sessão, por: scroll (30% home//blog, 45% em post) OU permanência
+//   (30s, funciona em mobile) OU exit-intent (desktop)
 // - fechável (X / ESC / clique no backdrop), nunca obrigatório
 // - respeita "não mostrar de novo" via localStorage por DISMISS_DAYS
-// - some pra sempre depois que a pessoa assina
-// - inscrição GENÉRICA nos papers/newsletter (o guia específico fica só no gate, pra quem clica nele)
+// - some pra sempre depois que a pessoa assina (ou já desbloqueou um paper)
+// - se a pessoa abrir o popup do playbook (CTA/sticky da home), este NÃO abre
+//   por cima na mesma sessão
+// - inscrição GENÉRICA nos papers/newsletter (o guia específico fica só no gate)
 
 const DISMISS_KEY = "kld_popup_dismissed_at";
 const SUBSCRIBED_KEY = "kld_popup_subscribed";
+const UNLOCKED_KEY = "kld_papers_unlocked";
 const SESSION_KEY = "kld_popup_seen_session";
 const DISMISS_DAYS = 14;
-const SCROLL_TRIGGER = 0.45;
+const SCROLL_TRIGGER_POST = 0.45; // post do blog: pessoa lendo, espera engajar
+const SCROLL_TRIGGER_INDEX = 0.3; // home e /blog são longas: 30% já é intenção
+const DWELL_MS = 30000; // fallback por tempo (mobile sem scroll / exit-intent)
 
 const PINK = "#D262B2";
 
 function recentlyDismissed(): boolean {
   try {
     if (localStorage.getItem(SUBSCRIBED_KEY) === "1") return true;
+    // Já deixou o email num gate/playbook — não pedir de novo.
+    if (localStorage.getItem(UNLOCKED_KEY) === "1") return true;
     const at = Number(localStorage.getItem(DISMISS_KEY) || "0");
     if (!at) return false;
     const ageDays = (Date.now() - at) / (1000 * 60 * 60 * 24);
@@ -44,11 +56,12 @@ export function LeadPopup() {
   const [msg, setMsg] = useState("");
   const armed = useRef(false);
 
-  // Só em páginas de POST do blog (/blog/<slug>). /blog (índice) e home ficam de fora.
+  // Home (/), índice do blog (/blog) e posts (/blog/<slug>).
   const onBlogPost = pathname?.startsWith("/blog/") ?? false;
+  const eligible = pathname === "/" || pathname === "/blog" || onBlogPost;
 
   useEffect(() => {
-    if (!onBlogPost) return;
+    if (!eligible) return;
     if (typeof window === "undefined") return;
     if (recentlyDismissed()) return;
     try {
@@ -56,6 +69,7 @@ export function LeadPopup() {
     } catch {}
 
     armed.current = true;
+    const scrollTrigger = onBlogPost ? SCROLL_TRIGGER_POST : SCROLL_TRIGGER_INDEX;
 
     const trigger = () => {
       if (!armed.current) return;
@@ -71,7 +85,7 @@ export function LeadPopup() {
       const doc = document.documentElement;
       const scrollable = doc.scrollHeight - window.innerHeight;
       if (scrollable <= 0) return;
-      if (window.scrollY / scrollable >= SCROLL_TRIGGER) trigger();
+      if (window.scrollY / scrollable >= scrollTrigger) trigger();
     };
 
     const onMouseOut = (e: MouseEvent) => {
@@ -79,22 +93,41 @@ export function LeadPopup() {
       if (e.clientY <= 0 && !e.relatedTarget) trigger();
     };
 
+    // Se o popup do PLAYBOOK abrir (sticky/CTA da home), desarma este —
+    // um pedido de email por sessão é o suficiente.
+    const onPlaybookOpen = () => {
+      armed.current = false;
+      try {
+        sessionStorage.setItem(SESSION_KEY, "1");
+      } catch {}
+      setOpen(false);
+      cleanup();
+    };
+
+    // Fallback por TEMPO (mobile não tem exit-intent; home pode não rolar 30%).
+    let dwellTimer: ReturnType<typeof setTimeout> | null = null;
+
     function cleanup() {
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("mouseout", onMouseOut);
+      if (dwellTimer) clearTimeout(dwellTimer);
     }
 
     // delay pequeno pra não disparar em rage-scroll inicial
     const t = setTimeout(() => {
       window.addEventListener("scroll", onScroll, { passive: true });
       document.addEventListener("mouseout", onMouseOut);
+      dwellTimer = setTimeout(trigger, DWELL_MS);
     }, 4000);
+
+    window.addEventListener(OPEN_PLAYBOOK_EVENT, onPlaybookOpen);
 
     return () => {
       clearTimeout(t);
       cleanup();
+      window.removeEventListener(OPEN_PLAYBOOK_EVENT, onPlaybookOpen);
     };
-  }, [onBlogPost, pathname]);
+  }, [eligible, onBlogPost, pathname]);
 
   // ESC fecha
   useEffect(() => {
@@ -130,6 +163,8 @@ export function LeadPopup() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
       track("lead_captured", { source: "popup", path: pathname });
+      track("lead_submit", { source: "popup", path: pathname });
+      identifyLead(email);
       setStatus("success");
       setMsg("Pronto. Você vai receber os próximos estudos no seu email.");
       try {

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { WHATSAPP_NUMBER, SERVICOS } from "@/lib/constants";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
+import { track, identifyLead } from "@/lib/analytics";
 import { getAttributionMeta } from "@/lib/attribution";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 
@@ -80,6 +81,14 @@ export default function ContatoPage() {
       if (!res.ok || data?.ok === false) {
         throw new Error(data?.error || "send_failed");
       }
+      // Funil: lead_submit nomeado + identify (merge da jornada anônima no PostHog)
+      track("lead_submit", {
+        source: "contact-form",
+        path: "/contato",
+        budget: form.budget || null,
+        services: selectedServices.join(", ") || null,
+      });
+      identifyLead(form.email, { name: form.nome, company: form.empresa || null });
       setFormState("ok");
       setForm({ nome: "", email: "", empresa: "", whatsapp: "", budget: "", mensagem: "" });
     } catch (err) {

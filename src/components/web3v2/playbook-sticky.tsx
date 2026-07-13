@@ -99,10 +99,10 @@ export function Web3V2PlaybookSticky() {
           ✕
         </button>
         <Image
-          src="/papers/cover-bear-market.webp"
+          src="/papers/cover-bear-market-v4.webp"
           alt="Capa do playbook Como fazer marketing e vender no bear market"
-          width={842}
-          height={1123}
+          width={840}
+          height={1260}
           sizes="(max-width: 600px) 180px, 230px"
           className="kld-sticky-cover"
           onClick={() => openPopup("cover")}
