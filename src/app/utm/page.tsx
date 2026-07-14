@@ -15,16 +15,18 @@ const SITES: Option[] = [
   { value: "https://kai.kaleidos.com.br", label: "KAI" },
 ];
 
+// Convenção v2 (2026-07): utm_source = nome completo da rede.
+// Canônico: vault/99 - SISTEMA/comunicacao-strategy/utm-convention.md
 const SOURCES: Option[] = [
-  { value: "ig", label: "ig — Instagram" },
-  { value: "x", label: "x — X (Twitter)" },
-  { value: "in", label: "in — LinkedIn" },
-  { value: "yt", label: "yt — YouTube" },
-  { value: "tt", label: "tt — TikTok" },
-  { value: "th", label: "th — Threads" },
-  { value: "nl", label: "nl — Newsletter" },
-  { value: "em", label: "em — Email" },
-  { value: "wa", label: "wa — WhatsApp" },
+  { value: "instagram", label: "instagram — Instagram" },
+  { value: "twitter", label: "twitter — X (Twitter)" },
+  { value: "linkedin", label: "linkedin — LinkedIn" },
+  { value: "youtube", label: "youtube — YouTube" },
+  { value: "tiktok", label: "tiktok — TikTok" },
+  { value: "threads", label: "threads — Threads" },
+  { value: "newsletter", label: "newsletter — Newsletter" },
+  { value: "email", label: "email — Email" },
+  { value: "whatsapp", label: "whatsapp — WhatsApp" },
 ];
 
 const MEDIUMS: Option[] = [
@@ -32,7 +34,8 @@ const MEDIUMS: Option[] = [
   { value: "story", label: "story — Story" },
   { value: "reel", label: "reel — Reels / Shorts" },
   { value: "post", label: "post — Post estático" },
-  { value: "carousel", label: "carousel — Carrossel" },
+  { value: "carrossel", label: "carrossel — Carrossel" },
+  { value: "thread", label: "thread — Fio (X/Threads)" },
   { value: "dm", label: "dm — DM / ManyChat" },
   { value: "desc", label: "desc — Descrição" },
   { value: "pin", label: "pin — Tweet/post fixado" },
