@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 export type DashPost = {
@@ -65,12 +66,12 @@ export function AppDashboard({
               Calendário editorial do blog · atualizado {fmtDate(generatedAt)}
             </p>
           </div>
-          <a
+          <Link
             href="/blog"
             style={{ fontSize: 13, fontWeight: 600, textDecoration: "none", color: INK, borderBottom: `2px solid ${MAGENTA}` }}
           >
             ver blog público ↗
-          </a>
+          </Link>
         </header>
 
         {/* Stats */}

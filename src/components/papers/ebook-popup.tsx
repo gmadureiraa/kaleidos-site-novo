@@ -99,7 +99,7 @@ export function EbookPopup({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Baixar o playbook Marketing Cripto em 2026"
+          aria-label="Baixar o playbook Bear Market 2026"
           className="fixed inset-0 z-[210] flex items-center justify-center p-4 sm:p-6"
         >
           {/* backdrop escuro */}

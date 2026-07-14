@@ -1,16 +1,31 @@
-# 🚀 Guia de Deploy - Kaleidos Site
+# Guia de Deploy — Kaleidos Site
 
-## 📋 Pré-requisitos
+> Atualizado 2026-07-14. Stack: **Bun** + Next.js 15. Ver também [`AUDITORIA-SITE-2026-07-14.md`](./AUDITORIA-SITE-2026-07-14.md).
 
-- [Node.js](https://nodejs.org/) 18+ 
-- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+## Variáveis críticas (Vercel Production)
+
+| Var | Uso |
+|-----|-----|
+| `APP_DASHBOARD_PASSWORD` | Basic Auth `/app` (fail-closed sem ela) |
+| `CRON_SECRET` | `Authorization: Bearer …` no cron de lead sequence |
+| `LEAD_UNSUB_SECRET` | HMAC unsubscribe (gerar `openssl rand -hex 32`) |
+| `UPSTASH_REDIS_REST_URL` / `TOKEN` | Rate limit distribuído |
+| `DATABASE_URL` | Postgres leads |
+| `RESEND_API_KEY` / `RESEND_FROM` | Emails (SPF/DKIM no domínio) |
+| `NEXT_PUBLIC_POSTHOG_*` / `GA_ID` / `CLARITY_ID` / `META_PIXEL_ID` | Analytics |
+
+Policy papers: PDFs/`read.html` públicos de propósito (GEO). Gateway de email = captura, não DRM.
+
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) 18+ ou **Bun** 1.3+
 - Conta no [Vercel](https://vercel.com/)
 
-## 🔧 Configuração Local
+## Configuração Local
 
 ### 1. Instalar dependências
 ```bash
-npm install
+bun install
 ```
 
 ### 2. Configurar variáveis de ambiente
@@ -20,7 +35,7 @@ Crie um arquivo `.env.local` na raiz do projeto:
 # Configurações do Site
 NEXT_PUBLIC_SITE_URL=https://kaleidos.com.br
 NEXT_PUBLIC_SITE_NAME=Kaleidos Digital
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 # Redes Sociais
 NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/kaleidosdigital
@@ -37,10 +52,10 @@ NEXT_PUBLIC_SITE_KEYWORDS=marketing digital, conteúdo criativo, automações, l
 
 ### 3. Verificar build local
 ```bash
-npm run build:check
+bun run build:check
 ```
 
-## 🚀 Deploy no Vercel
+## Deploy no Vercel
 
 ### Opção 1: Deploy via CLI
 
@@ -71,9 +86,10 @@ vercel --prod
    - Adicione todas as variáveis do `.env.local`
 
 3. **Deploy automático**
-   - Cada push para `main` fará deploy automático
+   - Cada push para `main` faz deploy automático
+   - **Atenção alias:** se `kaleidos.com.br` continuar no build antigo, rode `vercel alias set <deployment> kaleidos.com.br` (e `www`)
 
-## ⚙️ Configurações do Vercel
+## Configurações do Vercel
 
 ### Variáveis de Ambiente
 Configure no painel do Vercel:

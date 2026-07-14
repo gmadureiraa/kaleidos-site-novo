@@ -1,27 +1,25 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import { EbookPopup } from "@/components/papers/ebook-popup";
 
-// Popup do Playbook "Marketing Cripto em 2026" EXCLUSIVO da rota `/2`.
-//
-// Reaproveita o `EbookPopup` (capa grande estilo Lunar + entrega do PDF via
-// /api/newsletter/subscribe) e só adiciona o GATILHO não-intrusivo:
-//  - abre 1x por sessão, por scroll (~50%) OU exit-intent (desktop)
-//  - quem já desbloqueou (localStorage) ou já dispensou nunca mais vê
-//  - dá pra abrir também por clique num CTA da página, via custom event
-//    `open-playbook-popup` (window.dispatchEvent(...))
-//  - fecha por X / ESC / clique no backdrop (herdado do EbookPopup)
-//
-// Tracking `lead_captured` (source=playbook-popup-v2) sai do próprio EbookPopup.
+const EbookPopup = dynamic(
+  () => import("@/components/papers/ebook-popup").then((m) => m.EbookPopup),
+  { ssr: false },
+);
+
+// Popup do Playbook bear market — na home web3v2 (sticky + CTAs).
+// Reaproveita `EbookPopup` (capa + PDF via /api/newsletter/subscribe).
+// Gatilho automático DESATIVADO: só abre por CTA (`OPEN_PLAYBOOK_EVENT`).
 
 const DISMISS_KEY = "kld_playbook_v2_dismissed_at";
 const UNLOCKED_KEY = "kld_papers_unlocked";
 const SESSION_KEY = "kld_playbook_v2_seen_session";
 const DISMISS_DAYS = 14;
 const SCROLL_TRIGGER = 0.5;
+/** Auto scroll/exit-intent — mantido off; sticky card é o prompt persistente. */
+const AUTO_TRIGGER = false;
 
-// evento público pra abrir o popup a partir de um botão/CTA da página
 export const OPEN_PLAYBOOK_EVENT = "open-playbook-popup";
 
 function recentlyDismissed(): boolean {
@@ -40,12 +38,6 @@ export function Web3V2PlaybookPopup() {
   const [open, setOpen] = useState(false);
   const armed = useRef(false);
 
-  // Gatilho automático DESATIVADO: o card fixo (Web3V2PlaybookSticky) virou o
-  // prompt persistente (padrão Lunar). O popup agora só abre por CTA explícito
-  // (card fixo / botões da página), sem surpresa por scroll/exit-intent.
-  const AUTO_TRIGGER = false;
-
-  // Gatilho automático: scroll ~50% OU exit-intent, 1x por sessão.
   useEffect(() => {
     if (!AUTO_TRIGGER) return;
     if (typeof window === "undefined") return;
@@ -74,7 +66,6 @@ export function Web3V2PlaybookPopup() {
     };
 
     const onMouseOut = (e: MouseEvent) => {
-      // exit-intent: ponteiro sai pela borda de cima (desktop)
       if (e.clientY <= 0 && !e.relatedTarget) trigger();
     };
 
@@ -83,7 +74,6 @@ export function Web3V2PlaybookPopup() {
       document.removeEventListener("mouseout", onMouseOut);
     }
 
-    // pequeno delay pra não disparar em rage-scroll inicial
     const t = setTimeout(() => {
       window.addEventListener("scroll", onScroll, { passive: true });
       document.addEventListener("mouseout", onMouseOut);
@@ -95,7 +85,6 @@ export function Web3V2PlaybookPopup() {
     };
   }, []);
 
-  // Abertura manual via CTA (custom event). Sempre abre, mesmo se já dispensou.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const onOpen = () => {

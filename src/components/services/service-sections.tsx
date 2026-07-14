@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Minus, type LucideIcon } from "lucide-react";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
-import type { ServiceContent, ServiceData } from "@/lib/service-pages-data";
+import type { ServiceContent } from "@/lib/service-pages-data";
 
 /* ------------------------------------------------------------------ */
 /* Kaleidos brand tokens                                               */
@@ -176,7 +176,6 @@ function DotGrid({ dark = false }: { dark?: boolean }) {
 /* ------------------------------------------------------------------ */
 
 export function HeroSection({
-  data,
   c,
   accent,
   Icon,
@@ -184,7 +183,6 @@ export function HeroSection({
   withLang,
   openWhatsApp,
 }: {
-  data: ServiceData;
   c: ServiceContent;
   accent: Accent;
   Icon: LucideIcon;

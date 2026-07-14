@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 import { PacotesCtaTracking } from "./cta-tracking";
 
@@ -249,7 +250,7 @@ export default function PacotesPage() {
               className="cta-btn cta-primary"
               data-cta="pacotes-hero"
             >
-              <img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" />
+              <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
               Marcar uma call &rarr;
             </a>
           </div>
@@ -386,7 +387,7 @@ export default function PacotesPage() {
             className="cta-btn cta-primary"
             data-cta="pacotes-final"
           >
-            <img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" />
+            <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
             Marcar uma call &rarr;
           </a>
           <p className="microcopy">

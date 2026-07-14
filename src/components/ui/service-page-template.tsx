@@ -200,7 +200,6 @@ export function ServicePageTemplate({
       />
 
       <HeroSection
-        data={data}
         c={c}
         accent={accent}
         Icon={Icon}

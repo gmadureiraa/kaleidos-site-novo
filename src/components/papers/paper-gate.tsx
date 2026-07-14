@@ -12,7 +12,7 @@ import { CALENDLY_URL, WHATSAPP_NUMBER } from "@/lib/constants";
 
 const STORAGE_KEY = "kld_papers_unlocked";
 
-export function PaperGate({ paper, articleHtml }: { paper: Paper; articleHtml?: string }) {
+export function PaperGate({ paper }: { paper: Paper }) {
   const [unlocked, setUnlocked] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [email, setEmail] = useState("");

@@ -141,7 +141,6 @@ export default function PortfolioGallery() {
               value={group}
               options={formatOptions}
               onChange={setGroup}
-              isEn={isEn}
             />
             {/* Dropdown CLIENTE */}
             <Dropdown
@@ -149,7 +148,6 @@ export default function PortfolioGallery() {
               value={activeClient ?? "all"}
               options={clientOptions}
               onChange={(v) => setActiveClient(v === "all" ? null : v)}
-              isEn={isEn}
             />
           </div>
 
@@ -310,13 +308,11 @@ function Dropdown({
   value,
   options,
   onChange,
-  isEn,
 }: {
   label: string;
   value: string;
   options: { id: string; label: string; count: number }[];
   onChange: (v: string) => void;
-  isEn: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
