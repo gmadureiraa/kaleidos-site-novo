@@ -2,16 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { ArrowRight, X, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { track, identifyLead } from "@/lib/analytics";
+
+// Só é baixado quando o popup da home realmente abre — o layout global
+// continua sem o peso do EbookPopup no bundle inicial.
+const EbookPopup = dynamic(
+  () => import("@/components/papers/ebook-popup").then((m) => m.EbookPopup),
+  { ssr: false }
+);
 
 // Mesmo valor de OPEN_PLAYBOOK_EVENT em web3v2/playbook-popup.tsx — inlined
 // aqui pra não puxar o bundle do EbookPopup pro layout global.
 const OPEN_PLAYBOOK_EVENT = "open-playbook-popup";
 
 // Popup de captura de email — NÃO intrusivo:
+// - na HOME a oferta é CONCRETA: capa do playbook do bear market + "Baixar
+//   grátis" (mesmo modal do EbookPopup). No blog fica a inscrição genérica.
 // - aparece na HOME (/), no índice do blog (/blog) e nos posts (/blog/<slug>)
 // - 1x por sessão, por: scroll (30% home//blog, 45% em post) OU permanência
 //   (30s, funciona em mobile) OU exit-intent (desktop)
@@ -57,8 +67,9 @@ export function LeadPopup() {
   const armed = useRef(false);
 
   // Home (/), índice do blog (/blog) e posts (/blog/<slug>).
+  const onHome = pathname === "/";
   const onBlogPost = pathname?.startsWith("/blog/") ?? false;
-  const eligible = pathname === "/" || pathname === "/blog" || onBlogPost;
+  const eligible = onHome || pathname === "/blog" || onBlogPost;
 
   useEffect(() => {
     if (!eligible) return;
@@ -177,6 +188,12 @@ export function LeadPopup() {
   }
 
   if (!open) return null;
+
+  // Home: oferta concreta (capa do playbook + "Baixar grátis") em vez do card
+  // de texto. O EbookPopup já grava UNLOCKED_KEY, então não pedimos de novo.
+  if (onHome) {
+    return <EbookPopup open onClose={dismiss} source="popup-home" />;
+  }
 
   return (
     <div
