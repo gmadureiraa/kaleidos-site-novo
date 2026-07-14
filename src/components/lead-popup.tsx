@@ -7,6 +7,7 @@ import { ArrowRight, X, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { track, identifyLead } from "@/lib/analytics";
+import { OPEN_PLAYBOOK_EVENT } from "@/lib/playbook-events";
 
 // Só é baixado quando o popup da home realmente abre — o layout global
 // continua sem o peso do EbookPopup no bundle inicial.
@@ -14,10 +15,6 @@ const EbookPopup = dynamic(
   () => import("@/components/papers/ebook-popup").then((m) => m.EbookPopup),
   { ssr: false }
 );
-
-// Mesmo valor de OPEN_PLAYBOOK_EVENT em web3v2/playbook-popup.tsx — inlined
-// aqui pra não puxar o bundle do EbookPopup pro layout global.
-const OPEN_PLAYBOOK_EVENT = "open-playbook-popup";
 
 // Popup de captura de email — NÃO intrusivo:
 // - na HOME a oferta é CONCRETA: capa do playbook do bear market + "Baixar

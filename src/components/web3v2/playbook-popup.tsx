@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
+import { OPEN_PLAYBOOK_EVENT } from "@/lib/playbook-events";
 
 const EbookPopup = dynamic(
   () => import("@/components/papers/ebook-popup").then((m) => m.EbookPopup),
@@ -20,7 +21,7 @@ const SCROLL_TRIGGER = 0.5;
 /** Auto scroll/exit-intent — mantido off; sticky card é o prompt persistente. */
 const AUTO_TRIGGER = false;
 
-export const OPEN_PLAYBOOK_EVENT = "open-playbook-popup";
+export { OPEN_PLAYBOOK_EVENT };
 
 function recentlyDismissed(): boolean {
   try {

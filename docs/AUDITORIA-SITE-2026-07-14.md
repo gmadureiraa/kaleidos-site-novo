@@ -20,9 +20,18 @@ PDFs em `public/papers/*.pdf` e `*/read.html` são **públicos de propósito** p
 
 Canon: `/papers/cover-bear-market-v4.webp`. Versões v1/v2 órfãs removidas nesta wave.
 
+## Popups — chaves e evento
+
+Evento único: `OPEN_PLAYBOOK_EVENT` (`src/lib/playbook-events.ts`). Hierarquia de `localStorage` documentada no mesmo arquivo. Unlock global `kld_papers_unlocked` vence dismiss.
+
+## Rotas stub
+
+- `/servicos/eventos-cripto` → `notFound()` (removida a pedido). Fora do sitemap.
+- `/cases/paradigma-education` → case ativo (dados em `case-data.ts`); não é stub.
+
 ## Checklist pós-deploy
 
-- [ ] `bun run lint` / `tsc` / `build:check` verdes
-- [ ] Alias `kaleidos.com.br` no deploy novo
-- [ ] `/sitemap.xml` contém `/portfolio` e `/pacotes`
-- [ ] `/app` → 401 · capa v4 → 200
+- [x] `bun run lint` / `tsc` / `build:check` verdes (`b1dd75f`+)
+- [x] Alias `kaleidos.com.br` no deploy novo
+- [x] `/sitemap.xml` contém `/portfolio` e `/pacotes`
+- [x] `/app` → 401 · capa v4 → 200

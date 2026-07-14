@@ -1,11 +1,11 @@
+import { WHATSAPP_NUMBER } from "@/lib/constants";
+
 export function StructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kaleidos.com.br";
   const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
-  // TODO Gabriel: preencher dados reais quando disponiveis
-  // - NEXT_PUBLIC_KALEIDOS_PHONE: telefone/WhatsApp em formato E.164 (ex: +5512999999999)
-  // - NEXT_PUBLIC_KALEIDOS_TAX_ID: CNPJ formatado (ex: 00.000.000/0000-00)
-  // - NEXT_PUBLIC_KALEIDOS_STREET / POSTAL_CODE: endereco fiscal completo
-  const phone = process.env.NEXT_PUBLIC_KALEIDOS_PHONE;
+  // Prefira env; fallback WhatsApp operacional (E.164).
+  // CNPJ/endereço: setar NEXT_PUBLIC_KALEIDOS_TAX_ID / STREET / POSTAL_CODE na Vercel.
+  const phone = process.env.NEXT_PUBLIC_KALEIDOS_PHONE || `+${WHATSAPP_NUMBER}`;
   const taxId = process.env.NEXT_PUBLIC_KALEIDOS_TAX_ID;
   const streetAddress = process.env.NEXT_PUBLIC_KALEIDOS_STREET;
   const postalCode = process.env.NEXT_PUBLIC_KALEIDOS_POSTAL_CODE;
