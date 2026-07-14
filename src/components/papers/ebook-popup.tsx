@@ -118,19 +118,20 @@ export function EbookPopup({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[380px] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl bg-white p-3 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
+            className="relative w-full max-w-[420px] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl bg-white p-3 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
           >
-            {/* capa grande (estilo Lunar) — limita a altura em telas baixas pra
-                nunca cortar o formulário/CTA embaixo */}
-            <div className="overflow-hidden rounded-2xl ring-1 ring-black/10">
+            {/* Capa grande (estilo Lunar). A capa é 2:3 — a moldura abraça a
+                imagem (w-fit) pra não sobrar borda branca dos lados quando a
+                altura é o limite. max-h deixa o form/CTA sempre visível. */}
+            <div className="mx-auto w-fit overflow-hidden rounded-2xl ring-1 ring-black/10">
               <Image
                 src={PLAYBOOK.cover}
                 alt={PLAYBOOK.title}
                 width={840}
                 height={1260}
-                sizes="(max-width: 480px) 90vw, 360px"
+                sizes="(max-width: 480px) 90vw, 400px"
                 priority
-                className="mx-auto h-auto max-h-[44dvh] w-auto max-w-full object-contain"
+                className="block h-auto max-h-[58dvh] w-auto max-w-full object-contain"
               />
             </div>
 
