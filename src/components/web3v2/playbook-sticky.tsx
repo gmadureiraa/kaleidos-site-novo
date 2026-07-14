@@ -72,21 +72,22 @@ export function Web3V2PlaybookSticky() {
 .kld-sticky.is-closing{animation:kldStickyOut .26s ease-in both;}
 .kld-sticky-x{position:absolute;top:8px;right:8px;z-index:2;width:26px;height:26px;border-radius:999px;border:1.5px solid ${INK};background:#fff;color:${INK};font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
 .kld-sticky-x:hover{background:${INK};color:#fff;}
-.kld-sticky-cover{display:block;width:100%;height:150px;object-fit:cover;object-position:center 52%;border-bottom:1.5px solid ${INK};cursor:pointer;}
-.kld-sticky-body{padding:14px 16px 16px;}
-.kld-sticky-badge{display:inline-block;font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#3a0a2c;background:${PINK};border:1.5px solid ${INK};border-radius:6px;padding:3px 8px;font-weight:700;}
-.kld-sticky-title{margin:9px 0 12px;font-family:Atelier,sans-serif;font-weight:700;font-size:18px;line-height:1.12;letter-spacing:-.4px;color:${INK};}
-.kld-sticky-btn{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:${INK};color:#fff;border:1.5px solid ${INK};border-radius:11px;box-shadow:3px 3px 0 ${GREEN};padding:11px 16px;font-weight:800;font-size:14px;font-family:Atelier,sans-serif;cursor:pointer;transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s;}
+/* A capa é 2:3 — mostra ela INTEIRA (o título do playbook já está na arte).
+   Recortar em altura fixa comia justamente o letreiro e os ícones do topo. */
+.kld-sticky-cover{display:block;width:100%;height:auto;aspect-ratio:840/1260;object-fit:contain;border-bottom:1.5px solid ${INK};cursor:pointer;}
+.kld-sticky-body{padding:12px 14px 14px;}
+.kld-sticky-badge{display:inline-block;font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#3a0a2c;background:${PINK};border:1.5px solid ${INK};border-radius:6px;padding:3px 8px;font-weight:700;white-space:nowrap;}
+.kld-sticky-btn{width:100%;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:${INK};color:#fff;border:1.5px solid ${INK};border-radius:11px;box-shadow:3px 3px 0 ${GREEN};padding:11px 16px;font-weight:800;font-size:14px;font-family:Atelier,sans-serif;cursor:pointer;transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s;}
 .kld-sticky-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 ${GREEN};}
 @media (max-width:600px){
-  .kld-sticky{right:12px;left:auto;bottom:12px;width:180px;}
-  .kld-sticky-cover{height:120px;}
-  .kld-sticky-body{padding:9px 11px 11px;}
+  .kld-sticky{right:12px;left:auto;bottom:12px;width:150px;}
+  .kld-sticky-body{padding:9px 10px 10px;}
   .kld-sticky-badge{font-size:8px;letter-spacing:.5px;padding:2px 6px;}
-  .kld-sticky-title{font-size:12.5px;margin:6px 0 9px;}
-  .kld-sticky-btn{font-size:12px;padding:8px 10px;border-radius:9px;gap:5px;}
+  .kld-sticky-btn{font-size:12px;padding:8px 10px;border-radius:9px;gap:5px;margin-top:8px;}
   .kld-sticky-x{width:22px;height:22px;font-size:12px;top:6px;right:6px;}
 }
+/* telas baixas: o card inteiro (capa 2:3 + corpo) não pode passar da viewport */
+@media (max-height:720px){ .kld-sticky{width:170px;} }
 @media (prefers-reduced-motion:reduce){.kld-sticky{animation:none;}.kld-sticky.is-closing{animation:none;}}
 `,
         }}
@@ -108,8 +109,8 @@ export function Web3V2PlaybookSticky() {
           onClick={() => openPopup("cover")}
         />
         <div className="kld-sticky-body">
-          <span className="kld-sticky-badge">Playbook contra-cíclico grátis</span>
-          <h3 className="kld-sticky-title">Marketing e vendas no bear market</h3>
+          {/* Sem <h3>: o título do playbook já está escrito na capa. */}
+          <span className="kld-sticky-badge">Playbook grátis</span>
           <button type="button" className="kld-sticky-btn" onClick={() => openPopup("button")}>
             Baixar grátis →
           </button>
