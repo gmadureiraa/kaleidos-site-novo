@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
 import { AnalyticsRouter } from "@/components/analytics-router";
+import { GoogleAnalytics } from "@/components/analytics";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
@@ -161,6 +162,7 @@ export default function RootLayout({
             <Suspense fallback={null}>
               {children}
             </Suspense>
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
             <Suspense fallback={null}>
               <AnalyticsRouter />
             </Suspense>
