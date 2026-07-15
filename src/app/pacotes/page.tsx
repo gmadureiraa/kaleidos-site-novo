@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   description:
     "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 30M+ de views e executou 50+ lançamentos. Marque uma call.",
   alternates: { canonical: "/pacotes" },
+  // Fundo de funil: acessível por link direto (proposta / CTA de blog), fora do
+  // índice de busca — decisão D3/A4 do Ultraplan (preço não público no topo).
+  robots: { index: false, follow: true },
 };
 
 const INK = "#14110D";
