@@ -6,7 +6,7 @@ import { FooterDemo } from "@/components/ui/footer-demo";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
 import { useAnalytics } from "@/components/analytics";
-import { generateServiceSchema, generateFAQSchema } from "@/lib/seo-helpers";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 import type { ServiceData, ServiceVariant } from "@/lib/service-pages-data";
 import {
   getAccent,
@@ -121,6 +121,11 @@ export function ServicePageTemplate({
 
   const serviceSchema = generateServiceSchema(c.h1, c.metaDescription);
   const faqSchema = generateFAQSchema(c.faq);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { label: "Kaleidos", href: "/" },
+    { label: "Serviços", href: "/servicos" },
+    { label: c.h1, href: `/servicos/${data.id}` },
+  ]);
 
   const layout = LAYOUTS[data.variant] ?? LAYOUTS[1];
 
@@ -197,6 +202,10 @@ export function ServicePageTemplate({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <HeroSection

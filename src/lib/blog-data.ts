@@ -91,7 +91,12 @@ export function getSeoTitle(post: BlogPost): string {
 }
 
 export function getSeoDescription(post: BlogPost): string {
-  return (post.seoDescription?.trim() || post.excerpt || "").slice(0, 160);
+  const raw = (post.seoDescription?.trim() || post.excerpt || "").trim();
+  if (raw.length <= 160) return raw;
+  // Corta na fronteira de palavra (não no meio de "maiore"), com reticências.
+  const clipped = raw.slice(0, 157);
+  const lastSpace = clipped.lastIndexOf(" ");
+  return (lastSpace > 100 ? clipped.slice(0, lastSpace) : clipped).replace(/[.,;:\s]+$/, "") + "…";
 }
 
 // `getModifiedAt` vive em `blog-shared` (re-exportado abaixo).

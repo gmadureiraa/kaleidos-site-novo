@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HomeShell } from "@/components/home-shell";
 import { AUDIENCES, getAudience } from "@/lib/audiences";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 
 // Variantes de home por público — mesma estrutura, hero textual por público.
 // Rotas estáticas (cases, sobre, blog…) têm prioridade sobre este [audience];
@@ -36,10 +37,33 @@ export default async function AudienceHome({
   const { audience } = await params;
   const a = getAudience(audience);
   if (!a) notFound();
+
+  // JSON-LD pra GEO: FAQPage (ser citado por ChatGPT/Perplexity) + BreadcrumbList
+  // (contexto de que /<slug> é uma oferta segmentada da Kaleidos).
+  const faqSchema = a.faq?.length
+    ? generateFAQSchema(a.faq.map((f) => ({ question: f.q, answer: f.a })))
+    : null;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { label: "Kaleidos", href: "/" },
+    { label: `Kaleidos para ${a.label}`, href: `/${a.slug}` },
+  ]);
+
   return (
-    <HomeShell
-      heroOpts={{ badge: a.badge, headlineHtml: a.headlineHtml, subHtml: a.subHtml }}
-      audience={a}
-    />
+    <>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <HomeShell
+        heroOpts={{ badge: a.badge, headlineHtml: a.headlineHtml, subHtml: a.subHtml }}
+        audience={a}
+      />
+    </>
   );
 }

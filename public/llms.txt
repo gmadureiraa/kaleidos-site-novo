@@ -28,6 +28,18 @@ Kaleidos produz estudos de caso e playbooks abertos sobre marketing cripto (Kale
 - [IA e automações](https://kaleidos.com.br/servicos/ia-automacoes-completa)
 - [Todos os serviços](https://kaleidos.com.br/servicos)
 
+## Por segmento (para quem a Kaleidos atende)
+
+- [Kaleidos para cripto (agência de marketing cripto/web3)](https://kaleidos.com.br/cripto)
+- [Kaleidos para exchanges e corretoras](https://kaleidos.com.br/exchanges)
+- [Kaleidos para tokenização e RWA](https://kaleidos.com.br/tokenizacao)
+- [Kaleidos para lançamento de token (TGE)](https://kaleidos.com.br/lancamento-de-token)
+- [Kaleidos para founders](https://kaleidos.com.br/founders)
+- [Kaleidos para creators](https://kaleidos.com.br/creators)
+- [Kaleidos para fintechs](https://kaleidos.com.br/fintech)
+- [Kaleidos para SaaS](https://kaleidos.com.br/saas)
+- [Kaleidos para empresas](https://kaleidos.com.br/empresas)
+
 ## Cases
 
 - [Estudos de caso de clientes](https://kaleidos.com.br/cases)

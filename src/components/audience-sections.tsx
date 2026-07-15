@@ -2,6 +2,25 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import type { Audience } from "@/lib/audiences";
 
+// Liga o título de cada serviço enfatizado à página funda correspondente
+// (linkagem interna profunda = melhor SEO que apontar tudo pra /servicos).
+const SERVICE_SLUGS: Record<string, string> = {
+  "Marketing de Conteúdo": "marketing-conteudo",
+  "Growth & Lançamentos": "growth-lancamentos",
+  "Consultoria & GTM": "consultoria-gtm",
+  "Comunidade Cripto": "comunidade-cripto",
+  "SEO & GEO Cripto": "seo-cripto",
+  "PR & Assessoria": "pr-assessoria",
+  "Social Media Cripto": "social-media-cripto",
+  "Kaleidos AI": "ia-automacoes-completa",
+  "Influencer & KOL": "influencer-kol",
+};
+
+function serviceHref(title: string): string {
+  const slug = SERVICE_SLUGS[title];
+  return slug ? `/servicos/${slug}` : "/servicos";
+}
+
 /**
  * AudienceSections — bloco PERSONALIZADO por público, renderizado só nas rotas
  * /founders /creators /fintech /saas /empresas (nunca na home `/`).
@@ -156,7 +175,7 @@ export function AudienceSections({ audience }: { audience: Audience }) {
               {servicesEmphasis.map((s) => (
                 <Link
                   key={s.title}
-                  href="/servicos"
+                  href={serviceHref(s.title)}
                   style={{
                     ...CARD,
                     display: "flex",

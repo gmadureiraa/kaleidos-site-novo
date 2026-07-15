@@ -3,6 +3,7 @@ import { getRoutedCases } from '@/lib/case-data'
 import { getPublishedPostsAsync, getModifiedAt } from '@/lib/blog-data'
 import { papers } from '@/lib/papers-data'
 import { getAllServicePages } from '@/lib/service-pages-data'
+import { AUDIENCES } from '@/lib/audiences'
 
 // Páginas de serviço descontinuadas (rota retorna notFound) — não entram no sitemap.
 const RETIRED_SERVICE_SLUGS = new Set(['eventos-cripto'])
@@ -73,13 +74,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.85,
     },
-    {
-      url: `${baseUrl}/pacotes`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
+    // /pacotes é noindex (fundo de funil, decisão D3) — fora do sitemap de propósito
+    // pra não gerar "Enviada, mas com noindex" no Search Console.
   ]
+
+  // Páginas de público (rotas /founders /creators /cripto /exchanges etc. via [audience]).
+  // Estáticas, indexáveis, canonical + metaTitle próprios — precisam estar no sitemap.
+  const audiencePages: MetadataRoute.Sitemap = AUDIENCES.map((a) => ({
+    url: `${baseUrl}/${a.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }))
 
   // Páginas de serviços
   const servicePages: MetadataRoute.Sitemap = [
@@ -186,6 +192,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...mainPages,
+    ...audiencePages,
     ...servicePages,
     ...legalPages,
     ...casePages,
