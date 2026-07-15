@@ -93,11 +93,11 @@ export function Web3V2Defs() {
 }
 
 const HERO_DEFAULTS = {
-  badge: "Criatividade que move o mercado cripto",
+  badge: "Agência cripto-nativa desde 2020",
   headlineHtml:
-    'Conteúdo, estratégia e lançamentos web3 que viram <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;white-space:nowrap;">autoridade</span>.',
+    'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
   subHtml:
-    '<strong style="color:#14110D;">30M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong> depois: a Kaleidos faz marcas web3 virarem referência, não só mais ruído no feed.',
+    'Do conteúdo ao lançamento de token: <strong style="color:#14110D;">estratégia e execução</strong> para exchanges, fintechs e projetos web3 que querem <strong style="color:#14110D;">virar referência</strong>. Cripto-nativa desde 2020.',
 };
 
 export function heroHtml(o: { badge?: string; headlineHtml?: string; subHtml?: string } = {}) {
