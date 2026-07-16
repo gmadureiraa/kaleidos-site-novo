@@ -59,23 +59,37 @@ export const LAYERS: Layer[] = [
 export type Bundle = {
   id: string;
   label: string;
-  price: number; // R$/mês
+  price: number; // R$/mês (âncora)
   scope: string;
   layers: string;
   tier: "entrada" | "essencial" | "founder" | "empresa" | "completo" | "enterprise";
+  /** Composição: peças mensais que compõem o pacote (unitId + qty). Usado pra prefixar a calculadora. */
+  pieces?: { unitId: string; qty: number }[];
+  /** Camadas de serviço inclusas no pacote (ids de LAYERS). */
+  layerIds?: string[];
 };
 
-// Aba 3 — Pacotes padrão (bundles nomeados)
+// Aba 3 — Pacotes padrão (bundles nomeados). `pieces`/`layerIds` = composição real
+// (soma ~= price), pra clicar no pacote preencher a calculadora com peças + camadas.
 export const BUNDLES: Bundle[] = [
-  { id: "newsletter", label: "Newsletter", price: 1100, scope: "4 newsletters simples/mês (semanal). +R$700/mês p/ versão densa.", layers: "Edição + envio (gestão leve embutida)", tier: "entrada" },
-  { id: "social-essencial", label: "Social Essencial — só conteúdo", price: 1500, scope: "16 posts/mês (1–2 perfis), mix estático/carrossel. Sem gestão.", layers: "Nenhuma (cliente aprova/publica)", tier: "essencial" },
-  { id: "social-essencial-gerenciado", label: "Social Essencial — gerenciado", price: 3500, scope: "16 posts/mês (até 2 perfis) + stories + relatórios", layers: "Gestão & relatórios (leve)", tier: "essencial" },
-  { id: "personal-founder", label: "Personal Founder", price: 3600, scope: "1 perfil: ~12 peças/mês (reels + carrosséis) + stories diários", layers: "Gestão & relatórios (leve)", tier: "founder" },
-  { id: "personal-founder-duo", label: "Personal Founder Duo", price: 3500, scope: "2 perfis, 16 posts/mês + stories + relatórios", layers: "Gestão & estratégia completa", tier: "founder" },
-  { id: "conta-empresa", label: "Conta Empresa Multicanal", price: 4500, scope: "LinkedIn + Twitter + e-mail (multicanal, ~30 peças/mês)", layers: "Gestão & estratégia completa", tier: "empresa" },
-  { id: "social-completo", label: "Social Completo", price: 6000, scope: "Instagram completo: ~24–26 posts/mês + stories diários", layers: "Gestão & estratégia completa + community", tier: "completo" },
-  { id: "social-pitch", label: "Social (time dedicado)", price: 12000, scope: "Conteúdo diário multi-perfil. Time completo. Sem reply guy.", layers: "Gestão completa + community + design dedicado", tier: "enterprise" },
-  { id: "full-social", label: "Full Social", price: 18000, scope: "Tudo do Social + engajamento ativo + produção reativa", layers: "Tudo incluso", tier: "enterprise" },
+  { id: "newsletter", label: "Newsletter", price: 1100, scope: "4 newsletters simples/mês (semanal). +R$700/mês p/ versão densa.", layers: "Edição + envio (gestão leve embutida)", tier: "entrada",
+    pieces: [{ unitId: "newsletter-simples", qty: 4 }], layerIds: [] },
+  { id: "social-essencial", label: "Social Essencial — só conteúdo", price: 1500, scope: "16 posts/mês (1–2 perfis), mix estático/carrossel. Sem gestão.", layers: "Nenhuma (cliente aprova/publica)", tier: "essencial",
+    pieces: [{ unitId: "post-estatico", qty: 10 }, { unitId: "carrossel-design", qty: 4 }], layerIds: [] },
+  { id: "social-essencial-gerenciado", label: "Social Essencial — gerenciado", price: 3500, scope: "16 posts/mês (até 2 perfis) + stories + relatórios", layers: "Gestão & relatórios (leve)", tier: "essencial",
+    pieces: [{ unitId: "post-estatico", qty: 10 }, { unitId: "carrossel-design", qty: 4 }, { unitId: "stories", qty: 4 }], layerIds: ["gestao-leve"] },
+  { id: "personal-founder", label: "Personal Founder", price: 3600, scope: "1 perfil: ~12 peças/mês (reels + carrosséis) + stories diários", layers: "Gestão & relatórios (leve)", tier: "founder",
+    pieces: [{ unitId: "reel-edicao", qty: 6 }, { unitId: "carrossel-design", qty: 4 }, { unitId: "post-estatico", qty: 2 }, { unitId: "stories", qty: 5 }], layerIds: ["gestao-leve"] },
+  { id: "personal-founder-duo", label: "Personal Founder Duo", price: 3500, scope: "2 perfis, 16 posts/mês + stories + relatórios", layers: "Gestão & estratégia completa", tier: "founder",
+    pieces: [{ unitId: "post-estatico", qty: 6 }, { unitId: "carrossel-design", qty: 3 }], layerIds: ["gestao-completa"] },
+  { id: "conta-empresa", label: "Conta Empresa Multicanal", price: 4500, scope: "LinkedIn + Twitter + e-mail (multicanal, ~30 peças/mês)", layers: "Gestão & estratégia completa", tier: "empresa",
+    pieces: [{ unitId: "post-linkedin", qty: 8 }, { unitId: "tweet", qty: 15 }, { unitId: "thread-x", qty: 2 }], layerIds: ["gestao-completa"] },
+  { id: "social-completo", label: "Social Completo", price: 6000, scope: "Instagram completo: ~24–26 posts/mês + stories diários", layers: "Gestão & estratégia completa + community", tier: "completo",
+    pieces: [{ unitId: "carrossel-design", qty: 9 }, { unitId: "reel-meme", qty: 9 }, { unitId: "post-estatico", qty: 8 }, { unitId: "stories", qty: 8 }], layerIds: ["gestao-completa"] },
+  { id: "social-pitch", label: "Social (time dedicado)", price: 12000, scope: "Conteúdo diário multi-perfil. Time completo. Sem reply guy.", layers: "Gestão completa + community + design dedicado", tier: "enterprise",
+    pieces: [{ unitId: "carrossel-design", qty: 20 }, { unitId: "reel-edicao", qty: 15 }, { unitId: "post-estatico", qty: 15 }, { unitId: "stories", qty: 20 }], layerIds: ["gestao-completa", "community"] },
+  { id: "full-social", label: "Full Social", price: 18000, scope: "Tudo do Social + engajamento ativo + produção reativa", layers: "Tudo incluso", tier: "enterprise",
+    pieces: [{ unitId: "carrossel-design", qty: 26 }, { unitId: "reel-edicao", qty: 20 }, { unitId: "post-estatico", qty: 20 }, { unitId: "stories", qty: 26 }, { unitId: "tweet", qty: 30 }], layerIds: ["gestao-completa", "community", "reply-guy"] },
 ];
 
 export type AddOn = {

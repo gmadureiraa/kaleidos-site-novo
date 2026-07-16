@@ -58,8 +58,21 @@ export function OrcamentoCalculator() {
   const marginColor =
     margin >= 0.5 ? GREEN : margin >= PRICING_RULES.margem.redFlagBelow ? "#f2b544" : "#ff5a5a";
 
-  const applyBundle = (b: (typeof BUNDLES)[number]) =>
-    setSelectedBundle(b.id === selectedBundle ? null : b.id);
+  // Clicar num pacote PREENCHE a calculadora com as peças + camadas dele (e o total
+  // recalcula sozinho). Clicar de novo no mesmo pacote limpa tudo.
+  const applyBundle = (b: (typeof BUNDLES)[number]) => {
+    if (b.id === selectedBundle) {
+      setSelectedBundle(null);
+      setQty({});
+      setLayers(new Set());
+      return;
+    }
+    setSelectedBundle(b.id);
+    const q: Record<string, number> = {};
+    (b.pieces ?? []).forEach((p) => { q[p.unitId] = p.qty; });
+    setQty(q);
+    setLayers(new Set(b.layerIds ?? []));
+  };
   const bundle = BUNDLES.find((b) => b.id === selectedBundle);
 
   return (
