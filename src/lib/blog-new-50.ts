@@ -160,7 +160,7 @@ Influencer marketing para fintech não é campo minado, é campo com regras. Que
 
 O caminho que funciona: creators auditados e com afinidade real de audiência, disclosure explícito, roteiro aprovado pelo compliance nas camadas obrigatórias, liberdade criativa no resto, e medição que vai até a conta ativada.
 
-A Kaleidos é uma agência especializada em marketing para fintech, cripto e web3, e monta campanhas com creators do jeito descrito aqui: com estratégia, compliance no processo e métrica de negócio no final. Se a sua fintech quer usar influencer marketing sem virar caso de regulador, fale com a Kaleidos.
+A Kaleidos é uma agência especializada em marketing para fintech, cripto e web3, e monta campanhas com creators do jeito descrito aqui: com estratégia, compliance no processo e métrica de negócio no final. Se a sua fintech quer usar influencer marketing sem virar caso de regulador, [fale com a Kaleidos](/contato).
 `,
   },
 ];

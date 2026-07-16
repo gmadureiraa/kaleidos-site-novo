@@ -194,6 +194,6 @@ Projetos que entendem isso montam calendário anual de eventos com critério (qu
 
 A Kaleidos é uma agência de marketing especializada em cripto e web3, e estratégia de eventos é parte do que fazemos de ponta a ponta: planejamento pré-evento com metas e mapeamento de alvos, desenho e execução de side-events, ativação de KOLs, operação de conteúdo ao vivo, mecânica de captura de leads e o ciclo completo de repurpose e follow-up pós-evento.
 
-Se o seu projeto tem uma conferência no radar e não quer voltar dela só com fotos, fale com a Kaleidos. A gente transforma presença em pipeline.`,
+Se o seu projeto tem uma conferência no radar e não quer voltar dela só com fotos, [fale com a Kaleidos](/contato). A gente transforma presença em pipeline.`,
   },
 ];

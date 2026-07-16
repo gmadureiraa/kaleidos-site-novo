@@ -140,7 +140,7 @@ Essa é a parte que mais recebe pergunta nas conversas comerciais da Kaleidos. O
 
 **1. Venda o benefício, nunca a valorização.** Se a peça de marketing promete ou insinua lucro, você tem dois problemas: um de confiança e um potencialmente regulatório. O pitch certo é "isso te dá X hoje", nunca "isso pode valer Y amanhã".
 
-**2. Aposente o jargão.** "Mint", "floor price", "whitelist" e "gas" afastam 95% do público. Prefira "resgatar", "garantir acesso", "lista de prioridade". Os casos que escalaram (Pudgy no Walmart, CBF no Brasileirão) falam língua de consumidor, não de trader.
+**2. Aposente o jargão.** "Mint", "floor price", "whitelist" e "gas" afastam quem está fora da bolha cripto, ou seja, quase todo o público que você quer alcançar. Prefira "resgatar", "garantir acesso", "lista de prioridade". Os casos que escalaram (Pudgy no Walmart, CBF no Brasileirão) falam língua de consumidor, não de trader.
 
 **3. Utilidade antes da venda.** O benefício precisa existir e ser demonstrável antes do lançamento. Roadmap com promessa vaga de "utilidade futura" é o padrão visual do golpe. Mostre o grupo funcionando, o evento marcado, o produto pronto.
 
@@ -166,7 +166,7 @@ A Kaleidos é uma agência cripto-nativa. Trabalhamos com projetos de cripto, we
 
 Se a sua marca ou projeto avalia usar NFT para acesso, fidelidade, ticketing ou comunidade, podemos ajudar em três frentes: estratégia (o desenho do caso de uso e do modelo de benefícios), narrativa (o posicionamento e a comunicação que não parecem golpe) e execução (conteúdo, lançamento e gestão de comunidade).
 
-[Fale com a Kaleidos](https://kaleidos.com.br) e traga a pergunta de negócio. Se NFT for a resposta certa, a gente constrói junto. Se não for, a gente fala isso também.
+[Fale com a Kaleidos](/contato) e traga a pergunta de negócio. Se NFT for a resposta certa, a gente constrói junto. Se não for, a gente fala isso também.
 `,
   },
 ];

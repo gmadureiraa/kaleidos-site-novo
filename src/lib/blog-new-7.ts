@@ -196,6 +196,6 @@ Escolher entre Discord e Telegram é o primeiro passo. Estruturar a comunidade p
 
 A Kaleidos é uma agência de marketing cripto-nativa. Ajudamos projetos web3 a decidir a plataforma certa, montar a arquitetura de canais e cargos, configurar verificação e defesa anti-scam e transformar comunidade em ativo de crescimento.
 
-Se você está lançando um projeto ou reorganizando uma comunidade que já cresceu sem estrutura, fale com a Kaleidos. A gente monta o setup certo desde o começo, para você não pagar depois o preço de decidir errado agora.`,
+Se você está lançando um projeto ou reorganizando uma comunidade que já cresceu sem estrutura, [fale com a Kaleidos](/contato). A gente monta o setup certo desde o começo, para você não pagar depois o preço de decidir errado agora.`,
   },
 ];

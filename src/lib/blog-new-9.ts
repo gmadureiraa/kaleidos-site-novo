@@ -114,7 +114,7 @@ No CT, quatro formatos carregam quase todo o crescimento orgânico. Cada um cump
 
 A thread é a unidade de autoridade do X. É onde você prova que entende do assunto.
 
-Threads que crescem ensinam algo ou destrincham algo. Uma explicação clara de um mecanismo complexo, um breakdown de um evento de mercado, um passo a passo de como algo funciona. O primeiro tweet (o hook) carrega 80% do resultado: ele precisa prometer valor específico e concreto, não genérico.
+Threads que crescem ensinam algo ou destrincham algo. Uma explicação clara de um mecanismo complexo, um breakdown de um evento de mercado, um passo a passo de como algo funciona. O primeiro tweet (o hook) é o que decide o resultado: ele precisa prometer valor específico e concreto, não genérico.
 
 Estrutura que funciona: hook forte, uma ideia por tweet, exemplos concretos, e um fechamento que amarra ou provoca. Threads longas demais cansam. Densidade vence tamanho.
 
@@ -225,7 +225,7 @@ Crescimento orgânico no Twitter cripto não é sorte nem viralização de acaso
 
 A Kaleidos é uma agência de marketing cripto-nativa. Vivemos o CT todos os dias e construímos presença orgânica para projetos web3 que precisam entrar, de verdade, na conversa que move o setor. Da estratégia de conteúdo à execução diária, do posicionamento de narrativa à relação com KOLs, montamos o motor que transforma atenção em comunidade e comunidade em tração.
 
-Se o seu projeto precisa parar de gritar no vazio e começar a ocupar espaço na cabeça do mercado, [fale com a Kaleidos](https://kaleidos.com.br). A praça pública do cripto está aberta. A questão é se você vai estar nela.
+Se o seu projeto precisa parar de gritar no vazio e começar a ocupar espaço na cabeça do mercado, [fale com a Kaleidos](/contato). A praça pública do cripto está aberta. A questão é se você vai estar nela.
 `,
   },
 ];

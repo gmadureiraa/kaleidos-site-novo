@@ -181,6 +181,6 @@ Comunicar wallet e infraestrutura cripto é um trabalho de tradução e de prova
 
 A Kaleidos é uma agência cripto-nativa. A gente entende a stack por dentro e sabe transformar isso em mensagem que o varejo entende e o institucional respeita. Do developer marketing e docs ao conteúdo educativo otimizado pra SEO e GEO, do posicionamento de segurança à distribuição via parcerias.
 
-Se você constrói um produto técnico em cripto e sente que a comunicação não faz jus ao que foi construído, é esse gap que a gente resolve. **Fale com a Kaleidos** e vamos traduzir o seu produto na linguagem certa pra cada público que ele precisa conquistar.`,
+Se você constrói um produto técnico em cripto e sente que a comunicação não faz jus ao que foi construído, é esse gap que a gente resolve. **[Fale com a Kaleidos](/contato)** e vamos traduzir o seu produto na linguagem certa pra cada público que ele precisa conquistar.`,
   },
 ];

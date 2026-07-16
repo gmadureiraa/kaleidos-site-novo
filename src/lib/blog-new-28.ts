@@ -219,7 +219,7 @@ A Kaleidos atua como braço terceirizado de growth e conteúdo para projetos cri
 
 Para projetos em estágio inicial, essa configuração substitui três ou quatro contratações que o runway não comporta. Para projetos pós-TGE, funciona como camada de execução contínua que se adapta à fase do protocolo sem o custo fixo de um time completo.
 
-Se você está montando ou reestruturando o time de BD e growth do seu projeto, fale com a Kaleidos. A primeira conversa serve para mapear o que já existe, identificar o que falta e desenhar a estrutura mais enxuta que cobre as cinco funções no seu estágio atual.
+Se você está montando ou reestruturando o time de BD e growth do seu projeto, [fale com a Kaleidos](/contato). A primeira conversa serve para mapear o que já existe, identificar o que falta e desenhar a estrutura mais enxuta que cobre as cinco funções no seu estágio atual.
 `,
   },
 ];

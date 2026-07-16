@@ -193,7 +193,7 @@ Nenhum desses 7 problemas aparece olhando para o site no navegador. O layout car
 
 A boa notícia é que problema técnico, ao contrário de autoridade de domínio, se corrige rápido. Um noindex removido, um canonical consertado ou um sitemap regenerado pode devolver páginas ao índice em dias.
 
-Se o seu tráfego orgânico caiu e você não sabe por quê, ou se quer garantir que a fundação técnica não está sabotando o investimento em conteúdo, a Kaleidos audita, diagnostica e corrige. Fale com a gente e descubra o que o Google está vendo (ou deixando de ver) no seu site.
+Se o seu tráfego orgânico caiu e você não sabe por quê, ou se quer garantir que a fundação técnica não está sabotando o investimento em conteúdo, a Kaleidos audita, diagnostica e corrige. [Fale com a gente](/contato) e descubra o que o Google está vendo (ou deixando de ver) no seu site.
 `,
   },
 ];

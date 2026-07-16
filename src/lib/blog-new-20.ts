@@ -132,6 +132,6 @@ Para founders e times de growth, o checklist da Kaleidos é este:
 
 A separação entre "time de token" e "time de marketing" é um resquício de como as empresas web2 se organizavam. Em web3, o desenho econômico é a mensagem, o cronograma de vesting é o calendário editorial e o gráfico é o outdoor. Projetos que entendem isso desenham sell e buy pressure como desenham funil de aquisição: com intenção, com métricas e com a percepção do usuário no centro.
 
-A Kaleidos trabalha exatamente nessa interseção: estratégia de marketing para projetos cripto e web3 que trata tokenomics, narrativa e comunidade como um sistema único. Se o seu projeto tem um TGE no horizonte, um calendário de unlocks pela frente ou uma narrativa que não está batendo com o que o token mostra on-chain, fale com a gente. O melhor momento para alinhar desenho de token e marketing é antes do mercado fazer essa leitura por você.`,
+A Kaleidos trabalha exatamente nessa interseção: estratégia de marketing para projetos cripto e web3 que trata tokenomics, narrativa e comunidade como um sistema único. Se o seu projeto tem um TGE no horizonte, um calendário de unlocks pela frente ou uma narrativa que não está batendo com o que o token mostra on-chain, [fale com a gente](/contato). O melhor momento para alinhar desenho de token e marketing é antes do mercado fazer essa leitura por você.`,
   },
 ];

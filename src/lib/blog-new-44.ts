@@ -193,7 +193,7 @@ Um alerta de expectativa: o orgânico é jogo de meses. As primeiras melhorias t
 
 SEO para varejo não é truque nem mágica: é arquitetura bem pensada, páginas de categoria tratadas como ativos, dados estruturados corretos, conteúdo que ninguém mais tem, loja rápida e calendário sazonal plantado com antecedência. Cada peça dessas é executável, e o efeito é cumulativo.
 
-A Kaleidos ajuda marcas a construir exatamente isso: estratégia de SEO e conteúdo que transforma busca orgânica em receita previsível, sem depender de leilão de mídia para existir. Se a sua loja quer crescer no orgânico com um plano prático e priorizado por impacto, fale com a Kaleidos e vamos desenhar esse caminho juntos.
+A Kaleidos ajuda marcas a construir exatamente isso: estratégia de SEO e conteúdo que transforma busca orgânica em receita previsível, sem depender de leilão de mídia para existir. Se a sua loja quer crescer no orgânico com um plano prático e priorizado por impacto, [fale com a Kaleidos](/contato) e vamos desenhar esse caminho juntos.
 `,
   },
 ];

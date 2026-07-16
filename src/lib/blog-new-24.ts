@@ -138,6 +138,6 @@ Para quem está desenhando um programa de incentivos com lançamento em 2026, o 
 
 A morte do airdrop clássico não é má notícia. É o mercado amadurecendo: sai o subsídio queimado com mercenários, entra engenharia de incentivos que recompensa quem constrói, usa e permanece. Para projetos sérios, a barra subiu, e barra alta filtra concorrência.
 
-A Kaleidos desenha estratégias de crescimento para projetos de cripto e web3 há anos, e programas de incentivo são exatamente o tipo de problema em que marketing, tokenomics e comunidade precisam ser pensados juntos, desde o primeiro rascunho. Se o seu projeto está planejando um points system, um airdrop ou uma migração de modelo de incentivos para 2026, fale com a gente. É melhor desenhar o jogo certo agora do que explicar o farm-and-dump para a comunidade depois.`,
+A Kaleidos desenha estratégias de crescimento para projetos de cripto e web3 há anos, e programas de incentivo são exatamente o tipo de problema em que marketing, tokenomics e comunidade precisam ser pensados juntos, desde o primeiro rascunho. Se o seu projeto está planejando um points system, um airdrop ou uma migração de modelo de incentivos para 2026, [fale com a gente](/contato). É melhor desenhar o jogo certo agora do que explicar o farm-and-dump para a comunidade depois.`,
   },
 ];

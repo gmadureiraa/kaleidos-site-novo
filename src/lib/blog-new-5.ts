@@ -201,7 +201,7 @@ Em um mercado onde a desconfiança é o padrão, a autoridade de imprensa não �
 
 Fazer PR cripto bem exige fluência de mercado, disciplina de relacionamento e coragem para dizer a verdade, inclusive na crise. É trabalho de longo prazo, não campanha de uma semana.
 
-A Kaleidos é uma agência cripto-nativa. A gente conhece os veículos, fala a língua dos jornalistas do setor e entende os limites regulatórios do mercado brasileiro. Se o seu projeto, exchange ou protocolo precisa construir autoridade de imprensa que aguenta o ciclo inteiro, fala com a Kaleidos. A gente constrói a reputação antes de você precisar dela.
+A Kaleidos é uma agência cripto-nativa. A gente conhece os veículos, fala a língua dos jornalistas do setor e entende os limites regulatórios do mercado brasileiro. Se o seu projeto, exchange ou protocolo precisa construir autoridade de imprensa que aguenta o ciclo inteiro, [fala com a Kaleidos](/contato). A gente constrói a reputação antes de você precisar dela.
 `,
   },
 ];

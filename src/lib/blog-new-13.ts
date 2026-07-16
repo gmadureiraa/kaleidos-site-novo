@@ -153,7 +153,7 @@ Depois do anúncio:
 
 O padrão dos casos que deram certo é sempre o mesmo: o rebrand veio depois de uma mudança real no produto, foi comunicado com a comunidade dentro do processo e separou com clareza o que mudava na marca do que mudava no token. Os que deram errado inverteram a ordem: nome novo primeiro, explicação depois, comunidade por último.
 
-A Kaleidos é uma agência cripto-nativa e trata rebranding como projeto de narrativa e de comunidade, não como projeto de design. Diagnóstico honesto, faseamento realista, comunicação em camadas e proteção da confiança que o projeto levou anos para construir. Se o seu projeto está avaliando um rebrand, ou já decidiu e quer executar sem perder a comunidade no caminho, fale com a gente em [kaleidos.com.br](https://kaleidos.com.br).
+A Kaleidos é uma agência cripto-nativa e trata rebranding como projeto de narrativa e de comunidade, não como projeto de design. Diagnóstico honesto, faseamento realista, comunicação em camadas e proteção da confiança que o projeto levou anos para construir. Se o seu projeto está avaliando um rebrand, ou já decidiu e quer executar sem perder a comunidade no caminho, [fale com a gente](/contato).
 `,
   },
 ];

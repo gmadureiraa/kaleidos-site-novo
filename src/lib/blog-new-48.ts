@@ -165,7 +165,7 @@ Email marketing pra fintech não é um canal ao lado do produto: é o produto se
 
 A boa notícia é que a barra do setor ainda é baixa. A maioria das fintechs brasileiras manda email genérico, com infraestrutura improvisada e compliance tratado como carimbo. Quem fizer o básico bem feito (segmentação por ciclo de vida, onboarding orientado a comportamento, deliverabilidade como disciplina e LGPD como argumento) já opera num nível que a concorrência vai demorar pra alcançar.
 
-A Kaleidos ajuda fintechs e empresas de web3 a construir máquinas de comunicação que convertem sem atalhos: estratégia de lifecycle, réguas de automação, infraestrutura de entrega e conteúdo que soa como gente. Se a sua fintech quer transformar email em canal de ativação e receita, fale com a Kaleidos.
+A Kaleidos ajuda fintechs e empresas de web3 a construir máquinas de comunicação que convertem sem atalhos: estratégia de lifecycle, réguas de automação, infraestrutura de entrega e conteúdo que soa como gente. Se a sua fintech quer transformar email em canal de ativação e receita, [fale com a Kaleidos](/contato).
 `,
   },
 ];

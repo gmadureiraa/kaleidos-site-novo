@@ -8,9 +8,9 @@ export const blogNew25: BlogPost[] = [
     title: "Teardown Blast: o L2 que despejou o token e perdeu TVL",
     seoTitle: "Teardown Blast: o L2 que perdeu 97% do TVL pós-airdrop | Kaleidos",
     excerpt:
-      "O Blast captou US$ 2,3 bilhões antes de ter mainnet e perdeu 97% do TVL depois do airdrop. A Kaleidos disseca o hype, o programa de pontos, o TGE frustrado e o que todo projeto web3 deveria aprender com o colapso.",
+      "O Blast captou US$ 2,2 bilhões antes de ter mainnet e perdeu 97% do TVL depois do airdrop. A Kaleidos disseca o hype, o programa de pontos, o TGE frustrado e o que todo projeto web3 deveria aprender com o colapso.",
     seoDescription:
-      "Teardown do Blast: como o L2 de Pacman captou US$ 2,3 bi antes do mainnet, despejou o token no TGE de 2024 e viu o TVL cair 97%. Análise e lições da Kaleidos.",
+      "Teardown do Blast: como o L2 de Pacman captou US$ 2,2 bi antes do mainnet, despejou o token no TGE de 2024 e viu o TVL cair 97%. Análise e lições da Kaleidos.",
     category: "cases",
     author: AUTHOR,
     publishedAt: "2026-07-12",
@@ -142,6 +142,6 @@ A Kaleidos extrai cinco lições deste teardown, aplicáveis a qualquer projeto 
 
 Um lançamento com o pedigree e o capital do Blast tinha condições de construir algo duradouro. O redesenho passa por três frentes: recompensar comportamento recorrente em vez de depósito parado, com pontos que decaem sem uso real; escalonar a distribuição do token em função de retenção pós-TGE, não de volume pré-snapshot; e comunicar faixas realistas de alocação antes do evento, trocando o pico de FOMO por confiança que sobrevive à listagem.
 
-Se o seu projeto está desenhando programa de pontos, planejando TGE ou tentando entender por que o TVL não fica depois do incentivo, esse é exatamente o tipo de problema que a Kaleidos resolve. Somos uma agência especializada em marketing para cripto e web3, e trabalhamos lançamento como sistema completo: aquisição, expectativa, distribuição e o dia seguinte. Fale com a Kaleidos e vamos desenhar um lançamento que não termina no snapshot.`,
+Se o seu projeto está desenhando programa de pontos, planejando TGE ou tentando entender por que o TVL não fica depois do incentivo, esse é exatamente o tipo de problema que a Kaleidos resolve. Somos uma agência especializada em marketing para cripto e web3, e trabalhamos lançamento como sistema completo: aquisição, expectativa, distribuição e o dia seguinte. [Fale com a Kaleidos](/contato) e vamos desenhar um lançamento que não termina no snapshot.`,
   },
 ];

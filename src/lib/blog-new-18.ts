@@ -176,7 +176,7 @@ Marketing cripto é marketing com regras extras. Quem ignora essas regras paga c
 
 A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech. A gente trabalha com estratégia, conteúdo, comunidade e growth para projetos que precisam crescer com consistência e sem atalhos arriscados.
 
-Se o seu projeto está nesse momento, fale com a Kaleidos. A primeira conversa serve para entender o cenário e apontar o caminho, sem compromisso.
+Se o seu projeto está nesse momento, [fale com a Kaleidos](/contato). A primeira conversa serve para entender o cenário e apontar o caminho, sem compromisso.
 
 **Fontes:** Google Ads Policy Help, Cryptocurrencies (2025) · Meta Business Help Center, Cryptocurrency Products and Services (2025) · Banco Central do Brasil, regulação de ativos virtuais, Lei 14.478/2022 (2024).`,
   },

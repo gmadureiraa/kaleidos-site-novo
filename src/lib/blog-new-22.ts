@@ -71,7 +71,7 @@ Este guia da Kaleidos organiza o que funciona pra crescer e, principalmente, ret
 
 - Marketing de DAO é comunicação entre donos, não broadcast pra consumidores: fórum, propostas e delegates fazem parte do funil.
 - Airdrop compra atenção, não lealdade: a Arbitrum distribuiu tokens pra centenas de milhares de carteiras em 2023 e boa parte vendeu nas primeiras semanas (Nansen, 2023). Retenção vem de papel, não de token.
-- Governança é conteúdo: cada proposta relevante deveria virar resumo, thread e explicação em linguagem humana. Quem só publica o link do fórum perde 90% da comunidade.
+- Governança é conteúdo: cada proposta relevante deveria virar resumo, thread e explicação em linguagem humana. Quem só publica o link do fórum perde a maior parte da comunidade no caminho.
 - Trilhas de contribuição claras (primeiro passo, primeira tarefa, primeira recompensa) são o onboarding que separa DAOs vivas de DAOs zumbis.
 - Meça contribuidores ativos, participação em votação e retenção de delegates. Holders no Discord é métrica de vaidade.
 - Um núcleo de comunicação com mandato e orçamento aprovados em governança supera tanto o caos orgânico quanto a agência escondida da comunidade.
@@ -166,6 +166,6 @@ O único modelo que não funciona é o invisível: marketing pago pela fundaçã
 
 A Kaleidos trabalha com projetos de cripto e web3 desenhando exatamente esse sistema: narrativa de governança, conteúdo recorrente de propostas e resultados, programas de ativação de contribuidores e delegates, e a estrutura de canais com donos e rituais definidos. Sempre com escopo público e prestação de contas compatível com o padrão que uma comunidade descentralizada exige.
 
-Se a sua DAO cresceu no airdrop e esfriou depois, ou se você está desenhando o lançamento e quer evitar o ciclo hype-e-abandono, fale com a Kaleidos. A gente transforma governança em narrativa e comunidade em vantagem competitiva.`,
+Se a sua DAO cresceu no airdrop e esfriou depois, ou se você está desenhando o lançamento e quer evitar o ciclo hype-e-abandono, [fale com a Kaleidos](/contato). A gente transforma governança em narrativa e comunidade em vantagem competitiva.`,
   },
 ];

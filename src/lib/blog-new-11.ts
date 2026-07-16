@@ -193,7 +193,7 @@ Nenhuma ferramenta resolve sozinha. O stack mínimo viável é um analytics web 
 
 O marketing cripto amadureceu mais rápido na criação do que na medição. A boa notícia é que a blockchain, paradoxalmente, é o ambiente mais mensurável que o marketing já teve: cada conversão é uma transação pública, imutável e auditável. O que falta na maioria dos projetos não é dado, é método.
 
-A Kaleidos estrutura medição de ROI para projetos cripto e web3 desde a definição das métricas-norte até os dashboards on-chain e a rotina de leitura. Se o seu projeto está gastando em marketing sem saber o que volta, essa conversa costuma se pagar rápido. Fale com a gente.
+A Kaleidos estrutura medição de ROI para projetos cripto e web3 desde a definição das métricas-norte até os dashboards on-chain e a rotina de leitura. Se o seu projeto está gastando em marketing sem saber o que volta, essa conversa costuma se pagar rápido. [Fale com a gente](/contato).
 `,
   },
 ];

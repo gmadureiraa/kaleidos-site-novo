@@ -179,7 +179,7 @@ A Kaleidos é uma agência de marketing especializada em mercados de alta comple
 
 Construímos estratégias de social media de ponta a ponta: posicionamento e arquitetura de conteúdo, calendário editorial com processo de compliance embutido, produção de carrosséis, Reels e conteúdo executivo para fundadores, além de mensuração conectada ao funil de negócio, não só às métricas de vaidade.
 
-Se a sua fintech precisa transformar presença social em confiança e confiança em cliente, fale com a Kaleidos. A primeira conversa é um diagnóstico honesto do que está funcionando e do que está travando o seu crescimento.
+Se a sua fintech precisa transformar presença social em confiança e confiança em cliente, [fale com a Kaleidos](/contato). A primeira conversa é um diagnóstico honesto do que está funcionando e do que está travando o seu crescimento.
 `,
   },
 ];

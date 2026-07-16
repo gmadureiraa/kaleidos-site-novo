@@ -182,7 +182,7 @@ Qualquer agência séria responde as cinco sem desconforto. Quem se esquiva est�
 
 O marketing web3 que funciona não tem truque. Tem método: pesquisa de narrativa contínua, produção feita por quem vive o mercado, curadoria dura de KOLs, distribuição pensada canal a canal e IA usada como alavanca, não como substituta de critério.
 
-A Kaleidos é uma agência cripto-nativa e opera exatamente assim, com o bastidor aberto para o cliente desde a primeira reunião. Se o seu projeto precisa de marketing que a comunidade respeita e que gera resultado de negócio, fale com a gente. A primeira conversa já mostra o método por dentro, porque é isso que a gente tem de melhor para mostrar.
+A Kaleidos é uma agência cripto-nativa e opera exatamente assim, com o bastidor aberto para o cliente desde a primeira reunião. Se o seu projeto precisa de marketing que a comunidade respeita e que gera resultado de negócio, [fale com a gente](/contato). A primeira conversa já mostra o método por dentro, porque é isso que a gente tem de melhor para mostrar.
 `,
   },
 ];

@@ -176,7 +176,7 @@ Duas práticas salvam a análise: atribuição honesta (primeiro toque e multito
 
 A Kaleidos constrói operações de inbound pra SaaS e empresas de tecnologia de ponta a ponta: pesquisa de intenção e arquitetura de funil, produção de conteúdo de fundo e meio de funil, [SEO técnico e de conteúdo](/blog/seo-para-saas), lead magnets, sequências de nurturing e a ponte com ativação de produto. Sem promessa de milagre em 30 dias, com foco em pipeline mensurável.
 
-Se o seu SaaS depende demais de mídia paga e você quer construir o canal que se valoriza em vez de encarecer, fale com a gente. A Kaleidos desenha o plano com base no seu funil real, não em template genérico.
+Se o seu SaaS depende demais de mídia paga e você quer construir o canal que se valoriza em vez de encarecer, [fale com a gente](/contato). A Kaleidos desenha o plano com base no seu funil real, não em template genérico.
 `,
   },
 ];

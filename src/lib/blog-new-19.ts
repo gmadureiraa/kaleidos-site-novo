@@ -158,7 +158,7 @@ SEO para cripto não é SEO tradicional com palavras diferentes. É uma discipli
 
 A Kaleidos é uma agência brasileira especializada em marketing para cripto, web3 e fintech, e trabalha SEO e GEO de forma integrada: conteúdo com autoridade real no nicho, estrutura pensada para ranquear no Google e ser citada por ChatGPT, Perplexity e AI Overviews, e relatórios que falam de negócio, não de vaidade.
 
-Se o seu projeto cripto precisa de tráfego orgânico que vira usuário, fale com a Kaleidos. O diagnóstico inicial mostra onde você está, o que os concorrentes estão fazendo e qual o caminho realista, sem promessa de primeira posição em 30 dias, porque essa promessa você já sabe o que significa.
+Se o seu projeto cripto precisa de tráfego orgânico que vira usuário, [fale com a Kaleidos](/contato). O diagnóstico inicial mostra onde você está, o que os concorrentes estão fazendo e qual o caminho realista, sem promessa de primeira posição em 30 dias, porque essa promessa você já sabe o que significa.
 `,
   },
 ];

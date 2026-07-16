@@ -147,6 +147,6 @@ Recapitulando as faixas com as fontes na mesa: empresas maduras investem entre 7
 
 Mas o percentual certo para a sua empresa não está em nenhuma pesquisa. Está na conta que cruza sua meta, seu CAC, sua margem e seu estágio. Os benchmarks só dizem se a sua conta é plausível.
 
-A Kaleidos faz exatamente esse trabalho com empresas de cripto, web3 e fintech: diagnóstico do funil, definição de orçamento por canal e execução de conteúdo e growth com metas medidas em pipeline e receita, não em impressão. Se a sua próxima decisão é quanto investir e onde, fale com a Kaleidos e transforme o percentual em plano.`,
+A Kaleidos faz exatamente esse trabalho com empresas de cripto, web3 e fintech: diagnóstico do funil, definição de orçamento por canal e execução de conteúdo e growth com metas medidas em pipeline e receita, não em impressão. Se a sua próxima decisão é quanto investir e onde, [fale com a Kaleidos](/contato) e transforme o percentual em plano.`,
   },
 ];

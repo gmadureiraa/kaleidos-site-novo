@@ -171,7 +171,7 @@ Na prática, a transição saudável começa realocando 20% a 30% do orçamento 
 
 Quando o leilão do Google fica caro demais, ele está dizendo algo útil: a demanda do seu nicho é disputada e valiosa, e quem depende de um único canal para capturá-la paga o preço da dependência. As empresas que atravessam bem esse momento não são as que encontram o canal mágico, são as que constroem um sistema de aquisição com camadas: demanda capturada, demanda gerada e confiança acumulada.
 
-A Kaleidos estrutura exatamente esse tipo de sistema para empresas de cripto, web3 e fintech: diagnóstico do mix atual, priorização dos canais alternativos com base na economia unitária do negócio e execução integrada de conteúdo, social, influência e PR. Se o seu CPC parou de fechar a conta e você quer desenhar o próximo capítulo da aquisição com método, fale com a Kaleidos.
+A Kaleidos estrutura exatamente esse tipo de sistema para empresas de cripto, web3 e fintech: diagnóstico do mix atual, priorização dos canais alternativos com base na economia unitária do negócio e execução integrada de conteúdo, social, influência e PR. Se o seu CPC parou de fechar a conta e você quer desenhar o próximo capítulo da aquisição com método, [fale com a Kaleidos](/contato).
 `,
   },
 ];

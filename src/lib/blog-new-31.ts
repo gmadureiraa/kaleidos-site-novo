@@ -153,7 +153,7 @@ Canal com audiência de carteira, criativo de utilidade com prova, atribuição 
 
 ## Como a Kaleidos pode ajudar
 
-A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech. Desenhamos e operamos estratégias de mídia paga de ponta a ponta: seleção e negociação de canais (redes cripto-nativas, Google e Meta com compliance, KOL como mídia), produção de criativos, implementação de atribuição on-chain e gestão de orçamento por custo por carteira ativa. Se o seu projeto quer parar de comprar impressão e começar a comprar usuário, fale com a Kaleidos.
+A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech. Desenhamos e operamos estratégias de mídia paga de ponta a ponta: seleção e negociação de canais (redes cripto-nativas, Google e Meta com compliance, KOL como mídia), produção de criativos, implementação de atribuição on-chain e gestão de orçamento por custo por carteira ativa. Se o seu projeto quer parar de comprar impressão e começar a comprar usuário, [fale com a Kaleidos](/contato).
 `,
   },
 ];

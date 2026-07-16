@@ -173,6 +173,6 @@ Quem responde essas seis perguntas antes de gastar o primeiro real economiza mes
 
 A leitura errada da política da Meta é vê-la como obstáculo. A leitura certa é vê-la como barreira de entrada: a maioria dos concorrentes vai desistir na burocracia da autorização ou queimar contas com criativos amadores. O projeto que estrutura licença, operação e criativo compliance-first anuncia em um leilão com menos gente séria dentro.
 
-A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech, e cuida exatamente dessa ponta: estratégia de mídia paga dentro das regras, criativos que passam na revisão, funil educativo enquanto a autorização não sai e canais alternativos integrados ao orgânico. Se o seu projeto precisa anunciar cripto sem colocar a operação em risco, fale com a Kaleidos.`,
+A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech, e cuida exatamente dessa ponta: estratégia de mídia paga dentro das regras, criativos que passam na revisão, funil educativo enquanto a autorização não sai e canais alternativos integrados ao orgânico. Se o seu projeto precisa anunciar cripto sem colocar a operação em risco, [fale com a Kaleidos](/contato).`,
   },
 ];

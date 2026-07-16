@@ -154,6 +154,6 @@ Market maker não é acessório de listagem nem botão de subir preço. É a inf
 
 Se o seu projeto está a caminho de um TGE, trate as duas contratações como um sistema único: escolha o MM com KPIs contratuais e incentivos alinhados, escolha o parceiro de marketing que entende como liquidez e narrativa se retroalimentam, e coloque os dois no mesmo calendário desde o início.
 
-A Kaleidos é uma agência de marketing especializada em cripto e web3. Ajudamos projetos a construir narrativa, comunidade e demanda real antes, durante e depois do TGE, em sincronia com a estratégia de liquidez. Se você está planejando um lançamento de token, fale com a gente e vamos desenhar juntos o lado da atenção do seu lançamento.`,
+A Kaleidos é uma agência de marketing especializada em cripto e web3. Ajudamos projetos a construir narrativa, comunidade e demanda real antes, durante e depois do TGE, em sincronia com a estratégia de liquidez. Se você está planejando um lançamento de token, [fale com a gente](/contato) e vamos desenhar juntos o lado da atenção do seu lançamento.`,
   },
 ];

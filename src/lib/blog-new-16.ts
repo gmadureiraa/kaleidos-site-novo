@@ -148,7 +148,7 @@ A regra final é a que resume tudo: **quem desenha o incentivo desenha o públic
 
 A diferença entre um protocolo que cresce e um que oscila ao ritmo dos incentivos não é o tamanho do orçamento de growth: é se o crescimento foi desenhado como circuito ou como evento.
 
-A Kaleidos desenha e opera growth loops para projetos cripto e web3: da arquitetura de incentivos (referral, quests, pontos) à camada de conteúdo e comunidade que fecha o ciclo, com medição por cohort e foco em usuário retido, não em pico de vaidade. Se o seu protocolo vive o ciclo de campanha, pico e queda, fale com a Kaleidos. O próximo incentivo pode ser o último que você precisa comprar.
+A Kaleidos desenha e opera growth loops para projetos cripto e web3: da arquitetura de incentivos (referral, quests, pontos) à camada de conteúdo e comunidade que fecha o ciclo, com medição por cohort e foco em usuário retido, não em pico de vaidade. Se o seu protocolo vive o ciclo de campanha, pico e queda, [fale com a Kaleidos](/contato). O próximo incentivo pode ser o último que você precisa comprar.
 `,
   },
 ];

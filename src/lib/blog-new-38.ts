@@ -198,6 +198,6 @@ Na Kaleidos, nenhuma conta de mídia paga entra em gestão sem passar por esse p
 
 Se a sua conta de Google Ads gasta todo mês e você não sabe dizer com segurança quanto desse investimento vira resultado real, esse é exatamente o sinal de que uma auditoria está atrasada.
 
-Fale com a Kaleidos. A gente audita a conta, mostra em números onde o dinheiro está vazando e entrega o plano de correção priorizado, do tracking ao orçamento.`,
+[Fale com a Kaleidos](/contato). A gente audita a conta, mostra em números onde o dinheiro está vazando e entrega o plano de correção priorizado, do tracking ao orçamento.`,
   },
 ];

@@ -171,7 +171,7 @@ Marketing para memecoins funciona quando trata a comunidade como o produto e a t
 
 Na Kaleidos, a gente constrói narrativa, comunidade e presença para projetos cripto sem cruzar essa linha. Marketing cripto-nativo, responsável e feito para durar mais que um ciclo de atenção.
 
-Se você tem um projeto web3 e quer construir comunidade de verdade, sem atalho que vira problema depois, fale com a Kaleidos.
+Se você tem um projeto web3 e quer construir comunidade de verdade, sem atalho que vira problema depois, [fale com a Kaleidos](/contato).
 `,
   },
 ];

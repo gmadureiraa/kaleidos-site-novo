@@ -197,6 +197,6 @@ A regra de bolso que resume o framework: **rendimento é o preço do risco**. Qu
 
 O yield farming de 2026 recompensa um perfil diferente do de 2021. Não é mais sobre chegar primeiro no pool novo: é sobre saber ler um protocolo, decompor um APY e dimensionar risco. As plataformas listadas aqui (Aave, Lido, Pendle, Curve, Uniswap e os agregadores) são o ponto de partida do estudo justamente porque sobreviveram tempo suficiente para ter histórico auditável. Mesmo assim, nenhuma delas é isenta de risco.
 
-Se o seu projeto atua em DeFi e precisa comunicar produto, yield e risco com clareza (sem promessas que a regulação e a realidade não sustentam), esse é o território da Kaleidos. Somos uma agência de marketing especializada em cripto e web3, e ajudamos protocolos e produtos do setor a construir narrativa, conteúdo e crescimento com base em substância. Fale com a Kaleidos e vamos conversar sobre como posicionar o seu projeto.`,
+Se o seu projeto atua em DeFi e precisa comunicar produto, yield e risco com clareza (sem promessas que a regulação e a realidade não sustentam), esse é o território da Kaleidos. Somos uma agência de marketing especializada em cripto e web3, e ajudamos protocolos e produtos do setor a construir narrativa, conteúdo e crescimento com base em substância. [Fale com a Kaleidos](/contato) e vamos conversar sobre como posicionar o seu projeto.`,
   },
 ];

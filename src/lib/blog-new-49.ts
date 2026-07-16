@@ -190,7 +190,7 @@ Para fechar, os padrões de fracasso que se repetem:
 
 Em fintech, o primeiro contato do cliente com a marca raramente é o app: é um artigo, um vídeo, uma resposta que resolveu uma dúvida. Esse primeiro contato define se haverá um segundo. Content marketing bem feito é isso: o produto antes do produto, a demonstração de competência que torna a confiança possível.
 
-A Kaleidos constrói operações de conteúdo para fintechs e empresas de web3: estratégia editorial, SEO, produção com processo de compliance e distribuição multicanal, com mensuração conectada a pipeline. Se a sua fintech precisa transformar conteúdo em motor de aquisição e autoridade, fale com a Kaleidos e vamos desenhar essa máquina juntos.
+A Kaleidos constrói operações de conteúdo para fintechs e empresas de web3: estratégia editorial, SEO, produção com processo de compliance e distribuição multicanal, com mensuração conectada a pipeline. Se a sua fintech precisa transformar conteúdo em motor de aquisição e autoridade, [fale com a Kaleidos](/contato) e vamos desenhar essa máquina juntos.
 `,
   },
 ];

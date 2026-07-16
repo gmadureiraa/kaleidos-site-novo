@@ -163,7 +163,7 @@ Nenhum desses erros é sofisticado. Todos são evitáveis com o checklist acima 
 
 Um site novo deveria ser um upgrade de tudo: marca, experiência e performance orgânica. Quando o SEO entra no projeto desde o inventário, e não como conferência de última hora, o redesign vira oportunidade de consolidar conteúdo, melhorar arquitetura e ganhar posições em vez de perdê-las.
 
-A Kaleidos conduz redesigns e migrações de sites com SEO tratado como requisito de engenharia: inventário, mapa de redirects, preservação de conteúdo, staging auditado e monitoramento pós-lançamento. Se a sua empresa está planejando um site novo e não quer descobrir o custo de uma migração mal feita, fale com a gente antes do primeiro wireframe.
+A Kaleidos conduz redesigns e migrações de sites com SEO tratado como requisito de engenharia: inventário, mapa de redirects, preservação de conteúdo, staging auditado e monitoramento pós-lançamento. Se a sua empresa está planejando um site novo e não quer descobrir o custo de uma migração mal feita, [fale com a gente](/contato) antes do primeiro wireframe.
 `,
   },
 ];

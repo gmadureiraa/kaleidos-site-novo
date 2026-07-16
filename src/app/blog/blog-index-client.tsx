@@ -111,6 +111,23 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
               selected={selectedCategory}
               onSelect={setSelectedCategory}
             />
+            {/* Links crawláveis pros hubs de categoria (SSG). O filtro acima é
+                client-only e invisível pro Google/IA; estes <Link> dão a
+                linkagem interna real pros clusters /blog/categoria/[cat]. */}
+            <nav aria-label="Categorias" className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500">
+              <span className="text-gray-400">Explore por tema:</span>
+              {(["cripto", "growth", "marketing", "ia", "cases"] as const).map(
+                (cat) => (
+                  <Link
+                    key={cat}
+                    href={`/blog/categoria/${cat}`}
+                    className="hover:text-gray-900 transition-colors underline-offset-4 hover:underline"
+                  >
+                    {categoryLabels[cat]}
+                  </Link>
+                )
+              )}
+            </nav>
           </motion.div>
 
           {/* Highlights — 2 posts side by side */}

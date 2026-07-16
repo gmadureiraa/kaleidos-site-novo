@@ -146,7 +146,7 @@ Na prática da Kaleidos com clientes de cripto, web3 e fintech no Brasil, os fra
 - **Web2.5 como recomendação padrão para marcas tradicionais:** começar por utilidade invisível (pagamentos, fidelidade, acesso) e não por barulho.
 - **Educação como produto de marketing:** newsletters, artigos e vídeos que explicam o setor sem prometer retorno, construindo autoridade que sobrevive a qualquer ciclo de mercado.
 
-Se o seu projeto está construindo em cripto ou a sua marca quer entrar no setor pelo caminho certo, a Kaleidos pode ajudar a montar essa estratégia: posicionamento, conteúdo, comunidade e growth com quem conhece as regras do jogo no Brasil. Fale com a gente e vamos desenhar o seu funil web3.
+Se o seu projeto está construindo em cripto ou a sua marca quer entrar no setor pelo caminho certo, a Kaleidos pode ajudar a montar essa estratégia: posicionamento, conteúdo, comunidade e growth com quem conhece as regras do jogo no Brasil. [Fale com a gente](/contato) e vamos desenhar o seu funil web3.
 
 ---
 

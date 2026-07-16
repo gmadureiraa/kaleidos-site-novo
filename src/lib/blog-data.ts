@@ -123,6 +123,16 @@ export async function getPublishedPostCardsAsync(
     );
 }
 
+/** Cards leves de UMA categoria, já publicados e ordenados por data desc.
+ *  Alimenta os hubs SSG /blog/categoria/[cat] (clusters de SEO + linkagem). */
+export async function getPublishedPostCardsByCategoryAsync(
+  category: BlogCategory,
+  now: Date = new Date()
+): Promise<BlogCardMeta[]> {
+  const all = await getPublishedPostCardsAsync(now);
+  return all.filter((c) => c.category === category);
+}
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }

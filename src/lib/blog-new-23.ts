@@ -149,6 +149,6 @@ A receita da Hyperliquid não é mágica, é a soma das mecânicas deste post: p
 
 O erro conceitual por trás da maioria dos dumps é tratar o airdrop como linha de chegada de uma campanha de marketing. Ele é o oposto: é o dia em que milhares de pessoas viram acionistas do projeto ao mesmo tempo, e a primeira experiência delas como holders define se ficam ou saem. Vesting, staking, utilidade e comunicação não são detalhes de tokenomics, são o produto de boas-vindas desses novos acionistas.
 
-A Kaleidos ajuda projetos cripto e web3 a desenhar lançamentos de token onde marketing, comunidade e mecânica de distribuição trabalham juntos: da estratégia de elegibilidade à comunicação do claim e ao plano dos 90 dias seguintes. Se o seu TGE está no horizonte e você não quer virar mais um gráfico em escada descendo, fale com a Kaleidos.`,
+A Kaleidos ajuda projetos cripto e web3 a desenhar lançamentos de token onde marketing, comunidade e mecânica de distribuição trabalham juntos: da estratégia de elegibilidade à comunicação do claim e ao plano dos 90 dias seguintes. Se o seu TGE está no horizonte e você não quer virar mais um gráfico em escada descendo, [fale com a Kaleidos](/contato).`,
   },
 ];

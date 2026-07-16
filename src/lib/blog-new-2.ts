@@ -151,6 +151,6 @@ Junte os dados e o quadro fica nítido. O mercado é gigante e maduro, especialm
 
 Marketing cripto em 2026 não é sobre gritar mais alto. É sobre provar mais rápido. Founder que trata cada estatística com fonte, cada afirmação com evidência e cada campanha com utilidade real está jogando o jogo certo.
 
-A Kaleidos é uma agência de marketing cripto-nativa. Ajudamos projetos web3, fintech e cripto a transformar dados como estes em estratégia, conteúdo e comunidade que geram carteira ativa, não só impressão. Se você é founder e quer construir marketing que a audiência cripto respeita, fale com a Kaleidos.`,
+A Kaleidos é uma agência de marketing cripto-nativa. Ajudamos projetos web3, fintech e cripto a transformar dados como estes em estratégia, conteúdo e comunidade que geram carteira ativa, não só impressão. Se você é founder e quer construir marketing que a audiência cripto respeita, [fale com a Kaleidos](/contato).`,
   },
 ];

@@ -184,7 +184,7 @@ Na maioria dos casos, uma ou duas dessas causas concentram o problema. Resolver 
 
 SEO que não funciona quase nunca é azar de algoritmo. É prazo mal calibrado, keyword sem intenção, conteúdo que não compete, técnica quebrada, autoridade insuficiente, páginas se canibalizando ou ninguém medindo. Todas as sete têm diagnóstico objetivo e correção conhecida.
 
-A Kaleidos faz esse diagnóstico para empresas de tecnologia, cripto e fintech: auditoria das 7 causas, priorização por impacto e um plano de correção com métricas de negócio, não de vaidade. Se o seu tráfego orgânico está parado e você quer saber exatamente por quê, fale com a Kaleidos.
+A Kaleidos faz esse diagnóstico para empresas de tecnologia, cripto e fintech: auditoria das 7 causas, priorização por impacto e um plano de correção com métricas de negócio, não de vaidade. Se o seu tráfego orgânico está parado e você quer saber exatamente por quê, [fale com a Kaleidos](/contato).
 `,
   },
 ];

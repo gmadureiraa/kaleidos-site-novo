@@ -163,7 +163,7 @@ Em ambos os funis, a régua de medição muda: no varejo, custo por conta ativad
 
 A Kaleidos é uma agência cripto-nativa brasileira. Trabalhamos com projetos de cripto, web3 e fintech construindo posicionamento, conteúdo, marca e growth para o mercado que realmente existe no Brasil, e esse mercado hoje fala a língua do dólar digital.
 
-Se a sua empresa emite, distribui ou constrói produto sobre stablecoins e precisa de uma estratégia de comunicação que converta confiança em adoção, fale com a Kaleidos. A gente entende de cripto, de regulação e de marketing, na ordem que o seu público precisa.
+Se a sua empresa emite, distribui ou constrói produto sobre stablecoins e precisa de uma estratégia de comunicação que converta confiança em adoção, [fale com a Kaleidos](/contato). A gente entende de cripto, de regulação e de marketing, na ordem que o seu público precisa.
 `,
   },
 ];

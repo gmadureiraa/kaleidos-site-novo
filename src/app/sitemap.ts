@@ -167,6 +167,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: post.featured ? 0.8 : 0.7,
   }))
 
+  // Hubs de categoria SSG (/blog/categoria/[cat]) — clusters crawláveis que o
+  // filtro client-only do /blog não expõe. Mesma lista de HUBS da rota.
+  const blogCategories: MetadataRoute.Sitemap = (
+    ['cripto', 'growth', 'marketing', 'ia', 'cases'] as const
+  ).map((cat) => ({
+    url: `${baseUrl}/blog/categoria/${cat}`,
+    lastModified: latestBlogDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
+
   // Papers — rotas individuais dos volumes públicos (omite os hidden pra não gerar URL pré-lançamento)
   const paperPages: MetadataRoute.Sitemap = papers
     .filter((p) => !p.hidden)
@@ -197,6 +208,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...legalPages,
     ...casePages,
     ...blogIndex,
+    ...blogCategories,
     ...blogArticles,
     ...paperPages,
     ...paperReadPages,

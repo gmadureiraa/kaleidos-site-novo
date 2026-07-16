@@ -61,7 +61,7 @@ export const blogNew45: BlogPost[] = [
     ],
     content: `# Quanto custa social media marketing no Brasil (guia de preços 2026)
 
-"Quanto custa?" é a primeira pergunta de quem decide levar as redes sociais a sério, e quase ninguém responde com número. A resposta honesta: social media marketing no Brasil vai de R$ 800 por mês com um freelancer iniciante até R$ 30 mil ou mais em operações full service. A distância entre os extremos não é aleatória. Ela reflete escopo, senioridade e resultado esperado.
+"Quanto custa?" é a primeira pergunta de quem decide levar as redes sociais a sério, e quase ninguém responde com número. A resposta honesta, com base nas propostas e concorrências que a Kaleidos acompanha no dia a dia: social media marketing no Brasil vai de R$ 800 por mês com um freelancer iniciante até R$ 30 mil ou mais em operações full service. São estimativas de quem está dentro do mercado, não uma tabela oficial: use como referência de ordem de grandeza. A distância entre os extremos não é aleatória. Ela reflete escopo, senioridade e resultado esperado.
 
 Neste guia, a Kaleidos abre o mercado: os três modelos de contratação, o que compõe o preço, as faixas praticadas em 2026 e como escolher a faixa certa para o seu momento, sem pagar por estrutura que você ainda não precisa.
 
@@ -94,7 +94,7 @@ O risco do modelo não é a qualidade, é a dependência. Um único profissional
 
 Agência é time: estrategista, redator, designer, gestor de tráfego e atendimento no mesmo contrato. Você paga mais porque contrata processo e redundância, não só horas.
 
-As faixas praticadas no mercado brasileiro em 2026:
+As faixas que a Kaleidos observa no mercado brasileiro em 2026, a partir de propostas e concorrências que acompanhamos:
 
 - **Agência de bairro / operação enxuta (R$ 1.500 a R$ 3.000/mês):** entrega volume com pouca estratégia. Comum encontrar templates reciclados entre clientes.
 - **Agência especializada (R$ 3.000 a R$ 8.000/mês):** estratégia real, conteúdo autoral, calendário editorial, relatórios com análise. É a faixa onde a maioria das PMEs sérias deveria estar.
@@ -135,7 +135,7 @@ Quando você recebe duas propostas com valores muito diferentes, quase sempre a 
 
 O mercado brasileiro trabalha com três formatos principais:
 
-- **Fee mensal (o padrão):** valor fixo por escopo definido, contrato de 3 a 12 meses. Previsível para os dois lados. É o modelo de 80% do mercado.
+- **Fee mensal (o padrão):** valor fixo por escopo definido, contrato de 3 a 12 meses. Previsível para os dois lados. É o modelo dominante do mercado e o mais comum nas propostas que a Kaleidos vê circular.
 - **Projeto pontual:** lançamento, campanha ou reposicionamento com começo, meio e fim. Costuma custar de R$ 5.000 a R$ 50.000 dependendo da complexidade. Bom para testar uma agência antes do contrato recorrente.
 - **Performance / híbrido:** fee reduzido mais bônus atrelado a metas. Parece atraente, mas só funciona com metas bem definidas e atribuição limpa, o que em social orgânico é raro. Desconfie de quem promete resultado garantido em troca de percentual.
 

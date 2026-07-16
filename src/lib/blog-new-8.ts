@@ -189,6 +189,6 @@ Compare sempre com o objetivo definido no começo. Um AMA de captação se mede 
 
 Um AMA bem executado é um dos ativos de comunidade mais baratos e mais subaproveitados em cripto. A diferença entre a sessão que morre em meia hora e a que vira pipeline e semanas de conteúdo está inteira na execução: plataforma certa, host relevante, divulgação com antecedência, roteiro que respeita a inteligência da audiência e um plano de reaproveitamento pensado antes do evento.
 
-A Kaleidos é uma agência de marketing cripto-nativa. A gente estrutura AMAs, funil de comunidade e a máquina de conteúdo que transforma cada evento ao vivo em ativo permanente. Se você vai lançar, listar ou virar uma narrativa e quer que o AMA gere resultado de verdade, fale com a Kaleidos.`,
+A Kaleidos é uma agência de marketing cripto-nativa. A gente estrutura AMAs, funil de comunidade e a máquina de conteúdo que transforma cada evento ao vivo em ativo permanente. Se você vai lançar, listar ou virar uma narrativa e quer que o AMA gere resultado de verdade, [fale com a Kaleidos](/contato).`,
   },
 ];

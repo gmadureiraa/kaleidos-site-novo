@@ -198,6 +198,6 @@ Nenhum desses passos exige aumentar o orçamento. Todos eles fazem o orçamento 
 
 Escalar uma conta com vazamentos é ampliar o desperdício junto com o investimento. O caminho certo é o inverso: fechar as frestas, estabilizar a mensuração e só então pisar no acelerador.
 
-A Kaleidos audita e opera contas de Google Ads com esse método: diagnóstico dos vazamentos, correção estrutural e otimização contínua orientada a conversão de negócio, não a métrica de painel. Se você suspeita que sua verba está escorrendo por alguma dessas frestas, fale com a Kaleidos e receba um diagnóstico honesto de onde o seu orçamento está indo.`,
+A Kaleidos audita e opera contas de Google Ads com esse método: diagnóstico dos vazamentos, correção estrutural e otimização contínua orientada a conversão de negócio, não a métrica de painel. Se você suspeita que sua verba está escorrendo por alguma dessas frestas, [fale com a Kaleidos](/contato) e receba um diagnóstico honesto de onde o seu orçamento está indo.`,
   },
 ];

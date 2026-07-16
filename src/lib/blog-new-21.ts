@@ -160,6 +160,6 @@ Para fechar o diagnóstico, os padrões de falha que aparecem repetidamente no m
 
 A tese final é direta: em web3, o ecossistema é o produto, e developer grants são um dos poucos canais de distribuição em que o capital investido vira ativo permanente em vez de atenção alugada. Uniswap provou o modelo proativo em 2020, a Optimism institucionalizou o retroativo a partir de 2021 e a Arbitrum deixou documentado, em 2023, o que acontece quando incentivo vem sem critério de permanência. O playbook está público. O diferencial está na execução: tese clara, seleção transparente, suporte real, comunicação constante e métrica de retenção.
 
-Se o seu protocolo, chain ou fundação está desenhando um programa de grants ou quer transformar um programa existente em motor de go-to-market de verdade, a Kaleidos pode ajudar: somos uma agência especializada em marketing para cripto e web3, e trabalhamos exatamente nessa interseção entre ecossistema, narrativa e crescimento. Fale com a Kaleidos e vamos estruturar a distribuição do seu ecossistema juntos.`,
+Se o seu protocolo, chain ou fundação está desenhando um programa de grants ou quer transformar um programa existente em motor de go-to-market de verdade, a Kaleidos pode ajudar: somos uma agência especializada em marketing para cripto e web3, e trabalhamos exatamente nessa interseção entre ecossistema, narrativa e crescimento. [Fale com a Kaleidos](/contato) e vamos estruturar a distribuição do seu ecossistema juntos.`,
   },
 ];

@@ -145,7 +145,7 @@ Web3 marketing é uma arte perdida, mas artes perdidas têm uma propriedade inte
 
 A Kaleidos é uma agência de marketing especializada em cripto, web3 e fintech, e trabalha exatamente essa recuperação de fundamentos: diagnóstico de posicionamento e narrativa, estratégia de conteúdo que constrói autoridade de verdade, comunidade tratada como ativo de longo prazo e distribuição desenhada para alcançar quem está fora da bolha.
 
-Se o seu projeto está preso no playbook de 2021, ou prestes a lançar e decidindo qual caminho seguir, fale com a Kaleidos. A conversa começa pelo fundamento, não pela campanha.
+Se o seu projeto está preso no playbook de 2021, ou prestes a lançar e decidindo qual caminho seguir, [fale com a Kaleidos](/contato). A conversa começa pelo fundamento, não pela campanha.
 `,
   },
 ];

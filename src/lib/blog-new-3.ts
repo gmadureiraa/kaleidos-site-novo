@@ -153,6 +153,6 @@ O Nubank provou que marca não é o que sobra depois do produto. Marca é o que 
 
 Posicionamento com inimigo claro, identidade proprietária, atendimento tratado como marketing, crescimento por indicação, comunidade e educação. Nenhuma dessas jogadas depende de orçamento infinito. Dependem de disciplina e de decisão estratégica.
 
-Projetos cripto que tratam marketing como enfeite perdem para os que tratam marca como sistema. A Kaleidos ajuda projetos cripto e web3 a construir posicionamento, identidade e narrativa que geram confiança e comunidade real. Se você está construindo em web3 e quer uma marca que sustente o crescimento, fale com a Kaleidos.`,
+Projetos cripto que tratam marketing como enfeite perdem para os que tratam marca como sistema. A Kaleidos ajuda projetos cripto e web3 a construir posicionamento, identidade e narrativa que geram confiança e comunidade real. Se você está construindo em web3 e quer uma marca que sustente o crescimento, [fale com a Kaleidos](/contato).`,
   },
 ];
