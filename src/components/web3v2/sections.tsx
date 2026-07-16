@@ -132,14 +132,14 @@ const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
     headlineHtml:
       'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
     subHtml:
-      '<strong style="color:#14110D;">Estratégia e execução</strong> para marcas cripto que querem <strong style="color:#14110D;">virar referência</strong>.',
+      'Estratégia e execução para projetos de <strong style="color:#14110D;">cripto, web3 e fintech</strong>: do conteúdo que some no feed à marca que <strong style="color:#14110D;">vira referência</strong>.',
   },
   en: {
     badge: "Crypto-native agency since 2020",
     headlineHtml:
       'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the Brazilian crypto market.',
     subHtml:
-      '<strong style="color:#14110D;">Strategy and execution</strong> for crypto brands that want to <strong style="color:#14110D;">become a market reference</strong>.',
+      'Strategy and execution for <strong style="color:#14110D;">crypto, web3 and fintech</strong> projects: from content that vanishes in the feed to a brand that <strong style="color:#14110D;">becomes the reference</strong>.',
   },
 };
 

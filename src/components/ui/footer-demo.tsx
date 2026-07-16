@@ -8,12 +8,44 @@ import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnalytics } from "@/components/analytics";
 import { AUDIENCES } from "@/lib/audiences";
 
+const linkClass =
+  "text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group min-h-11 lg:min-h-0"
+
+function FooterLink({ href, children, external, onClick }: {
+  href: string;
+  children: React.ReactNode;
+  external?: boolean;
+  onClick?: () => void;
+}) {
+  const arrow = (
+    <ArrowRight className="ml-1 h-3 w-3 shrink-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+  );
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass} onClick={onClick}>
+        {children}
+        {arrow}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={linkClass} onClick={onClick}>
+      {children}
+      {arrow}
+    </Link>
+  );
+}
+
+function ColumnTitle({ children }: { children: React.ReactNode }) {
+  return <h4 className="text-white font-semibold mb-2 lg:mb-3 text-sm uppercase tracking-wide">{children}</h4>;
+}
+
 export function FooterDemo() {
   const { t, locale } = useI18n();
   const { trackWhatsApp } = useAnalytics();
   const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
   const instagramHandle = "digitalkaleidos";
-  
+
   const services = locale === 'en'
     ? [
         { title: "Content Marketing", href: "/servicos/marketing-conteudo" },
@@ -65,31 +97,31 @@ export function FooterDemo() {
       className="w-full bg-black border-t border-gray-800"
     >
       {/* Seção Principal */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          
-          {/* Logo e Descrição */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center mb-4">
-              <Image 
-                src="/Kaleidos/logo/Logos-10.svg" 
-                alt="Kaleidos Logo" 
-                width={48} 
-                height={48}
-                className="h-12 w-12"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:gap-8">
+
+          {/* Logo, Descrição e Social */}
+          <div className="col-span-2 lg:col-span-1">
+            <div className="flex items-center mb-3">
+              <Image
+                src="/Kaleidos/logo/Logos-10.svg"
+                alt="Kaleidos Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
               />
               <h3 className="ml-3 text-xl font-bold text-white font-display">Kaleidos</h3>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
+            <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-xs">
               {t('footer','tagline')}
             </p>
             {/* Social Links */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-2 mb-5">
               <a
                 href={`https://www.instagram.com/${instagramHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CF067] transition-colors"
+                className="flex items-center justify-center h-11 w-11 lg:h-9 lg:w-9 text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
@@ -98,48 +130,64 @@ export function FooterDemo() {
                 href={`https://twitter.com/${twitterHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CF067] transition-colors"
+                className="flex items-center justify-center h-11 w-11 lg:h-9 lg:w-9 text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.linkedin.com/company/kaleidos-digital" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/company/kaleidos-digital"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CF067] transition-colors"
+                className="flex items-center justify-center h-11 w-11 lg:h-9 lg:w-9 text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a 
+              <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CF067] transition-colors"
+                className="flex items-center justify-center h-11 w-11 lg:h-9 lg:w-9 text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="WhatsApp"
                 onClick={() => trackWhatsApp("footer_social", "social_links")}
               >
                 <MessageCircle className="h-5 w-5" />
               </a>
             </div>
+            {/* CTA Button */}
+            <Link
+              href="/contato"
+              className="inline-flex items-center gap-2 bg-[#7CF067] text-black px-5 py-2.5 rounded-lg hover:bg-[#6BE85A] transition-all font-semibold text-sm group"
+            >
+              {locale === 'en' ? 'Get in Touch' : 'Falar Conosco'}
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
           {/* Serviços */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-base">
-              {locale === 'en' ? 'Services' : 'Serviços'}
-            </h4>
-            <ul className="space-y-3">
+            <ColumnTitle>{locale === 'en' ? 'Services' : 'Serviços'}</ColumnTitle>
+            <ul className="lg:space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <Link 
-                    href={service.href}
-                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
-                  >
+                  <FooterLink href={service.href}>
                     <span>{service.title}</span>
-                    <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
+                  </FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Para quem — variantes de home por público */}
+          <div>
+            <ColumnTitle>{locale === 'en' ? 'For whom' : 'Para quem'}</ColumnTitle>
+            <ul className="lg:space-y-2">
+              {AUDIENCES.map((a) => (
+                <li key={a.slug}>
+                  <FooterLink href={`/${a.slug}`}>
+                    <span>{locale === 'en' ? `Kaleidos for ${a.label}` : `Kaleidos para ${a.label}`}</span>
+                  </FooterLink>
                 </li>
               ))}
             </ul>
@@ -147,37 +195,13 @@ export function FooterDemo() {
 
           {/* Navegação */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-base">
-              {locale === 'en' ? 'Navigation' : 'Navegação'}
-            </h4>
-            <ul className="space-y-3">
+            <ColumnTitle>{locale === 'en' ? 'Navigation' : 'Navegação'}</ColumnTitle>
+            <ul className="lg:space-y-2">
               {pages.map((page, index) => (
                 <li key={index}>
-                  <Link 
-                    href={page.href}
-                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
-                  >
+                  <FooterLink href={page.href}>
                     <span>{page.title}</span>
-                    <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Para quem — variantes de home por público */}
-            <h4 className="text-white font-semibold mb-4 mt-8 text-base">
-              {locale === 'en' ? 'For whom' : 'Para quem'}
-            </h4>
-            <ul className="space-y-3">
-              {AUDIENCES.map((a) => (
-                <li key={a.slug}>
-                  <Link
-                    href={`/${a.slug}`}
-                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
-                  >
-                    <span>Kaleidos para {a.label}</span>
-                    <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
+                  </FooterLink>
                 </li>
               ))}
             </ul>
@@ -185,65 +209,51 @@ export function FooterDemo() {
 
           {/* Contato */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-base">
-              {locale === 'en' ? 'Contact' : 'Contato'}
-            </h4>
-            <ul className="space-y-3">
+            <ColumnTitle>{locale === 'en' ? 'Contact' : 'Contato'}</ColumnTitle>
+            <ul className="lg:space-y-2">
               <li>
-                <a 
+                <FooterLink
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
+                  external
                   onClick={() => trackWhatsApp("footer_contact", "contact_section")}
                 >
-                  <Phone className="h-4 w-4 mr-2" />
+                  <Phone className="h-4 w-4 mr-2 shrink-0" />
                   <span>WhatsApp</span>
-                  <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                </a>
+                </FooterLink>
               </li>
               <li>
-                <a 
+                <a
                   href="mailto:madureira@kaleidosdigital.com"
-                  className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
+                  className={linkClass}
                 >
-                  <Mail className="h-4 w-4 mr-2" />
+                  <Mail className="h-4 w-4 mr-2 shrink-0" />
                   <span>Email</span>
-                  <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="ml-1 h-3 w-3 shrink-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </a>
               </li>
             </ul>
-            
-            {/* CTA Button */}
-            <Link 
-              href="/contato"
-              className="mt-6 inline-flex items-center gap-2 bg-[#7CF067] text-black px-6 py-3 rounded-lg hover:bg-[#6BE85A] transition-all font-semibold text-sm group"
-            >
-              {locale === 'en' ? 'Get in Touch' : 'Falar Conosco'}
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
         </div>
       </div>
-      
+
       {/* Rodapé Inferior */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="text-sm text-gray-400 text-center md:text-left">
               {t('footer','rights')}
             </p>
-            <div className="flex items-center space-x-6 text-xs text-gray-500">
-              <Link href="/sobre" className="hover:text-[#7CF067] transition-colors">
+            <div className="flex items-center gap-x-6 text-xs text-gray-500">
+              <Link href="/sobre" className="flex items-center min-h-11 md:min-h-0 hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'About' : 'Sobre'}
               </Link>
-              <Link href="/contato" className="hover:text-[#7CF067] transition-colors">
+              <Link href="/contato" className="flex items-center min-h-11 md:min-h-0 hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Contact' : 'Contato'}
               </Link>
-              <Link href="/privacidade" className="hover:text-[#7CF067] transition-colors">
+              <Link href="/privacidade" className="flex items-center min-h-11 md:min-h-0 hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Privacy' : 'Privacidade'}
               </Link>
-              <Link href="/termos" className="hover:text-[#7CF067] transition-colors">
+              <Link href="/termos" className="flex items-center min-h-11 md:min-h-0 hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Terms' : 'Termos'}
               </Link>
             </div>
@@ -252,4 +262,4 @@ export function FooterDemo() {
       </div>
     </motion.footer>
   )
-} 
+}

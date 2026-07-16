@@ -36,7 +36,11 @@ function isAuthorized(req: NextRequest): boolean {
   const secret = process.env.CRON_SECRET;
   // If no secret is configured, fail closed (deny) rather than open.
   if (!secret) return false;
-  if (req.headers.get("x-vercel-cron")) return true;
+  // NÃO confiar no header `x-vercel-cron` sozinho: ele é spoofável por qualquer
+  // caller externo (não é stripado na entrada), o que dava bypass total desta
+  // rota de broadcast. O Vercel Cron injeta `Authorization: Bearer <CRON_SECRET>`
+  // automaticamente quando CRON_SECRET está setada, então a checagem abaixo já
+  // cobre o cron legítimo. (Achado da auditoria 2026-07-16.)
   const auth = req.headers.get("authorization");
   if (auth === `Bearer ${secret}`) return true;
   const token = new URL(req.url).searchParams.get("token");
