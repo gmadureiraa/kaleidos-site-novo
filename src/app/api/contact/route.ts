@@ -114,25 +114,48 @@ ${mensagem}
       </div>
     `;
 
-    if (!resendApiKey) {
-      // Retorna 200 para não bloquear o fluxo em desenvolvimento
-      return new Response(JSON.stringify({ ok: true, simulated: true }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    const resend = new Resend(resendApiKey);
-    await resend.emails.send({
-      from: fromAddress,
-      to,
-      replyTo: email,
-      subject,
-      text,
-      html,
+    // Payload completo do lead pra logs de recuperação: se a notificação por
+    // email falhar por qualquer motivo, essa linha nos logs da Vercel + o
+    // evento no PostHog garantem que o contato NÃO se perde.
+    const leadLogPayload = JSON.stringify({
+      nome: String(nome).slice(0, 200),
+      email: String(email).trim().toLowerCase(),
+      empresa: String(empresa || "").slice(0, 200),
+      servicos: servicos || [],
+      mensagem: String(mensagem).slice(0, 2000),
+      ...attr,
+      at: new Date().toISOString(),
     });
 
+    // Notificação interna é BEST-EFFORT: env ausente ou erro do Resend nunca
+    // derruba o lead — logamos recuperável e seguimos pro PostHog.
+    let notified = false;
+    if (!resendApiKey) {
+      console.error(
+        `[LEAD-FALLBACK] contact sem RESEND_API_KEY — lead preservado: ${leadLogPayload}`
+      );
+    } else {
+      try {
+        const resend = new Resend(resendApiKey);
+        await resend.emails.send({
+          from: fromAddress,
+          to,
+          replyTo: email,
+          subject,
+          text,
+          html,
+        });
+        notified = true;
+      } catch (err) {
+        console.error(
+          `[LEAD-FALLBACK] contact erro Resend — lead preservado: ${leadLogPayload}`,
+          err
+        );
+      }
+    }
+
     await captureServerEvent(String(email).trim().toLowerCase(), "contact_submitted", {
+      notified,
       empresa: empresa || null,
       servicos_count: (servicos || []).length,
       locale,
@@ -150,11 +173,14 @@ ${mensagem}
       },
     });
 
-    return new Response(JSON.stringify({ ok: true }), {
+    return new Response(JSON.stringify({ ok: true, notified }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-  } catch {
+  } catch (err) {
+    // Erro inesperado (ex: JSON inválido). Logar SEMPRE — antes esse catch
+    // engolia o erro sem rastro nenhum.
+    console.error("[contact] erro inesperado:", err);
     return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

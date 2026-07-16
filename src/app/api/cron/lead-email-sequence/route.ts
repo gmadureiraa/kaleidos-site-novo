@@ -33,7 +33,14 @@ function daysSince(d: Date) {
 
 function isAuthed(req: Request): boolean {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return false;
+  if (!secret) {
+    // Sem CRON_SECRET o cron NUNCA autentica e a sequência 2/3/4 para em
+    // silêncio. Logar alto pra aparecer nos logs da Vercel a cada tentativa.
+    console.error(
+      "[cron/lead-email-sequence] CRON_SECRET ausente — cron bloqueado, sequência de emails NÃO está rodando. Setar CRON_SECRET na Vercel."
+    );
+    return false;
+  }
   const auth = req.headers.get("authorization");
   return auth === `Bearer ${secret}`;
 }

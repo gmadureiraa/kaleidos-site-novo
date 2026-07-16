@@ -137,6 +137,7 @@ ${gargalo}
     `;
 
     let internalSimulated = false;
+    let internalSent = false;
     if (resendApiKey) {
       try {
         const resend = new Resend(resendApiKey);
@@ -149,6 +150,7 @@ ${gargalo}
           text,
           html,
         });
+        internalSent = true;
       } catch (err) {
         console.error("[lead-ia] erro resend interno:", err);
       }
@@ -170,6 +172,26 @@ ${gargalo}
       });
     } catch (err) {
       console.error("[lead-ia] erro persistindo lead:", err);
+    }
+
+    // Rede de segurança: se a notificação interna E a persistência falharam,
+    // o lead completo vai pros logs da Vercel de forma recuperável (além do
+    // evento no PostHog mais abaixo). NUNCA deixar o lead evaporar em silêncio.
+    if (!internalSent && !lead) {
+      console.error(
+        `[LEAD-FALLBACK] lead-ia sem notificação nem persistência — lead preservado: ${JSON.stringify(
+          {
+            nome: String(nome).slice(0, 200),
+            email: String(email).trim().toLowerCase(),
+            empresa: String(empresa || "").slice(0, 200),
+            tamanho: String(tamanho || "").slice(0, 100),
+            whatsapp: String(whatsapp || "").slice(0, 50),
+            gargalo: String(gargalo || "").slice(0, 2000),
+            ...attr,
+            at: new Date().toISOString(),
+          }
+        )}`
+      );
     }
 
     // 3. Dispara email #1 (welcome) imediatamente.
@@ -228,6 +250,8 @@ ${gargalo}
       has_gargalo: Boolean(gargalo),
       welcome_sent: welcomeSent,
       audience_added: audienceAdded,
+      internal_sent: internalSent,
+      persisted: lead !== null,
       ...attr,
       $set: {
         last_channel: attr.channel ?? null,

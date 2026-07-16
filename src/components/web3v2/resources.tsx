@@ -99,11 +99,15 @@ const STYLE = `
 }
 `;
 
+// Capas com logo/emblema colado no topo da própria arte: com object-fit:cover o
+// topo era CORTADO, então essas (e SÓ essas) usam `contain` com leve padding.
+// O bear market NÃO entra aqui de propósito: a arte dele é mais larga que 3:4 e o
+// `contain` gerava barras escuras (letterbox) que davam cara de tablet/clipboard
+// com o creme da capa boiando no meio. Com `cover` a arte enche o card inteiro.
+const CONTAIN_COVER_SLUGS = new Set(["playbook-cripto-2026", "playbook-tge-2026"]);
+
 function PlaybookCard({ paper, framing }: { paper: Paper; framing: PlaybookFraming }) {
-  // `editorial-emblema` é o framing do playbook "Marketing Cripto 2026", cuja capa
-  // tem a logo Kaleidos no topo. Com object-fit:cover o topo era CORTADO; usamos
-  // `contain` (com leve padding) pra capa inteira aparecer sem colar/cortar a logo.
-  const containCover = framing === "editorial-emblema";
+  const containCover = CONTAIN_COVER_SLUGS.has(paper.slug);
   const cover = (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -160,7 +164,8 @@ function PlaybookCard({ paper, framing }: { paper: Paper; framing: PlaybookFrami
         <svg aria-hidden="true" style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%) rotate(-6deg)", width: 38, height: 27, fill: INK, zIndex: 2 }}>
           <use href="#kal-eye" />
         </svg>
-        <div style={{ position: "relative", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 10, border: `1.5px solid ${INK}`, boxShadow: `0 8px 22px rgba(20,17,13,.14)`, background: INK }}>{cover}</div>
+        {/* Sombra dura no accent da marca (igual aos cards de blog vizinhos) pra fileira ler como uma família só. */}
+        <div style={{ position: "relative", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 10, border: `1.5px solid ${INK}`, boxShadow: `6px 6px 0 ${paper.accent}`, background: INK }}>{cover}</div>
       </div>
     );
   } else if (framing === "sticker-bomb") {

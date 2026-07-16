@@ -41,10 +41,13 @@ export async function POST(req: NextRequest) {
     const ip = getClientIp(req);
     const rl = await rateLimit("newsletter", ip, { max: 5, window: "10 m" });
     if (!rl.success) {
-      return tooManyRequestsResponse(rl);
+      return tooManyRequestsResponse(
+        rl,
+        "Muitas tentativas. Aguarda um minuto e tenta de novo."
+      );
     }
 
-    const body = await req.json();
+    const body = await req.json().catch(() => null);
     const { email, _hp, name } = body || {};
 
     // Entrega de lead magnet: se o gate/popup pediu um paper específico,
@@ -89,48 +92,68 @@ export async function POST(req: NextRequest) {
 
     if (!email || typeof email !== "string") {
       return NextResponse.json(
-        { error: "email is required" },
+        { error: "Deixa teu email pra gente enviar." },
         { status: 400 }
       );
     }
 
     if (!isValidEmail(email)) {
       return NextResponse.json(
-        { error: "Invalid email format" },
+        { error: "Email inválido. Confere o endereço e tenta de novo." },
         { status: 400 }
       );
     }
 
-    if (!AUDIENCE_ID) {
-      console.error("RESEND_AUDIENCE_ID is not set");
-      return NextResponse.json(
-        { error: "Newsletter service is not configured" },
-        { status: 503 }
-      );
-    }
-
-    const resend = getResend();
-
-    const { data, error } = await resend.contacts.create({
-      audienceId: AUDIENCE_ID,
-      email,
+    // Payload do lead pra logs de recuperação — se QUALQUER integração falhar,
+    // essa linha nos logs da Vercel é a fonte de verdade pra recadastrar na mão.
+    const leadLogPayload = JSON.stringify({
+      email: email.trim().toLowerCase(),
+      deliver: deliverSlug || null,
+      ...meta,
+      at: new Date().toISOString(),
     });
 
-    // Contato duplicado (já inscrito) NÃO é falha: seguimos pra entregar o
-    // material de novo. Só falhamos de verdade quando o erro não é duplicidade
-    // e também não há material pra entregar.
-    if (error) {
-      const errMsg = (error as { message?: string })?.message ?? "";
-      const isDuplicate = /exist|already|duplicat/i.test(errMsg);
-      if (!isDuplicate && !deliverSlug) {
-        console.error("Resend subscribe error:", error);
-        return NextResponse.json(
-          { error: "Failed to subscribe" },
-          { status: 500 }
+    // Cadastro na audience Resend é BEST-EFFORT: env ausente ou erro de API
+    // NUNCA derruba a captura. O lead sempre fica recuperável em
+    // [LEAD-FALLBACK] (logs) + PostHog (captureServerEvent abaixo), e a entrega
+    // do material segue normalmente. (Já perdemos lead com 503 aqui — nunca mais.)
+    let subscribed = false;
+    let contactId: string | null = null;
+
+    if (!AUDIENCE_ID || !process.env.RESEND_API_KEY) {
+      console.error(
+        `[LEAD-FALLBACK] newsletter/subscribe sem config Resend (audience=${Boolean(
+          AUDIENCE_ID
+        )}, apiKey=${Boolean(process.env.RESEND_API_KEY)}) — lead preservado: ${leadLogPayload}`
+      );
+    } else {
+      try {
+        const resend = getResend();
+        const { data, error } = await resend.contacts.create({
+          audienceId: AUDIENCE_ID,
+          email,
+        });
+        if (error) {
+          // Contato duplicado (já inscrito) NÃO é falha.
+          const errMsg = (error as { message?: string })?.message ?? "";
+          const isDuplicate = /exist|already|duplicat/i.test(errMsg);
+          if (isDuplicate) {
+            subscribed = true;
+          } else {
+            console.error(
+              `[LEAD-FALLBACK] Resend subscribe error — lead preservado: ${leadLogPayload}`,
+              error
+            );
+          }
+        } else {
+          subscribed = true;
+          contactId = data?.id ?? null;
+        }
+      } catch (err) {
+        console.error(
+          `[LEAD-FALLBACK] Resend subscribe exception — lead preservado: ${leadLogPayload}`,
+          err
         );
-      }
-      if (!isDuplicate) {
-        console.error("Resend subscribe error (entrega segue):", error);
       }
     }
 
@@ -155,8 +178,9 @@ export async function POST(req: NextRequest) {
     // distinct_id = email lowercase — MESMO id do identifyLead() no client,
     // garante que o evento server cai na mesma pessoa do PostHog.
     await captureServerEvent(email.trim().toLowerCase(), "newsletter_signup", {
-      audience_id: AUDIENCE_ID,
-      resend_contact_id: data?.id ?? null,
+      audience_id: AUDIENCE_ID || null,
+      resend_contact_id: contactId,
+      audience_subscribed: subscribed,
       delivered_paper: deliverSlug || null,
       ...meta,
       // first-touch persiste no perfil da pessoa; last-touch sempre atualiza
@@ -175,15 +199,18 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      id: data?.id,
+      id: contactId ?? undefined,
+      subscribed,
       delivered,
       message: "Inscricao realizada com sucesso!",
     });
   } catch (error) {
-    console.error("Subscribe error:", error);
-    const message =
-      error instanceof Error ? error.message : "Failed to subscribe";
-    const status = message.includes("RESEND_API_KEY") ? 503 : 500;
-    return NextResponse.json({ error: message }, { status });
+    // Erro realmente inesperado (antes de termos o email em mãos não há lead
+    // pra salvar). Mensagem amigável — os forms exibem `error` direto pro usuário.
+    console.error("[newsletter/subscribe] erro inesperado:", error);
+    return NextResponse.json(
+      { error: "Não conseguimos concluir agora. Tenta de novo em instantes." },
+      { status: 500 }
+    );
   }
 }

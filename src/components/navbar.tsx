@@ -153,13 +153,6 @@ export function Navbar() {
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href={withLang('/papers')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
-                      Papers
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
             {/* CTA primário → Calendly (agendar reunião) + WhatsApp secundário */}
@@ -268,12 +261,6 @@ export function Navbar() {
               <div>
                 <Link href="/blog" className="block text-sm font-medium text-white py-1">
                   Blog
-                </Link>
-              </div>
-              {/* Papers */}
-              <div>
-                <Link href={withLang('/papers')} className="block text-sm font-medium text-white py-1">
-                  Papers
                 </Link>
               </div>
               {/* Outros Links */}

@@ -151,10 +151,13 @@ export async function rateLimit(
 /**
  * Helper pra montar Response 429 com headers padrão.
  */
-export function tooManyRequestsResponse(result: RateLimitResult) {
+export function tooManyRequestsResponse(result: RateLimitResult, message?: string) {
   const retryAfterSec = Math.max(1, Math.ceil((result.reset - Date.now()) / 1000));
   return new Response(
-    JSON.stringify({ ok: false, error: "rate_limited" }),
+    // `message` opcional: forms que exibem `error` direto pro usuário podem
+    // passar texto amigável em PT-BR. Default mantém o código "rate_limited"
+    // que /contato mapeia no client.
+    JSON.stringify({ ok: false, error: message ?? "rate_limited" }),
     {
       status: 429,
       headers: {
