@@ -82,6 +82,14 @@ Este é o guia amplo: o mapa do território. Cada pilar aqui tem um aprofundamen
 
 ![Capa do Playbook de Marketing Cripto 2026 da Kaleidos, material de referência que aprofunda cada pilar deste guia.](/papers/cover-playbook.png)
 
+## Principais takeaways
+
+- **Utilidade vence hype:** o mercado pune narrativa vazia cada vez mais rápido; o melhor anúncio é o produto resolvendo algo real e visível.
+- **Um ativo denso vira dez peças:** distribuição multicanal com repurpose (thread, carrossel, vídeo, newsletter, blog) multiplica o retorno do mesmo conteúdo.
+- **Meça valor, não vaidade:** retenção, comunidade ativa e conversão on-chain dizem a verdade; likes e impressões, não. Aprofundamos em [mindshare vs métricas de vaidade](/blog/mindshare-vs-vanity-metrics-cripto).
+- **GEO é a nova descoberta:** ser citado por ChatGPT, Perplexity e Claude entrou na estratégia. A comparação completa está em [SEO vs GEO: onde investir em 2026](/blog/seo-vs-geo-2026-onde-investir).
+- **Tudo desagua num funil:** da atenção à conversão, o desenho completo está no [funil de growth cripto](/blog/funil-growth-cripto-awareness-conversao).
+
 ## Por que marketing cripto é um jogo diferente
 
 Três coisas separam marketing cripto de marketing tradicional, e ignorar qualquer uma delas custa caro.
@@ -241,6 +249,14 @@ Este guia é o aprofundamento de marketing do TGE. Faz parte do [guia completo d
 
 ![Capa do estudo de TGE da Kaleidos: o lançamento de token destrinchado como processo de marketing, fase a fase.](/papers/cover-tge.png)
 
+## Principais takeaways
+
+- **TGE é pico, não linha de chegada:** o lançamento começa 3 a 6 meses antes (narrativa, comunidade, pontos) e se prova depois, na retenção.
+- **Airdrop se desenha pra reter, não pra dumpar:** premiar uso real, filtro anti-sybil e vesting. O desenho detalhado está no [guia de airdrop e programa de pontos](/blog/airdrop-programa-de-pontos-guia-marketing-cripto), incluindo [quanto do supply alocar](/blog/airdrop-quanto-alocar-supply-roi).
+- **Tokenomics é marketing:** low-float/high-FDV é a estrutura que o mercado aprendeu a punir; float saudável comunica longo prazo.
+- **KOL amplifica, não maquia:** influenciador vetado e alinhado leva a narrativa real pra mais gente; barulho comprado descola na primeira queda.
+- **Orçamento entra na conta desde o início:** o que um lançamento custa por fase está no [guia de orçamento de TGE](/blog/orcamento-lancamento-token-tge-custo).
+
 ## A virada de chave: o TGE é o pico, não a linha de chegada
 
 A imagem errada na cabeça da maioria dos fundadores é a de uma corrida: o TGE é a linha de chegada, e depois dele "deu certo". A imagem certa é a de um pico: uma onda que você passou meses construindo e que, depois do pico, precisa virar curva sustentada.
@@ -395,6 +411,14 @@ Este post faz parte do [guia completo de marketing cripto 2026](/blog/marketing-
 
 ![Capa do estudo de mercado da Kaleidos sobre o ciclo cripto de 2026, onde RWA, stablecoin, IA-cripto e InfoFi puxam a leitura de narrativa.](/papers/cover-bull-market.png)
 
+## Principais takeaways
+
+- **Narrativa organiza o ciclo:** ela decide pra onde capital e atenção fluem; ler cedo é posicionamento, chegar tarde é competir com clones.
+- **RWA e stablecoin puxam o capital institucional:** são as narrativas com âncora no mundo real. O ângulo de marketing está em [stablecoins e RWA: a onda institucional](/blog/stablecoins-rwa-marketing-onda-institucional).
+- **IA-cripto e InfoFi puxam a fronteira:** núcleo real cercado de oportunismo; o filtro é utilidade. Sobre atenção virando ativo, veja [InfoFi e Kaito: o novo jogo da atenção](/blog/infofi-kaito-atencao-novo-jogo-cripto).
+- **Surfar narrativa é entrar com posição:** categoria própria, utilidade provada e autoridade no território, não buzzword no nome. Como isso vira marca, em [branding web3](/blog/branding-web3-marca-cripto-memoravel).
+- **O teste de narrativa real:** uso de verdade, capital sustentado, problema fora de cripto e sobrevivência a bear market.
+
 ## Por que narrativa é estratégia, não adivinhação
 
 Em cripto, **narrativa é a história dominante que organiza pra onde o capital e a atenção vão num ciclo.** Em 2017 foi ICO. Em 2020-21 foram DeFi e NFT. A narrativa define qual problema o mercado decidiu que importa, e projetos alinhados à narrativa do momento ganham atenção, liquidez e mindshare que projetos fora dela não conseguem comprar nem com verba.
@@ -529,6 +553,14 @@ Se você quer posicionar seu projeto cripto na narrativa certa (de forma que o m
 Uma comunidade cripto que não morre tem **propósito além do preço, cultura própria e senso de ownership**. Os quatro pilares: um motivo pra estar ali que não seja só ganhar dinheiro, uma cultura e memes que criam identidade, um ritmo real de engajamento (conversa, não só anúncios) e ownership de verdade: a comunidade molda o projeto, não só assiste. Servidor cheio de gente esperando airdrop é o oposto de comunidade: é uma fila que esvazia no instante em que o token chega.
 
 Este guia faz parte do [guia completo de marketing cripto 2026](/blog/marketing-cripto-guia-completo-2026) e do território de captação e comunidade que cruza com o [KOL marketing e fundraising](/blog/kol-marketing-fundraising-cripto-guia).
+
+## Principais takeaways
+
+- **Comunidade não é fila:** servidor cheio de gente esperando airdrop esvazia quando o token chega; comunidade real tem razão pra existir além do incentivo.
+- **Propósito segura na baixa:** quem acredita em algo fica quando o preço cai; quem só espera token, some.
+- **Cultura e memes fabricam o "nós":** identidade compartilhada é coesão que dinheiro não compra. Os fundamentos estão em [community building em web3](/blog/community-building-web3).
+- **Ownership transforma plateia em defensor:** governança, contribuição reconhecida e propriedade real fazem o membro carregar o projeto.
+- **Meça se está funcionando:** os números que revelam comunidade viva estão em [retenção de comunidade cripto: métricas e benchmarks](/blog/retencao-comunidade-cripto-metricas-benchmarks), na linha do que separa [mindshare de métrica de vaidade](/blog/mindshare-vs-vanity-metrics-cripto).
 
 ## A diferença entre comunidade e fila
 

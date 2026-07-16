@@ -80,6 +80,14 @@ Airdrop e programa de pontos são **ferramentas de marketing pra adquirir e rete
 
 Este guia aprofunda a parte de aquisição e retenção do [guia completo de marketing cripto 2026](/blog/marketing-cripto-guia-completo-2026) e do [guia de como lançar um token (TGE)](/blog/como-lancar-token-tge-guia-marketing). O passo a passo operacional fechado está no [Playbook de Marketing Cripto da Kaleidos](/papers).
 
+## Principais takeaways
+
+- **Airdrop e pontos são ferramentas de marketing**, não cupom de saque: o objetivo é adquirir e reter usuários, não comprar hype de um dia.
+- **O programa de pontos é o pré-jogo**: roda meses antes do TGE recompensando uso real e mantendo o engajamento até o lançamento.
+- **Anti-sybil sério é inegociável**: cada token que vai pra fazenda de bots é valor tirado de usuário real e pressão vendedora garantida.
+- **Retenção se desenha antes do drop**: utilidade do token, vesting, temporadas e ownership real. Quanto alocar e como medir retorno está em [quanto alocar de supply no airdrop e o ROI](/blog/airdrop-quanto-alocar-supply-roi).
+- **O airdrop é amplificador, não substituto de produto**: ele conversa com o resto do funil, como mostra o [funil de growth cripto da awareness à conversão](/blog/funil-growth-cripto-awareness-conversao), e com o [orçamento realista de um lançamento de token](/blog/orcamento-lancamento-token-tge-custo).
+
 ## Por que airdrop é uma das ferramentas mais poderosas, e mais mal usadas
 
 O airdrop é uma das ideias mais nativas de cripto: você pode distribuir propriedade do seu projeto pra quem ajudou a construí-lo, sem intermediário. Bem usado, ele faz três coisas que nenhum anúncio paga: **adquire** usuários (gente experimenta pra ter chance de elegibilidade), **recompensa** quem já estava (lealdade), e **descentraliza** a posse (cria uma comunidade de donos, não de espectadores).
@@ -233,6 +241,14 @@ InfoFi (**Information Finance**) é a narrativa que transforma **atenção e min
 
 Este post faz parte do [guia completo de marketing cripto 2026](/blog/marketing-cripto-guia-completo-2026) e do território de [narrativas que movem o mercado em 2026](/blog/narrativas-cripto-2026), onde InfoFi é uma das quatro narrativas-chave.
 
+## Principais takeaways
+
+- **InfoFi transformou atenção em ativo mensurável**: mindshare deixou de ser estimativa subjetiva e ganhou número, ranking e mercado.
+- **O Kaito é a plataforma de referência**: mede quanta atenção cada projeto captura e recompensa contribuição relevante via yap-to-earn.
+- **Distribuição por mérito, não por bot**: o modelo premia quem produz conteúdo real sobre o projeto, o oposto de comprar engajamento falso. A diferença entre métrica de valor e de vaidade está em [mindshare vs vanity metrics em cripto](/blog/mindshare-vs-vanity-metrics-cripto).
+- **Projeto sem substância não se salva com InfoFi**: o mecanismo amplifica narrativa real e expõe, com número, quem não tem o que dizer.
+- **Conteúdo denso ficou ainda mais valioso**: num mercado que precifica relevância, a lógica é a mesma da disputa por visibilidade em IA descrita em [SEO vs GEO: onde investir em 2026](/blog/seo-vs-geo-2026-onde-investir).
+
 ![A Mindshare Arena do Kaito: um leaderboard ao vivo que mede e ranqueia a atenção que cada projeto cripto captura, a atenção virou número (fonte: yaps.kaito.ai)](/blog/infofi-kaito-atencao-novo-jogo-cripto/print-kaito-yaps.png)
 
 ## Por que a atenção virou ativo
@@ -360,6 +376,14 @@ Se você quer entender quanto mindshare seu projeto captura e desenhar uma estra
 Stablecoins e RWA (Real World Assets) são a narrativa que trouxe o **capital institucional pra dentro de cripto**: gestoras, redes de pagamento e bancos entraram no jogo. E quando o público muda, o marketing muda. Esse decisor **fala a língua do compliance e da gestão de risco, desconfia de hype e decide por confiança**. As três regras: compliance como diferencial (não fardo), comunicar utilidade e nunca retorno, e falar duas línguas ao mesmo tempo: a do institucional cético e a do nativo cripto. Quem comunica RWA com tom de memecoin afasta exatamente quem assina o contrato.
 
 Este post aprofunda o território institucional do [guia completo de marketing cripto 2026](/blog/marketing-cripto-guia-completo-2026) e da narrativa de [stablecoin e RWA em 2026](/blog/narrativas-cripto-2026).
+
+## Principais takeaways
+
+- **O público mudou, então o marketing muda**: o decisor de stablecoin e RWA fala a língua do compliance, desconfia de hype e decide por confiança.
+- **Compliance é diferencial, não fardo**: transparência, auditoria e conformidade na frente da comunicação, não no rodapé.
+- **Utilidade, nunca retorno**: prometer ganho afasta (e expõe juridicamente); comunicar problema resolvido com prova é o que convence. Os números do mercado estão em [stablecoins e RWA: tamanho do mercado e oportunidade](/blog/stablecoins-rwa-tamanho-mercado-oportunidade-marketing).
+- **Falar duas línguas ao mesmo tempo**: traduzir a tecnologia pro institucional cético e a seriedade institucional pro nativo cripto.
+- **A onda chega ao varejo via PayFi**: cartões e contas em dólar são a ponta B2C do mesmo movimento, como mostra o estudo de [neobanks cripto e cartões em dólar](/blog/neobanks-cripto-cartoes-dolar-2026); o desenho de entrada no mercado está no [guia de go-to-market web3](/blog/gtm-web3-go-to-market-cripto).
 
 ## Por que stablecoins e RWA mudaram o jogo
 
@@ -511,6 +535,14 @@ Se você tem um projeto de stablecoin, RWA ou tokenização e precisa comunicar 
 Escolher uma agência de marketing cripto certa é avaliar **três coisas**: entendimento real do setor (tokenomics, compliance, cultura do Crypto Twitter), prova de trabalho (cases reais, conteúdo próprio, autoridade demonstrada) e foco em **métricas de valor** (retenção e comunidade, não likes). As red flags que denunciam amador: prometer retorno ou número garantido, não falar de compliance, medir só vaidade, e ser "agência genérica que também atende cripto". A pergunta-filtro mais útil: **peça pra explicarem um case real e o raciocínio por trás**. Quem entende, raciocina sobre o caso; quem não, recita um pacote de serviços.
 
 Este guia é pra quem **já decidiu contratar** e quer escolher bem. Se você ainda está mapeando o terreno, comece pelo [guia completo de marketing cripto 2026](/blog/marketing-cripto-guia-completo-2026).
+
+## Principais takeaways
+
+- **Três pilares de avaliação**: entendimento real do setor, prova de trabalho (cases e conteúdo próprio) e foco em métricas de valor.
+- **Red flags claras**: promessa de retorno garantido, silêncio sobre compliance, proposta centrada em likes e a generalista que "também atende cripto".
+- **A pergunta-filtro**: peça que expliquem um case real e o raciocínio por trás. Quem entende raciocina; quem não entende recita pacote.
+- **Tamanho não é critério, expertise é**: os trade-offs estão em [agência boutique vs agência grande no marketing cripto](/blog/agencia-boutique-vs-grande-marketing-cripto).
+- **Compare antes de fechar**: veja o panorama em [melhores agências de marketing cripto no Brasil em 2026](/blog/melhores-agencias-marketing-cripto-brasil-2026) e, se KOLs entram na proposta, os custos reais em [quanto custa KOL cripto por tier](/blog/kol-cripto-por-tier-quanto-custa-influencer).
 
 ## Por que escolher errado é caro em cripto (mais do que em outros setores)
 

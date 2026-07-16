@@ -17,6 +17,12 @@ import { blogNew7 } from "./blog-new-7";
 import { blogNew8 } from "./blog-new-8";
 import { blogNew9 } from "./blog-new-9";
 import { blogNew10 } from "./blog-new-10";
+import { blogNew11 } from "./blog-new-11";
+import { blogNew12 } from "./blog-new-12";
+import { blogNew13 } from "./blog-new-13";
+import { blogNew14 } from "./blog-new-14";
+import { blogNew15 } from "./blog-new-15";
+import { blogNew16 } from "./blog-new-16";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -34,7 +40,7 @@ export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt }
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...caseStudies];
+export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...caseStudies];
 
 /**
  * Gate de agendamento (publishedAt <= agora).
