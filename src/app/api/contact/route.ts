@@ -173,7 +173,53 @@ ${mensagem}
       },
     });
 
-    return new Response(JSON.stringify({ ok: true, notified }), {
+    // INTEGRAÇÃO CRM (KAI): lead de contato = alta intenção (prospect de vendas),
+    // então espelhamos no CRM do KAI além do Resend/PostHog. BEST-EFFORT e
+    // env-gated: só roda se KAI_CRM_INGEST_URL estiver setada; timeout curto;
+    // nunca lança nem derruba a resposta (o lead já está seguro acima).
+    let crmSynced = false;
+    const kaiIngestUrl = process.env.KAI_CRM_INGEST_URL;
+    if (kaiIngestUrl) {
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 4000);
+        const resp = await fetch(kaiIngestUrl, {
+          method: "POST",
+          signal: ctrl.signal,
+          headers: {
+            "Content-Type": "application/json",
+            ...(process.env.KAI_CRM_INGEST_TOKEN
+              ? { Authorization: `Bearer ${process.env.KAI_CRM_INGEST_TOKEN}` }
+              : {}),
+          },
+          body: JSON.stringify({
+            source: "site-contato",
+            name: String(nome).slice(0, 200),
+            email: String(email).trim().toLowerCase(),
+            company: String(empresa || "").slice(0, 200),
+            services: servicos || [],
+            message: String(mensagem).slice(0, 2000),
+            channel: attr.channel ?? null,
+            utm_source: attr.utm_source ?? null,
+            utm_campaign: attr.utm_campaign ?? null,
+          }),
+        });
+        clearTimeout(t);
+        crmSynced = resp.ok;
+        if (!resp.ok) {
+          console.error(
+            `[LEAD-FALLBACK] contact->KAI CRM respondeu ${resp.status} — lead preservado: ${leadLogPayload}`
+          );
+        }
+      } catch (err) {
+        console.error(
+          `[LEAD-FALLBACK] contact->KAI CRM falhou — lead preservado: ${leadLogPayload}`,
+          err
+        );
+      }
+    }
+
+    return new Response(JSON.stringify({ ok: true, notified, crmSynced }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
