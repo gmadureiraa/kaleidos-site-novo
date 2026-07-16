@@ -13,6 +13,7 @@ import {
   heroHtml,
 } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
+import { Web3V2Testimonials } from "@/components/web3v2/testimonials";
 import { Web3V2Processo } from "@/components/web3v2/processo-kaleidos";
 import { Web3V2Resources } from "@/components/web3v2/resources";
 import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
@@ -102,6 +103,11 @@ export function HomeShell({
         <div id="cases-section">
           <CasesCarousel variant="light" />
         </div>
+      </Reveal>
+
+      {/* 5b · Depoimentos — prova social real (dados de testimonials-data) */}
+      <Reveal>
+        <Web3V2Testimonials />
       </Reveal>
 
       {/* 6 · Diferenciais — "Por que a Kaleidos" / olho */}
