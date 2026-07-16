@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
 import { AnalyticsRouter } from "@/components/analytics-router";
 import { GoogleAnalytics } from "@/components/analytics";
+import { Clarity } from "@/components/clarity";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
@@ -163,6 +164,11 @@ export default function RootLayout({
               {children}
             </Suspense>
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
+            {/* Microsoft Clarity (session replay + heatmaps) site-wide. Usa
+                NEXT_PUBLIC_CLARITY_ID se setado, senão o projeto padrão. Montado
+                aqui no layout raiz pra valer em TODAS as páginas (antes só a home
+                via home-shell, e ainda gated numa env que não estava setada). */}
+            <Clarity />
             <Suspense fallback={null}>
               <AnalyticsRouter />
             </Suspense>

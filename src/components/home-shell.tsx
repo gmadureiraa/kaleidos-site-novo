@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { TrackingProbe } from "@/components/tracking-probe";
 import { Web3V2CtaTracking } from "@/components/web3v2/cta-tracking";
-import { Web3V2Clarity } from "@/components/web3v2/clarity-v2";
 import {
   Web3V2Defs,
   Web3V2Hero,
@@ -65,9 +64,8 @@ export function HomeShell({
       <Suspense fallback={null}>
         <Web3V2FontPreview />
       </Suspense>
-      {/* Microsoft Clarity (session replay + heatmap) — só carrega se
-          NEXT_PUBLIC_CLARITY_ID estiver setado na Vercel */}
-      <Web3V2Clarity />
+      {/* Clarity agora é montado no layout raiz (site-wide), não mais aqui,
+          pra não carregar 2x na home. Ver src/app/layout.tsx. */}
       {/* Eventos NOMEADOS nos CTAs (wa.me / calendly) injetados via HTML */}
       <Web3V2CtaTracking />
       {/* defs (SVG symbols) + CSS escopado das seções novas */}

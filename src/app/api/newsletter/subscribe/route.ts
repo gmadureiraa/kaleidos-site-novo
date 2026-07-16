@@ -22,7 +22,11 @@ function getResend(): Resend {
   return _resend;
 }
 
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID ?? "";
+// Lida por request (não no load do módulo): evita capturar um snapshot de env
+// vazio se o binding da Vercel só existir no runtime do deploy novo.
+function getAudienceId(): string {
+  return process.env.RESEND_AUDIENCE_ID ?? "";
+}
 
 /**
  * POST /api/newsletter/subscribe
@@ -32,6 +36,7 @@ const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID ?? "";
  */
 export async function POST(req: NextRequest) {
   try {
+    const AUDIENCE_ID = getAudienceId();
     // Rate limit: 5 reqs / 10min por IP.
     const ip = getClientIp(req);
     const rl = await rateLimit("newsletter", ip, { max: 5, window: "10 m" });
