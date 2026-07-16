@@ -25,6 +25,9 @@ const STYLE = `
 .kv2 .w3-tcard:hover{transform:translateY(-8px) rotate(0deg)!important;}
 .kv2 .w3-tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
 @media (max-width:960px){.kv2 .w3-tgrid{grid-template-columns:1fr!important;gap:18px!important;}.kv2 .w3-tcard{transform:none!important;}}
+/* MOBILE: 2 depoimentos bastam como prova social; o 3º empilhado deixava a
+   seção longa demais. Desktop segue com os 3. */
+@media (max-width:600px){.kv2 .w3-tgrid .w3-tcard:nth-child(3){display:none!important;}}
 `;
 
 // Alterna acento verde/rosa por card (mesmo padrão dos cards de processo).

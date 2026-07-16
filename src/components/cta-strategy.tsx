@@ -38,15 +38,17 @@ export function CtaStrategy() {
   const GREEN = { bg: "#7CF067", fg: "#0A1A0E", border: "transparent" };
   const PINK = { bg: "#D262B2", fg: "#1A0E1A", border: "transparent" };
   const GHOST = { bg: "transparent", fg: "#E8E8E8", border: "rgba(255,255,255,0.22)" };
-  const chips: { label: string; label_en: string; tone: typeof GREEN; rot: string }[] = [
-    { label: "Conteúdo", label_en: "Content", tone: GREEN, rot: "-6deg" },
-    { label: "Growth", label_en: "Growth", tone: PINK, rot: "5deg" },
-    { label: "IA & Automação", label_en: "AI & Automation", tone: GHOST, rot: "-3deg" },
-    { label: "Lançamentos", label_en: "Launches", tone: PINK, rot: "7deg" },
-    { label: "Vídeo & Motion", label_en: "Video & Motion", tone: GHOST, rot: "-5deg" },
-    { label: "Design", label_en: "Design", tone: GREEN, rot: "4deg" },
-    { label: "Newsletter", label_en: "Newsletter", tone: GHOST, rot: "-4deg" },
-    { label: "Sites & Web Apps", label_en: "Sites & Web Apps", tone: PINK, rot: "6deg" },
+  // `mobile: false` esconde o chip em telas pequenas (só decoração; no mobile
+  // 4 chips bastam pra dar o recado sem virar nuvem de tags).
+  const chips: { label: string; label_en: string; tone: typeof GREEN; rot: string; mobile: boolean }[] = [
+    { label: "Conteúdo", label_en: "Content", tone: GREEN, rot: "-6deg", mobile: true },
+    { label: "Growth", label_en: "Growth", tone: PINK, rot: "5deg", mobile: true },
+    { label: "IA & Automação", label_en: "AI & Automation", tone: GHOST, rot: "-3deg", mobile: true },
+    { label: "Lançamentos", label_en: "Launches", tone: PINK, rot: "7deg", mobile: true },
+    { label: "Vídeo & Motion", label_en: "Video & Motion", tone: GHOST, rot: "-5deg", mobile: false },
+    { label: "Design", label_en: "Design", tone: GREEN, rot: "4deg", mobile: false },
+    { label: "Newsletter", label_en: "Newsletter", tone: GHOST, rot: "-4deg", mobile: false },
+    { label: "Sites & Web Apps", label_en: "Sites & Web Apps", tone: PINK, rot: "6deg", mobile: false },
   ];
 
   return (
@@ -104,7 +106,7 @@ export function CtaStrategy() {
                 damping: 18,
               }}
               whileHover={{ scale: 1.08, rotate: 0 }}
-              className="inline-flex select-none items-center rounded-full px-4 py-2 text-sm font-bold shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]"
+              className={`${c.mobile ? "inline-flex" : "hidden sm:inline-flex"} select-none items-center rounded-full px-4 py-2 text-sm font-bold shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]`}
               style={{ background: c.tone.bg, color: c.tone.fg, border: `1px solid ${c.tone.border}` }}
             >
               {isEn ? c.label_en : c.label}

@@ -75,6 +75,10 @@ const STYLE = `
 .kv2 .w3-procard:hover{transform:translateY(-8px) rotate(0deg)!important;}
 .kv2 .w3-procgrid2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 @media (max-width:820px){.kv2 .w3-procgrid2{grid-template-columns:1fr!important;gap:18px!important;}.kv2 .w3-procard{transform:none!important;}}
+/* MOBILE: os 3 blocos animados (Orbiting/Beam/IconCloud) somavam ~600px de
+   altura e custo de JS. Escondidos em telas pequenas; o card fica só com
+   número + título + texto. Desktop intocado. */
+@media (max-width:820px){.kv2 .w3-procanim{display:none!important;}}
 `;
 
 export function Web3V2Processo() {
@@ -127,6 +131,7 @@ export function Web3V2Processo() {
               }}
             >
               <div
+                className="w3-procanim"
                 style={{
                   width: "100%",
                   height: 200,

@@ -12,7 +12,7 @@ import {
   AudienceSectionsLang,
 } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
-import { Web3V2Testimonials } from "@/components/web3v2/testimonials";
+// import { Web3V2Testimonials } from "@/components/web3v2/testimonials"; // depoimentos desativados por ora
 import { Web3V2Processo } from "@/components/web3v2/processo-kaleidos";
 import { Web3V2Resources } from "@/components/web3v2/resources";
 import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
@@ -110,10 +110,11 @@ export function HomeShell({
         </div>
       </Reveal>
 
-      {/* 5b · Depoimentos — prova social real (dados de testimonials-data) */}
-      <Reveal>
+      {/* 5b · Depoimentos — DESATIVADO por ora (pedido do Gabriel, 16/07). Manter
+          comentado até liberar os depoimentos. Reativar é só descomentar. */}
+      {/* <Reveal>
         <Web3V2Testimonials />
-      </Reveal>
+      </Reveal> */}
 
       {/* 6 · Diferenciais — "Por que a Kaleidos" / olho */}
       <Web3V2Diferenciais />
@@ -133,8 +134,13 @@ export function HomeShell({
         <FAQSection variant="kaleidos" />
       </Reveal>
 
-      {/* 10 · "Post genérico não constrói reputação" */}
-      <Web3V2Problema />
+      {/* 10 · "Post genérico não constrói reputação"
+          MOBILE: escondida. É a 10ª seção densa, repete a mensagem dos
+          Diferenciais e o trio de CTAs que já apareceu 3x antes (hero,
+          serviços, CTA final). No desktop segue igual. */}
+      <div className="hidden md:block">
+        <Web3V2Problema />
+      </div>
 
       {/* 12 · Footer / Contato */}
       <Reveal>

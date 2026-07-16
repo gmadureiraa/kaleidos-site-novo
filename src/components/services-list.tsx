@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -34,6 +35,12 @@ export function ServicesList({
   const withLang = (path: string) =>
     locale === "en" ? `${path}${path.includes("?") ? "&" : "?"}lang=en` : path;
   const { trackClick } = useAnalytics();
+
+  // MOBILE: a lista de 9 serviços ficava longa demais numa tela pequena.
+  // Mostramos os 5 primeiros e um botão "Ver todos" expande o resto.
+  // Desktop (sm+) sempre mostra os 9. Nenhum serviço foi removido.
+  const MOBILE_VISIBLE = 5;
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const services = isEn
     ? [
@@ -210,10 +217,14 @@ export function ServicesList({
           </motion.div>
 
           {/* Lista numerada */}
+          <div>
           <ul className="divide-y divide-white/10 border-t border-white/10">
             {services.map((s, i) => (
               <motion.li
                 key={s.title}
+                className={
+                  i >= MOBILE_VISIBLE && !showAllMobile ? "hidden sm:block" : undefined
+                }
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -249,6 +260,19 @@ export function ServicesList({
               </motion.li>
             ))}
           </ul>
+          {/* Toggle só no mobile: expande os serviços restantes. */}
+          {!showAllMobile && (
+            <button
+              type="button"
+              onClick={() => setShowAllMobile(true)}
+              className="mt-6 w-full rounded-xl border border-white/15 bg-white/[0.03] py-3.5 text-sm font-semibold text-gray-300 transition-colors hover:text-white sm:hidden"
+            >
+              {isEn
+                ? `See all ${services.length} services`
+                : `Ver todos os ${services.length} serviços`}
+            </button>
+          )}
+          </div>
         </div>
       </div>
     </section>
