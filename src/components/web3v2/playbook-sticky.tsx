@@ -68,7 +68,7 @@ export function Web3V2PlaybookSticky() {
           __html: `
 @keyframes kldStickyIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes kldStickyOut{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(24px) scale(.96)}}
-.kld-sticky{position:fixed;right:24px;bottom:24px;z-index:200;width:230px;background:#fff;border:1.5px solid ${INK};border-radius:18px;box-shadow:8px 8px 0 ${GREEN}, 0 18px 40px -18px rgba(0,0,0,.5);overflow:hidden;animation:kldStickyIn .42s cubic-bezier(.22,1,.36,1) both;font-family:'Plus Jakarta Sans',Inter,sans-serif;}
+.kld-sticky{position:fixed;left:24px;bottom:24px;z-index:200;width:230px;background:#fff;border:1.5px solid ${INK};border-radius:18px;box-shadow:8px 8px 0 ${GREEN}, 0 18px 40px -18px rgba(0,0,0,.5);overflow:hidden;animation:kldStickyIn .42s cubic-bezier(.22,1,.36,1) both;font-family:'Plus Jakarta Sans',Inter,sans-serif;}
 .kld-sticky.is-closing{animation:kldStickyOut .26s ease-in both;}
 .kld-sticky-x{position:absolute;top:8px;right:8px;z-index:2;width:26px;height:26px;border-radius:999px;border:1.5px solid ${INK};background:#fff;color:${INK};font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
 .kld-sticky-x:hover{background:${INK};color:#fff;}
@@ -80,7 +80,7 @@ export function Web3V2PlaybookSticky() {
 .kld-sticky-btn{width:100%;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:${INK};color:#fff;border:1.5px solid ${INK};border-radius:11px;box-shadow:3px 3px 0 ${GREEN};padding:11px 16px;font-weight:800;font-size:14px;font-family:Atelier,sans-serif;cursor:pointer;transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s;}
 .kld-sticky-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 ${GREEN};}
 @media (max-width:600px){
-  .kld-sticky{right:12px;left:auto;bottom:12px;width:150px;}
+  .kld-sticky{left:12px;right:auto;bottom:12px;width:150px;}
   .kld-sticky-body{padding:9px 10px 10px;}
   .kld-sticky-badge{font-size:8px;letter-spacing:.5px;padding:2px 6px;}
   .kld-sticky-btn{font-size:12px;padding:8px 10px;border-radius:9px;gap:5px;margin-top:8px;}
