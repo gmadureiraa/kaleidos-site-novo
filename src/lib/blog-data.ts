@@ -111,7 +111,16 @@ export async function getPublishedPostCardsAsync(
   now: Date = new Date()
 ): Promise<BlogCardMeta[]> {
   const all = await getPublishedPostsAsync(now);
-  return all.map(toBlogCard);
+  // Listagem do /blog ordenada por data desc (mais recente primeiro) — antes vinha
+  // na ordem do array, então post novo nascia no meio do acervo. Datas ISO (YYYY-MM-DD)
+  // comparam lexicograficamente; empate cai no updatedAt e depois no slug (estável).
+  return all
+    .map(toBlogCard)
+    .sort(
+      (a, b) =>
+        (b.publishedAt < a.publishedAt ? -1 : b.publishedAt > a.publishedAt ? 1 : 0) ||
+        a.slug.localeCompare(b.slug)
+    );
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
@@ -123,16 +132,40 @@ export function getFeaturedPost(): BlogPost | undefined {
   return published.find((post) => post.featured) || published[0];
 }
 
+// Hash estável de string (djb2-ish) pra desempate determinístico e rotativo.
+function hashSlug(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+/**
+ * Rankeia relacionados por relevância REAL (mesma categoria + tags em comum) e
+ * desempata com um hash que combina o slug atual + o candidato. Isso espalha os
+ * links pelo acervo (cada post atual gera um conjunto diferente), em vez de todo
+ * mundo linkar sempre nos mesmos 3 primeiros da categoria (que deixava ~74/196
+ * posts órfãos de link interno).
+ */
+function rankRelated(current: BlogPost, others: BlogPost[], limit: number): BlogPost[] {
+  const curTags = new Set((current.tags ?? []).map((t) => t.toLowerCase()));
+  return others
+    .map((p) => {
+      const shared = (p.tags ?? []).reduce((n, t) => n + (curTags.has(t.toLowerCase()) ? 1 : 0), 0);
+      const score = (p.category === current.category ? 2 : 0) + shared;
+      const tie = hashSlug(current.slug + "|" + p.slug);
+      return { p, score, tie };
+    })
+    .sort((a, b) => b.score - a.score || a.tie - b.tie)
+    .slice(0, limit)
+    .map((x) => x.p);
+}
+
 export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   const current = getPostBySlug(currentSlug);
   // Relacionados nunca expõem posts agendados (publishedAt no futuro).
   const others = getPublishedPosts().filter((post) => post.slug !== currentSlug);
   if (!current) return others.slice(0, limit);
-
-  // Internal linking por cluster: prioriza mesma categoria, completa com o resto.
-  const sameCategory = others.filter((p) => p.category === current.category);
-  const rest = others.filter((p) => p.category !== current.category);
-  return [...sameCategory, ...rest].slice(0, limit);
+  return rankRelated(current, others, limit);
 }
 
 // --- Resolvers de SEO/GEO com fallback (campos opcionais) ---
@@ -229,7 +262,5 @@ export async function getRelatedPostsAsync(currentSlug: string, limit = 3): Prom
     ?? (await getPostBySlugAsync(currentSlug));
   const others = published.filter((post) => post.slug !== currentSlug);
   if (!current) return others.slice(0, limit);
-  const sameCategory = others.filter((p) => p.category === current.category);
-  const rest = others.filter((p) => p.category !== current.category);
-  return [...sameCategory, ...rest].slice(0, limit);
+  return rankRelated(current, others, limit);
 }
