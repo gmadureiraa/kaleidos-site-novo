@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Anima um número de 0 até o valor quando entra na viewport.
- * Suporta prefixo/sufixo (ex: "+", "M", "%") pra usar com stats tipo "30M+".
+ * Suporta prefixo/sufixo (ex: "+", "M", "%") pra usar com stats tipo "125M+".
  */
 export function NumberTicker({
   value,

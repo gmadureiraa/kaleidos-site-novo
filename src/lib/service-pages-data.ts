@@ -123,13 +123,13 @@ const HERO_IMAGES: Record<string, string> = {
 
 const STATS_BASE_PT: ServiceStat[] = [
   { value: "20+", label: "Projetos cripto atendidos" },
-  { value: "Desde 2021", label: "Nativos de cripto e web3" },
-  { value: "30M+", label: "Views gerados" },
+  { value: "Desde 2020", label: "Nativos de cripto e web3" },
+  { value: "125M+", label: "Views gerados" },
 ];
 const STATS_BASE_EN: ServiceStat[] = [
   { value: "20+", label: "Crypto projects served" },
-  { value: "Since 2021", label: "Crypto & web3 native" },
-  { value: "30M+", label: "Views generated" },
+  { value: "Since 2020", label: "Crypto & web3 native" },
+  { value: "125M+", label: "Views generated" },
 ];
 
 export const SERVICE_PAGES: ServiceData[] = [
@@ -206,7 +206,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para SEO Cripto",
       whyUs: [
-        { title: "Nativos de cripto desde 2021", desc: "Entendemos DeFi, L1/L2, tokenomics e a linguagem do seu público. Não é SEO genérico." },
+        { title: "Nativos de cripto desde 2020", desc: "Entendemos DeFi, L1/L2, tokenomics e a linguagem do seu público. Não é SEO genérico." },
         { title: "GEO antes da concorrência", desc: "Otimizamos pra ser citado por ChatGPT, Perplexity e AI Overviews enquanto o resto ainda nem olha pra isso." },
         { title: "Conteúdo que vira autoridade", desc: "Papers, guias e blog técnico que rankeiam e ainda servem de prova de autoridade comercial." },
         { title: "Foco em entregável, não em vaidade", desc: "Ranking que gera demanda qualificada, não tráfego que não converte." },
@@ -330,7 +330,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Crypto SEO",
       whyUs: [
-        { title: "Crypto-native since 2021", desc: "We get DeFi, L1/L2, tokenomics and your audience's language. This isn't generic SEO." },
+        { title: "Crypto-native since 2020", desc: "We get DeFi, L1/L2, tokenomics and your audience's language. This isn't generic SEO." },
         { title: "GEO ahead of the curve", desc: "We optimize to be cited by ChatGPT, Perplexity and AI Overviews while everyone else ignores it." },
         { title: "Content that becomes authority", desc: "Papers, guides and technical blog that rank and double as commercial proof." },
         { title: "Deliverable-focused, not vanity", desc: "Rankings that drive qualified demand, not traffic that never converts." },
@@ -461,7 +461,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para Consultoria & GTM",
       whyUs: [
-        { title: "Consultoria cripto-nativa desde 2021", desc: "Já vimos dezenas de lançamentos. Sabemos o que funciona e o que só queima budget." },
+        { title: "Consultoria cripto-nativa desde 2020", desc: "Já vimos dezenas de lançamentos. Sabemos o que funciona e o que só queima budget." },
         { title: "Produto + marca + token alinhados", desc: "Não tratamos marketing isolado: conectamos tudo num sistema de crescimento." },
         { title: "Frameworks acionáveis", desc: "Entregamos plano que o time consegue executar, não slide bonito que vira gaveta." },
         { title: "Visão de quem também executa", desc: "Estratégia desenhada por quem produz conteúdo e roda lançamento de verdade." },
@@ -510,7 +510,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signature: [
         { value: "3–6 semanas", label: "até os frameworks na mão" },
         { value: "1 narrativa", label: "produto + marca + token na mesma história" },
-        { value: "Desde 2021", label: "dezenas de lançamentos cripto acompanhados" },
+        { value: "Desde 2020", label: "dezenas de lançamentos cripto acompanhados" },
       ],
       whatsappMessage: "Olá! Preciso de consultoria de estratégia e go-to-market pro meu projeto cripto. Podem me ajudar?",
       metaTitle: "Consultoria Web3 & Go-to-Market - Kaleidos Digital",
@@ -585,7 +585,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Consulting & GTM",
       whyUs: [
-        { title: "Crypto-native consulting since 2021", desc: "We've seen dozens of launches. We know what works and what just burns budget." },
+        { title: "Crypto-native consulting since 2020", desc: "We've seen dozens of launches. We know what works and what just burns budget." },
         { title: "Product + brand + token aligned", desc: "We don't treat marketing in isolation: we connect it all into one growth system." },
         { title: "Actionable frameworks", desc: "We deliver a plan your team can execute, not a pretty deck that gets shelved." },
         { title: "Built by people who execute", desc: "Strategy designed by those who actually produce content and run launches." },
@@ -634,7 +634,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signature: [
         { value: "3–6 weeks", label: "to frameworks in hand" },
         { value: "1 narrative", label: "product + brand + token, one story" },
-        { value: "Since 2021", label: "dozens of crypto launches navigated" },
+        { value: "Since 2020", label: "dozens of crypto launches navigated" },
       ],
       whatsappMessage: "Hello! I need strategy and go-to-market consulting for my crypto project. Can you help?",
       metaTitle: "Web3 Consulting & Go-to-Market - Kaleidos Digital",
@@ -901,7 +901,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       whyUs: [
         { title: "Voz cripto-nativa", desc: "Falamos a língua do X cripto: narrativa, reply, timing. Não é social genérico." },
         { title: "Conteúdo que retém", desc: "Threads e carrosséis desenhados pra parar o scroll e gerar compartilhamento." },
-        { title: "30M+ views gerados", desc: "Track record real de conteúdo que viraliza, não promessa." },
+        { title: "125M+ views gerados", desc: "Track record real de conteúdo que viraliza, não promessa." },
         { title: "Consistência que constrói confiança", desc: "Presença constante e coerente, o que separa projeto sério de projeto fantasma." },
       ],
       faqTitle: "Perguntas frequentes",
@@ -946,7 +946,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signatureTitle: "Presença que vira ativo",
       signatureSubtitle: "Consistência e voz constroem a confiança que paid nenhum compra.",
       signature: [
-        { value: "30M+", label: "views gerados em conteúdo cripto" },
+        { value: "125M+", label: "views gerados em conteúdo cripto" },
         { value: "Real-time", label: "engajamento nas janelas de narrativa" },
         { value: "Voz própria", label: "inconfundível, não social genérico" },
       ],
@@ -1025,7 +1025,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       whyUs: [
         { title: "Crypto-native voice", desc: "We speak crypto X: narrative, replies, timing. This isn't generic social." },
         { title: "Content that retains", desc: "Threads and carousels designed to stop the scroll and drive shares." },
-        { title: "30M+ views generated", desc: "A real track record of content that goes viral, not a promise." },
+        { title: "125M+ views generated", desc: "A real track record of content that goes viral, not a promise." },
         { title: "Consistency that builds trust", desc: "Constant, coherent presence, what separates a serious project from a ghost." },
       ],
       faqTitle: "Frequently asked questions",
@@ -1070,7 +1070,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signatureTitle: "Presence that becomes an asset",
       signatureSubtitle: "Consistency and voice build the trust no paid budget can buy.",
       signature: [
-        { value: "30M+", label: "views generated in crypto content" },
+        { value: "125M+", label: "views generated in crypto content" },
         { value: "Real-time", label: "engagement in narrative windows" },
         { value: "Own voice", label: "unmistakable, not generic social" },
       ],

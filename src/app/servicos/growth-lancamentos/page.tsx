@@ -212,7 +212,7 @@ export default function KaleidosGrowthPage() {
                     <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Launches' : 'Lançamentos'}</div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>30M+</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>125M+</div>
                     <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Views generated' : 'Views gerados'}</div>
                   </div>
                   <div>

@@ -29,7 +29,7 @@ import { PacotesCtaTracking } from "./cta-tracking";
 export const metadata: Metadata = {
   title: "Pacotes Kaleidos — marketing cripto por objetivo",
   description:
-    "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 30M+ de views e executou 50+ lançamentos. Marque uma call.",
+    "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 125M+ de views e executou 50+ lançamentos. Marque uma call.",
   alternates: { canonical: "/pacotes" },
   // Fundo de funil: acessível por link direto (proposta / CTA de blog), fora do
   // índice de busca — decisão D3/A4 do Ultraplan (preço não público no topo).
@@ -282,17 +282,17 @@ export default function PacotesPage() {
               <div className="l">de satisfação</div>
             </div>
           </div>
+          {/* ⚠️ GABRIEL: bloco de depoimento oculto até ter um quote REAL de cliente
+              (Crypto.com / Ledger / Mercado Bitcoin / Defiverso / Parfin). O
+              placeholder {{PROVA_REAL}} estava renderizando VISÍVEL em produção
+              (página de fundo de funil, linkada em propostas). Ao ter o depoimento,
+              trocar o texto abaixo e remover o `hidden`/comentário. */}
+          {/*
           <blockquote className="quote">
-            {/* ⚠️ GABRIEL: substituir por um depoimento REAL de cliente
-                (Crypto.com / Ledger / Mercado Bitcoin / Defiverso / Parfin).
-                Não inventei quote nem autor. */}
-            <p>
-              &ldquo;<span className="ph">{"{{PROVA_REAL — depoimento de cliente aqui}}"}</span>&rdquo;
-            </p>
-            <span className="cite">
-              <span className="ph">{"{{Nome · Cargo · Marca}}"}</span>
-            </span>
+            <p>&ldquo;<span className="ph">DEPOIMENTO REAL AQUI</span>&rdquo;</p>
+            <span className="cite"><span className="ph">Nome · Cargo · Marca</span></span>
           </blockquote>
+          */}
         </div>
       </section>
 

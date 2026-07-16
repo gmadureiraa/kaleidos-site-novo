@@ -68,7 +68,7 @@ const gridlite = localFont({
 
 export const metadata: Metadata = {
   title: "Kaleidos — Agência de Marketing Digital para Cripto, Web3 e Fintech",
-  description: "Agência de marketing digital especializada em cripto, web3 e fintech. IA integrada, 8 clientes ativos, 120+ peças de conteúdo por mês.",
+  description: "Agência de marketing digital nativa do mercado cripto, web3 e fintech desde 2020. Estratégia, conteúdo e lançamentos com IA integrada.",
   keywords: process.env.NEXT_PUBLIC_SITE_KEYWORDS || "agência marketing cripto, marketing digital web3, agência conteúdo cripto, automação marketing ia, lançamento digital cripto, conteúdo fintech, growth hacking cripto, marketing defi, social media cripto",
   authors: [{ name: "Kaleidos Digital" }],
   creator: "Kaleidos Digital",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Kaleidos — Agência de Marketing Digital para Cripto, Web3 e Fintech",
-    description: "Agência de marketing digital especializada em cripto, web3 e fintech. IA integrada, 8 clientes ativos, 120+ peças de conteúdo por mês.",
+    description: "Agência de marketing digital nativa do mercado cripto, web3 e fintech desde 2020. Estratégia, conteúdo e lançamentos com IA integrada.",
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://kaleidos.com.br',
     siteName: process.env.NEXT_PUBLIC_SITE_NAME || 'Kaleidos Digital',
     images: [
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Kaleidos — Agência de Marketing Digital para Cripto, Web3 e Fintech",
-    description: "Agência de marketing digital especializada em cripto, web3 e fintech. IA integrada, 8 clientes ativos, 120+ peças de conteúdo por mês.",
+    description: "Agência de marketing digital nativa do mercado cripto, web3 e fintech desde 2020. Estratégia, conteúdo e lançamentos com IA integrada.",
     images: ['/Kaleidos/imagens/Capa.png'],
     creator: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '@digitalkaleidos',
     site: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '@digitalkaleidos',

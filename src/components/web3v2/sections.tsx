@@ -149,15 +149,15 @@ const MANIFESTO_HTML = `
       </p>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(24px,5vw,64px);margin:34px auto 0;max-width:880px;">
         <div style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#2E9E32;letter-spacing:-1px;">+R$30mi</div>
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#2E9E32;letter-spacing:-1px;">+R$46mi</div>
           <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">faturados pelos<br>nossos clientes</div>
         </div>
         <div style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#D262B2;letter-spacing:-1px;">+100mi</div>
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#D262B2;letter-spacing:-1px;">+125mi</div>
           <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">de views geradas<br>em redes sociais</div>
         </div>
         <div style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#14110D;letter-spacing:-1px;">50+</div>
+          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#14110D;letter-spacing:-1px;">30+</div>
           <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">marcas cripto<br>atendidas</div>
         </div>
       </div>

@@ -10,8 +10,11 @@ export const KALEIDOS_METRICS = {
   designsCriados: "600+",
   designsCriados_en: "600+",
 
-  viewsReels: "30M+",
-  viewsReels_en: "30M+",
+  viewsReels: "125M+",
+  viewsReels_en: "125M+",
+
+  faturamentoClientes: "R$46mi+",
+  faturamentoClientes_en: "$46M+",
 
   // Operacional
   lancamentos: "50+",
@@ -21,8 +24,8 @@ export const KALEIDOS_METRICS = {
   satisfacaoCliente_en: "98%",
 
   // Contagem de projetos/clientes
-  projetosAtendidos: "20+",
-  projetosAtendidos_en: "20+",
+  projetosAtendidos: "30+",
+  projetosAtendidos_en: "30+",
 
   // Crescimento médio
   crescimentoMedio: "200%",
