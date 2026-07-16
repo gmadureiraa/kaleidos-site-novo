@@ -83,7 +83,7 @@ export function CtaStrategy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-4xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl"
+          className="font-display text-4xl font-bold leading-[1.08] tracking-[0.01em] text-white sm:text-6xl lg:text-7xl"
         >
           {isEn ? "Let's talk" : "Vamos falar de"}
           <br />

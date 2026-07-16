@@ -132,14 +132,14 @@ const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
     headlineHtml:
       'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
     subHtml:
-      'Do conteúdo ao lançamento de token: <strong style="color:#14110D;">estratégia e execução</strong> para exchanges, fintechs e projetos web3 que querem <strong style="color:#14110D;">virar referência</strong>. Cripto-nativa desde 2020.',
+      '<strong style="color:#14110D;">Estratégia e execução</strong> para marcas cripto que querem <strong style="color:#14110D;">virar referência</strong>.',
   },
   en: {
     badge: "Crypto-native agency since 2020",
     headlineHtml:
       'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the Brazilian crypto market.',
     subHtml:
-      'From content to token launch: <strong style="color:#14110D;">strategy and execution</strong> for exchanges, fintechs and web3 projects that want to <strong style="color:#14110D;">become a market reference</strong>. Crypto-native since 2020.',
+      '<strong style="color:#14110D;">Strategy and execution</strong> for crypto brands that want to <strong style="color:#14110D;">become a market reference</strong>.',
   },
 };
 
@@ -185,7 +185,6 @@ export function heroHtml(o: HeroOpts = {}, l: Locale = "pt") {
       <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;">${subHtml}</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
         <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">${ui.schedule}</a>
-        <a href="/cases${l === "en" ? "?lang=en" : ""}" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14110D;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">${ui.cases}</a>
       </div>
       <div style="margin-top:16px;font-size:14px;color:#6b6258;">${ui.waPrefix} <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${ui.waLink}</a></div>
     </div>
@@ -197,22 +196,16 @@ const MANIFESTO_COPY = {
   pt: {
     handsAlt: "Duas mãos quase se tocando, em duotone verde e rosa Kaleidos",
     paragraph:
-      'Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, uma agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span> que resolve o problema mais difícil do mercado: <span style="color:#2E9E32;font-weight:800;">atenção</span>. A gente cria <span style="color:#D262B2;font-weight:700;">conteúdo</span> que conecta, desenha <span style="color:#D262B2;font-weight:700;">estratégia</span> que sustenta e orquestra <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Dê uma olhada nos nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
+      'Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span>. <span style="color:#D262B2;font-weight:700;">Conteúdo</span>, <span style="color:#D262B2;font-weight:700;">estratégia</span> e <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Veja nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
     paragraphShort:
       'Somos a <strong style="font-weight:800;">Kaleidos</strong>, agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span>. <span style="color:#D262B2;font-weight:700;">Conteúdo</span>, <span style="color:#D262B2;font-weight:700;">estratégia</span> e <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não ignora. Veja nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
-    statRevenue: "faturados pelos<br>nossos clientes",
-    statViews: "de views geradas<br>em redes sociais",
-    statBrands: "marcas cripto<br>atendidas",
   },
   en: {
     handsAlt: "Two hands almost touching, in Kaleidos green and pink duotone",
     paragraph:
-      'We are <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, a crypto-native <span style="color:#2E9E32;font-weight:800;">strategic marketing</span> agency solving the hardest problem in this market: <span style="color:#2E9E32;font-weight:800;">attention</span>. We create <span style="color:#D262B2;font-weight:700;">content</span> that connects, design <span style="color:#D262B2;font-weight:700;">strategy</span> that lasts and orchestrate <span style="color:#2E9E32;font-weight:800;">launches</span> the market cannot ignore. Take a look at our <a href="/cases?lang=en" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
+      'We are <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, a crypto-native <span style="color:#2E9E32;font-weight:800;">strategic marketing</span> agency. <span style="color:#D262B2;font-weight:700;">Content</span>, <span style="color:#D262B2;font-weight:700;">strategy</span> and <span style="color:#2E9E32;font-weight:800;">launches</span> the market cannot ignore. See our <a href="/cases?lang=en" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
     paragraphShort:
       'We are <strong style="font-weight:800;">Kaleidos</strong>, a crypto-native <span style="color:#2E9E32;font-weight:800;">strategic marketing</span> agency. <span style="color:#D262B2;font-weight:700;">Content</span>, <span style="color:#D262B2;font-weight:700;">strategy</span> and <span style="color:#2E9E32;font-weight:800;">launches</span> the market cannot ignore. See our <a href="/cases?lang=en" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
-    statRevenue: "in revenue generated<br>by our clients",
-    statViews: "views generated<br>on social media",
-    statBrands: "crypto brands<br>served",
   },
 } as const;
 
@@ -230,20 +223,6 @@ const manifestoHtml = (l: Locale) => `
       <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(22px,3vw,38px);line-height:1.28;letter-spacing:-.5px;color:#14110D;margin:36px 0 0;text-wrap:pretty;text-align:center;">
         <span class="w3-mani-full">${MANIFESTO_COPY[l].paragraph}</span><span class="w3-mani-short">${MANIFESTO_COPY[l].paragraphShort}</span>
       </p>
-      <div class="w3-stats" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(24px,5vw,64px);margin:34px auto 0;max-width:880px;">
-        <div class="w3-stat" style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#2E9E32;letter-spacing:-1px;">+R$46mi</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statRevenue}</div>
-        </div>
-        <div class="w3-stat" style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#D262B2;letter-spacing:-1px;">+125mi</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statViews}</div>
-        </div>
-        <div class="w3-stat" style="text-align:center;min-width:150px;">
-          <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#14110D;letter-spacing:-1px;">30+</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statBrands}</div>
-        </div>
-      </div>
     </div>
   </section>
 `;
@@ -324,8 +303,8 @@ const DIFERENCIAIS_COPY = {
     c1b: "No mercado todo dia. Sem buzzword vazia, sem traduzir errado o que o seu projeto faz.",
     c2t: "Criatividade com tese",
     c2b: "Bonito de ver, fácil de medir. Estética e estratégia na mesma peça.",
-    c3t: "Velocidade de timeline",
-    c3b: "O mercado cripto não espera. Publicamos no ritmo da narrativa, não do calendário.",
+    c3t: "Entrega no prazo combinado",
+    c3b: "Calendário definido junto com você, revisões em dia e publicação sem atraso.",
   },
   en: {
     eyeAlt: "Close-up of an eye in halftone, the native eye of Kaleidos",
@@ -336,8 +315,8 @@ const DIFERENCIAIS_COPY = {
     c1b: "In the market every day. No empty buzzwords, no mistranslating what your project does.",
     c2t: "Creativity with a thesis",
     c2b: "Beautiful to look at, easy to measure. Aesthetics and strategy in the same piece.",
-    c3t: "Timeline speed",
-    c3b: "The crypto market does not wait. We publish at the pace of the narrative, not the calendar.",
+    c3t: "Delivery on the agreed deadline",
+    c3b: "A calendar defined with you, reviews on time and publishing without delays.",
   },
 } as const;
 
@@ -390,7 +369,7 @@ const PROCESSO_HTML = `
     </div>
     <div class="w3-pad" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 28px;">
       <div style="text-align:center;margin-bottom:54px;">
-        <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Como funciona</div>
+        <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Nosso processo</div>
         <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(34px,4.6vw,60px);line-height:.98;letter-spacing:-1.5px;margin:0;">Do briefing à distribuição<br>em 3 movimentos.</h2>
       </div>
       <div class="w3-procgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">

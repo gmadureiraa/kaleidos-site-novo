@@ -187,16 +187,10 @@ function PlaybookCard({ paper, framing }: { paper: Paper; framing: PlaybookFrami
   }
 
   return (
+    // Sem rótulo/título embaixo: a capa-medalhão já traz o título na própria
+    // arte, então o card fica limpo (o alt da imagem mantém o nome acessível).
     <Link key={paper.slug} href={`/papers/${paper.slug}`} className="w3-pcard" style={{ display: "block", textDecoration: "none", transform: `rotate(${rot}deg)` }}>
       {imageBlock}
-      <div style={{ marginTop: 16 }}>
-        <span style={{ fontFamily: "Gridlite, monospace", fontSize: 11, letterSpacing: "1px", textTransform: "uppercase", color: paper.accent }}>
-          {paper.volume}
-        </span>
-        <h3 style={{ marginTop: 3, fontFamily: "Atelier, sans-serif", fontWeight: 700, fontSize: 17, lineHeight: 1.15, color: INK }}>
-          {paper.title}
-        </h3>
-      </div>
     </Link>
   );
 }
@@ -344,7 +338,7 @@ export function Web3V2Resources() {
                 Biblioteca aberta
               </div>
               <h2 style={{ fontFamily: "Atelier, sans-serif", fontWeight: 700, fontSize: "clamp(32px,4.2vw,54px)", lineHeight: 1, letterSpacing: "-1.5px", margin: 0, color: INK }}>
-                O que a gente sabe, no aberto.
+                Playbooks e artigos da Kaleidos
               </h2>
               <p style={{ marginTop: 14, maxWidth: 480, fontSize: 16, lineHeight: 1.55, color: "#6b6258" }}>
                 Papers de mercado, teardowns de cases e guias de marketing cripto. Sem paywall, prontos pra aplicar.

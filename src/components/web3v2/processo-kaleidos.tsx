@@ -97,7 +97,7 @@ export function Web3V2Processo() {
               marginBottom: 16,
             }}
           >
-            Como funciona
+            Nosso processo
           </div>
           <h2
             style={{
