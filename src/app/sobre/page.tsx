@@ -256,47 +256,6 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Estética Cyberpunk — identidade nativa cripto (banda escura) */}
-      <section className="relative overflow-hidden" style={{ background: INK, color: "#FAFAFA", borderTop: `1.5px solid ${INK}`, borderBottom: `1.5px solid ${INK}` }}>
-        <div style={{ position: "absolute", inset: 0, opacity: 0.4, backgroundImage: "radial-gradient(#ffffff1f 1.3px,transparent 1.5px)", backgroundSize: "20px 20px" }} />
-        {/* starfield duotone sutil no canto */}
-        <div className="sb-deco" style={{ position: "absolute", right: -60, top: -60, width: 320, height: 320, opacity: 0.45, mixBlendMode: "screen", backgroundImage: "url(/v2/cyberpunk/estrelas-bg.jpg)", backgroundSize: "cover", backgroundPosition: "center" }} />
-        <div className="relative max-w-6xl mx-auto px-5 py-20 md:py-24">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
-            <div className="sb-eyebrow mb-3" style={{ color: GREEN }}>{isEn ? "Visual identity" : "Identidade visual"}</div>
-            <h2 className="sb-font-display" style={{ fontWeight: 700, fontSize: "clamp(32px,4.4vw,52px)", lineHeight: 1.0, letterSpacing: "-1px", margin: "0 0 12px" }}>
-              {isEn ? "A look the market recognizes" : "Uma estética que o mercado reconhece"}
-            </h2>
-            <p style={{ fontSize: 18, color: "#b8b1a6", maxWidth: 620, margin: "0 auto", fontFamily: "var(--font-inter), Inter, sans-serif" }}>
-              {isEn ? "We design brands that feel native to crypto. The visual language of this market is part of how we think, so it shows up in everything we ship." : "A gente desenha marcas que parecem nativas de cripto. A linguagem visual desse mercado faz parte do jeito que pensamos, então aparece em tudo que entregamos."}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { src: "/v2/cyberpunk/caleidoscopio.jpg", label: isEn ? "Concept" : "Conceito", accent: PINK },
-              { src: "/v2/cyberpunk/retrato.jpg", label: isEn ? "Brand" : "Marca", accent: GREEN },
-              { src: "/v2/cyberpunk/olho.jpg", label: isEn ? "Narrative" : "Narrativa", accent: PINK },
-            ].map((it, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.1 }}
-                className="relative aspect-square overflow-hidden"
-                style={{ border: "1.5px solid #FAFAFA", borderRadius: 16, boxShadow: `6px 6px 0 ${it.accent}` }}
-              >
-                <Image src={it.src} alt={it.label} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="sb-font-accent" style={{ position: "absolute", bottom: 14, left: 14, background: it.accent, color: INK, padding: "6px 12px", borderRadius: 8, fontSize: 10.5, letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 700 }}>
-                  {it.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Nossa Equipe */}
       <section className="max-w-6xl mx-auto px-5 py-16 md:py-20">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
@@ -348,15 +307,6 @@ export default function SobrePage() {
                     ? "The team's creative social media manager. Every post goes through him, and he creates the best stories you could find. Understands the crypto market like few do."
                     : "O social media criativo do time. Todos os posts passam por ele, e cria os melhores stories que você poderia encontrar. Entende o mercado cripto como poucos.",
                   social: { instagram: "https://www.instagram.com/gabrielrebelo", twitter: "https://twitter.com/gabrielrebelo", linkedin: "https://www.linkedin.com/in/gabrielrebelo", email: "gabriel.rebelo@kaleidosdigital.com" }
-                },
-                {
-                  name: "Alef Damacena",
-                  role: isEn ? "Video Editor & Motion" : "Editor de vídeo e Motion",
-                  image: "/Kaleidos/imagens/Equipe/Alef.png",
-                  description: isEn
-                    ? "A video editing and motion specialist, he brings the best animations to our visual content."
-                    : "Especialista em edição de vídeo e motion, consegue trazer as melhores animações para os nossos conteúdos visuais.",
-                  social: { instagram: "https://www.instagram.com/alefdamaceno", linkedin: "https://www.linkedin.com/in/alefdamaceno", email: "alef@kaleidosdigital.com" }
                 },
               ].map((member, index) => {
                 const accent = index % 2 === 0 ? GREEN : PINK;

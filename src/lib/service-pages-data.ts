@@ -60,6 +60,9 @@ export type ServiceContent = {
   // cases
   casesTitle: string;
   cases: ServiceCase[];
+  // prova social (ProofSection): ids de TESTIMONIALS a exibir.
+  // undefined = padrão (3 primeiros depoimentos) · [] = página sem ProofSection
+  proof?: string[];
   // stats bar
   stats: ServiceStat[];
   // why us
@@ -838,7 +841,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       subhead:
         "Gestão de X (Twitter), conteúdo que para o scroll e engajamento em tempo real pra projetos web3 construírem a presença confiável que separa projeto sério de projeto fantasma.",
       ctaPrimary: "Quero crescer no social",
-      accent: "pink",
+      accent: "green",
+      proof: [],
       whoTitle: "Para quem é o Social Media Cripto",
       who: [
         { title: "Projetos pré-lançamento", desc: "Construir audiência e narrativa antes do TGE, pra não lançar token pra um feed vazio." },
@@ -962,7 +966,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       subhead:
         "X (Twitter) management, scroll-stopping content and real-time engagement for web3 projects to build the credible presence that separates a serious project from a ghost.",
       ctaPrimary: "Grow my social",
-      accent: "pink",
+      accent: "green",
+      proof: [],
       whoTitle: "Who Crypto Social Media is for",
       who: [
         { title: "Pre-launch projects", desc: "Build audience and narrative before the TGE, so you don't launch a token into an empty feed." },

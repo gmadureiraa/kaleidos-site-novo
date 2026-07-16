@@ -182,6 +182,7 @@ export function ServicePageTemplate({
         return (
           <ProofSection
             key={key}
+            c={c}
             accent={accent}
             isEn={isEn}
             withLang={withLang}

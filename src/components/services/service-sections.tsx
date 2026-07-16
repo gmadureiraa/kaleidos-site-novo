@@ -20,6 +20,12 @@ export type Accent = {
   hex: string;
   /** tom escuro do accent, legível como texto sobre fundo claro */
   deep: string;
+  /**
+   * cor de texto sobre fundo do accent.
+   * REGRA: fundo rosa (#D262B2) sempre com texto BRANCO (nunca preto);
+   * o verde (#7CF067) é claro o bastante pra segurar texto ink.
+   */
+  fg: string;
   text: string;
   bg: string;
   soft: string;
@@ -31,6 +37,7 @@ export function getAccent(kind: "green" | "pink"): Accent {
     ? {
         hex: "#D262B2",
         deep: "#A8458C",
+        fg: "#FFFFFF",
         text: "text-[#A8458C]",
         bg: "bg-[#D262B2]",
         soft: "bg-[#D262B2]/12",
@@ -39,6 +46,7 @@ export function getAccent(kind: "green" | "pink"): Accent {
     : {
         hex: "#7CF067",
         deep: "#2F7D27",
+        fg: "#14110D",
         text: "text-[#2F7D27]",
         bg: "bg-[#7CF067]",
         soft: "bg-[#7CF067]/15",
@@ -348,7 +356,7 @@ export function WhoSection({
                   className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border-[1.5px] border-[#14110D]"
                   style={{ background: `${accent.hex}` }}
                 >
-                  <Icon className="h-5 w-5 text-[#14110D]" />
+                  <Icon className="h-5 w-5" style={{ color: accent.fg }} />
                 </span>
                 <h3 className={`mb-2 font-display text-xl font-bold leading-snug ${t.heading}`}>
                   {item.title}
@@ -427,7 +435,7 @@ export function WhyMattersSection({
                       className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#14110D]"
                       style={{ background: accent.hex }}
                     >
-                      <Check className="h-3 w-3 text-[#14110D]" />
+                      <Check className="h-3 w-3" style={{ color: accent.fg }} />
                     </span>
                     <span className={`text-sm leading-relaxed ${t.heading}`}>{b}</span>
                   </li>
@@ -551,7 +559,7 @@ export function ProcessTimeline({
                   <div className="relative sm:pl-12">
                     <span
                       className="absolute left-0 top-7 hidden h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-[#14110D] font-accent text-[11px] font-bold sm:flex"
-                      style={{ background: accent.hex, color: INK }}
+                      style={{ background: accent.hex, color: accent.fg }}
                     >
                       {pad(i + 1)}
                     </span>
@@ -657,7 +665,7 @@ export function DeliverablesSection({
                   className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#14110D]"
                   style={{ background: accent.hex }}
                 >
-                  <Check className="h-4 w-4 text-[#14110D]" />
+                  <Check className="h-4 w-4" style={{ color: accent.fg }} />
                 </span>
                 <span className={`text-sm font-medium leading-snug ${t.heading}`}>
                   {item}
@@ -716,7 +724,7 @@ export function IncludedComparison({
                   className="flex h-7 w-7 items-center justify-center rounded-full border-[1.5px] border-[#14110D]"
                   style={{ background: accent.hex }}
                 >
-                  <Check className="h-4 w-4 text-[#14110D]" />
+                  <Check className="h-4 w-4" style={{ color: accent.fg }} />
                 </span>
                 <h3 className={`font-display text-lg font-bold ${t.heading}`}>
                   {isEn ? "Included" : "Está incluso"}
@@ -764,7 +772,7 @@ export function IncludedComparison({
                 className="flex flex-1 flex-col justify-between gap-5 rounded-2xl border-[1.5px] border-[#14110D] p-8 shadow-[5px_5px_0_#14110D]"
                 style={{ background: accent.hex }}
               >
-                <p className="text-sm font-semibold leading-relaxed text-[#14110D]">
+                <p className="text-sm font-semibold leading-relaxed" style={{ color: accent.fg }}>
                   {c.includedNote ??
                     (isEn
                       ? "Flexible scope, shaped around your stage."
@@ -883,8 +891,8 @@ export function CasesSection({
                   {cs.name}
                 </span>
                 <span
-                  className="absolute bottom-5 left-5 inline-flex items-center rounded-md border-[1.5px] border-[#14110D] px-3 py-1 text-sm font-bold text-[#14110D]"
-                  style={{ background: accent.hex }}
+                  className="absolute bottom-5 left-5 inline-flex items-center rounded-md border-[1.5px] border-[#14110D] px-3 py-1 text-sm font-bold"
+                  style={{ background: accent.hex, color: accent.fg }}
                 >
                   {cs.metric}
                 </span>
@@ -986,7 +994,10 @@ export function WhyUsSection({ c, accent }: { c: ServiceContent; accent: Accent 
               className="flex h-full min-h-[160px] items-center justify-center rounded-2xl border-[1.5px] border-[#14110D] p-8 text-center"
               style={{ background: accent.hex, boxShadow: `5px 5px 0 ${INK}` }}
             >
-              <h2 className="font-display text-2xl font-bold leading-tight text-[#14110D] sm:text-3xl">
+              <h2
+                className="font-display text-2xl font-bold leading-tight sm:text-3xl"
+                style={{ color: accent.fg }}
+              >
                 {c.whyUsTitle}
               </h2>
             </div>
@@ -1010,18 +1021,24 @@ export function WhyUsSection({ c, accent }: { c: ServiceContent; accent: Accent 
 /* ------------------------------------------------------------------ */
 
 export function ProofSection({
+  c,
   accent,
   isEn,
   withLang,
   tone,
 }: {
+  c: ServiceContent;
   accent: Accent;
   isEn: boolean;
   withLang: (p: string) => string;
   tone: LightTone;
 }) {
   const t = lightTone(tone);
-  const proof = TESTIMONIALS.slice(0, 3);
+  // `proof` por página: undefined = padrão (3 primeiros) · [] = página sem prova social
+  const proof = c.proof
+    ? TESTIMONIALS.filter((td) => c.proof!.includes(td.id))
+    : TESTIMONIALS.slice(0, 3);
+  if (proof.length === 0) return null;
   return (
     <section className={`${t.section} px-6 py-20 sm:py-28`}>
       <div className="mx-auto max-w-6xl">
@@ -1131,10 +1148,20 @@ export function FinalCta({
     <section className="bg-[#FAFAFA] px-4 py-16 sm:px-6">
       <Reveal>
         <div
-          className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border-[1.5px] border-[#14110D] px-8 py-20 text-center shadow-[8px_8px_0_#14110D] sm:py-24"
-          style={{ background: accent.hex }}
+          className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border-[1.5px] border-[#14110D] bg-[#14110D] px-8 py-20 text-center sm:py-24"
+          style={{ boxShadow: `8px 8px 0 ${accent.hex}` }}
         >
-          <span className="pointer-events-none absolute left-[8%] top-[22%] hidden rotate-[-6deg] rounded-md border-[1.5px] border-[#14110D] bg-[#14110D] px-3 py-1 text-xs font-semibold text-white sm:block">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-60"
+            style={{
+              background: `radial-gradient(ellipse 60% 55% at 50% 0%, ${accent.hex}2e, transparent 70%)`,
+            }}
+            aria-hidden
+          />
+          <span
+            className="pointer-events-none absolute left-[8%] top-[22%] hidden rotate-[-6deg] rounded-md border-[1.5px] border-[#14110D] px-3 py-1 text-xs font-semibold sm:block"
+            style={{ background: accent.hex, color: accent.fg }}
+          >
             {isEn ? "Flexible scope" : "Escopo flexível"}
           </span>
           <span className="pointer-events-none absolute right-[10%] top-[28%] hidden rotate-[5deg] rounded-md border-[1.5px] border-[#14110D] bg-white px-3 py-1 text-xs font-semibold text-[#14110D] sm:block">
@@ -1143,20 +1170,24 @@ export function FinalCta({
           <span className="pointer-events-none absolute bottom-[24%] left-[12%] hidden rotate-[4deg] rounded-md border-[1.5px] border-[#14110D] bg-white px-3 py-1 text-xs font-semibold text-[#14110D] sm:block">
             {isEn ? "Ask us anything" : "Pergunte o que quiser"}
           </span>
-          <span className="pointer-events-none absolute bottom-[26%] right-[9%] hidden rotate-[-5deg] rounded-md border-[1.5px] border-[#14110D] bg-[#14110D] px-3 py-1 text-xs font-semibold text-white sm:block">
+          <span
+            className="pointer-events-none absolute bottom-[26%] right-[9%] hidden rotate-[-5deg] rounded-md border-[1.5px] border-[#14110D] px-3 py-1 text-xs font-semibold sm:block"
+            style={{ background: accent.hex, color: accent.fg }}
+          >
             {isEn ? "Start now" : "Comece agora"}
           </span>
 
-          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-[#14110D] sm:text-6xl">
+          <h2 className="relative font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
             {c.finalCtaTitle}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-[#14110D]/75 sm:text-lg">
+          <p className="relative mx-auto mt-4 max-w-xl text-base text-[#b8b1a6] sm:text-lg">
             {c.finalCtaSubtitle}
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <button
               onClick={() => openWhatsApp("final_cta")}
-              className="inline-flex items-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold transition-transform hover:-translate-y-0.5"
+              style={{ background: accent.hex, color: accent.fg }}
             >
               {c.ctaPrimary}
               <ArrowRight className="h-5 w-5" />
