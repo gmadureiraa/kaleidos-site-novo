@@ -104,7 +104,7 @@ export function Navbar() {
                     <div className="w-[92vw] max-w-[760px] p-4">
                       <NavigationMenuLink asChild>
                         <Link
-                          className="mb-3 flex flex-col rounded-lg bg-gradient-to-r from-[#7CFF6B]/15 to-[#D262B2]/10 p-4 no-underline outline-hidden select-none focus:shadow-md"
+                          className="mb-3 flex flex-col rounded-lg bg-gradient-to-r from-[#7CF067]/15 to-[#D262B2]/10 p-4 no-underline outline-hidden select-none focus:shadow-md"
                           href={withLang('/servicos')}
                         >
                           <div className="text-base font-semibold text-gray-900">
@@ -164,7 +164,7 @@ export function Navbar() {
             </NavigationMenu>
             {/* CTA primário → Calendly (agendar reunião) + WhatsApp secundário */}
             <div className="flex items-center gap-3">
-              <Button asChild className="bg-[#7CFF6B] text-black hover:bg-[#64e04d] font-semibold touch-target">
+              <Button asChild className="bg-[#7CF067] text-black hover:bg-[#64e04d] font-semibold touch-target">
                 <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
                   {t('nav','cta')}
                 </a>
@@ -284,7 +284,7 @@ export function Navbar() {
               </div>
               {/* Mobile CTA → Calendly primário + WhatsApp secundário */}
               <div className="pt-4 border-t border-gray-800 space-y-2">
-                <Button asChild className="w-full bg-[#7CFF6B] text-black hover:bg-[#64e04d] font-semibold touch-target">
+                <Button asChild className="w-full bg-[#7CF067] text-black hover:bg-[#64e04d] font-semibold touch-target">
                   <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
                     {t('nav','cta')}
                   </a>

@@ -149,7 +149,7 @@ export function SiteShowcase({
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-[#7CFF6B] border border-[#7CFF6B] hover:bg-gray-900 transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-[#7CF067] border border-[#7CF067] hover:bg-gray-900 transition-colors"
         >
           {ctaLabel}
           <ExternalLink className="h-4 w-4" />

@@ -1,15 +1,26 @@
+"use client";
+
 /**
  * Web3 V2 — blocos portados do design estático `public/web3/index.html`.
  *
- * São usados APENAS na rota de teste `/2`. Nada aqui toca a home real (`/`),
- * o layout raiz, o next.config nem qualquer componente existente.
- *
- * Estética trazida verbatim do /web3: fontes Atelier/Gridlite (já registradas
+ * Usados pela home `/` (via HomeShell) e pelas rotas de público. Estética
+ * trazida verbatim do /web3: fontes Atelier/Gridlite (já registradas
  * globalmente no layout), verde #7CF067 / rosa #D262B2, colagens, mãos de Adão,
  * keyframes. Tudo escopado sob o wrapper `.kv2` + keyframes com nomes únicos
  * (floaty/floaty2/starspin/starspin2/pop/mq) que não colidem com os globais
  * (o `spin` global é idêntico e é reaproveitado). Assets em `/public/v2/collage`.
+ *
+ * i18n: módulo client. Cada seção detecta o idioma via useI18n() (?lang=en,
+ * mesmo mecanismo do resto do site) e escolhe a variante PT/EN do bloco HTML.
+ * SSR e primeiro render do client saem em PT (default), o efeito do useI18n
+ * troca pra EN quando ?lang=en está presente. Métricas canônicas (+R$46mi /
+ * +125mi / 30+) são idênticas nos dois idiomas.
  */
+
+import { useI18n } from "@/i18n/useI18n";
+import { AudienceSections } from "@/components/audience-sections";
+import type { Audience } from "@/lib/audiences";
+import type { Locale } from "@/i18n/dictionaries";
 
 const STYLE = `
 .kv2 .cta-btn{transition:transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s cubic-bezier(.22,1,.36,1);}
@@ -92,18 +103,47 @@ export function Web3V2Defs() {
   );
 }
 
-const HERO_DEFAULTS = {
-  badge: "Agência cripto-nativa desde 2020",
-  headlineHtml:
-    'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
-  subHtml:
-    'Do conteúdo ao lançamento de token: <strong style="color:#14110D;">estratégia e execução</strong> para exchanges, fintechs e projetos web3 que querem <strong style="color:#14110D;">virar referência</strong>. Cripto-nativa desde 2020.',
+export type HeroOpts = { badge?: string; headlineHtml?: string; subHtml?: string };
+
+const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
+  pt: {
+    badge: "Agência cripto-nativa desde 2020",
+    headlineHtml:
+      'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
+    subHtml:
+      'Do conteúdo ao lançamento de token: <strong style="color:#14110D;">estratégia e execução</strong> para exchanges, fintechs e projetos web3 que querem <strong style="color:#14110D;">virar referência</strong>. Cripto-nativa desde 2020.',
+  },
+  en: {
+    badge: "Crypto-native agency since 2020",
+    headlineHtml:
+      'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the Brazilian crypto market.',
+    subHtml:
+      'From content to token launch: <strong style="color:#14110D;">strategy and execution</strong> for exchanges, fintechs and web3 projects that want to <strong style="color:#14110D;">become a market reference</strong>. Crypto-native since 2020.',
+  },
 };
 
-export function heroHtml(o: { badge?: string; headlineHtml?: string; subHtml?: string } = {}) {
-  const badge = o.badge ?? HERO_DEFAULTS.badge;
-  const headlineHtml = o.headlineHtml ?? HERO_DEFAULTS.headlineHtml;
-  const subHtml = o.subHtml ?? HERO_DEFAULTS.subHtml;
+/** Labels fixos dos CTAs do hero, por idioma. */
+const HERO_UI = {
+  pt: {
+    schedule: "Agendar reuni&atilde;o &rarr;",
+    cases: "Ver cases",
+    waPrefix: "Prefere WhatsApp?",
+    waLink: "Fala com a gente por aqui &rarr;",
+  },
+  en: {
+    schedule: "Book a call &rarr;",
+    cases: "View cases",
+    waPrefix: "Prefer WhatsApp?",
+    waLink: "Talk to us here &rarr;",
+  },
+} as const;
+
+export function heroHtml(o: HeroOpts = {}, l: Locale = "pt") {
+  const d = HERO_DEFAULTS[l];
+  const ui = HERO_UI[l];
+  const badge = o.badge ?? d.badge;
+  const headlineHtml = o.headlineHtml ?? d.headlineHtml;
+  const subHtml = o.subHtml ?? d.subHtml;
   return `
 <section id="topo" class="w3-hero" style="position:relative;display:flex;flex-direction:column;justify-content:center;background:#FAFAFA;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;overflow:hidden;">
     <div class="w3-herodeco" style="position:absolute;inset:0;pointer-events:none;">
@@ -123,85 +163,166 @@ export function heroHtml(o: { badge?: string; headlineHtml?: string; subHtml?: s
       <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(31px,4vw,54px);line-height:1.04;letter-spacing:-1.6px;margin:0;max-width:920px;margin-inline:auto;">${headlineHtml}</h1>
       <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;">${subHtml}</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
-        <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">Agendar reunião &rarr;</a>
-        <a href="/cases" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14110D;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">Ver cases</a>
+        <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">${ui.schedule}</a>
+        <a href="/cases${l === "en" ? "?lang=en" : ""}" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14110D;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">${ui.cases}</a>
       </div>
-      <div style="margin-top:16px;font-size:14px;color:#6b6258;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></div>
+      <div style="margin-top:16px;font-size:14px;color:#6b6258;">${ui.waPrefix} <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${ui.waLink}</a></div>
     </div>
   </section>
 `;
 }
-const HERO_HTML = heroHtml();
 
-const MANIFESTO_HTML = `
+const MANIFESTO_COPY = {
+  pt: {
+    handsAlt: "Duas mãos quase se tocando, em duotone verde e rosa Kaleidos",
+    paragraph:
+      'Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, uma agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span> que resolve o problema mais difícil do mercado: <span style="color:#2E9E32;font-weight:800;">atenção</span>. A gente cria <span style="color:#D262B2;font-weight:700;">conteúdo</span> que conecta, desenha <span style="color:#D262B2;font-weight:700;">estratégia</span> que sustenta e orquestra <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Dê uma olhada nos nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
+    statRevenue: "faturados pelos<br>nossos clientes",
+    statViews: "de views geradas<br>em redes sociais",
+    statBrands: "marcas cripto<br>atendidas",
+  },
+  en: {
+    handsAlt: "Two hands almost touching, in Kaleidos green and pink duotone",
+    paragraph:
+      'We are <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, a crypto-native <span style="color:#2E9E32;font-weight:800;">strategic marketing</span> agency solving the hardest problem in this market: <span style="color:#2E9E32;font-weight:800;">attention</span>. We create <span style="color:#D262B2;font-weight:700;">content</span> that connects, design <span style="color:#D262B2;font-weight:700;">strategy</span> that lasts and orchestrate <span style="color:#2E9E32;font-weight:800;">launches</span> the market cannot ignore. Take a look at our <a href="/cases?lang=en" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.',
+    statRevenue: "in revenue generated<br>by our clients",
+    statViews: "views generated<br>on social media",
+    statBrands: "crypto brands<br>served",
+  },
+} as const;
+
+const manifestoHtml = (l: Locale) => `
 <section style="position:relative;background:#FFFFFF;overflow:hidden;border-bottom:2px solid #14110D;padding:44px 0 56px;">
     <!-- mãos full-bleed (ponta a ponta, sempre 100vw) — duotone verde/rosa Kaleidos sobre branco.
          aspect-ratio 1400/505 (imagem é 1400x561) + object-fit:cover recorta ~10% da altura
          mantendo a largura ponta a ponta. -->
     <div style="position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;aspect-ratio:1400/505;overflow:hidden;display:flex;justify-content:center;align-items:center;">
-      <img src="/v2/collage/hands-reach-duotone.webp" alt="Duas mãos quase se tocando, em duotone verde e rosa Kaleidos" loading="lazy" decoding="async" style="display:block;width:100vw;height:100%;max-width:none;object-fit:cover;object-position:center;">
+      <img src="/v2/collage/hands-reach-duotone.webp" alt="${MANIFESTO_COPY[l].handsAlt}" loading="lazy" decoding="async" style="display:block;width:100vw;height:100%;max-width:none;object-fit:cover;object-position:center;">
       <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-12deg);width:clamp(96px,12vw,156px);animation:starspin 26s linear infinite;pointer-events:none;">
       <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(10deg);width:clamp(70px,9vw,112px);animation:starspin2 18s linear infinite;pointer-events:none;">
     </div>
     <div class="w3-pad" style="max-width:1080px;margin:0 auto;padding:0 28px;">
       <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(22px,3vw,38px);line-height:1.28;letter-spacing:-.5px;color:#14110D;margin:36px 0 0;text-wrap:pretty;text-align:center;">
-        Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, uma agência cripto-nativa de <span style="color:#2E9E32;font-weight:800;">marketing estratégico</span> que resolve o problema mais difícil do mercado: <span style="color:#2E9E32;font-weight:800;">atenção</span>. A gente cria <span style="color:#D262B2;font-weight:700;">conteúdo</span> que conecta, desenha <span style="color:#D262B2;font-weight:700;">estratégia</span> que sustenta e orquestra <span style="color:#2E9E32;font-weight:800;">lançamentos</span> que o mercado não consegue ignorar. Dê uma olhada nos nossos <a href="/cases" style="color:#D262B2;font-weight:700;text-decoration:underline;text-underline-offset:3px;">cases</a>.
+        ${MANIFESTO_COPY[l].paragraph}
       </p>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(24px,5vw,64px);margin:34px auto 0;max-width:880px;">
         <div style="text-align:center;min-width:150px;">
           <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#2E9E32;letter-spacing:-1px;">+R$46mi</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">faturados pelos<br>nossos clientes</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statRevenue}</div>
         </div>
         <div style="text-align:center;min-width:150px;">
           <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#D262B2;letter-spacing:-1px;">+125mi</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">de views geradas<br>em redes sociais</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statViews}</div>
         </div>
         <div style="text-align:center;min-width:150px;">
           <div style="font-family:'Atelier','Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);line-height:1;color:#14110D;letter-spacing:-1px;">30+</div>
-          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">marcas cripto<br>atendidas</div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.35;color:#4a443b;margin-top:8px;">${MANIFESTO_COPY[l].statBrands}</div>
         </div>
       </div>
     </div>
   </section>
 `;
 
-const PROBLEMA_HTML = `
+const PROBLEMA_COPY = {
+  pt: {
+    kicker: "O jeito antigo é um caos",
+    h2: 'Post genérico não constrói <span style="color:#7CF067;">reputação</span>.',
+    p: "A maioria das marcas cripto posta no escuro: muita pressa, pouca tese, zero consistência. O resultado some no feed em 24h.",
+    chip1: "😵‍💫 conteúdo sem narrativa",
+    chip2: "⏱️ tudo pra ontem",
+    chip3: "📉 zero dado de verdade",
+    schedule: "Agendar reuni&atilde;o &rarr;",
+    cases: "Ver cases",
+    casesHref: "/cases",
+    waPrefix: "Prefere WhatsApp?",
+    waLink: "Fala com a gente por aqui &rarr;",
+    boyAlt: "Menino assustado em P&amp;B, o p&acirc;nico de postar no escuro, sem narrativa",
+    tag: "postar no escuro = p&acirc;nico",
+  },
+  en: {
+    kicker: "The old way is chaos",
+    h2: 'Generic posts do not build <span style="color:#7CF067;">reputation</span>.',
+    p: "Most crypto brands post in the dark: too much rush, no thesis, zero consistency. The result vanishes from the feed in 24 hours.",
+    chip1: "😵‍💫 content with no narrative",
+    chip2: "⏱️ everything due yesterday",
+    chip3: "📉 zero real data",
+    schedule: "Book a call &rarr;",
+    cases: "View cases",
+    casesHref: "/cases?lang=en",
+    waPrefix: "Prefer WhatsApp?",
+    waLink: "Talk to us here &rarr;",
+    boyAlt: "Scared boy in black and white, the panic of posting in the dark with no narrative",
+    tag: "posting in the dark = panic",
+  },
+} as const;
+
+const problemaHtml = (l: Locale) => {
+  const c = PROBLEMA_COPY[l];
+  return `
 <section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
     <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;"></div>
     <div class="w3-pgrid w3-pad" style="position:relative;max-width:1240px;margin:0 auto;padding:90px 28px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
       <div>
-        <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:20px;">O jeito antigo é um caos</div>
-        <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,58px);line-height:1.0;letter-spacing:-1px;margin:0;">Post genérico não constrói <span style="color:#7CF067;">reputação</span>.</h2>
-        <p style="font-size:18px;line-height:1.6;color:#b8b1a6;max-width:440px;margin:24px 0 0;">A maioria das marcas cripto posta no escuro: muita pressa, pouca tese, zero consistência. O resultado some no feed em 24h.</p>
+        <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:20px;">${c.kicker}</div>
+        <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,58px);line-height:1.0;letter-spacing:-1px;margin:0;">${c.h2}</h2>
+        <p style="font-size:18px;line-height:1.6;color:#b8b1a6;max-width:440px;margin:24px 0 0;">${c.p}</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;">
-          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-2deg);">😵‍💫 conteúdo sem narrativa</span>
-          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(2deg);">⏱️ tudo pra ontem</span>
-          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-1deg);">📉 zero dado de verdade</span>
+          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-2deg);">${c.chip1}</span>
+          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(2deg);">${c.chip2}</span>
+          <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-1deg);">${c.chip3}</span>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px;">
-          <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Agendar reunião &rarr;</a>
-          <a href="/cases" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Ver cases</a>
+          <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${c.schedule}</a>
+          <a href="${c.casesHref}" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">${c.cases}</a>
         </div>
-        <div style="margin-top:14px;font-size:14px;color:#9a9186;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></div>
+        <div style="margin-top:14px;font-size:14px;color:#9a9186;">${c.waPrefix} <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${c.waLink}</a></div>
       </div>
       <div class="w3-pimg" style="position:relative;height:380px;display:flex;align-items:center;justify-content:center;">
         <span style="position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,#7CF06733,transparent 66%);"></span>
         <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:6%;top:6%;width:clamp(56px,8vw,84px);animation:starspin2 22s linear infinite;opacity:.9;">
         <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:4%;top:14%;width:clamp(48px,7vw,72px);animation:starspin 28s linear infinite;opacity:.85;">
-        <img src="/v2/collage/scared-boy.webp" loading="lazy" decoding="async" alt="Menino assustado em P&amp;B — o pânico de postar no escuro, sem narrativa" style="position:relative;width:min(92%,392px);filter:drop-shadow(0 14px 30px rgba(0,0,0,.6));animation:floaty 9s ease-in-out infinite;">
-        <span style="position:absolute;left:10%;bottom:2%;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2px;color:#7CF067;border:1px dashed #7CF067;padding:6px 10px;border-radius:6px;transform:rotate(-4deg);background:#14110D;">postar no escuro = p&acirc;nico</span>
+        <img src="/v2/collage/scared-boy.webp" loading="lazy" decoding="async" alt="${c.boyAlt}" style="position:relative;width:min(92%,392px);filter:drop-shadow(0 14px 30px rgba(0,0,0,.6));animation:floaty 9s ease-in-out infinite;">
+        <span style="position:absolute;left:10%;bottom:2%;font-family:Gridlite,monospace;font-size:12px;letter-spacing:2px;color:#7CF067;border:1px dashed #7CF067;padding:6px 10px;border-radius:6px;transform:rotate(-4deg);background:#14110D;">${c.tag}</span>
       </div>
     </div>
   </section>
 `;
+};
 
-const DIFERENCIAIS_HTML = `
+const DIFERENCIAIS_COPY = {
+  pt: {
+    eyeAlt: "Close-up de um olho em meio-tono, o olhar nativo da Kaleidos",
+    kicker: "Por que a Kaleidos",
+    h2: "Valores &amp; vis&otilde;es",
+    p: "A gente vê o que o mercado não vê. É o olhar cripto-nativo aplicado em cada peça.",
+    c1t: "Cripto-nativos de verdade",
+    c1b: "No mercado todo dia. Sem buzzword vazia, sem traduzir errado o que o seu projeto faz.",
+    c2t: "Criatividade com tese",
+    c2b: "Bonito de ver, fácil de medir. Estética e estratégia na mesma peça.",
+    c3t: "Velocidade de timeline",
+    c3b: "O mercado cripto não espera. Publicamos no ritmo da narrativa, não do calendário.",
+  },
+  en: {
+    eyeAlt: "Close-up of an eye in halftone, the native eye of Kaleidos",
+    kicker: "Why Kaleidos",
+    h2: "Values &amp; vision",
+    p: "We see what the market does not. A crypto-native eye applied to every single piece.",
+    c1t: "Truly crypto-native",
+    c1b: "In the market every day. No empty buzzwords, no mistranslating what your project does.",
+    c2t: "Creativity with a thesis",
+    c2b: "Beautiful to look at, easy to measure. Aesthetics and strategy in the same piece.",
+    c3t: "Timeline speed",
+    c3b: "The crypto market does not wait. We publish at the pace of the narrative, not the calendar.",
+  },
+} as const;
+
+const diferenciaisHtml = (l: Locale) => `
 <section id="diferenciais" style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;border-top:2px solid #14110D;">
     <!-- textura de pontos sutil no fundo escuro -->
     <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
     <!-- IMAGEM DO OLHO — sangra até a borda direita -->
     <div class="w3-eye" style="position:absolute;top:0;right:0;bottom:0;width:46%;pointer-events:none;">
-      <img src="/v2/collage/eye-halftone.webp" loading="lazy" decoding="async" alt="Close-up de um olho em meio-tono — o olhar nativo da Kaleidos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:contrast(1.12) brightness(1.04);">
+      <img src="/v2/collage/eye-halftone.webp" loading="lazy" decoding="async" alt="${DIFERENCIAIS_COPY[l].eyeAlt}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:contrast(1.12) brightness(1.04);">
       <!-- vinheta pra fundir a imagem no preto à esquerda -->
       <span style="position:absolute;inset:0;background:linear-gradient(90deg,#14110D 0%,#14110D33 26%,transparent 55%);"></span>
       <span style="position:absolute;inset:0;background:linear-gradient(180deg,#14110D55 0%,transparent 18%,transparent 82%,#14110D55 100%);"></span>
@@ -212,22 +333,22 @@ const DIFERENCIAIS_HTML = `
     <div class="w3-dgrid w3-pad" style="position:relative;max-width:1240px;margin:0 auto;padding:62px 28px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center;">
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:14px;">
-          <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="width:15px;height:15px;animation:starspin 24s linear infinite;"> Por que a Kaleidos
+          <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="width:15px;height:15px;animation:starspin 24s linear infinite;"> ${DIFERENCIAIS_COPY[l].kicker}
         </div>
-        <h2 style="font-family:Atelier,sans-serif;font-style:italic;font-weight:700;font-size:clamp(36px,5vw,62px);line-height:.98;letter-spacing:-1.5px;margin:0 0 12px;color:#7CF067;text-shadow:0 1px 0 rgba(0,0,0,.4);">Valores &amp; visões</h2>
-        <p style="font-size:16px;line-height:1.5;color:#b8b1a6;max-width:430px;margin:0 0 26px;">A gente vê o que o mercado não vê. É o olhar cripto-nativo aplicado em cada peça.</p>
+        <h2 style="font-family:Atelier,sans-serif;font-style:italic;font-weight:700;font-size:clamp(36px,5vw,62px);line-height:.98;letter-spacing:-1.5px;margin:0 0 12px;color:#7CF067;text-shadow:0 1px 0 rgba(0,0,0,.4);">${DIFERENCIAIS_COPY[l].h2}</h2>
+        <p style="font-size:16px;line-height:1.5;color:#b8b1a6;max-width:430px;margin:0 0 26px;">${DIFERENCIAIS_COPY[l].p}</p>
         <div style="display:flex;flex-direction:column;gap:12px;max-width:480px;">
           <div style="display:flex;gap:15px;align-items:flex-start;background:#1d1812;border:1.5px solid #3a332a;border-radius:13px;padding:15px 18px;box-shadow:4px 4px 0 #7CF067;">
             <span style="font-family:Atelier;font-weight:800;font-size:24px;line-height:1;color:#7CF067;-webkit-text-stroke:1px #14110D;flex-shrink:0;">01</span>
-            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">Cripto-nativos de verdade</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">No mercado todo dia. Sem buzzword vazia, sem traduzir errado o que o seu projeto faz.</p></div>
+            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">${DIFERENCIAIS_COPY[l].c1t}</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">${DIFERENCIAIS_COPY[l].c1b}</p></div>
           </div>
           <div style="display:flex;gap:15px;align-items:flex-start;background:#1d1812;border:1.5px solid #3a332a;border-radius:13px;padding:15px 18px;box-shadow:4px 4px 0 #D262B2;">
             <span style="font-family:Atelier;font-weight:800;font-size:24px;line-height:1;color:#D262B2;-webkit-text-stroke:1px #14110D;flex-shrink:0;">02</span>
-            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">Criatividade com tese</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">Bonito de ver, fácil de medir. Estética e estratégia na mesma peça.</p></div>
+            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">${DIFERENCIAIS_COPY[l].c2t}</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">${DIFERENCIAIS_COPY[l].c2b}</p></div>
           </div>
           <div style="display:flex;gap:15px;align-items:flex-start;background:#1d1812;border:1.5px solid #3a332a;border-radius:13px;padding:15px 18px;box-shadow:4px 4px 0 #D262B2;">
             <span style="font-family:Atelier;font-weight:800;font-size:24px;line-height:1;color:#D262B2;-webkit-text-stroke:1px #14110D;flex-shrink:0;">03</span>
-            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">Velocidade de timeline</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">O mercado cripto não espera. Publicamos no ritmo da narrativa, não do calendário.</p></div>
+            <div><h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:18px;margin:0 0 3px;color:#FAFAFA;">${DIFERENCIAIS_COPY[l].c3t}</h3><p style="font-size:13.5px;line-height:1.45;color:#9a9186;margin:0;">${DIFERENCIAIS_COPY[l].c3b}</p></div>
           </div>
         </div>
       </div>
@@ -268,18 +389,43 @@ const PROCESSO_HTML = `
   </section>
 `;
 
-export function Web3V2Hero() {
-  return <div dangerouslySetInnerHTML={{ __html: HERO_HTML }} />;
+/**
+ * Hero language-aware. `heroOpts`/`heroOptsEn` são as variantes textuais por
+ * público (rotas /founders etc). Sem elas, usa os defaults da home por idioma.
+ */
+export function Web3V2Hero({
+  heroOpts,
+  heroOptsEn,
+}: {
+  heroOpts?: HeroOpts;
+  heroOptsEn?: HeroOpts;
+} = {}) {
+  const { locale } = useI18n();
+  const opts = locale === "en" ? (heroOptsEn ?? heroOpts) : heroOpts;
+  return <div dangerouslySetInnerHTML={{ __html: heroHtml(opts ?? {}, locale) }} />;
 }
 export function Web3V2Manifesto() {
-  return <div dangerouslySetInnerHTML={{ __html: MANIFESTO_HTML }} />;
+  const { locale } = useI18n();
+  return <div dangerouslySetInnerHTML={{ __html: manifestoHtml(locale) }} />;
 }
 export function Web3V2Problema() {
-  return <div dangerouslySetInnerHTML={{ __html: PROBLEMA_HTML }} />;
+  const { locale } = useI18n();
+  return <div dangerouslySetInnerHTML={{ __html: problemaHtml(locale) }} />;
 }
 export function Web3V2Diferenciais() {
-  return <div dangerouslySetInnerHTML={{ __html: DIFERENCIAIS_HTML }} />;
+  const { locale } = useI18n();
+  return <div dangerouslySetInnerHTML={{ __html: diferenciaisHtml(locale) }} />;
 }
 export function Web3V2Processo() {
   return <div dangerouslySetInnerHTML={{ __html: PROCESSO_HTML }} />;
+}
+
+/**
+ * Wrapper client que troca o bloco de público (dores/serviços/prova/FAQ)
+ * pela variante EN quando ?lang=en. As rotas de público continuam 100%
+ * estáticas: as duas variantes chegam serializadas e a troca é no client.
+ */
+export function AudienceSectionsLang({ pt, en }: { pt: Audience; en: Audience }) {
+  const { locale } = useI18n();
+  return <AudienceSections audience={locale === "en" ? en : pt} />;
 }

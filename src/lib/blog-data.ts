@@ -57,6 +57,14 @@ import { blogNew47 } from "./blog-new-47";
 import { blogNew48 } from "./blog-new-48";
 import { blogNew49 } from "./blog-new-49";
 import { blogNew50 } from "./blog-new-50";
+import { blogNew51 } from "./blog-new-51";
+import { blogNew52 } from "./blog-new-52";
+import { blogNew53 } from "./blog-new-53";
+import { blogNew54 } from "./blog-new-54";
+import { blogNew55 } from "./blog-new-55";
+import { blogNew56 } from "./blog-new-56";
+import { blogNew57 } from "./blog-new-57";
+import { blogNew58 } from "./blog-new-58";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -74,7 +82,7 @@ export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt }
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...caseStudies];
+export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...caseStudies];
 
 /**
  * Gate de agendamento (publishedAt <= agora).

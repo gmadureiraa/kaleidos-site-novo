@@ -137,7 +137,7 @@ export function CtaStrategy() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick("cta_strategy_calendly", "cta_strategy")}
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CFF6B] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CFF6B]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CF067] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CF067]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
           >
             <CalendlyIcon className="h-5 w-5" />
             {isEn ? "Book a meeting" : "Agendar reunião"}

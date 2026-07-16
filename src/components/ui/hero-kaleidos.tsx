@@ -52,8 +52,8 @@ export default function HeroKaleidos() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#7CFF6B]/10 border border-[#7CFF6B]/20 text-[#7CFF6B] text-sm font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#7CFF6B] animate-pulse" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#7CF067]/10 border border-[#7CF067]/20 text-[#7CF067] text-sm font-medium">
+            <span className="w-2 h-2 rounded-full bg-[#7CF067] animate-pulse" />
             {isEn ? "Crypto-native agency" : "Agência nativa do mercado cripto"}
           </span>
         </motion.div>
@@ -74,7 +74,7 @@ export default function HeroKaleidos() {
             priority
           />
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-            <span className="text-[#7CFF6B] font-display">Kaleidos</span> Digital
+            <span className="text-[#7CF067] font-display">Kaleidos</span> Digital
           </h1>
         </motion.div>
 
@@ -86,9 +86,9 @@ export default function HeroKaleidos() {
           className="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-4 font-display font-semibold leading-tight max-w-4xl mx-auto"
         >
           {isEn ? (
-            <>Your <span className="text-[#7CFF6B]">crypto-market</span> agency.</>
+            <>Your <span className="text-[#7CF067]">crypto-market</span> agency.</>
           ) : (
-            <>Sua agência do mercado <span className="text-[#7CFF6B]">cripto</span>.</>
+            <>Sua agência do mercado <span className="text-[#7CF067]">cripto</span>.</>
           )}
         </motion.p>
 
@@ -120,7 +120,7 @@ export default function HeroKaleidos() {
           >
             <Button
               size="lg"
-              className="group/cta bg-[#7CFF6B] hover:bg-[#6ae85a] text-black font-bold px-9 py-4 text-lg w-full sm:w-auto shadow-lg shadow-[#7CFF6B]/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7CFF6B] focus:ring-offset-2 focus:ring-offset-black"
+              className="group/cta bg-[#7CF067] hover:bg-[#6ae85a] text-black font-bold px-9 py-4 text-lg w-full sm:w-auto shadow-lg shadow-[#7CF067]/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7CF067] focus:ring-offset-2 focus:ring-offset-black"
               aria-label={isEn ? "Book a free consultation" : "Agendar consultoria grátis"}
             >
               <CalendlyIcon className="mr-2 h-5 w-5" />
@@ -170,7 +170,7 @@ export default function HeroKaleidos() {
             <p className="mt-2 font-display text-[16px] font-bold leading-snug text-white">
               {isEn ? "Crypto Marketing in 2026" : "Marketing Cripto em 2026"}
             </p>
-            <span className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#7CFF6B] px-3 py-2 text-[13px] font-bold text-black transition-colors group-hover:bg-[#9bff8e]">
+            <span className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#7CF067] px-3 py-2 text-[13px] font-bold text-black transition-colors group-hover:bg-[#9bff8e]">
               {isEn ? "Download for free" : "Baixar grátis"}
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </span>

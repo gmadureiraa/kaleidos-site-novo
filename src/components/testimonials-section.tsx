@@ -80,12 +80,12 @@ export default function TestimonialsSection() {
               className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 relative"
             >
               {/* Decorative quote */}
-              <Quote className="absolute top-6 right-8 w-12 h-12 text-[#7CFF6B]/15" />
+              <Quote className="absolute top-6 right-8 w-12 h-12 text-[#7CF067]/15" />
 
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 {/* Left — avatar + info */}
                 <div className="flex flex-col items-center md:items-start shrink-0 md:w-48">
-                  <div className="w-16 h-16 rounded-full bg-neutral-800 border-2 border-[#7CFF6B]/30 overflow-hidden flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-neutral-800 border-2 border-[#7CF067]/30 overflow-hidden flex items-center justify-center mb-4">
                     {t.avatar ? (
                       <Image
                         src={t.avatar}
@@ -95,7 +95,7 @@ export default function TestimonialsSection() {
                         className="object-contain p-1"
                       />
                     ) : (
-                      <span className="text-[#7CFF6B] font-bold text-xl">
+                      <span className="text-[#7CF067] font-bold text-xl">
                         {t.name.charAt(0)}
                       </span>
                     )}
@@ -106,13 +106,13 @@ export default function TestimonialsSection() {
                   <p className="text-gray-400 text-sm text-center md:text-left">
                     {t.role}
                   </p>
-                  <p className="text-[#7CFF6B] text-sm font-medium mt-1">
+                  <p className="text-[#7CF067] text-sm font-medium mt-1">
                     {t.company}
                   </p>
 
                   {/* Highlight badge */}
                   {t.highlight && (
-                    <span className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#7CFF6B]/10 text-[#7CFF6B] text-xs font-semibold border border-[#7CFF6B]/20">
+                    <span className="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-[#7CF067]/10 text-[#7CF067] text-xs font-semibold border border-[#7CF067]/20">
                       {isEn ? t.highlight_en || t.highlight : t.highlight}
                     </span>
                   )}
@@ -131,7 +131,7 @@ export default function TestimonialsSection() {
                           ? `${t.caseLink}?lang=en`
                           : t.caseLink
                       }
-                      className="inline-flex items-center text-[#7CFF6B] hover:text-[#5be04d] text-sm font-medium transition-colors"
+                      className="inline-flex items-center text-[#7CF067] hover:text-[#5be04d] text-sm font-medium transition-colors"
                     >
                       {isEn ? "See full case →" : "Ver case completo →"}
                     </Link>
@@ -145,7 +145,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700 hover:border-[#7CFF6B]/50 flex items-center justify-center text-white transition-colors"
+              className="w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700 hover:border-[#7CF067]/50 flex items-center justify-center text-white transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -162,7 +162,7 @@ export default function TestimonialsSection() {
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     idx === current
-                      ? "bg-[#7CFF6B] w-6"
+                      ? "bg-[#7CF067] w-6"
                       : "bg-neutral-700 hover:bg-neutral-600"
                   }`}
                   aria-label={`Go to testimonial ${idx + 1}`}
@@ -172,7 +172,7 @@ export default function TestimonialsSection() {
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700 hover:border-[#7CFF6B]/50 flex items-center justify-center text-white transition-colors"
+              className="w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700 hover:border-[#7CF067]/50 flex items-center justify-center text-white transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />

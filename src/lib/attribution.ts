@@ -245,6 +245,11 @@ export function initAttribution(): Attribution | null {
   try {
     // super-properties: anexadas a TODO evento daqui pra frente
     posthog.register({
+      // Identifica o site no projeto PostHog compartilhado (kaleidos + jornalcripto
+      // vivem no mesmo projeto 387434). O dashboard "Tráfego & Conversão" filtra
+      // TODOS os tiles por site=kaleidos; sem isso nos eventos client (pageview/
+      // autocapture), os tiles ficavam vazios mesmo com tráfego chegando.
+      site: "kaleidos",
       channel: current.channel,
       traffic_source: current.source,
       ...(current.utm_source ? { utm_source: current.utm_source } : {}),

@@ -30,7 +30,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
         {/* Meta */}
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-[13px] text-gray-500">
-            <span className="text-[#7CFF6B] font-medium">
+            <span className="text-[#7CF067] font-medium">
               {categoryLabels[post.category]}
             </span>
             <span className="text-gray-300">/</span>

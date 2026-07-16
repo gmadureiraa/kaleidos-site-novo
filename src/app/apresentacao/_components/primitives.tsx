@@ -111,7 +111,7 @@ export function Eyebrow({
   className?: string;
 }) {
   const color =
-    tone === "green" ? "text-[#7CFF6B]" : tone === "pink" ? "text-pink-500" : "text-black/60";
+    tone === "green" ? "text-[#7CF067]" : tone === "pink" ? "text-pink-500" : "text-black/60";
   return (
     <p
       className={`mb-4 font-accent text-xs uppercase tracking-[0.25em] ${color} ${className}`}

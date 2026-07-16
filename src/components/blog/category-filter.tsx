@@ -35,7 +35,7 @@ export function CategoryFilter({ selected, onSelect }: CategoryFilterProps) {
             {isActive && (
               <motion.span
                 layoutId="blog-filter"
-                className="absolute inset-0 bg-[#7CFF6B] rounded-full"
+                className="absolute inset-0 bg-[#7CF067] rounded-full"
                 transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
               />
             )}

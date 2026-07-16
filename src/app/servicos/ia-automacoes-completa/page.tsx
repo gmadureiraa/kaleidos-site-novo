@@ -46,6 +46,7 @@ import {
  */
 export default function KaleidosIAPage() {
   const { locale } = useI18n();
+  const isEn = locale === "en";
   const { trackWhatsApp } = useAnalytics();
 
   const serviceSchema = generateServiceSchema(
@@ -62,7 +63,9 @@ export default function KaleidosIAPage() {
   };
 
   const handleWhatsAppSpecific = (service: string) => {
-    const message = `Olá! Preciso de ajuda com ${service}. Podem me ajudar?`;
+    const message = isEn
+      ? `Hello! I need help with ${service}. Can you help me?`
+      : `Olá! Preciso de ajuda com ${service}. Podem me ajudar?`;
     trackWhatsApp("servico_ia_automacoes", `service_${service}`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
   };
@@ -92,7 +95,7 @@ export default function KaleidosIAPage() {
       {/* ================================================================ */}
       {/* 1. HERO                                                           */}
       {/* ================================================================ */}
-      <HeroSection onCta={() => handleWhatsApp("hero_cta")} />
+      <HeroSection isEn={isEn} onCta={() => handleWhatsApp("hero_cta")} />
 
       {/* ================================================================ */}
       {/* 2. CARROSSEL FLIP — problema → solução IA (cards interativos)    */}
@@ -105,44 +108,44 @@ export default function KaleidosIAPage() {
       {/* ================================================================ */}
       {/* 3. PROCESSO                                                       */}
       {/* ================================================================ */}
-      <ProcessSection />
+      <ProcessSection isEn={isEn} />
 
       {/* ================================================================ */}
       {/* 3.5 O QUE ENTREGAMOS                                              */}
       {/* ================================================================ */}
-      <DeliverablesSection />
+      <DeliverablesSection isEn={isEn} />
 
       {/* ================================================================ */}
       {/* 4. CASES (2 destaques antes/depois)                               */}
       {/* ================================================================ */}
-      <CasesSection />
+      <CasesSection isEn={isEn} />
 
       {/* ================================================================ */}
       {/* 5. OPERAÇÃO RODANDO — carrossel de 10+ projetos (clientes + tools) */}
       {/* ================================================================ */}
-      <OperationsCarouselSection />
+      <OperationsCarouselSection isEn={isEn} />
 
       {/* ================================================================ */}
       {/* 6. COMO TRABALHAMOS (modalidades sem preço)                       */}
       {/* ================================================================ */}
-      <ModalitiesSection onCta={(t) => handleWhatsApp(`modalidade_${t}`)} />
+      <ModalitiesSection isEn={isEn} onCta={(t) => handleWhatsApp(`modalidade_${t}`)} />
 
       {/* ================================================================ */}
       {/* 7. CTA + FORM (movido pra cima — antes do FAQ — pra capturar leads */}
       {/*    quentes que chegam até modalidades. FAQ vira objection killer  */}
       {/*    pós-form pra quem ainda hesita.)                                */}
       {/* ================================================================ */}
-      <FinalCtaSection />
+      <FinalCtaSection isEn={isEn} />
 
       {/* ================================================================ */}
       {/* 8. FAQ (objection handling final)                                 */}
       {/* ================================================================ */}
-      <FAQSection />
+      <FAQSection isEn={isEn} />
 
       <FooterDemo />
 
       {/* Sticky bottom CTA mobile — aparece após scroll do hero (P0 audit) */}
-      <StickyMobileCTA onCta={() => handleWhatsApp("sticky_mobile")} />
+      <StickyMobileCTA isEn={isEn} onCta={() => handleWhatsApp("sticky_mobile")} />
     </main>
   );
 }
@@ -151,7 +154,7 @@ export default function KaleidosIAPage() {
 /* STICKY MOBILE CTA — aparece após scroll > 1 viewport (mobile only) */
 /* =================================================================== */
 
-function StickyMobileCTA({ onCta }: { onCta: () => void }) {
+function StickyMobileCTA({ isEn, onCta }: { isEn: boolean; onCta: () => void }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const onScroll = () => {
@@ -175,7 +178,7 @@ function StickyMobileCTA({ onCta }: { onCta: () => void }) {
         onClick={onCta}
         className="inline-flex items-center gap-2 whitespace-nowrap"
       >
-        💬 Falar agora <ArrowUpRight className="h-4 w-4" />
+        💬 {isEn ? "Talk now" : "Falar agora"} <ArrowUpRight className="h-4 w-4" />
       </button>
     </div>
   );
@@ -185,36 +188,53 @@ function StickyMobileCTA({ onCta }: { onCta: () => void }) {
 /* HERO                                                                */
 /* =================================================================== */
 
-function HeroSection({ onCta }: { onCta: () => void }) {
+function HeroSection({ isEn, onCta }: { isEn: boolean; onCta: () => void }) {
   return (
     <section className="mx-auto flex max-w-5xl flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-28">
       <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CF067]/20 bg-[#7CF067]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CF067] sm:text-sm">
         <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CF067]" />
-        Kaleidos AI · IA dentro da operação, não em volta dela
+        {isEn
+          ? "Kaleidos AI · AI inside the operation, not around it"
+          : "Kaleidos AI · IA dentro da operação, não em volta dela"}
       </span>
 
       <h1 className="font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[68px]">
-        Aumente em <span className="text-[#7CF067]">3x</span> a produtividade
-        <br className="hidden sm:block" /> da sua empresa com a Kaleidos.
+        {isEn ? (
+          <>
+            Increase your company&apos;s productivity{" "}
+            <span className="text-[#7CF067]">3x</span>
+            <br className="hidden sm:block" /> with Kaleidos.
+          </>
+        ) : (
+          <>
+            Aumente em <span className="text-[#7CF067]">3x</span> a produtividade
+            <br className="hidden sm:block" /> da sua empresa com a Kaleidos.
+          </>
+        )}
       </h1>
 
       <p className="mt-6 max-w-2xl text-base text-gray-400 sm:text-lg">
-        IA dentro do fluxo que já existe. Código no repositório do cliente, sem lock-in.
+        {isEn
+          ? "AI inside the workflow you already have. Code in the client's repository, no lock-in."
+          : "IA dentro do fluxo que já existe. Código no repositório do cliente, sem lock-in."}
       </p>
 
       {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
       <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-400 sm:text-sm">
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">8 marcas</strong> operando
+          <strong className="text-white">{isEn ? "8 brands" : "8 marcas"}</strong>{" "}
+          {isEn ? "operating" : "operando"}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">5+ anos</strong> de operação
+          <strong className="text-white">{isEn ? "5+ years" : "5+ anos"}</strong>{" "}
+          {isEn ? "of operation" : "de operação"}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">10+ frentes</strong> automatizadas
+          <strong className="text-white">{isEn ? "10+ fronts" : "10+ frentes"}</strong>{" "}
+          {isEn ? "automated" : "automatizadas"}
         </span>
       </div>
 
@@ -225,13 +245,13 @@ function HeroSection({ onCta }: { onCta: () => void }) {
           className="group inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(37,211,102,0.7)] sm:text-base"
         >
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Falar no WhatsApp
+          {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"}
         </button>
         <button
           onClick={() => document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" })}
           className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CF067]/30 hover:bg-white/[0.06] sm:text-base"
         >
-          Receber por email
+          {isEn ? "Get it by email" : "Receber por email"}
           <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CF067]" />
         </button>
       </div>
@@ -256,45 +276,72 @@ function HeroSection({ onCta }: { onCta: () => void }) {
 /* PROCESSO                                                            */
 /* =================================================================== */
 
-function ProcessSection() {
-  const steps = [
-    {
-      number: "01",
-      title: "Diagnóstico gratuito",
-      body: "Call de 30-45 min. Mapeio os 3 maiores gargalos e devolvo um plano.",
-      duration: "30-45 min · gratuito",
-    },
-    {
-      number: "02",
-      title: "Mapa de gargalos",
-      body: "Plano com prioridade: o que automatiza primeiro, o que precisa de processo, o que IA não resolve.",
-      duration: "Entregue em 48h",
-    },
-    {
-      number: "03",
-      title: "Build",
-      body: "Time Kaleidos implementa na stack do cliente. Sprints quinzenais, código no repositório dele desde o dia 1.",
-      duration: "4-8 semanas",
-    },
-    {
-      number: "04",
-      title: "Iteração contínua",
-      body: "Métrica de hora liberada revisada todo mês. Próximos gargalos atacados.",
-      duration: "Recorrente",
-    },
-  ];
+function ProcessSection({ isEn }: { isEn: boolean }) {
+  const steps = isEn
+    ? [
+        {
+          number: "01",
+          title: "Free diagnosis",
+          body: "A 30-45 min call. We map your 3 biggest bottlenecks and return a plan.",
+          duration: "30-45 min · free",
+        },
+        {
+          number: "02",
+          title: "Bottleneck map",
+          body: "A prioritized plan: what gets automated first, what needs process, what AI won't solve.",
+          duration: "Delivered in 48h",
+        },
+        {
+          number: "03",
+          title: "Build",
+          body: "The Kaleidos team implements on the client's stack. Biweekly sprints, code in their repository from day 1.",
+          duration: "4-8 weeks",
+        },
+        {
+          number: "04",
+          title: "Continuous iteration",
+          body: "Hours-recovered metric reviewed every month. Next bottlenecks tackled.",
+          duration: "Recurring",
+        },
+      ]
+    : [
+        {
+          number: "01",
+          title: "Diagnóstico gratuito",
+          body: "Call de 30-45 min. Mapeio os 3 maiores gargalos e devolvo um plano.",
+          duration: "30-45 min · gratuito",
+        },
+        {
+          number: "02",
+          title: "Mapa de gargalos",
+          body: "Plano com prioridade: o que automatiza primeiro, o que precisa de processo, o que IA não resolve.",
+          duration: "Entregue em 48h",
+        },
+        {
+          number: "03",
+          title: "Build",
+          body: "Time Kaleidos implementa na stack do cliente. Sprints quinzenais, código no repositório dele desde o dia 1.",
+          duration: "4-8 semanas",
+        },
+        {
+          number: "04",
+          title: "Iteração contínua",
+          body: "Métrica de hora liberada revisada todo mês. Próximos gargalos atacados.",
+          duration: "Recorrente",
+        },
+      ];
 
   return (
     <section
-      aria-label="Processo"
+      aria-label={isEn ? "Process" : "Processo"}
       className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          Processo
+          {isEn ? "Process" : "Processo"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Como funciona.
+          {isEn ? "How it works." : "Como funciona."}
         </h2>
       </div>
 
@@ -305,7 +352,7 @@ function ProcessSection() {
             className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6"
           >
             <div className="font-mono text-xs uppercase tracking-wider text-gray-500">
-              Passo {s.number}
+              {isEn ? "Step" : "Passo"} {s.number}
             </div>
             <h3 className="mt-2 font-display text-xl font-semibold text-white">
               {s.title}
@@ -328,36 +375,53 @@ function ProcessSection() {
 /* O QUE ENTREGAMOS                                                    */
 /* =================================================================== */
 
-function DeliverablesSection() {
-  const items = [
-    "Diagnóstico e mapa de gargalos da operação",
-    "Agente de atendimento N1 (chat, WhatsApp, FAQ)",
-    "Automação de geração de conteúdo (carrossel, posts, roteiros)",
-    "Pipeline de pesquisa e briefing automatizado",
-    "Régua de cobrança automática (Stripe + WhatsApp + email)",
-    "Qualificação e resposta automática de leads",
-    "Cross-post automatizado (1 vídeo → várias redes)",
-    "Dashboards e relatórios automáticos",
-    "Integrações entre ferramentas (n8n, APIs, webhooks)",
-    "Sistema customizado sob escopo (TS + Python + Supabase)",
-    "Código no repositório do cliente, sem lock-in",
-    "Documentação, handoff técnico e iteração mensal",
-  ];
+function DeliverablesSection({ isEn }: { isEn: boolean }) {
+  const items = isEn
+    ? [
+        "Diagnosis and bottleneck map of the operation",
+        "N1 support agent (chat, WhatsApp, FAQ)",
+        "Automated content generation (carousels, posts, scripts)",
+        "Automated research and briefing pipeline",
+        "Automated billing follow-up (Stripe + WhatsApp + email)",
+        "Automatic lead qualification and reply",
+        "Automated cross-posting (1 video → multiple networks)",
+        "Automatic dashboards and reports",
+        "Tool integrations (n8n, APIs, webhooks)",
+        "Custom system under scope (TS + Python + Supabase)",
+        "Code in the client's repository, no lock-in",
+        "Documentation, technical handoff and monthly iteration",
+      ]
+    : [
+        "Diagnóstico e mapa de gargalos da operação",
+        "Agente de atendimento N1 (chat, WhatsApp, FAQ)",
+        "Automação de geração de conteúdo (carrossel, posts, roteiros)",
+        "Pipeline de pesquisa e briefing automatizado",
+        "Régua de cobrança automática (Stripe + WhatsApp + email)",
+        "Qualificação e resposta automática de leads",
+        "Cross-post automatizado (1 vídeo → várias redes)",
+        "Dashboards e relatórios automáticos",
+        "Integrações entre ferramentas (n8n, APIs, webhooks)",
+        "Sistema customizado sob escopo (TS + Python + Supabase)",
+        "Código no repositório do cliente, sem lock-in",
+        "Documentação, handoff técnico e iteração mensal",
+      ];
 
   return (
     <section
-      aria-label="O que entregamos"
+      aria-label={isEn ? "What we deliver" : "O que entregamos"}
       className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          Entregáveis
+          {isEn ? "Deliverables" : "Entregáveis"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          O que entregamos.
+          {isEn ? "What we deliver." : "O que entregamos."}
         </h2>
         <p className="mt-4 text-base text-gray-400 sm:text-lg">
-          As coisas concretas que saem da operação, sem caixa-preta.
+          {isEn
+            ? "The concrete things that come out of the operation, no black box."
+            : "As coisas concretas que saem da operação, sem caixa-preta."}
         </p>
       </div>
 
@@ -384,35 +448,62 @@ function DeliverablesSection() {
 /* CASES                                                               */
 /* =================================================================== */
 
-function CasesSection() {
+function CasesSection({ isEn }: { isEn: boolean }) {
   // Cases destaque (2 protagonistas — narrativa concreta)
-  const featured = [
-    {
-      slug: "renan-consultoria",
-      cliente: "Renan · Consultoria financeira",
-      vertical: "Consultor financeiro",
-      stack: "Reunião → plano executável (IA + plataforma compartilhada)",
-      headline: "Reuniões 1-1 que viram plano executável automaticamente.",
-      antes:
-        "Plano definido na call. Até sexta os detalhes sumiam. Cliente esquecia tarefa, consultor esquecia follow-up.",
-      depois:
-        "Call gravada e resumida por IA. Plano cai numa plataforma compartilhada: tarefas, prazos e próximos passos pra cada lado.",
-      destaque:
-        "Zero detalhe perdido. Consultor escala sem perder qualidade.",
-    },
-    {
-      slug: "radar-viral",
-      cliente: "Radar Viral · Plataforma própria Kaleidos",
-      vertical: "Cross-post automatizado",
-      stack: "Monitor de postagens + geração cross-rede",
-      headline: "1 vídeo → 5 conteúdos cross-rede em minutos.",
-      antes:
-        "Posta no YouTube ou IG e perde reach. Cross-post é manual, ou não acontece. Voz inconsistente.",
-      depois:
-        "Radar monitora as postagens e gera derivados: thread no X, post LinkedIn, carrossel IG, e-mail. Formato adaptado por canal.",
-      destaque: "5 redes cobertas em 1 click. Minutos no lugar de horas.",
-    },
-  ];
+  const featured = isEn
+    ? [
+        {
+          slug: "renan-consultoria",
+          cliente: "Renan · Financial consulting",
+          vertical: "Financial consultant",
+          stack: "Meeting → actionable plan (AI + shared platform)",
+          headline: "1-on-1 meetings that automatically become an actionable plan.",
+          antes:
+            "Plan defined on the call. By Friday the details were gone. Client forgot tasks, consultant forgot follow-ups.",
+          depois:
+            "Call recorded and summarized by AI. The plan lands on a shared platform: tasks, deadlines and next steps for each side.",
+          destaque: "Zero details lost. The consultant scales without losing quality.",
+        },
+        {
+          slug: "radar-viral",
+          cliente: "Radar Viral · Kaleidos platform",
+          vertical: "Automated cross-posting",
+          stack: "Post monitor + cross-network generation",
+          headline: "1 video → 5 cross-network assets in minutes.",
+          antes:
+            "Post on YouTube or IG and lose reach. Cross-posting is manual, or doesn't happen. Inconsistent voice.",
+          depois:
+            "Radar monitors the posts and generates derivatives: X thread, LinkedIn post, IG carousel, email. Format adapted per channel.",
+          destaque: "5 networks covered in 1 click. Minutes instead of hours.",
+        },
+      ]
+    : [
+        {
+          slug: "renan-consultoria",
+          cliente: "Renan · Consultoria financeira",
+          vertical: "Consultor financeiro",
+          stack: "Reunião → plano executável (IA + plataforma compartilhada)",
+          headline: "Reuniões 1-1 que viram plano executável automaticamente.",
+          antes:
+            "Plano definido na call. Até sexta os detalhes sumiam. Cliente esquecia tarefa, consultor esquecia follow-up.",
+          depois:
+            "Call gravada e resumida por IA. Plano cai numa plataforma compartilhada: tarefas, prazos e próximos passos pra cada lado.",
+          destaque:
+            "Zero detalhe perdido. Consultor escala sem perder qualidade.",
+        },
+        {
+          slug: "radar-viral",
+          cliente: "Radar Viral · Plataforma própria Kaleidos",
+          vertical: "Cross-post automatizado",
+          stack: "Monitor de postagens + geração cross-rede",
+          headline: "1 vídeo → 5 conteúdos cross-rede em minutos.",
+          antes:
+            "Posta no YouTube ou IG e perde reach. Cross-post é manual, ou não acontece. Voz inconsistente.",
+          depois:
+            "Radar monitora as postagens e gera derivados: thread no X, post LinkedIn, carrossel IG, e-mail. Formato adaptado por canal.",
+          destaque: "5 redes cobertas em 1 click. Minutos no lugar de horas.",
+        },
+      ];
 
   return (
     <section
@@ -424,7 +515,7 @@ function CasesSection() {
           Cases
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          O que já roda.
+          {isEn ? "What is already running." : "O que já roda."}
         </h2>
       </div>
 
@@ -457,13 +548,13 @@ function CasesSection() {
             <div className="mt-5 space-y-3 border-t border-white/5 pt-5 text-sm">
               <div className="flex gap-3 text-gray-500">
                 <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-gray-600 pt-0.5">
-                  antes
+                  {isEn ? "before" : "antes"}
                 </span>
                 <span className="flex-1">{c.antes}</span>
               </div>
               <div className="flex gap-3 text-gray-300">
                 <span className="font-mono text-[10px] shrink-0 uppercase tracking-wider text-[#7CF067] pt-0.5">
-                  depois
+                  {isEn ? "after" : "depois"}
                 </span>
                 <span className="flex-1">{c.depois}</span>
               </div>
@@ -471,7 +562,7 @@ function CasesSection() {
 
             <div className="mt-5 border-t border-white/5 pt-4 text-sm text-gray-300">
               <span className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
-                Resultado ·{" "}
+                {isEn ? "Result" : "Resultado"} ·{" "}
               </span>
               {c.destaque}
             </div>
@@ -487,14 +578,16 @@ function CasesSection() {
 /* OPERAÇÃO RODANDO — 10 cases reais (clientes + produtos próprios)   */
 /* =================================================================== */
 
-function OperationsCarouselSection() {
+function OperationsCarouselSection({ isEn }: { isEn: boolean }) {
   const cases = [
     {
       kind: "produto" as const,
       Icon: Sparkles,
       cliente: "Sequência Viral",
-      vertical: "Produto próprio",
-      solucao: "Carrossel viral em 30s a partir de brief de 3 linhas",
+      vertical: isEn ? "Own product" : "Produto próprio",
+      solucao: isEn
+        ? "Viral carousel in 30s from a 3-line brief"
+        : "Carrossel viral em 30s a partir de brief de 3 linhas",
       stack: "Next + Gemini + Imagen + Stripe",
       url: "https://viral.kaleidos.com.br",
     },
@@ -502,8 +595,10 @@ function OperationsCarouselSection() {
       kind: "produto" as const,
       Icon: Radar,
       cliente: "Radar Viral",
-      vertical: "Produto próprio",
-      solucao: "Brief diário cruzando IG, YouTube, news e newsletters",
+      vertical: isEn ? "Own product" : "Produto próprio",
+      solucao: isEn
+        ? "Daily brief crossing IG, YouTube, news and newsletters"
+        : "Brief diário cruzando IG, YouTube, news e newsletters",
       stack: "Next + Neon + Apify + Gemini cron",
       url: "https://radar.kaleidos.com.br",
     },
@@ -511,8 +606,10 @@ function OperationsCarouselSection() {
       kind: "produto" as const,
       Icon: Film,
       cliente: "Reels Viral",
-      vertical: "Produto próprio",
-      solucao: "Cole link IG → roteiro adaptado cena por cena",
+      vertical: isEn ? "Own product" : "Produto próprio",
+      solucao: isEn
+        ? "Paste an IG link → script adapted scene by scene"
+        : "Cole link IG → roteiro adaptado cena por cena",
       stack: "Next + Apify + Gemini Flash",
       url: "https://reels.kaleidos.com.br",
     },
@@ -520,8 +617,10 @@ function OperationsCarouselSection() {
       kind: "produto" as const,
       Icon: Cpu,
       cliente: "Kaleidos Pay",
-      vertical: "Produto próprio",
-      solucao: "Cobrança + proposta com régua automática WhatsApp + email",
+      vertical: isEn ? "Own product" : "Produto próprio",
+      solucao: isEn
+        ? "Billing + proposals with automatic WhatsApp + email follow-up"
+        : "Cobrança + proposta com régua automática WhatsApp + email",
       stack: "Next + Stripe + WhatsApp Web",
       url: "https://pay.kaleidos.com.br",
     },
@@ -529,8 +628,10 @@ function OperationsCarouselSection() {
       kind: "cliente" as const,
       Icon: Compass,
       cliente: "Defiverso",
-      vertical: "Educação cripto",
-      solucao: "Newsletter Resumo Criptoverso + automação IG/Twitter + comunidade",
+      vertical: isEn ? "Crypto education" : "Educação cripto",
+      solucao: isEn
+        ? "Resumo Criptoverso newsletter + IG/Twitter automation + community"
+        : "Newsletter Resumo Criptoverso + automação IG/Twitter + comunidade",
       stack: "Resend + KAI + Stripe",
     },
     {
@@ -538,7 +639,9 @@ function OperationsCarouselSection() {
       Icon: ArrowUpRight,
       cliente: "Investidor 4.20",
       vertical: "Bitcoin BR · 300k+",
-      solucao: "Funil orgânico YouTube → IG → newsletter, repurpose com IA",
+      solucao: isEn
+        ? "Organic funnel YouTube → IG → newsletter, repurposed with AI"
+        : "Funil orgânico YouTube → IG → newsletter, repurpose com IA",
       stack: "Sequência Viral + Radar + Newsletter pipeline",
     },
     {
@@ -546,55 +649,71 @@ function OperationsCarouselSection() {
       Icon: FileText,
       cliente: "DSEC Labs",
       vertical: "Bitcoin security",
-      solucao: "Alfred Reply Guy bot + conteúdo técnico em 3 níveis (Twitter/LinkedIn/blog)",
-      stack: "Bot autônomo + KAI + Webflow",
+      solucao: isEn
+        ? "Alfred Reply Guy bot + 3-level technical content (Twitter/LinkedIn/blog)"
+        : "Alfred Reply Guy bot + conteúdo técnico em 3 níveis (Twitter/LinkedIn/blog)",
+      stack: isEn ? "Autonomous bot + KAI + Webflow" : "Bot autônomo + KAI + Webflow",
     },
     {
       kind: "cliente" as const,
       Icon: Sparkles,
       cliente: "Layla Foz",
-      vertical: "Bem-estar · 184k IG",
-      solucao: "Newsletter Brisa da Semana + repurpose YouTube → IG/TikTok",
+      vertical: isEn ? "Wellness · 184k IG" : "Bem-estar · 184k IG",
+      solucao: isEn
+        ? "Brisa da Semana newsletter + YouTube → IG/TikTok repurposing"
+        : "Newsletter Brisa da Semana + repurpose YouTube → IG/TikTok",
       stack: "Resend + Apify + Sequência Viral",
     },
     {
       kind: "cliente" as const,
       Icon: Cpu,
       cliente: "Renan",
-      vertical: "Consultor financeiro",
-      solucao: "Diagnóstico do funil + IA na captação + dashboard cliente",
+      vertical: isEn ? "Financial consultant" : "Consultor financeiro",
+      solucao: isEn
+        ? "Funnel diagnosis + AI in lead capture + client dashboard"
+        : "Diagnóstico do funil + IA na captação + dashboard cliente",
       stack: "Custom (TS + Supabase + Stripe)",
     },
     {
       kind: "cliente" as const,
       Icon: Mail,
       cliente: "Hugo Doria",
-      vertical: "IA prática · vibe coding",
-      solucao: "Pipeline conteúdo YouTube + IG reels com voz consistente",
+      vertical: isEn ? "Practical AI · vibe coding" : "IA prática · vibe coding",
+      solucao: isEn
+        ? "YouTube + IG reels content pipeline with a consistent voice"
+        : "Pipeline conteúdo YouTube + IG reels com voz consistente",
       stack: "Reels Viral + n8n",
     },
   ];
 
   return (
     <section
-      aria-label="Operação rodando"
+      aria-label={isEn ? "Operation running" : "Operação rodando"}
       className="mx-auto mt-24 max-w-6xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          Operação rodando hoje
+          {isEn ? "Operation running today" : "Operação rodando hoje"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          10 projetos com IA dentro do fluxo.
+          {isEn
+            ? "10 projects with AI inside the workflow."
+            : "10 projetos com IA dentro do fluxo."}
         </h2>
         <p className="mt-4 text-base text-gray-400 sm:text-lg">
-          Clientes ativos e produtos próprios. Stack visível, sem caixa-preta.
+          {isEn
+            ? "Active clients and our own products. Visible stack, no black box."
+            : "Clientes ativos e produtos próprios. Stack visível, sem caixa-preta."}
         </p>
       </div>
 
       <div
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-label="Carrossel de cases — arraste pro lado pra ver os 10"
+        aria-label={
+          isEn
+            ? "Case carousel, swipe sideways to see all 10"
+            : "Carrossel de cases — arraste pro lado pra ver os 10"
+        }
       >
         {cases.map((c, i) => {
           const isProduct = c.kind === "produto";
@@ -617,7 +736,13 @@ function OperationsCarouselSection() {
                   className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em]"
                   style={{ color: accent }}
                 >
-                  {isProduct ? "Produto próprio" : "Cliente"}
+                  {isProduct
+                    ? isEn
+                      ? "Own product"
+                      : "Produto próprio"
+                    : isEn
+                      ? "Client"
+                      : "Cliente"}
                 </span>
               </div>
               <h3 className="font-display text-xl font-semibold text-white">
@@ -637,7 +762,7 @@ function OperationsCarouselSection() {
               </div>
               {c.url && (
                 <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#7CF067] opacity-0 transition-opacity group-hover:opacity-100">
-                  Abrir <ArrowUpRight className="h-3 w-3" />
+                  {isEn ? "Open" : "Abrir"} <ArrowUpRight className="h-3 w-3" />
                 </span>
               )}
             </>
@@ -674,7 +799,7 @@ function OperationsCarouselSection() {
       </div>
 
       <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-gray-500">
-        ← arrasta pro lado pra ver todos →
+        {isEn ? "← swipe sideways to see them all →" : "← arrasta pro lado pra ver todos →"}
       </p>
     </section>
   );
@@ -684,67 +809,118 @@ function OperationsCarouselSection() {
 /* MODALIDADES — Como trabalhamos (sem preço, com 3 modos)             */
 /* =================================================================== */
 
-function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
-  const tiers = [
-    {
-      Icon: Calendar,
-      name: "Diagnóstico gratuito",
-      duration: "30-45 min · sem custo",
-      description:
-        "Mapa dos 3 maiores gargalos + plano de ação. Sem compromisso.",
-      bullets: [
-        "Call de 30-45 min ao vivo",
-        "Mapa dos 3 maiores gargalos",
-        "Plano de ação executável",
-        "Sem custo, sem compromisso",
-      ],
-      ctaLabel: "Agendar minha call gratuita",
-      tier: "diagnostico",
-    },
-    {
-      Icon: Repeat,
-      name: "Implementação contínua",
-      duration: "Mês a mês · mín. 3 meses",
-      description:
-        "Equipe Kaleidos roda junto com o time em sprints quinzenais.",
-      bullets: [
-        "2-3 implementações de IA por sprint",
-        "Equipe multidisciplinar dedicada (estratégia + dev + copy)",
-        "Código no repositório do cliente, sem lock-in",
-        "Reunião mensal com métrica de hora liberada",
-      ],
-      ctaLabel: "Quero implementação contínua",
-      tier: "mensal",
-      highlight: true,
-    },
-    {
-      Icon: Wrench,
-      name: "Sistema customizado",
-      duration: "Escopo fechado",
-      description:
-        "Pipeline de IA sob medida pra um problema específico. Produto próprio dentro da operação.",
-      bullets: [
-        "Discovery + arquitetura + build sob escopo",
-        "Stack TS + Python + Supabase + Gemini/Claude",
-        "Entrega como sistema, não como relatório",
-        "Documentação + handoff técnico pro time interno",
-      ],
-      ctaLabel: "Quero um sistema próprio",
-      tier: "custom",
-    },
-  ];
+function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: string) => void }) {
+  const tiers = isEn
+    ? [
+        {
+          Icon: Calendar,
+          name: "Free diagnosis",
+          duration: "30-45 min · no cost",
+          description: "Map of the 3 biggest bottlenecks + action plan. No commitment.",
+          bullets: [
+            "Live 30-45 min call",
+            "Map of the 3 biggest bottlenecks",
+            "Actionable plan",
+            "No cost, no commitment",
+          ],
+          ctaLabel: "Book my free call",
+          tier: "diagnostico",
+          highlight: false,
+        },
+        {
+          Icon: Repeat,
+          name: "Continuous implementation",
+          duration: "Month to month · min. 3 months",
+          description: "The Kaleidos team runs alongside yours in biweekly sprints.",
+          bullets: [
+            "2-3 AI implementations per sprint",
+            "Dedicated multidisciplinary team (strategy + dev + copy)",
+            "Code in the client's repository, no lock-in",
+            "Monthly meeting with the hours-recovered metric",
+          ],
+          ctaLabel: "I want continuous implementation",
+          tier: "mensal",
+          highlight: true,
+        },
+        {
+          Icon: Wrench,
+          name: "Custom system",
+          duration: "Fixed scope",
+          description:
+            "A tailored AI pipeline for a specific problem. Your own product inside the operation.",
+          bullets: [
+            "Discovery + architecture + build under scope",
+            "TS + Python + Supabase + Gemini/Claude stack",
+            "Delivered as a system, not a report",
+            "Documentation + technical handoff to the internal team",
+          ],
+          ctaLabel: "I want my own system",
+          tier: "custom",
+          highlight: false,
+        },
+      ]
+    : [
+        {
+          Icon: Calendar,
+          name: "Diagnóstico gratuito",
+          duration: "30-45 min · sem custo",
+          description:
+            "Mapa dos 3 maiores gargalos + plano de ação. Sem compromisso.",
+          bullets: [
+            "Call de 30-45 min ao vivo",
+            "Mapa dos 3 maiores gargalos",
+            "Plano de ação executável",
+            "Sem custo, sem compromisso",
+          ],
+          ctaLabel: "Agendar minha call gratuita",
+          tier: "diagnostico",
+          highlight: false,
+        },
+        {
+          Icon: Repeat,
+          name: "Implementação contínua",
+          duration: "Mês a mês · mín. 3 meses",
+          description:
+            "Equipe Kaleidos roda junto com o time em sprints quinzenais.",
+          bullets: [
+            "2-3 implementações de IA por sprint",
+            "Equipe multidisciplinar dedicada (estratégia + dev + copy)",
+            "Código no repositório do cliente, sem lock-in",
+            "Reunião mensal com métrica de hora liberada",
+          ],
+          ctaLabel: "Quero implementação contínua",
+          tier: "mensal",
+          highlight: true,
+        },
+        {
+          Icon: Wrench,
+          name: "Sistema customizado",
+          duration: "Escopo fechado",
+          description:
+            "Pipeline de IA sob medida pra um problema específico. Produto próprio dentro da operação.",
+          bullets: [
+            "Discovery + arquitetura + build sob escopo",
+            "Stack TS + Python + Supabase + Gemini/Claude",
+            "Entrega como sistema, não como relatório",
+            "Documentação + handoff técnico pro time interno",
+          ],
+          ctaLabel: "Quero um sistema próprio",
+          tier: "custom",
+          highlight: false,
+        },
+      ];
 
   return (
     <section
-      aria-label="Como trabalhamos"
+      aria-label={isEn ? "How we work" : "Como trabalhamos"}
       className="mx-auto mt-24 max-w-5xl px-4 sm:px-6"
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          Modalidades
+          {isEn ? "Ways of working" : "Modalidades"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Como trabalhamos.
+          {isEn ? "How we work." : "Como trabalhamos."}
         </h2>
       </div>
 
@@ -760,7 +936,7 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
           >
             {t.highlight && (
               <span className="absolute right-5 top-5 rounded-full border border-[#7CF067]/30 bg-[#7CF067]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#7CF067]">
-                Mais buscado
+                {isEn ? "Most requested" : "Mais buscado"}
               </span>
             )}
 
@@ -808,8 +984,12 @@ function ModalitiesSection({ onCta }: { onCta: (tier: string) => void }) {
       {/* CTA único */}
       <div className="mt-10 text-center">
         <p className="text-base text-gray-400">
-          Conta o gargalo.{" "}
-          <span className="text-white">Agenda uma call gratuita de 30 min comigo.</span>
+          {isEn ? "Tell us the bottleneck." : "Conta o gargalo."}{" "}
+          <span className="text-white">
+            {isEn
+              ? "Book a free 30 min call with me."
+              : "Agenda uma call gratuita de 30 min comigo."}
+          </span>
         </p>
       </div>
     </section>
@@ -977,16 +1157,22 @@ function FlipCarouselSection({
     >
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          O antes e depois
+          {locale === "en" ? "Before and after" : "O antes e depois"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          Onde a IA entra na operação.
+          {locale === "en"
+            ? "Where AI enters the operation."
+            : "Onde a IA entra na operação."}
         </h2>
         <p className="mt-4 text-base text-gray-400 sm:text-lg">
-          6 frentes recorrentes. Hover pra virar cada card.
+          {locale === "en"
+            ? "6 recurring fronts. Hover to flip each card."
+            : "6 frentes recorrentes. Hover pra virar cada card."}
         </p>
         <p className="mt-3 text-sm font-medium text-[#7CF067]">
-          Qualquer tarefa repetitiva entra no fluxo. A gente audita, mapeia e implementa.
+          {locale === "en"
+            ? "Any repetitive task fits the flow. We audit, map and implement."
+            : "Qualquer tarefa repetitiva entra no fluxo. A gente audita, mapeia e implementa."}
         </p>
       </div>
 
@@ -1034,8 +1220,8 @@ function FlipCarouselSection({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-white text-black hover:bg-gray-200" />
-        <CarouselNext className="bg-white text-black hover:bg-gray-200" />
+        <CarouselPrevious className="left-1 h-11 w-11 bg-white text-black hover:bg-gray-200 sm:-left-12 sm:h-10 sm:w-10" />
+        <CarouselNext className="right-1 h-11 w-11 bg-white text-black hover:bg-gray-200 sm:-right-12 sm:h-10 sm:w-10" />
       </Carousel>
     </section>
   );
@@ -1045,32 +1231,55 @@ function FlipCarouselSection({
 /* FAQ                                                                 */
 /* =================================================================== */
 
-function FAQSection() {
+function FAQSection({ isEn }: { isEn: boolean }) {
   // Top 4 — perguntas que de fato bloqueiam fechamento. Outras (nicho,
   // fidelidade, stack técnico, porte da empresa) ficam pra call de 30min
   // gratuita ou DM, evitando bloated FAQ que ninguém lê.
-  const items = [
-    {
-      q: "Em quanto tempo eu vejo resultado?",
-      a: "30 dias: primeiro gargalo rodando em produção. Mês 2: hora liberada começa a subir. Mês 3: 70% reais na maioria dos casos.",
-    },
-    {
-      q: "Qual é o investimento?",
-      a: "Diagnóstico grátis (48h). Projeto custom começa em R$ 8.000. Plano mensal a partir de R$ 4.500/mês, mínimo 3 meses. ROI típico paga sozinho em 30-60 dias.",
-    },
-    {
-      q: "O código fica com quem?",
-      a: "Sempre com o cliente. Sem lock-in. Entregue no repositório, com documentação.",
-    },
-    {
-      q: "Que suporte tem depois da entrega?",
-      a: "Mensal: suporte até o fim do contrato. Custom: SLA de manutenção opcional ou handoff técnico pro time interno.",
-    },
-    {
-      q: "Como mede ROI?",
-      a: "Hora liberada/mês × custo da hora × meses. 80h liberadas de um time de R$ 200/h = R$ 16k/mês recuperados. Aparece na reunião mensal.",
-    },
-  ];
+  const items = isEn
+    ? [
+        {
+          q: "How soon do I see results?",
+          a: "30 days: first bottleneck running in production. Month 2: recovered hours start climbing. Month 3: a real 70% in most cases.",
+        },
+        {
+          q: "What is the investment?",
+          a: "Free diagnosis (48h). Custom projects start at R$ 8.000. Monthly plan from R$ 4.500/month, minimum 3 months. Typical ROI pays for itself in 30-60 days.",
+        },
+        {
+          q: "Who keeps the code?",
+          a: "Always the client. No lock-in. Delivered in the repository, with documentation.",
+        },
+        {
+          q: "What support comes after delivery?",
+          a: "Monthly plan: support until the end of the contract. Custom: optional maintenance SLA or technical handoff to the internal team.",
+        },
+        {
+          q: "How do you measure ROI?",
+          a: "Hours recovered/month × hourly cost × months. 80h recovered from a R$ 200/h team = R$ 16k/month back. It shows up in the monthly meeting.",
+        },
+      ]
+    : [
+        {
+          q: "Em quanto tempo eu vejo resultado?",
+          a: "30 dias: primeiro gargalo rodando em produção. Mês 2: hora liberada começa a subir. Mês 3: 70% reais na maioria dos casos.",
+        },
+        {
+          q: "Qual é o investimento?",
+          a: "Diagnóstico grátis (48h). Projeto custom começa em R$ 8.000. Plano mensal a partir de R$ 4.500/mês, mínimo 3 meses. ROI típico paga sozinho em 30-60 dias.",
+        },
+        {
+          q: "O código fica com quem?",
+          a: "Sempre com o cliente. Sem lock-in. Entregue no repositório, com documentação.",
+        },
+        {
+          q: "Que suporte tem depois da entrega?",
+          a: "Mensal: suporte até o fim do contrato. Custom: SLA de manutenção opcional ou handoff técnico pro time interno.",
+        },
+        {
+          q: "Como mede ROI?",
+          a: "Hora liberada/mês × custo da hora × meses. 80h liberadas de um time de R$ 200/h = R$ 16k/mês recuperados. Aparece na reunião mensal.",
+        },
+      ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -1078,10 +1287,12 @@ function FAQSection() {
     <section aria-label="FAQ" className="mx-auto mt-24 max-w-3xl px-4 sm:px-6">
       <div className="mb-10 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#7CF067]">
-          Perguntas frequentes
+          {isEn ? "Frequently asked questions" : "Perguntas frequentes"}
         </p>
         <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
-          O que decisor pergunta antes de fechar.
+          {isEn
+            ? "What decision makers ask before closing."
+            : "O que decisor pergunta antes de fechar."}
         </h2>
       </div>
 
@@ -1134,7 +1345,7 @@ declare global {
   }
 }
 
-function FinalCtaSection() {
+function FinalCtaSection({ isEn }: { isEn: boolean }) {
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -1192,13 +1403,15 @@ function FinalCtaSection() {
 
         <div className="relative">
           <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
-            Diagnóstico gratuito em 48h.
+            {isEn ? "Free diagnosis in 48h." : "Diagnóstico gratuito em 48h."}
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CF067]">
-            Sem fidelidade · Sem contrato · LGPD
+            {isEn ? "No lock-in · No contract · LGPD" : "Sem fidelidade · Sem contrato · LGPD"}
           </p>
           <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400 sm:text-lg">
-            Descreve o gargalo. Volta em 48h: o que automatizar primeiro, qual ROI, quanto tempo.
+            {isEn
+              ? "Describe the bottleneck. We come back in 48h: what to automate first, what ROI, how long."
+              : "Descreve o gargalo. Volta em 48h: o que automatizar primeiro, qual ROI, quanto tempo."}
           </p>
 
           {status === "ok" ? (
@@ -1207,21 +1420,27 @@ function FinalCtaSection() {
                 <CheckCircle2 className="h-6 w-6 text-[#7CF067]" />
               </div>
               <h3 className="font-display text-xl font-semibold text-white">
-                Recebido.
+                {isEn ? "Received." : "Recebido."}
               </h3>
               <p className="mt-2 text-sm text-gray-300">
-                Diagnóstico em 48h em{" "}
-                <span className="text-[#7CF067]">{form.email}</span>. Especialista (não bot) prepara teu plano.
+                {isEn ? "Diagnosis in 48h at" : "Diagnóstico em 48h em"}{" "}
+                <span className="text-[#7CF067]">{form.email}</span>.{" "}
+                {isEn
+                  ? "A specialist (not a bot) prepares your plan."
+                  : "Especialista (não bot) prepara teu plano."}
               </p>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                  "Oi! Acabei de mandar o form do Kaleidos AI."
+                  isEn
+                    ? "Hi! I just sent the Kaleidos AI form."
+                    : "Oi! Acabei de mandar o form do Kaleidos AI."
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-5 py-2.5 text-sm font-semibold text-black hover:-translate-y-0.5 transition-transform"
               >
-                Falar no WhatsApp agora <ArrowRight className="h-4 w-4" />
+                {isEn ? "Talk on WhatsApp now" : "Falar no WhatsApp agora"}{" "}
+                <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           ) : (
@@ -1254,11 +1473,11 @@ function FinalCtaSection() {
                 />
               </div>
               <Field
-                label="Nome"
+                label={isEn ? "Name" : "Nome"}
                 value={form.nome}
                 onChange={(v) => setForm((f) => ({ ...f, nome: v }))}
                 required
-                placeholder="Seu nome"
+                placeholder={isEn ? "Your name" : "Seu nome"}
               />
               <Field
                 label="Email"
@@ -1266,22 +1485,26 @@ function FinalCtaSection() {
                 value={form.email}
                 onChange={(v) => setForm((f) => ({ ...f, email: v }))}
                 required
-                placeholder="voce@empresa.com"
+                placeholder={isEn ? "you@company.com" : "voce@empresa.com"}
               />
               <Field
-                label="Telefone / WhatsApp"
+                label={isEn ? "Phone / WhatsApp" : "Telefone / WhatsApp"}
                 type="tel"
                 value={form.telefone}
                 onChange={(v) => setForm((f) => ({ ...f, telefone: v }))}
                 required
-                placeholder="(11) 99999-9999"
+                placeholder={isEn ? "+55 (11) 99999-9999" : "(11) 99999-9999"}
                 className="sm:col-span-2"
               />
               <TextareaField
-                label="Qual o teu gargalo principal?"
+                label={isEn ? "What is your main bottleneck?" : "Qual o teu gargalo principal?"}
                 value={form.gargalo}
                 onChange={(v) => setForm((f) => ({ ...f, gargalo: v }))}
-                placeholder="Ex: gasto 3 dias por semana fazendo carrossel manual. Ou: meu time atende as mesmas 30 perguntas no WhatsApp todo dia. Ou: cobrança vira planilha do mês."
+                placeholder={
+                  isEn
+                    ? "E.g.: I spend 3 days a week making carousels by hand. Or: my team answers the same 30 questions on WhatsApp every day. Or: billing becomes a monthly spreadsheet."
+                    : "Ex: gasto 3 dias por semana fazendo carrossel manual. Ou: meu time atende as mesmas 30 perguntas no WhatsApp todo dia. Ou: cobrança vira planilha do mês."
+                }
                 className="sm:col-span-2"
               />
 
@@ -1291,29 +1514,40 @@ function FinalCtaSection() {
                   disabled={status === "sending"}
                   className="group inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-7 py-3.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_-8px_rgba(124,240,103,0.7)] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
                 >
-                  {status === "sending" ? "Enviando…" : "Receber diagnóstico em 48h"}
+                  {status === "sending"
+                    ? isEn
+                      ? "Sending…"
+                      : "Enviando…"
+                    : isEn
+                      ? "Get my diagnosis in 48h"
+                      : "Receber diagnóstico em 48h"}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
                 <p className="text-[11px] text-gray-500 text-center">
-                  Sem fidelidade · Sem contrato · Resposta em 48h · Dados
-                  protegidos pela LGPD
+                  {isEn
+                    ? "No lock-in · No contract · Reply in 48h · Data protected under LGPD"
+                    : "Sem fidelidade · Sem contrato · Resposta em 48h · Dados protegidos pela LGPD"}
                 </p>
                 {status === "err" && (
                   <p className="text-xs text-red-400">
-                    Algo deu errado. Tenta de novo ou manda WhatsApp.
+                    {isEn
+                      ? "Something went wrong. Try again or send a WhatsApp message."
+                      : "Algo deu errado. Tenta de novo ou manda WhatsApp."}
                   </p>
                 )}
                 <p className="text-[11px] text-gray-500">
-                  ou{" "}
+                  {isEn ? "or" : "ou"}{" "}
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                      "Oi! Quero saber mais sobre o Kaleidos AI."
+                      isEn
+                        ? "Hi! I want to know more about Kaleidos AI."
+                        : "Oi! Quero saber mais sobre o Kaleidos AI."
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#7CF067] hover:underline"
                   >
-                    fala direto no WhatsApp
+                    {isEn ? "talk directly on WhatsApp" : "fala direto no WhatsApp"}
                   </a>
                 </p>
               </div>
@@ -1342,7 +1576,7 @@ function FinalCtaSection() {
           href="/sobre"
           className="transition-colors hover:text-[#7CF067]"
         >
-          Sobre a Kaleidos
+          {isEn ? "About Kaleidos" : "Sobre a Kaleidos"}
         </Link>
       </div>
     </section>

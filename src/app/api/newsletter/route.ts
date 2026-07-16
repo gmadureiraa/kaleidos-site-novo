@@ -128,7 +128,7 @@ function buildNewsletterHtml(
 
     <!-- Header -->
     <div style="text-align:center;margin-bottom:40px;">
-      <a href="https://kaleidos.com.br" style="color:#7CFF6B;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.05em;">KALEIDOS</a>
+      <a href="https://kaleidos.com.br" style="color:#7CF067;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.05em;">KALEIDOS</a>
     </div>
 
     <!-- Cover Image -->
@@ -157,7 +157,7 @@ function buildNewsletterHtml(
 
     <!-- CTA -->
     <div style="text-align:center;margin:32px 0;">
-      <a href="${postUrl}" style="display:inline-block;padding:12px 28px;background-color:#7CFF6B;color:#000;text-decoration:none;font-weight:600;font-size:14px;border-radius:8px;">
+      <a href="${postUrl}" style="display:inline-block;padding:12px 28px;background-color:#7CF067;color:#000;text-decoration:none;font-weight:600;font-size:14px;border-radius:8px;">
         Ler no blog
       </a>
     </div>
@@ -183,7 +183,7 @@ function simpleMarkdownToHtml(md: string): string {
   html = html.replace(/^## (.+)$/gm, '<h2 style="color:#fff;font-size:22px;margin:32px 0 16px 0;font-weight:700;">$1</h2>');
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong style="color:#fff;">$1</strong>');
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
-  html = html.replace(/`(.+?)`/g, '<code style="background:#1a1a24;padding:2px 6px;border-radius:4px;color:#7CFF6B;font-size:14px;">$1</code>');
+  html = html.replace(/`(.+?)`/g, '<code style="background:#1a1a24;padding:2px 6px;border-radius:4px;color:#7CF067;font-size:14px;">$1</code>');
   html = html.replace(/^- (.+)$/gm, '<li style="margin:4px 0;padding-left:8px;">$1</li>');
   html = html.replace(/(<li.*<\/li>\n?)+/g, (match) => `<ul style="margin:16px 0;padding-left:20px;">${match}</ul>`);
   html = html.replace(/^\d+\. (.+)$/gm, '<li style="margin:4px 0;">$1</li>');

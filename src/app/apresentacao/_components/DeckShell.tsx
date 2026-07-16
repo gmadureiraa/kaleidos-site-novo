@@ -114,7 +114,7 @@ export function DeckShell({
     <DeckContext.Provider value={ctx}>
       {/* barra de progresso fixa estilo deck (logo abaixo do navbar sticky de 64px) */}
       <motion.div
-        className="fixed top-16 left-0 right-0 z-[70] h-1 origin-left bg-[#7CFF6B]"
+        className="fixed top-16 left-0 right-0 z-[70] h-1 origin-left bg-[#7CF067]"
         style={{ scaleX: progress }}
         animate={{ scaleX: progress }}
         transition={{ type: "spring", stiffness: 120, damping: 26 }}
@@ -155,7 +155,7 @@ export function DeckShell({
               <span
                 className={`block rounded-full transition-all duration-300 ${
                   isActive
-                    ? "h-5 w-1.5 bg-[#7CFF6B]"
+                    ? "h-5 w-1.5 bg-[#7CF067]"
                     : darkSlide
                       ? "h-1.5 w-1.5 bg-white/30 group-hover:bg-white/60"
                       : "h-1.5 w-1.5 bg-black/25 group-hover:bg-black/50"
@@ -204,7 +204,7 @@ export function Slide({
     tone === "dark"
       ? "bg-black text-white"
       : tone === "accent"
-        ? "bg-[#7CFF6B] text-black"
+        ? "bg-[#7CF067] text-black"
         : "bg-white text-black";
 
   return (

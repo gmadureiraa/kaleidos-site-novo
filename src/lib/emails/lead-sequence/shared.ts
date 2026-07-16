@@ -3,7 +3,7 @@
  * HTML inline-safe (Outlook + Gmail + Apple Mail).
  */
 
-export const KALEIDOS_LIME = "#7CFF6B";
+export const KALEIDOS_LIME = "#7CF067";
 export const KALEIDOS_DARK = "#0A0A0A";
 
 export function shell(opts: {

@@ -140,7 +140,7 @@ export default async function CategoryHubPage({ params }: Props) {
         </Link>
 
         <header className="max-w-2xl mb-12">
-          <span className="text-[#7CFF6B] font-medium text-sm">
+          <span className="text-[#7CF067] font-medium text-sm">
             {categoryLabels[cat]}
           </span>
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mt-2 mb-4 text-balance">

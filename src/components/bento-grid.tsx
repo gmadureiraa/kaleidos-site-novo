@@ -565,7 +565,7 @@ const BentoCard = ({ item }: { item: BentoItem }) => {
                                 )}
                             </div>
                             <div className="text-neutral-400 dark:text-neutral-500">
-                                <ArrowUpRight className="h-5 w-5 text-[#7CFF6B] dark:text-[#7CFF6B] group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors duration-200" />
+                                <ArrowUpRight className="h-5 w-5 text-[#7CF067] dark:text-[#7CF067] group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors duration-200" />
                             </div>
                         </div>
 
@@ -697,7 +697,7 @@ export default function BentoGrid() {
                                                 Kaleidos Growth
                                             </p>
                                         </div>
-                                        <ArrowUpRight className="h-5 w-5 text-[#7CFF6B] dark:text-[#7CFF6B] group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors duration-200" />
+                                        <ArrowUpRight className="h-5 w-5 text-[#7CF067] dark:text-[#7CF067] group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors duration-200" />
                                     </div>
                                     <p className="text-sm text-neutral-600 dark:text-neutral-400 tracking-tight mb-4">
                                         {locale==='en' ? 'Growth strategies and planning of digital launches to maximize results and conversions.' : 'Estratégias de crescimento e planejamento de lançamentos digitais para maximizar resultados e conversões.'}

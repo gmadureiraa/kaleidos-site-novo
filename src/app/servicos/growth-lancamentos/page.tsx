@@ -16,6 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
+import { KALEIDOS_METRICS } from "@/lib/metrics";
 import Image from "next/image";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
@@ -208,7 +209,7 @@ export default function KaleidosGrowthPage() {
 
                 <div className="grid grid-cols-3 gap-6 pt-2">
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>20+</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_METRICS.lancamentos_en : KALEIDOS_METRICS.lancamentos}</div>
                     <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Launches' : 'Lançamentos'}</div>
                   </div>
                   <div>
@@ -509,8 +510,8 @@ export default function KaleidosGrowthPage() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067]" />
-            <CarouselNext className="border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067]" />
+            <CarouselPrevious className="left-1 h-11 w-11 border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067] sm:-left-12 sm:h-10 sm:w-10" />
+            <CarouselNext className="right-1 h-11 w-11 border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067] sm:-right-12 sm:h-10 sm:w-10" />
           </Carousel>
         </div>
       </section>

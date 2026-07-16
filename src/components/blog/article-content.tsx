@@ -109,9 +109,9 @@ export function ArticleContent({
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
 
   return (
-    <main className="min-h-screen bg-[#F5F1E8]">
+    <main className="min-h-screen bg-[#FAFAFA]">
       {/* Sticky nav + breadcrumbs visíveis (semânticos) */}
-      <div className="sticky top-16 z-40 bg-[#F5F1E8]/90 backdrop-blur-md border-b border-black/10">
+      <div className="sticky top-16 z-40 bg-[#FAFAFA]/90 backdrop-blur-md border-b border-black/10">
         <div className="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <nav aria-label="Trilha de navegação" className="min-w-0">
             <ol className="flex items-center gap-1.5 text-[13px] text-gray-500">
@@ -190,7 +190,7 @@ export function ArticleContent({
 
             {/* TL;DR answer-first — bloco de citação extraível por IA (GEO §1.4) */}
             {tldr && (
-              <div className="rounded-xl border border-black/10 bg-[#EFE9DA] px-5 py-4">
+              <div className="rounded-xl border border-black/10 bg-[#F0F0EF] px-5 py-4">
                 <p className="font-mono uppercase tracking-[0.18em] text-[10px] text-[#b8479a] mb-1.5">
                   Resumo
                 </p>
@@ -268,7 +268,7 @@ export function ArticleContent({
                   {post.faq.map((item, i) => (
                     <details
                       key={i}
-                      className="group rounded-xl border border-gray-200 bg-[#FBFAF5] px-5 py-4"
+                      className="group rounded-xl border border-gray-200 bg-[#FFFFFF] px-5 py-4"
                     >
                       <summary className="cursor-pointer list-none font-semibold text-[15px] text-gray-900 leading-snug marker:hidden">
                         {item.question}
@@ -310,7 +310,7 @@ export function ArticleContent({
                     rel="noopener noreferrer"
                     data-cta="blog-article-calendly"
                     data-post={post.slug}
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#7CFF6B] text-black font-semibold text-sm hover:bg-[#6ae85a] transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#7CF067] text-black font-semibold text-sm hover:bg-[#6ae85a] transition-colors"
                   >
                     <CalendarCheck className="w-4 h-4" /> Agendar 30min grátis
                   </a>
@@ -354,7 +354,7 @@ export function ArticleContent({
           {/* Sidebar */}
           <aside className="lg:sticky lg:top-28 self-start space-y-8">
             {/* Author / CTA card */}
-            <div className="rounded-2xl border border-gray-200 bg-[#FBFAF5] p-6">
+            <div className="rounded-2xl border border-gray-200 bg-[#FFFFFF] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Image
                   src={post.author.avatar}
@@ -422,7 +422,7 @@ export function ArticleContent({
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={status === "loading"}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#7CFF6B]/60 focus:ring-1 focus:ring-[#7CFF6B]/20 transition-all text-sm disabled:opacity-50"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#7CF067]/60 focus:ring-1 focus:ring-[#7CF067]/20 transition-all text-sm disabled:opacity-50"
                 />
                 <button
                   type="submit"

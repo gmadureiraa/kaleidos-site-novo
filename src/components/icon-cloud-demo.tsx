@@ -35,7 +35,7 @@ const ICONS = [
 ] as const;
 
 const TONES = {
-  green: "bg-[#7CFF6B]/12 text-[#3d9e32] ring-[#7CFF6B]/30",
+  green: "bg-[#7CF067]/12 text-[#3d9e32] ring-[#7CF067]/30",
   pink: "bg-[#D262B2]/12 text-[#b14e96] ring-[#D262B2]/25",
   ghost: "bg-neutral-100 text-neutral-500 ring-neutral-200",
 } as const;

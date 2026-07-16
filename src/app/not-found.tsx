@@ -14,7 +14,7 @@ export default function NotFound() {
       className="min-h-screen flex items-center justify-center bg-black px-6 py-24"
     >
       <div className="text-center max-w-lg">
-        <p className="font-mono text-sm uppercase tracking-[0.3em] text-[#7CFF6B] mb-4">
+        <p className="font-mono text-sm uppercase tracking-[0.3em] text-[#7CF067] mb-4">
           Erro 404
         </p>
         <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 font-display tracking-tight">
@@ -33,7 +33,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/cases"
-            className="inline-block border border-gray-700 text-white py-3 px-8 rounded-lg font-semibold hover:border-[#7CFF6B]/40 hover:text-[#7CFF6B] transition-colors text-base"
+            className="inline-block border border-gray-700 text-white py-3 px-8 rounded-lg font-semibold hover:border-[#7CF067]/40 hover:text-[#7CF067] transition-colors text-base"
           >
             Ver nossos cases
           </Link>

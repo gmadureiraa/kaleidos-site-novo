@@ -227,7 +227,7 @@ export default function CasesPage() {
                           </span>
                         )}
                         {getHeadlineMetric(proj) && (
-                          <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#7CFF6B]/30 bg-[#7CFF6B]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
+                          <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#7CF067]/30 bg-[#7CF067]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                             {getHeadlineMetric(proj)}
                           </span>

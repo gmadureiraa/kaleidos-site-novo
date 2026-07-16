@@ -55,7 +55,7 @@ export function PlaybookFeature() {
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Link
                   href="/papers/playbook-cripto-2026"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#7CFF6B] text-black font-semibold text-sm transition-colors hover:bg-[#6ae85a]"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#7CF067] text-black font-semibold text-sm transition-colors hover:bg-[#6ae85a]"
                 >
                   Baixar o playbook grátis
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />

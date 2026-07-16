@@ -9,7 +9,7 @@ import { Resend } from "resend";
 import type { Paper } from "@/lib/papers-data";
 
 const SITE = "https://kaleidos.com.br";
-const LIME = "#7CFF6B";
+const LIME = "#7CF067";
 const DARK = "#0A0A0A";
 
 function esc(s: string): string {

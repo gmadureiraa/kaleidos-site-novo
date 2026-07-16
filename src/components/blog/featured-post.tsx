@@ -44,7 +44,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
         {/* Content below */}
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 text-[13px] text-gray-500 mb-4">
-            <span className="text-[#7CFF6B] font-medium">
+            <span className="text-[#7CF067] font-medium">
               {categoryLabels[post.category]}
             </span>
             <span className="text-gray-700">/</span>
@@ -55,7 +55,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
             <span>{post.readTime} min de leitura</span>
           </div>
 
-          <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white leading-[1.15] tracking-[-0.02em] group-hover:text-[#7CFF6B] transition-colors duration-300 font-display mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-white leading-[1.15] tracking-[-0.02em] group-hover:text-[#7CF067] transition-colors duration-300 font-display mb-4">
             {post.title}
           </h2>
 
@@ -63,7 +63,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
             {post.excerpt}
           </p>
 
-          <div className="inline-flex items-center gap-2 text-sm font-medium text-[#7CFF6B] group-hover:gap-3 transition-all duration-200">
+          <div className="inline-flex items-center gap-2 text-sm font-medium text-[#7CF067] group-hover:gap-3 transition-all duration-200">
             Ler artigo
             <ArrowRight className="w-4 h-4" />
           </div>

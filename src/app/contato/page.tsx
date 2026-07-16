@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, MessageCircle, Send, Check, Clock, Star, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, MessageCircle, Send, Check, Clock, Star, ArrowRight, Loader2, CheckCircle2, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useI18n } from "@/i18n/useI18n";
 import { useState } from "react";
-import { WHATSAPP_NUMBER, SERVICOS } from "@/lib/constants";
+import { WHATSAPP_NUMBER, CALENDLY_URL } from "@/lib/constants";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
 import { track, identifyLead } from "@/lib/analytics";
@@ -100,26 +100,30 @@ export default function ContatoPage() {
     }
   };
   
-  // Lista de serviços traduzida quando EN
+  // Os 9 serviços oficiais — mesma taxonomia de /servicos
   const SERVICES_LOCALIZED: string[] = locale === 'en'
     ? [
-        'Video Editing',
-        'Scripts',
-        'Text Content',
-        'Launches',
-        'Pages and Websites',
-        'Growth',
-        'Email Marketing',
-        'Content Consulting',
-        'Design',
-        'Social Media',
-        'Copywriting',
-        'Automation',
-        'AI & Chatbots',
-        'Data Analysis',
-        'SEO',
+        'Content Marketing',
+        'Kaleidos AI',
+        'Growth & Launches',
+        'Crypto SEO & GEO',
+        'Web3 Consulting & GTM',
+        'Crypto Social Media',
+        'Crypto PR & Comms',
+        'Community Management',
+        'Influencer & KOL',
       ]
-    : SERVICOS;
+    : [
+        'Marketing de Conteúdo',
+        'Kaleidos AI',
+        'Growth & Lançamentos',
+        'SEO & GEO Cripto',
+        'Consultoria Web3 & GTM',
+        'Social Media Cripto',
+        'PR & Assessoria',
+        'Gestão de Comunidade',
+        'Influencer & KOL',
+      ];
 
   const toggleServico = (servico: string) => {
     setSelectedServices((prev) =>
@@ -129,8 +133,8 @@ export default function ContatoPage() {
 
   const handleWhatsApp = () => {
     const hasSelection = selectedServices.length > 0;
-    const header = locale === 'en' ? 'Hello! I need help with:' : 'Olá! Preciso de ajuda com:';
-    const fallback = locale === 'en' ? 'Hello! I need help with marketing and content.' : 'Olá! Preciso de ajuda com marketing e conteúdo.';
+    const header = locale === 'en' ? 'Hello! I have a crypto/web3 project and need help with:' : 'Olá! Tenho um projeto cripto/web3 e preciso de ajuda com:';
+    const fallback = locale === 'en' ? 'Hello! I have a crypto/web3 project and need help with marketing.' : 'Olá! Tenho um projeto cripto/web3 e preciso de ajuda com marketing.';
     let texto = `${header} %0A`;
     texto += selectedServices.map((s) => `- ${s}`).join("%0A");
     if (!hasSelection) texto = fallback;
@@ -146,12 +150,12 @@ export default function ContatoPage() {
       {/* Header */}
       <div className="border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <Link 
-            href={withLang('/cases')} 
-            className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors text-sm"
+          <Link
+            href={withLang('/')}
+            className="inline-flex items-center min-h-[44px] text-gray-600 hover:text-gray-900 transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('contact','backToCases')}
+            {locale === 'en' ? 'Back to home' : 'Voltar para a home'}
           </Link>
         </div>
       </div>
@@ -164,8 +168,33 @@ export default function ContatoPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">{t('contact','heroTitle')}</h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">{t('contact','heroText')}</p>
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              {locale === 'en' ? 'Ready to scale your crypto project?' : 'Vamos escalar seu projeto cripto?'}
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              {locale === 'en'
+                ? `Kaleidos is a crypto-native agency, in the market since 2020. Content, growth and AI for crypto, web3 and fintech projects: ${KALEIDOS_METRICS.projetosAtendidos_en} brands served, ${KALEIDOS_METRICS.viewsReels_en} views generated and ${KALEIDOS_METRICS.faturamentoClientes_en} in client revenue.`
+                : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2020. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech: ${KALEIDOS_METRICS.projetosAtendidos} marcas atendidas, ${KALEIDOS_METRICS.viewsReels} views gerados e ${KALEIDOS_METRICS.faturamentoClientes} em faturamento pros clientes.`}
+            </p>
+
+            {/* CTA primário — agendamento Calendly */}
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('calendly_click', { source: 'contato_hero', path: '/contato' })}
+                className="inline-flex items-center justify-center gap-3 min-h-[56px] bg-black text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-800 transition-colors"
+              >
+                <CalendarDays className="w-5 h-5" />
+                {locale === 'en' ? 'Book a diagnosis call' : 'Agendar diagnóstico'}
+              </a>
+              <p className="text-sm text-gray-500">
+                {locale === 'en'
+                  ? '30-minute call, free of charge. We map your channels and show where the opportunity is.'
+                  : 'Call de 30 minutos, sem custo. A gente mapeia seus canais e mostra onde está a oportunidade.'}
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -179,8 +208,14 @@ export default function ContatoPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">{t('contact','helpTitle')}</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">{t('contact','helpSubtitle')}</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
+              {locale === 'en' ? 'Prefer WhatsApp?' : 'Prefere WhatsApp?'}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+              {locale === 'en'
+                ? 'Select the services that make sense for your project and start the conversation:'
+                : 'Selecione os serviços que fazem sentido pro seu projeto e comece a conversa:'}
+            </p>
             
             {/* Seleção de Serviços */}
             <div className="max-w-[800px] mx-auto mb-8">
@@ -200,9 +235,9 @@ export default function ContatoPage() {
                     <motion.button
                       key={servico}
                       onClick={() => toggleServico(servico)}
-                      className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                      className={`relative min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                         isSelected
-                          ? "bg-[#7CFF6B] text-black shadow-lg scale-105"
+                          ? "bg-[#7CF067] text-black shadow-lg scale-105"
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
                       whileHover={{ scale: 1.05 }}
@@ -264,12 +299,12 @@ export default function ContatoPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-16 h-16 bg-[#7CFF6B] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#7CF067] rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="w-8 h-8 text-black" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{locale==='en' ? 'Digital Marketing' : 'Marketing Digital'}</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{locale==='en' ? 'Content Marketing' : 'Marketing de Conteúdo'}</h3>
               <p className="text-gray-600">
-                {locale==='en' ? 'Full digital marketing strategies, from ad campaigns to process automation.' : 'Estratégias completas de marketing digital, desde campanhas de anúncios até automação de processos.'}
+                {locale==='en' ? 'Strategy, copy, scripts, design and video editing for crypto and web3 brands on IG, X, YouTube and LinkedIn.' : 'Estratégia, copy, roteiros, design e edição de vídeo pra marcas de cripto e web3 no IG, X, YouTube e LinkedIn.'}
               </p>
             </motion.div>
 
@@ -279,12 +314,12 @@ export default function ContatoPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-16 h-16 bg-[#7CFF6B] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#7CF067] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Send className="w-8 h-8 text-black" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{locale==='en' ? 'Content Creation' : 'Criação de Conteúdo'}</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Kaleidos AI</h3>
               <p className="text-gray-600">
-                {locale==='en' ? 'Creative, engaging content for your social channels, including videos, reels and optimized posts.' : 'Conteúdo criativo e envolvente para suas redes sociais, incluindo vídeos, reels e posts otimizados.'}
+                {locale==='en' ? 'Custom AI agents, automations and content engines that scale output without losing brand voice.' : 'Agentes de IA sob medida, automações e engines de conteúdo que escalam a produção sem perder a voz da marca.'}
               </p>
             </motion.div>
 
@@ -294,12 +329,12 @@ export default function ContatoPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-16 h-16 bg-[#7CFF6B] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#7CF067] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Send className="w-8 h-8 text-black" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{locale==='en' ? 'Growth & Launches' : 'Growth & Lançamentos'}</h3>
               <p className="text-gray-600">
-                {locale==='en' ? 'Growth strategies and launches that maximize your results and ROI.' : 'Estratégias de crescimento e lançamentos que maximizam seus resultados e ROI.'}
+                {locale==='en' ? 'Full launch operations: funnels, capture pages, paid traffic creatives and lead generation for token launches and products.' : 'Operação completa de lançamento: funis, páginas de captura, criativos de tráfego pago e geração de leads pra lançamentos de token e produto.'}
               </p>
             </motion.div>
           </div>
@@ -321,8 +356,8 @@ export default function ContatoPage() {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               {locale === 'en'
-                ? "Send a quick brief and the right person on our team will reply by email within 24h."
-                : "Mande um briefing rápido e a pessoa certa do nosso time responde por email em até 24h."}
+                ? "Tell us your project's stage (pre-launch, mainnet, scaling) and what you need. The right person on our team replies by email within 24h."
+                : "Conte o estágio do seu projeto (pré-lançamento, mainnet, escala) e o que você precisa. A pessoa certa do time responde por email em até 24h."}
             </p>
           </motion.div>
 
@@ -330,11 +365,11 @@ export default function ContatoPage() {
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white border border-[#7CFF6B]/40 rounded-2xl p-8 text-center shadow-sm"
+              className="bg-white border border-[#7CF067]/40 rounded-2xl p-8 text-center shadow-sm"
               role="status"
               aria-live="polite"
             >
-              <CheckCircle2 className="w-12 h-12 text-[#7CFF6B] mx-auto mb-4" />
+              <CheckCircle2 className="w-12 h-12 text-[#7CF067] mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {locale === 'en' ? 'Got it! Talk to you soon.' : 'Recebido! Falamos em breve.'}
               </h3>
@@ -390,7 +425,7 @@ export default function ContatoPage() {
                     value={form.nome}
                     onChange={(e) => handleFormChange('nome', e.target.value)}
                     placeholder={t('contact','placeholderName')}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm"
                   />
                 </div>
                 <div>
@@ -406,7 +441,7 @@ export default function ContatoPage() {
                     value={form.email}
                     onChange={(e) => handleFormChange('email', e.target.value)}
                     placeholder="voce@empresa.com"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm"
                   />
                 </div>
               </div>
@@ -424,7 +459,7 @@ export default function ContatoPage() {
                     value={form.empresa}
                     onChange={(e) => handleFormChange('empresa', e.target.value)}
                     placeholder={t('contact','placeholderCompany')}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm"
                   />
                 </div>
                 <div>
@@ -440,7 +475,7 @@ export default function ContatoPage() {
                     value={form.whatsapp}
                     onChange={(e) => handleFormChange('whatsapp', e.target.value)}
                     placeholder="+55 11 90000-0000"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm"
                   />
                 </div>
               </div>
@@ -454,7 +489,7 @@ export default function ContatoPage() {
                   name="budget"
                   value={form.budget}
                   onChange={(e) => handleFormChange('budget', e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm bg-white"
                 >
                   <option value="">{locale === 'en' ? 'Select an option…' : 'Selecione…'}</option>
                   {BUDGETS.map((b) => (
@@ -475,7 +510,7 @@ export default function ContatoPage() {
                   value={form.mensagem}
                   onChange={(e) => handleFormChange('mensagem', e.target.value)}
                   placeholder={t('contact','placeholderMessage')}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CFF6B] focus:ring-2 focus:ring-[#7CFF6B]/30 outline-none transition text-sm resize-y"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm resize-y"
                 />
                 {selectedServices.length > 0 && (
                   <p className="mt-2 text-xs text-gray-500">
@@ -495,7 +530,7 @@ export default function ContatoPage() {
                 <button
                   type="submit"
                   disabled={formState === 'sending'}
-                  className="inline-flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex-1 sm:flex-none"
+                  className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex-1 sm:flex-none"
                 >
                   {formState === 'sending' ? (
                     <>
@@ -535,19 +570,19 @@ export default function ContatoPage() {
               </h2>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-[#7CFF6B]">{KALEIDOS_METRICS.projetosAtendidos}</div>
+                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.projetosAtendidos}</div>
                   <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Projects' : 'Projetos atendidos'}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#7CFF6B]">{KALEIDOS_METRICS.videosEditados}</div>
+                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.videosEditados}</div>
                   <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Edited videos' : 'Vídeos editados'}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#7CFF6B]">{KALEIDOS_METRICS.viewsReels}</div>
+                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.viewsReels}</div>
                   <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Reels views' : 'Views nos reels'}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#7CFF6B]">{KALEIDOS_METRICS.satisfacaoCliente}</div>
+                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.satisfacaoCliente}</div>
                   <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Client satisfaction' : 'Satisfação dos clientes'}</div>
                 </div>
               </div>
@@ -556,7 +591,7 @@ export default function ContatoPage() {
               <div className="bg-neutral-900 rounded-xl p-6 border border-neutral-800">
                 <div className="flex gap-1 mb-3">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-4 h-4 fill-[#7CFF6B] text-[#7CFF6B]" />
+                    <Star key={i} className="w-4 h-4 fill-[#7CF067] text-[#7CF067]" />
                   ))}
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed italic">
@@ -564,7 +599,7 @@ export default function ContatoPage() {
                     ? '"Kaleidos understands the crypto market like no one else. Revenue grew 200% with their strategies."'
                     : '"A Kaleidos entende o mercado cripto como ninguém. Faturamento cresceu 200% com as estratégias deles."'}
                 </p>
-                <p className="text-[#7CFF6B] text-xs font-medium mt-3">— Gi, Bit das Minas</p>
+                <p className="text-[#7CF067] text-xs font-medium mt-3">Gi, Bit das Minas</p>
               </div>
             </motion.div>
 
@@ -576,7 +611,7 @@ export default function ContatoPage() {
               className="space-y-8"
             >
               <div className="bg-neutral-900 rounded-2xl p-8 border border-neutral-800 text-center">
-                <Clock className="w-10 h-10 text-[#7CFF6B] mx-auto mb-4" />
+                <Clock className="w-10 h-10 text-[#7CF067] mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">
                   {locale==='en' ? 'We reply within 2h' : 'Respondemos em até 2h'}
                 </h3>
@@ -585,6 +620,16 @@ export default function ContatoPage() {
                     ? 'During business hours (Mon-Fri, 9am-6pm BRT)'
                     : 'Em horário comercial (Seg-Sex, 9h-18h)'}
                 </p>
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track('calendly_click', { source: 'contato_footer', path: '/contato' })}
+                  className="mt-5 inline-flex items-center justify-center gap-2 min-h-[44px] bg-[#7CF067] text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#5be04d] transition-colors"
+                >
+                  <CalendarDays className="w-4 h-4" />
+                  {locale==='en' ? 'Book a diagnosis call' : 'Agendar diagnóstico'}
+                </a>
               </div>
 
               <div>
@@ -608,7 +653,7 @@ export default function ContatoPage() {
               <div className="text-center">
                 <Link
                   href={withLang('/cases')}
-                  className="inline-flex items-center text-[#7CFF6B] hover:text-[#5be04d] text-sm font-medium transition-colors"
+                  className="inline-flex items-center text-[#7CF067] hover:text-[#5be04d] text-sm font-medium transition-colors"
                 >
                   {locale==='en' ? 'See our cases' : 'Ver nossos cases'} <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>

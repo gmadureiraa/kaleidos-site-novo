@@ -164,7 +164,7 @@ export default function LinksPage() {
       className="relative min-h-screen overflow-hidden bg-black"
     >
       {/* Background gradient — same vibe as hero */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7CFF6B]/15 via-black to-black" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7CF067]/15 via-black to-black" />
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]"
         style={{
@@ -177,8 +177,8 @@ export default function LinksPage() {
       <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-24 pt-16 sm:px-6 sm:pt-24">
         {/* Hero */}
         <header className="flex w-full flex-col items-center text-center">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/20 bg-[#7CFF6B]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CFF6B] sm:text-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CFF6B]" />
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7CF067]/20 bg-[#7CF067]/10 px-4 py-1.5 text-xs font-medium tracking-wide text-[#7CF067] sm:text-sm">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-[#7CF067]" />
             Produtos de IA da Kaleidos
           </span>
 
@@ -280,7 +280,7 @@ export default function LinksPage() {
                   className={`group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-all ${
                     isSoon
                       ? "cursor-not-allowed opacity-70"
-                      : "hover:-translate-y-0.5 hover:border-[#7CFF6B]/30 hover:bg-white/[0.05]"
+                      : "hover:-translate-y-0.5 hover:border-[#7CF067]/30 hover:bg-white/[0.05]"
                   }`}
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
@@ -303,7 +303,7 @@ export default function LinksPage() {
                   </div>
                   {!isSoon && (
                     <ArrowUpRight
-                      className="h-4 w-4 shrink-0 text-gray-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CFF6B]"
+                      className="h-4 w-4 shrink-0 text-gray-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CF067]"
                       aria-hidden="true"
                     />
                   )}
@@ -320,7 +320,7 @@ export default function LinksPage() {
               href="https://www.instagram.com/digitalkaleidos"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-[#7CFF6B]"
+              className="text-gray-400 transition-colors hover:text-[#7CF067]"
               aria-label="Instagram"
             >
               <Instagram className="h-5 w-5" />
@@ -329,7 +329,7 @@ export default function LinksPage() {
               href="https://twitter.com/digitalkaleidos"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-[#7CFF6B]"
+              className="text-gray-400 transition-colors hover:text-[#7CF067]"
               aria-label="Twitter"
             >
               <Twitter className="h-5 w-5" />
@@ -338,7 +338,7 @@ export default function LinksPage() {
               href="https://www.linkedin.com/company/kaleidos-digital"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-[#7CFF6B]"
+              className="text-gray-400 transition-colors hover:text-[#7CF067]"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
@@ -347,7 +347,7 @@ export default function LinksPage() {
               href="https://wa.me/5512997796835?text=Oi%2C%20vim%20pelo%20%2Flinks"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-[#7CFF6B]"
+              className="text-gray-400 transition-colors hover:text-[#7CF067]"
               aria-label="WhatsApp"
             >
               <MessageCircle className="h-5 w-5" />
@@ -357,7 +357,7 @@ export default function LinksPage() {
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-500">
             <Link
               href="/"
-              className="transition-colors hover:text-[#7CFF6B]"
+              className="transition-colors hover:text-[#7CF067]"
             >
               kaleidos.com.br
             </Link>
@@ -366,7 +366,7 @@ export default function LinksPage() {
             </span>
             <Link
               href="/contato"
-              className="transition-colors hover:text-[#7CFF6B]"
+              className="transition-colors hover:text-[#7CF067]"
             >
               Contato
             </Link>
@@ -375,7 +375,7 @@ export default function LinksPage() {
             </span>
             <Link
               href="/cases"
-              className="transition-colors hover:text-[#7CFF6B]"
+              className="transition-colors hover:text-[#7CF067]"
             >
               Cases
             </Link>

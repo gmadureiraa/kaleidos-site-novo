@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { getServerLocale, type Locale } from "@/i18n/server";
 import { PacotesCtaTracking } from "./cta-tracking";
 
 /**
@@ -16,6 +17,9 @@ import { PacotesCtaTracking } from "./cta-tracking";
  *    concorrente aqui (a home decide isso; esta página é foco total em 1 ação).
  *  - Urgência com parcimônia (sinal discreto, sem escassez falsa).
  *
+ * i18n (2026-07): copy bilíngue PT/EN via `?lang=en` (mesmo mecanismo de
+ * `src/i18n/server.ts` usado no resto do site). PT é o default.
+ *
  * NÃO toca a home (`/`), o hero de produção, nem qualquer componente existente.
  * Reaproveita os tokens de marca (Atelier/Gridlite/Inter · #7CF067 verde ·
  * #D262B2 rosa · #14110D ink · #FAFAFA cru) e a estética brutalista-colagem
@@ -26,15 +30,27 @@ import { PacotesCtaTracking } from "./cta-tracking";
  * As métricas numéricas vêm de `KALEIDOS_METRICS` (fonte única já usada no site).
  */
 
-export const metadata: Metadata = {
-  title: "Pacotes Kaleidos — marketing cripto por objetivo",
-  description:
-    "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 125M+ de views e executou 50+ lançamentos. Marque uma call.",
-  alternates: { canonical: "/pacotes" },
-  // Fundo de funil: acessível por link direto (proposta / CTA de blog), fora do
-  // índice de busca — decisão D3/A4 do Ultraplan (preço não público no topo).
-  robots: { index: false, follow: true },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
+  const { lang } = await searchParams;
+  const locale = getServerLocale(lang);
+  const isEn = locale === "en";
+  return {
+    title: isEn
+      ? "Kaleidos Packages: crypto marketing by objective"
+      : "Pacotes Kaleidos — marketing cripto por objetivo",
+    description: isEn
+      ? "Choose by objective: Authority, Growth or Launch. A crypto-native team that has edited 500+ videos, generated 125M+ views and executed 50+ launches. Book a call."
+      : "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 125M+ de views e executou 50+ lançamentos. Marque uma call.",
+    alternates: { canonical: "/pacotes" },
+    // Fundo de funil: acessível por link direto (proposta / CTA de blog), fora do
+    // índice de busca — decisão D3/A4 do Ultraplan (preço não público no topo).
+    robots: { index: false, follow: true },
+  };
+}
 
 const INK = "#14110D";
 const GREEN = "#7CF067";
@@ -46,7 +62,7 @@ const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min";
 
 /* ── CSS escopado sob `.kpac` — nomes de keyframe únicos, sem colisão global ── */
 const STYLE = `
-.kpac{font-family:'Inter',system-ui,sans-serif;color:${INK};background:${CRU};}
+.kpac{font-family:'Inter',system-ui,sans-serif;color:${INK};background:${CRU};overflow-x:clip;}
 .kpac *{box-sizing:border-box;}
 .kpac .wrap{max-width:1180px;margin:0 auto;padding-left:28px;padding-right:28px;}
 .kpac .cta-btn{transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s cubic-bezier(.22,1,.36,1);}
@@ -65,7 +81,7 @@ const STYLE = `
 .kpac .hero h1 .hl{background:linear-gradient(${GREEN},${GREEN}) center/100% 38% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;}
 .kpac .hero p.sub{font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:600px;margin:26px auto 0;}
 .kpac .hero .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
-.kpac .cta-primary{display:inline-flex;align-items:center;gap:10px;background:${INK};color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 ${GREEN};}
+.kpac .cta-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:${INK};color:#fff;font-weight:700;font-size:17px;min-height:52px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 ${GREEN};}
 .kpac .cta-primary img{width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;}
 .kpac .hero .microcopy{font-family:'Gridlite',monospace;font-size:12px;letter-spacing:1px;color:#6b6258;margin-top:16px;}
 
@@ -97,7 +113,7 @@ const STYLE = `
 .kpac .card li::before{content:"";position:absolute;left:0;top:6px;width:9px;height:9px;background:${GREEN};transform:rotate(45deg);border:1px solid ${INK};}
 .kpac .card .price{font-family:'Atelier',sans-serif;font-weight:800;font-size:24px;color:${INK};margin:auto 0 4px;}
 .kpac .card .price .u{font-family:'Gridlite',monospace;font-size:12px;font-weight:400;color:#8a8175;display:block;margin-top:4px;}
-.kpac .card .tier-cta{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:${INK};color:#fff;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;box-shadow:4px 4px 0 ${GREEN};width:100%;}
+.kpac .card .tier-cta{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:${INK};color:#fff;font-weight:700;font-size:15px;min-height:48px;padding:13px 22px;border-radius:999px;box-shadow:4px 4px 0 ${GREEN};width:100%;}
 .kpac .card.feat .tier-cta{box-shadow:4px 4px 0 ${PINK};}
 .kpac .tiers .undernote{font-family:'Gridlite',monospace;font-size:12px;letter-spacing:.5px;color:#8a8175;margin:36px auto 0;max-width:640px;}
 
@@ -128,13 +144,23 @@ const STYLE = `
 @media(max-width:600px){
   .kpac .wrap{padding-left:20px;padding-right:20px;}
   .kpac .hero{padding:52px 0 44px;}
+  .kpac .hero h1{letter-spacing:-.8px;overflow-wrap:break-word;}
+  .kpac .hero .eyebrow{white-space:normal;line-height:1.5;letter-spacing:1.5px;}
   .kpac .cta-primary,.kpac .card .tier-cta{width:100%;justify-content:center;}
   .kpac .hero .cta-row{flex-direction:column;}
+  .kpac .proof{padding:36px 0;}
+  .kpac .proof .stats{gap:18px 12px;}
+  .kpac .tiers{padding:56px 0 14px;}
+  .kpac .card{padding:26px 20px;}
+  .kpac .faq{padding:56px 0;}
+  .kpac .faq .q{padding:18px 18px;}
+  .kpac .final{padding:64px 0;}
 }
 `;
 
 /* ── Dados dos 3 pacotes por objetivo (GTM cripto: Autoridade · Growth · Lançamento) ── */
 type Tier = {
+  id: string;
   n: string;
   nome: string;
   who: string;
@@ -145,8 +171,9 @@ type Tier = {
   cta: string;
 };
 
-const TIERS: Tier[] = [
+const TIERS_PT: Tier[] = [
   {
+    id: "autoridade",
     n: "Pacote 01",
     nome: "Autoridade",
     who: "Pra quem quer virar referência, não só mais ruído no feed",
@@ -162,6 +189,7 @@ const TIERS: Tier[] = [
     cta: "Quero construir autoridade",
   },
   {
+    id: "growth",
     n: "Pacote 02",
     nome: "Growth",
     who: "Pra quem já tem base e quer aquisição e conversão",
@@ -178,6 +206,7 @@ const TIERS: Tier[] = [
     cta: "Quero crescer com dado",
   },
   {
+    id: "lancamento",
     n: "Pacote 03",
     nome: "Lançamento / GTM",
     who: "Pra TGE, airdrop ou go-to-market de token",
@@ -194,7 +223,61 @@ const TIERS: Tier[] = [
   },
 ];
 
-const FAQ: { q: string; a: string }[] = [
+const TIERS_EN: Tier[] = [
+  {
+    id: "autoridade",
+    n: "Package 01",
+    nome: "Authority",
+    who: "For brands that want to become the reference, not more noise in the feed",
+    inclui: [
+      "Managed social media (X · LinkedIn · Instagram)",
+      "Crypto-native copywriting and design",
+      "Editorial with a thesis, not generic posts",
+      "Video and motion on demand",
+      "Monthly report with metrics that matter",
+    ],
+    price: "Scoped after diagnosis",
+    priceUnit: "scope and investment defined on the call",
+    cta: "I want to build authority",
+  },
+  {
+    id: "growth",
+    n: "Package 02",
+    nome: "Growth",
+    who: "For projects with an audience that want acquisition and conversion",
+    inclui: [
+      "Everything in Authority, at higher volume",
+      "Acquisition funnel + email and automation",
+      "Influencer activation (swarm effect)",
+      "Community management (Telegram · Discord)",
+      "Continuous data-driven optimization",
+    ],
+    price: "Scoped after diagnosis",
+    priceUnit: "a full marketing team",
+    featured: true,
+    cta: "I want data-driven growth",
+  },
+  {
+    id: "lancamento",
+    n: "Package 03",
+    nome: "Launch / GTM",
+    who: "For a TGE, airdrop or token go-to-market",
+    inclui: [
+      "End-to-end crypto go-to-market strategy",
+      "Launch narrative + positioning",
+      "Full campaign: funnel, sequence and page",
+      "KOLs and community orchestrated by objective",
+      "War room during launch week",
+    ],
+    price: "Per project",
+    priceUnit: "scope and window defined per launch",
+    cta: "I want to orchestrate my launch",
+  },
+];
+
+type FAQItem = { q: string; a: string };
+
+const FAQ_PT: FAQItem[] = [
   {
     q: "Qual pacote é o meu?",
     a: "A gente descobre junto na call: em 30 minutos entendemos o momento do seu projeto e apontamos o pacote (e o escopo) que move o ponteiro. Sem empurrar o mais caro.",
@@ -221,7 +304,107 @@ const FAQ: { q: string; a: string }[] = [
   },
 ];
 
-export default function PacotesPage() {
+const FAQ_EN: FAQItem[] = [
+  {
+    q: "Which package is right for me?",
+    a: "We figure it out together on the call: in 30 minutes we understand where your project is and point to the package (and scope) that moves the needle. No upselling to the most expensive one.",
+  },
+  {
+    q: "How does pricing work?",
+    a: "The budget is the sum of deliverables + management, closed in the diagnosis after the call. Every crypto project has a different scope, so the price is tailored and transparent, with no surprises later.",
+  },
+  {
+    q: "Do you actually understand crypto?",
+    a: "We have been crypto-native since 2020. We have worked with everyone from global exchanges to Brazilian creators: Crypto.com, Ledger, Mercado Bitcoin, Parfin, Paradigma. We live in this market, we don't talk about it from the outside.",
+  },
+  {
+    q: "Is there a lock-in or cancellation fee?",
+    a: "We work in cycles. What brings results scales, what doesn't gets cut. No contract traps holding anyone who doesn't want to stay.",
+  },
+  {
+    q: "How long until the first results?",
+    a: "Onboarding and strategy in the first weeks; production at full pace right after. At Defiverso, we went from zero to 29 thousand subscribers in 90 days.",
+  },
+  {
+    q: "What if I only need one front (e.g. video)?",
+    a: "You can hire modular fronts separately (video & motion, newsletter, community, launch). Bring what you need to the call and we build the right scope.",
+  },
+];
+
+const COPY = {
+  pt: {
+    eyebrow: "Pacotes Kaleidos · marketing cripto por objetivo",
+    h1Pre: "Escolha pelo ",
+    h1Hl: "resultado",
+    h1Post: " que você quer no mercado cripto.",
+    sub: "Autoridade, Growth ou Lançamento. Um time cripto-nativo cuida de conteúdo, estratégia e distribuição pra sua marca virar referência, não só mais ruído no feed.",
+    ctaLabel: "Marcar uma call",
+    heroMicro: "30 min · sem compromisso · sem enrolação",
+    statViews: "views em Reels",
+    statVideos: "vídeos editados",
+    statLaunches: "lançamentos executados",
+    statSatisfaction: "de satisfação",
+    kicker: "Como a gente trabalha",
+    tiersH2: "Três objetivos, um mesmo padrão de exigência.",
+    tiersLead:
+      "Todo pacote nasce de um diagnóstico. Você não compra peça solta: compra um time cripto-nativo focado no resultado que importa pro seu momento.",
+    badge: "Mais escolhido",
+    undernote:
+      "Preços são ponto de partida (a soma das peças + gestão fecha no diagnóstico). Frentes modulares (vídeo, newsletter, comunidade, lançamento) podem rodar à parte ou combinadas.",
+    faqH2: "Perguntas diretas, respostas diretas.",
+    finalPre: "Vamos construir algo que ",
+    finalHl: "funciona",
+    finalPost: ".",
+    finalSub:
+      "Marque uma call. A gente entende o projeto e mostra exatamente onde a Kaleidos move o ponteiro, e qual pacote faz sentido pro seu momento.",
+    finalMicroA: "projetos atendidos",
+    finalMicroB: "de crescimento médio",
+    finalMicroC: "desde 2020",
+    tiers: TIERS_PT,
+    faq: FAQ_PT,
+  },
+  en: {
+    eyebrow: "Kaleidos Packages · crypto marketing by objective",
+    h1Pre: "Choose by the ",
+    h1Hl: "result",
+    h1Post: " you want in the crypto market.",
+    sub: "Authority, Growth or Launch. A crypto-native team handles content, strategy and distribution so your brand becomes the reference, not more noise in the feed.",
+    ctaLabel: "Book a call",
+    heroMicro: "30 min · no commitment · no fluff",
+    statViews: "Reels views",
+    statVideos: "videos edited",
+    statLaunches: "launches executed",
+    statSatisfaction: "satisfaction",
+    kicker: "How we work",
+    tiersH2: "Three objectives, one standard of excellence.",
+    tiersLead:
+      "Every package starts with a diagnosis. You don't buy loose deliverables: you get a crypto-native team focused on the result that matters for your stage.",
+    badge: "Most chosen",
+    undernote:
+      "Prices are a starting point (deliverables + management are closed in the diagnosis). Modular fronts (video, newsletter, community, launch) can run separately or combined.",
+    faqH2: "Direct questions, direct answers.",
+    finalPre: "Let's build something that ",
+    finalHl: "works",
+    finalPost: ".",
+    finalSub:
+      "Book a call. We get to know your project and show exactly where Kaleidos moves the needle, and which package makes sense for your stage.",
+    finalMicroA: "projects served",
+    finalMicroB: "average growth",
+    finalMicroC: "since 2020",
+    tiers: TIERS_EN,
+    faq: FAQ_EN,
+  },
+} satisfies Record<Locale, unknown>;
+
+export default async function PacotesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const { lang } = await searchParams;
+  const locale = getServerLocale(lang);
+  const t = COPY[locale];
+  const isEn = locale === "en";
   const m = KALEIDOS_METRICS;
   return (
     <main id="main-content" className="kpac" role="main">
@@ -234,17 +417,14 @@ export default function PacotesPage() {
         <div className="wrap">
           <span className="eyebrow">
             <span className="dot" />
-            Pacotes Kaleidos · marketing cripto por objetivo
+            {t.eyebrow}
           </span>
           <h1>
-            Escolha pelo <span className="hl">resultado</span> que você quer no
-            mercado cripto.
+            {t.h1Pre}
+            <span className="hl">{t.h1Hl}</span>
+            {t.h1Post}
           </h1>
-          <p className="sub">
-            Autoridade, Growth ou Lançamento. Um time cripto-nativo cuida de
-            conteúdo, estratégia e distribuição pra sua marca virar referência,
-            não só mais ruído no feed.
-          </p>
+          <p className="sub">{t.sub}</p>
           <div className="cta-row">
             <a
               href={CALENDLY}
@@ -254,10 +434,10 @@ export default function PacotesPage() {
               data-cta="pacotes-hero"
             >
               <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
-              Marcar uma call &rarr;
+              {t.ctaLabel} &rarr;
             </a>
           </div>
-          <p className="microcopy">30 min · sem compromisso · sem enrolação</p>
+          <p className="microcopy">{t.heroMicro}</p>
         </div>
       </section>
 
@@ -266,20 +446,20 @@ export default function PacotesPage() {
         <div className="wrap">
           <div className="stats">
             <div className="stat">
-              <div className="n">{m.viewsReels}</div>
-              <div className="l">views em Reels</div>
+              <div className="n">{isEn ? m.viewsReels_en : m.viewsReels}</div>
+              <div className="l">{t.statViews}</div>
             </div>
             <div className="stat">
-              <div className="n">{m.videosEditados}</div>
-              <div className="l">vídeos editados</div>
+              <div className="n">{isEn ? m.videosEditados_en : m.videosEditados}</div>
+              <div className="l">{t.statVideos}</div>
             </div>
             <div className="stat">
-              <div className="n">{m.lancamentos}</div>
-              <div className="l">lançamentos executados</div>
+              <div className="n">{isEn ? m.lancamentos_en : m.lancamentos}</div>
+              <div className="l">{t.statLaunches}</div>
             </div>
             <div className="stat">
-              <div className="n">{m.satisfacaoCliente}</div>
-              <div className="l">de satisfação</div>
+              <div className="n">{isEn ? m.satisfacaoCliente_en : m.satisfacaoCliente}</div>
+              <div className="l">{t.statSatisfaction}</div>
             </div>
           </div>
           {/* ⚠️ GABRIEL: bloco de depoimento oculto até ter um quote REAL de cliente
@@ -299,57 +479,49 @@ export default function PacotesPage() {
       {/* 3 · TIERS — 3 pacotes escaneáveis, 1 CTA por tier → mesmo destino */}
       <section className="tiers">
         <div className="wrap">
-          <div className="kicker">Como a gente trabalha</div>
-          <h2>Três objetivos, um mesmo padrão de exigência.</h2>
-          <p className="lead">
-            Todo pacote nasce de um diagnóstico. Você não compra peça solta:
-            compra um time cripto-nativo focado no resultado que importa pro seu
-            momento.
-          </p>
+          <div className="kicker">{t.kicker}</div>
+          <h2>{t.tiersH2}</h2>
+          <p className="lead">{t.tiersLead}</p>
 
           <div className="grid3">
-            {TIERS.map((t) => (
-              <div key={t.nome} className={`card${t.featured ? " feat" : ""}`}>
-                {t.featured && <span className="badge">Mais escolhido</span>}
-                <div className="pnum">{t.n}</div>
-                <h3>{t.nome}</h3>
-                <p className="who">{t.who}</p>
+            {t.tiers.map((tier) => (
+              <div key={tier.id} className={`card${tier.featured ? " feat" : ""}`}>
+                {tier.featured && <span className="badge">{t.badge}</span>}
+                <div className="pnum">{tier.n}</div>
+                <h3>{tier.nome}</h3>
+                <p className="who">{tier.who}</p>
                 <ul>
-                  {t.inclui.map((i) => (
+                  {tier.inclui.map((i) => (
                     <li key={i}>{i}</li>
                   ))}
                 </ul>
                 <div className="price">
-                  {t.price}
-                  <span className="u">{t.priceUnit}</span>
+                  {tier.price}
+                  <span className="u">{tier.priceUnit}</span>
                 </div>
                 <a
                   href={CALENDLY}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cta-btn tier-cta"
-                  data-cta={`pacotes-tier-${t.nome.toLowerCase()}`}
+                  data-cta={`pacotes-tier-${tier.id}`}
                 >
-                  {t.cta} &rarr;
+                  {tier.cta} &rarr;
                 </a>
               </div>
             ))}
           </div>
 
-          <p className="undernote">
-            Preços são ponto de partida (a soma das peças + gestão fecha no
-            diagnóstico). Frentes modulares (vídeo, newsletter, comunidade,
-            lançamento) podem rodar à parte ou combinadas.
-          </p>
+          <p className="undernote">{t.undernote}</p>
         </div>
       </section>
 
       {/* 4 · FAQ curto */}
       <section className="faq">
         <div className="wrap">
-          <h2>Perguntas diretas, respostas diretas.</h2>
+          <h2>{t.faqH2}</h2>
           <div className="qgrid">
-            {FAQ.map((f) => (
+            {t.faq.map((f) => (
               <div key={f.q} className="q">
                 <h3>{f.q}</h3>
                 <p>{f.a}</p>
@@ -377,12 +549,11 @@ export default function PacotesPage() {
         </svg>
         <div className="wrap">
           <h2>
-            Vamos construir algo que <span className="hl">funciona</span>.
+            {t.finalPre}
+            <span className="hl">{t.finalHl}</span>
+            {t.finalPost}
           </h2>
-          <p>
-            Marque uma call. A gente entende o projeto e mostra exatamente onde
-            a Kaleidos move o ponteiro, e qual pacote faz sentido pro seu momento.
-          </p>
+          <p>{t.finalSub}</p>
           <a
             href={CALENDLY}
             target="_blank"
@@ -391,11 +562,11 @@ export default function PacotesPage() {
             data-cta="pacotes-final"
           >
             <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
-            Marcar uma call &rarr;
+            {t.ctaLabel} &rarr;
           </a>
           <p className="microcopy">
-            {m.projetosAtendidos} projetos atendidos · {m.crescimentoMedio} de
-            crescimento médio · desde 2020
+            {isEn ? m.projetosAtendidos_en : m.projetosAtendidos} {t.finalMicroA} ·{" "}
+            {isEn ? m.crescimentoMedio_en : m.crescimentoMedio} {t.finalMicroB} · {t.finalMicroC}
           </p>
         </div>
       </section>

@@ -77,7 +77,7 @@ export function OrcamentoCalculator() {
 
   return (
     <main style={{ background: CRU, minHeight: "100vh", color: INK, fontFamily: "Inter, system-ui, sans-serif" }}>
-      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "40px 24px 90px" }}>
+      <div className="orc-wrap" style={{ maxWidth: 1180, margin: "0 auto", padding: "40px 24px 90px", overflowX: "clip" }}>
         {/* header */}
         <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
           <span style={{ fontFamily: "Gridlite, monospace", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", background: GREEN, border: `1.5px solid ${INK}`, padding: "3px 10px" }}>
@@ -103,7 +103,8 @@ export function OrcamentoCalculator() {
                 background: selectedBundle === b.id ? PINK : "#fff",
                 color: INK,
                 borderRadius: 999,
-                padding: "6px 14px",
+                padding: "10px 16px",
+                minHeight: 44,
                 fontSize: 13,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -127,7 +128,7 @@ export function OrcamentoCalculator() {
               <div style={{ display: "grid", gap: 8 }}>
                 {UNITS.filter((u) => !u.oneOff).map((u) => (
                   <div key={u.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ flex: 1, fontSize: 14 }}>{u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}/{u.unidade}</span></span>
+                    <span style={{ flex: 1, minWidth: 0, fontSize: 14 }}>{u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}/{u.unidade}</span></span>
                     <QtyInput value={qty[u.id] ?? 0} onChange={(v) => setPiece(u.id, v)} />
                   </div>
                 ))}
@@ -139,7 +140,7 @@ export function OrcamentoCalculator() {
               <div style={{ display: "grid", gap: 8 }}>
                 {UNITS.filter((u) => u.oneOff).map((u) => (
                   <div key={u.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ flex: 1, fontSize: 14 }}>{u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}</span></span>
+                    <span style={{ flex: 1, minWidth: 0, fontSize: 14 }}>{u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}</span></span>
                     <QtyInput value={qty[u.id] ?? 0} onChange={(v) => setPiece(u.id, v)} />
                   </div>
                 ))}
@@ -150,8 +151,8 @@ export function OrcamentoCalculator() {
               <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Camadas de serviço (mensal)</h2>
               <div style={{ display: "grid", gap: 8 }}>
                 {LAYERS.map((l) => (
-                  <label key={l.id} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 14, cursor: "pointer" }}>
-                    <input type="checkbox" checked={layers.has(l.id)} onChange={() => toggle(layers, l.id, setLayers)} style={{ marginTop: 3 }} />
+                  <label key={l.id} style={{ display: "flex", gap: 12, alignItems: "flex-start", fontSize: 14, cursor: "pointer", padding: "6px 0" }}>
+                    <input type="checkbox" checked={layers.has(l.id)} onChange={() => toggle(layers, l.id, setLayers)} style={{ marginTop: 2, width: 22, height: 22, flex: "none", accentColor: INK }} />
                     <span style={{ flex: 1 }}>{l.label} <span style={{ color: "#8a8078" }}>· {brl(l.price)}</span><br /><span style={{ color: "#8a8078", fontSize: 12.5 }}>{l.includes}</span></span>
                   </label>
                 ))}
@@ -162,8 +163,8 @@ export function OrcamentoCalculator() {
               <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Add-ons</h2>
               <div style={{ display: "grid", gap: 8 }}>
                 {ADDONS.map((a) => (
-                  <label key={a.id} style={{ display: "flex", gap: 10, alignItems: "center", fontSize: 14, cursor: "pointer" }}>
-                    <input type="checkbox" checked={addons.has(a.id)} onChange={() => toggle(addons, a.id, setAddons)} />
+                  <label key={a.id} style={{ display: "flex", gap: 12, alignItems: "center", fontSize: 14, cursor: "pointer", padding: "6px 0" }}>
+                    <input type="checkbox" checked={addons.has(a.id)} onChange={() => toggle(addons, a.id, setAddons)} style={{ width: 22, height: 22, flex: "none", accentColor: INK }} />
                     <span style={{ flex: 1 }}>{a.label} <span style={{ color: "#8a8078" }}>· {brl(a.priceMin)}{a.priceMax ? `–${brl(a.priceMax)}` : "+"} · {a.type}</span></span>
                   </label>
                 ))}
@@ -192,14 +193,14 @@ export function OrcamentoCalculator() {
               <Row label="Subtotal/mês" value={brl(quote.subtotalMonthly)} bold />
               <div style={{ marginTop: 10 }}>
                 <label style={{ fontSize: 13, color: "#5a534a" }}>Desconto de bundle: <b>{discount}%</b> <span style={{ color: "#8a8078" }}>(sugerido 10–15%)</span></label>
-                <input type="range" min={0} max={15} value={discount} onChange={(e) => setDiscount(+e.target.value)} style={{ width: "100%", accentColor: PINK }} />
+                <input type="range" min={0} max={15} value={discount} onChange={(e) => setDiscount(+e.target.value)} style={{ width: "100%", height: 32, accentColor: PINK, touchAction: "pan-y" }} />
               </div>
               <Row label="Desconto aplicado" value={`− ${brl(quote.discountApplied)}`} />
             </div>
 
             <div style={card}>
               <div style={{ fontSize: 13, color: "#5a534a", marginBottom: 6 }}>Custo estimado: <b>{costPct}%</b> do preço → {brl(cost)}</div>
-              <input type="range" min={20} max={70} value={costPct} onChange={(e) => setCostPct(+e.target.value)} style={{ width: "100%", accentColor: INK }} />
+              <input type="range" min={20} max={70} value={costPct} onChange={(e) => setCostPct(+e.target.value)} style={{ width: "100%", height: 32, accentColor: INK, touchAction: "pan-y" }} />
               <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 13 }}>Margem estimada</span>
                 <span style={{ fontFamily: "Atelier, sans-serif", fontSize: 22, fontWeight: 800, color: marginColor }}>{Math.round(margin * 100)}%</span>
@@ -218,26 +219,38 @@ export function OrcamentoCalculator() {
           </aside>
         </div>
       </div>
-      <style>{`@media(max-width:820px){.orc-grid{grid-template-columns:1fr !important}}`}</style>
+      <style>{`
+        @media(max-width:820px){
+          .orc-grid{grid-template-columns:1fr !important}
+          .orc-grid aside{position:static !important}
+        }
+        @media(max-width:600px){
+          .orc-wrap{padding-left:16px !important;padding-right:16px !important}
+        }
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+      `}</style>
     </main>
   );
 }
 
 function QtyInput({ value, onChange }: { value: number; onChange: (v: number) => void }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", border: `1.5px solid ${INK}`, borderRadius: 4, overflow: "hidden" }}>
-      <button onClick={() => onChange(value - 1)} style={qBtn}>−</button>
+    <div style={{ display: "flex", alignItems: "center", flex: "none", border: `1.5px solid ${INK}`, borderRadius: 4, overflow: "hidden" }}>
+      <button aria-label="Diminuir" onClick={() => onChange(value - 1)} style={qBtn}>−</button>
       <input
         type="number"
+        inputMode="numeric"
         value={value}
         onChange={(e) => onChange(+e.target.value || 0)}
-        style={{ width: 42, textAlign: "center", border: 0, outline: 0, fontSize: 14, fontWeight: 700, MozAppearance: "textfield" as const }}
+        style={{ width: 48, height: 44, textAlign: "center", border: 0, outline: 0, fontSize: 16, fontWeight: 700, MozAppearance: "textfield" as const }}
       />
-      <button onClick={() => onChange(value + 1)} style={qBtn}>+</button>
+      <button aria-label="Aumentar" onClick={() => onChange(value + 1)} style={qBtn}>+</button>
     </div>
   );
 }
-const qBtn: React.CSSProperties = { width: 30, height: 30, border: 0, background: "#f0efe9", cursor: "pointer", fontSize: 18, fontWeight: 700, lineHeight: 1 };
+// 44×44 = alvo de toque mínimo (mobile)
+const qBtn: React.CSSProperties = { width: 44, height: 44, border: 0, background: "#f0efe9", cursor: "pointer", fontSize: 20, fontWeight: 700, lineHeight: 1 };
 
 function Row({ label, value, bold, small }: { label: string; value: string; bold?: boolean; small?: boolean }) {
   return (

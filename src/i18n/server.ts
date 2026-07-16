@@ -14,6 +14,8 @@
 
 import { dictionaries, type Locale } from "./dictionaries";
 
+export type { Locale };
+
 export function getServerLocale(langParam?: string): Locale {
   if (langParam === "en") return "en";
   if (langParam === "pt") return "pt";

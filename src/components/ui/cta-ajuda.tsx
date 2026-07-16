@@ -105,7 +105,7 @@ export function CtaAjuda({ variant = "dark" }: { variant?: "dark" | "light" }) {
   return (
     <section id="ajuda-section" className={`w-full ${variant==='dark' ? 'bg-black' : 'bg-white'} py-20 px-6`}>
       <div className="max-w-5xl mx-auto flex flex-col items-center">
-        <h2 className={`text-6xl sm:text-7xl font-bold ${variant==='dark' ? 'text-[#7CFF6B]' : 'text-black'} mb-6 text-center font-display tracking-tight`}>
+        <h2 className={`text-6xl sm:text-7xl font-bold ${variant==='dark' ? 'text-[#7CF067]' : 'text-black'} mb-6 text-center font-display tracking-tight`}>
           {locale==='pt' ? 'Nós podemos te ajudar!' : 'We can help you!'}
         </h2>
         <p className={`mb-12 ${variant==='dark' ? 'text-white' : 'text-neutral-700'} text-xl text-center`}>{locale==='pt' ? 'Nos diga o que você precisa' : 'Tell us what you need'}</p>
@@ -127,10 +127,10 @@ export function CtaAjuda({ variant = "dark" }: { variant?: "dark" | "light" }) {
               const isPink = index % 2 === 0;
               const selectedColorClass = isPink 
                 ? (variant==='dark' ? 'bg-[#2a1711] text-[#ff9066] border-transparent' : 'bg-pink-50 text-pink-700 border-pink-300')
-                : (variant==='dark' ? 'bg-[#1a2a1a] text-[#7CFF6B] border-transparent' : 'bg-green-50 text-green-700 border-green-300');
+                : (variant==='dark' ? 'bg-[#1a2a1a] text-[#7CF067] border-transparent' : 'bg-green-50 text-green-700 border-green-300');
               const checkCircleBg = isPink
                 ? (variant==='dark' ? 'bg-[#ff9066]' : 'bg-pink-500')
-                : (variant==='dark' ? 'bg-[#7CFF6B]' : 'bg-green-500');
+                : (variant==='dark' ? 'bg-[#7CF067]' : 'bg-green-500');
               const checkCircleText = isPink
                 ? (variant==='dark' ? 'text-[#2a1711]' : 'text-white')
                 : (variant==='dark' ? 'text-black' : 'text-white');
@@ -208,7 +208,7 @@ export function CtaAjuda({ variant = "dark" }: { variant?: "dark" | "light" }) {
 
         <Button
           onClick={handleWhatsApp}
-          className={`${variant==='dark' ? 'bg-[#7CFF6B] text-black hover:bg-[#5be04d]' : 'bg-black text-white hover:bg-neutral-800'} px-16 py-5 rounded-full font-bold text-xl shadow-lg transition-colors touch-target`}
+          className={`${variant==='dark' ? 'bg-[#7CF067] text-black hover:bg-[#5be04d]' : 'bg-black text-white hover:bg-neutral-800'} px-16 py-5 rounded-full font-bold text-xl shadow-lg transition-colors touch-target`}
         >
           {locale==='pt' ? 'Enviar Mensagem' : 'Send Message'}
         </Button>

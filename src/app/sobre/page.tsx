@@ -116,6 +116,10 @@ export default function SobrePage() {
 
   const accents = [GREEN, PINK, GREEN, PINK, GREEN, PINK];
 
+  const marqueeText = isEn
+    ? "CONTENT ✺ STRATEGY ✺ LAUNCHES ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺ "
+    : "CONTEÚDO ✺ ESTRATÉGIA ✺ LANÇAMENTOS ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺ ";
+
   const metrics = [
     { value: isEn ? KALEIDOS_METRICS.videosEditados_en : KALEIDOS_METRICS.videosEditados, label: isEn ? 'Edited Videos' : 'Vídeos Editados', accent: GREEN },
     { value: isEn ? KALEIDOS_METRICS.viewsReels_en : KALEIDOS_METRICS.viewsReels, label: isEn ? 'Reels Views' : 'Views nos Reels', accent: PINK },
@@ -132,8 +136,8 @@ export default function SobrePage() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <Link
             href={withLang('/')}
-            className="sb-font-accent inline-flex items-center gap-2 text-xs"
-            style={{ letterSpacing: "1.5px", textTransform: "uppercase", color: INK }}
+            className="sb-font-accent inline-flex items-center gap-2 text-xs py-3 -my-3"
+            style={{ letterSpacing: "1.5px", textTransform: "uppercase", color: INK, minHeight: 44 }}
           >
             <ArrowLeft className="w-4 h-4" />
             {t('about','backHome')}
@@ -212,8 +216,8 @@ export default function SobrePage() {
         {/* marquee */}
         <div style={{ background: GREEN, borderTop: `2px solid ${INK}`, borderBottom: `2px solid ${INK}`, overflow: "hidden", padding: "14px 0" }}>
           <div className="sb-font-display" style={{ display: "flex", width: "max-content", animation: "sbMq 26s linear infinite", fontWeight: 800, fontSize: 26, color: "#06250a", whiteSpace: "nowrap" }}>
-            <span>CONTEÚDO ✺ ESTRATÉGIA ✺ LANÇAMENTOS ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺&nbsp;</span>
-            <span>CONTEÚDO ✺ ESTRATÉGIA ✺ LANÇAMENTOS ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺&nbsp;</span>
+            <span>{marqueeText}</span>
+            <span>{marqueeText}</span>
           </div>
         </div>
         <style dangerouslySetInnerHTML={{ __html: "@keyframes sbMq{from{transform:translateX(0)}to{transform:translateX(-50%)}}" }} />
@@ -239,7 +243,7 @@ export default function SobrePage() {
             <div className="relative aspect-square overflow-hidden" style={{ border: `1.5px solid ${INK}`, borderRadius: 18, boxShadow: `8px 8px 0 ${GREEN}` }}>
               <Image
                 src="/Kaleidos/imagens/nos.jpg"
-                alt="Equipe Kaleidos"
+                alt={isEn ? "Kaleidos team" : "Equipe Kaleidos"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -310,33 +314,48 @@ export default function SobrePage() {
             <CarouselContent className="-ml-2 md:-ml-4">
               {[
                 {
-                  name: "Gabriel Madureira", role: "Co-Founder",
+                  name: "Gabriel Madureira",
+                  role: "Co-Founder",
                   image: "/Kaleidos/imagens/Equipe/Madureira.png",
-                  description: "Pode ser considerado o lado criativo do cérebro da Kaleidos. Especialista no mercado cripto e copywriter, trouxe um novo paradigma nas estratégias de marketing para o mundo cripto, sabendo lidar com as pessoas da melhor forma.",
+                  description: isEn
+                    ? "The creative side of the Kaleidos brain. A crypto market specialist and copywriter, he brought a new paradigm to marketing strategies for the crypto world, and knows how to work with people better than anyone."
+                    : "Pode ser considerado o lado criativo do cérebro da Kaleidos. Especialista no mercado cripto e copywriter, trouxe um novo paradigma nas estratégias de marketing para o mundo cripto, sabendo lidar com as pessoas da melhor forma.",
                   social: { instagram: "https://www.instagram.com/gabrielmadureira", twitter: "https://twitter.com/gabrielmadureira", linkedin: "https://www.linkedin.com/in/gabrielmadureira", email: "madureira@kaleidosdigital.com" }
                 },
                 {
-                  name: "Nathalia Maciente", role: "Co-founder",
+                  name: "Nathalia Maciente",
+                  role: "Co-founder",
                   image: "/Kaleidos/imagens/Equipe/Nathalia.png",
-                  description: "É o lado atento e organizado do cérebro da Kaleidos. Não deixa nada passar pelo seu olhar atento, tornando cada conteúdo e estratégia feitos com extrema perfeição. Editora de vídeo e organizadora maior do time Kaleidos.",
+                  description: isEn
+                    ? "The attentive, organized side of the Kaleidos brain. Nothing gets past her careful eye, which makes every piece of content and strategy come out with extreme precision. Video editor and the team's chief organizer."
+                    : "É o lado atento e organizado do cérebro da Kaleidos. Não deixa nada passar pelo seu olhar atento, tornando cada conteúdo e estratégia feitos com extrema perfeição. Editora de vídeo e organizadora maior do time Kaleidos.",
                   social: { instagram: "https://www.instagram.com/nathaliamaciente", linkedin: "https://www.linkedin.com/in/nathaliamaciente", email: "nathalia@kaleidosdigital.com" }
                 },
                 {
-                  name: "Caio Crispim", role: "Copywriter",
+                  name: "Caio Crispim",
+                  role: "Copywriter",
                   image: "/Kaleidos/imagens/Equipe/Caio.png",
-                  description: "É o nosso escritor e criador sênior. Já passou por várias big techs do mercado cripto e, com milhares de conteúdos em seu histórico, consegue entregar cada texto da melhor forma possível.",
+                  description: isEn
+                    ? "Our senior writer and creator. He has worked at several big techs in the crypto market and, with thousands of pieces of content behind him, delivers every text in the best possible shape."
+                    : "É o nosso escritor e criador sênior. Já passou por várias big techs do mercado cripto e, com milhares de conteúdos em seu histórico, consegue entregar cada texto da melhor forma possível.",
                   social: { instagram: "https://www.instagram.com/caiocrispim", linkedin: "https://www.linkedin.com/in/caiocrispim", email: "caio@kaleidosdigital.com" }
                 },
                 {
-                  name: "Gabriel Rebelo", role: "Social Media",
+                  name: "Gabriel Rebelo",
+                  role: "Social Media",
                   image: "/Kaleidos/imagens/Equipe/Rebelo.png",
-                  description: "O social media criativo do time. Todos os posts passam por ele, e cria os melhores stories que você poderia encontrar. Entende o mercado cripto como poucos.",
+                  description: isEn
+                    ? "The team's creative social media manager. Every post goes through him, and he creates the best stories you could find. Understands the crypto market like few do."
+                    : "O social media criativo do time. Todos os posts passam por ele, e cria os melhores stories que você poderia encontrar. Entende o mercado cripto como poucos.",
                   social: { instagram: "https://www.instagram.com/gabrielrebelo", twitter: "https://twitter.com/gabrielrebelo", linkedin: "https://www.linkedin.com/in/gabrielrebelo", email: "gabriel.rebelo@kaleidosdigital.com" }
                 },
                 {
-                  name: "Alef Damacena", role: "Editor de vídeo e Motion",
+                  name: "Alef Damacena",
+                  role: isEn ? "Video Editor & Motion" : "Editor de vídeo e Motion",
                   image: "/Kaleidos/imagens/Equipe/Alef.png",
-                  description: "Especialista em edição de vídeo e motion, consegue trazer as melhores animações para os nossos conteúdos visuais.",
+                  description: isEn
+                    ? "A video editing and motion specialist, he brings the best animations to our visual content."
+                    : "Especialista em edição de vídeo e motion, consegue trazer as melhores animações para os nossos conteúdos visuais.",
                   social: { instagram: "https://www.instagram.com/alefdamaceno", linkedin: "https://www.linkedin.com/in/alefdamaceno", email: "alef@kaleidosdigital.com" }
                 },
               ].map((member, index) => {
@@ -382,18 +401,18 @@ export default function SobrePage() {
                             <p className="text-sm leading-relaxed text-center" style={{ color: "#cfc6b6", fontFamily: "var(--font-inter), Inter, sans-serif" }}>{member.description}</p>
                           </div>
                           <div className="pt-4 mt-2" style={{ borderTop: "1px solid #3a332a" }}>
-                            <div className="flex items-center justify-center gap-4">
+                            <div className="flex items-center justify-center gap-1">
                               {member.social.instagram && (
-                                <a href={member.social.instagram} target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: "#8a8074" }} aria-label="Instagram"><Instagram className="h-5 w-5" /></a>
+                                <a href={member.social.instagram} target="_blank" rel="noopener noreferrer" className="transition-colors inline-flex items-center justify-center" style={{ color: "#8a8074", minWidth: 44, minHeight: 44 }} aria-label="Instagram"><Instagram className="h-5 w-5" /></a>
                               )}
                               {member.social.twitter && (
-                                <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: "#8a8074" }} aria-label="Twitter"><Twitter className="h-5 w-5" /></a>
+                                <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="transition-colors inline-flex items-center justify-center" style={{ color: "#8a8074", minWidth: 44, minHeight: 44 }} aria-label="Twitter"><Twitter className="h-5 w-5" /></a>
                               )}
                               {member.social.linkedin && (
-                                <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: "#8a8074" }} aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a>
+                                <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors inline-flex items-center justify-center" style={{ color: "#8a8074", minWidth: 44, minHeight: 44 }} aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a>
                               )}
                               {member.social.email && (
-                                <a href={`mailto:${member.social.email}`} className="transition-colors" style={{ color: "#8a8074" }} aria-label="Email"><Mail className="h-5 w-5" /></a>
+                                <a href={`mailto:${member.social.email}`} className="transition-colors inline-flex items-center justify-center" style={{ color: "#8a8074", minWidth: 44, minHeight: 44 }} aria-label="Email"><Mail className="h-5 w-5" /></a>
                               )}
                             </div>
                           </div>
@@ -501,7 +520,7 @@ export default function SobrePage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
-                href={withLang('/#ajuda-section')}
+                href={withLang('/contato')}
                 className="sb-btn inline-flex items-center gap-2"
                 style={{ background: "#fff", color: INK, fontWeight: 700, fontSize: 16, padding: "15px 28px", borderRadius: 999, boxShadow: `5px 5px 0 ${GREEN}`, textDecoration: "none" }}
               >

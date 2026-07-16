@@ -293,7 +293,7 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                   onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
                   className="case-swiper"
                   style={{
-                    '--swiper-pagination-color': '#7CFF6B',
+                    '--swiper-pagination-color': '#7CF067',
                     '--swiper-pagination-bullet-size': '8px',
                     '--swiper-pagination-bullet-horizontal-gap': '4px',
                   } as React.CSSProperties}
@@ -416,7 +416,7 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
                         onClick={() => setCurrentIndex(index)}
                         className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                           index === currentIndex 
-                            ? 'bg-[#7CFF6B]' 
+                            ? 'bg-[#7CF067]' 
                             : 'bg-gray-300 hover:bg-gray-400'
                         }`}
                         aria-label={`Ir para slide ${index + 1}`}
@@ -508,7 +508,7 @@ export function CaseCarousel({ media, title, clientType = "reels", format = 'def
         }
         
         .case-swiper .swiper-pagination-bullet {
-          background: #7CFF6B;
+          background: #7CF067;
           opacity: 0.5;
         }
         

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,6 +9,7 @@ import { BlogCard } from "@/components/blog/blog-card";
 import { BlogCover } from "@/components/blog/blog-cover";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { CategoryFilter } from "@/components/blog/category-filter";
+import { BlogControls, BlogSortOption } from "@/components/blog/blog-controls";
 import { PapersBand } from "@/components/papers/papers-band";
 import { FooterDemo } from "@/components/ui/footer-demo";
 
@@ -20,15 +21,70 @@ import { FooterDemo } from "@/components/ui/footer-demo";
 // cards animados (framer-motion) de uma vez; "Carregar mais" revela o próximo lote.
 const PAGE_SIZE = 24;
 
+/** Normaliza texto pra busca: minúsculas e sem acentos ("estrategia" acha "Estratégia"). */
+function normalizeText(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+/** Timestamp de publicação (posts sem data válida caem pro fim da lista). */
+function postTime(post: BlogCardMeta) {
+  const t = new Date(post.publishedAt).getTime();
+  return Number.isNaN(t) ? 0 : t;
+}
+
+/**
+ * Ordena uma CÓPIA da lista conforme a opção escolhida, sempre com desempate
+ * por slug (determinístico). "recentes" devolve a lista original intacta: os
+ * posts já chegam do server em data desc, então o primeiro render é idêntico
+ * ao HTML do servidor (sem mismatch de hidratação).
+ */
+function sortPosts(posts: BlogCardMeta[], sort: BlogSortOption): BlogCardMeta[] {
+  if (sort === "recentes") return posts;
+  const sorted = [...posts];
+  switch (sort) {
+    case "antigos":
+      sorted.sort(
+        (a, b) => postTime(a) - postTime(b) || a.slug.localeCompare(b.slug)
+      );
+      break;
+    case "leitura-curta":
+      sorted.sort(
+        (a, b) => a.readTime - b.readTime || a.slug.localeCompare(b.slug)
+      );
+      break;
+    case "leitura-longa":
+      sorted.sort(
+        (a, b) => b.readTime - a.readTime || a.slug.localeCompare(b.slug)
+      );
+      break;
+  }
+  return sorted;
+}
+
 export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
   const [selectedCategory, setSelectedCategory] = useState<
     BlogCategory | "all"
   >("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [sort, setSort] = useState<BlogSortOption>("recentes");
+  const [query, setQuery] = useState("");
 
   function handleSelectCategory(cat: BlogCategory | "all") {
     setSelectedCategory(cat);
     setVisibleCount(PAGE_SIZE); // troca de filtro reinicia a paginação
+  }
+
+  function handleSortChange(next: BlogSortOption) {
+    setSort(next);
+    setVisibleCount(PAGE_SIZE); // trocar ordenação reinicia a paginação
+  }
+
+  function handleQueryChange(next: string) {
+    setQuery(next);
+    setVisibleCount(PAGE_SIZE); // digitar na busca reinicia a paginação
   }
   const [email, setEmail] = useState("");
   const [hp, setHp] = useState(""); // honeypot — humanos não preenchem
@@ -71,10 +127,23 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
   // server: mais recente primeiro; empate de data cai no slug (estável), então
   // não agrupa por categoria nem causa mismatch de hidratação.
   const publishedPosts = posts;
-  const allFiltered =
-    selectedCategory === "all"
-      ? publishedPosts
-      : publishedPosts.filter((p) => p.category === selectedCategory);
+  const allFiltered = useMemo(() => {
+    let list =
+      selectedCategory === "all"
+        ? publishedPosts
+        : publishedPosts.filter((p) => p.category === selectedCategory);
+
+    const q = normalizeText(query.trim());
+    if (q) {
+      list = list.filter(
+        (p) =>
+          normalizeText(p.title).includes(q) ||
+          normalizeText(p.excerpt).includes(q)
+      );
+    }
+
+    return sortPosts(list, sort);
+  }, [publishedPosts, selectedCategory, query, sort]);
 
   // First 2 posts go into the highlight row, rest into the grid
   const highlights = allFiltered.slice(0, 2);
@@ -118,6 +187,14 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
               selected={selectedCategory}
               onSelect={handleSelectCategory}
             />
+            {/* Busca + ordenação + contador (client-side) */}
+            <BlogControls
+              query={query}
+              onQueryChange={handleQueryChange}
+              sort={sort}
+              onSortChange={handleSortChange}
+              resultCount={allFiltered.length}
+            />
             {/* Links crawláveis pros hubs de categoria (SSG). O filtro acima é
                 client-only e invisível pro Google/IA; estes <Link> dão a
                 linkagem interna real pros clusters /blog/categoria/[cat]. */}
@@ -154,7 +231,7 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
 
                     <div className="space-y-3">
                       <div className="flex items-center gap-3 text-[13px] text-gray-500">
-                        <span className="text-[#7CFF6B] font-medium">
+                        <span className="text-[#7CF067] font-medium">
                           {categoryLabels[post.category]}
                         </span>
                         <span className="text-gray-300">/</span>
@@ -173,7 +250,7 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
                         {post.excerpt}
                       </p>
 
-                      <div className="inline-flex items-center gap-2 text-sm font-medium text-[#7CFF6B] opacity-0 group-hover:opacity-100 transition-opacity duration-200 pt-1">
+                      <div className="inline-flex items-center gap-2 text-sm font-medium text-[#7CF067] opacity-0 group-hover:opacity-100 transition-opacity duration-200 pt-1">
                         Ler artigo
                         <ArrowRight className="w-3.5 h-3.5" />
                       </div>
@@ -205,7 +282,7 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
                   setVisibleCount((count) => count + PAGE_SIZE)
                 }
                 aria-label={`Carregar mais artigos (${remaining} restantes)`}
-                className="px-6 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 font-semibold text-sm hover:border-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2"
+                className="px-6 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 font-semibold text-sm hover:border-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CF067] focus-visible:ring-offset-2"
               >
                 Carregar mais artigos ({remaining} restantes)
               </button>
@@ -219,8 +296,23 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
               className="text-center py-24"
             >
               <p className="text-gray-600 text-base">
-                Nenhum artigo nesta categoria ainda.
+                {query.trim()
+                  ? "Nenhum artigo encontrado para essa busca."
+                  : "Nenhum artigo nesta categoria ainda."}
               </p>
+              {(query.trim() || selectedCategory !== "all") && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery("");
+                    setSelectedCategory("all");
+                    setVisibleCount(PAGE_SIZE);
+                  }}
+                  className="mt-4 min-h-[44px] px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:border-gray-900 transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CF067] focus-visible:ring-offset-2"
+                >
+                  Limpar filtros
+                </button>
+              )}
             </motion.div>
           )}
         </div>
@@ -282,12 +374,12 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={subscribeStatus === "loading"}
-              className="flex-1 px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#7CFF6B]/50 focus:ring-1 focus:ring-[#7CFF6B]/15 transition-all text-sm disabled:opacity-50"
+              className="flex-1 px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#7CF067]/50 focus:ring-1 focus:ring-[#7CF067]/15 transition-all text-sm disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={subscribeStatus === "loading"}
-              className="px-6 py-3 rounded-xl bg-[#7CFF6B] text-black font-semibold text-sm hover:bg-[#6ae85a] transition-colors whitespace-nowrap disabled:opacity-50"
+              className="px-6 py-3 rounded-xl bg-[#7CF067] text-black font-semibold text-sm hover:bg-[#6ae85a] transition-colors whitespace-nowrap disabled:opacity-50"
             >
               {subscribeStatus === "loading" ? "Enviando..." : "Assinar"}
             </button>

@@ -10,7 +10,7 @@ import {
   Web3V2Manifesto,
   Web3V2Problema,
   Web3V2Diferenciais,
-  heroHtml,
+  AudienceSectionsLang,
 } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
 import { Web3V2Testimonials } from "@/components/web3v2/testimonials";
@@ -19,8 +19,7 @@ import { Web3V2Resources } from "@/components/web3v2/resources";
 import { Web3V2FontPreview } from "@/components/web3v2/font-preview";
 import { Web3V2PlaybookPopup } from "@/components/web3v2/playbook-popup";
 import { Web3V2PlaybookSticky } from "@/components/web3v2/playbook-sticky";
-import { AudienceSections } from "@/components/audience-sections";
-import type { Audience } from "@/lib/audiences";
+import { localizeAudience, type Audience } from "@/lib/audiences";
 
 // Componentes da home real reaproveitados (sem editar destrutivamente).
 const ServicesList = dynamic(() =>
@@ -48,6 +47,17 @@ export function HomeShell({
   heroOpts?: HeroOpts;
   audience?: Audience;
 }) {
+  // Variante EN do público (?lang=en): resolvida aqui no server (rota continua
+  // estática) e trocada no client pelo AudienceSectionsLang / Web3V2Hero.
+  const audienceEn = audience ? localizeAudience(audience, "en") : undefined;
+  const heroOptsEn = audienceEn
+    ? {
+        badge: audienceEn.badge,
+        headlineHtml: audienceEn.headlineHtml,
+        subHtml: audienceEn.subHtml,
+      }
+    : undefined;
+
   return (
     <main id="main-content" className="kv2 min-h-screen bg-white" role="main">
       <TrackingProbe />
@@ -68,20 +78,17 @@ export function HomeShell({
       {/* Card FIXO do Playbook (padrão Lunar Strategy). */}
       <Web3V2PlaybookSticky />
 
-      {/* 1 · HERO — genérico (`/`) ou variante textual por público */}
-      {heroOpts ? (
-        <div dangerouslySetInnerHTML={{ __html: heroHtml(heroOpts) }} />
-      ) : (
-        <Web3V2Hero />
-      )}
+      {/* 1 · HERO: genérico (`/`) ou variante textual por público.
+          Language-aware: PT default, EN quando ?lang=en (useI18n no client). */}
+      <Web3V2Hero heroOpts={heroOpts} heroOptsEn={heroOptsEn} />
 
       {/* 1b · Marquee de LOGOS de clientes */}
       <Web3V2ClientsMarquee />
 
       {/* 1c · Bloco PERSONALIZADO por público (só nas rotas /founders etc). */}
-      {audience && (
+      {audience && audienceEn && (
         <Reveal>
-          <AudienceSections audience={audience} />
+          <AudienceSectionsLang pt={audience} en={audienceEn} />
         </Reveal>
       )}
 

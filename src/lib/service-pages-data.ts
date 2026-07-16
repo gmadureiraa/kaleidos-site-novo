@@ -122,12 +122,12 @@ const HERO_IMAGES: Record<string, string> = {
 };
 
 const STATS_BASE_PT: ServiceStat[] = [
-  { value: "20+", label: "Projetos cripto atendidos" },
+  { value: "30+", label: "Projetos cripto atendidos" },
   { value: "Desde 2020", label: "Nativos de cripto e web3" },
   { value: "125M+", label: "Views gerados" },
 ];
 const STATS_BASE_EN: ServiceStat[] = [
-  { value: "20+", label: "Crypto projects served" },
+  { value: "30+", label: "Crypto projects served" },
   { value: "Since 2020", label: "Crypto & web3 native" },
   { value: "125M+", label: "Views generated" },
 ];

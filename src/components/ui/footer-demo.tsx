@@ -89,7 +89,7 @@ export function FooterDemo() {
                 href={`https://www.instagram.com/${instagramHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
+                className="text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
@@ -98,7 +98,7 @@ export function FooterDemo() {
                 href={`https://twitter.com/${twitterHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
+                className="text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
@@ -107,7 +107,7 @@ export function FooterDemo() {
                 href="https://www.linkedin.com/company/kaleidos-digital" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
+                className="text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
@@ -116,7 +116,7 @@ export function FooterDemo() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#7CFF6B] transition-colors"
+                className="text-gray-400 hover:text-[#7CF067] transition-colors"
                 aria-label="WhatsApp"
                 onClick={() => trackWhatsApp("footer_social", "social_links")}
               >
@@ -135,7 +135,7 @@ export function FooterDemo() {
                 <li key={index}>
                   <Link 
                     href={service.href}
-                    className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
                   >
                     <span>{service.title}</span>
                     <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -155,7 +155,7 @@ export function FooterDemo() {
                 <li key={index}>
                   <Link 
                     href={page.href}
-                    className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
                   >
                     <span>{page.title}</span>
                     <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -173,7 +173,7 @@ export function FooterDemo() {
                 <li key={a.slug}>
                   <Link
                     href={`/${a.slug}`}
-                    className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                    className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
                   >
                     <span>Kaleidos para {a.label}</span>
                     <ArrowRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -194,7 +194,7 @@ export function FooterDemo() {
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                  className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
                   onClick={() => trackWhatsApp("footer_contact", "contact_section")}
                 >
                   <Phone className="h-4 w-4 mr-2" />
@@ -205,7 +205,7 @@ export function FooterDemo() {
               <li>
                 <a 
                   href="mailto:madureira@kaleidosdigital.com"
-                  className="text-gray-400 hover:text-[#7CFF6B] transition-colors text-sm flex items-center group"
+                  className="text-gray-400 hover:text-[#7CF067] transition-colors text-sm flex items-center group"
                 >
                   <Mail className="h-4 w-4 mr-2" />
                   <span>Email</span>
@@ -217,7 +217,7 @@ export function FooterDemo() {
             {/* CTA Button */}
             <Link 
               href="/contato"
-              className="mt-6 inline-flex items-center gap-2 bg-[#7CFF6B] text-black px-6 py-3 rounded-lg hover:bg-[#6BE85A] transition-all font-semibold text-sm group"
+              className="mt-6 inline-flex items-center gap-2 bg-[#7CF067] text-black px-6 py-3 rounded-lg hover:bg-[#6BE85A] transition-all font-semibold text-sm group"
             >
               {locale === 'en' ? 'Get in Touch' : 'Falar Conosco'}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -234,16 +234,16 @@ export function FooterDemo() {
               {t('footer','rights')}
             </p>
             <div className="flex items-center space-x-6 text-xs text-gray-500">
-              <Link href="/sobre" className="hover:text-[#7CFF6B] transition-colors">
+              <Link href="/sobre" className="hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'About' : 'Sobre'}
               </Link>
-              <Link href="/contato" className="hover:text-[#7CFF6B] transition-colors">
+              <Link href="/contato" className="hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Contact' : 'Contato'}
               </Link>
-              <Link href="/privacidade" className="hover:text-[#7CFF6B] transition-colors">
+              <Link href="/privacidade" className="hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Privacy' : 'Privacidade'}
               </Link>
-              <Link href="/termos" className="hover:text-[#7CFF6B] transition-colors">
+              <Link href="/termos" className="hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Terms' : 'Termos'}
               </Link>
             </div>

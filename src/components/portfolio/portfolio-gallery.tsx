@@ -113,7 +113,7 @@ export default function PortfolioGallery() {
     <main className="min-h-screen bg-[#0A0A0B] text-white">
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-4 pt-14 pb-8 sm:px-6">
-        <span className="font-accent text-xs uppercase tracking-[0.25em] text-[#7CFF6B]">
+        <span className="font-accent text-xs uppercase tracking-[0.25em] text-[#7CF067]">
           {isEn ? "Living portfolio" : "Portfólio vivo"}
         </span>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
@@ -176,7 +176,7 @@ export default function PortfolioGallery() {
             <button
               type="button"
               onClick={clearAll}
-              className="mt-4 inline-flex rounded-full bg-[#7CFF6B] px-4 py-2 text-xs font-semibold text-black"
+              className="mt-4 inline-flex rounded-full bg-[#7CF067] px-4 py-2 text-xs font-semibold text-black"
             >
               {isEn ? "Clear filters" : "Limpar filtros"}
             </button>
@@ -191,7 +191,7 @@ export default function PortfolioGallery() {
       </section>
 
       {/* CTA final */}
-      <section className="border-t border-white/10 bg-gradient-to-b from-transparent to-[#7CFF6B]/5">
+      <section className="border-t border-white/10 bg-gradient-to-b from-transparent to-[#7CF067]/5">
         <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
           <h2 className="font-display text-2xl font-bold sm:text-3xl">
             {isEn ? "Want a result like these?" : "Quer um resultado desses?"}
@@ -206,7 +206,7 @@ export default function PortfolioGallery() {
               href="https://wa.me/5512997796835"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#7CFF6B] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#64e04d]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#7CF067] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#64e04d]"
             >
               {isEn ? "Talk to us" : "Fale com a gente"}
               <ArrowRight className="h-4 w-4" />
@@ -261,7 +261,7 @@ export default function PortfolioGallery() {
               {/* Info */}
               <div className="flex items-start justify-between gap-4 border-t border-white/10 p-4">
                 <div>
-                  <p className="text-xs uppercase tracking-wide text-[#7CFF6B]">
+                  <p className="text-xs uppercase tracking-wide text-[#7CF067]">
                     {modal.client} · {isEn ? FORMAT_LABEL[modal.format].en : FORMAT_LABEL[modal.format].pt}
                   </p>
                   <p className="mt-1 text-sm font-medium text-white/90">{modal.title}</p>
@@ -271,7 +271,7 @@ export default function PortfolioGallery() {
                   href={withLang(modal.href)}
                   target={modal.href.startsWith("http") ? "_blank" : undefined}
                   rel={modal.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#7CFF6B] px-4 py-2 text-xs font-semibold text-black"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#7CF067] px-4 py-2 text-xs font-semibold text-black"
                 >
                   {modal.format === "paper" || modal.format === "playbook"
                     ? isEn ? "Read" : "Ler"
@@ -346,7 +346,7 @@ function Dropdown({
         className={`inline-flex w-full items-center justify-between gap-2 rounded-full border px-4 py-2 text-sm transition-colors sm:w-auto ${
           isDefault
             ? "border-white/15 bg-white/5 text-white/80 hover:border-white/40"
-            : "border-[#7CFF6B]/60 bg-[#7CFF6B]/10 text-white"
+            : "border-[#7CF067]/60 bg-[#7CF067]/10 text-white"
         }`}
       >
         <span className="text-white/40">{label}:</span>
@@ -371,7 +371,7 @@ function Dropdown({
                   setOpen(false);
                 }}
                 className={`flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-sm transition-colors ${
-                  active ? "bg-[#7CFF6B] text-black" : "text-white/75 hover:bg-white/10 hover:text-white"
+                  active ? "bg-[#7CF067] text-black" : "text-white/75 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <span>{o.label}</span>
@@ -428,7 +428,7 @@ function PortfolioCard({
   // Item com publicação real (news / LinkedIn / landing) → o card é um link direto
   // pra URL externa (nova aba). Senão, abre o modal de preview.
   const cardClass =
-    "group relative block w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left transition-colors hover:border-[#7CFF6B]/40 break-inside-avoid";
+    "group relative block w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left transition-colors hover:border-[#7CF067]/40 break-inside-avoid";
   const Inner = (
       <div
         className={`relative w-full overflow-hidden ${isPaper ? "bg-[#15151a]" : "bg-black"}`}
@@ -479,7 +479,7 @@ function PortfolioCard({
         )}
         {/* overlay info no hover */}
         <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/10 to-transparent p-2.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <p className="text-[11px] font-semibold text-[#7CFF6B]">{item.client}</p>
+          <p className="text-[11px] font-semibold text-[#7CF067]">{item.client}</p>
           <p className="line-clamp-2 text-[11px] text-white/85">{item.title}</p>
           {item.metric && <p className="mt-0.5 text-[10px] text-white/50">{item.metric}</p>}
         </div>

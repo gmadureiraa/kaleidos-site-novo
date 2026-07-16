@@ -400,7 +400,7 @@ select:focus-visible {
 
 .reels-thumbnail.active {
   transform: scale(1.05);
-  box-shadow: 0 0 0 2px #7CFF6B, 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 2px #7CF067, 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Carrossel Horizontal Fluido - Estilos específicos */

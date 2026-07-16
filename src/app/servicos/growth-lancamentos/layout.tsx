@@ -5,7 +5,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateServiceMetadata(
     "growth-lancamentos",
     "Growth e Lançamentos para Cripto e Web3",
-    "Lançamentos que viralizam e vendem no mercado cripto. Funis, campanhas e growth hacking para projetos Web3 e DeFi. 20+ lançamentos, 200% de crescimento médio."
+    "Lançamentos que viralizam e vendem no mercado cripto. Funis, campanhas e growth hacking para projetos Web3 e DeFi. 50+ lançamentos, 200% de crescimento médio."
   );
 }
 

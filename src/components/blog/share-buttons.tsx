@@ -70,7 +70,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
         aria-label="Copiar link"
       >
         {copied ? (
-          <Check className="w-4 h-4 text-[#7CFF6B]" />
+          <Check className="w-4 h-4 text-[#7CF067]" />
         ) : (
           <Link2 className="w-4 h-4" />
         )}

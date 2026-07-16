@@ -238,7 +238,7 @@ function YouTubeEmbed({
           />
           <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />
           <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 transition-transform group-hover:scale-110">
-            <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-[#7CFF6B]" />
+            <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-[#7CF067]" />
           </span>
         </button>
       )}
@@ -352,7 +352,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                     />
                   </span>
                 ) : (
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-black text-2xl font-bold text-[#7CFF6B] sm:h-20 sm:w-20 sm:text-3xl">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-black text-2xl font-bold text-[#7CF067] sm:h-20 sm:w-20 sm:text-3xl">
                     {nome.charAt(0).toUpperCase()}
                   </span>
                 )}
@@ -371,7 +371,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                   href={externalLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-[#7CFF6B] border border-[#7CFF6B] hover:bg-gray-900 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-[#7CF067] border border-[#7CF067] hover:bg-gray-900 transition-colors"
                 >
                   {externalLabelText}
                   <ArrowRight className="w-4 h-4" />
@@ -394,7 +394,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                   {entregaveis.map((item, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#7CFF6B]/40 bg-[#7CFF6B]/10 px-4 py-2 text-sm font-semibold text-gray-800"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#7CF067]/40 bg-[#7CF067]/10 px-4 py-2 text-sm font-semibold text-gray-800"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                       {item}
@@ -466,7 +466,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                         href="https://defiverso.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-[#7CFF6B] hover:text-[#6BE85A] font-medium transition-colors"
+                        className="inline-flex items-center gap-2 text-[#7CF067] hover:text-[#6BE85A] font-medium transition-colors"
                       >
                         <ArrowRight className="w-4 h-4" />
                          {t('case','visitSite')}
@@ -768,28 +768,28 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       A estratégia incluiu desenvolvimento de identidade visual, calendário editorial estratégico e gestão completa das plataformas, sempre priorizando a entrega de valor real para a comunidade.
                     </p>
                     <div className="bg-black rounded-lg p-4 mb-4">
-                      <h3 className="text-lg font-bold text-[#7CFF6B] mb-3">
+                      <h3 className="text-lg font-bold text-[#7CF067] mb-3">
                         Resultados do Instagram (90 dias)
                       </h3>
                       <ul className="space-y-2 text-white">
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>12 Milhões de Visualizações</strong> de Alcance Orgânico (+28,4% de crescimento)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>302.9 Mil contas</strong> de Alcance Total</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>136.9 Mil interações</strong> com conteúdo (curtidas, comentários, salvos e compartilhamentos)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>14.4 Mil cliques no link</strong> (tráfego qualificado)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>8.6 Mil novos seguidores</strong> em apenas 3 meses</span>
                         </li>
                       </ul>
@@ -811,7 +811,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       href="https://www.instagram.com/defiverso/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-black text-[#7CFF6B] px-6 py-3 rounded-lg hover:bg-gray-900 transition-all font-medium border border-[#7CFF6B]"
+                      className="inline-flex items-center gap-2 bg-black text-[#7CF067] px-6 py-3 rounded-lg hover:bg-gray-900 transition-all font-medium border border-[#7CF067]"
                     >
                       <ArrowRight className="w-5 h-5" />
                       Ver no Instagram
@@ -842,24 +842,24 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       Com uma abordagem focada em entregar valor real a cada edição, conseguimos estabelecer uma base de assinantes altamente engajada, com taxas de abertura que superam amplamente as médias do mercado.
                     </p>
                     <div className="bg-black rounded-lg p-4 mb-4">
-                      <h3 className="text-lg font-bold text-[#7CFF6B] mb-3">
+                      <h3 className="text-lg font-bold text-[#7CF067] mb-3">
                         Resultados da Newsletter
                       </h3>
                       <ul className="space-y-2 text-white">
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>26.554 assinantes ativos</strong> em crescimento constante</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>Taxa de Abertura Média de 33.01%</strong> - muito acima da média do mercado (15-25%)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span>Engajamento consistente que transforma assinantes em clientes e comunidade</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span>Newsletter semanal com análises exclusivas e insights do mercado cripto</span>
                         </li>
                       </ul>
@@ -902,7 +902,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                           href="https://news.defiverso.com" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="bg-black text-[#7CFF6B] px-3 py-1 rounded-full text-xs hover:bg-gray-800 transition-colors font-medium border border-[#7CFF6B]"
+                          className="bg-black text-[#7CF067] px-3 py-1 rounded-full text-xs hover:bg-gray-800 transition-colors font-medium border border-[#7CF067]"
                         >
                           Abrir
                         </a>
@@ -934,24 +934,24 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       A estratégia foi simples: criar valor real para o público, estabelecendo o Defiverso como autoridade em educação cripto, enquanto transformávamos visitantes em leads qualificados através de uma página de captura otimizada.
                     </p>
                     <div className="bg-black rounded-lg p-4 mb-4">
-                      <h3 className="text-lg font-bold text-[#7CFF6B] mb-3">
+                      <h3 className="text-lg font-bold text-[#7CF067] mb-3">
                         Resultados do Minicurso
                       </h3>
                       <ul className="space-y-2 text-white">
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>Mais de 29.000 inscrições</strong> em pouco tempo</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>Taxa de Abertura no pico: 54.76%</strong> - resultado excepcional que demonstra o engajamento com o conteúdo</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span><strong>Taxa de Cliques (CTR) no pico: 24.55%</strong> - conversão impressionante que direciona tráfego qualificado</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-[#7CFF6B] font-bold">•</span>
+                          <span className="text-[#7CF067] font-bold">•</span>
                           <span>Maior lead magnet do Defiverso, estabelecendo a marca como referência em educação cripto</span>
                         </li>
                       </ul>
@@ -977,7 +977,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                           href="https://defiverso.com/7-dias-defi/" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="bg-black text-[#7CFF6B] px-3 py-1 rounded-full text-xs hover:bg-gray-800 transition-colors font-medium border border-[#7CFF6B]"
+                          className="bg-black text-[#7CF067] px-3 py-1 rounded-full text-xs hover:bg-gray-800 transition-colors font-medium border border-[#7CF067]"
                         >
                           Abrir
                         </a>
@@ -1004,7 +1004,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 <div className="space-y-6">
                   <div className="bg-white rounded-xl border border-gray-200 p-6">
                     <h3 className="text-lg font-bold mb-3 text-gray-900 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-[#7CFF6B] rounded-full"></span>
+                      <span className="w-2 h-2 bg-[#7CF067] rounded-full"></span>
                       Automação no Twitter
                     </h3>
                     <p className="text-gray-700 leading-relaxed mb-6">
@@ -1047,7 +1047,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                 className="max-w-4xl"
               >
                 <div className="bg-black rounded-xl p-8 border border-gray-800">
-                  <h2 className="text-2xl font-bold mb-6 text-[#7CFF6B]">
+                  <h2 className="text-2xl font-bold mb-6 text-[#7CF067]">
                     Conclusão do Case
                   </h2>
                   <div className="space-y-4 text-lg text-white">
@@ -1058,7 +1058,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       <li>No <strong>Instagram</strong>, transformamos a conta em um motor de <strong>crescimento orgânico</strong> e <strong>engajamento massivo</strong>.</li>
                       <li>No <strong>Email Marketing</strong>, construímos uma <strong>máquina de aquisição de leads</strong> com mais de <strong>29 mil inscrições</strong> e taxas de abertura que superam em muito a média do mercado.</li>
                     </ul>
-                    <p className="mt-4 font-semibold text-[#7CFF6B]">
+                    <p className="mt-4 font-semibold text-[#7CF067]">
                       Estes resultados concretos e o volume de dados demonstram a capacidade da Kaleidos de entregar não apenas conteúdo de qualidade, mas também <strong>crescimento sustentável e conversão em escala</strong> para o Defiverso.
                     </p>
                   </div>
@@ -1081,7 +1081,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
               <div className="space-y-8">
                 {/* Frase Impactante */}
                 {fraseText && (
-                  <div className="border-l-4 border-[#7CFF6B] pl-6 py-2">
+                  <div className="border-l-4 border-[#7CF067] pl-6 py-2">
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
                       {t('case','highlightedResult')}
                     </h3>
@@ -1140,7 +1140,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-lg text-[#7CFF6B] hover:text-[#6BE85A] transition-colors group py-2"
+                      className="flex items-center gap-3 text-lg text-[#7CF067] hover:text-[#6BE85A] transition-colors group py-2"
                     >
                       <ArrowRight className="w-5 h-5 flex-shrink-0" />
                       <span className="break-all">

@@ -490,8 +490,8 @@ export default function KaleidosContentPage() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067]" />
-            <CarouselNext className="border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067]" />
+            <CarouselPrevious className="left-1 h-11 w-11 border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067] sm:-left-12 sm:h-10 sm:w-10" />
+            <CarouselNext className="right-1 h-11 w-11 border-[1.5px] border-[#14110D] bg-white text-[#14110D] hover:bg-[#7CF067] sm:-right-12 sm:h-10 sm:w-10" />
           </Carousel>
 
           <motion.div
