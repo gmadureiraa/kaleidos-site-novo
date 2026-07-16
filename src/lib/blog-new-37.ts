@@ -6,7 +6,7 @@ export const blogNew37: BlogPost[] = [
   {
     slug: "problemas-criticos-seo-tecnico",
     title: "Problemas críticos de SEO técnico que derrubam o seu ranking (e como achar)",
-    seoTitle: "Problemas críticos de SEO técnico que derrubam seu ranking | Kaleidos",
+    seoTitle: "SEO técnico: 7 problemas que derrubam seu ranking",
     excerpt:
       "Conteúdo bom não rankeia se o Google não consegue rastrear, renderizar e indexar o site. A Kaleidos lista os 7 problemas de SEO técnico que mais derrubam rankings, como diagnosticar cada um e como corrigir antes que o tráfego evapore.",
     seoDescription:
@@ -82,7 +82,7 @@ Os vilões clássicos:
 
 - **robots.txt bloqueando o que não devia.** Um \`Disallow: /\` esquecido de um ambiente de staging que foi para produção. Bloqueio de diretórios de CSS e JS que impede a renderização correta. Regras genéricas demais que pegam páginas importantes de tabela.
 - **Cadeias e loops de redirect.** Cada salto de redirect consome uma requisição do orçamento. Cadeias com 3 ou mais saltos fazem o Googlebot desistir no meio do caminho.
-- **URLs parametrizadas infinitas.** Filtros de e-commerce, ordenações e parâmetros de sessão criam milhões de combinações de URL com o mesmo conteúdo. O Googlebot se perde nelas e deixa de rastrear o catálogo real.
+- **URLs parametrizadas infinitas.** Filtros de e-commerce, ordenações e parâmetros de sessão criam milhões de combinações de URL com o mesmo conteúdo. O Googlebot se perde nelas e deixa de rastrear o catálogo real (aprofundamos esse cenário no guia de [SEO para varejo e e-commerce](/blog/seo-para-varejo-e-commerce)).
 - **Erros 5xx recorrentes.** Quando o servidor responde com erro com frequência, o Google reduz automaticamente a taxa de rastreamento para não derrubar o site.
 
 **Como achar:** no Search Console, abra Configurações > Estatísticas de rastreamento. Veja quantas requisições vão para páginas reais versus parâmetros, redirects e erros. Complemente com um crawl no Screaming Frog simulando o Googlebot e analise os logs do servidor se tiver acesso: o log não mente sobre onde o bot gasta tempo.
@@ -168,7 +168,7 @@ Como os sitemaps apodrecem:
 
 - URLs que retornam 404 ou 301 continuam listadas meses depois da mudança.
 - Páginas com noindex ou bloqueadas no robots.txt aparecem no sitemap (sinal contraditório).
-- O sitemap é estático e ninguém regenera desde o último redesign.
+- O sitemap é estático e ninguém regenera desde o último redesign (migrações e redesigns pedem o [checklist de redesenhar o site sem perder SEO](/blog/redesenhar-site-sem-perder-seo)).
 - \`lastmod\` igual para todas as URLs ou sempre igual à data de hoje, o que faz o Google ignorar o campo.
 - Páginas novas demoram semanas para entrar no arquivo.
 
@@ -193,7 +193,7 @@ Nenhum desses 7 problemas aparece olhando para o site no navegador. O layout car
 
 A boa notícia é que problema técnico, ao contrário de autoridade de domínio, se corrige rápido. Um noindex removido, um canonical consertado ou um sitemap regenerado pode devolver páginas ao índice em dias.
 
-Se o seu tráfego orgânico caiu e você não sabe por quê, ou se quer garantir que a fundação técnica não está sabotando o investimento em conteúdo, a Kaleidos audita, diagnostica e corrige. [Fale com a gente](/contato) e descubra o que o Google está vendo (ou deixando de ver) no seu site.
+Se o seu tráfego orgânico caiu e você não sabe por quê (as causas além da técnica estão em [por que seu SEO não está funcionando](/blog/por-que-seu-seo-nao-esta-funcionando)), ou se quer garantir que a fundação técnica não está sabotando o investimento em conteúdo, a Kaleidos audita, diagnostica e corrige. [Fale com a gente](/contato) e descubra o que o Google está vendo (ou deixando de ver) no seu site.
 `,
   },
 ];

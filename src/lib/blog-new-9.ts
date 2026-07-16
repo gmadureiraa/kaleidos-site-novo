@@ -6,7 +6,7 @@ export const blogNew9: BlogPost[] = [
   {
     slug: "twitter-x-crescimento-projeto-cripto",
     title: "Twitter (X) para projetos cripto: o guia de crescimento orgânico",
-    seoTitle: "Twitter (X) para projetos cripto: guia de crescimento orgânico | Kaleidos",
+    seoTitle: "Twitter (X) pra projetos cripto: guia orgânico",
     excerpt:
       "No cripto, o X (ex-Twitter) é a praça pública onde narrativa vira preço. A Kaleidos mostra como um projeto cresce de forma orgânica: perfil, conteúdo, cadência, KOLs e as métricas que realmente importam.",
     seoDescription:
@@ -86,7 +86,7 @@ Segundo o Digital 2024 Global Overview Report, da We Are Social com a Meltwater,
 
 Isso cria um efeito de rede brutal. A informação circula primeiro no CT, é debatida no CT e ganha ou perde credibilidade no CT. Para um projeto, isso significa uma coisa: o X é o único canal onde você pode, com trabalho orgânico consistente, entrar na mesa onde a narrativa do seu setor é decidida.
 
-Outros canais têm função. Discord retém comunidade. Telegram serve trader. YouTube aprofunda. Mas a porta de entrada da atenção, em cripto, é o X.
+Outros canais têm função. [Discord retém comunidade, Telegram serve trader](/blog/discord-vs-telegram-comunidade-cripto). YouTube aprofunda. Mas a porta de entrada da atenção, em cripto, é o X.
 
 ## Anatomia de um bom perfil de projeto
 
@@ -170,7 +170,7 @@ Reply estratégico bem feito é conversa, não interrupção. É assim que proje
 
 O Spaces é o áudio ao vivo do X, e em cripto ele virou palco de autoridade.
 
-Um Space bem conduzido faz três coisas que o texto não faz: mostra a voz e o preparo do time, permite debate em tempo real, e cria evento, algo que a comunidade agenda para acompanhar. Projetos usam Spaces para AMAs (perguntas e respostas), painéis com convidados, análises de mercado ao vivo e leituras de momento pós-lançamento.
+Um Space bem conduzido faz três coisas que o texto não faz: mostra a voz e o preparo do time, permite debate em tempo real, e cria evento, algo que a comunidade agenda para acompanhar. Projetos usam Spaces para AMAs (temos um [guia passo a passo de AMA de cripto](/blog/ama-cripto-guia-completo)), painéis com convidados, análises de mercado ao vivo e leituras de momento pós-lançamento.
 
 O valor não morre no ao vivo. Um bom Space vira dezenas de clipes, threads de resumo e citações, alimentando o feed por dias. Participar de Spaces de outros projetos e KOLs também é aquisição: você fala para a audiência deles como convidado.
 
@@ -217,7 +217,7 @@ O que vale acompanhar:
 - **Crescimento de audiência qualificada.** Não o total de seguidores, e sim quantos deles são do público certo.
 - **Conversão para a comunidade.** Quantos seguidores viram membros ativos no Discord, na waitlist ou no produto. O X é topo de funil; o valor se prova na descida.
 
-Vaidade mede o palco. Mindshare mede se alguém está prestando atenção. Otimize para o segundo.
+Vaidade mede o palco. Mindshare mede se alguém está prestando atenção. Otimize para o segundo, e amarre tudo na disciplina de [medir o ROI do marketing cripto](/blog/roi-marketing-cripto-como-medir).
 
 ## Como a Kaleidos ajuda seu projeto a crescer no X
 

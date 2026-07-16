@@ -6,7 +6,7 @@ export const blogNew21: BlogPost[] = [
   {
     slug: "developer-grants-como-gtm",
     title: "Developer grants como GTM: fazer terceiros construírem por você",
-    seoTitle: "Developer grants como estratégia de go-to-market em web3 | Kaleidos",
+    seoTitle: "Developer grants como go-to-market em web3",
     excerpt:
       "Programas de grants deixaram de ser filantropia de protocolo e viraram máquina de go-to-market. A Kaleidos explica como chains e protocolos usam grants para multiplicar apps, usuários e narrativa, e como estruturar, comunicar e medir um programa que gera tração de verdade.",
     seoDescription:
@@ -76,7 +76,7 @@ A lógica é simples de enunciar e difícil de executar: mais apps geram mais ca
 
 ## Por que grants são go-to-market, não caridade
 
-Pense no problema central de qualquer chain ou protocolo novo: distribuição. Tecnologia sem aplicação não gera transação, e ecossistema sem aplicação não tem história para contar. O caminho tradicional de marketing (mídia paga, KOLs, eventos) compra atenção alugada: quando a campanha para, a atenção vai embora.
+Pense no problema central de qualquer chain ou protocolo novo: distribuição. Tecnologia sem aplicação não gera transação, e ecossistema sem aplicação não tem história para contar. O caminho tradicional de marketing (mídia paga, KOLs, eventos) compra atenção alugada: quando a campanha para, a atenção vai embora. Os [growth loops](/blog/growth-loops-cripto-referral-quests) atacam o mesmo problema do lado do usuário; grants atacam do lado do builder.
 
 Um grant compra algo diferente. Quando um protocolo financia um time para construir um app sobre sua infraestrutura, ele adquire de uma vez só:
 
@@ -111,7 +111,7 @@ A prática recomendada é publicar RFPs (requests for proposals) explícitas, co
 
 ### 2. Selecionar com critério público
 
-Transparência no processo de seleção não é virtude moral, é marketing. Critérios públicos, comitês identificados e justificativas de aprovação e rejeição fazem o programa parecer sério, e programa sério atrai builder sério. O contraexemplo mais citado do mercado foi o STIP da Arbitrum em 2023: a DAO aprovou cerca de 50 milhões de ARB em incentivos de curto prazo, e análises posteriores da própria comunidade e de pesquisadores como a Blockworks Research apontaram que boa parte do volume incentivado não se sustentou após o fim do programa (Blockworks Research, 2024). A lição não é que incentivo não funciona, e sim que incentivo sem critério de permanência compra métrica temporária.
+Transparência no processo de seleção não é virtude moral, é marketing. Critérios públicos, comitês identificados e justificativas de aprovação e rejeição fazem o programa parecer sério, e programa sério atrai builder sério. O contraexemplo mais citado do mercado foi o STIP da Arbitrum em 2023: a DAO aprovou cerca de 50 milhões de ARB em incentivos de curto prazo, e análises posteriores da própria comunidade e de pesquisadores como a Blockworks Research apontaram que boa parte do volume incentivado não se sustentou após o fim do programa (Blockworks Research, 2024). A lição não é que incentivo não funciona, e sim que incentivo sem critério de permanência compra métrica temporária, o mesmo padrão dos airdrops que dumpam no claim, como mostra o nosso [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump).
 
 ### 3. Ativar com suporte além do cheque
 
@@ -130,7 +130,7 @@ Cada etapa do funil produz matéria-prima de comunicação:
 - **Abertura de rodada** é campanha: tese, valores, prazos e RFPs viram thread, post e conversa com KOLs de nicho dev.
 - **Cada aprovação** é anúncio duplo: o protocolo apresenta o time ao seu público e o time apresenta o protocolo ao dele. Esse cruzamento de audiências é o mecanismo de distribuição do GTM.
 - **Cada milestone entregue** é prova de progresso: demo, vídeo curto, artigo técnico.
-- **Cada rodada encerrada** é relatório: quanto foi distribuído, para quem, com que resultado. A Optimism transformou seus relatórios de RetroPGF em evento recorrente da comunidade, com dashboards públicos e debate aberto sobre o que melhorar entre rodadas (Optimism Collective, 2024).
+- **Cada rodada encerrada** é relatório: quanto foi distribuído, para quem, com que resultado. A Optimism transformou seus relatórios de RetroPGF em evento recorrente da comunidade, com dashboards públicos e debate aberto sobre o que melhorar entre rodadas (Optimism Collective, 2024). Governança como conteúdo é tema do nosso guia de [DAO marketing](/blog/dao-marketing-crescer-reter).
 
 O padrão a copiar é esse: o programa de grants como pauta permanente, não como comunicado trimestral. Ecossistema que comunica builders financiados constantemente parece vivo, e parecer vivo atrai o próximo builder antes mesmo do capital.
 

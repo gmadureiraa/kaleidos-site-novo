@@ -13,11 +13,11 @@ export const blogNew6: BlogPost[] = [
   {
     slug: "marketing-memecoin-o-que-funciona",
     title: "Marketing para memecoins: o que funciona (e o que é só golpe)",
-    seoTitle: "Marketing para Memecoins: O Que Funciona e o Que é Golpe",
+    seoTitle: "Marketing para memecoins: o que funciona",
     excerpt:
       "Memecoin é 90% marketing. O problema é que a mesma mecânica que constrói comunidade também alimenta rug pull. Este guia separa o que constrói marca do que é só golpe disfarçado de campanha.",
     seoDescription:
-      "Marketing para memecoins: narrativa, comunidade e cultura que funcionam, o papel de KOLs, risco regulatório e como não ser confundido com um golpe.",
+      "Marketing para memecoins: narrativa, comunidade e cultura que funcionam, o papel dos KOLs, risco regulatório no Brasil e como não ser confundido com golpe.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -87,7 +87,7 @@ Quatro forças explicam quase todo movimento de uma memecoin. Nenhuma delas é c
 
 **Narrativa.** A história precisa caber em uma frase e ser fácil de repetir. "A moeda do cachorro", "a moeda do sapo", "a moeda que os pinguins usam". Quando a narrativa é confusa, ninguém compartilha, e sem compartilhamento não há memecoin.
 
-**Comunidade.** É o único fosso defensável da categoria. Um token sem comunidade é só um código de contrato. A comunidade produz memes, defende o projeto, traz gente nova e sustenta o preço nos momentos ruins. É o ativo mais difícil de fabricar e o mais fácil de simular de forma artificial.
+**Comunidade.** É o único fosso defensável da categoria. Um token sem comunidade é só um código de contrato. A base dela costuma viver no [Discord ou no Telegram](/blog/discord-vs-telegram-comunidade-cripto), e escolher o canal certo importa. A comunidade produz memes, defende o projeto, traz gente nova e sustenta o preço nos momentos ruins. É o ativo mais difícil de fabricar e o mais fácil de simular de forma artificial.
 
 **Cultura e meme.** O meme é o produto. Ele precisa ser reproduzível, engraçado ou identitário o suficiente para as pessoas quererem fazer parte. Cultura é o que transforma um comprador em membro. É a diferença entre alguém que "tem o token" e alguém que "é da comunidade".
 
@@ -118,7 +118,7 @@ O uso legítimo é direto: o KOL genuinamente gosta do projeto, divulga e marca 
 
 Isso não é hipótese. Nos Estados Unidos, a SEC multou celebridades por promover tokens sem divulgar que foram pagas para isso. O caso de Kim Kardashian, em 2022, terminou com acordo de 1,26 milhão de dólares por promover o token EthereumMax sem informar o pagamento recebido, segundo a própria SEC. O ponto central da acusação não foi promover cripto, foi esconder que era publicidade paga.
 
-No Brasil, a lógica é a mesma sob outras regras. O Código de Defesa do Consumidor e o CONAR exigem identificar publicidade. Conteúdo pago apresentado como opinião espontânea é propaganda enganosa.
+No Brasil, a lógica é a mesma sob outras regras. O Código de Defesa do Consumidor e o CONAR exigem identificar publicidade, como detalhamos no guia de [regulação cripto e marketing no Brasil](/blog/regulacao-marketing-cripto-brasil-2026). Conteúdo pago apresentado como opinião espontânea é propaganda enganosa.
 
 Marketing responsável com KOLs segue três regras simples: divulgação paga sempre marcada como paga, nenhuma promessa de retorno, e alinhamento real entre o influenciador e o projeto. Quem ignora isso não está fazendo growth, está acumulando risco jurídico.
 
@@ -161,7 +161,7 @@ Nem toda memecoin é fogo de palha. Algumas viraram marcas duradouras, e as liç
 
 **Shiba Inu.** Lançada em agosto de 2020 por um criador anônimo sob o pseudônimo Ryoshi, autodeclarada "Dogecoin killer". Construiu um ecossistema em torno do token e uma das maiores comunidades de cripto. A lição: comunidade organizada e identidade forte sustentam um token muito além do hype inicial.
 
-**Pudgy Penguins.** Começou como coleção de NFTs em 2021 e virou um caso de construção de marca. Sob nova liderança a partir de 2022, o projeto licenciou brinquedos físicos dos pinguins, que chegaram às prateleiras da Walmart nos Estados Unidos em 2024, segundo comunicados do próprio projeto e cobertura da imprensa especializada. Depois disso lançou o token PENGU. A lição: aqui a ordem se inverteu. Primeiro construíram marca e cultura, o token veio depois, apoiado em algo real.
+**Pudgy Penguins.** Começou como coleção de NFTs em 2021 e virou um caso de construção de marca (a gente destrincha esse case no guia de [marketing para NFT em 2026](/blog/marketing-nft-2026-vale-a-pena)). Sob nova liderança a partir de 2022, o projeto licenciou brinquedos físicos dos pinguins, que chegaram às prateleiras da Walmart nos Estados Unidos em 2024, segundo comunicados do próprio projeto e cobertura da imprensa especializada. Depois disso lançou o token PENGU. A lição: aqui a ordem se inverteu. Primeiro construíram marca e cultura, o token veio depois, apoiado em algo real.
 
 O padrão que une os três não é sorte. É comunidade genuína, cultura reproduzível e ausência de promessa de enriquecimento fácil. Eles duraram porque construíram algo em que as pessoas quiseram pertencer, não apenas apostar.
 

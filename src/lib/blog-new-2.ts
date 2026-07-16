@@ -6,11 +6,11 @@ export const blogNew2: BlogPost[] = [
   {
     slug: "estatisticas-marketing-cripto-2026",
     title: "Estatísticas de marketing cripto em 2026 que todo founder deveria saber",
-    seoTitle: "Estatísticas de marketing cripto 2026: dados que todo founder precisa",
+    seoTitle: "Estatísticas de marketing cripto 2026 com fontes",
     excerpt:
       "Os números que definem como se faz marketing cripto no Brasil e no mundo em 2026. Adoção, comportamento do investidor, canais, KOLs e orçamento, cada dado com fonte nomeada.",
     seoDescription:
-      "Estatísticas de marketing cripto em 2026 com fonte: adoção no Brasil, stablecoins, comportamento do investidor, KOLs e ROI de influência. Dados para founders web3.",
+      "Estatísticas de marketing cripto 2026 com fonte: adoção no Brasil, stablecoins, comportamento do investidor, KOLs e ROI de influência. Dados para founders web3.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -104,7 +104,7 @@ Aqui está a virada que muitos projetos ainda não incorporaram na comunicação
 - **O uso de stablecoins na América Latina saltou cerca de 89% ano a ano, para US$ 324 bilhões.** Fonte: Chainalysis (2025).
 - **Globalmente, stablecoins movimentaram cerca de US$ 4 trilhões entre janeiro e julho de 2025**, alta de 83% sobre o ano anterior, o equivalente a cerca de 30% de toda a atividade on-chain. Fonte: Chainalysis (2025).
 
-O comportamento do investidor brasileiro é mais utilitário do que especulativo. As pessoas usam cripto para se proteger da inflação, fazer remessa e pagar. A implicação para marketing é grande. Campanha que fala só em valorização de token conversa com uma fração do mercado. Campanha que fala em utilidade, custo e segurança conversa com a maioria que já está dentro.
+O comportamento do investidor brasileiro é mais utilitário do que especulativo. As pessoas usam cripto para se proteger da inflação, fazer remessa e pagar. A implicação para marketing é grande. Campanha que fala só em valorização de token conversa com uma fração do mercado. Campanha que fala em utilidade, custo e segurança conversa com a maioria que já está dentro. A gente detalha essa comunicação no guia de [marketing para stablecoin no Brasil](/blog/marketing-stablecoin-brasil).
 
 ## Canais de marketing em cripto
 
@@ -112,7 +112,7 @@ A escolha de canal em cripto é diferente de um SaaS tradicional. A audiência v
 
 - **A influência de KOLs gera retorno alto quando bem executada**, com média de US$ 5,78 para cada US$ 1 investido em influencer marketing de blockchain, e campanhas de topo passando de US$ 20 por dólar. Fonte: Influencer Marketing Hub (2025).
 
-O que os dados de adoção deixam claro, mesmo onde falta uma estatística de canal com fonte pública robusta, é que a distribuição em cripto é conquistada, não comprada. A audiência que movimentou R$ 506 bilhões em 2025 no Brasil não chegou lá por banner. Chegou por comunidade, conteúdo educativo e recomendação de pares. A Kaleidos trata canal como consequência da confiança, não como atalho para ela.
+O que os dados de adoção deixam claro, mesmo onde falta uma estatística de canal com fonte pública robusta, é que a distribuição em cripto é conquistada, não comprada. A audiência que movimentou R$ 506 bilhões em 2025 no Brasil não chegou lá por banner. Chegou por comunidade, conteúdo educativo e recomendação de pares. Não à toa, o [Twitter (X) segue sendo o canal central pra projetos cripto](/blog/twitter-x-crescimento-projeto-cripto). A Kaleidos trata canal como consequência da confiança, não como atalho para ela.
 
 O princípio prático: priorize os canais onde a audiência cripto-nativa já está e onde a conversa é bidirecional. Anúncio de interrupção rende pouco quando o público sabe reconhecer promessa vazia.
 
@@ -149,7 +149,7 @@ A recomendação da Kaleidos, ancorada nesses números, é alocar orçamento na 
 
 Junte os dados e o quadro fica nítido. O mercado é gigante e maduro, especialmente no Brasil. O uso é utilitário e concentrado em stablecoins. A audiência é cética e recompensa confiança. E os canais que funcionam são os que constroem relação, não os que interrompem.
 
-Marketing cripto em 2026 não é sobre gritar mais alto. É sobre provar mais rápido. Founder que trata cada estatística com fonte, cada afirmação com evidência e cada campanha com utilidade real está jogando o jogo certo.
+Marketing cripto em 2026 não é sobre gritar mais alto. É sobre provar mais rápido. Founder que trata cada estatística com fonte, cada afirmação com evidência e cada campanha com utilidade real está jogando o jogo certo. O passo seguinte é [medir o ROI do marketing cripto](/blog/roi-marketing-cripto-como-medir) com as métricas que importam.
 
 A Kaleidos é uma agência de marketing cripto-nativa. Ajudamos projetos web3, fintech e cripto a transformar dados como estes em estratégia, conteúdo e comunidade que geram carteira ativa, não só impressão. Se você é founder e quer construir marketing que a audiência cripto respeita, [fale com a Kaleidos](/contato).`,
   },

@@ -6,7 +6,7 @@ export const blogNew17: BlogPost[] = [
   {
     slug: "segredos-agencia-marketing-web3",
     title: "Segredos de uma agência de marketing web3: o que a gente faz diferente por dentro",
-    seoTitle: "Agência de marketing web3: os segredos de operação por dentro | Kaleidos",
+    seoTitle: "Agência de marketing web3: segredos por dentro",
     excerpt:
       "Como uma agência cripto-nativa realmente opera por dentro: pesquisa de narrativa, produção de conteúdo, KOLs, distribuição e IA. E o que separa uma agência boa de uma ruim.",
     seoDescription:
@@ -125,7 +125,7 @@ O segredo incômodo: metade do valor de uma boa operação de KOLs está em quem
 
 Conteúdo bom sem distribuição é diário pessoal. Por dentro de uma operação cripto-nativa, cada peça nasce com um mapa de distribuição:
 
-- **X** continua sendo a praça central do mercado: é onde a narrativa nasce e morre.
+- **X** continua sendo a praça central do mercado: é onde a narrativa nasce e morre (temos um [guia de crescimento orgânico no X pra projetos cripto](/blog/twitter-x-crescimento-projeto-cripto)).
 - **Telegram e Discord** são onde a comunidade de verdade vive; conteúdo ali tem formato próprio, não é copy-paste do post.
 - **Farcaster** e canais on-chain alcançam o público mais nativo e formador de opinião.
 - **LinkedIn** virou canal sério para projetos B2B, infraestrutura e institucional.
@@ -133,7 +133,7 @@ Conteúdo bom sem distribuição é diário pessoal. Por dentro de uma operaçã
 
 Cada peça-mãe (um relatório, um estudo de caso, um vídeo) vira de 5 a 10 derivados adaptados por canal. Não replicados: adaptados. A thread do X tem estrutura de thread, o post de LinkedIn tem estrutura de LinkedIn, a mensagem de Telegram respeita o ritmo do grupo.
 
-E tem a camada que quase ninguém fala: **GEO, a otimização para motores generativos**. Cada vez mais gente pergunta ao ChatGPT, ao Claude e ao Perplexity "qual protocolo usar" ou "qual agência contratar". Conteúdo estruturado para ser citado por LLMs (respostas diretas, dados com fonte, FAQ estruturado) é a nova fronteira do SEO. A Kaleidos aplica isso em tudo que publica, incluindo este post que você está lendo.
+E tem a camada que quase ninguém fala: **GEO, a otimização para motores generativos**. Cada vez mais gente pergunta ao ChatGPT, ao Claude e ao Perplexity "qual protocolo usar" ou "qual agência contratar". Conteúdo estruturado para ser citado por LLMs (respostas diretas, dados com fonte, FAQ estruturado) é a nova fronteira do SEO, e é um dos critérios do nosso guia sobre [o que avaliar numa agência de SEO cripto](/blog/agencias-seo-cripto-o-que-avaliar). A Kaleidos aplica isso em tudo que publica, incluindo este post que você está lendo.
 
 ## Segredo 5: IA está em todo lugar, menos na decisão final
 
@@ -168,7 +168,7 @@ Agência boa:
 
 ## O que você deveria exigir antes de contratar
 
-Se você está avaliando uma agência de marketing web3, use este checklist na reunião:
+Se você está avaliando uma agência de marketing web3 (e se ainda está um passo antes, comece por [o que é uma agência de marketing cripto](/blog/o-que-e-agencia-marketing-cripto)), use este checklist na reunião:
 
 1. **"Me mostra o processo de pesquisa de narrativa de vocês."** Se a resposta for vaga, o conteúdo vai ser genérico.
 2. **"Quem escreve? Essa pessoa usa cripto?"** Peça para conhecer o time de execução, não só o comercial.

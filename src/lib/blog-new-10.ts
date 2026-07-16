@@ -6,7 +6,7 @@ export const blogNew10: BlogPost[] = [
   {
     slug: "marketing-wallet-infraestrutura-cripto",
     title: "Marketing para wallets e infraestrutura cripto: como comunicar produto técnico",
-    seoTitle: "Marketing para Wallets e Infraestrutura Cripto | Kaleidos",
+    seoTitle: "Marketing pra wallets e infraestrutura cripto",
     excerpt:
       "Wallets, RPCs, nós, bridges e SDKs vendem confiança e clareza, não hype. Veja como a Kaleidos traduz produto técnico cripto em mensagem que converte varejo e institucional.",
     seoDescription:
@@ -82,7 +82,7 @@ Pensa no que passa pela cabeça de quem vai adotar uma wallet non-custodial. A p
 
 Confiança se constrói com três coisas: transparência sobre como o produto funciona, prova de que ele funciona (auditorias, uptime histórico, código aberto quando existe) e clareza sobre o que o usuário ganha e o que ele assume de risco. É o oposto do hype, que esconde o trade-off pra vender rápido.
 
-A adoção de cripto, aliás, deixou de ser nicho. Um levantamento da Triple-A (2024) estimou mais de 560 milhões de pessoas com cripto no mundo. Esse público não é mais só o early adopter tolerante a fricção. É gente que abandona um produto confuso em segundos. Clareza virou requisito de escala, não diferencial.
+A adoção de cripto, aliás, deixou de ser nicho. Um levantamento da Triple-A (2024) estimou mais de 560 milhões de pessoas com cripto no mundo (reunimos mais dados assim nas [estatísticas de marketing cripto de 2026](/blog/estatisticas-marketing-cripto-2026)). Esse público não é mais só o early adopter tolerante a fricção. É gente que abandona um produto confuso em segundos. Clareza virou requisito de escala, não diferencial.
 
 ## Toda especificação técnica tem uma tradução
 
@@ -132,7 +132,7 @@ O tom também muda. Developer marketing bom é direto, sem adjetivo vazio, com r
 
 Existe um oceano de buscas informacionais em torno de wallet e infraestrutura. "O que é seed phrase." "Diferença entre carteira custodial e non-custodial." "Como funciona uma smart wallet." "O que é um RPC endpoint." Volume alto, concorrência comercial baixa.
 
-Esse conteúdo faz duas coisas ao mesmo tempo. Rankeia no Google e alimenta a etapa de descoberta do funil, e é citado por LLMs quando alguém pergunta o mesmo em um assistente. É o coração da estratégia de SEO e GEO pra produto técnico.
+Esse conteúdo faz duas coisas ao mesmo tempo. Rankeia no Google e alimenta a etapa de descoberta do funil, e é citado por LLMs quando alguém pergunta o mesmo em um assistente. É o coração da estratégia de SEO e GEO pra produto técnico (se for terceirizar isso, veja [o que avaliar numa agência de SEO cripto](/blog/agencias-seo-cripto-o-que-avaliar)).
 
 Pra funcionar em ambos, o conteúdo precisa:
 
@@ -157,7 +157,7 @@ A distribuição via integração tem uma vantagem: chega com confiança emprest
 
 ## Comunidade técnica: qualidade acima de tamanho
 
-Comunidade em produto de infraestrutura não se mede por número de membros no Discord. Se mede pela densidade técnica. Um canal com 500 devs que resolvem dúvidas entre si vale mais que 50 mil pessoas esperando airdrop.
+Comunidade em produto de infraestrutura não se mede por número de membros no [Discord ou no Telegram](/blog/discord-vs-telegram-comunidade-cripto). Se mede pela densidade técnica. Um canal com 500 devs que resolvem dúvidas entre si vale mais que 50 mil pessoas esperando airdrop.
 
 A comunidade técnica funciona como suporte, como prova social e como fonte de melhoria de produto. O dev que teve a dúvida respondida rápido vira defensor. O feedback dele melhora a doc e o roadmap.
 

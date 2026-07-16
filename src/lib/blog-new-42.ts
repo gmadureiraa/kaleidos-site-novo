@@ -6,11 +6,11 @@ export const blogNew42: BlogPost[] = [
   {
     slug: "por-que-seu-seo-nao-esta-funcionando",
     title: "Por que o seu SEO não está funcionando (as 7 causas mais comuns)",
-    seoTitle: "Por que seu SEO não está funcionando: 7 causas e como corrigir | Kaleidos",
+    seoTitle: "Por que seu SEO não funciona: 7 causas comuns",
     excerpt:
       "Você publica conteúdo, otimiza páginas e o tráfego não vem. A Kaleidos lista as 7 causas mais comuns de SEO que não funciona: prazo irreal, intenção errada, conteúdo raso, technical SEO, falta de autoridade, canibalização e medição cega. Com diagnóstico e correção para cada uma.",
     seoDescription:
-      "As 7 causas mais comuns de um SEO que não traz resultado: expectativa de prazo, intenção de busca, conteúdo raso, technical SEO, backlinks, canibalização e medição.",
+      "As 7 causas de um SEO que não traz resultado: expectativa de prazo, intenção de busca, conteúdo raso, technical SEO, backlinks, canibalização e medição.",
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-11",
@@ -123,7 +123,7 @@ Os suspeitos habituais:
 - **Canonicals e redirecionamentos errados**: apontando autoridade para a página errada ou criando cadeias de redirect.
 - **Arquitetura confusa**: páginas importantes a 5 cliques da home, sem links internos apontando para elas.
 
-**Como diagnosticar:** Google Search Console, relatório de indexação. Em 10 minutos você descobre quantas páginas o Google conhece, quantas indexou e por que descartou as demais. Complemente com o PageSpeed Insights nas páginas principais.
+**Como diagnosticar:** Google Search Console, relatório de indexação. Em 10 minutos você descobre quantas páginas o Google conhece, quantas indexou e por que descartou as demais. Complemente com o PageSpeed Insights nas páginas principais. O passo a passo completo de cada checagem está em [problemas críticos de SEO técnico](/blog/problemas-criticos-seo-tecnico).
 
 **Como corrigir:** priorize por impacto. Primeiro o que impede indexação (noindex, robots, canonical), depois o que degrada (velocidade, mobile, links internos). Um site pequeno raramente precisa de auditoria de 200 itens: precisa dos 5 itens certos resolvidos.
 
@@ -149,7 +149,7 @@ O sintoma clássico: uma keyword que oscila entre posições e URLs diferentes s
 
 **Como diagnosticar:** no Search Console, filtre pela keyword e veja quantas URLs recebem impressões para ela. Mais de uma URL relevante disputando a mesma busca é sinal amarelo.
 
-**Como corrigir:** para cada tema, eleja uma página canônica. Consolide o conteúdo das concorrentes internas nela, aplique redirect 301 nas antigas e ajuste os links internos para apontarem todos para a vencedora. Depois, mantenha um mapa de keywords por página para não recriar o problema.
+**Como corrigir:** para cada tema, eleja uma página canônica. Consolide o conteúdo das concorrentes internas nela, aplique redirect 301 nas antigas (a mecânica de redirects está detalhada no [checklist de migração sem perder SEO](/blog/redesenhar-site-sem-perder-seo)) e ajuste os links internos para apontarem todos para a vencedora. Depois, mantenha um mapa de keywords por página para não recriar o problema.
 
 ## Causa 7: você não está medindo (ou mede as coisas erradas)
 
@@ -184,7 +184,7 @@ Na maioria dos casos, uma ou duas dessas causas concentram o problema. Resolver 
 
 SEO que não funciona quase nunca é azar de algoritmo. É prazo mal calibrado, keyword sem intenção, conteúdo que não compete, técnica quebrada, autoridade insuficiente, páginas se canibalizando ou ninguém medindo. Todas as sete têm diagnóstico objetivo e correção conhecida.
 
-A Kaleidos faz esse diagnóstico para empresas de tecnologia, cripto e fintech: auditoria das 7 causas, priorização por impacto e um plano de correção com métricas de negócio, não de vaidade. Se o seu tráfego orgânico está parado e você quer saber exatamente por quê, [fale com a Kaleidos](/contato).
+A Kaleidos faz esse diagnóstico para empresas de tecnologia, cripto e fintech (o nicho cripto tem particularidades que cobrimos no [guia de SEO para cripto e web3](/blog/guia-seo-para-cripto)): auditoria das 7 causas, priorização por impacto e um plano de correção com métricas de negócio, não de vaidade. Se o seu tráfego orgânico está parado e você quer saber exatamente por quê, [fale com a Kaleidos](/contato).
 `,
   },
 ];

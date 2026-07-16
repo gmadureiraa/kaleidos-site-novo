@@ -6,7 +6,7 @@ export const blogNew13: BlogPost[] = [
   {
     slug: "rebranding-projeto-cripto-quando-como",
     title: "Rebranding de projeto cripto: quando fazer e como não perder a comunidade",
-    seoTitle: "Rebranding de Projeto Cripto: Quando e Como Fazer | Kaleidos",
+    seoTitle: "Rebranding de projeto cripto: quando e como fazer",
     excerpt:
       "Rebranding em cripto é cirurgia de alto risco: a comunidade é dona emocional da marca e o token carrega o nome no bolso dela. Veja os sinais de que é hora, os erros que destroem confiança e o faseamento que a Kaleidos recomenda.",
     seoDescription:
@@ -111,7 +111,7 @@ Os casos reais mostram as combinações possíveis:
 - **Marca e token juntos, com âncora técnica.** A Fantom virou Sonic com o lançamento da nova mainnet em dezembro de 2024, convertendo FTM em S na proporção de 1 para 1 (Fonte: [The Block, 2024](https://www.theblock.co/post/331358/sonic-mainnet-launch-fantom)). Quando a mudança de token acompanha um upgrade real de infraestrutura, a narrativa se sustenta: o token novo existe porque a rede nova existe.
 - **Marca e token juntos, sem âncora clara.** O caso Sky, citado acima. A conversão de 1 para 24.000 e a percepção de mudança por decreto amplificaram a resistência.
 
-A recomendação da Kaleidos: se o projeto pode separar os dois movimentos no tempo, separe. Marca primeiro, token depois, cada um com sua janela de comunicação. E se o token não precisa mudar, não mude: ticker é memória de mercado, e memória de mercado custa caro para reconstruir.
+A recomendação da Kaleidos: se o projeto pode separar os dois movimentos no tempo, separe. Marca primeiro, token depois, cada um com sua janela de comunicação. E se o token não precisa mudar, não mude: ticker é memória de mercado, e memória de mercado custa caro para reconstruir. Afinal, [tokenomics também é decisão de marketing](/blog/tokenomics-e-marketing-sell-buy-pressure).
 
 ## Comunicação e faseamento: o rebrand em 5 fases
 
@@ -121,7 +121,7 @@ A recomendação da Kaleidos: se o projeto pode separar os dois movimentos no te
 
 **Fase 3: Preparação técnica (2 a 4 semanas).** Domínios, redes sociais, redirects, documentação, atualização em CoinGecko e CoinMarketCap, avisos para exchanges e integrações. Se há token novo: auditoria do contrato de migração, definição da proporção, acordo prévio com as principais exchanges sobre a data de troca de listagem.
 
-**Fase 4: Anúncio em camadas.** A ordem importa: primeiro o problema ("nosso nome ficou menor que o produto"), depois a decisão e o processo ("estudamos por X meses, ouvimos Y pessoas"), e só então o nome novo. Comunidade primeiro, sempre: o anúncio interno no Discord ou fórum de governança precisa anteceder o post público. Prepare FAQ completo no dia zero, com atenção especial a "o que acontece com meu token".
+**Fase 4: Anúncio em camadas.** A ordem importa: primeiro o problema ("nosso nome ficou menor que o produto"), depois a decisão e o processo ("estudamos por X meses, ouvimos Y pessoas"), e só então o nome novo. Comunidade primeiro, sempre: o anúncio interno no Discord ou fórum de governança precisa anteceder o post público. Prepare FAQ completo no dia zero, com atenção especial a "o que acontece com meu token". Coordene também a imprensa: [PR cripto bem feito](/blog/pr-assessoria-imprensa-cripto-brasil) trabalha com embargo e briefing prévio de jornalistas.
 
 **Fase 5: Convivência e reforço (3 a 6 meses).** Mantenha as duas marcas conectadas: "Polygon (anteriormente Matic)" foi padrão de mercado por meses. Redirects permanentes, menção à marca antiga em toda comunicação inicial, monitoramento de golpes (rebrand é festa para scammer que registra domínio parecido) e, se houver migração de token, relatórios recorrentes de progresso da conversão.
 
@@ -153,7 +153,7 @@ Depois do anúncio:
 
 O padrão dos casos que deram certo é sempre o mesmo: o rebrand veio depois de uma mudança real no produto, foi comunicado com a comunidade dentro do processo e separou com clareza o que mudava na marca do que mudava no token. Os que deram errado inverteram a ordem: nome novo primeiro, explicação depois, comunidade por último.
 
-A Kaleidos é uma agência cripto-nativa e trata rebranding como projeto de narrativa e de comunidade, não como projeto de design. Diagnóstico honesto, faseamento realista, comunicação em camadas e proteção da confiança que o projeto levou anos para construir. Se o seu projeto está avaliando um rebrand, ou já decidiu e quer executar sem perder a comunidade no caminho, [fale com a gente](/contato).
+A Kaleidos é uma agência cripto-nativa e trata rebranding como projeto de narrativa e de comunidade, não como projeto de design (o [teardown do Nubank](/blog/nubank-teardown-marketing-marca) mostra o peso que marca tem como sistema de crescimento). Diagnóstico honesto, faseamento realista, comunicação em camadas e proteção da confiança que o projeto levou anos para construir. Se o seu projeto está avaliando um rebrand, ou já decidiu e quer executar sem perder a comunidade no caminho, [fale com a gente](/contato).
 `,
   },
 ];

@@ -16,10 +16,20 @@ import { FooterDemo } from "@/components/ui/footer-demo";
  * UI do índice do blog. Recebe os posts JÁ publicados (estáticos + KAI) do
  * server component pai (page.tsx). Mantém o filtro/highlight/grid client-side.
  */
+// Quantos cards da grade principal aparecem por lote. Evita renderizar ~190
+// cards animados (framer-motion) de uma vez; "Carregar mais" revela o próximo lote.
+const PAGE_SIZE = 24;
+
 export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
   const [selectedCategory, setSelectedCategory] = useState<
     BlogCategory | "all"
   >("all");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  function handleSelectCategory(cat: BlogCategory | "all") {
+    setSelectedCategory(cat);
+    setVisibleCount(PAGE_SIZE); // troca de filtro reinicia a paginação
+  }
   const [email, setEmail] = useState("");
   const [hp, setHp] = useState(""); // honeypot — humanos não preenchem
   const [subscribeStatus, setSubscribeStatus] = useState<
@@ -54,19 +64,13 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
     }
   }
 
-  // Posts já publicados (estáticos + KAI). Ordem EMBARALHADA (não por data nem
-  // por categoria) pra a página não ficar agrupada por tema — muitos posts
-  // compartilham a mesma data, então sort por data caía na ordem do array-fonte
-  // (agrupada por categoria). Hash do slug = embaralho determinístico: mistura
-  // as categorias, estável entre server/client (sem mismatch de hidratação).
-  const shuffleKey = (slug: string) => {
-    let h = 0;
-    for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
-    return h;
-  };
-  const publishedPosts = [...posts].sort(
-    (a, b) => shuffleKey(a.slug) - shuffleKey(b.slug)
-  );
+  // Os posts já chegam ordenados por data desc do server
+  // (getPublishedPostCardsAsync, com desempate por slug). O /blog antes
+  // re-embaralhava por hash do slug AQUI, o que fazia post novo nascer no meio
+  // do acervo e anulava o sort por data (P0-2 do audit). Mantida a ordem do
+  // server: mais recente primeiro; empate de data cai no slug (estável), então
+  // não agrupa por categoria nem causa mismatch de hidratação.
+  const publishedPosts = posts;
   const allFiltered =
     selectedCategory === "all"
       ? publishedPosts
@@ -75,6 +79,9 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
   // First 2 posts go into the highlight row, rest into the grid
   const highlights = allFiltered.slice(0, 2);
   const rest = allFiltered.slice(2);
+  // Paginação client-side da grade: só o lote visível vai pro DOM/animação.
+  const visibleRest = rest.slice(0, visibleCount);
+  const remaining = rest.length - visibleRest.length;
 
   return (
     <main className="min-h-screen bg-white">
@@ -109,7 +116,7 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
           >
             <CategoryFilter
               selected={selectedCategory}
-              onSelect={setSelectedCategory}
+              onSelect={handleSelectCategory}
             />
             {/* Links crawláveis pros hubs de categoria (SSG). O filtro acima é
                 client-only e invisível pro Google/IA; estes <Link> dão a
@@ -177,12 +184,31 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
             </div>
           )}
 
-          {/* Rest — grid of 3 */}
-          {rest.length > 0 && (
+          {/* Rest — grid of 3, paginada em lotes de PAGE_SIZE */}
+          {visibleRest.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 pb-24">
-              {rest.map((post, i) => (
-                <BlogCard key={post.slug} post={post} index={i} />
+              {visibleRest.map((post, i) => (
+                // index relativo ao lote: o stagger da animação recomeça a cada
+                // "Carregar mais" (cards já montados não re-animam) e o delay
+                // nunca cresce com o total da lista.
+                <BlogCard key={post.slug} post={post} index={i % PAGE_SIZE} />
               ))}
+            </div>
+          )}
+
+          {/* Carregar mais — pagina a grade filtrada sem recarregar a página */}
+          {remaining > 0 && (
+            <div className="flex justify-center pb-24 -mt-8">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisibleCount((count) => count + PAGE_SIZE)
+                }
+                aria-label={`Carregar mais artigos (${remaining} restantes)`}
+                className="px-6 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 font-semibold text-sm hover:border-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2"
+              >
+                Carregar mais artigos ({remaining} restantes)
+              </button>
             </div>
           )}
 

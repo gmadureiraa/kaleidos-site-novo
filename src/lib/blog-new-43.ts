@@ -6,7 +6,7 @@ export const blogNew43: BlogPost[] = [
   {
     slug: "quanto-do-faturamento-investir-em-marketing",
     title: "Quanto do faturamento investir em marketing (benchmarks por estágio e setor)",
-    seoTitle: "Quanto investir em marketing: % do faturamento por estágio e setor",
+    seoTitle: "Quanto investir em marketing: % do faturamento",
     excerpt:
       "Quanto do faturamento uma empresa deveria investir em marketing? Benchmarks reais por estágio (startup vs. empresa madura), por modelo (B2B vs. B2C) e para cripto e fintech, com fontes como Gartner e Deloitte e um método prático para decidir o seu número.",
     seoDescription:
@@ -116,7 +116,7 @@ Setores regulados e de alta desconfiança têm uma matemática própria, e é o 
 
 Três fatores encarecem o marketing em cripto e fintech:
 
-1. **Restrição de mídia paga.** Google e Meta impõem políticas duras para anúncios de cripto e de produtos financeiros, com exigência de certificações e bloqueio de formatos inteiros. Isso reduz o arsenal de aquisição paga e força investimento em canais mais caros de construir: conteúdo, SEO, comunidade, influência e relações com veículos especializados.
+1. **Restrição de mídia paga.** Google e Meta impõem políticas duras para anúncios de cripto e de produtos financeiros, com exigência de certificações e bloqueio de formatos inteiros (detalhamos as regras da Meta no guia de [Facebook Ads para cripto](/blog/facebook-ads-cripto-restricoes)). Isso reduz o arsenal de aquisição paga e força investimento em canais mais caros de construir: conteúdo, SEO, comunidade, influência e relações com veículos especializados.
 2. **Ceticismo do público.** Depois de cada ciclo de colapsos e golpes no setor, o custo de convencer alguém a confiar dinheiro a uma marca nova sobe. Confiança não se compra com um clique: se constrói com meses de conteúdo consistente, prova social e presença.
 3. **Ciclos de mercado.** Em cripto, o interesse do público oscila violentamente com o preço dos ativos. Quem corta marketing no bear market economiza pouco e perde a posição de autoridade exatamente quando ela é mais barata de construir, porque os concorrentes também sumiram.
 
@@ -130,7 +130,7 @@ Benchmarks são teste de sanidade. O orçamento de verdade sai de uma conta feit
 
 **2. Converta em clientes e em pipeline.** Divida a receita nova pelo ticket médio: esse é o número de clientes que o marketing e o comercial precisam entregar. Em B2B, multiplique pela taxa de conversão do funil para chegar ao volume de oportunidades necessárias.
 
-**3. Precifique a aquisição por canal.** Qual o CAC realista em cada canal que a empresa já validou? Some o custo de sustentar os canais de longo prazo (conteúdo, SEO, marca, comunidade), que não geram cliente amanhã, mas barateiam todos os CACs de depois.
+**3. Precifique a aquisição por canal.** Qual o CAC realista em cada canal que a empresa já validou? Antes de projetar, feche os [vazamentos de verba no Google Ads](/blog/onde-desperdica-verba-google-ads) que distorcem o CAC histórico. Some o custo de sustentar os canais de longo prazo (conteúdo, SEO, marca, comunidade), que não geram cliente amanhã, mas barateiam todos os CACs de depois. Para a linha de social, os [preços de social media marketing no Brasil](/blog/quanto-custa-social-media-marketing-precos) servem de referência.
 
 **4. Confronte com margem e caixa.** O CAC projetado se paga em quanto tempo? A empresa aguenta esse ciclo de caixa? Margem alta banca aquisição agressiva; margem apertada exige canais mais eficientes e crescimento mais orgânico.
 

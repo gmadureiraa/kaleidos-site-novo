@@ -6,7 +6,7 @@ export const blogNew3: BlogPost[] = [
   {
     slug: "nubank-teardown-marketing-marca",
     title: "Como o Nubank construiu a marca: teardown de marketing para projetos cripto",
-    seoTitle: "Nubank: teardown de marketing e marca para projetos cripto | Kaleidos",
+    seoTitle: "Nubank: teardown de marketing pra projetos cripto",
     excerpt:
       "A Kaleidos desmonta as jogadas de marketing e marca que levaram o Nubank de startup de 2013 a maior banco digital da América Latina. E traduz cada lição pro contexto de projetos cripto e web3.",
     seoDescription:
@@ -137,9 +137,9 @@ Agora a tradução. Cada jogada do Nubank tem um paralelo direto em cripto e web
 
 **O roxo vira ativo de marca proprietário.** Em cripto, quase todo projeto parece igual: mesmo azul-ciano, mesmo fundo escuro, mesma estética genérica de whitepaper. Quem ocupa um território visual próprio ganha reconhecimento instantâneo. Cor, tipografia, mascote, tom. Diferenciar não é vaidade, é redução de custo de aquisição.
 
-**Atendimento como marketing vira comunidade e suporte no Discord como marketing.** Em web3, o suporte acontece no Discord, no Telegram, no X. Cada resposta boa vira print, cada resposta ruim vira thread de reclamação. Tratar o holder e o usuário com cuidado gera história compartilhada, que é a mídia mais barata e mais crível que existe no setor.
+**Atendimento como marketing vira comunidade e suporte no Discord como marketing.** Em web3, o suporte acontece no [Discord ou no Telegram](/blog/discord-vs-telegram-comunidade-cripto), e no X. Cada resposta boa vira print, cada resposta ruim vira thread de reclamação. Tratar o holder e o usuário com cuidado gera história compartilhada, que é a mídia mais barata e mais crível que existe no setor.
 
-**Sistema de convites vira mecânica de comunidade, não airdrop farmado.** O Nubank mostrou que escassez controlada e convite geram pertencimento. Em cripto, muito programa de incentivo atrai mercenário, não membro. A lição é desenhar mecânicas que recompensem quem constrói e indica de verdade, não quem faz farm e some.
+**Sistema de convites vira mecânica de comunidade, não airdrop farmado.** O Nubank mostrou que escassez controlada e convite geram pertencimento. Em cripto, muito programa de incentivo atrai mercenário, não membro. A lição é desenhar [growth loops de referral, quests e pontos](/blog/growth-loops-cripto-referral-quests) que recompensem quem constrói e indica de verdade, não quem faz farm e some.
 
 **Conteúdo e educação viram autoridade.** O Nubank ensinou finanças pro público. Projeto cripto que ensina, em vez de só prometer retorno, constrói autoridade e reduz o ruído especulativo ao redor da marca. Educar é o marketing de conteúdo mais defensável em web3.
 
@@ -153,6 +153,6 @@ O Nubank provou que marca não é o que sobra depois do produto. Marca é o que 
 
 Posicionamento com inimigo claro, identidade proprietária, atendimento tratado como marketing, crescimento por indicação, comunidade e educação. Nenhuma dessas jogadas depende de orçamento infinito. Dependem de disciplina e de decisão estratégica.
 
-Projetos cripto que tratam marketing como enfeite perdem para os que tratam marca como sistema. A Kaleidos ajuda projetos cripto e web3 a construir posicionamento, identidade e narrativa que geram confiança e comunidade real. Se você está construindo em web3 e quer uma marca que sustente o crescimento, [fale com a Kaleidos](/contato).`,
+Projetos cripto que tratam marketing como enfeite perdem para os que tratam marca como sistema. O contraste com o [teardown do Blast](/blog/teardown-blast-l2-dump-tvl) mostra o que acontece quando o crescimento é sustentado só por incentivo, sem marca. A Kaleidos ajuda projetos cripto e web3 a construir posicionamento, identidade e narrativa que geram confiança e comunidade real. Se você está construindo em web3 e quer uma marca que sustente o crescimento, [fale com a Kaleidos](/contato).`,
   },
 ];

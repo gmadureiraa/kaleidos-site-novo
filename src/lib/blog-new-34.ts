@@ -6,7 +6,7 @@ export const blogNew34: BlogPost[] = [
   {
     slug: "melhores-plataformas-yield-farming-2026",
     title: "As melhores plataformas de yield farming em 2026 (e como avaliar risco)",
-    seoTitle: "Melhores plataformas de yield farming em 2026: guia de avaliação de risco | Kaleidos",
+    seoTitle: "Yield farming em 2026: plataformas e riscos",
     excerpt:
       "Yield farming em 2026 é um jogo de gestão de risco, não de caça a APY. A Kaleidos mapeia as principais plataformas de DeFi yield (Aave, Lido, Pendle, Curve, Uniswap e agregadores) e ensina o framework para avaliar se um rendimento é sustentável ou uma armadilha.",
     seoDescription:
@@ -91,7 +91,7 @@ Antes de olhar plataformas, vale mapear as quatro fontes principais de yield:
 1. **Juros de empréstimo**: você deposita um ativo em um mercado de lending e tomadores pagam juros para emprestá-lo. O rendimento flutua com oferta e demanda.
 2. **Taxas de negociação**: você fornece um par de ativos a um pool de liquidez e recebe uma fração das taxas pagas por quem negocia naquele pool.
 3. **Recompensas de rede (staking)**: no caso do Ethereum, validadores recebem recompensas do protocolo por garantir a segurança da rede. O liquid staking dá acesso a isso sem rodar um validador próprio.
-4. **Incentivos em token**: o protocolo distribui o próprio token como bônus. É a fonte menos sustentável e a que exige mais ceticismo.
+4. **Incentivos em token**: o protocolo distribui o próprio token como bônus. É a fonte menos sustentável e a que exige mais ceticismo. O [teardown do points system do Lombard](/blog/teardown-lombard-points-system) mostra como um desenho de incentivo bem feito muda o comportamento do capital.
 
 A maioria das oportunidades combina duas ou mais dessas fontes. Separar quanto do APY vem de cada uma é o primeiro exercício de qualquer avaliação.
 
@@ -177,7 +177,7 @@ Antes de entrar em qualquer estratégia com stablecoin, entenda o mecanismo de l
 Quando a Kaleidos analisa protocolos DeFi para clientes do setor, o exercício de avaliação segue uma sequência de perguntas. Use a mesma lógica:
 
 1. **De onde vem o yield?** Juros, taxas, recompensas de rede ou emissão de token? Se a resposta for majoritariamente "emissão do token do protocolo", o rendimento depende do preço desse token se sustentar. Historicamente, não se sustenta.
-2. **O APY está em linha com a categoria?** Compare com a média dos pares no DefiLlama. Um mercado de lending de stablecoin pagando o triplo dos concorrentes precisa de uma explicação muito boa. Quase nunca tem.
+2. **O APY está em linha com a categoria?** Compare com a média dos pares no DefiLlama (e conheça as outras [ferramentas de analytics cripto](/blog/melhores-ferramentas-analytics-cripto-2026) que ajudam nessa leitura). Um mercado de lending de stablecoin pagando o triplo dos concorrentes precisa de uma explicação muito boa. Quase nunca tem.
 3. **Qual o TVL e há quanto tempo o protocolo opera?** TVL alto e histórico longo não garantem segurança, mas filtram a maior parte dos esquemas de curta duração. O DefiLlama mostra a série histórica de TVL de cada protocolo: quedas bruscas e recorrentes contam uma história.
 4. **Quem está do outro lado?** Todo yield é pago por alguém. Tomadores de empréstimo, traders, a própria rede. Se você não consegue identificar quem paga, é provável que a resposta seja "os próximos depositantes". Isso tem nome, e não é estratégia.
 5. **Qual o caminho de saída?** Liquidez de saída importa tanto quanto a de entrada. Verifique se há períodos de lock, filas de unstaking ou pools rasos que penalizam saques grandes.
@@ -197,6 +197,6 @@ A regra de bolso que resume o framework: **rendimento é o preço do risco**. Qu
 
 O yield farming de 2026 recompensa um perfil diferente do de 2021. Não é mais sobre chegar primeiro no pool novo: é sobre saber ler um protocolo, decompor um APY e dimensionar risco. As plataformas listadas aqui (Aave, Lido, Pendle, Curve, Uniswap e os agregadores) são o ponto de partida do estudo justamente porque sobreviveram tempo suficiente para ter histórico auditável. Mesmo assim, nenhuma delas é isenta de risco.
 
-Se o seu projeto atua em DeFi e precisa comunicar produto, yield e risco com clareza (sem promessas que a regulação e a realidade não sustentam), esse é o território da Kaleidos. Somos uma agência de marketing especializada em cripto e web3, e ajudamos protocolos e produtos do setor a construir narrativa, conteúdo e crescimento com base em substância. [Fale com a Kaleidos](/contato) e vamos conversar sobre como posicionar o seu projeto.`,
+Se o seu projeto atua em DeFi e precisa comunicar produto, yield e risco com clareza (sem promessas que a regulação e a realidade não sustentam), esse é o território da Kaleidos. Somos uma agência de marketing especializada em cripto e web3, e ajudamos protocolos e produtos do setor a construir narrativa, conteúdo e crescimento com base em substância (veja mais no nosso [hub de conteúdo cripto](/blog/categoria/cripto)). [Fale com a Kaleidos](/contato) e vamos conversar sobre como posicionar o seu projeto.`,
   },
 ];

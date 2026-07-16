@@ -10,7 +10,7 @@ export const blogNew30: BlogPost[] = [
     slug: "facebook-ads-cripto-restricoes",
     title:
       "Facebook Ads para cripto: como anunciar e contornar as restrições da Meta em 2026",
-    seoTitle: "Facebook Ads para cripto em 2026: regras da Meta e como anunciar",
+    seoTitle: "Facebook Ads para cripto em 2026: regras da Meta",
     excerpt:
       "A Meta permite anúncios de cripto, mas com regras duras: autorização prévia por escrito, licença regulatória reconhecida e limites claros de criativo. Este guia explica o que a política exige, o que pode e não pode, e como estruturar campanhas que passam na revisão.",
     seoDescription:
@@ -147,13 +147,13 @@ Aqui vale ser direto sobre o "contornar" do título: contornar as restrições, 
 
 ## Alternativas e complementos ao Meta Ads
 
-Nenhum projeto cripto sério depende de um único canal pago. Quando o Meta Ads não é viável (produto sem licença, jurisdição fora da lista, apetite de risco baixo), ou mesmo quando é, estes canais compõem o mix:
+Nenhum projeto cripto sério depende de um único canal pago. Quando o Meta Ads não é viável (produto sem licença, jurisdição fora da lista, apetite de risco baixo), ou mesmo quando é, estes canais compõem o mix (montamos um panorama parecido em [alternativas ao Google Ads para aquisição](/blog/alternativas-ao-google-ads-para-aquisicao)):
 
-- **Redes de mídia especializadas em cripto**, que exibem anúncios em sites e apps do setor com regras mais flexíveis.
+- **Redes de mídia especializadas em cripto**, que exibem anúncios em sites e apps do setor com regras mais flexíveis. Detalhamos essas redes em [advertising cripto que converte](/blog/advertising-cripto-que-converte).
 - **Newsletters e podcasts** de cripto e finanças: patrocínio com audiência qualificada e CPMs previsíveis.
 - **Marketing de influência**, com contratos claros de disclosure, exigido inclusive pelas regras de publicidade brasileiras.
 - **X Ads e Reddit Ads**, que também têm políticas próprias para cripto, mas com processos de elegibilidade distintos dos da Meta.
-- **SEO e conteúdo orgânico**: em um setor onde a mídia paga é restrita, autoridade orgânica vale ouro e não pode ser bloqueada por revisor.
+- **SEO e conteúdo orgânico**: em um setor onde a mídia paga é restrita, autoridade orgânica vale ouro e não pode ser bloqueada por revisor. O [guia de SEO para cripto e web3](/blog/guia-seo-para-cripto) mostra o caminho completo.
 - **Comunidade própria**: Discord, Telegram e programas de embaixadores transformam aquisição paga em retenção.
 
 A leitura estratégica: o Meta Ads é o canal com maior alcance e melhor ferramenta de otimização disponível para o setor, mas funciona como **acelerador de uma máquina que precisa existir sem ele**.

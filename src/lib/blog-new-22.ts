@@ -6,7 +6,7 @@ export const blogNew22: BlogPost[] = [
   {
     slug: "dao-marketing-crescer-reter",
     title: "DAO marketing: estratégias pra crescer e reter comunidade em 2026",
-    seoTitle: "DAO marketing: como crescer e reter comunidade em 2026 | Kaleidos",
+    seoTitle: "DAO marketing: crescer e reter comunidade em 2026",
     excerpt:
       "Marketing de DAO não é marketing de marca com logo diferente. A Kaleidos explica como comunicar governança, ativar contribuidores, transformar propostas em conteúdo e reter membros depois que o hype do airdrop passa.",
     seoDescription:
@@ -99,7 +99,7 @@ O fluxo que a Kaleidos recomenda pra transformar governança em máquina de cont
 - **Post-mortem depois da execução**: a proposta passou, o dinheiro foi gasto, o que aconteceu? Esse é o conteúdo que constrói confiança de longo prazo e quase nenhuma DAO produz.
 - **Calendário de governança público**: votações têm data. Trate como lançamento: aviso prévio, lembrete, resultado.
 
-Um exemplo de governança como narrativa: o programa de financiamento retroativo da Optimism (RetroPGF, depois Retro Funding) transformou a distribuição de recursos públicos em evento recorrente da comunidade. A terceira rodada, encerrada no início de 2024, alocou 30 milhões de tokens OP pra mais de 500 projetos, com badgeholders votando publicamente (Optimism Collective, 2024). Cada rodada gera semanas de conteúdo orgânico: candidaturas, listas, debates, resultados. O mecanismo de governança é, ao mesmo tempo, o motor de marketing.
+Um exemplo de governança como narrativa: o programa de financiamento retroativo da Optimism (RetroPGF, depois Retro Funding) transformou a distribuição de recursos públicos em evento recorrente da comunidade. A terceira rodada, encerrada no início de 2024, alocou 30 milhões de tokens OP pra mais de 500 projetos, com badgeholders votando publicamente (Optimism Collective, 2024). Cada rodada gera semanas de conteúdo orgânico: candidaturas, listas, debates, resultados. O mecanismo de governança é, ao mesmo tempo, o motor de marketing (tratamos grants como canal de crescimento no guia de [developer grants como GTM](/blog/developer-grants-como-gtm)).
 
 No polo oposto, a votação da Uniswap sobre a ativação do fee switch se arrastou por anos entre 2022 e 2024 com idas e vindas mal comunicadas, gerando frustração recorrente entre holders que não entendiam o status da discussão (The Defiant, 2024). Governança confusa e mal comunicada não é neutra: ela corrói a narrativa do token.
 
@@ -109,7 +109,7 @@ No polo oposto, a votação da Uniswap sobre a ativação do fee switch se arras
 
 O airdrop da Arbitrum em março de 2023 distribuiu tokens ARB pra mais de 600 mil carteiras elegíveis, um dos maiores da história. Nas semanas seguintes, análises da Nansen mostraram que uma fatia expressiva dos recebedores vendeu tudo imediatamente (Nansen, 2023). O padrão se repetiu em dezenas de protocolos desde então.
 
-A lição não é "airdrop não funciona". É: airdrop é mídia paga com outro nome. Ele compra um pico de atenção e uma lista de carteiras. O que você faz nas 4 semanas seguintes define se aquilo vira comunidade ou vira gráfico de venda. O plano pós-airdrop precisa existir antes do airdrop: onboarding, primeira votação com participação incentivada, trilha de contribuição, comunicação de roadmap.
+A lição não é "airdrop não funciona". É: airdrop é mídia paga com outro nome. Ele compra um pico de atenção e uma lista de carteiras. O que você faz nas 4 semanas seguintes define se aquilo vira comunidade ou vira gráfico de venda. O plano pós-airdrop precisa existir antes do airdrop: onboarding, primeira votação com participação incentivada, trilha de contribuição, comunicação de roadmap. No [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump), mostramos como evitar o dump no dia do claim.
 
 ### Trilha de contribuição: o onboarding que retém
 
@@ -148,7 +148,7 @@ O padrão de morte de DAO é conhecido: participação cai, decisões concentram
 
 ## O stack de ferramentas (e a regra que importa mais que a lista)
 
-O kit padrão de uma DAO em 2026: Discourse pra discussão de propostas, Snapshot pra votação offchain e Tally pra governança onchain, Discord ou Telegram pra coordenação do dia a dia, Dework ou similar pra bounties, Coordinape pra recompensas entre pares, Dune e DeepDAO pra dados públicos de tesouraria e participação, mais os canais clássicos de broadcast: X, blog e newsletter.
+O kit padrão de uma DAO em 2026: Discourse pra discussão de propostas, Snapshot pra votação offchain e Tally pra governança onchain, [Discord ou Telegram](/blog/discord-vs-telegram-comunidade-cripto) pra coordenação do dia a dia, Dework ou similar pra bounties, Coordinape pra recompensas entre pares, Dune e DeepDAO pra dados públicos de tesouraria e participação, mais os canais clássicos de broadcast: X, blog e newsletter.
 
 A regra que importa mais do que a lista: cada ferramenta precisa de dono e de ritual. Fórum sem moderação ativa vira deserto. Discord sem estrutura vira ruído. Snapshot sem calendário vira surpresa. A Kaleidos vê mais DAOs quebrarem por excesso de canais abandonados do que por falta de ferramenta.
 

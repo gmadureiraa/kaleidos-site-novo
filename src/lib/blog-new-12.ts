@@ -6,7 +6,7 @@ export const blogNew12: BlogPost[] = [
   {
     slug: "marketing-nft-2026-vale-a-pena",
     title: "Marketing para NFT em 2026: ainda vale a pena?",
-    seoTitle: "Marketing para NFT em 2026: ainda vale a pena? | Kaleidos",
+    seoTitle: "Marketing para NFT em 2026: ainda vale a pena?",
     excerpt:
       "O hype morreu, mas o NFT não. Em 2026, o jogo é utilidade, acesso e comunidade. A Kaleidos analisa o que mudou desde 2021, o case Pudgy Penguins, os movimentos no Brasil e como comunicar NFT sem parecer golpe.",
     seoDescription:
@@ -93,7 +93,7 @@ O erro de 2021 foi tratar o NFT como produto final. Em 2026, ele funciona como c
 
 **Acesso.** O NFT é uma chave verificável. Quem tem, entra: grupo fechado, pré-venda, evento presencial, conteúdo exclusivo. Diferente de uma senha ou lista de e-mail, essa chave é transferível, verificável on-chain e programável.
 
-**Comunidade.** Uma coleção bem construída cria um grupo com identidade compartilhada e incentivo de longo prazo. O detentor não é só cliente, é membro. Isso muda o custo de aquisição e a retenção de qualquer estratégia de comunidade.
+**Comunidade.** Uma coleção bem construída cria um grupo com identidade compartilhada e incentivo de longo prazo. O detentor não é só cliente, é membro. Isso muda o custo de aquisição e a retenção de qualquer estratégia de comunidade (a escolha entre [Discord e Telegram](/blog/discord-vs-telegram-comunidade-cripto) define muito dessa dinâmica).
 
 **Prova e propriedade.** Ingressos, certificados, itens de jogo, recompensas de fidelidade. Tudo que precisa ser único, verificável e do usuário (e não da plataforma) tem no NFT uma infraestrutura pronta.
 
@@ -112,7 +112,7 @@ A cronologia, com fatos verificáveis:
 
 A lição de marketing aqui não é "faça brinquedos". É a inversão do funil. Em 2021, o NFT era o produto e a comunidade era acessório. A Pudgy Penguins inverteu: a propriedade intelectual virou o produto (brinquedos, conteúdo, licenciamento) e o NFT virou a camada de participação. Cada brinquedo físico vem com acesso a uma experiência digital, e os detentores dos NFTs originais participam do sucesso da marca via licenciamento das suas artes.
 
-O NFT deixou de ser a coisa vendida e passou a ser o que conecta quem compra a quem constrói. É esse desenho que separa projeto de marca.
+O NFT deixou de ser a coisa vendida e passou a ser o que conecta quem compra a quem constrói. É esse desenho que separa projeto de marca. O mesmo padrão aparece quando a comunidade vira token, como contamos no guia de [marketing para memecoins](/blog/marketing-memecoin-o-que-funciona).
 
 ## E no Brasil? Casos reais, escala real
 
@@ -138,7 +138,7 @@ Em ambos os casos, o NFT é encanamento. O usuário final compra "ingresso com b
 
 Essa é a parte que mais recebe pergunta nas conversas comerciais da Kaleidos. O termo NFT carrega cicatriz de 2022, e ignorar isso é erro estratégico. Algumas regras práticas:
 
-**1. Venda o benefício, nunca a valorização.** Se a peça de marketing promete ou insinua lucro, você tem dois problemas: um de confiança e um potencialmente regulatório. O pitch certo é "isso te dá X hoje", nunca "isso pode valer Y amanhã".
+**1. Venda o benefício, nunca a valorização.** Se a peça de marketing promete ou insinua lucro, você tem dois problemas: um de confiança e um potencialmente regulatório (veja [o que a regulação cripto brasileira permite comunicar](/blog/regulacao-marketing-cripto-brasil-2026)). O pitch certo é "isso te dá X hoje", nunca "isso pode valer Y amanhã".
 
 **2. Aposente o jargão.** "Mint", "floor price", "whitelist" e "gas" afastam quem está fora da bolha cripto, ou seja, quase todo o público que você quer alcançar. Prefira "resgatar", "garantir acesso", "lista de prioridade". Os casos que escalaram (Pudgy no Walmart, CBF no Brasileirão) falam língua de consumidor, não de trader.
 

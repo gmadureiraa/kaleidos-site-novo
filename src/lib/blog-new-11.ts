@@ -11,11 +11,11 @@ export const blogNew11: BlogPost[] = [
     title:
       "Como medir o ROI do marketing cripto: as métricas que importam (e as de vaidade)",
     seoTitle:
-      "ROI do marketing cripto: como medir as métricas que importam",
+      "ROI do marketing cripto: como medir de verdade",
     excerpt:
       "CAC, LTV, custo por wallet ativa, mindshare e atribuição on-chain: o guia da Kaleidos para medir o retorno real do marketing em cripto e web3, separando métricas de negócio das métricas de vaidade que inflam relatório e não movem TVL, volume ou receita.",
     seoDescription:
-      "Guia prático de ROI em marketing cripto: CAC, LTV, custo por wallet ativa, mindshare, atribuição on-chain e métricas por objetivo. Sem vaidade.",
+      "Guia prático de ROI em marketing cripto: CAC, LTV, custo por wallet ativa, mindshare, atribuição on-chain e métricas por objetivo. Sem métrica de vaidade.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-13",
@@ -101,7 +101,7 @@ Se o protocolo cobra 0,3% por swap e a wallet média movimenta 5.000 dólares po
 
 Dois cuidados:
 
-- **Segmente por coorte de origem.** Wallets vindas de campanha de airdrop têm retenção historicamente pior do que wallets vindas de conteúdo ou referral. A análise da CoinGecko sobre grandes airdrops de 2024 mostrou que a maioria dos tokens distribuídos perdeu valor expressivo nos meses seguintes, refletindo o ciclo de farmar e despejar. Coorte de airdrop precisa de LTV próprio.
+- **Segmente por coorte de origem.** Wallets vindas de campanha de airdrop têm retenção historicamente pior do que wallets vindas de conteúdo ou referral. A análise da CoinGecko sobre grandes airdrops de 2024 mostrou que a maioria dos tokens distribuídos perdeu valor expressivo nos meses seguintes, refletindo o ciclo de farmar e despejar (destrinchamos esse padrão no [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump)). Coorte de airdrop precisa de LTV próprio.
 - **Não conte token appreciation como LTV.** Valorização de tesouraria não é receita recorrente de usuário.
 
 ## As métricas de vaidade (e o uso restrito que elas têm)
@@ -120,7 +120,7 @@ O uso legítimo dessas métricas: sinal de tendência no topo do funil e matéri
 
 Mindshare virou a métrica de moda do setor desde que a Kaito popularizou seu índice de atenção em 2024, ponderando menções pela relevância de quem fala. A ideia é boa: em um mercado guiado por narrativa, a fatia de atenção antecipa fluxo.
 
-O risco é tratar mindshare como fim. Projetos aprenderam a farmar o índice com campanhas de yap (engajamento incentivado), e atenção comprada se dissipa rápido. A regra da Kaleidos: **mindshare só entra no painel acompanhado de uma métrica de fundo de funil com defasagem de 30 a 60 dias**. Se a atenção subiu e as wallets ativas não acompanharam, a narrativa descolou do produto. Isso é diagnóstico útil. Mindshare sozinho é vaidade sofisticada.
+O risco é tratar mindshare como fim. Projetos aprenderam a farmar o índice com campanhas de yap (engajamento incentivado), e atenção comprada se dissipa rápido. A regra da Kaleidos: **mindshare só entra no painel acompanhado de uma métrica de fundo de funil com defasagem de 30 a 60 dias**. Se a atenção subiu e as wallets ativas não acompanharam, a narrativa descolou do produto. Isso é diagnóstico útil. Mindshare sozinho é vaidade sofisticada. Como construir essa atenção do jeito orgânico é assunto do nosso [guia de Twitter (X) pra projetos cripto](/blog/twitter-x-crescimento-projeto-cripto).
 
 ## Atribuição em cripto: as duas camadas
 
@@ -176,7 +176,7 @@ A honestidade metodológica importa: atribuição em cripto nunca será perfeita
 - **Nansen**: labels de wallets (smart money, exchanges, funds) para qualificar quem está chegando.
 - **PostHog / GA4 / Mixpanel**: camada off-chain, funil até a conexão de wallet.
 - **Kaito**: mindshare e share of voice ponderado por relevância.
-- **Plataformas de quests (Galxe, Layer3)**: aquisição mensurável por tarefa, com o alerta permanente de qualidade de wallet.
+- **Plataformas de quests (Galxe, Layer3)**: aquisição mensurável por tarefa, com o alerta permanente de qualidade de wallet ([como desenhar growth loops de quests que retêm](/blog/growth-loops-cripto-referral-quests)).
 - **Ferramentas de attribution web3 (Spindl/Coinbase, Cookie3, Addressable)**: costura automatizada entre campanha e comportamento on-chain.
 
 Nenhuma ferramenta resolve sozinha. O stack mínimo viável é um analytics web com UTM disciplinado, um dashboard Dune com as 5 métricas-norte do projeto e uma rotina semanal de leitura cruzada.

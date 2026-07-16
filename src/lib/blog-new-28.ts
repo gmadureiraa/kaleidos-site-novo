@@ -6,7 +6,7 @@ export const blogNew28: BlogPost[] = [
   {
     slug: "estruturar-time-bd-growth-cripto",
     title: "Como estruturar o time de BD e growth de um projeto cripto",
-    seoTitle: "Time de BD e growth em cripto: papéis, métricas e quando terceirizar",
+    seoTitle: "Time de BD e growth em cripto: papéis e métricas",
     excerpt:
       "Quem contratar primeiro, o que cada papel faz, quais métricas cobrar e quando faz mais sentido terceirizar com uma agência. Um guia prático para founders cripto montarem BD e growth sem queimar runway.",
     seoDescription:
@@ -80,15 +80,15 @@ Antes de decidir quem contratar, vale separar o que cada função realmente faz.
 
 ### 1. Business Development (BD)
 
-O BD é a função de relacionamento institucional do projeto. Ele negocia integrações com outros protocolos, conversa com exchanges sobre listagem e articula parcerias com market makers, fundos e ecossistemas que possam gerar distribuição ou liquidez.
+O BD é a função de relacionamento institucional do projeto. Ele negocia integrações com outros protocolos, conversa com exchanges sobre listagem e articula parcerias com [market makers](/blog/melhores-market-makers-cripto-2026), fundos e ecossistemas que possam gerar distribuição ou liquidez.
 
-O bom BD cripto vive de rede: conhece as pessoas certas nas foundations, sabe quem decide o quê dentro de uma exchange e entende o produto o suficiente para defender uma integração tecnicamente. É função de ciclo longo, uma parceria relevante pode levar meses entre o primeiro contato e o anúncio.
+O bom BD cripto vive de rede: conhece as pessoas certas nas foundations, sabe quem decide o quê dentro de uma exchange e entende o produto o suficiente para defender uma integração tecnicamente. É função de ciclo longo, uma parceria relevante pode levar meses entre o primeiro contato e o anúncio. Boa parte desses contatos nasce em eventos, e por isso vale ler como transformar uma [conferência web3 em motor de crescimento](/blog/conferencia-web3-motor-de-crescimento).
 
 ### 2. Growth
 
 Growth é a função de escala. Enquanto o BD fecha acordos um a um, o growth constrói máquinas que trazem usuários de forma repetível: funis de aquisição, campanhas de incentivo, programas de referral, experimentos de conversão, análise de retenção on-chain e off-chain.
 
-O perfil é analítico. Um bom growth em cripto sabe ler dados de carteira, distingue usuários reais de farmers de airdrop e trata cada campanha como experimento com hipótese e critério de sucesso. Se a pessoa não fala em coorte, retenção e custo por usuário ativado, não é growth, é marketing genérico com outro nome.
+O perfil é analítico. Um bom growth em cripto sabe ler dados de carteira com as [ferramentas de analytics do setor](/blog/melhores-ferramentas-analytics-cripto-2026), distingue usuários reais de farmers de airdrop e trata cada campanha como experimento com hipótese e critério de sucesso. Se a pessoa não fala em coorte, retenção e custo por usuário ativado, não é growth, é marketing genérico com outro nome.
 
 ### 3. Comunidade
 

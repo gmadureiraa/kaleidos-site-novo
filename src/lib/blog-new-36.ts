@@ -9,7 +9,7 @@ export const blogNew36: BlogPost[] = [
   {
     slug: "guia-seo-para-cripto",
     title: "Guia completo de SEO para cripto e web3 (2026): do zero ao avançado",
-    seoTitle: "SEO para cripto e web3 em 2026: guia completo | Kaleidos",
+    seoTitle: "SEO para cripto e web3 em 2026: guia completo",
     excerpt:
       "SEO em cripto não é SEO genérico com outras palavras-chave. É um nicho YMYL, com restrição de mídia paga, vocabulário técnico e um público que pesquisa antes de confiar. Este guia pilar cobre keyword research, topic clusters, on-page, technical SEO, backlinks, digital PR e GEO, tudo aplicado ao contexto de exchanges, protocolos DeFi, wallets e projetos web3.",
     seoDescription:
@@ -150,7 +150,7 @@ O básico continua valendo: title de até 60 caracteres com a keyword no início
 
 ## Technical SEO: os pontos críticos em sites cripto e web3
 
-Sites do setor têm padrões técnicos recorrentes que sabotam SEO:
+Sites do setor têm padrões técnicos recorrentes que sabotam SEO (o diagnóstico completo está em [problemas críticos de SEO técnico](/blog/problemas-criticos-seo-tecnico)):
 
 **JavaScript pesado e renderização.** Muitos dApps e sites de protocolo são SPAs em React que dependem de renderização client-side. O Googlebot renderiza JavaScript, mas com atraso e orçamento limitado. A solução é SSR ou SSG (Next.js resolve bem) para todo conteúdo que precisa ranquear: blog, docs, landing pages. O app em si pode continuar client-side; o conteúdo, não.
 
@@ -166,6 +166,8 @@ Sites do setor têm padrões técnicos recorrentes que sabotam SEO:
 **Internacionalização.** Projetos globais com versões em vários idiomas precisam de hreflang correto. Erro comum: traduzir o site e servir tudo sob a mesma URL com troca por JavaScript, o que impede a indexação das versões locais.
 
 **Docs indexáveis.** A documentação técnica (GitBook, Docusaurus) é frequentemente o maior ativo de long tail de um protocolo e frequentemente está com noindex acidental, subdomínio desconectado ou sem sitemap. Verifique.
+
+Um alerta extra: se o projeto vai passar por rebrand ou troca de site, siga o [checklist de migração para redesenhar sem perder SEO](/blog/redesenhar-site-sem-perder-seo). Migração malfeita apaga anos de autoridade em uma semana.
 
 ## Backlinks e digital PR: como construir autoridade em um nicho desconfiado
 
@@ -206,7 +208,7 @@ Para transformar este guia em execução:
 - **Meses 3 a 6**: publicação das páginas pilar e dos primeiros satélites (foco em comparativas e long tails de confiança), implementação de E-E-A-T (páginas de autor, fontes, datas), primeiro estudo com dados proprietários para digital PR.
 - **Meses 7 a 12**: expansão dos clusters, cadência de digital PR trimestral, camada GEO (answer-first, FAQ, monitoramento de citações em IA), atualização sistemática do conteúdo publicado.
 
-Medindo sempre: tráfego e conversão orgânica por cluster, share of voice nas keywords do nicho, backlinks de domínios relevantes e presença em respostas de IA.
+Medindo sempre: tráfego e conversão orgânica por cluster, share of voice nas keywords do nicho, backlinks de domínios relevantes e presença em respostas de IA. E se depois de meses o resultado não vier, revise as [7 causas mais comuns de um SEO que não funciona](/blog/por-que-seu-seo-nao-esta-funcionando).
 
 ## Conclusão: o orgânico é o fosso
 

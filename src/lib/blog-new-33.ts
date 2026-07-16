@@ -6,7 +6,7 @@ export const blogNew33: BlogPost[] = [
   {
     slug: "melhores-ferramentas-analytics-cripto-2026",
     title: "As melhores ferramentas de analytics cripto em 2026",
-    seoTitle: "Ferramentas de analytics cripto 2026: as 10 melhores (guia completo)",
+    seoTitle: "Ferramentas de analytics cripto 2026: as melhores",
     excerpt:
       "Dune, Nansen, Arkham, Kaito, DefiLlama e mais: o guia da Kaleidos com as melhores ferramentas de analytics cripto em 2026, o que cada uma faz e quando usar cada categoria.",
     seoDescription:
@@ -117,7 +117,7 @@ Para agências e projetos, é a ferramenta de investigação: rastrear para onde
 
 **Pra que serve:** TVL, comparação de protocolos e dados DeFi sem custo.
 
-O DefiLlama é o agregador de referência de TVL (valor total bloqueado) do setor. Cobre milhares de protocolos em centenas de blockchains, é open source, gratuito e sem anúncios, mantido com a filosofia declarada de dados abertos (DefiLlama, 2025). Além de TVL, traz fees, receita, volumes de DEX, stablecoins, yields e unlocks de tokens.
+O DefiLlama é o agregador de referência de TVL (valor total bloqueado) do setor. Cobre milhares de protocolos em centenas de blockchains, é open source, gratuito e sem anúncios, mantido com a filosofia declarada de dados abertos (DefiLlama, 2025). Além de TVL, traz fees, receita, volumes de DEX, stablecoins, yields e unlocks de tokens. É também a base do framework que usamos para [avaliar plataformas de yield farming](/blog/melhores-plataformas-yield-farming-2026).
 
 Para benchmark competitivo é imbatível: em um minuto você compara o crescimento do seu cliente com todos os concorrentes da categoria, na mesma metodologia.
 
@@ -173,7 +173,7 @@ A Addressable liga identidades sociais a carteiras e permite criar audiências p
 **Ponto forte:** segmentação que nenhuma plataforma de ads tradicional oferece.
 **Ponto fraco:** dependente das políticas de anúncio das plataformas, que em cripto mudam com frequência.
 
-Vale o registro de contexto: a atribuição web3 virou peça estratégica de verdade quando a Coinbase comprou a Spindl, startup de atribuição on-chain fundada por um ex-Facebook, em janeiro de 2025 (Coinbase, 2025). O mercado entendeu o recado: quem controla a medição controla o orçamento.
+Vale o registro de contexto: a atribuição web3 virou peça estratégica de verdade quando a Coinbase comprou a Spindl, startup de atribuição on-chain fundada por um ex-Facebook, em janeiro de 2025 (Coinbase, 2025). O mercado entendeu o recado: quem controla a medição controla o orçamento. É essa camada que sustenta uma estratégia de [advertising cripto que converte](/blog/advertising-cripto-que-converte) em vez de só gerar impressão.
 
 ## Camada 4: dados de mercado e fundamentos
 
@@ -213,7 +213,7 @@ O erro comum é assinar cinco ferramentas e usar dez por cento de cada. O caminh
 
 Em 2026, qualquer projeto tem acesso ao mesmo arsenal: Dune, Nansen, Arkham, DefiLlama, Kaito, CoinGecko. O diferencial deixou de ser ter o dado. Passou a ser saber qual pergunta fazer e transformar a resposta em decisão de marketing.
 
-É exatamente isso que a Kaleidos faz para projetos de cripto, web3 e fintech: montar o stack de analytics certo para cada estágio, conectar dado on-chain a estratégia de conteúdo e crescimento, e reportar o que importa sem enrolação.
+É exatamente isso que a Kaleidos faz para projetos de cripto, web3 e fintech: montar o stack de analytics certo para cada estágio, conectar dado on-chain a estratégia de conteúdo e crescimento (a começar pelo [SEO para cripto e web3](/blog/guia-seo-para-cripto)), e reportar o que importa sem enrolação.
 
 Se o seu projeto tem dado sobrando e resposta faltando, [fale com a Kaleidos](https://kaleidos.com.br/contato). A primeira conversa é diagnóstico, não pitch.
 `,

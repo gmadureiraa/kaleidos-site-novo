@@ -6,7 +6,7 @@ export const blogNew29: BlogPost[] = [
   {
     slug: "conferencia-web3-motor-de-crescimento",
     title: "Como virar uma conferência web3 em motor de crescimento full-funnel",
-    seoTitle: "Conferência web3 como motor de crescimento full-funnel | Kaleidos",
+    seoTitle: "Conferência web3 como motor de crescimento",
     excerpt:
       "A maioria dos projetos vai a eventos cripto, tira foto e volta sem nada. A Kaleidos mostra como transformar uma conferência web3 em máquina de crescimento: preparação, side-events, KOLs, captura de leads e repurpose de conteúdo por semanas.",
     seoDescription:
@@ -77,7 +77,7 @@ Neste guia, a Kaleidos destrincha o método completo: o que fazer antes, durante
 
 ## Por que eventos web3 são um canal subestimado
 
-O marketing cripto vive sob restrições que outros mercados não enfrentam: anúncios pagos limitados nas grandes plataformas, ceticismo alto do público e ciclos de atenção curtíssimos. Nesse cenário, o encontro presencial resolve o problema mais caro do setor: confiança.
+O marketing cripto vive sob restrições que outros mercados não enfrentam: [anúncios pagos limitados nas grandes plataformas](/blog/facebook-ads-cripto-restricoes), ceticismo alto do público e ciclos de atenção curtíssimos. Nesse cenário, o encontro presencial resolve o problema mais caro do setor: confiança.
 
 O calendário global é denso. Token2049 reuniu mais de 25.000 participantes na edição de Singapura de 2025, segundo a própria organização (Token2049, 2025). ETHDenver, Devconnect, Consensus e Paris Blockchain Week concentram fundadores, fundos, exchanges, desenvolvedores e mídia especializada em poucos dias. No Brasil, eventos como o Blockchain Rio e a Ethereum Brasil cumprem o mesmo papel no ecossistema local, reunindo reguladores, bancos, projetos e comunidade em um mercado que está entre os maiores do mundo em adoção de cripto, como aponta o Global Crypto Adoption Index da Chainalysis (Chainalysis, 2025).
 
@@ -145,7 +145,7 @@ Regras práticas: escolha formato compatível com seu objetivo (jantar para deal
 
 ## Durante o evento: time com funções, não turistas com crachá
 
-O erro operacional mais comum: todo mundo do time faz tudo, ou seja, ninguém faz nada com consistência. A solução é dividir papéis antes do embarque:
+O erro operacional mais comum: todo mundo do time faz tudo, ou seja, ninguém faz nada com consistência. A solução é dividir papéis antes do embarque (se essas funções ainda não existem no seu projeto, veja como [estruturar o time de BD e growth](/blog/estruturar-time-bd-growth-cripto)):
 
 - **Comercial e parcerias:** cumpre a agenda de reuniões marcadas e registra cada conversa no CRM no mesmo dia.
 - **Conteúdo:** grava o evento como um set de filmagem. Entrevistas curtas com participantes e KOLs, bastidores, reações a anúncios do palco, fotos em boa qualidade. A meta é voltar com semanas de material bruto.
@@ -182,7 +182,7 @@ Distribuído ao longo de 30 dias, esse material mantém o projeto na conversa mu
 
 ### Relatório interno e playbook
 
-Por fim, feche o ciclo: compare resultado com as metas definidas no pré-evento, calcule custo por lead e por reunião qualificada, documente o que funcionou e o que não funcionou. Esse relatório vira o playbook do próximo evento, e é ele que transforma presença em eventos de gasto recorrente em canal de aquisição com curva de aprendizado.
+Por fim, feche o ciclo: compare resultado com as metas definidas no pré-evento, calcule custo por lead e por reunião qualificada, documente o que funcionou e o que não funcionou. Esse relatório vira o playbook do próximo evento, e é ele que transforma presença em eventos de gasto recorrente em canal de aquisição com curva de aprendizado, no mesmo espírito de medição que defendemos em [advertising cripto que converte](/blog/advertising-cripto-que-converte).
 
 ## O erro de fundo: tratar o evento como fim, não como meio
 

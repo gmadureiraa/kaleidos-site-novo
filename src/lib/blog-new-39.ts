@@ -6,7 +6,7 @@ export const blogNew39: BlogPost[] = [
   {
     slug: "social-media-fintech-estrategia",
     title: "Estratégia de social media para fintech: confiança, compliance e conteúdo",
-    seoTitle: "Social media para fintech: estratégia de confiança e compliance | Kaleidos",
+    seoTitle: "Social media para fintech: confiança e compliance",
     excerpt:
       "Fintech não vende produto, vende confiança com dinheiro alheio no meio. A Kaleidos mostra como montar uma estratégia de social media que educa, respeita compliance e transforma seguidor em correntista.",
     seoDescription:
@@ -110,7 +110,7 @@ O que funciona na prática:
 2. **Revisão por lote, não por post.** Compliance revisa o calendário semanal de pautas sensíveis de uma vez, em vez de aprovar post a post. Reduz o gargalo em dias, não em horas.
 3. **Templates com disclaimers embutidos.** Se todo post sobre investimento já nasce no template com o aviso de risco formatado, o erro humano cai perto de zero.
 4. **Treinamento do social media em regulação.** Quem escreve precisa saber por que não pode escrever "rendimento garantido". Entendendo a lógica da regra, a pessoa cria dentro dela em vez de esbarrar nela.
-5. **Regra clara para influenciadores.** Contrato com diretriz de comunicação, revisão prévia de roteiro em temas de produto e identificação de publicidade sempre explícita, como exige o Conar.
+5. **Regra clara para influenciadores.** Contrato com diretriz de comunicação, revisão prévia de roteiro em temas de produto e identificação de publicidade sempre explícita, como exige o Conar. O tema rende um guia inteiro: [influencer marketing para fintech](/blog/influencer-marketing-para-fintech).
 
 Aqui mora um diferencial pouco explorado: comunicar compliance é conteúdo. Explicar por que a fintech pede selfie no cadastro, como funciona a proteção do FGC (quando aplicável), o que a LGPD garante ao usuário. O que parece burocracia vira prova de seriedade quando bem contado.
 
@@ -120,7 +120,7 @@ Se confiança é o objetivo e compliance é o trilho, educação financeira é o
 
 A arquitetura de conteúdo que recomendamos para fintech se divide em quatro camadas:
 
-**Camada 1: educação financeira ampla (60% do volume).** Conteúdo que serve a qualquer pessoa, cliente ou não: como sair das dívidas, o que é CDI, como funciona o score de crédito, armadilhas do parcelamento. É o topo de funil que constrói audiência e autoridade.
+**Camada 1: educação financeira ampla (60% do volume).** Conteúdo que serve a qualquer pessoa, cliente ou não: como sair das dívidas, o que é CDI, como funciona o score de crédito, armadilhas do parcelamento. É o topo de funil que constrói audiência e autoridade, e que se aprofunda no [guia de content marketing para fintech](/blog/content-marketing-para-fintech).
 
 **Camada 2: educação sobre a categoria (20%).** Conteúdo que aproxima o público do seu universo de produto: diferença entre conta de pagamento e conta corrente, como comparar rendimento de contas remuneradas, o que olhar antes de escolher uma corretora. Ainda não é venda, mas já prepara a decisão.
 
@@ -142,7 +142,7 @@ Não existe canal obrigatório. Existe canal onde o seu cliente está. Dito isso
 
 **X (Twitter)** é nicho, mas estratégico para fintechs ligadas a investimento e cripto: é onde a conversa de mercado acontece em tempo real e onde a marca pode mostrar velocidade de resposta em incidente.
 
-**WhatsApp e comunidades** fecham o ciclo: canal de retenção e relacionamento, não de aquisição. Newsletter e grupos de conteúdo aprofundam o vínculo com quem já demonstrou interesse.
+**WhatsApp e comunidades** fecham o ciclo: canal de retenção e relacionamento, não de aquisição. Newsletter e grupos de conteúdo aprofundam o vínculo com quem já demonstrou interesse; o [email marketing para fintech](/blog/email-marketing-para-fintech) é a peça que transforma esse interesse em conta ativa.
 
 ## Formatos que funcionam em fintech no Brasil
 

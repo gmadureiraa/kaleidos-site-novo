@@ -6,11 +6,11 @@ export const blogNew19: BlogPost[] = [
   {
     slug: "agencias-seo-cripto-o-que-avaliar",
     title: "Agências de SEO para criptomoedas: o que avaliar antes de contratar",
-    seoTitle: "Agências de SEO para criptomoedas: o que avaliar antes de contratar | Kaleidos",
+    seoTitle: "Agências de SEO para criptomoedas: o que avaliar",
     excerpt:
       "Contratar uma agência de SEO para um projeto cripto é diferente de contratar para um e-commerce. A Kaleidos monta o checklist completo: domínio do nicho, GEO, cases verificáveis, red flags e como avaliar preço antes de assinar contrato.",
     seoDescription:
-      "Checklist da Kaleidos para contratar agência de SEO cripto: experiência real no nicho, GEO, cases verificáveis, red flags de contrato, modelos de preço e perguntas certas.",
+      "Checklist para contratar agência de SEO cripto: experiência real no nicho, GEO, cases verificáveis, red flags de contrato, modelos de preço e perguntas certas.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-12",
@@ -59,7 +59,7 @@ export const blogNew19: BlogPost[] = [
     ],
     content: `# Agências de SEO para criptomoedas: o que avaliar antes de contratar
 
-Todo fundador de projeto cripto chega nesse momento: o produto existe, a comunidade começou, mas o tráfego orgânico é quase zero. A resposta óbvia é contratar uma agência de SEO. O problema é que a maioria das agências no mercado nunca trabalhou com cripto, e o setor tem particularidades que quebram o playbook tradicional.
+Todo fundador de projeto cripto chega nesse momento: o produto existe, a comunidade começou, mas o tráfego orgânico é quase zero. A resposta óbvia é contratar uma agência de SEO (antes disso, vale entender [o que é uma agência de marketing cripto](/blog/o-que-e-agencia-marketing-cripto) e o que ela cobre). O problema é que a maioria das agências no mercado nunca trabalhou com cripto, e o setor tem particularidades que quebram o playbook tradicional.
 
 O Google classifica conteúdo financeiro como YMYL (Your Money or Your Life), categoria em que os critérios de experiência, expertise, autoridade e confiança (E-E-A-T) pesam mais do que na média, conforme as diretrizes de avaliadores de qualidade do próprio Google (Search Quality Rater Guidelines, 2025). Some a isso restrições históricas de anúncios para produtos cripto nas grandes plataformas e a velocidade com que narrativas nascem e morrem no setor. O resultado: contratar errado custa caro, e não só em dinheiro.
 
@@ -92,7 +92,7 @@ Aqui está o filtro que separa agências atualizadas de agências rodando playbo
 
 GEO (Generative Engine Optimization) é a disciplina de otimizar conteúdo para ser citado e recomendado por motores generativos: ChatGPT, Perplexity, Gemini, Claude e os AI Overviews do Google. O termo foi formalizado em pesquisa acadêmica de Princeton e outras instituições (Aggarwal et al., "GEO: Generative Engine Optimization", KDD 2024), e a mudança de comportamento é mensurável: o Gartner projetou queda de 25% no volume de buscas tradicionais até 2026 por causa de assistentes de IA (Gartner, 2024).
 
-Para cripto isso é ainda mais relevante: o público do setor é early adopter por definição e pesquisa em ChatGPT e Perplexity numa proporção maior que a média. Quando alguém pergunta a um assistente de IA "qual a melhor carteira para staking de Ethereum", o seu projeto aparece na resposta ou não existe.
+Para cripto isso é ainda mais relevante: o público do setor é early adopter por definição e pesquisa em ChatGPT e Perplexity numa proporção maior que a média. Quando alguém pergunta a um assistente de IA "qual a melhor carteira para staking de Ethereum", o seu projeto aparece na resposta ou não existe (mostramos essa lógica aplicada no guia de [marketing pra wallets e infraestrutura cripto](/blog/marketing-wallet-infraestrutura-cripto)).
 
 Perguntas para fazer à agência:
 
@@ -115,7 +115,7 @@ Checklist para avaliar um case:
 - **Referências reais.** Peça para conversar com um cliente atual ou antigo. Agência confiante conecta você em dias. Agência que enrola nessa etapa tem motivo para enrolar.
 - **Cases no seu segmento.** SEO para exchange é diferente de SEO para protocolo DeFi, que é diferente de SEO para portal educacional. Experiência em um não transfere automaticamente para o outro.
 
-Um detalhe que a Kaleidos considera decisivo: pergunte o que deu errado em algum projeto. Toda agência com quilometragem real tem histórias de estratégia que não funcionou e do que aprendeu. Quem diz que nunca errou está mentindo ou nunca operou de verdade.
+Um detalhe que a Kaleidos considera decisivo: pergunte o que deu errado em algum projeto. Toda agência com quilometragem real tem histórias de estratégia que não funcionou e do que aprendeu. Quem diz que nunca errou está mentindo ou nunca operou de verdade. É o mesmo princípio que defendemos nos [segredos de uma agência de marketing web3](/blog/segredos-agencia-marketing-web3): relatório que só tem vitória é ficção.
 
 ## 4. Red flags: quando sair da reunião
 

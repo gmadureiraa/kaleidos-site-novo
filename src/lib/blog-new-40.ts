@@ -9,7 +9,7 @@ export const blogNew40: BlogPost[] = [
   {
     slug: "onde-desperdica-verba-google-ads",
     title: "Onde você está desperdiçando verba no Google Ads (e como parar o vazamento)",
-    seoTitle: "Onde você desperdiça verba no Google Ads: 6 vazamentos e como corrigir",
+    seoTitle: "Google Ads: 6 vazamentos de verba e como corrigir",
     excerpt:
       "Boa parte das contas de Google Ads queima orçamento em termos irrelevantes, redes ligadas por padrão e conversões mal medidas. Veja os seis vazamentos mais comuns e o passo a passo para fechar cada um deles.",
     seoDescription:
@@ -63,7 +63,7 @@ export const blogNew40: BlogPost[] = [
 
 A maioria das contas de Google Ads que a Kaleidos audita tem o mesmo padrão: o problema quase nunca é falta de verba. É verba escorrendo por frestas que ninguém está olhando. Termos de pesquisa irrelevantes, redes ativadas por padrão, conversões que não são conversões. Cada vazamento parece pequeno isolado, mas somados eles podem consumir uma fatia relevante do orçamento sem gerar um único cliente.
 
-A boa notícia: esses vazamentos são identificáveis e corrigíveis. Este artigo mapeia os seis mais comuns e mostra, um por um, como fechar a torneira.
+A boa notícia: esses vazamentos são identificáveis e corrigíveis, e a maioria pode ser estancada em uma tarde, sem esperar uma revisão completa da conta. Este artigo não é uma auditoria de ponta a ponta (esse processo estruturado está no nosso [checklist de auditoria de Google Ads](/blog/auditoria-google-ads-guia)): é o mapa de triagem dos seis vazamentos mais comuns, um por um, com o passo a passo para fechar cada torneira hoje.
 
 ## Principais takeaways
 
@@ -192,11 +192,11 @@ Se você leu até aqui e reconheceu a própria conta em mais de um vazamento, a 
 5. **Estratégia de lance.** Ajuste à realidade de volume de dados.
 6. **Landing page.** O trabalho mais longo, mas o que multiplica todos os outros.
 
-Nenhum desses passos exige aumentar o orçamento. Todos eles fazem o orçamento atual trabalhar mais.
+Nenhum desses passos exige aumentar o orçamento. Todos eles fazem o orçamento atual trabalhar mais (e ajudam a responder com mais precisão [quanto do faturamento investir em marketing](/blog/quanto-do-faturamento-investir-em-marketing)).
 
 ## Pare o vazamento antes de escalar
 
-Escalar uma conta com vazamentos é ampliar o desperdício junto com o investimento. O caminho certo é o inverso: fechar as frestas, estabilizar a mensuração e só então pisar no acelerador.
+Escalar uma conta com vazamentos é ampliar o desperdício junto com o investimento. O caminho certo é o inverso: fechar as frestas, estabilizar a mensuração e só então pisar no acelerador. E se, mesmo com tudo corrigido, o CPC do seu mercado não fechar a conta, vale conhecer as [alternativas ao Google Ads para aquisição](/blog/alternativas-ao-google-ads-para-aquisicao).
 
 A Kaleidos audita e opera contas de Google Ads com esse método: diagnóstico dos vazamentos, correção estrutural e otimização contínua orientada a conversão de negócio, não a métrica de painel. Se você suspeita que sua verba está escorrendo por alguma dessas frestas, [fale com a Kaleidos](/contato) e receba um diagnóstico honesto de onde o seu orçamento está indo.`,
   },

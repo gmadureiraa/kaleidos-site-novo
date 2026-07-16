@@ -6,7 +6,7 @@ export const blogNew48: BlogPost[] = [
   {
     slug: "email-marketing-para-fintech",
     title: "Email marketing para fintech: práticas que convertem (sem perder compliance)",
-    seoTitle: "Email marketing para fintech: práticas que convertem com compliance | Kaleidos",
+    seoTitle: "Email marketing para fintech: guia com compliance",
     excerpt:
       "Fintech vive de confiança, e o email é o canal onde essa confiança se constrói ou se quebra. A Kaleidos mostra como segmentar, automatizar onboarding, cuidar de deliverabilidade e respeitar a LGPD sem matar a conversão.",
     seoDescription:
@@ -84,7 +84,7 @@ A segmentação que funciona em fintech é comportamental, organizada pelo ciclo
 
 - **Cadastrou, mas não ativou.** Baixou o app, criou login, parou. Precisa de emails que removam a fricção da primeira ação: completar KYC, fazer o primeiro depósito, primeira transação.
 - **Ativou, mas não engajou.** Fez uma transação e sumiu. Precisa descobrir o segundo caso de uso: cartão, Pix programado, rendimento automático, o que for o recurso âncora do produto.
-- **Usuário ativo.** Usa com frequência. É o público certo pra cross-sell (novo produto, limite maior, programa de indicação) e pra conteúdo que aprofunda a relação.
+- **Usuário ativo.** Usa com frequência. É o público certo pra cross-sell (novo produto, limite maior, programa de indicação) e pra conteúdo que aprofunda a relação, alimentado pela estratégia de [content marketing para fintech](/blog/content-marketing-para-fintech).
 - **Esfriando.** Reduziu a frequência de uso. Precisa de um motivo concreto pra voltar, não de um "sentimos sua falta" vazio.
 
 Repare que nenhum desses segmentos precisa de dado sensível. Estágio de ativação, frequência de uso e recursos adotados são dados que o próprio produto gera, com base legal clara. É segmentação poderosa e confortável pro jurídico ao mesmo tempo.
@@ -93,7 +93,7 @@ Uma camada extra que vale muito em fintech: segmentar por objetivo declarado. Pe
 
 ## Onboarding automatizado: a sequência que ativa (ou perde) o cliente
 
-Em fintech, a distância entre "criou a conta" e "usa de verdade" é onde a maior parte dos usuários se perde. KYC, depósito inicial, primeira transação: cada etapa é um degrau onde gente desiste. O onboarding por email existe pra empurrar o usuário degrau a degrau até o primeiro momento de valor.
+Em fintech, a distância entre "criou a conta" e "usa de verdade" é onde a maior parte dos usuários se perde. KYC, depósito inicial, primeira transação: cada etapa é um degrau onde gente desiste (a mesma lógica de nurturing e ativação que aplicamos no [inbound marketing para SaaS](/blog/inbound-marketing-para-saas)). O onboarding por email existe pra empurrar o usuário degrau a degrau até o primeiro momento de valor.
 
 A estrutura que a Kaleidos recomenda tem de 4 a 6 emails, disparados por comportamento:
 
@@ -165,7 +165,7 @@ Email marketing pra fintech não é um canal ao lado do produto: é o produto se
 
 A boa notícia é que a barra do setor ainda é baixa. A maioria das fintechs brasileiras manda email genérico, com infraestrutura improvisada e compliance tratado como carimbo. Quem fizer o básico bem feito (segmentação por ciclo de vida, onboarding orientado a comportamento, deliverabilidade como disciplina e LGPD como argumento) já opera num nível que a concorrência vai demorar pra alcançar.
 
-A Kaleidos ajuda fintechs e empresas de web3 a construir máquinas de comunicação que convertem sem atalhos: estratégia de lifecycle, réguas de automação, infraestrutura de entrega e conteúdo que soa como gente. Se a sua fintech quer transformar email em canal de ativação e receita, [fale com a Kaleidos](/contato).
+A Kaleidos ajuda fintechs e empresas de web3 a construir máquinas de comunicação que convertem sem atalhos: estratégia de lifecycle, réguas de automação, infraestrutura de entrega e conteúdo que soa como gente, integrado à [estratégia de social media da fintech](/blog/social-media-fintech-estrategia). Se a sua fintech quer transformar email em canal de ativação e receita, [fale com a Kaleidos](/contato).
 `,
   },
 ];

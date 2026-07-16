@@ -10,8 +10,7 @@ export const blogNew50: BlogPost[] = [
     slug: "influencer-marketing-para-fintech",
     title:
       "Influencer marketing para fintech: como fazer dar certo (sem risco regulatório)",
-    seoTitle:
-      "Influencer marketing para fintech: guia completo sem risco regulatório",
+    seoTitle: "Influencer marketing para fintech: guia completo",
     excerpt:
       "Influencer marketing funciona para fintech, mas o setor financeiro tem regras que a maioria das marcas ignora até tomar susto. Este guia mostra como escolher creators, montar briefing, cuidar de disclosure e compliance e medir resultado de verdade no contexto brasileiro.",
     seoDescription:
@@ -63,7 +62,7 @@ export const blogNew50: BlogPost[] = [
     ],
     content: `# Influencer marketing para fintech: como fazer dar certo (sem risco regulatório)
 
-Toda fintech chega num momento em que mídia paga sozinha não sustenta o crescimento. O CAC sobe, o público começa a ignorar os anúncios e a marca percebe que precisa de algo que anúncio não compra: confiança. É aí que influencer marketing entra na conversa.
+Toda fintech chega num momento em que mídia paga sozinha não sustenta o crescimento. O CAC sobe (um cenário que exploramos em [alternativas ao Google Ads para aquisição](/blog/alternativas-ao-google-ads-para-aquisicao)), o público começa a ignorar os anúncios e a marca percebe que precisa de algo que anúncio não compra: confiança. É aí que influencer marketing entra na conversa.
 
 E é também aí que muita fintech trava. O setor financeiro é regulado, o histórico de influenciadores promovendo esquema furada no Brasil é longo, e o jurídico da empresa (com razão) levanta a sobrancelha para qualquer campanha com creator. O resultado costuma ser um de dois extremos: ou a marca não faz nada, ou faz de qualquer jeito e assume um risco que não entendeu.
 
@@ -114,7 +113,7 @@ Aqui está a parte que separa campanha profissional de problema jurídico. Três
 
 Na prática, o que o creator pode e não pode fazer:
 
-- **Pode:** apresentar o produto, mostrar a experiência de uso, falar de educação financeira em termos gerais, explicar como funciona uma categoria de investimento.
+- **Pode:** apresentar o produto, mostrar a experiência de uso, falar de educação financeira em termos gerais (a mesma base do [content marketing para fintech](/blog/content-marketing-para-fintech)), explicar como funciona uma categoria de investimento.
 - **Não pode:** prometer ou projetar rentabilidade, dizer que determinado ativo vai subir, comparar produtos de forma enganosa, recomendar que a audiência invista em algo específico sem ser analista registrado.
 
 E uma regra de ouro operacional: **o roteiro final passa pelo compliance da fintech antes de ir ao ar.** Não o rascunho, o final. Isso precisa estar em contrato, junto com a responsabilidade do creator de seguir o texto aprovado nos pontos obrigatórios.
@@ -142,7 +141,7 @@ Alcance e engajamento são métricas de meio de funil. Fintech vive de conta abe
 - **Custo por ativação por creator:** o número que permite comparar creators entre si e contra mídia paga. É ele que decide quem renova.
 - **Janela de atribuição realista:** produto financeiro tem ciclo de decisão mais longo que e-commerce. Medir só a semana do post subestima o resultado; combine atribuição direta com pesquisa de "como conheceu a marca" no onboarding.
 
-E um ponto que quase ninguém mede: **efeito de marca.** Campanhas com creators bons costumam elevar busca orgânica pelo nome da fintech e melhorar a taxa de conversão dos outros canais. Acompanhe o volume de busca da marca antes e depois das ondas de campanha.
+E um ponto que quase ninguém mede: **efeito de marca.** Campanhas com creators bons costumam elevar busca orgânica pelo nome da fintech e melhorar a taxa de conversão dos outros canais, inclusive da [estratégia de social media](/blog/social-media-fintech-estrategia). Acompanhe o volume de busca da marca antes e depois das ondas de campanha.
 
 ## Os riscos que sobram (e como conviver com eles)
 

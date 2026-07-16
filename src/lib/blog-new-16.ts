@@ -6,7 +6,7 @@ export const blogNew16: BlogPost[] = [
   {
     slug: "growth-loops-cripto-referral-quests",
     title: "Growth loops em cripto: referral, quests e pontos que escalam de verdade",
-    seoTitle: "Growth Loops em Cripto: Referral, Quests e Pontos | Kaleidos",
+    seoTitle: "Growth loops em cripto: referral, quests e pontos",
     excerpt:
       "Funil linear queima orçamento. Growth loop se alimenta do próprio output: referral on-chain, quests, sistemas de pontos e UGC. Veja como desenhar incentivo que retém em vez de atrair mercenário.",
     seoDescription:
@@ -112,9 +112,9 @@ Sistemas de pontos dominaram o meta de crescimento cripto entre 2023 e 2024, e o
 
 O **Blur** lançou seu sistema de pontos com airdrop em temporadas a partir de 2022 e, em fevereiro de 2023, ultrapassou o OpenSea em volume de negociação de NFTs, segundo dados da DappRadar (2023). Pontos recompensavam listagem e bids, exatamente os comportamentos que geram liquidez em um marketplace. Como loop de aquisição de liquidez, foi devastadoramente eficaz.
 
-A **Blast**, L2 do mesmo fundador, levou o modelo ao extremo: pontos por depósito antes mesmo de a rede existir. O resultado foram mais de US$ 2 bilhões em TVL acumulados antes do lançamento da mainnet em fevereiro de 2024, segundo a DefiLlama (2024). A **EigenLayer** fez o mesmo com restaking points e passou de US$ 15 bilhões em TVL em 2024 (DefiLlama, 2024), gerando um mercado secundário inteiro de pontos ainda não convertidos em token.
+A **Blast**, L2 do mesmo fundador, levou o modelo ao extremo: pontos por depósito antes mesmo de a rede existir. O resultado foram mais de US$ 2 bilhões em TVL acumulados antes do lançamento da mainnet em fevereiro de 2024, segundo a DefiLlama (2024). O que veio depois virou lição de manual, que contamos no [teardown do Blast](/blog/teardown-blast-l2-dump-tvl). A **EigenLayer** fez o mesmo com restaking points e passou de US$ 15 bilhões em TVL em 2024 (DefiLlama, 2024), gerando um mercado secundário inteiro de pontos ainda não convertidos em token.
 
-O problema apareceu no segundo ato. Capital que entra por pontos é capital mercenário: depois dos airdrops, tanto Blast quanto boa parte do ecossistema de restaking viram TVL e atividade caírem de forma acentuada ao longo de 2024, conforme registrado pela própria DefiLlama. O padrão não é novo: análises da Nansen (2023) sobre o airdrop do Arbitrum mostraram que a maioria das carteiras contempladas vendeu ou esvaziou a posição nas primeiras semanas após o claim. E o caso friend.tech (2023) virou o exemplo de manual: sistema de pontos gerou frenesi, o airdrop veio em 2024, e a atividade da plataforma colapsou na sequência.
+O problema apareceu no segundo ato. Capital que entra por pontos é capital mercenário: depois dos airdrops, tanto Blast quanto boa parte do ecossistema de restaking viram TVL e atividade caírem de forma acentuada ao longo de 2024, conforme registrado pela própria DefiLlama. O padrão não é novo: análises da Nansen (2023) sobre o airdrop do Arbitrum mostraram que a maioria das carteiras contempladas vendeu ou esvaziou a posição nas primeiras semanas após o claim (fizemos um [pós-mortem inteiro sobre como evitar o dump](/blog/airdrop-pos-mortem-evitar-dump)). E o caso friend.tech (2023) virou o exemplo de manual: sistema de pontos gerou frenesi, o airdrop veio em 2024, e a atividade da plataforma colapsou na sequência.
 
 A lição não é "pontos não funcionam". É: **pontos amplificam o comportamento que você escolhe pontuar**. Se você pontua volume bruto, atrai volume bruto simulado. O desenho que retém pontua outra coisa:
 
@@ -142,7 +142,7 @@ Juntando tudo, o framework que a Kaleidos usa para desenhar growth loops em crip
 5. **Meça o loop, não o pico.** As métricas que importam: K-factor (quantos usuários novos cada usuário gera), retenção por cohort em D30 e D90, e custo por usuário retido, não por usuário adquirido.
 6. **Aceite perder o mercenário.** Um sistema bem desenhado é menos atrativo para o farmer profissional, e isso é feature. O gráfico sobe mais devagar e não desaba no snapshot.
 
-A regra final é a que resume tudo: **quem desenha o incentivo desenha o público**. Se o seu programa recompensa volume, você terá simuladores de volume. Se recompensa permanência e uso real, você terá usuários. Não existe mecânica esperta o suficiente para compensar um incentivo apontado para o comportamento errado.
+A regra final é a que resume tudo: **quem desenha o incentivo desenha o público** (e é para onde [o jogo dos airdrops caminha em 2026](/blog/jogo-dos-incentivos-airdrops-2026)). Se o seu programa recompensa volume, você terá simuladores de volume. Se recompensa permanência e uso real, você terá usuários. Não existe mecânica esperta o suficiente para compensar um incentivo apontado para o comportamento errado.
 
 ## Construa loops, não campanhas
 

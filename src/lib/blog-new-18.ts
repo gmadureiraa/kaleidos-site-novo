@@ -9,7 +9,7 @@ export const blogNew18: BlogPost[] = [
   {
     slug: "o-que-e-agencia-marketing-cripto",
     title: "O que é uma agência de marketing cripto (e quando contratar uma)",
-    seoTitle: "O que é uma agência de marketing cripto? Guia completo 2026",
+    seoTitle: "O que é uma agência de marketing cripto: guia 2026",
     excerpt:
       "Uma agência de marketing cripto é uma empresa especializada em divulgar projetos de blockchain, tokens, exchanges e fintechs web3. Entenda o que ela faz, como se diferencia de uma agência tradicional e quando faz sentido contratar uma.",
     seoDescription:
@@ -95,7 +95,7 @@ Artigos, relatórios, threads, newsletters e vídeos que educam o público e con
 
 ### Gestão de comunidade
 
-Em cripto, comunidade não é métrica de vaidade. É o produto vivo. Discord, Telegram e X são onde o projeto acontece no dia a dia. A agência estrutura canais, modera, cria rituais de engajamento e transforma usuários em defensores.
+Em cripto, comunidade não é métrica de vaidade. É o produto vivo. [Discord, Telegram](/blog/discord-vs-telegram-comunidade-cripto) e X são onde o projeto acontece no dia a dia. A agência estrutura canais, modera, cria rituais de engajamento e transforma usuários em defensores.
 
 ### Marketing de influenciadores (KOLs)
 
@@ -107,7 +107,7 @@ Campanhas em Google, Meta, X e redes de mídia nativas de cripto. Aqui o conheci
 
 ### Relações públicas
 
-Colocar o projeto em veículos especializados como CoinDesk, Cointelegraph e The Block, além da imprensa de negócios tradicional. PR bem feito dá credibilidade que anúncio nenhum compra.
+Colocar o projeto em veículos especializados como CoinDesk, Cointelegraph e The Block, além da imprensa de negócios tradicional. PR bem feito dá credibilidade que anúncio nenhum compra (o [guia de assessoria de imprensa cripto no Brasil](/blog/pr-assessoria-imprensa-cripto-brasil) mostra como).
 
 ### Growth de lançamento
 
@@ -147,7 +147,7 @@ Por outro lado, não faz sentido contratar agência quando o produto ainda não 
 
 ## Como escolher uma agência de marketing cripto
 
-Cinco critérios objetivos para avaliar antes de assinar contrato.
+Cinco critérios objetivos para avaliar antes de assinar contrato (nos [segredos de uma agência de marketing web3 por dentro](/blog/segredos-agencia-marketing-web3) mostramos o que exigir do processo).
 
 **1. Experiência real no setor.** Peça casos concretos de projetos cripto, não adaptações de portfólio genérico. Pergunte quais plataformas a agência já operou com anúncios de cripto aprovados.
 

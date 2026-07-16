@@ -9,11 +9,11 @@ export const blogNew24: BlogPost[] = [
   {
     slug: "jogo-dos-incentivos-airdrops-2026",
     title: "O jogo dos incentivos: como os airdrops vão mudar em 2026",
-    seoTitle: "Airdrops em 2026: como o jogo dos incentivos vai mudar | Kaleidos",
+    seoTitle: "Airdrops em 2026: o jogo dos incentivos vai mudar",
     excerpt:
       "O airdrop clássico morreu de sucesso: virou farm-and-dump em escala industrial. Em 2026, o jogo muda para points systems, provas de contribuição e anti-sybil sério. Entenda o que vem aí e como preparar seu projeto.",
     seoDescription:
-      "Airdrops em 2026: fim do farm-and-dump, ascensão dos points systems, provas de contribuição e anti-sybil. O que projetos web3 precisam mudar agora.",
+      "Airdrops em 2026: fim do farm-and-dump, ascensão dos points systems, provas de contribuição real e anti-sybil. O que projetos web3 precisam mudar agora.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-12",
@@ -79,7 +79,7 @@ A tese da Kaleidos é direta: 2026 é o ano em que o airdrop clássico, aquele e
 
 O marco inicial da era moderna foi a Uniswap, em setembro de 2020: 400 UNI para cada endereço que já tinha usado o protocolo, cerca de 250 mil carteiras contempladas (fonte: Uniswap, 2020). Na época, o gesto foi lido como devolução de valor à comunidade. E funcionou, porque ninguém esperava.
 
-O que veio depois foi a industrialização da expectativa. Cada protocolo sem token passou a ser tratado como bilhete de loteria. A Arbitrum distribuiu para mais de 600 mil endereços em março de 2023 e, mesmo com critérios de elegibilidade em camadas, viu uma fatia relevante dos recebedores vender tudo nos primeiros dias (fonte: Nansen, 2023). Estudos on-chain sobre grandes distribuições da temporada 2023-2024 apontaram o mesmo padrão repetido: pico de atividade antes do snapshot, despejo do token na listagem, colapso de usuários ativos nas semanas seguintes (fonte: CoinGecko, 2024).
+O que veio depois foi a industrialização da expectativa. Cada protocolo sem token passou a ser tratado como bilhete de loteria. A Arbitrum distribuiu para mais de 600 mil endereços em março de 2023 e, mesmo com critérios de elegibilidade em camadas, viu uma fatia relevante dos recebedores vender tudo nos primeiros dias (fonte: Nansen, 2023). Estudos on-chain sobre grandes distribuições da temporada 2023-2024 apontaram o mesmo padrão repetido: pico de atividade antes do snapshot, despejo do token na listagem, colapso de usuários ativos nas semanas seguintes (fonte: CoinGecko, 2024). O [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump) destrincha esse padrão caso a caso.
 
 O caso mais didático do custo de errar a mão foi a temporada 2024 de airdrops de infraestrutura. Distribuições percebidas como pequenas demais para usuários reais, ou generosas demais com insiders, geraram revolta pública, review bombing e comunidades queimadas antes mesmo do produto amadurecer. A lição ficou: airdrop não é só tokenomics, é comunicação. E comunicação mal desenhada destrói em uma semana o que o time construiu em dois anos.
 
@@ -87,7 +87,7 @@ O caso mais didático do custo de errar a mão foi a temporada 2024 de airdrops 
 
 A virada começou com a Blur, marketplace de NFTs que em 2022 estruturou temporadas de pontos com regras públicas, ranking e recompensa por comportamento específico: listar, dar bid, ser leal ao marketplace. O resultado foi tomar liderança de volume do OpenSea em poucos meses (fonte: The Block, 2023). O mercado inteiro anotou.
 
-Em 2024, o modelo virou padrão. A EigenLayer acumulou bilhões de dólares em depósitos com restaked points antes de qualquer token existir (fonte: DefiLlama, 2024). A Blast condicionou pontos a depósitos e a indicações, transformando o programa numa máquina de crescimento viral. Surgiu até um mercado secundário de negociação de pontos, com plataformas como a Whales Market permitindo vender a expectativa do airdrop antes do token (fonte: The Defiant, 2024).
+Em 2024, o modelo virou padrão. A EigenLayer acumulou bilhões de dólares em depósitos com restaked points antes de qualquer token existir (fonte: DefiLlama, 2024). A Blast condicionou pontos a depósitos e a indicações, transformando o programa numa máquina de crescimento viral (o desfecho está no nosso [teardown do Blast](/blog/teardown-blast-l2-dump-tvl)). Surgiu até um mercado secundário de negociação de pontos, com plataformas como a Whales Market permitindo vender a expectativa do airdrop antes do token (fonte: The Defiant, 2024).
 
 Por que points venceram? Três razões práticas:
 
@@ -127,7 +127,7 @@ A pergunta que os melhores times estão se fazendo não é "quem interagiu?", e 
 
 Para quem está desenhando um programa de incentivos com lançamento em 2026, o checklist da Kaleidos é este:
 
-1. **Comece pelo comportamento, não pelo token.** Escreva em uma frase qual ação de usuário sustenta seu negócio (liquidez retida? volume orgânico? conteúdo? integração de devs?). Todo o sistema de pontos deriva dessa frase. Se você premia volume quando precisa de retenção, vai comprar volume e perder retenção.
+1. **Comece pelo comportamento, não pelo token.** Escreva em uma frase qual ação de usuário sustenta seu negócio (liquidez retida? volume orgânico? conteúdo? integração de devs?). Todo o sistema de pontos deriva dessa frase. Se você premia volume quando precisa de retenção, vai comprar volume e perder retenção (o guia de [growth loops em cripto](/blog/growth-loops-cripto-referral-quests) mostra como desenhar isso na prática).
 2. **Desenhe o anti-sybil no dia um.** Defesa colada depois não funciona: os critérios de elegibilidade precisam nascer com custo de ataque embutido (tempo, stake, reputação). Orce análise de cluster antes do snapshot, não depois da revolta no X.
 3. **Distribua em capítulos.** Reserve a maior parte da alocação de comunidade para rodadas futuras condicionadas a uso. Uma primeira distribuição menor com promessa crível de continuidade retém mais do que um evento único generoso.
 4. **Comunique regras, nunca promessas.** Deixe claro o que é pontuado e por quê, sem confirmar token nem valores. Ambiguidade calculada demais gera teoria da conspiração; promessa explícita gera passivo jurídico e expectativa impossível de cumprir.

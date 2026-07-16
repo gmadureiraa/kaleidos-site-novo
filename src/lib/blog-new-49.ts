@@ -6,7 +6,7 @@ export const blogNew49: BlogPost[] = [
   {
     slug: "content-marketing-para-fintech",
     title: "Content marketing para fintech: o guia completo",
-    seoTitle: "Content marketing para fintech: o guia completo | Kaleidos",
+    seoTitle: "Content marketing para fintech: o guia completo",
     excerpt:
       "Fintech vende confiança antes de vender produto. A Kaleidos mostra como construir uma máquina de conteúdo em um setor regulado: estratégia, SEO, formatos, distribuição e as métricas que provam retorno.",
     seoDescription:
@@ -157,7 +157,7 @@ Os canais prioritários para fintech:
 - **LinkedIn:** para fintech B2B, é o canal social número um, especialmente através dos perfis pessoais de fundadores e executivos, que alcançam muito mais que a página corporativa.
 - **Instagram e TikTok:** onde a educação financeira B2C acontece hoje. A estratégia completa de redes para o setor está detalhada no guia da Kaleidos sobre [social media para fintech](/blog/social-media-fintech-estrategia).
 - **Newsletter:** o único canal que a fintech possui de verdade, sem algoritmo intermediando. Cada assinante é um ativo.
-- **Comunidades e imprensa:** participação genuína em comunidades do nicho e relacionamento com jornalistas de finanças amplificam o que o conteúdo constrói.
+- **Comunidades e imprensa:** participação genuína em comunidades do nicho e relacionamento com jornalistas de finanças amplificam o que o conteúdo constrói. Creators entram na mesma lógica de confiança emprestada, com as regras que mapeamos em [influencer marketing para fintech](/blog/influencer-marketing-para-fintech).
 
 Regra prática de distribuição: cada peça relevante deve ser redistribuída pelo menos cinco vezes em formatos e momentos diferentes. O público não vê tudo o que a marca publica; repetir não é spam, é alcance.
 

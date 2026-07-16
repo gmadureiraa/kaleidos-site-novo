@@ -9,7 +9,7 @@ export const blogNew32: BlogPost[] = [
   {
     slug: "web3-marketing-arte-perdida",
     title: "Web3 marketing é uma arte perdida: onde os projetos erram",
-    seoTitle: "Web3 marketing é uma arte perdida: onde os projetos erram | Kaleidos",
+    seoTitle: "Web3 marketing é uma arte perdida: onde erram",
     excerpt:
       "A maioria dos projetos web3 ainda roda o playbook de 2021: hype, airdrop farm e KOL pago genérico. O resultado é comunidade mercenária e token que ninguém defende. A tese da Kaleidos sobre o que voltou a importar e qual é o caminho certo.",
     seoDescription:
@@ -89,7 +89,7 @@ O ciclo é previsível. O projeto anuncia (ou insinua) um programa de pontos. Fa
 
 O caso do airdrop da Arbitrum, em março de 2023, já mostrava o padrão: apesar dos esforços de filtragem, análises on-chain da época identificaram milhares de carteiras sybil agrupadas que capturaram fatias relevantes da distribuição (Nansen, 2023). De lá para cá, o farming só se profissionalizou.
 
-O contraexemplo mais citado da indústria é a Hyperliquid, que em novembro de 2024 distribuiu a maior parte do supply do token HYPE para usuários reais da plataforma, sem alocação para fundos de venture capital e sem campanha de marketing tradicional (The Block, 2024). O produto veio primeiro, a distribuição recompensou uso genuíno, e a comunidade defendeu o projeto porque era dona dele de verdade. Não é que airdrop morreu. O que morreu foi o airdrop como substituto de produto.
+O contraexemplo mais citado da indústria é a Hyperliquid, que em novembro de 2024 distribuiu a maior parte do supply do token HYPE para usuários reais da plataforma, sem alocação para fundos de venture capital e sem campanha de marketing tradicional (The Block, 2024). O produto veio primeiro, a distribuição recompensou uso genuíno, e a comunidade defendeu o projeto porque era dona dele de verdade. Não é que airdrop morreu. O que morreu foi o airdrop como substituto de produto. O [teardown do points system do Lombard](/blog/teardown-lombard-points-system) mostra em detalhe como desenhar incentivo que filtra mercenário em vez de atraí-lo.
 
 ## Erro 2: KOL pago genérico e a ilusão do alcance
 
@@ -101,7 +101,7 @@ O problema não é trabalhar com criadores. É tratar criador como espaço de m�
 - **Liberdade editorial**: o conteúdo nasce da visão do criador sobre o produto, não de um texto aprovado pelo jurídico do projeto.
 - **Horizonte longo**: relação contínua, em que o criador acompanha a evolução do produto, em vez de um post isolado no lançamento.
 
-Sem isso, o que se compra é alcance vazio: impressões que não viram usuários, de uma audiência que já viu aquele mesmo criador promover outros vinte tokens.
+Sem isso, o que se compra é alcance vazio: impressões que não viram usuários, de uma audiência que já viu aquele mesmo criador promover outros vinte tokens. Quando influência é tratada como linha de mídia, com brief, rastreio e cobrança por resultado, o jogo muda, como mostramos em [advertising cripto que converte](/blog/advertising-cripto-que-converte).
 
 ## Erro 3: falar só para a bolha
 
@@ -129,7 +129,7 @@ A arte perdida do web3 marketing não é nenhum segredo esotérico. São os fund
 
 **3. Comunidade como produto, não como audiência.** Comunidade real não é um Discord com 100 mil membros esperando snapshot. É um grupo menor de pessoas que usam o produto, contribuem, discordam, criam conteúdo espontâneo e defendem o projeto quando o mercado vira. Isso se constrói com acesso ao time, transparência nos erros, rituais consistentes e reconhecimento de quem contribui. É lento, não escala com dinheiro, e é exatamente por isso que é defensável.
 
-**4. Narrativa consistente e educação de mercado.** Os projetos que dominam ciclos são os que educam o mercado sobre a categoria antes de vender o produto. Conteúdo próprio, dados originais, presença constante nas conversas relevantes, um ponto de vista claro sobre para onde o setor vai. Narrativa não é slogan de campanha: é a história que o mercado conta sobre você quando você não está na sala.
+**4. Narrativa consistente e educação de mercado.** Os projetos que dominam ciclos são os que educam o mercado sobre a categoria antes de vender o produto, a mesma tese que Amanda Cassatt defende no livro [Web3 Marketing, que resenhamos aqui](/blog/livro-web3-marketing-amanda-cassatt-aprendizados). Conteúdo próprio, dados originais, presença constante nas conversas relevantes, um ponto de vista claro sobre para onde o setor vai. Narrativa não é slogan de campanha: é a história que o mercado conta sobre você quando você não está na sala.
 
 **5. Distribuição pensada para fora da bolha.** Parcerias com marcas de consumo, conteúdo em linguagem acessível, canais onde o público mainstream já está. O próximo bilhão de usuários não está lendo thread técnica no X. Está no YouTube, no TikTok, na newsletter de finanças pessoais.
 

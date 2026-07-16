@@ -10,12 +10,11 @@ export const blogNew27: BlogPost[] = [
     slug: "livro-web3-marketing-amanda-cassatt-aprendizados",
     title:
       "O livro 'Web3 Marketing' da Amanda Cassatt: os aprendizados centrais (e o que aplica no Brasil)",
-    seoTitle:
-      "Web3 Marketing de Amanda Cassatt: resumo e aprendizados para o Brasil",
+    seoTitle: "Web3 Marketing, de Amanda Cassatt: resumo e lições",
     excerpt:
       "A Kaleidos destrincha 'Web3 Marketing: A Handbook for the Next Internet Revolution' (Wiley, 2023), de Amanda Cassatt: o funil web3, o conceito de Web2.5, comunidade como modelo de negócio e uma leitura crítica do que funciona (ou não) no mercado brasileiro.",
     seoDescription:
-      "Resumo crítico do livro Web3 Marketing de Amanda Cassatt (Wiley, 2023): funil web3, Web2.5, comunidade e tokens. O que vale aplicar em projetos cripto no Brasil.",
+      "Resumo crítico do livro Web3 Marketing de Amanda Cassatt (2023): funil web3, Web2.5, comunidade e tokens. O que vale aplicar em projetos cripto no Brasil.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-12",
@@ -105,7 +104,7 @@ Na prática, isso se traduz em algumas disciplinas que o livro trata com detalhe
 
 - **Presença fundadora ativa:** no web3, o público espera acesso direto aos construtores. Fundadores que aparecem, respondem e explicam constroem confiança que nenhuma campanha compra.
 - **Transparência como padrão:** roadmap público, decisões documentadas, erros assumidos. O setor pune opacidade com velocidade.
-- **Incentivos desenhados com cuidado:** airdrops e recompensas atraem tanto usuários genuínos quanto caçadores de recompensa. O desenho do incentivo define qual dos dois você recebe em maior volume.
+- **Incentivos desenhados com cuidado:** airdrops e recompensas atraem tanto usuários genuínos quanto caçadores de recompensa. O desenho do incentivo define qual dos dois você recebe em maior volume; o [teardown do points system do Lombard](/blog/teardown-lombard-points-system) mostra esse desenho funcionando na prática.
 
 **Leitura crítica pro Brasil:** aqui a adaptação é de canal e de tom. O playbook do livro assume Discord, Telegram e Twitter como praças centrais, o que vale para o público cripto-nativo brasileiro. Mas o público que os projetos querem alcançar em seguida, o investidor comum, vive no WhatsApp, no Instagram e no YouTube. Comunidade no Brasil frequentemente significa grupo de WhatsApp com regras claras e curadoria forte, não servidor de Discord com 40 canais. E o tom precisa ser mais didático: o vocabulário do setor é uma barreira real para a maioria.
 
@@ -125,7 +124,7 @@ Um fio que atravessa o livro inteiro: no web3, o maior gargalo de conversão é 
 
 A resposta de Cassatt, testada desde a época de levar o Ethereum ao mercado, é tratar educação como a fundação da estratégia de conteúdo. Documentação clara, artigos que explicam conceitos sem jargão, conteúdo que responde às perguntas reais do público em cada etapa. Isso serve ao funil duas vezes: atrai tráfego qualificado no topo e remove objeções no meio.
 
-**Leitura crítica pro Brasil:** esse aprendizado vale em dobro aqui. O brasileiro médio já foi exposto a pirâmides financeiras vestidas de cripto, e a desconfiança é racional. Conteúdo educativo honesto, que explica riscos junto com oportunidades, é o ativo de marketing mais barato e mais durável que um projeto pode construir no país. É também o que separa projetos sérios de oportunistas aos olhos do público, da imprensa e do regulador.
+**Leitura crítica pro Brasil:** esse aprendizado vale em dobro aqui. O brasileiro médio já foi exposto a pirâmides financeiras vestidas de cripto, e a desconfiança é racional. Conteúdo educativo honesto, que explica riscos junto com oportunidades, é o ativo de marketing mais barato e mais durável que um projeto pode construir no país. É também a base de qualquer estratégia de busca orgânica, como mostramos no [guia de SEO para cripto e web3](/blog/guia-seo-para-cripto). É também o que separa projetos sérios de oportunistas aos olhos do público, da imprensa e do regulador.
 
 ## O que o livro não resolve
 
@@ -135,7 +134,7 @@ Nenhum livro de 2023 sobreviveria intacto ao ritmo do setor, e vale registrar as
 - **Regulação é tratada em nível global e genérico.** Para operar no Brasil, você precisa conhecer o marco local: a Lei 14.478/2022, a supervisão do Banco Central e as regras da CVM para ofertas que caracterizam valores mobiliários. Nada disso está (nem poderia estar) no livro.
 - **O viés de sobrevivência existe.** Os casos citados são, em maioria, projetos que deram certo com orçamento relevante. O founder brasileiro com orçamento apertado precisa filtrar o que é replicável e o que era privilégio de quem tinha a Serotonin no discado.
 
-Nada disso invalida o livro. Ele continua sendo o melhor ponto de partida estruturado para quem quer entender marketing cripto, justamente porque os fundamentos (comunidade como modelo, funil que termina em pertencimento, educação como base) envelhecem bem. As táticas datam; a estrutura, não.
+Nada disso invalida o livro. Ele continua sendo o melhor ponto de partida estruturado para quem quer entender marketing cripto, justamente porque os fundamentos (comunidade como modelo, funil que termina em pertencimento, educação como base) envelhecem bem. As táticas datam; a estrutura, não. É a mesma conclusão a que chegamos ao analisar [onde os projetos de web3 marketing erram](/blog/web3-marketing-arte-perdida): quem abandonou os fundamentos foi quem quebrou.
 
 ## Como a Kaleidos usa esses frameworks
 

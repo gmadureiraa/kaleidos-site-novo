@@ -10,8 +10,7 @@ export const blogNew47: BlogPost[] = [
     slug: "alternativas-ao-google-ads-para-aquisicao",
     title:
       "Alternativas ao Google Ads para aquisição: o que fazer quando o CPC não fecha a conta",
-    seoTitle:
-      "Alternativas ao Google Ads em 2026: canais de aquisição quando o CPC não fecha",
+    seoTitle: "Alternativas ao Google Ads: canais de aquisição",
     excerpt:
       "O Google Ads continua sendo o canal padrão de aquisição, mas em nichos disputados o CPC sobe até a conta parar de fechar. Este guia mapeia as alternativas reais: SEO e conteúdo, social ads no Meta, LinkedIn e TikTok, influenciadores, PR, parcerias e redes de mídia cripto, com critérios claros de quando cada uma faz sentido.",
     seoDescription:
@@ -79,7 +78,7 @@ A resposta errada é desligar tudo e apostar em um canal milagroso. A resposta c
 
 ## Antes de sair do Google: confirme que o problema é o canal
 
-Vale um checklist rápido antes de redistribuir orçamento, porque às vezes o CPC alto esconde problemas internos que vão contaminar qualquer canal novo:
+Vale um checklist rápido antes de redistribuir orçamento, porque às vezes o CPC alto esconde problemas internos que vão contaminar qualquer canal novo (o processo completo está no nosso [checklist de auditoria de Google Ads](/blog/auditoria-google-ads-guia)):
 
 - **Quality Score e relevância**: anúncio, palavra-chave e landing page estão alinhados? Índices de qualidade baixos inflam o CPC artificialmente.
 - **Estrutura de campanha**: termos genéricos caros estão misturados com termos de cauda longa mais baratos? Separar muda o jogo.
@@ -148,9 +147,9 @@ Parceria é o canal mais subestimado da lista. Empresas não concorrentes que at
 
 ## Em cripto: as redes de ads especializadas
 
-Cripto merece seção própria porque o problema é diferente: não é só CPC alto, é restrição de categoria. O Google exige certificação prévia para anunciar produtos cripto e limita formatos e geografias; a Meta exige autorização por escrito com comprovação de licença regulatória. Muita empresa do setor simplesmente não consegue rodar nos canais mainstream.
+Cripto merece seção própria porque o problema é diferente: não é só CPC alto, é restrição de categoria. O Google exige certificação prévia para anunciar produtos cripto e limita formatos e geografias; a Meta exige autorização por escrito com comprovação de licença regulatória (as regras completas estão no guia de [Facebook Ads para cripto](/blog/facebook-ads-cripto-restricoes)). Muita empresa do setor simplesmente não consegue rodar nos canais mainstream.
 
-**As alternativas do nicho**: redes de display especializadas como Coinzilla e Cointraffic distribuem anúncios em centenas de sites de cripto e aceitam anunciantes do setor sem o processo de certificação das big techs. Patrocínio direto em veículos como CoinDesk, Cointelegraph e Decrypt, e nas newsletters relevantes do setor, alcança a audiência de maior intenção. Somam-se a isso os KOLs de cripto no X e no YouTube e a presença construída em comunidades de Telegram e Discord, onde as decisões do setor de fato circulam.
+**As alternativas do nicho**: redes de display especializadas como Coinzilla e Cointraffic distribuem anúncios em centenas de sites de cripto e aceitam anunciantes do setor sem o processo de certificação das big techs. Patrocínio direto em veículos como CoinDesk, Cointelegraph e Decrypt, e nas newsletters relevantes do setor, alcança a audiência de maior intenção. Somam-se a isso os KOLs de cripto no X e no YouTube e a presença construída em comunidades de Telegram e Discord, onde as decisões do setor de fato circulam. Como montar esse mix com medição on-chain está em [advertising cripto que converte](/blog/advertising-cripto-que-converte).
 
 **O que esperar**: alcance total muito menor que o dos canais mainstream, qualidade de tráfego variável entre redes (teste com orçamento pequeno e mensure fundo de funil, não clique) e necessidade de compliance própria: mesmo nas redes especializadas, a responsabilidade regulatória sobre a comunicação é do anunciante.
 

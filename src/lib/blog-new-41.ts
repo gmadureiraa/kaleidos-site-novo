@@ -6,7 +6,7 @@ export const blogNew41: BlogPost[] = [
   {
     slug: "redesenhar-site-sem-perder-seo",
     title: "Como redesenhar seu site sem perder o SEO (checklist de migração)",
-    seoTitle: "Como redesenhar site sem perder SEO: checklist de migração completo",
+    seoTitle: "Como redesenhar site sem perder SEO: checklist",
     excerpt:
       "Redesign de site é uma das formas mais comuns de destruir anos de trabalho de SEO. Este checklist de migração cobre mapeamento de URLs, redirects 301, preservação de conteúdo, staging e monitoramento pós-lançamento para trocar de site sem perder ranking.",
     seoDescription:
@@ -110,7 +110,7 @@ O site novo não precisa ser uma cópia do antigo, mas as páginas que rankeiam 
 
 **12. Reconstrua os links internos.** Menus, footers e links contextuais dentro do texto distribuem autoridade pelo site. Se o site novo mudou a navegação, garanta que as páginas de valor continuam recebendo links internos de páginas fortes, e que nenhum link interno aponta para URL antiga (link interno que passa por redirect funciona, mas link direto é melhor).
 
-**13. Cuidado com JavaScript pesado.** Muitos redesigns migram para frameworks modernos. Se o conteúdo só aparece depois de o JavaScript executar no navegador, a indexação pode ficar mais lenta ou incompleta. Prefira renderização no servidor (SSR) ou geração estática para conteúdo que precisa rankear, e valide com a ferramenta de inspeção de URL do Search Console como o Google enxerga a página.
+**13. Cuidado com JavaScript pesado.** Muitos redesigns migram para frameworks modernos. Se o conteúdo só aparece depois de o JavaScript executar no navegador, a indexação pode ficar mais lenta ou incompleta (esse e outros [problemas críticos de SEO técnico](/blog/problemas-criticos-seo-tecnico) merecem auditoria própria). Prefira renderização no servidor (SSR) ou geração estática para conteúdo que precisa rankear, e valide com a ferramenta de inspeção de URL do Search Console como o Google enxerga a página.
 
 **14. Não regrida em performance.** Core Web Vitals são fator de experiência de página. Sites redesenhados costumam nascer mais pesados: imagens maiores, mais fontes, mais scripts. Rode o Lighthouse e o PageSpeed Insights no staging e compare com o site atual antes de aprovar o lançamento.
 
@@ -140,7 +140,7 @@ A migração não termina no deploy. As semanas seguintes decidem se o trabalho 
 
 **23. Monitore o Search Console diariamente nas duas primeiras semanas.** Olhe cobertura de indexação (404 subindo é redirect quebrado), desempenho de busca das páginas de valor (compare com o período pré-migração) e Core Web Vitals. Depois, acompanhe semanalmente por pelo menos dois meses.
 
-**24. Acompanhe posições das keywords principais.** Flutuação nas primeiras semanas é esperada: a documentação do Google Search Central indica que migrações de porte médio levam algumas semanas para serem processadas. Queda que persiste e se aprofunda depois desse período é sintoma de problema real: vá atrás de redirects quebrados, conteúdo removido ou páginas fora do índice.
+**24. Acompanhe posições das keywords principais.** Flutuação nas primeiras semanas é esperada: a documentação do Google Search Central indica que migrações de porte médio levam algumas semanas para serem processadas. Queda que persiste e se aprofunda depois desse período é sintoma de problema real: vá atrás de redirects quebrados, conteúdo removido ou páginas fora do índice. Se nada disso explicar, o diagnóstico mais amplo está em [por que seu SEO não está funcionando](/blog/por-que-seu-seo-nao-esta-funcionando).
 
 **25. Cace 404 e corrija em ciclo.** O relatório de páginas não encontradas do Search Console e os logs do servidor revelam URLs antigas que escaparam do mapa de redirects, inclusive URLs que só existiam em links externos. Adicione os redirects que faltam conforme aparecem.
 
@@ -161,7 +161,7 @@ Nenhum desses erros é sofisticado. Todos são evitáveis com o checklist acima 
 
 ## Redesign é projeto de SEO, não só de design
 
-Um site novo deveria ser um upgrade de tudo: marca, experiência e performance orgânica. Quando o SEO entra no projeto desde o inventário, e não como conferência de última hora, o redesign vira oportunidade de consolidar conteúdo, melhorar arquitetura e ganhar posições em vez de perdê-las.
+Um site novo deveria ser um upgrade de tudo: marca, experiência e performance orgânica. Quando o SEO entra no projeto desde o inventário, e não como conferência de última hora, o redesign vira oportunidade de consolidar conteúdo, melhorar arquitetura e ganhar posições em vez de perdê-las. Para e-commerces, essa arquitetura tem regras próprias, que detalhamos no guia de [SEO para varejo e e-commerce](/blog/seo-para-varejo-e-commerce).
 
 A Kaleidos conduz redesigns e migrações de sites com SEO tratado como requisito de engenharia: inventário, mapa de redirects, preservação de conteúdo, staging auditado e monitoramento pós-lançamento. Se a sua empresa está planejando um site novo e não quer descobrir o custo de uma migração mal feita, [fale com a gente](/contato) antes do primeiro wireframe.
 `,

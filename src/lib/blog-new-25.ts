@@ -6,7 +6,7 @@ export const blogNew25: BlogPost[] = [
   {
     slug: "teardown-blast-l2-dump-tvl",
     title: "Teardown Blast: o L2 que despejou o token e perdeu TVL",
-    seoTitle: "Teardown Blast: o L2 que perdeu 97% do TVL pós-airdrop | Kaleidos",
+    seoTitle: "Teardown Blast: o L2 que perdeu 97% do TVL",
     excerpt:
       "O Blast captou US$ 2,2 bilhões antes de ter mainnet e perdeu 97% do TVL depois do airdrop. A Kaleidos disseca o hype, o programa de pontos, o TGE frustrado e o que todo projeto web3 deveria aprender com o colapso.",
     seoDescription:
@@ -126,9 +126,9 @@ Repare no contraste: o marketing de aquisição do Blast foi possivelmente o mai
 
 ## Lições
 
-A Kaleidos extrai cinco lições deste teardown, aplicáveis a qualquer projeto que esteja planejando pontos, airdrop ou TGE.
+A Kaleidos extrai cinco lições deste teardown, aplicáveis a qualquer projeto que esteja planejando pontos, airdrop ou TGE (elas complementam o nosso [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump)).
 
-**1. Incentivo desenha o público, e o público do Blast era o snapshot.** Quando a recompensa dominante é um evento único de distribuição, você recruta pessoas otimizando para esse evento. O comportamento pós-evento já está escrito antes da campanha começar. Se o plano de retenção é "vamos lançar a Fase 2 de pontos", não existe plano de retenção.
+**1. Incentivo desenha o público, e o público do Blast era o snapshot.** Quando a recompensa dominante é um evento único de distribuição, você recruta pessoas otimizando para esse evento (é o princípio central dos [growth loops em cripto](/blog/growth-loops-cripto-referral-quests)). O comportamento pós-evento já está escrito antes da campanha começar. Se o plano de retenção é "vamos lançar a Fase 2 de pontos", não existe plano de retenção.
 
 **2. TVL pré-token é métrica de campanha, não de tração.** Os US$ 2,2 bilhões do Blast mediam a eficiência do funil de farming, não a demanda pelo produto. Projetos que leem TVL inflado por incentivo como product-market fit dimensionam equipe, tesouraria e roadmap sobre uma base que vai evaporar. O dado honesto é o que sobra 90 dias depois do TGE.
 
@@ -140,7 +140,7 @@ A Kaleidos extrai cinco lições deste teardown, aplicáveis a qualquer projeto 
 
 ## O que a Kaleidos faria diferente
 
-Um lançamento com o pedigree e o capital do Blast tinha condições de construir algo duradouro. O redesenho passa por três frentes: recompensar comportamento recorrente em vez de depósito parado, com pontos que decaem sem uso real; escalonar a distribuição do token em função de retenção pós-TGE, não de volume pré-snapshot; e comunicar faixas realistas de alocação antes do evento, trocando o pico de FOMO por confiança que sobrevive à listagem.
+Um lançamento com o pedigree e o capital do Blast tinha condições de construir algo duradouro. O redesenho passa por três frentes: recompensar comportamento recorrente em vez de depósito parado, com pontos que decaem sem uso real; escalonar a distribuição do token em função de retenção pós-TGE, não de volume pré-snapshot; e comunicar faixas realistas de alocação antes do evento, trocando o pico de FOMO por confiança que sobrevive à listagem. É a direção que o mercado inteiro está tomando, como mostramos em [como os airdrops vão mudar em 2026](/blog/jogo-dos-incentivos-airdrops-2026).
 
 Se o seu projeto está desenhando programa de pontos, planejando TGE ou tentando entender por que o TVL não fica depois do incentivo, esse é exatamente o tipo de problema que a Kaleidos resolve. Somos uma agência especializada em marketing para cripto e web3, e trabalhamos lançamento como sistema completo: aquisição, expectativa, distribuição e o dia seguinte. [Fale com a Kaleidos](/contato) e vamos desenhar um lançamento que não termina no snapshot.`,
   },

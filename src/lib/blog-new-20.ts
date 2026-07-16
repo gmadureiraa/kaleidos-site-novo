@@ -6,7 +6,7 @@ export const blogNew20: BlogPost[] = [
   {
     slug: "tokenomics-e-marketing-sell-buy-pressure",
     title: "Tokenomics é marketing: sell/buy pressure como decisão de growth",
-    seoTitle: "Tokenomics é marketing: sell e buy pressure como growth | Kaleidos",
+    seoTitle: "Tokenomics é marketing: sell e buy pressure",
     excerpt:
       "Emissão, unlocks, incentivos e utilidade não são só engenharia financeira: são a mensagem mais alta que um projeto cripto emite. A Kaleidos explica por que sell e buy pressure são decisões de growth, os erros de low-float/high-FDV e unlocks mal comunicados, e como alinhar tokenomics e narrativa.",
     seoDescription:
@@ -86,7 +86,7 @@ Sell pressure estrutural vem de três fontes principais, e todas são decisões 
 
 **1. Unlocks de investidores e time.** É a fonte mais visível e mais monitorada. A Keyrock, market maker europeia, publicou em 2024 uma análise de mais de 16.000 eventos de unlock e encontrou um padrão consistente: destraves relevantes tendem a gerar pressão de queda, e o mercado começa a precificar o evento semanas antes da data, com traders vendendo na antecipação. Ou seja: o unlock não é só um evento financeiro, é um evento de comunicação com janela própria, e o silêncio do projeto durante essa janela também comunica.
 
-**2. Emissões de incentivo.** Recompensas de liquidity mining e farming emitem token novo continuamente. Quando o incentivo atrai capital mercenário, que farma e vende no mesmo dia, o projeto está literalmente pagando para criar sell pressure. O ciclo de DeFi de 2020 e 2021 deixou essa lição documentada: programas de emissão alta compraram TVL temporário e venderam a percepção de token inflacionário. TVL alugado não é comunidade, é custo de aquisição disfarçado.
+**2. Emissões de incentivo.** Recompensas de liquidity mining e farming emitem token novo continuamente. Quando o incentivo atrai capital mercenário, que farma e vende no mesmo dia, o projeto está literalmente pagando para criar sell pressure. O ciclo de DeFi de 2020 e 2021 deixou essa lição documentada: programas de emissão alta compraram TVL temporário e venderam a percepção de token inflacionário. TVL alugado não é comunidade, é custo de aquisição disfarçado. O antídoto está nos [growth loops que recompensam permanência, não volume](/blog/growth-loops-cripto-referral-quests).
 
 **3. Low-float/high-FDV.** O padrão dominante dos lançamentos recentes: pouco supply em circulação no dia da listagem e avaliação totalmente diluída nas alturas. A Binance Research documentou o fenômeno no relatório "Low Float & High FDV: How Did We Get Here?" (2024): tokens lançados em 2024 estrearam, em média, com cerca de 13% do supply em circulação, contra proporções bem maiores em ciclos anteriores. A matemática que sobra é cruel: se 87% do supply ainda vai destravar, todo comprador do dia 1 sabe que existe uma fila de vendedores programados pela frente. O apelido que o mercado deu para quem compra nesse cenário ("exit liquidity") virou meme, e meme negativo é o tipo de narrativa que nenhum orçamento de mídia reverte.
 
@@ -100,7 +100,7 @@ Do outro lado da balança, buy pressure sustentável vem de mecanismos que dão 
 
 **Receita devolvida ao token.** Buybacks e queimas financiados por receita real conectam o desempenho do negócio ao ativo. A MakerDAO ativou em 2023 o Smart Burn Engine, usando excedente de receita do protocolo para recomprar MKR, e transformou a mecânica em argumento central da tese do token. O detalhe importante: buyback só comunica força quando existe receita de verdade por trás. Queima financiada por tesouraria em queda comunica desespero.
 
-**Alinhamento na distribuição.** O contraexemplo mais citado da era low-float/high-FDV foi a Hyperliquid. No lançamento do HYPE, em novembro de 2024, o projeto distribuiu 31% do supply via airdrop direto para usuários, sem alocação para fundos de venture capital, e direcionou a maior parte das taxas do protocolo para recompra de token via Assistance Fund, conforme a documentação do próprio projeto (2024). O desenho virou a narrativa: "protocolo do usuário, não do fundo". A comunidade fez o marketing que o time não precisou pagar, e o lançamento foi lido pelo mercado como resposta direta ao modelo criticado pela Binance Research meses antes. O ponto aqui não é prever preço, e sim notar que a decisão de tokenomics foi a campanha.
+**Alinhamento na distribuição.** O contraexemplo mais citado da era low-float/high-FDV foi a Hyperliquid. No lançamento do HYPE, em novembro de 2024, o projeto distribuiu 31% do supply via airdrop direto para usuários, sem alocação para fundos de venture capital, e direcionou a maior parte das taxas do protocolo para recompra de token via Assistance Fund, conforme a documentação do próprio projeto (2024). O desenho virou a narrativa: "protocolo do usuário, não do fundo". A comunidade fez o marketing que o time não precisou pagar, e o lançamento foi lido pelo mercado como resposta direta ao modelo criticado pela Binance Research meses antes. O ponto aqui não é prever preço, e sim notar que a decisão de tokenomics foi a campanha. É exatamente o caminho que apontamos em [como os airdrops vão mudar em 2026](/blog/jogo-dos-incentivos-airdrops-2026).
 
 ## Unlocks mal comunicados: o erro mais barato de evitar
 
@@ -115,7 +115,7 @@ O padrão bom tem quatro movimentos:
 - **Absorção:** casar a janela do unlock com lançamentos que criam demanda real: feature nova, expansão de utilidade, programa de staking, integração relevante.
 - **Follow-up:** depois do evento, mostrar o que aconteceu de fato com dados on-chain, fechando o ciclo com transparência.
 
-Nenhum desses movimentos elimina a sell pressure matemática. Todos eles reduzem a sell pressure narrativa, que costuma ser maior: a Keyrock (2024) mostrou que boa parte da queda acontece antes do destrave, na antecipação. Antecipação é percepção, e percepção é trabalho de marketing.
+Nenhum desses movimentos elimina a sell pressure matemática. Todos eles reduzem a sell pressure narrativa, que costuma ser maior: a Keyrock (2024) mostrou que boa parte da queda acontece antes do destrave, na antecipação. Antecipação é percepção, e percepção é trabalho de marketing. No [pós-mortem de airdrops](/blog/airdrop-pos-mortem-evitar-dump), o mesmo padrão se repete no dia do claim.
 
 ## Como alinhar tokenomics e narrativa na prática
 

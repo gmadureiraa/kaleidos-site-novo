@@ -6,11 +6,11 @@ export const blogNew5: BlogPost[] = [
   {
     slug: "pr-assessoria-imprensa-cripto-brasil",
     title: "PR e assessoria de imprensa cripto no Brasil: o guia completo",
-    seoTitle: "PR e assessoria de imprensa cripto no Brasil: guia 2026 | Kaleidos",
+    seoTitle: "Assessoria de imprensa cripto no Brasil: guia 2026",
     excerpt:
       "Como construir autoridade de imprensa para um projeto cripto no Brasil: veículos que importam, press release que não vira lixo, PR para TGE e listagem, gestão de FUD e como medir o retorno.",
     seoDescription:
-      "Guia completo de PR e assessoria de imprensa cripto no Brasil: veículos reais, press release, PR para TGE, gestão de crise e como medir o retorno.",
+      "Guia completo de PR e assessoria de imprensa cripto no Brasil: veículos reais, press release, PR para TGE, gestão de crise e como medir o retorno de verdade.",
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -85,7 +85,7 @@ Em cripto, o jogo muda por três motivos.
 
 O primeiro é técnico. Um jornalista de finanças tradicionais pode não saber a diferença entre um token de governança e um utility token. Se o seu material não traduz o produto com precisão, a matéria sai errada, e matéria errada sobre token vira problema regulatório e reputacional.
 
-O segundo é regulatório. No Brasil, a comunicação de projetos cripto precisa respeitar os limites da CVM sobre oferta de valores mobiliários e promessa de retorno. A Resolução CVM 175 e o Parecer de Orientação 40 (CVM, 2023) deixaram claro que muito token pode ser enquadrado como valor mobiliário. Uma assessoria que não entende isso coloca o cliente em risco ao escrever "investimento garantido" num release.
+O segundo é regulatório. No Brasil, a comunicação de projetos cripto precisa respeitar [os limites da regulação cripto brasileira](/blog/regulacao-marketing-cripto-brasil-2026), em especial a CVM sobre oferta de valores mobiliários e promessa de retorno. A Resolução CVM 175 e o Parecer de Orientação 40 (CVM, 2023) deixaram claro que muito token pode ser enquadrado como valor mobiliário. Uma assessoria que não entende isso coloca o cliente em risco ao escrever "investimento garantido" num release.
 
 O terceiro é a velocidade do ciclo. Cripto vive em ciclos de narrativa que giram em semanas. Quem faz PR no setor precisa surfar a narrativa quente do momento, seja tokenização de ativos reais, stablecoin, ETF ou DeFi, e posicionar o projeto dentro dela enquanto ela ainda é assunto.
 
@@ -193,7 +193,7 @@ As métricas que importam:
 - **Tráfego de referência.** Quantos visitantes o veículo mandou para o seu site. Dá para rastrear e amarrar ao funil.
 - **Menções em veículo que o público-alvo lê.** Se o seu investidor lê InfoMoney, aparecer no InfoMoney vale por definição mais do que em qualquer outro lugar.
 
-A Kaleidos monta um painel simples com essas métricas e revisa a cada ciclo. Assim PR deixa de ser ato de fé e vira disciplina com meta.
+A Kaleidos monta um painel simples com essas métricas e revisa a cada ciclo. Assim PR deixa de ser ato de fé e vira disciplina com meta, dentro da mesma lógica de [medir o ROI do marketing cripto](/blog/roi-marketing-cripto-como-medir).
 
 ## Conclusão: PR é infraestrutura de confiança
 
@@ -201,7 +201,7 @@ Em um mercado onde a desconfiança é o padrão, a autoridade de imprensa não �
 
 Fazer PR cripto bem exige fluência de mercado, disciplina de relacionamento e coragem para dizer a verdade, inclusive na crise. É trabalho de longo prazo, não campanha de uma semana.
 
-A Kaleidos é uma agência cripto-nativa. A gente conhece os veículos, fala a língua dos jornalistas do setor e entende os limites regulatórios do mercado brasileiro. Se o seu projeto, exchange ou protocolo precisa construir autoridade de imprensa que aguenta o ciclo inteiro, [fala com a Kaleidos](/contato). A gente constrói a reputação antes de você precisar dela.
+A Kaleidos é uma agência cripto-nativa. A gente conhece os veículos, fala a língua dos jornalistas do setor e entende os limites regulatórios do mercado brasileiro. Se o seu projeto, exchange ou protocolo precisa construir autoridade de imprensa que aguenta o ciclo inteiro, [fala com a Kaleidos](/contato). A gente constrói a reputação antes de você precisar dela. E se ainda está avaliando parceiros, veja [o que é uma agência de marketing cripto](/blog/o-que-e-agencia-marketing-cripto) e quando contratar uma.
 `,
   },
 ];

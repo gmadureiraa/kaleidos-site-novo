@@ -5,6 +5,9 @@ import { papers } from '@/lib/papers-data'
 import { getAllServicePages } from '@/lib/service-pages-data'
 import { AUDIENCES } from '@/lib/audiences'
 
+// Revalida a cada 1h: posts agendados (KAI) entram no sitemap sem redeploy.
+export const revalidate = 3600
+
 // Páginas de serviço descontinuadas (rota retorna notFound) — não entram no sitemap.
 const RETIRED_SERVICE_SLUGS = new Set(['eventos-cripto'])
 

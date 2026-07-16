@@ -6,7 +6,7 @@ export const blogNew38: BlogPost[] = [
   {
     slug: "auditoria-google-ads-guia",
     title: "Como fazer uma auditoria de Google Ads (checklist passo a passo)",
-    seoTitle: "Auditoria de Google Ads: checklist passo a passo | Kaleidos",
+    seoTitle: "Auditoria de Google Ads: checklist passo a passo",
     excerpt:
       "A maioria das contas de Google Ads queima orçamento em silêncio: keywords irrelevantes, tracking quebrado e estrutura confusa. A Kaleidos mostra o checklist completo de auditoria, da estrutura da conta ao corte de desperdício.",
     seoDescription:
@@ -80,7 +80,7 @@ Neste guia, a Kaleidos compartilha o checklist que usa para auditar contas de Go
 Auditoria sem contexto vira checklist burocrático. Antes de abrir a conta, responda três perguntas:
 
 - **Qual é o objetivo de negócio?** Leads qualificados, vendas de e-commerce, agendamentos, downloads. Cada objetivo muda o que é "bom".
-- **Qual é a economia da conta?** Quanto vale uma conversão, qual CPA é aceitável, qual margem sustenta o CAC atual.
+- **Qual é a economia da conta?** Quanto vale uma conversão, qual CPA é aceitável, qual margem sustenta o CAC atual (os benchmarks de [quanto do faturamento investir em marketing](/blog/quanto-do-faturamento-investir-em-marketing) ajudam a calibrar).
 - **Qual é o período de análise?** Use no mínimo 90 dias para ter volume estatístico. Períodos curtos demais escondem padrões e amplificam ruído.
 
 Com isso definido, siga o checklist na ordem abaixo. A ordem importa.
@@ -116,7 +116,7 @@ O processo:
 
 1. Exporte os termos de pesquisa dos últimos 90 dias, ordenados por custo.
 2. Classifique cada termo relevante em três grupos: converte, é relevante mas não converteu ainda, é irrelevante.
-3. Some o custo do grupo irrelevante. Esse número é o seu desperdício mensurável, e costuma ser o argumento mais forte de toda a auditoria.
+3. Some o custo do grupo irrelevante. Esse número é o seu desperdício mensurável, e costuma ser o argumento mais forte de toda a auditoria (mapeamos os [6 vazamentos de verba mais comuns no Google Ads](/blog/onde-desperdica-verba-google-ads) em um guia próprio).
 4. Transforme os irrelevantes em negativas, no nível certo (campanha ou lista compartilhada).
 
 Sinais de alerta específicos:
@@ -158,7 +158,7 @@ Aproveite este passo para auditar os anúncios em si: responsivos de pesquisa co
 A pergunta central: o dinheiro está onde o resultado está?
 
 - **Campanhas limitadas por orçamento que batem a meta de CPA.** Se uma campanha converte dentro da meta e aparece como "limitada pelo orçamento", há resultado sendo deixado na mesa. Realoque de campanhas piores.
-- **Campanhas que gastam sem converter há 90 dias.** Precisam de justificativa explícita (branding consciente, novo lançamento em aprendizado) ou de corte.
+- **Campanhas que gastam sem converter há 90 dias.** Precisam de justificativa explícita (branding consciente, novo lançamento em aprendizado) ou de corte. Se mesmo otimizada a conta não fecha o CPA, avalie as [alternativas ao Google Ads para aquisição](/blog/alternativas-ao-google-ads-para-aquisicao).
 - **Distribuição entre marca e não-marca.** Campanhas de marca costumam ter CPA excelente, mas parte dessas conversões viria organicamente. Se a maior parte do orçamento está em marca, o número consolidado da conta parece ótimo e esconde a performance real da aquisição.
 - **Estratégias de lance coerentes com o volume.** Metas de CPA agressivas demais em campanhas com pouco dado estrangulam a entrega. Metas frouxas demais deixam o algoritmo gastar sem disciplina.
 - **Sazonalidade e ritmo de gasto.** Verifique se o orçamento mensal está sendo consumido de forma consistente ou se acaba no dia 20.

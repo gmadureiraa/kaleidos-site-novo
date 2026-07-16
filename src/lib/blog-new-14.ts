@@ -6,7 +6,7 @@ export const blogNew14: BlogPost[] = [
   {
     slug: "marketing-stablecoin-brasil",
     title: "Marketing para stablecoin no Brasil: como comunicar dólar digital",
-    seoTitle: "Marketing para stablecoin no Brasil: como comunicar dólar digital | Kaleidos",
+    seoTitle: "Marketing de stablecoin no Brasil: dólar digital",
     excerpt:
       "Stablecoins já dominam o fluxo cripto brasileiro, mas a maioria dos players comunica dólar digital do jeito errado. A Kaleidos mostra como posicionar stablecoin no Brasil: público certo, confiança como mensagem central, regulação do BCB e canais que convertem.",
     seoDescription:
@@ -61,7 +61,7 @@ export const blogNew14: BlogPost[] = [
 
 O brasileiro não compra cripto. O brasileiro compra dólar.
 
-Essa é a leitura mais honesta do mercado local. Segundo o relatório de geografia de criptomoedas da Chainalysis (2024), o Brasil recebeu cerca de US$ 90 bilhões em valor cripto no período analisado, o maior volume da América Latina, e a maior parte desse fluxo em exchanges locais foi de stablecoins, não de Bitcoin ou altcoins. O próprio presidente do Banco Central, Gabriel Galípolo, afirmou em 2025 que cerca de 90% do fluxo cripto no país passa por stablecoins.
+Essa é a leitura mais honesta do mercado local. Segundo o relatório de geografia de criptomoedas da Chainalysis (2024), o Brasil recebeu cerca de US$ 90 bilhões em valor cripto no período analisado, o maior volume da América Latina, e a maior parte desse fluxo em exchanges locais foi de stablecoins, não de Bitcoin ou altcoins. O próprio presidente do Banco Central, Gabriel Galípolo, afirmou em 2025 que cerca de 90% do fluxo cripto no país passa por stablecoins (reunimos mais dados assim nas [estatísticas de marketing cripto de 2026](/blog/estatisticas-marketing-cripto-2026)).
 
 Ou seja: o produto que o mercado brasileiro mais quer já está definido. A disputa agora é de comunicação. Quem conseguir explicar dólar digital com clareza, construir confiança verificável e falar com o público certo no canal certo vai capturar um mercado que cresce em cima de uma dor real: a fragilidade do real e o custo do sistema financeiro tradicional.
 
@@ -129,7 +129,7 @@ O ponto mais relevante para stablecoins: operações com moedas estáveis lastre
 Para o marketing, isso muda o jogo em três frentes:
 
 1. **Autorização vira selo.** Ser (ou operar com) uma instituição autorizada pelo BCB é um diferencial de confiança enorme frente a players offshore e informais. Comunique isso com destaque, do site ao onboarding.
-2. **O discurso precisa de revisão jurídica.** Promessas de rendimento, uso de termos como "conta em dólar" e comparações com produtos bancários têm implicações regulatórias. Marketing e jurídico precisam trabalhar juntos desde o briefing, não na revisão final.
+2. **O discurso precisa de revisão jurídica.** Promessas de rendimento, uso de termos como "conta em dólar" e comparações com produtos bancários têm implicações regulatórias (o guia de [regulação cripto e marketing no Brasil](/blog/regulacao-marketing-cripto-brasil-2026) detalha os limites). Marketing e jurídico precisam trabalhar juntos desde o briefing, não na revisão final.
 3. **Educação regulatória é conteúdo.** O público B2B está tentando entender o novo regime. Quem publicar as melhores explicações sobre as resoluções do BCB, em linguagem acessível, captura essa demanda de busca e se posiciona como adulto na sala.
 
 ## Diferenciação num mercado lotado
@@ -139,7 +139,7 @@ USDT e USDC dominam o volume global, e no Brasil dezenas de exchanges, fintechs 
 - **Experiência.** Onboarding com Pix em menos de cinco minutos vale mais que qualquer whitepaper. A conveniência é a feature.
 - **Nicho de uso.** Em vez de "dólar digital para todos", seja a melhor solução para um caso: freelancers que recebem de fora, importadores, viajantes, tesourarias de PME. Nicho define mensagem, canal e produto.
 - **Marca e voz.** A maioria dos players comunica com o mesmo visual genérico de fintech. Uma marca com opinião, tom próprio e consistência editorial se destaca num feed onde todos parecem iguais.
-- **Conteúdo como fosso.** O jogo de SEO e educação em português está aberto. Buscas como "como ter conta em dólar", "USDT ou USDC" e "dólar digital vale a pena" têm volume crescente e concorrência editorial fraca. Quem construir a melhor biblioteca de respostas agora colhe tráfego qualificado por anos.
+- **Conteúdo como fosso.** O jogo de SEO e educação em português está aberto (se for terceirizar, veja [o que avaliar numa agência de SEO cripto](/blog/agencias-seo-cripto-o-que-avaliar)). Buscas como "como ter conta em dólar", "USDT ou USDC" e "dólar digital vale a pena" têm volume crescente e concorrência editorial fraca. Quem construir a melhor biblioteca de respostas agora colhe tráfego qualificado por anos.
 
 ## Canais: onde comunicar dólar digital
 

@@ -6,7 +6,7 @@ export const blogNew44: BlogPost[] = [
   {
     slug: "seo-para-varejo-e-commerce",
     title: "SEO para varejo e e-commerce: guia prático para vender mais no orgânico",
-    seoTitle: "SEO para varejo e e-commerce: guia prático | Kaleidos",
+    seoTitle: "SEO para varejo e e-commerce: guia prático",
     excerpt:
       "Loja online sem SEO depende de mídia paga para sempre. A Kaleidos mostra o caminho prático: arquitetura de categorias, páginas de coleção, schema Product, conteúdo que vende, busca interna, performance e sazonalidade.",
     seoDescription:
@@ -87,7 +87,7 @@ Três princípios práticos:
 2. **URLs curtas e descritivas.** \`/tenis-corrida-masculino\` comunica mais que \`/cat/1234/prod?id=9876\`. URL limpa ajuda o usuário, o Google e qualquer relatório de analytics.
 3. **Um tema, uma página.** Se "tênis de corrida" e "tênis para correr" apontam para páginas diferentes, elas competem entre si (a chamada canibalização). Consolide variações do mesmo intento em uma única URL forte.
 
-O inimigo silencioso da arquitetura é a **navegação facetada**: filtros de cor, tamanho, preço e marca que geram URLs infinitas (\`?cor=azul&tamanho=42&ordem=preco\`). Cada combinação é uma página quase idêntica às outras, e o Google desperdiça o orçamento de rastreamento nelas em vez de visitar o que importa. A solução padrão: tag canonical apontando para a versão limpa da categoria e bloqueio de parâmetros irrelevantes, liberando como página indexável apenas as combinações de filtro que têm demanda real de busca (como "tênis de corrida azul", se houver volume).
+O inimigo silencioso da arquitetura é a **navegação facetada**: filtros de cor, tamanho, preço e marca que geram URLs infinitas (\`?cor=azul&tamanho=42&ordem=preco\`). Cada combinação é uma página quase idêntica às outras, e o Google desperdiça o orçamento de rastreamento nelas em vez de visitar o que importa (crawl budget é um dos [problemas críticos de SEO técnico](/blog/problemas-criticos-seo-tecnico) que mais derrubam ranking). A solução padrão: tag canonical apontando para a versão limpa da categoria e bloqueio de parâmetros irrelevantes, liberando como página indexável apenas as combinações de filtro que têm demanda real de busca (como "tênis de corrida azul", se houver volume).
 
 ## Páginas de categoria e coleção: os maiores ativos da loja
 
@@ -175,7 +175,7 @@ O playbook que funciona:
 - **Estrutura interna apontando para a página sazonal** no período: banner na home, links nas categorias relacionadas, menção no blog. Autoridade interna se direciona.
 - **Pós-pico com inteligência**: em vez de derrubar a página, atualizar com "as ofertas acabaram, veja as promoções atuais" e link para as categorias vivas, preservando o tráfego residual.
 
-Produtos fora de estoque seguem lógica parecida: se o item volta, a página fica no ar com aviso e captura de e-mail; se saiu de linha para sempre, redirecionamento 301 para o sucessor ou para a categoria. Deletar página com tráfego e link é queimar patrimônio.
+Produtos fora de estoque seguem lógica parecida: se o item volta, a página fica no ar com aviso e captura de e-mail; se saiu de linha para sempre, redirecionamento 301 para o sucessor ou para a categoria. Deletar página com tráfego e link é queimar patrimônio, o mesmo princípio que rege o [checklist de redesenhar o site sem perder SEO](/blog/redesenhar-site-sem-perder-seo).
 
 ## O que medir para saber se está funcionando
 
@@ -187,7 +187,7 @@ SEO de e-commerce se mede em receita, não em posição. O painel mínimo:
 - **Core Web Vitals** com dados reais de usuário.
 - **Posição dos termos-cabeça** das dez categorias mais importantes, acompanhados semanalmente.
 
-Um alerta de expectativa: o orgânico é jogo de meses. As primeiras melhorias técnicas (indexação, rich results, velocidade) aparecem em semanas, mas crescimento consistente de tráfego e receita costuma levar de quatro a oito meses de trabalho contínuo. Quem trata SEO como campanha desiste antes do resultado; quem trata como canal colhe composto.
+Um alerta de expectativa: o orgânico é jogo de meses. As primeiras melhorias técnicas (indexação, rich results, velocidade) aparecem em semanas, mas crescimento consistente de tráfego e receita costuma levar de quatro a oito meses de trabalho contínuo. Quem trata SEO como campanha desiste antes do resultado; quem trata como canal colhe composto. Se o resultado demorar além do esperado, vale revisar as [7 causas de um SEO que não funciona](/blog/por-que-seu-seo-nao-esta-funcionando).
 
 ## Transforme o orgânico no canal mais rentável da sua loja
 

@@ -6,7 +6,7 @@ export const blogNew35: BlogPost[] = [
   {
     slug: "melhores-market-makers-cripto-2026",
     title: "Market makers de cripto em 2026: o que são, como escolher e a ligação com marketing",
-    seoTitle: "Market makers de cripto em 2026: como escolher e evitar red flags | Kaleidos",
+    seoTitle: "Market makers de cripto: como escolher em 2026",
     excerpt:
       "Todo TGE depende de dois motores: liquidez e atenção. A Kaleidos explica o que faz um market maker de cripto, a diferença entre loan e retainer, as red flags que destroem projetos e por que MM e marketing precisam trabalhar juntos no lançamento.",
     seoDescription:
@@ -128,7 +128,7 @@ O setor tem players sérios e tem oportunistas. A diferença aparece nos detalhe
 
 Aqui está a parte que quase nenhum guia de market making menciona, e que a Kaleidos vê de perto em todo TGE que acompanha.
 
-Um lançamento de token é um encontro marcado entre oferta e demanda. O market maker organiza a oferta: livro com profundidade, spread civilizado, ordens dos dois lados. O marketing constrói a demanda: narrativa, comunidade, KOLs, conteúdo, presença nas conversas certas nas semanas que antecedem o TGE.
+Um lançamento de token é um encontro marcado entre oferta e demanda. O market maker organiza a oferta: livro com profundidade, spread civilizado, ordens dos dois lados. O marketing constrói a demanda: narrativa, comunidade, KOLs, conteúdo e [mídia paga que converte](/blog/advertising-cripto-que-converte), presença nas conversas certas nas semanas que antecedem o TGE.
 
 Quando os dois planos não conversam, os modos de falha são previsíveis:
 
@@ -136,7 +136,7 @@ Quando os dois planos não conversam, os modos de falha são previsíveis:
 - **Liquidez sem atenção**: o MM cota o dia inteiro em um livro onde ninguém aparece. O projeto paga por infraestrutura de mercado para um mercado que não existe. Volume mínimo, ranking irrelevante nas exchanges, e a listagem que custou caro não gera nada.
 - **Calendários dessincronizados**: a campanha de pico acontece duas semanas antes de um unlock relevante, ou o esforço de mídia termina exatamente quando a liquidez está no ponto ideal para receber demanda. Timing errado desperdiça os dois orçamentos.
 
-O cenário saudável é o inverso: o time de marketing sabe qual profundidade de livro existe e calibra a agressividade da campanha para a demanda que o mercado consegue absorver sem distorção. O MM sabe quando vêm as ondas de atenção e ajusta profundidade e presença nas exchanges para esses momentos. Unlocks, listagens adicionais e campanhas entram no mesmo calendário, revisado pelas duas pontas.
+O cenário saudável é o inverso: o time de marketing sabe qual profundidade de livro existe e calibra a agressividade da campanha para a demanda que o mercado consegue absorver sem distorção. O MM sabe quando vêm as ondas de atenção e ajusta profundidade e presença nas exchanges para esses momentos. Unlocks, listagens adicionais e campanhas entram no mesmo calendário, revisado pelas duas pontas. O [teardown do points system do Lombard](/blog/teardown-lombard-points-system) mostra na prática o que um unlock pesado faz com o preço mesmo quando a retenção de capital funciona.
 
 Na prática, isso significa colocar o market maker e a agência de marketing na mesma reunião de planejamento do TGE, pelo menos oito semanas antes da listagem. Parece óbvio. Quase ninguém faz.
 
@@ -152,7 +152,7 @@ Três movimentos definem o cenário atual:
 
 Market maker não é acessório de listagem nem botão de subir preço. É a infraestrutura que permite que a atenção conquistada pelo marketing se converta em um mercado funcional, em vez de um gráfico de pump and dump.
 
-Se o seu projeto está a caminho de um TGE, trate as duas contratações como um sistema único: escolha o MM com KPIs contratuais e incentivos alinhados, escolha o parceiro de marketing que entende como liquidez e narrativa se retroalimentam, e coloque os dois no mesmo calendário desde o início.
+Se o seu projeto está a caminho de um TGE, trate as duas contratações como um sistema único: escolha o MM com KPIs contratuais e incentivos alinhados, escolha o parceiro de marketing que entende como liquidez e narrativa se retroalimentam, e coloque os dois no mesmo calendário desde o início (e, antes disso, veja como [estruturar o time de BD e growth](/blog/estruturar-time-bd-growth-cripto) que vai operar tudo).
 
 A Kaleidos é uma agência de marketing especializada em cripto e web3. Ajudamos projetos a construir narrativa, comunidade e demanda real antes, durante e depois do TGE, em sincronia com a estratégia de liquidez. Se você está planejando um lançamento de token, [fale com a gente](/contato) e vamos desenhar juntos o lado da atenção do seu lançamento.`,
   },

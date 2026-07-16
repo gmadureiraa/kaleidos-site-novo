@@ -6,7 +6,7 @@ export const blogNew23: BlogPost[] = [
   {
     slug: "airdrop-pos-mortem-evitar-dump",
     title: "Airdrop pós-mortem: como evitar o dump no dia da distribuição",
-    seoTitle: "Airdrop pós-mortem: como evitar o dump no dia do claim | Kaleidos",
+    seoTitle: "Airdrop pós-mortem: como evitar o dump no claim",
     excerpt:
       "A maioria dos tokens despenca nas primeiras horas após o claim do airdrop. A Kaleidos disseca por que isso acontece e quais mecânicas anti-dump (vesting, staking, utilidade imediata e comunicação) separam os airdrops que seguraram preço dos que viraram estatística.",
     seoDescription:
@@ -88,7 +88,7 @@ A soma desses três grupos encontra, do outro lado do livro, uma liquidez inicia
 
 ### 1. Vesting desenhado para diluir, não para adiar
 
-Vesting é a ferramenta mais óbvia e a mais mal usada. O erro comum é o cliff: travar 100% por seis meses e liberar tudo de uma vez. Isso não elimina a pressão vendedora, apenas a agenda para uma data pública que o mercado inteiro conhece. Traders vendem antes do unlock, o preço cai antecipadamente e o recebedor liquida no desbloqueio de qualquer forma.
+Vesting é a ferramenta mais óbvia e a mais mal usada. O erro comum é o cliff: travar 100% por seis meses e liberar tudo de uma vez. Isso não elimina a pressão vendedora, apenas a agenda para uma data pública que o mercado inteiro conhece. Traders vendem antes do unlock, o preço cai antecipadamente e o recebedor liquida no desbloqueio de qualquer forma ([tokenomics é marketing](/blog/tokenomics-e-marketing-sell-buy-pressure): o mercado precifica o calendário antes de você comunicar).
 
 O desenho que funciona combina três elementos:
 
@@ -113,7 +113,7 @@ Utilidade imediata pode assumir várias formas:
 - **Desconto em taxas** ativo desde o primeiro dia, no modelo que o BNB consolidou.
 - **Governança com decisão relevante em pauta**: uma votação importante aberta na semana do claim dá motivo concreto para manter tokens.
 - **Acesso a features ou tiers** do produto condicionado a holding.
-- **Temporadas seguintes já anunciadas**: o Blur usou esse desenho em 2023, encadeando temporadas de incentivos que davam ao trader razão para continuar ativo e posicionado em vez de sair após o primeiro claim (Fonte: The Block, 2023).
+- **Temporadas seguintes já anunciadas**: o Blur usou esse desenho em 2023, encadeando temporadas de incentivos que davam ao trader razão para continuar ativo e posicionado em vez de sair após o primeiro claim (Fonte: The Block, 2023). É a lógica dos [growth loops que retêm](/blog/growth-loops-cripto-referral-quests).
 
 Celestia é outro caso instrutivo: após o airdrop Genesis de outubro de 2023, o TIA multiplicou de preço nos meses seguintes, impulsionado pela narrativa de modularidade e pelo staking nativo que oferecia rendimento e elegibilidade para airdrops de ecossistema, criando um motivo composto para segurar (Fonte: Decrypt, 2023).
 
@@ -147,7 +147,7 @@ A receita da Hyperliquid não é mágica, é a soma das mecânicas deste post: p
 
 ## Airdrop não termina no claim, começa nele
 
-O erro conceitual por trás da maioria dos dumps é tratar o airdrop como linha de chegada de uma campanha de marketing. Ele é o oposto: é o dia em que milhares de pessoas viram acionistas do projeto ao mesmo tempo, e a primeira experiência delas como holders define se ficam ou saem. Vesting, staking, utilidade e comunicação não são detalhes de tokenomics, são o produto de boas-vindas desses novos acionistas.
+O erro conceitual por trás da maioria dos dumps é tratar o airdrop como linha de chegada de uma campanha de marketing. Ele é o oposto: é o dia em que milhares de pessoas viram acionistas do projeto ao mesmo tempo, e a primeira experiência delas como holders define se ficam ou saem. É exatamente pra onde [o jogo dos incentivos caminha em 2026](/blog/jogo-dos-incentivos-airdrops-2026). Vesting, staking, utilidade e comunicação não são detalhes de tokenomics, são o produto de boas-vindas desses novos acionistas.
 
 A Kaleidos ajuda projetos cripto e web3 a desenhar lançamentos de token onde marketing, comunidade e mecânica de distribuição trabalham juntos: da estratégia de elegibilidade à comunicação do claim e ao plano dos 90 dias seguintes. Se o seu TGE está no horizonte e você não quer virar mais um gráfico em escada descendo, [fale com a Kaleidos](/contato).`,
   },

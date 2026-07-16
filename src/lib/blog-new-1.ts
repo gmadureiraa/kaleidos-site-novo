@@ -6,11 +6,11 @@ export const blogNew1: BlogPost[] = [
   {
     slug: "regulacao-marketing-cripto-brasil-2026",
     title: "Regulação cripto no Brasil e marketing: o que você pode e não pode comunicar",
-    seoTitle: "Regulação cripto no Brasil: o que o marketing pode dizer",
+    seoTitle: "Regulação cripto no Brasil: guia pro marketing",
     excerpt:
       "O marco legal cripto brasileiro já está em vigor e mudou o que exchanges e projetos podem prometer. Este guia mostra a linha entre marketing agressivo e propaganda enganosa.",
     seoDescription:
-      "Regulação cripto no Brasil: a Lei 14.478/2022 e o Banco Central definem o que exchanges e projetos podem comunicar. Veja o que evitar, os disclaimers e como fazer marketing sem cruzar a linha.",
+      "Regulação cripto no Brasil: o que a Lei 14.478/2022 e o Banco Central permitem comunicar. Disclaimers, o que evitar e como fazer marketing sem cruzar a linha.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -138,8 +138,8 @@ Não há um texto único obrigatório por lei para todo anúncio de cripto, mas 
 Conformidade não é o oposto de ousadia. Os melhores anúncios cripto do mercado são agressivos na narrativa e conservadores na promessa. A fórmula:
 
 1. **Venda a categoria e o produto, não o retorno.** Comunique facilidade, segurança da plataforma, custódia, experiência. Deixe o "quanto rende" para o próprio mercado.
-2. **Use prova real, não projeção.** Número de usuários, tempo de operação, auditoria, licença: fatos verificáveis convertem sem prometer futuro.
-3. **Eduque em vez de hypar.** Conteúdo que explica risco constrói confiança e blinda a marca. Autoridade vende mais que promessa vazia.
+2. **Use prova real, não projeção.** Número de usuários, tempo de operação, auditoria, licença: fatos verificáveis convertem sem prometer futuro. Um bom ponto de partida são as [estatísticas de marketing cripto de 2026](/blog/estatisticas-marketing-cripto-2026), todas com fonte nomeada.
+3. **Eduque em vez de hypar.** Conteúdo que explica risco constrói confiança e blinda a marca. Autoridade vende mais que promessa vazia. O mesmo princípio vale pra [assessoria de imprensa cripto](/blog/pr-assessoria-imprensa-cripto-brasil): pauta com prova entra, release com promessa não.
 4. **Sinalize sempre.** Publi marcada, disclaimer visível, fonte citada. Isso não enfraquece a campanha, protege o CAC de virar passivo jurídico.
 5. **Trate o regulador como público.** Escreva cada peça imaginando o Banco Central, a CVM e o CONAR lendo. Se a frase sobrevive a esse olhar, ela é forte.
 
@@ -147,7 +147,7 @@ A linha não é onde a criatividade acaba. É onde a promessa não sustentada co
 
 ---
 
-Se você é founder de projeto cripto ou lidera o marketing de uma exchange ou fintech e quer campanhas que sejam agressivas na conversão e sólidas na conformidade, a Kaleidos ajuda a desenhar a comunicação certa. [Fale com a gente](/contato).
+Se você é founder de projeto cripto ou lidera o marketing de uma exchange ou fintech e quer campanhas que sejam agressivas na conversão e sólidas na conformidade, a Kaleidos ajuda a desenhar a comunicação certa. Se ainda está avaliando parceiros, veja [o que é uma agência de marketing cripto](/blog/o-que-e-agencia-marketing-cripto) e quando contratar uma. [Fale com a gente](/contato).
 `,
   },
 ];

@@ -6,7 +6,7 @@ export const blogNew8: BlogPost[] = [
   {
     slug: "ama-cripto-guia-completo",
     title: "Como fazer um AMA de cripto que gera resultado: guia passo a passo",
-    seoTitle: "AMA de cripto: guia passo a passo para gerar resultado | Kaleidos",
+    seoTitle: "Como fazer um AMA de cripto que gera resultado",
     excerpt:
       "AMA continua sendo um dos formatos mais eficientes de comunidade em cripto. O problema não é o formato. É a execução. Este guia mostra o passo a passo que a Kaleidos usa para transformar um AMA em pipeline, comunidade e conteúdo reaproveitável.",
     seoDescription:
@@ -78,7 +78,7 @@ O problema é que a maioria dos AMAs de cripto não gera resultado nenhum. Vira 
 
 A primeira decisão é onde. Cada plataforma serve a um objetivo diferente, e escolher errado significa falar para a sala errada.
 
-**Twitter Spaces.** Melhor para alcance e captação de público novo. O Space aparece no topo do feed dos seguidores, permite que qualquer um entre e gera gravação que vira clipe. É a escolha padrão quando o objetivo é crescer a audiência e não só conversar com quem já está dentro. A limitação é que o áudio é volátil: sem clipe, o conteúdo evapora.
+**Twitter Spaces.** Melhor para alcance e captação de público novo. O Space aparece no topo do feed dos seguidores, permite que qualquer um entre e gera gravação que vira clipe. É a escolha padrão quando o objetivo é crescer a audiência e não só conversar com quem já está dentro (o Spaces é uma das alavancas do nosso [guia de crescimento no Twitter pra projetos cripto](/blog/twitter-x-crescimento-projeto-cripto)). A limitação é que o áudio é volátil: sem clipe, o conteúdo evapora.
 
 **Telegram.** Melhor para comunidade já engajada. Funciona em dois modos: AMA por voz nos grupos de voz, ou AMA em texto, no qual as perguntas são coletadas antes e respondidas em uma janela concentrada. O AMA em texto tem uma vantagem subestimada: gera transcrição pronta, fácil de reaproveitar. É o formato mais comum quando um projeto visita a comunidade de um parceiro.
 
@@ -86,7 +86,7 @@ A primeira decisão é onde. Cada plataforma serve a um objetivo diferente, e es
 
 **YouTube.** Melhor quando você quer um ativo perene. O vídeo fica indexado, rankeia em busca, e serve de referência por meses. É mais pesado de produzir e atrai menos gente ao vivo, mas entrega o AMA com maior vida útil. Vale quando o tema é denso e merece registro em vídeo.
 
-A regra da Kaleidos é simples: escolha onde a sua comunidade já está, não onde o time se sente confortável. Um projeto com comunidade forte no Telegram que insiste em fazer AMA só no Spaces está deixando engajamento na mesa.
+A regra da Kaleidos é simples: escolha onde a sua comunidade já está, não onde o time se sente confortável (se essa escolha ainda não foi feita, veja o comparativo [Discord vs Telegram pra comunidade cripto](/blog/discord-vs-telegram-comunidade-cripto)). Um projeto com comunidade forte no Telegram que insiste em fazer AMA só no Spaces está deixando engajamento na mesa.
 
 ## Passo 2: escolha o parceiro ou host
 
@@ -131,7 +131,7 @@ Os formatos mais usados em cripto:
 - **Whitelist.** Vagas em uma allowlist de mint, venda ou airdrop para quem participou. É o incentivo mais forte em contexto de lançamento, porque conecta a presença no AMA a um benefício concreto.
 - **Pool de recompensa.** Um valor distribuído entre participantes selecionados. Funciona, mas atrai o público mais mercenário. Use com critério de participação real, não só presença.
 
-A regra é amarrar o incentivo ao comportamento que você quer. Se quer perguntas boas, premie perguntas. Se quer comunidade de longo prazo, premie quem entra no canal principal e fica. Deixe claro o critério antes, para não gerar frustração depois.
+A regra é amarrar o incentivo ao comportamento que você quer, o mesmo princípio dos [growth loops de referral, quests e pontos](/blog/growth-loops-cripto-referral-quests). Se quer perguntas boas, premie perguntas. Se quer comunidade de longo prazo, premie quem entra no canal principal e fica. Deixe claro o critério antes, para não gerar frustração depois.
 
 Um lembrete de operação: nada de prometer retorno financeiro ou garantir valorização como incentivo. Além de destruir credibilidade, entra em terreno de promessa enganosa. Incentivo é acesso e reconhecimento, não promessa de lucro.
 

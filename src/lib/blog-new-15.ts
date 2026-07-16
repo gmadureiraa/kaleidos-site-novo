@@ -6,7 +6,7 @@ export const blogNew15: BlogPost[] = [
   {
     slug: "whitepaper-litepaper-cripto-que-converte",
     title: "Whitepaper e litepaper cripto: como escrever pra convencer, não pra encher linguiça",
-    seoTitle: "Whitepaper e Litepaper Cripto: Como Escrever pra Converter | Kaleidos",
+    seoTitle: "Whitepaper e litepaper cripto: como converter",
     excerpt:
       "Whitepaper não é formalidade, é o documento que decide se investidor, dev e comunidade levam seu projeto a sério. A Kaleidos mostra a diferença entre whitepaper, litepaper e onepager, a estrutura que funciona, os erros que matam credibilidade e como transformar o litepaper em ativo de marketing.",
     seoDescription:
@@ -109,7 +109,7 @@ No litepaper, esse bloco vira diagrama com legenda e dois parágrafos. No whitep
 
 A seção mais escrutinada do documento. Precisa responder, no mínimo: qual a utilidade real do token (o que ele faz que nenhum outro ativo faria), oferta total e cronograma de emissão, alocação por grupo (time, investidores, tesouro, comunidade) com períodos de vesting, e mecanismos de captura de valor.
 
-O erro fatal é apresentar números sem justificativa. "20% pro time com vesting de 4 anos" é informação; explicar por que 4 anos alinha incentivo de longo prazo é argumento. Investidor não compra alocação, compra a lógica por trás dela.
+O erro fatal é apresentar números sem justificativa. "20% pro time com vesting de 4 anos" é informação; explicar por que 4 anos alinha incentivo de longo prazo é argumento. Investidor não compra alocação, compra a lógica por trás dela. Não à toa, [tokenomics é decisão de marketing](/blog/tokenomics-e-marketing-sell-buy-pressure).
 
 ### 5. Roadmap
 
@@ -125,7 +125,7 @@ A Kaleidos revisa documentação de projetos cripto com frequência, e os mesmos
 
 **Jargão como cortina de fumaça.** "Protocolo descentralizado de próxima geração alavancando sinergias cross-chain" não diz nada, e leitor experiente sabe que texto assim geralmente esconde ausência de substância. Jargão técnico é aceitável quando é o termo preciso; é tóxico quando substitui a explicação.
 
-**Promessa de retorno.** Qualquer linguagem que sugira valorização do token ("oportunidade de 100x", "early investors serão recompensados") é dupla armadilha: destrói credibilidade com leitor sofisticado e cria risco regulatório real. Nos Estados Unidos, a SEC usa o teste de Howey (derivado do caso SEC v. W.J. Howey Co., 1946) pra avaliar se um ativo é security, e "expectativa de lucro pelo esforço de terceiros" é exatamente um dos critérios. Whitepaper que promete retorno é evidência servida de bandeja.
+**Promessa de retorno.** Qualquer linguagem que sugira valorização do token ("oportunidade de 100x", "early investors serão recompensados") é dupla armadilha: destrói credibilidade com leitor sofisticado e cria risco regulatório real (no Brasil, os limites estão no guia de [regulação cripto e marketing](/blog/regulacao-marketing-cripto-brasil-2026)). Nos Estados Unidos, a SEC usa o teste de Howey (derivado do caso SEC v. W.J. Howey Co., 1946) pra avaliar se um ativo é security, e "expectativa de lucro pelo esforço de terceiros" é exatamente um dos critérios. Whitepaper que promete retorno é evidência servida de bandeja.
 
 **Copiar template.** Pegar o whitepaper de outro projeto e trocar nomes gera documento com estrutura de outro problema. Analistas leem dezenas de whitepapers por mês e reconhecem esqueleto reciclado em minutos. Já houve casos notórios de plágio literal detectado pela comunidade, e a punição reputacional é imediata.
 
@@ -160,7 +160,7 @@ Aqui está a oportunidade que a maioria dos projetos desperdiça: o litepaper n�
 
 Cada seção do litepaper desdobra em conteúdo: o bloco de problema vira thread e artigo de opinião; a solução vira demo em vídeo e carrossel explicativo; tokenomics vira infográfico e sessão AMA; roadmap vira série de updates mensais. Um litepaper bem estruturado alimenta semanas de pauta em social sem inventar nada novo.
 
-Ele também trabalha no funil: como material de imprensa (jornalista não lê 40 páginas, lê 8), como anexo em outreach pra parceiros e exchanges, como conteúdo gated pra captura de e-mail qualificado e como fonte citável pra IAs e agregadores que hoje respondem "o que é o projeto X?" antes mesmo do seu site aparecer. Documento claro, estruturado e publicado em HTML é o que essas camadas de descoberta conseguem ler e citar.
+Ele também trabalha no funil: como material de imprensa (jornalista não lê 40 páginas, lê 8, como mostramos no guia de [assessoria de imprensa cripto](/blog/pr-assessoria-imprensa-cripto-brasil)), como anexo em outreach pra parceiros e exchanges, como conteúdo gated pra captura de e-mail qualificado e como fonte citável pra IAs e agregadores que hoje respondem "o que é o projeto X?" antes mesmo do seu site aparecer. Documento claro, estruturado e publicado em HTML é o que essas camadas de descoberta conseguem ler e citar.
 
 O whitepaper do Bitcoin, de novo, é o caso-limite: um documento técnico de 9 páginas que virou o ativo de marketing mais eficiente da história do setor, sem ter sido escrito pra isso. Clareza radical sobre um problema real é, no fim, a melhor estratégia de comunicação que existe.
 

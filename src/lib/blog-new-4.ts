@@ -6,11 +6,11 @@ export const blogNew4: BlogPost[] = [
   {
     slug: "marketing-defi-protocolo-sem-shill",
     title: "Marketing de protocolo DeFi: como divulgar sem virar shill",
-    seoTitle: "Marketing de protocolo DeFi: divulgar sem virar shill | Kaleidos",
+    seoTitle: "Marketing de protocolo DeFi sem virar shill",
     excerpt:
       "DeFi não vende hype, vende confiança e utilidade. O guia da Kaleidos pra times de protocolo divulgarem TVL, auditorias, governança e incentivos sem cair no shill.",
     seoDescription:
-      "Guia da Kaleidos pra founders de protocolo DeFi divulgarem sem virar shill: educar sem jargão, comunicar auditorias, TVL real vs vanity e incentivos sustentáveis.",
+      "Guia pra founders de protocolo DeFi divulgarem sem virar shill: educar sem jargão, auditorias como prova, TVL real vs vanity e incentivos sustentáveis.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -187,16 +187,16 @@ Conteúdo técnico não converte na hora como um anúncio. Ele constrói o ativo
 
 ## Incentivos e airdrop sem virar farm-and-dump
 
-Incentivo é a ferramenta mais poderosa e mais perigosa do marketing de DeFi. Bem desenhado, arranca um flywheel. Mal desenhado, é um farm-and-dump com passos de dança.
+Incentivo é a ferramenta mais poderosa e mais perigosa do marketing de DeFi. Bem desenhado, arranca um flywheel de [referral, quests e pontos que escalam de verdade](/blog/growth-loops-cripto-referral-quests). Mal desenhado, é um farm-and-dump com passos de dança.
 
 O problema do airdrop farmável: se qualquer bot ou farm de sybils consegue simular uso e capturar a recompensa, o token é distribuído pra quem nunca vai usar o protocolo. TVL sobe na expectativa, o airdrop acontece, e o capital some no mesmo dia do claim junto com os mercenários.
 
-O objetivo de um airdrop não é inflar um número antes do TGE. É reter usuário depois do claim. Tudo no desenho tem que servir a isso.
+O objetivo de um airdrop não é inflar um número antes do TGE. É reter usuário depois do claim ([fizemos um pós-mortem inteiro sobre por que quase todo airdrop dumpa](/blog/airdrop-pos-mortem-evitar-dump)). Tudo no desenho tem que servir a isso.
 
 O que separa incentivo que constrói de incentivo que destrói:
 
 - **Recompensar uso real, não volume simulado.** Critérios que sybil não consegue farmar barato: tempo de uso, diversidade de interação, retenção.
-- **Vesting e lockups.** Distribuir tudo de uma vez é convidar o dump. Liberar ao longo do tempo alinha o holder ao protocolo.
+- **Vesting e lockups.** Distribuir tudo de uma vez é convidar o dump. Liberar ao longo do tempo alinha o holder ao protocolo. [Tokenomics é decisão de marketing](/blog/tokenomics-e-marketing-sell-buy-pressure): sell pressure previsível derruba a percepção do projeto.
 - **Utilidade de governança no token.** Token que dá voz e serve a uma função é mais difícil de simplesmente vender.
 - **Comunicação honesta do que o token é.** Se você vende o airdrop como oportunidade de lucro rápido, você atrai exatamente o público que vai dumpar. Se você o posiciona como participação num protocolo, atrai quem fica.
 

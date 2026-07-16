@@ -6,7 +6,7 @@ export const blogNew31: BlogPost[] = [
   {
     slug: "advertising-cripto-que-converte",
     title: "Estratégia de advertising cripto que converte (não só impressão)",
-    seoTitle: "Advertising cripto que converte: canais, criativos e medição on-chain",
+    seoTitle: "Advertising cripto que converte: canais e medição",
     excerpt:
       "Como montar mídia paga em cripto que gera carteira ativa, depósito e usuário retido, não só impressão barata. Canais reais, restrições do Google e da Meta, KOL como mídia e atribuição on-chain.",
     seoDescription:
@@ -98,7 +98,7 @@ O mito de que "cripto não pode anunciar no Google" está desatualizado. Desde 2
 
 O que segue proibido ou fortemente restrito: promoção direta de ICOs, protocolos DeFi sem entidade regulada, incentivos de compra de token e conteúdo de aconselhamento de investimento. Na prática, quem tem entidade licenciada anuncia produto e marca; quem não tem anuncia a camada educacional (conteúdo, ferramenta, comunidade) e converte dentro do próprio ecossistema.
 
-A Meta segue lógica parecida: anunciar exchange, plataforma de trading ou produto de investimento cripto exige autorização prévia por escrito, com comprovação de licenças. Sem ela, a conta é reprovada. Com ela, Instagram e Facebook viram canais poderosos para o topo do funil no Brasil, onde o público cripto é grande e o custo por alcance ainda é competitivo.
+A Meta segue lógica parecida: anunciar exchange, plataforma de trading ou produto de investimento cripto exige autorização prévia por escrito, com comprovação de licenças (o processo completo está no nosso guia de [Facebook Ads para cripto](/blog/facebook-ads-cripto-restricoes)). Sem ela, a conta é reprovada. Com ela, Instagram e Facebook viram canais poderosos para o topo do funil no Brasil, onde o público cripto é grande e o custo por alcance ainda é competitivo.
 
 O ganho estratégico de operar nesses canais é o leilão menos disputado: como boa parte dos concorrentes cripto não passa pela certificação, quem passa compra atenção qualificada com menos concorrência direta do que teria em qualquer outro vertical.
 
@@ -117,7 +117,7 @@ No Brasil, esse canal tem peso extra: a audiência cripto local confia mais em c
 
 Atribuição on-chain é a peça que transforma advertising cripto de aposta em sistema. O mecanismo: a ferramenta associa identificadores de campanha (UTM, clique, pixel na landing) ao endereço da carteira que o usuário conecta, e a partir daí acompanha o comportamento on-chain desse endereço: primeira transação, volume, retenção, valor.
 
-O mercado validou a categoria. A Coinbase adquiriu a Spindl, uma das pioneiras de atribuição e ads on-chain, em janeiro de 2025, movimento que sinaliza atribuição on-chain virando infraestrutura padrão. Addressable e Cookie3 oferecem stacks parecidas para anunciantes, conectando campanhas em Google, Meta, X e redes cripto a eventos de carteira.
+O mercado validou a categoria. A Coinbase adquiriu a Spindl, uma das pioneiras de atribuição e ads on-chain, em janeiro de 2025, movimento que sinaliza atribuição on-chain virando infraestrutura padrão. Addressable e Cookie3 oferecem stacks parecidas para anunciantes, conectando campanhas em Google, Meta, X e redes cripto a eventos de carteira. Essas e outras ferramentas de medição estão no nosso guia de [analytics cripto](/blog/melhores-ferramentas-analytics-cripto-2026).
 
 Com isso, o vocabulário da campanha muda:
 
@@ -145,7 +145,7 @@ A alocação que a Kaleidos defende segue três fases, cada uma com critério de
 - **Fase de concentração.** O canal que bateu a meta recebe a maior parte da verba. Os demais caem para manutenção ou zero. Aqui entra a disciplina que quase ninguém tem: cortar o canal de impressões bonitas que não trouxe carteira.
 - **Fase de escala.** Aumento gradual com monitoramento de CAC marginal. Todo canal degrada quando escala; o ponto em que o custo por carteira ativa estoura o teto define o limite de investimento, não a verba disponível.
 
-Duas regras transversais: nunca escalar mídia paga sobre um funil que não converte organicamente, porque ads amplificam o que existe, inclusive os defeitos; e sempre reservar parte da verba para teste contínuo de canal novo, porque em cripto os canais mudam de eficiência mais rápido que em qualquer outro vertical.
+Duas regras transversais: nunca escalar mídia paga sobre um funil que não converte organicamente (o orgânico se constrói com o [SEO para cripto e web3](/blog/guia-seo-para-cripto) bem feito), porque ads amplificam o que existe, inclusive os defeitos; e sempre reservar parte da verba para teste contínuo de canal novo, porque em cripto os canais mudam de eficiência mais rápido que em qualquer outro vertical.
 
 ## O sistema completo, em uma linha
 

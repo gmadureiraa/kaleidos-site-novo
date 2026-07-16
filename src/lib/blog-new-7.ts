@@ -13,11 +13,11 @@ export const blogNew7: BlogPost[] = [
   {
     slug: "discord-vs-telegram-comunidade-cripto",
     title: "Discord vs Telegram para comunidade cripto: qual escolher em 2026",
-    seoTitle: "Discord vs Telegram para Comunidade Cripto: Qual Escolher em 2026",
+    seoTitle: "Discord vs Telegram pra comunidade cripto em 2026",
     excerpt:
       "A escolha entre Discord e Telegram não é detalhe técnico. Ela molda a cultura, a moderação e a segurança da sua comunidade cripto. Este guia da Kaleidos mostra qual plataforma faz sentido para cada tipo de projeto web3 em 2026.",
     seoDescription:
-      "Discord ou Telegram para comunidade cripto em 2026? Compare moderação, bots, onboarding, cultura e segurança anti-scam. Guia da Kaleidos por tipo de projeto web3.",
+      "Discord ou Telegram para comunidade cripto em 2026? Compare moderação, bots, onboarding, cultura e segurança anti-scam. Guia por tipo de projeto web3.",
     category: "growth",
     author: AUTHOR,
     publishedAt: "2026-07-14",
@@ -128,13 +128,13 @@ Não existe vencedora universal. Existe encaixe entre plataforma e tipo de proje
 
 Recomendação: Discord como base, Telegram como alcance.
 
-Projetos DeFi vivem de confiança e de discussão técnica. Governança, propostas, suporte a integrações e documentação pedem canais separados e permanência. Discord organiza isso. O Telegram entra como canal de anúncios rápidos, principalmente para avisos de mercado, atualizações de contrato e alertas de segurança.
+Projetos DeFi vivem de confiança e de discussão técnica, como mostramos no guia de [marketing de protocolo DeFi](/blog/marketing-defi-protocolo-sem-shill). Governança, propostas, suporte a integrações e documentação pedem canais separados e permanência. Discord organiza isso. O Telegram entra como canal de anúncios rápidos, principalmente para avisos de mercado, atualizações de contrato e alertas de segurança.
 
 ### NFT
 
 Recomendação: Discord, com força total.
 
-Comunidade NFT é o caso clássico de Discord. Verificação por posse de token via Collab.Land, cargos por coleção, canais de holders, alpha e colaboração. A cultura de permanência e status combina com a arquitetura de cargos. Telegram costuma ser secundário aqui.
+Comunidade NFT é o caso clássico de Discord ([o marketing de NFT em 2026](/blog/marketing-nft-2026-vale-a-pena) é quase todo comunidade). Verificação por posse de token via Collab.Land, cargos por coleção, canais de holders, alpha e colaboração. A cultura de permanência e status combina com a arquitetura de cargos. Telegram costuma ser secundário aqui.
 
 ### Exchange
 
@@ -146,7 +146,7 @@ Exchange precisa de alcance e resposta rápida. Telegram entrega suporte ágil, 
 
 Recomendação: Telegram, quase sempre.
 
-Memecoin vive de velocidade e hype. O fluxo de feed do Telegram, os grupos gigantes e a entrada sem atrito são exatamente o que a cultura pede. Estrutura demais mata o momento. Discord pode entrar mais tarde, se o projeto amadurecer e quiser construir permanência.
+Memecoin vive de velocidade e hype, como detalhamos no guia de [marketing para memecoins](/blog/marketing-memecoin-o-que-funciona). O fluxo de feed do Telegram, os grupos gigantes e a entrada sem atrito são exatamente o que a cultura pede. Estrutura demais mata o momento. Discord pode entrar mais tarde, se o projeto amadurecer e quiser construir permanência.
 
 ## Como estruturar
 

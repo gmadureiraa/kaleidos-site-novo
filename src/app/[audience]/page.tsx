@@ -25,7 +25,29 @@ export async function generateMetadata({
     title: a.metaTitle,
     description: a.metaDesc,
     alternates: { canonical: `/${a.slug}` },
-    openGraph: { title: a.metaTitle, description: a.metaDesc },
+    // openGraph parcial substitui o objeto do root layout inteiro — sem `images`
+    // aqui as audiências perderiam og:image. Fallback: capa institucional.
+    openGraph: {
+      title: a.metaTitle,
+      description: a.metaDesc,
+      url: `/${a.slug}`,
+      type: "website",
+      locale: "pt_BR",
+      images: [
+        {
+          url: "/Kaleidos/imagens/Capa.png",
+          width: 1200,
+          height: 630,
+          alt: a.metaTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: a.metaTitle,
+      description: a.metaDesc,
+      images: ["/Kaleidos/imagens/Capa.png"],
+    },
   };
 }
 

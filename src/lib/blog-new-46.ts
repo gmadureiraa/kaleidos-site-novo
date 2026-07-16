@@ -6,7 +6,7 @@ export const blogNew46: BlogPost[] = [
   {
     slug: "inbound-marketing-para-saas",
     title: "Inbound marketing para SaaS: crescimento orgânico consistente",
-    seoTitle: "Inbound marketing para SaaS: crescimento orgânico | Kaleidos",
+    seoTitle: "Inbound marketing para SaaS: crescimento orgânico",
     excerpt:
       "Como montar uma máquina de inbound pra SaaS: funil de conteúdo, SEO, lead magnets, nurturing e product-led growth trabalhando juntos pra gerar pipeline previsível sem depender só de mídia paga.",
     seoDescription:
@@ -59,7 +59,7 @@ export const blogNew46: BlogPost[] = [
     ],
     content: `# Inbound marketing para SaaS: crescimento orgânico consistente
 
-Todo SaaS chega ao mesmo dilema: mídia paga funciona, mas o custo sobe todo trimestre. O leilão fica mais caro, a concorrência mira as mesmas palavras-chave e o CAC vai comendo a margem. A saída não é gastar mais, é construir um canal que se valoriza com o tempo em vez de encarecer. Esse canal é o inbound.
+Todo SaaS chega ao mesmo dilema: mídia paga funciona, mas o custo sobe todo trimestre. O leilão fica mais caro, a concorrência mira as mesmas palavras-chave e o CAC vai comendo a margem (quando o CPC não fecha, vale conhecer as [alternativas ao Google Ads](/blog/alternativas-ao-google-ads-para-aquisicao)). A saída não é gastar mais, é construir um canal que se valoriza com o tempo em vez de encarecer. Esse canal é o inbound.
 
 Inbound marketing pra SaaS não é "ter um blog". É uma máquina com quatro engrenagens conectadas: conteúdo mapeado por estágio do funil, SEO que transforma esse conteúdo em tráfego qualificado, lead magnets e nurturing que convertem visitante em oportunidade, e o produto fechando o ciclo via product-led growth. Quando uma engrenagem falha, a máquina inteira trava. Este guia mostra como montar cada uma.
 
@@ -110,7 +110,7 @@ O básico bem feito resolve 80% do jogo:
 1. **Pesquisa de palavra-chave orientada a intenção, não a volume.** Uma keyword de 300 buscas mensais com intenção de compra vale mais que uma de 30 mil com intenção informacional vaga.
 2. **Arquitetura de tópicos (topic clusters).** Uma página pilar por tema central, artigos satélites cobrindo as variações, todos interligados. O Google entende autoridade por tópico, não por página isolada.
 3. **On-page sem preguiça.** Title que responde a intenção, H2s que estruturam a resposta, dados com fonte, FAQ que captura variações da busca.
-4. **Técnico saudável.** Site rápido, indexável, com sitemap limpo e sem conteúdo duplicado. Em SaaS, o vilão clássico é a documentação canibalizando o blog.
+4. **Técnico saudável.** Site rápido, indexável, com sitemap limpo e sem conteúdo duplicado (os [problemas críticos de SEO técnico](/blog/problemas-criticos-seo-tecnico) que mais derrubam ranking têm diagnóstico próprio). Em SaaS, o vilão clássico é a documentação canibalizando o blog.
 
 Não vamos repetir aqui o que já detalhamos: o passo a passo completo de pesquisa de keyword, cluster e otimização técnica está no nosso guia de [SEO para SaaS](/blog/seo-para-saas). O ponto que importa neste artigo é a integração: SEO sem estratégia de conversão gera tráfego que não vira nada, e conteúdo sem SEO gera qualidade que ninguém encontra. As duas disciplinas são o mesmo sistema.
 

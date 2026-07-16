@@ -6,9 +6,9 @@ export const blogNew26: BlogPost[] = [
   {
     slug: "teardown-lombard-points-system",
     title: "Teardown Lombard: o points system que pune capital mercenário",
-    seoTitle: "Teardown Lombard: Points System Contra Capital Mercenário | Kaleidos",
+    seoTitle: "Teardown Lombard: points contra capital mercenário",
     excerpt:
-      "O Lombard chegou a US$ 1 bilhão de TVL em 92 dias e desenhou o Lux, um sistema de pontos que multiplica recompensa por permanência e zera o multiplicador de quem saca. Teardown completo do desenho de incentivos e das lições pra retenção on-chain.",
+      "O Lombard cruzou US$ 1 bilhão de TVL em cerca de três meses e desenhou o Lux, um sistema de pontos que multiplica recompensa por permanência e zera o multiplicador de quem saca. Teardown completo do desenho de incentivos e das lições pra retenção on-chain.",
     seoDescription:
       "Teardown do points system do Lombard (LBTC): multiplicadores por tempo, reset ao sacar e airdrop com vesting. Lições reais de retenção de capital on-chain.",
     category: "cases",
@@ -29,12 +29,12 @@ export const blogNew26: BlogPost[] = [
       "marketing cripto",
     ],
     tldr:
-      "O Lombard transformou pontos em filtro de comportamento: o Lux multiplica recompensa por permanência (1x até 30 dias, 1,5x até 60, 2x depois de 61) e zera o multiplicador de quem saca. Com airdrop em vesting de 12 meses, farmar vira matematicamente ruim. O preço do BARD sofreu, mas o TVL de US$ 1 bilhão ficou.",
+      "O Lombard transformou pontos em filtro de comportamento: o Lux multiplica recompensa por permanência (1x até 30 dias, 1,5x até 60, 2x depois de 61) e zera o multiplicador de quem saca. Com airdrop em vesting de 12 meses, farmar vira matematicamente ruim. O preço do BARD sofreu, mas o protocolo atravessou o unlock de março de 2026 com TVL na casa de US$ 1 bilhão.",
     faq: [
       {
         question: "O que é o Lombard e o que é o LBTC?",
         answer:
-          "O Lombard é um protocolo de BTC-fi lançado em agosto de 2024 que emite o LBTC, um token líquido de Bitcoin em staking via Babylon. O usuário deposita BTC, recebe LBTC 1:1 e pode usar esse token em DeFi enquanto o Bitcoin original gera yield de staking. O protocolo levantou US$ 16 milhões em seed liderado pela Polychain Capital em julho de 2024 e chegou a US$ 1 bilhão de TVL em 92 dias.",
+          "O Lombard é um protocolo de BTC-fi lançado em agosto de 2024 que emite o LBTC, um token líquido de Bitcoin em staking via Babylon. O usuário deposita BTC, recebe LBTC 1:1 e pode usar esse token em DeFi enquanto o Bitcoin original gera yield de staking. O protocolo levantou US$ 16 milhões em seed liderado pela Polychain Capital em julho de 2024 e cruzou US$ 1 bilhão de TVL em novembro de 2024, cerca de três meses após o lançamento.",
       },
       {
         question: "Como funciona o sistema de pontos Lux do Lombard?",
@@ -61,9 +61,9 @@ export const blogNew26: BlogPost[] = [
 
 Todo protocolo cripto que lança programa de pontos enfrenta o mesmo dilema: os pontos atraem capital, mas o capital que chega por pontos costuma ir embora no dia seguinte ao snapshot. A indústria chama isso de capital mercenário, e ele já destruiu a curva de TVL de dezenas de protocolos que confundiram pico de depósito com tração real.
 
-O Lombard, protocolo de BTC-fi que emite o LBTC (Bitcoin líquido em staking via Babylon), atacou esse problema pelo desenho. Em vez de pagar pontos por volume bruto, o sistema Lux multiplica recompensa por permanência e, mais importante, zera o multiplicador de quem saca. O resultado: um dos points systems mais estudados do ciclo, um TVL que cruzou US$ 1 bilhão em 92 dias segundo a MEXC Learn (2025), e um airdrop que pagou o holder paciente até 2x mais que o farmer de rotação.
+O Lombard, protocolo de BTC-fi que emite o LBTC (Bitcoin líquido em staking via Babylon), atacou esse problema pelo desenho. Em vez de pagar pontos por volume bruto, o sistema Lux multiplica recompensa por permanência e, mais importante, zera o multiplicador de quem saca. O resultado: um dos points systems mais estudados do ciclo, um TVL que cruzou US$ 1 bilhão em novembro de 2024, cerca de três meses após o lançamento (DefiLlama, 2026), e um airdrop que pagou o holder paciente até 2x mais que o farmer de rotação.
 
-A Kaleidos destrinchou o desenho completo: o que o Lombard fez, quais números sustentam a tese, onde o sistema funcionou, onde ele não protegeu (spoiler: o preço do token) e o que qualquer projeto pode copiar pra reter capital de verdade.
+A Kaleidos destrinchou o desenho completo, no mesmo formato dos nossos outros [teardowns e estudos de caso](/blog/categoria/cases): o que o Lombard fez, quais números sustentam a tese, onde o sistema funcionou, onde ele não protegeu (spoiler: o preço do token) e o que qualquer projeto pode copiar pra reter capital de verdade.
 
 ## Principais takeaways
 
@@ -79,7 +79,7 @@ O Lombard nasceu com uma tese direta: existe mais de US$ 1 trilhão em Bitcoin p
 
 O produto lançou em agosto de 2024: o usuário deposita BTC, o protocolo faz staking via Babylon (que permite usar o peso econômico do Bitcoin pra segurar outras redes, sem bridge nem custodiante centralizado) e devolve LBTC, um token líquido que representa esse Bitcoin em staking e circula em DeFi.
 
-A tração veio rápido. O protocolo cruzou US$ 1 bilhão de TVL em 92 dias (MEXC Learn, 2025) e consolidou cerca de 60% do mercado de Bitcoin liquid staking, com TVL na casa de US$ 1,06 bilhão segundo a Bybit Learn (2026).
+A tração veio rápido. O protocolo cruzou US$ 1 bilhão de TVL em novembro de 2024, cerca de três meses após o lançamento, fez pico acima de US$ 2 bilhões em maio de 2025 e se consolidou entre os maiores protocolos de Bitcoin liquid staking (DefiLlama, 2026).
 
 Só que TVL rápido em cripto quase sempre significa uma coisa: gente farmando o airdrop. E é aí que o desenho do Lux entra.
 
@@ -111,7 +111,7 @@ Isso muda a matemática do mercenário. Um farmer que roda capital pelo Lombard 
 
 ### A camada DeFi: pontos como moeda de integração
 
-O Lombard ainda usou o Lux como ferramenta de BD. Integrações com protocolos parceiros pagavam múltiplos do ponto base: o vault LBTC-TAC, por exemplo, oferecia 4x Lux além de recompensas dos parceiros, segundo publicação oficial do Lombard no X (2025). O ecossistema listava mais de 70 protocolos, pools e estratégias pra deploy de LBTC (Lombard Docs, 2025).
+O Lombard ainda usou o Lux como ferramenta de BD. Integrações com protocolos parceiros pagavam múltiplos do ponto base: o vault LBTC-TAC, por exemplo, oferecia 4x Lux além de recompensas dos parceiros, segundo publicação oficial do Lombard no X (2025). O ecossistema listava mais de 70 protocolos, pools e estratégias pra deploy de LBTC (Lombard Docs, 2025), a mesma lógica de incentivos empilhados que analisamos no guia de [plataformas de yield farming](/blog/melhores-plataformas-yield-farming-2026).
 
 O efeito composto é inteligente: o ponto que retém capital no protocolo também empurra esse capital pra dentro das integrações, o que aumenta a utilidade do LBTC, o que justifica segurar LBTC. Retenção alimentando distribuição.
 
@@ -127,7 +127,7 @@ Ou seja: mesmo o usuário que ganhou o airdrop precisa continuar por perto um an
 
 Honestidade de teardown: o points system do Lombard resolveu retenção de capital, não a pressão vendedora do token. O BARD fez topo em US$ 1,70 no início de março de 2026, caiu cerca de 19% nas 24 horas seguintes ao unlock de 18 de março e recuou mais de 86% do topo nos meses seguintes, com os desbloqueios de investidores e equipe (45% do supply) começando em março de 2026 (Crypto News Navigator, 2026).
 
-A lição aqui é separar problemas. Pontos com multiplicador e reset seguram TVL: o protocolo mantém a casa de US$ 1 bilhão depositado. Mas token com unlock pesado contra market cap baixo sofre, independente de quão elegante seja o programa de pontos. São dois desenhos diferentes, e o segundo (tokenomics de emissão e unlock) não se conserta com gamificação.
+A lição aqui é separar problemas. Pontos com multiplicador e reset seguram TVL: o protocolo atravessou a janela do unlock de março de 2026 com cerca de US$ 1 bilhão depositado (DefiLlama, 2026). Mas token com unlock pesado contra market cap baixo sofre, independente de quão elegante seja o programa de pontos. São dois desenhos diferentes, e o segundo (tokenomics de emissão e unlock) não se conserta com gamificação.
 
 ## Lições
 
@@ -145,10 +145,10 @@ A lição aqui é separar problemas. Pontos com multiplicador e reset seguram TV
 
 ## O incentivo é o produto de marketing
 
-O caso Lombard confirma uma tese que a Kaleidos repete pra todo cliente de web3: em cripto, o desenho de incentivo é uma peça de marketing tão importante quanto narrativa e canal. Quem desenha o incentivo desenha o público que vai atrair. Pontos genéricos atraem farmers genéricos. Pontos com custo de saída e curva de permanência atraem exatamente o capital que fica.
+O caso Lombard confirma uma tese que a Kaleidos repete pra todo cliente de web3 (e que aprofundamos em [onde os projetos de web3 marketing erram](/blog/web3-marketing-arte-perdida)): em cripto, o desenho de incentivo é uma peça de marketing tão importante quanto narrativa e canal. Quem desenha o incentivo desenha o público que vai atrair. Pontos genéricos atraem farmers genéricos. Pontos com custo de saída e curva de permanência atraem exatamente o capital que fica.
 
 Se o seu protocolo está desenhando programa de pontos, campanha de airdrop ou estratégia de retenção on-chain, a Kaleidos ajuda a estruturar o desenho completo: mecânica de incentivo, narrativa, calendário de comunicação e medição de retenção por cohort depois do snapshot. [Fale com a Kaleidos](/contato) e transforme incentivo em capital que permanece.
 
-**Fontes:** [The Block (2024)](https://www.theblock.co/post/303000/polychain-capital-leads-16-million-seed-round-for-bitcoin-restaking-protocol-lombard), [Lombard Docs (2025)](https://docs.lombard.finance/), [Lombard, tokenomics do BARD (2025)](https://www.lombard.finance/blog/bard-tokenomics/), [Bybit Learn (2026)](https://learn.bybit.com/en/altcoins/what-is-lombard-finance), [MEXC Learn (2025)](https://www.mexc.fm/learn/article/what-is-lombard-the-bitcoin-defi-revolution-that-reached-1-billion-tvl-in-92-days/1), [Crypto News Navigator (2026)](https://www.cryptonewsnavigator.com/academy/article/lombard-airdrop-strategy-actually-rewards-long-term-stakers).`,
+**Fontes:** [The Block (2024)](https://www.theblock.co/post/303000/polychain-capital-leads-16-million-seed-round-for-bitcoin-restaking-protocol-lombard), [Lombard Docs (2025)](https://docs.lombard.finance/), [Lombard, tokenomics do BARD (2025)](https://www.lombard.finance/blog/bard-tokenomics/), [DefiLlama (2026)](https://defillama.com/protocol/lombard), [Crypto News Navigator (2026)](https://www.cryptonewsnavigator.com/academy/article/lombard-airdrop-strategy-actually-rewards-long-term-stakers).`,
   },
 ];

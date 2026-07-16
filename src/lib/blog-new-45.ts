@@ -9,7 +9,7 @@ export const blogNew45: BlogPost[] = [
   {
     slug: "quanto-custa-social-media-marketing-precos",
     title: "Quanto custa social media marketing no Brasil (guia de preços 2026)",
-    seoTitle: "Quanto custa social media marketing? Preços no Brasil em 2026",
+    seoTitle: "Quanto custa social media marketing no Brasil?",
     excerpt:
       "Social media marketing no Brasil custa de R$ 800 por mês com freelancer iniciante até R$ 30 mil ou mais com agência full service. Entenda os modelos de cobrança, o que compõe o preço e qual faixa faz sentido para o seu estágio.",
     seoDescription:
@@ -101,7 +101,7 @@ As faixas que a Kaleidos observa no mercado brasileiro em 2026, a partir de prop
 - **Agência com escopo ampliado (R$ 8.000 a R$ 15.000/mês):** inclui produção de vídeo recorrente, gestão de tráfego, mais redes, reuniões estratégicas frequentes.
 - **Full service / nichos complexos (R$ 15.000 a R$ 30.000+/mês):** operações de conteúdo diário, captação audiovisual, influenciadores, assessoria e mídia integrada. Também é a faixa de nichos regulados ou técnicos (financeiro, saúde, web3), onde errar comunicação custa caro.
 
-Uma nota importante: nicho muda preço. Setores como cripto, fintech e saúde exigem conhecimento de compliance, restrições de anúncio e linguagem técnica. A agência que domina isso cobra mais e economiza meses de tentativa e erro.
+Uma nota importante: nicho muda preço. Setores como cripto, fintech e saúde exigem conhecimento de compliance, restrições de anúncio e linguagem técnica (o que isso significa na prática está no guia de [social media para fintech](/blog/social-media-fintech-estrategia)). A agência que domina isso cobra mais e economiza meses de tentativa e erro.
 
 ### Equipe interna: a partir de R$ 12.000 por mês
 
@@ -149,7 +149,7 @@ Uma régua simples para decidir:
 - **Faturamento de R$ 50 mil a R$ 300 mil/mês:** agência especializada (R$ 3.000 a R$ 8.000) mais verba de mídia. Aqui estratégia começa a valer mais que volume.
 - **Faturamento acima de R$ 300 mil/mês ou nicho complexo:** escopo ampliado ou full service (R$ 8.000+), com vídeo, tráfego e conteúdo de autoridade integrados.
 
-A referência clássica de orçamento de marketing ajuda a validar: empresas costumam destinar de 5% a 10% da receita para marketing como um todo, e social media é uma fatia disso. Se o valor proposto está muito fora dessa proporção, para cima ou para baixo, revise o escopo.
+A referência clássica de orçamento de marketing ajuda a validar: empresas costumam destinar de 5% a 10% da receita para marketing como um todo (os benchmarks completos estão em [quanto do faturamento investir em marketing](/blog/quanto-do-faturamento-investir-em-marketing)), e social media é uma fatia disso. Se o valor proposto está muito fora dessa proporção, para cima ou para baixo, revise o escopo.
 
 ## 5 perguntas para fazer antes de assinar qualquer proposta
 
@@ -167,6 +167,6 @@ Quem responde essas cinco perguntas com clareza e sem rodeio já demonstrou mais
 
 A Kaleidos é uma agência especializada em marketing para empresas de tecnologia, fintech e web3, nichos onde comunicação genérica não funciona e errar o tom custa caro. Trabalhamos com escopo transparente: você sabe o que está incluído, quem executa e o que esperar em cada trimestre, sem surpresa na fatura.
 
-Se você está comparando propostas ou quer entender qual escopo faz sentido para o seu estágio, [fale com a Kaleidos](https://kaleidos.com.br/contato). A primeira conversa é um diagnóstico, não um pitch.`,
+Se você está comparando propostas ou quer entender qual escopo faz sentido para o seu estágio, [fale com a Kaleidos](https://kaleidos.com.br/contato). A primeira conversa é um diagnóstico, não um pitch. E se quiser seguir estudando o tema, o [hub de marketing do blog](/blog/categoria/marketing) reúne todos os nossos guias.`,
   },
 ];
