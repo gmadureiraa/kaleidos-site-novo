@@ -23,6 +23,40 @@ import { blogNew13 } from "./blog-new-13";
 import { blogNew14 } from "./blog-new-14";
 import { blogNew15 } from "./blog-new-15";
 import { blogNew16 } from "./blog-new-16";
+import { blogNew17 } from "./blog-new-17";
+import { blogNew18 } from "./blog-new-18";
+import { blogNew19 } from "./blog-new-19";
+import { blogNew20 } from "./blog-new-20";
+import { blogNew21 } from "./blog-new-21";
+import { blogNew22 } from "./blog-new-22";
+import { blogNew23 } from "./blog-new-23";
+import { blogNew24 } from "./blog-new-24";
+import { blogNew25 } from "./blog-new-25";
+import { blogNew26 } from "./blog-new-26";
+import { blogNew27 } from "./blog-new-27";
+import { blogNew28 } from "./blog-new-28";
+import { blogNew29 } from "./blog-new-29";
+import { blogNew30 } from "./blog-new-30";
+import { blogNew31 } from "./blog-new-31";
+import { blogNew32 } from "./blog-new-32";
+import { blogNew33 } from "./blog-new-33";
+import { blogNew34 } from "./blog-new-34";
+import { blogNew35 } from "./blog-new-35";
+import { blogNew36 } from "./blog-new-36";
+import { blogNew37 } from "./blog-new-37";
+import { blogNew38 } from "./blog-new-38";
+import { blogNew39 } from "./blog-new-39";
+import { blogNew40 } from "./blog-new-40";
+import { blogNew41 } from "./blog-new-41";
+import { blogNew42 } from "./blog-new-42";
+import { blogNew43 } from "./blog-new-43";
+import { blogNew44 } from "./blog-new-44";
+import { blogNew45 } from "./blog-new-45";
+import { blogNew46 } from "./blog-new-46";
+import { blogNew47 } from "./blog-new-47";
+import { blogNew48 } from "./blog-new-48";
+import { blogNew49 } from "./blog-new-49";
+import { blogNew50 } from "./blog-new-50";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -40,7 +74,7 @@ export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt }
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...caseStudies];
+export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...caseStudies];
 
 /**
  * Gate de agendamento (publishedAt <= agora).
