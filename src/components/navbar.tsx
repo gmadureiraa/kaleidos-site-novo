@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/i18n/useI18n";
 import Image from "next/image";
 
@@ -72,6 +73,12 @@ function ListItem({
 export function Navbar() {
   const { t, locale, switchLocale } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Fecha o menu mobile ao navegar — senão ele fica aberto cobrindo a nova página.
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
   const withLang = (path: string) => locale === 'en' ? `${path}${path.includes('?') ? '&' : '?' }lang=en` : path;
   const services = servicesBase[locale];
 

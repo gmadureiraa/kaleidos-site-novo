@@ -103,7 +103,7 @@ export function ServicePageTemplate({
   Icon: LucideIcon;
 }) {
   const { locale } = useI18n();
-  const { trackWhatsApp } = useAnalytics();
+  const { trackWhatsApp, trackClick } = useAnalytics();
   const c = locale === "en" ? data.en : data.pt;
   const isEn = locale === "en";
   const accent = getAccent(c.accent);
@@ -117,6 +117,10 @@ export function ServicePageTemplate({
       c.whatsappMessage
     )}`;
     window.open(url, "_blank");
+  };
+
+  const onCalendly = (where: string) => {
+    trackClick(`calendly_${where}`, `service-${data.id}`);
   };
 
   const serviceSchema = generateServiceSchema(c.h1, c.metaDescription);
@@ -216,6 +220,7 @@ export function ServicePageTemplate({
         isEn={isEn}
         withLang={withLang}
         openWhatsApp={openWhatsApp}
+        onCalendly={onCalendly}
       />
 
       {layout.map(renderSection)}
@@ -226,6 +231,7 @@ export function ServicePageTemplate({
         isEn={isEn}
         withLang={withLang}
         openWhatsApp={openWhatsApp}
+        onCalendly={onCalendly}
       />
 
       <FooterDemo />

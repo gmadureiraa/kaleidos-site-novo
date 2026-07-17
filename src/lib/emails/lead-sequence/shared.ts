@@ -134,7 +134,6 @@ export function ctaUrl(origem: string): string {
   return `https://kaleidos.com.br/servicos/ia-automacoes-completa?utm_source=email&utm_medium=lead-sequence&utm_campaign=${encodeURIComponent(origem)}#diagnostico`;
 }
 
-// TODO CONFIRMAR nomes de marca com Gabriel antes de ativar
 // Fonte: descrição oficial do cliente Kaleidos no CRM.
 // Citar apenas como prova social leve. NUNCA atribuir número, resultado ou depoimento a nenhuma marca.
 export const MARCAS = [

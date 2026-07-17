@@ -9,7 +9,8 @@ import { track } from "@/lib/analytics";
 // Strategy: aparece no canto inferior esquerdo e FICA fixado na página até a
 // pessoa fechar. EXCLUSIVO da rota `/2`.
 //
-// - aparece depois de um pequeno delay (não dispara na hora pra não atrapalhar)
+// - aparece só depois de ~50% de scroll OU exit-intent (CRO 2026-07: o timer
+//   de 1,5s disputava atenção com o CTA principal acima da dobra)
 // - quem já desbloqueou (localStorage) ou já fechou nunca mais vê (por N dias)
 // - "Baixar grátis" abre o popup de captura (Web3V2PlaybookPopup) via custom event
 // - X fecha e marca dispensado
@@ -21,6 +22,8 @@ const INK = "#14110D";
 const DISMISS_KEY = "kld_playbook_sticky_dismissed_at";
 const UNLOCKED_KEY = "kld_papers_unlocked";
 const DISMISS_DAYS = 30;
+/** Fração da página rolada que libera o sticky (~50%). */
+const SCROLL_TRIGGER = 0.5;
 
 function shouldHide(): boolean {
   try {
@@ -40,8 +43,48 @@ export function Web3V2PlaybookSticky() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (shouldHide()) return;
-    const t = setTimeout(() => setVisible(true), 1500);
-    return () => clearTimeout(t);
+
+    // Gatilho: ~50% de scroll OU exit-intent (mouse saindo pelo topo).
+    // Antes era um timer de 1,5s que competia com o CTA do hero.
+    let done = false;
+
+    const show = () => {
+      if (done) return;
+      done = true;
+      setVisible(true);
+      cleanup();
+    };
+
+    const pastHalf = () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      // Página curta demais pra rolar: não segura o sticky pra sempre.
+      if (scrollable <= 0) return true;
+      return window.scrollY / scrollable >= SCROLL_TRIGGER;
+    };
+
+    const onScroll = () => {
+      if (pastHalf()) show();
+    };
+
+    const onMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !e.relatedTarget) show();
+    };
+
+    function cleanup() {
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("mouseout", onMouseOut);
+    }
+
+    // Reload no meio da página (scroll restoration) já conta como 50%.
+    if (pastHalf()) {
+      show();
+      return;
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("mouseout", onMouseOut);
+    return cleanup;
   }, []);
 
   function openPopup(trigger: "cover" | "button" = "button") {

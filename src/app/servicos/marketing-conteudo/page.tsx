@@ -15,9 +15,11 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import Link from "next/link";
+import { WHATSAPP_NUMBER, CALENDLY_URL } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { TESTIMONIALS } from "@/lib/testimonials-data";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
 import { useAnalytics } from "@/components/analytics";
@@ -46,7 +48,7 @@ function DotGrid({ dark = false }: { dark?: boolean }) {
 
 export default function KaleidosContentPage() {
   const { locale } = useI18n();
-  const { trackWhatsApp } = useAnalytics();
+  const { trackWhatsApp, trackClick } = useAnalytics();
   const [api, setApi] = useState<CarouselApi>();
   const [isPaused, setIsPaused] = useState(false);
 
@@ -73,6 +75,10 @@ export default function KaleidosContentPage() {
     trackWhatsApp("servico_marketing_conteudo", "service_page");
 
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleCalendly = (where: string) => {
+    trackClick(`calendly_${where}`, "service-marketing-conteudo");
   };
 
   const serviceSchema = generateServiceSchema(
@@ -142,14 +148,23 @@ export default function KaleidosContentPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-9">
-              <Button
-                onClick={handleWhatsApp}
-                className="inline-flex items-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleCalendly("hero")}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
                 style={{ boxShadow: `5px 5px 0 ${GREEN}` }}
               >
-                {locale==='en' ? 'Start now' : 'Começar agora'}
+                {locale==='en' ? 'Book a free diagnosis (30min)' : 'Agendar diagnóstico gratuito (30min)'}
                 <ArrowRight className="ml-1 h-5 w-5" />
-              </Button>
+              </a>
+              <button
+                onClick={handleWhatsApp}
+                className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
+              >
+                {locale==='en' ? 'Prefer WhatsApp?' : 'Prefere WhatsApp?'}
+              </button>
             </div>
           </motion.div>
         </div>
@@ -509,6 +524,96 @@ export default function KaleidosContentPage() {
               {locale==='en' ? 'I want content like this' : 'Quero Conteúdo Assim'}
               <ArrowRight className="ml-1 h-5 w-5" />
             </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Prova — cases reais de conteúdo */}
+      <section className="bg-[#FAFAFA] px-6 py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="mb-4 inline-block font-accent text-xs uppercase tracking-[0.22em]" style={{ color: GREEN_DEEP }}>
+              {locale === 'en' ? 'Proof' : 'Prova'}
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl md:text-[3rem] font-bold mb-5 text-[#14110D]">
+              {locale === 'en' ? 'Content that already delivered' : 'Conteúdo que já entregou resultado'}
+            </h2>
+            <p className="text-[#5c544a] text-lg max-w-2xl mx-auto leading-relaxed">
+              {locale === 'en'
+                ? `${KALEIDOS_METRICS.viewsReels_en} views on reels and ${KALEIDOS_METRICS.videosEditados_en} videos edited. Who lived it:`
+                : `${KALEIDOS_METRICS.viewsReels} de views em reels e ${KALEIDOS_METRICS.videosEditados} vídeos editados. Quem viveu isso:`}
+            </p>
+          </motion.div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {TESTIMONIALS.filter((t) => ["defiverso", "layla-foz"].includes(t.id)).map((t, i) => (
+              <motion.div
+                key={t.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                viewport={{ once: true }}
+                className="flex h-full flex-col rounded-2xl border-[1.5px] border-[#14110D] bg-white p-7 shadow-[5px_5px_0_#14110D]"
+              >
+                <span
+                  className="mb-4 inline-flex w-fit rounded-md border-[1.5px] border-[#14110D] px-3 py-1 text-xs font-bold text-[#14110D]"
+                  style={{ background: GREEN }}
+                >
+                  {locale === 'en' ? t.highlight_en : t.highlight}
+                </span>
+                <p className="flex-1 text-sm leading-relaxed text-[#5c544a]">
+                  “{locale === 'en' ? t.quote_en : t.quote}”
+                </p>
+                <div className="mt-5 flex items-center justify-between">
+                  <div>
+                    <p className="font-display text-base font-bold text-[#14110D]">{t.name}</p>
+                    <p className="text-xs text-[#9a9081]">{t.role} · {t.company}</p>
+                  </div>
+                  {t.caseLink && (
+                    <Link
+                      href={t.caseLink}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold"
+                      style={{ color: GREEN_DEEP }}
+                    >
+                      {locale === 'en' ? 'See case' : 'Ver case'}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCalendly("final_cta")}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+              style={{ boxShadow: `5px 5px 0 ${GREEN}` }}
+            >
+              {locale === 'en' ? 'Book a free diagnosis (30min)' : 'Agendar diagnóstico gratuito (30min)'}
+              <ArrowRight className="ml-1 h-5 w-5" />
+            </a>
+            <button
+              onClick={handleWhatsApp}
+              className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
+            >
+              {locale === 'en' ? 'Prefer WhatsApp?' : 'Prefere WhatsApp?'}
+            </button>
           </motion.div>
         </div>
       </section>

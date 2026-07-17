@@ -1,4 +1,3 @@
-// TODO CONFIRMAR nomes de marca com Gabriel antes de ativar
 import { ctaButton, escapeHtml, marcasInline, shell, whatsappUrl } from "./shared";
 
 /**

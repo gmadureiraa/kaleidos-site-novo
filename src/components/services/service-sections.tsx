@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Minus, type LucideIcon } from "lucide-react";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
+import { CALENDLY_URL } from "@/lib/constants";
 import type { ServiceContent } from "@/lib/service-pages-data";
 
 /* ------------------------------------------------------------------ */
@@ -190,6 +191,7 @@ export function HeroSection({
   isEn,
   withLang,
   openWhatsApp,
+  onCalendly,
 }: {
   c: ServiceContent;
   accent: Accent;
@@ -197,6 +199,7 @@ export function HeroSection({
   isEn: boolean;
   withLang: (p: string) => string;
   openWhatsApp: (where: string) => void;
+  onCalendly: (where: string) => void;
 }) {
   return (
     <section className="relative overflow-hidden bg-[#FAFAFA] px-6 pt-28 pb-20 sm:pt-36 sm:pb-24">
@@ -245,19 +248,34 @@ export function HeroSection({
         </Reveal>
         <Reveal delay={0.18}>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              onClick={() => openWhatsApp("hero")}
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onCalendly("hero")}
               className="inline-flex items-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
               style={{ boxShadow: `5px 5px 0 ${accent.hex}` }}
             >
-              {c.ctaPrimary}
+              {isEn
+                ? "Book a free diagnosis (30min)"
+                : "Agendar diagnóstico gratuito (30min)"}
               <ArrowRight className="h-5 w-5" />
-            </button>
-            <Link
-              href={withLang("/cases")}
+            </a>
+            <button
+              onClick={() => openWhatsApp("hero")}
               className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
             >
+              {isEn ? "Prefer WhatsApp?" : "Prefere WhatsApp?"}
+            </button>
+          </div>
+          <div className="mt-5">
+            <Link
+              href={withLang("/cases")}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold"
+              style={{ color: accent.deep }}
+            >
               {isEn ? "See cases" : "Ver cases"}
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </Reveal>
@@ -1137,12 +1155,14 @@ export function FinalCta({
   isEn,
   withLang,
   openWhatsApp,
+  onCalendly,
 }: {
   c: ServiceContent;
   accent: Accent;
   isEn: boolean;
   withLang: (p: string) => string;
   openWhatsApp: (where: string) => void;
+  onCalendly: (where: string) => void;
 }) {
   return (
     <section className="bg-[#FAFAFA] px-4 py-16 sm:px-6">
@@ -1184,20 +1204,25 @@ export function FinalCta({
             {c.finalCtaSubtitle}
           </p>
           <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              onClick={() => openWhatsApp("final_cta")}
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onCalendly("final_cta")}
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold transition-transform hover:-translate-y-0.5"
               style={{ background: accent.hex, color: accent.fg }}
             >
-              {c.ctaPrimary}
+              {isEn
+                ? "Book a free diagnosis (30min)"
+                : "Agendar diagnóstico gratuito (30min)"}
               <ArrowRight className="h-5 w-5" />
-            </button>
-            <Link
-              href={withLang("/contato")}
+            </a>
+            <button
+              onClick={() => openWhatsApp("final_cta")}
               className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
             >
-              {isEn ? "Talk to us" : "Falar com a gente"}
-            </Link>
+              {isEn ? "Prefer WhatsApp?" : "Prefere WhatsApp?"}
+            </button>
           </div>
         </div>
       </Reveal>

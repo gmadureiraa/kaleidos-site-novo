@@ -19,6 +19,8 @@ import {
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { CtaAjuda } from "@/components/ui/cta-ajuda";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { CALENDLY_URL } from "@/lib/constants";
+import { useAnalytics } from "@/components/analytics";
 import { useI18n } from "@/i18n/useI18n";
 
 /* ------------------------------------------------------------------ */
@@ -74,6 +76,7 @@ const accentDeep = (a: Accent) => (a === "pink" ? "#A8458C" : "#2F7D27");
 
 export default function ServicosPage() {
   const { locale } = useI18n();
+  const { trackClick } = useAnalytics();
   const isEn = locale === "en";
   const withLang = (path: string) =>
     locale === "en" ? `${path}${path.includes("?") ? "&" : "?"}lang=en` : path;
@@ -345,6 +348,28 @@ export default function ServicosPage() {
                 </div>
               ))}
             </div>
+          </Reveal>
+
+          {/* CTA de conversão — Calendly primário */}
+          <Reveal delay={0.1} className="mt-12 text-center">
+            <p className="mx-auto max-w-xl text-base text-[#b8b1a6] sm:text-lg">
+              {isEn
+                ? "30 minutes, no commitment. Bring your project — we'll bring the plan."
+                : "30 minutos, sem compromisso. Traz o seu projeto, que a gente traz o plano."}
+            </p>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackClick("calendly_metrics_band", "service-index")}
+              className="mt-7 inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
+              style={{ background: GREEN, boxShadow: "5px 5px 0 #ffffff33" }}
+            >
+              {isEn
+                ? "Book a free diagnosis (30min)"
+                : "Agendar diagnóstico gratuito (30min)"}
+              <ArrowRight className="h-5 w-5" />
+            </a>
           </Reveal>
         </div>
       </section>

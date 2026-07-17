@@ -149,13 +149,13 @@ const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
 /** Labels fixos dos CTAs do hero, por idioma. */
 const HERO_UI = {
   pt: {
-    schedule: "Agendar reuni&atilde;o &rarr;",
+    schedule: "Agendar diagn&oacute;stico &rarr;",
     cases: "Ver cases",
     waPrefix: "Prefere WhatsApp?",
     waLink: "Fala com a gente por aqui &rarr;",
   },
   en: {
-    schedule: "Book a call &rarr;",
+    schedule: "Book a diagnosis call &rarr;",
     cases: "View cases",
     waPrefix: "Prefer WhatsApp?",
     waLink: "Talk to us here &rarr;",
@@ -239,7 +239,7 @@ const PROBLEMA_COPY = {
     chip1: "😵‍💫 conteúdo sem narrativa",
     chip2: "⏱️ tudo pra ontem",
     chip3: "📉 zero dado de verdade",
-    schedule: "Agendar reuni&atilde;o &rarr;",
+    schedule: "Agendar diagn&oacute;stico &rarr;",
     cases: "Ver cases",
     casesHref: "/cases",
     waPrefix: "Prefere WhatsApp?",
@@ -254,7 +254,7 @@ const PROBLEMA_COPY = {
     chip1: "😵‍💫 content with no narrative",
     chip2: "⏱️ everything due yesterday",
     chip3: "📉 zero real data",
-    schedule: "Book a call &rarr;",
+    schedule: "Book a diagnosis call &rarr;",
     cases: "View cases",
     casesHref: "/cases?lang=en",
     waPrefix: "Prefer WhatsApp?",

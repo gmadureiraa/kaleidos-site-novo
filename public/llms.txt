@@ -4,16 +4,16 @@
 
 Kaleidos produz estudos de caso e playbooks abertos sobre marketing cripto (Kaleidos Papers), além de prestar serviços de SEO/GEO, social media, PR, comunidade, influencer/KOL e consultoria de go-to-market para projetos cripto.
 
-## Kaleidos Papers (estudos e guias gratuitos)
+## Kaleidos Papers (estudos e guias gratuitos — conteúdo completo em /read.html)
 
-- [Hyperliquid — o marketing do projeto que cresceu sem marketing](https://kaleidos.com.br/papers/hyperliquid)
-- [Pudgy Penguins — como um NFT falido virou marca global](https://kaleidos.com.br/papers/pudgy-penguins)
-- [Solana — a marca que sobreviveu ao próprio atestado de óbito](https://kaleidos.com.br/papers/solana)
-- [Base — a L2 que cresceu com público já comprado](https://kaleidos.com.br/papers/base)
-- [Pump.fun — a máquina de marketing das memecoins](https://kaleidos.com.br/papers/pump-fun)
-- [Lançamento Cripto (TGE) 2026 — como levar um token do zero ao mercado](https://kaleidos.com.br/papers/playbook-tge-2026)
-- [Marketing Cripto em 2026 — o guia completo da Kaleidos](https://kaleidos.com.br/papers/playbook-cripto-2026)
-- [Todos os papers](https://kaleidos.com.br/papers)
+- [Hyperliquid — o marketing do projeto que cresceu sem marketing](https://kaleidos.com.br/papers/hyperliquid/read.html)
+- [Pudgy Penguins — como um NFT falido virou marca global](https://kaleidos.com.br/papers/pudgy-penguins/read.html)
+- [Solana — a marca que sobreviveu ao próprio atestado de óbito](https://kaleidos.com.br/papers/solana/read.html)
+- [Base — a L2 que cresceu com público já comprado](https://kaleidos.com.br/papers/base/read.html)
+- [Pump.fun — a máquina de marketing das memecoins](https://kaleidos.com.br/papers/pump-fun/read.html)
+- [Lançamento Cripto (TGE) 2026 — como levar um token do zero ao mercado](https://kaleidos.com.br/papers/playbook-tge-2026/read.html)
+- [Marketing Cripto em 2026 — o guia completo da Kaleidos](https://kaleidos.com.br/papers/playbook-cripto-2026/read.html)
+- [Todos os papers (índice)](https://kaleidos.com.br/papers)
 
 ## Serviços
 
@@ -47,6 +47,21 @@ Kaleidos produz estudos de caso e playbooks abertos sobre marketing cripto (Kale
 ## Conteúdo
 
 - [Blog (teardowns e estratégia de marketing cripto)](https://kaleidos.com.br/blog)
+
+### Principais posts do blog
+
+- [Estatísticas de marketing cripto em 2026 que todo founder deveria saber](https://kaleidos.com.br/blog/estatisticas-marketing-cripto-2026)
+- [Quanto custa marketing cripto no Brasil em 2026](https://kaleidos.com.br/blog/quanto-custa-marketing-cripto-brasil-2026)
+- [Guia completo de SEO para cripto e web3 (2026): do zero ao avançado](https://kaleidos.com.br/blog/guia-seo-para-cripto)
+- [GEO: como ser citado pela IA (ChatGPT, Perplexity, Claude) — guia para cripto](https://kaleidos.com.br/blog/geo-como-ser-citado-pela-ia-guia-cripto)
+- [Como lançar um token (TGE): o guia de marketing](https://kaleidos.com.br/blog/como-lancar-token-tge-guia-marketing)
+- [Como construir uma estratégia de go-to-market cripto que funciona](https://kaleidos.com.br/blog/gtm-cripto-estrategia-que-funciona)
+- [Como escolher uma agência de marketing cripto (checklist)](https://kaleidos.com.br/blog/como-escolher-agencia-marketing-cripto-checklist)
+- [Regulação cripto no Brasil e marketing: o que você pode e não pode comunicar](https://kaleidos.com.br/blog/regulacao-marketing-cripto-brasil-2026)
+- [Branding web3: como criar uma marca cripto memorável](https://kaleidos.com.br/blog/branding-web3-marca-cripto-memoravel)
+- [Community Building em Web3: como construir comunidades que crescem](https://kaleidos.com.br/blog/community-building-web3)
+- [Hyperliquid: o airdrop bilionário sem VC e sem KOL pago](https://kaleidos.com.br/blog/hyperliquid-airdrop-sem-vc)
+- [Bitcoin: por que deu certo sem marketing, sem empresa e sem dono](https://kaleidos.com.br/blog/bitcoin-poder-de-comunidade)
 
 ## Sobre
 

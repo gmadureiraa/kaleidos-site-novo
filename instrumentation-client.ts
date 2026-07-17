@@ -31,6 +31,9 @@ if (token) {
     // drop-off do form sem capturar o conteúdo digitado.
     disable_session_recording: false,
     session_recording: { maskAllInputs: true },
+    // Captura os console logs junto da gravação de sessão (Quick start do
+    // PostHog): ajuda a debugar erros vendo o replay + o console lado a lado.
+    enable_recording_console_log: true,
     disable_surveys: true,
     persistence: "localStorage+cookie",
     debug: process.env.NODE_ENV === "development",

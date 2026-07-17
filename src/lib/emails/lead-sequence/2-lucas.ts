@@ -1,4 +1,3 @@
-// TODO CONFIRMAR nomes de marca com Gabriel antes de ativar
 import { ctaButton, escapeHtml, shell, whatsappUrl } from "./shared";
 
 export function buildLucasEmail(opts: { name?: string | null; unsubUrl: string }) {

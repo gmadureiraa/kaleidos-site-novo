@@ -9,7 +9,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/_next/", "/app"],
+        // "/app$" (Google suporta $): bloqueia só a rota /app exata sem pegar
+        // /apresentacao por prefixo. /app não tem sub-rotas (só page.tsx).
+        disallow: ["/api/", "/admin/", "/_next/", "/app$"],
       },
       // Bots de IA explicitamente liberados — queremos ser crawleados e citados (GEO).
       // GPTBot ignora llms.txt e crawleia HTML direto; o que vale é permitir o acesso.
@@ -31,7 +33,7 @@ export default function robots(): MetadataRoute.Robots {
           "Meta-ExternalAgent",
         ],
         allow: "/",
-        disallow: ["/api/", "/admin/", "/app"],
+        disallow: ["/api/", "/admin/", "/app$"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

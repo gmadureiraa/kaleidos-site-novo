@@ -184,7 +184,7 @@ export function EbookPopup({
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     disabled={status === "loading"}
-                    className="w-full rounded-2xl border border-black/15 bg-gray-50 px-4 py-3.5 text-[15px] text-gray-900 placeholder:text-gray-400 transition-all focus:border-black focus:bg-white focus:outline-none focus:ring-1 focus:ring-black/20 disabled:opacity-50"
+                    className="w-full rounded-2xl border border-black/15 bg-gray-50 px-4 py-3.5 text-[16px] text-gray-900 placeholder:text-gray-400 transition-all focus:border-black focus:bg-white focus:outline-none focus:ring-1 focus:ring-black/20 disabled:opacity-50"
                   />
                   <button
                     type="submit"

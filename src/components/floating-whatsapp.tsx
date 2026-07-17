@@ -13,6 +13,7 @@
  */
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 const WHATSAPP_NUMBER = "5512997796835";
 const PREFILL =
@@ -22,14 +23,9 @@ const HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PREFILL
 export function FloatingWhatsApp() {
   const [hover, setHover] = useState(false);
 
-  function track() {
-    try {
-      // posthog global (carregado pelo attribution/instrumentation). Opcional.
-      (window as unknown as { posthog?: { capture?: (e: string, p?: unknown) => void } })
-        .posthog?.capture?.("whatsapp_float_click", { path: window.location.pathname });
-    } catch {
-      /* no-op */
-    }
+  function handleClick() {
+    // track (lib/analytics) usa posthog-js importado — window.posthog não existe aqui.
+    track("whatsapp_float_click", { path: window.location.pathname });
   }
 
   return (
@@ -37,7 +33,7 @@ export function FloatingWhatsApp() {
       href={HREF}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={track}
+      onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-label="Falar com a Kaleidos no WhatsApp"

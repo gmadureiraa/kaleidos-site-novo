@@ -22,6 +22,16 @@ export function StructuredData() {
       "Agência de marketing digital especializada em cripto, Web3 e fintech. Estratégia, conteúdo, IA e growth para projetos que levam o próprio trabalho a sério.",
     "slogan": "Criamos conteúdo que realmente constrói atenção.",
     "foundingDate": "2020",
+    "founder": {
+      "@type": "Person",
+      "name": "Gabriel Madureira",
+      "jobTitle": "Fundador da Kaleidos",
+      // Mesmos perfis usados em blog-jsonld.tsx (autor Gabriel).
+      "sameAs": [
+        "https://twitter.com/ogmadureira",
+        "https://www.linkedin.com/in/gabrielmadureira",
+      ],
+    },
     "knowsAbout": [
       "Marketing Digital",
       "Marketing Cripto",
@@ -128,11 +138,8 @@ export function StructuredData() {
       "name": "Kaleidos Digital",
       "url": baseUrl,
     },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${baseUrl}/blog?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
+    // potentialAction/SearchAction removido: /blog?q= não existe (busca não
+    // implementada). Reintroduzir só quando houver endpoint de busca real.
   };
 
   return (

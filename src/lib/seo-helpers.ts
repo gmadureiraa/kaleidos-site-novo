@@ -88,7 +88,8 @@ export const generateArticleSchema = (
     name: "Kaleidos Digital",
     logo: {
       "@type": "ImageObject",
-      url: "https://kaleidos.com.br/logo.png",
+      // PNG real do wordmark (Google prefere PNG pra publisher logo).
+      url: "https://kaleidos.com.br/Kaleidos/logo/Logos-05.png",
     },
   },
   datePublished,
@@ -136,7 +137,7 @@ export const generateCaseStudySchema = (
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/Kaleidos/imagens/Capa.png`,
+        url: `${siteUrl}/Kaleidos/logo/Logos-05.png`,
       },
     },
     publisher: {
@@ -145,7 +146,7 @@ export const generateCaseStudySchema = (
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/Kaleidos/imagens/Capa.png`,
+        url: `${siteUrl}/Kaleidos/logo/Logos-05.png`,
       },
     },
     datePublished,
@@ -153,7 +154,8 @@ export const generateCaseStudySchema = (
       "@type": "Organization",
       name: client,
     },
-    result: results,
+    // "result" não existe em schema.org/Article — "abstract" é a propriedade válida.
+    abstract: results,
   };
 };
 
