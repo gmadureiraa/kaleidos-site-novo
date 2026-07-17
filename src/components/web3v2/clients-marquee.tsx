@@ -47,7 +47,15 @@ const clients: { name: string; logo: string; url?: string }[] = [
   { name: "Crypto.com", logo: "/v2/partners/crypto-com.webp", url: "https://crypto.com" },
 ];
 
-function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: number }) {
+function ClientLogo({
+  client,
+  index,
+  isClone = false,
+}: {
+  client: (typeof clients)[0];
+  index: number;
+  isClone?: boolean;
+}) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
@@ -83,6 +91,7 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
       target="_blank"
       rel="noopener noreferrer"
       className="marquee-item block min-w-[120px] cursor-pointer"
+      tabIndex={isClone ? -1 : undefined}
       onClick={() => {
         try {
           (
@@ -102,7 +111,7 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
 
 export function Web3V2ClientsMarquee() {
   return (
-    <section className="w-full pt-0 pb-6 bg-black" aria-labelledby="v2-trusted-by-heading">
+    <section className="w-full pt-0 pb-6 bg-black" aria-label="Empresas que confiam na Kaleidos">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative overflow-hidden">
           <div className="marquee-container">
@@ -110,25 +119,20 @@ export function Web3V2ClientsMarquee() {
               {clients.map((client, idx) => (
                 <ClientLogo key={`${client.name}-${idx}`} client={client} index={idx} />
               ))}
-              {clients.map((client, idx) => (
-                <ClientLogo
-                  key={`${client.name}-${idx}-2`}
-                  client={client}
-                  index={idx + clients.length}
-                />
-              ))}
+              {/* Cópia duplicada só pro loop seamless — escondida de leitores de tela */}
+              <div className="flex shrink-0" aria-hidden="true">
+                {clients.map((client, idx) => (
+                  <ClientLogo
+                    key={`${client.name}-${idx}-2`}
+                    client={client}
+                    index={idx + clients.length}
+                    isClone
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="text-center mt-2">
-        <h2
-          id="v2-trusted-by-heading"
-          className="text-sm font-medium text-gray-500 uppercase tracking-widest"
-        >
-          Empresas que confiam
-        </h2>
       </div>
     </section>
   );

@@ -72,7 +72,8 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    /* Conteúdo duplicado 2x na track: -50% = exatamente 1 cópia, loop seamless */
+    transform: translateX(-50%);
   }
 }
 }
@@ -99,8 +100,9 @@
 
 .marquee-content {
   display: flex;
-  animation: marquee-scroll 48s linear infinite;
-  width: 200%; /* 200% para duplicar o conteúdo */
+  white-space: nowrap;
+  animation: marquee-scroll 28s linear infinite;
+  width: max-content; /* largura real do conteúdo duplicado — -50% vira exatamente 1 cópia */
   will-change: transform;
 }
 
@@ -130,7 +132,7 @@
 
 @media (max-width: 768px) {
   .marquee-content {
-    animation: marquee-scroll 32s linear infinite; /* 2x mais rápido no mobile (32s -> 16s) */
+    animation: marquee-scroll 20s linear infinite; /* mais rápido no mobile */
   }
 }
 
