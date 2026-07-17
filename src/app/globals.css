@@ -101,7 +101,7 @@
 .marquee-content {
   display: flex;
   white-space: nowrap;
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 33s linear infinite;
   width: max-content; /* largura real do conteúdo duplicado — -50% vira exatamente 1 cópia */
   will-change: transform;
 }
@@ -132,7 +132,7 @@
 
 @media (max-width: 768px) {
   .marquee-content {
-    animation: marquee-scroll 20s linear infinite; /* mais rápido no mobile */
+    animation: marquee-scroll 24s linear infinite; /* mais rápido no mobile */
   }
 }
 
