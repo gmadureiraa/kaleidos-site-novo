@@ -13,7 +13,7 @@ if (token) {
     capture_pageview: "history_change",
     capture_pageleave: true,
     autocapture: true,
-    // DADOS DE ACESSO + CLIQUE (sem gravação de sessão — Gabriel não quer replay):
+    // DADOS DE ACESSO + CLIQUE + REPLAY:
     // - autocapture = todo clique/submit automático (aba Activity / Web Analytics)
     // - heatmaps = mapa de clique/scroll (aba Heatmaps)
     // - dead clicks = cliques mortos / rage clicks
@@ -25,8 +25,12 @@ if (token) {
     capture_performance: { web_vitals: true, network_timing: false },
     // perfil rico até pra visitante anônimo (origem/UTM/device em todo evento)
     person_profiles: "always",
-    // SEM session replay (peso de bundle desnecessário) e sem surveys
-    disable_session_recording: true,
+    // Session replay consolidado no PostHog (17/07): removemos o Clarity e passamos
+    // a gravar sessão aqui, amarrada aos eventos de lead/funil. Máscara de inputs
+    // ligada por LGPD (os forms coletam email/nome) — grava a interação e o
+    // drop-off do form sem capturar o conteúdo digitado.
+    disable_session_recording: false,
+    session_recording: { maskAllInputs: true },
     disable_surveys: true,
     persistence: "localStorage+cookie",
     debug: process.env.NODE_ENV === "development",

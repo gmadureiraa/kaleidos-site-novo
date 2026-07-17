@@ -2,9 +2,11 @@ import { listActiveLeads, markEmailSent } from "@/lib/db/leads";
 import { sendSequenceEmail, type EmailNumber } from "@/lib/emails/lead-sequence/send";
 
 /**
- * Cron diário (Vercel) — dispara email N pra cada lead com idade certa.
- * Mapeamento: dia 0 = 1, dia 2 = 2, dia 5 = 3, dia 9 = 4.
- * Email #1 já é enviado na hora do signup; aqui é só catch-up + 2/3/4.
+ * Cron diário (Vercel): dispara email N pra cada lead com idade certa.
+ * Cadência: 3 emails nos primeiros 3 dias (empurrão de conversão) e depois
+ * 3 emails espaçados ~7 dias (conteúdo/valor + breakup no fim).
+ * Mapeamento: dia 0 = 1, dia 1 = 2, dia 3 = 3, dia 10 = 4, dia 17 = 5, dia 24 = 6.
+ * Email #1 já é enviado na hora do signup; aqui é só catch-up + 2 a 6.
  *
  * Schedule sugerido (vercel.json): "0 13 * * *" (10h BRT, peak abertura email).
  *
@@ -19,12 +21,14 @@ import { sendSequenceEmail, type EmailNumber } from "@/lib/emails/lead-sequence/
 
 const SEQUENCE_MAP: Record<number, EmailNumber> = {
   0: 1,
-  2: 2,
-  5: 3,
-  9: 4,
+  1: 2,
+  3: 3,
+  10: 4,
+  17: 5,
+  24: 6,
 };
 
-const MAX_DAYS = 14;
+const MAX_DAYS = 26;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 function daysSince(d: Date) {
@@ -37,7 +41,7 @@ function isAuthed(req: Request): boolean {
     // Sem CRON_SECRET o cron NUNCA autentica e a sequência 2/3/4 para em
     // silêncio. Logar alto pra aparecer nos logs da Vercel a cada tentativa.
     console.error(
-      "[cron/lead-email-sequence] CRON_SECRET ausente — cron bloqueado, sequência de emails NÃO está rodando. Setar CRON_SECRET na Vercel."
+      "[cron/lead-email-sequence] CRON_SECRET ausente: cron bloqueado, sequência de emails NÃO está rodando. Setar CRON_SECRET na Vercel."
     );
     return false;
   }

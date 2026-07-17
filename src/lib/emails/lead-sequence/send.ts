@@ -3,12 +3,14 @@ import { unsubUrl } from "../unsubscribe";
 import { buildWelcomeEmail } from "./1-welcome";
 import { buildLucasEmail } from "./2-lucas";
 import { buildDsecEmail } from "./3-dsec";
-import { buildLaylaEmail } from "./4-layla";
+import { buildEmail4 } from "./4-conteudo";
+import { buildEmail5 } from "./5-tese";
+import { buildEmail6 } from "./6-breakup";
 
 const FROM = process.env.LEAD_SEQUENCE_FROM || "Kaleidos <onboarding@resend.dev>";
 const REPLY_TO = process.env.LEAD_SEQUENCE_REPLY_TO || "madureira@kaleidosdigital.com";
 
-export type EmailNumber = 1 | 2 | 3 | 4;
+export type EmailNumber = 1 | 2 | 3 | 4 | 5 | 6;
 
 export function buildEmail(n: EmailNumber, opts: { name?: string | null; email: string }) {
   const u = unsubUrl(opts.email);
@@ -16,7 +18,9 @@ export function buildEmail(n: EmailNumber, opts: { name?: string | null; email: 
     case 1: return buildWelcomeEmail({ name: opts.name, unsubUrl: u });
     case 2: return buildLucasEmail({ name: opts.name, unsubUrl: u });
     case 3: return buildDsecEmail({ name: opts.name, unsubUrl: u });
-    case 4: return buildLaylaEmail({ name: opts.name, unsubUrl: u });
+    case 4: return buildEmail4({ name: opts.name, unsubUrl: u });
+    case 5: return buildEmail5({ name: opts.name, unsubUrl: u });
+    case 6: return buildEmail6({ name: opts.name, unsubUrl: u });
   }
 }
 

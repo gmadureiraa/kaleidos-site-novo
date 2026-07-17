@@ -133,3 +133,26 @@ export function escapeHtml(s: string): string {
 export function ctaUrl(origem: string): string {
   return `https://kaleidos.com.br/servicos/ia-automacoes-completa?utm_source=email&utm_medium=lead-sequence&utm_campaign=${encodeURIComponent(origem)}#diagnostico`;
 }
+
+// TODO CONFIRMAR nomes de marca com Gabriel antes de ativar
+// Fonte: descrição oficial do cliente Kaleidos no CRM.
+// Citar apenas como prova social leve. NUNCA atribuir número, resultado ou depoimento a nenhuma marca.
+export const MARCAS = [
+  "Mercado Bitcoin",
+  "Crypto.com",
+  "Ledger",
+  "Parfin",
+  "Paradigma Education",
+  "Defiverso",
+] as const;
+
+/** Lista de marcas em texto corrido: "A, B, C, D, E e F". */
+export function marcasInline(): string {
+  const m = [...MARCAS];
+  return `${m.slice(0, -1).join(", ")} e ${m[m.length - 1]}`;
+}
+
+/** Link de WhatsApp da Kaleidos com mensagem pré-preenchida. */
+export function whatsappUrl(mensagem: string): string {
+  return `https://wa.me/5512997796835?text=${encodeURIComponent(mensagem)}`;
+}

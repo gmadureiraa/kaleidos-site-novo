@@ -203,15 +203,13 @@ function PolicyPT() {
             comportamento de navegação;
           </li>
           <li>
-            <strong>PostHog</strong> &mdash; análise de produto e eventos de uso;
+            <strong>PostHog</strong> &mdash; análise de produto, eventos de uso,
+            mapas de calor e gravações anonimizadas de sessão (com os campos de
+            formulário mascarados) para entender a experiência de uso;
           </li>
           <li>
             <strong>Meta Pixel</strong> (Meta/Facebook) &mdash; mensuração e
             remarketing de campanhas publicitárias;
-          </li>
-          <li>
-            <strong>Microsoft Clarity</strong> (Microsoft) &mdash; mapas de calor e
-            gravações anonimizadas de sessão para entender a experiência de uso;
           </li>
           <li>
             <strong>Resend</strong> &mdash; envio de e-mails transacionais e de
@@ -227,8 +225,8 @@ function PolicyPT() {
         <ul className="list-disc pl-6 space-y-2">
           <li>
             <strong>Operadores e prestadores de serviço</strong> que tratam dados em
-            nosso nome (por exemplo, os fornecidos na seção 5: Google, PostHog, Meta,
-            Microsoft e Resend), sob obrigações contratuais de confidencialidade e
+            nosso nome (por exemplo, os fornecidos na seção 5: Google, PostHog, Meta
+            e Resend), sob obrigações contratuais de confidencialidade e
             segurança;
           </li>
           <li>
@@ -401,10 +399,9 @@ function PolicyEN() {
       <Section n="4" title="Cookies and processors">
         <p>
           We use cookies and tools such as <strong>Google Analytics</strong>,{" "}
-          <strong>PostHog</strong>, <strong>Meta Pixel</strong>,{" "}
-          <strong>Microsoft Clarity</strong> and <strong>Resend</strong> as
-          processors for analytics, advertising and email. You can manage cookies in
-          your browser settings.
+          <strong>PostHog</strong>, <strong>Meta Pixel</strong> and{" "}
+          <strong>Resend</strong> as processors for analytics, advertising and email.
+          You can manage cookies in your browser settings.
         </p>
       </Section>
 

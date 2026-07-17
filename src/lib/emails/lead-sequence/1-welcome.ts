@@ -1,67 +1,77 @@
-import { caseBlock, ctaButton, ctaUrl, escapeHtml, shell } from "./shared";
+// TODO CONFIRMAR nomes de marca com Gabriel antes de ativar
+import { ctaButton, escapeHtml, marcasInline, shell, whatsappUrl } from "./shared";
 
 export function buildWelcomeEmail(opts: { name?: string | null; unsubUrl: string }) {
   const name = opts.name?.trim().split(" ")[0] || "";
   const greeting = name ? `Oi, ${escapeHtml(name)}.` : "Oi.";
+  const greetingText = name ? `Oi, ${name}.` : "Oi.";
 
-  const subject = `Recebido. Teu diagnóstico sai em 48h (e um case pra já)`;
+  const subject = `Qual é o teu maior gargalo de marketing hoje?`;
+  const wa = whatsappUrl(
+    "Oi, vim do email da Kaleidos. Meu maior gargalo de marketing hoje é..."
+  );
 
   const body = `
     <h1 style="font-family:Inter,sans-serif;font-size:24px;font-weight:600;color:#0a0a0a;margin:8px 0 16px 0;line-height:1.25;">
-      ${greeting} A Kaleidos recebeu o teu pedido.
+      ${greeting} Bem-vindo. Antes de qualquer coisa, uma pergunta.
     </h1>
     <p style="margin:0 0 14px 0;">
-      A promessa vem primeiro: em <strong>até 48h</strong> o time volta direto no teu email com um
-      diagnóstico objetivo, 3 alvos prioritários e a estimativa de quantas horas por mês dá pra
-      liberar na tua operação.
+      <strong>Qual é o teu maior gargalo de marketing hoje?</strong> Falta de clareza no
+      posicionamento, conteúdo que não sai do papel, lançamento que não engrena? Pensa nisso
+      enquanto lê, porque é exatamente o tipo de conversa que a gente gosta de ter.
+    </p>
+    <p style="margin:0 0 14px 0;">
+      Rápido sobre quem te escreve: a Kaleidos é uma agência de marketing nativa de cripto,
+      web3 e fintech. A gente opera nesse mercado desde 2020, como agência desde 2022, e une
+      quatro coisas que normalmente vivem separadas: estratégia, conteúdo, lançamentos e IA
+      dentro da operação. Time boutique, tocado pelos fundadores, sem camada de gerente de
+      conta entre tu e quem pensa o teu projeto.
+    </p>
+    <p style="margin:0 0 14px 0;">
+      Pelo caminho, já trabalhamos com marcas como ${escapeHtml(marcasInline())}. Cada uma
+      com um desafio diferente, e é justamente por isso que a gente prefere começar ouvindo,
+      não apresentando slide.
     </p>
     <p style="margin:0 0 6px 0;">
-      Enquanto isso, um case que provavelmente parece com o teu cenário: a operação editorial do
-      Defiverso, que a Kaleidos toca há mais de 2 anos.
+      Então a proposta é simples: me conta o teu cenário em uma ou duas frases. Sem
+      compromisso, sem pitch. Só uma conversa de quem vive esse mercado todo dia.
     </p>
 
-    ${caseBlock({
-      cliente: "Defiverso · educação cripto",
-      vertical: "Pipeline editorial + agentes de research",
-      antes:
-        "1 newsletter por semana custava 3 dias de pesquisa manual cruzando newsletter gringa, X e veículo cripto. Toda quinta o time fechava a sexta no limite.",
-      depois:
-        "Agentes varrem as fontes, cruzam os dados e devolvem um briefing acionável. O editor humano refina e publica. O tempo de pesquisa caiu para cerca de 30 min por edição.",
-      numero: "+14 mil alunos · 3 newsletters por semana sem aumentar o time",
-    })}
-
-    <p style="margin:0 0 14px 0;">
-      O detalhe que faz diferença: a IA <strong>não substituiu</strong> o editor. Tirou dele a parte
-      mecânica e devolveu o tempo pra curadoria, ângulo e voz. É esse tipo de troca que a gente vai
-      mapear no teu diagnóstico.
-    </p>
-
-    ${ctaButton("Adiantar e agendar meu diagnóstico", ctaUrl("welcome"))}
+    ${ctaButton("Contar meu cenário no WhatsApp", wa)}
 
     <p style="margin:0 0 8px 0;font-size:14px;color:#6b7280;">
-      Nos próximos 10 dias chegam mais 3 emails, cada um com um case diferente (Lucas Amendola,
-      DSEC Labs e Layla Foz) e o jeito exato que a IA entrou na operação de cada um. Depois disso o
-      contato para. Só volta se tu quiser.
+      Prefere email? Responde este aqui mesmo. Quem lê é gente do time, não robô.
     </p>
 
     <p style="margin:24px 0 0 0;font-size:13px;color:#9ca3af;border-top:1px solid #f1f1ef;padding-top:14px;">
-      <strong>PS:</strong> se o teu gargalo é urgente, responde esse email com 1 frase descrevendo o
-      problema. O time pula a fila e volta antes das 48h.
+      Nos próximos dias mando mais alguns emails curtos, cada um sobre uma frente do que a
+      gente faz: posicionamento, conteúdo com IA, lançamentos. Alguns só com conteúdo útil,
+      sem pitch. Depois disso, silêncio. Só volto se tu quiser.
     </p>
   `;
 
   return {
     subject,
-    html: shell({ preheader: "Em 48h o time volta com 3 alvos e um número. Por ora, 1 case real.", bodyHtml: body, unsubUrl: opts.unsubUrl }),
-    text: `${greeting} A Kaleidos recebeu o teu pedido. Em até 48h o time volta com um diagnóstico, 3 alvos prioritários e a estimativa de horas que dá pra liberar por mês.
+    html: shell({
+      preheader: "Uma pergunta antes de qualquer apresentação. E um convite pra conversar.",
+      bodyHtml: body,
+      unsubUrl: opts.unsubUrl,
+    }),
+    text: `${greetingText} Bem-vindo. Antes de qualquer coisa, uma pergunta.
 
-Enquanto isso, um case: a operação editorial do Defiverso roda há mais de 2 anos. Antes, 1 newsletter custava 3 dias de pesquisa manual. Depois, agentes cruzam as fontes e devolvem o briefing em cerca de 30 min. Resultado: +14 mil alunos, 3 newsletters por semana, sem aumentar o time.
+Qual é o teu maior gargalo de marketing hoje? Falta de clareza no posicionamento, conteúdo que não sai do papel, lançamento que não engrena? Pensa nisso enquanto lê, porque é exatamente o tipo de conversa que a gente gosta de ter.
 
-A IA não substituiu o editor. Tirou a parte mecânica e devolveu o tempo pra curadoria e voz.
+Rápido sobre quem te escreve: a Kaleidos é uma agência de marketing nativa de cripto, web3 e fintech. A gente opera nesse mercado desde 2020, como agência desde 2022, e une quatro coisas que normalmente vivem separadas: estratégia, conteúdo, lançamentos e IA dentro da operação. Time boutique, tocado pelos fundadores.
 
-Adiantar e agendar meu diagnóstico: ${ctaUrl("welcome")}
+Pelo caminho, já trabalhamos com marcas como ${marcasInline()}. Cada uma com um desafio diferente, e é justamente por isso que a gente prefere começar ouvindo, não apresentando slide.
 
-PS: se for urgente, responde esse email com 1 frase do problema. O time pula a fila.
+A proposta é simples: me conta o teu cenário em uma ou duas frases. Sem compromisso, sem pitch.
+
+Contar meu cenário no WhatsApp: ${wa}
+
+Prefere email? Responde este aqui mesmo. Quem lê é gente do time, não robô.
+
+Nos próximos dias mando mais alguns emails curtos, cada um sobre uma frente do que a gente faz: posicionamento, conteúdo com IA, lançamentos. Alguns só com conteúdo útil, sem pitch. Depois disso, silêncio. Só volto se tu quiser.
 
 Descadastrar: ${opts.unsubUrl}`,
   };

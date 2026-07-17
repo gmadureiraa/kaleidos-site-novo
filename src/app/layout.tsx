@@ -5,7 +5,6 @@ import { Navbar } from "@/components/navbar";
 import { StructuredData } from "@/components/structured-data";
 import { AnalyticsRouter } from "@/components/analytics-router";
 import { GoogleAnalytics } from "@/components/analytics";
-import { Clarity } from "@/components/clarity";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
@@ -174,11 +173,9 @@ export default function RootLayout({
               {children}
             </Suspense>
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
-            {/* Microsoft Clarity (session replay + heatmaps) site-wide. Usa
-                NEXT_PUBLIC_CLARITY_ID se setado, senão o projeto padrão. Montado
-                aqui no layout raiz pra valer em TODAS as páginas (antes só a home
-                via home-shell, e ainda gated numa env que não estava setada). */}
-            <Clarity />
+            {/* Session replay + heatmaps agora só no PostHog (consolidado 17/07).
+                O replay do PostHog já grava as sessões e fica amarrado aos eventos
+                de lead/funil; o Clarity foi removido pra não duplicar tooling. */}
             <Suspense fallback={null}>
               <AnalyticsRouter />
             </Suspense>
