@@ -27,6 +27,9 @@ const STYLE = `
 .kv2 .cta-btn:hover{transform:translate(-2px,-2px);}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
 @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes floatrotL{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-14px) rotate(-8deg)}}
+@keyframes floatrotR{0%,100%{transform:translateY(0) rotate(6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+@media(max-width:760px){.w3-herodeco img{opacity:.5;width:96px!important;}}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes starspin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
@@ -128,18 +131,18 @@ export type HeroOpts = { badge?: string; headlineHtml?: string; subHtml?: string
 
 const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
   pt: {
-    badge: "Agência cripto-nativa desde 2020",
+    badge: "Agência de marketing para cripto desde 2019",
     headlineHtml:
-      'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto brasileiro.',
+      'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto e financeiro.',
     subHtml:
-      'Estratégia e execução para projetos de <strong style="color:#14110D;">cripto, web3 e fintech</strong>: do conteúdo que some no feed à marca que <strong style="color:#14110D;">vira referência</strong>.',
+      'Fazemos <strong style="color:#14110D;">estratégia</strong>, <strong style="color:#14110D;">conteúdo</strong>, <strong style="color:#14110D;">lançamentos</strong> e <strong style="color:#14110D;">crescimento</strong> para projetos de cripto, web3 e fintech.',
   },
   en: {
-    badge: "Crypto-native agency since 2020",
+    badge: "Marketing agency for crypto since 2019",
     headlineHtml:
-      'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the Brazilian crypto market.',
+      'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the crypto and financial market.',
     subHtml:
-      'Strategy and execution for <strong style="color:#14110D;">crypto, web3 and fintech</strong> projects: from content that vanishes in the feed to a brand that <strong style="color:#14110D;">becomes the reference</strong>.',
+      'We do <strong style="color:#14110D;">strategy</strong>, <strong style="color:#14110D;">content</strong>, <strong style="color:#14110D;">launches</strong> and <strong style="color:#14110D;">growth</strong> for crypto, web3 and fintech projects.',
   },
 };
 
@@ -168,14 +171,13 @@ export function heroHtml(o: HeroOpts = {}, l: Locale = "pt") {
   return `
 <section id="topo" class="w3-hero" style="position:relative;display:flex;flex-direction:column;justify-content:center;background:#FAFAFA;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;overflow:hidden;">
     <div class="w3-herodeco" style="position:absolute;inset:0;pointer-events:none;">
-      <img src="/v2/collage/brain-glasses.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:6%;top:14%;width:170px;mix-blend-mode:multiply;transform:rotate(8deg);animation:floaty 7s ease-in-out infinite;filter:contrast(1.1);">
-      <img src="/v2/collage/david.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:3%;bottom:8%;width:150px;mix-blend-mode:multiply;transform:rotate(-6deg);animation:floaty2 9s ease-in-out infinite;">
-      <img src="/v2/elements/colagem-einstein-kaleidos.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:9%;bottom:7%;width:180px;mix-blend-mode:multiply;transform:rotate(3deg);animation:floaty 8s ease-in-out infinite;">
+      <img src="/v2/collage/sticker-bitcoin.png" alt="" loading="lazy" decoding="async" style="position:absolute;left:4%;top:32%;width:clamp(100px,11vw,158px);filter:drop-shadow(3px 5px 7px rgba(20,17,13,.16));transform:rotate(-8deg);animation:floatrotL 7s ease-in-out infinite;">
+      <img src="/v2/collage/sticker-tothemoon.png" alt="" loading="lazy" decoding="async" style="position:absolute;right:3%;top:30%;width:clamp(128px,14vw,202px);filter:drop-shadow(3px 5px 7px rgba(20,17,13,.16));transform:rotate(6deg);animation:floatrotR 9s ease-in-out infinite;">
     </div>
     <div class="w3-heropad w3-pad" style="position:relative;width:100%;max-width:1100px;margin:0 auto;padding:40px 28px;text-align:center;">
       <div style="position:relative;display:inline-block;margin-bottom:32px;transform:rotate(-2deg);">
-        <span style="position:absolute;top:-15px;left:14%;transform:translateX(-50%) rotate(-8deg);display:inline-flex;align-items:center;justify-content:center;padding:5px 12px;background:#7CF067;border:1.5px solid #14110D;box-shadow:0 1px 2px rgba(0,0,0,.12);font-family:Gridlite,monospace;font-size:11px;letter-spacing:1px;text-transform:lowercase;color:#14110D;">studio</span>
-        <span style="position:absolute;top:-13px;right:10%;transform:translateX(50%) rotate(7deg);display:inline-flex;align-items:center;justify-content:center;padding:5px 12px;background:#D262B2;border:1.5px solid #14110D;box-shadow:0 1px 2px rgba(0,0,0,.12);font-family:Gridlite,monospace;font-size:11px;letter-spacing:1px;text-transform:lowercase;color:#14110D;">web3</span>
+        <span style="position:absolute;top:-15px;left:14%;transform:translateX(-50%) rotate(-8deg);display:inline-flex;align-items:center;justify-content:center;padding:5px 12px;background:#7CF067;border:1.5px solid #14110D;box-shadow:0 1px 2px rgba(0,0,0,.12);font-family:Gridlite,monospace;font-size:11px;letter-spacing:1px;text-transform:lowercase;color:#14110D;">marketing</span>
+        <span style="position:absolute;top:-13px;right:10%;transform:translateX(50%) rotate(7deg);display:inline-flex;align-items:center;justify-content:center;padding:5px 12px;background:#D262B2;border:1.5px solid #14110D;box-shadow:0 1px 2px rgba(0,0,0,.12);font-family:Gridlite,monospace;font-size:11px;letter-spacing:1px;text-transform:lowercase;color:#14110D;">cripto</span>
         <div style="background:#fff;border:1.5px solid #14110D;padding:16px 30px;box-shadow:6px 6px 0 rgba(0,0,0,.14);">
           <svg style="width:220px;max-width:60vw;height:auto;fill:#14110D;display:block;" viewBox="0 0 2000 262.38"><use href="#kal-word"></use></svg>
         </div>
