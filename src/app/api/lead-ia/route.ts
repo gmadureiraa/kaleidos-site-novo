@@ -9,6 +9,7 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
+import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
 
 /** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
 function esc(v: unknown): string {
@@ -264,6 +265,30 @@ ${gargalo}
         first_referrer: attr.first_referrer ?? attr.referrer ?? null,
       },
     });
+
+    // Conversões server-side (GA4 MP + Meta CAPI). BEST-EFFORT e env-gated:
+    // helpers nunca lançam e viram no-op sem GA4_API_SECRET / META_CAPI_TOKEN.
+    // Lead de IA/automações = alta intenção (form qualificado com gargalo).
+    const emailNorm = String(email).trim().toLowerCase();
+    const userAgent = request.headers.get("user-agent") ?? undefined;
+    await Promise.all([
+      ga4Event(emailNorm, "generate_lead", {
+        lead_type: "lead_ia",
+        intent: "high",
+        tamanho: tamanho || undefined,
+        ...attr,
+      }),
+      metaCapiEvent(
+        "Lead",
+        { email: emailNorm, clientIp: ip, userAgent },
+        {
+          content_name: "lead_ia_form",
+          content_category: "ia_automacoes",
+          intent: "high",
+          ...attr,
+        }
+      ),
+    ]);
 
     return new Response(
       JSON.stringify({

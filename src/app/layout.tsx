@@ -137,7 +137,16 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {},
+  // Verificação do Google Search Console via env (NEXT_PUBLIC_GSC_VERIFICATION).
+  // Setar na Vercel com o token que o GSC fornecer (método "meta tag HTML") e
+  // redeployar: a tag <meta name="google-site-verification"> passa a ser emitida.
+  // Sem a env, nada é renderizado (inerte). Obs: já existe verificação por
+  // arquivo em public/google246af223582fbd69.html como método alternativo.
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+      : {}),
+  },
   manifest: '/manifest.json',
 };
 

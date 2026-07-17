@@ -6,6 +6,7 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
+import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
 
 /** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
 function esc(v: unknown): string {
@@ -218,6 +219,30 @@ ${mensagem}
         );
       }
     }
+
+    // Conversões server-side (GA4 MP + Meta CAPI). BEST-EFFORT e env-gated:
+    // helpers nunca lançam e viram no-op sem GA4_API_SECRET / META_CAPI_TOKEN.
+    // Contato = lead de alta intenção, marcamos isso nos params.
+    const emailNorm = String(email).trim().toLowerCase();
+    const userAgent = request.headers.get("user-agent") ?? undefined;
+    await Promise.all([
+      ga4Event(emailNorm, "generate_lead", {
+        lead_type: "contact",
+        intent: "high",
+        servicos_count: (servicos || []).length,
+        ...attr,
+      }),
+      metaCapiEvent(
+        "Lead",
+        { email: emailNorm, clientIp: ip, userAgent },
+        {
+          content_name: "contact_form",
+          content_category: "contact",
+          intent: "high",
+          ...attr,
+        }
+      ),
+    ]);
 
     return new Response(JSON.stringify({ ok: true, notified, crmSynced }), {
       status: 200,

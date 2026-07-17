@@ -7,6 +7,7 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
+import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
 import { getPaperBySlug } from "@/lib/papers-data";
 import { sendPaperDelivery } from "@/lib/emails/paper-delivery";
 
@@ -196,6 +197,28 @@ export async function POST(req: NextRequest) {
         first_article: meta.article_slug ?? null,
       },
     });
+
+    // Conversões server-side (GA4 MP + Meta CAPI). BEST-EFFORT e env-gated:
+    // helpers nunca lançam e viram no-op se GA4_API_SECRET / META_CAPI_TOKEN
+    // não estiverem setadas. Reaproveitam os UTMs já capturados em `meta`.
+    const emailNorm = email.trim().toLowerCase();
+    const userAgent = req.headers.get("user-agent") ?? undefined;
+    await Promise.all([
+      ga4Event(emailNorm, "generate_lead", {
+        lead_type: "newsletter",
+        delivered_paper: deliverSlug || undefined,
+        ...meta,
+      }),
+      metaCapiEvent(
+        "Lead",
+        { email: emailNorm, clientIp: ip, userAgent },
+        {
+          content_name: "newsletter_signup",
+          content_category: "newsletter",
+          ...meta,
+        }
+      ),
+    ]);
 
     return NextResponse.json({
       success: true,
