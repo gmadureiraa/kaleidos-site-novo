@@ -7,7 +7,12 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
-import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
+import {
+  ga4Event,
+  metaCapiEvent,
+  readTrackingCookies,
+} from "@/lib/analytics-server";
+import { randomUUID } from "crypto";
 import { getPaperBySlug } from "@/lib/papers-data";
 import { sendPaperDelivery } from "@/lib/emails/paper-delivery";
 
@@ -49,7 +54,16 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => null);
-    const { email, _hp, name } = body || {};
+    // event_id/ga_* são tracking ids opcionais vindos do client (dedupe
+    // pixel×CAPI + client_id real do GA4). Fallback server-to-server abaixo.
+    const {
+      email,
+      _hp,
+      name,
+      event_id,
+      ga_client_id,
+      ga_session_id,
+    } = body || {};
 
     // Entrega de lead magnet: se o gate/popup pediu um paper específico,
     // mandamos o material por email na hora (honra a promessa do gate).
@@ -130,9 +144,21 @@ export async function POST(req: NextRequest) {
     } else {
       try {
         const resend = getResend();
+        // Nome (quando o form manda) vai junto pro contato da audience —
+        // antes só o email era gravado e o firstName se perdia.
+        const nameParts =
+          typeof name === "string"
+            ? name.trim().split(/\s+/).filter(Boolean)
+            : [];
+        const firstName = nameParts[0]?.slice(0, 100);
+        const lastName = nameParts.length > 1
+          ? nameParts.slice(1).join(" ").slice(0, 100)
+          : undefined;
         const { data, error } = await resend.contacts.create({
           audienceId: AUDIENCE_ID,
           email,
+          ...(firstName ? { firstName } : {}),
+          ...(lastName ? { lastName } : {}),
         });
         if (error) {
           // Contato duplicado (já inscrito) NÃO é falha.
@@ -162,6 +188,11 @@ export async function POST(req: NextRequest) {
     let delivered = false;
     if (deliverSlug) {
       const paper = getPaperBySlug(deliverSlug);
+      if (!paper) {
+        // Slug desconhecido = gate prometeu material que não vai chegar.
+        // Log explícito pra detectar typo/paper removido (antes falhava mudo).
+        console.error(`[subscribe] paper slug desconhecido: ${deliverSlug}`);
+      }
       if (paper) {
         try {
           const r = await sendPaperDelivery({
@@ -203,20 +234,36 @@ export async function POST(req: NextRequest) {
     // não estiverem setadas. Reaproveitam os UTMs já capturados em `meta`.
     const emailNorm = email.trim().toLowerCase();
     const userAgent = req.headers.get("user-agent") ?? undefined;
+    const { fbp, fbc } = readTrackingCookies(req.headers.get("cookie"));
+    const eventSourceUrl = req.headers.get("referer") ?? undefined;
+    const eventId =
+      typeof event_id === "string" && event_id
+        ? event_id.slice(0, 100)
+        : randomUUID();
     await Promise.all([
-      ga4Event(emailNorm, "generate_lead", {
-        lead_type: "newsletter",
-        delivered_paper: deliverSlug || undefined,
-        ...meta,
-      }),
+      ga4Event(
+        emailNorm,
+        "generate_lead",
+        {
+          lead_type: "newsletter",
+          delivered_paper: deliverSlug || undefined,
+          ...meta,
+        },
+        {
+          clientId: typeof ga_client_id === "string" ? ga_client_id : undefined,
+          sessionId:
+            typeof ga_session_id === "string" ? ga_session_id : undefined,
+        }
+      ),
       metaCapiEvent(
         "Lead",
-        { email: emailNorm, clientIp: ip, userAgent },
+        { email: emailNorm, clientIp: ip, userAgent, fbp, fbc },
         {
           content_name: "newsletter_signup",
           content_category: "newsletter",
           ...meta,
-        }
+        },
+        { eventId, eventSourceUrl }
       ),
     ]);
 

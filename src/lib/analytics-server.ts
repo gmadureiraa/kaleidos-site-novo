@@ -49,15 +49,51 @@ function sha256(value: string): string {
 type Params = Record<string, unknown>;
 
 /**
+ * Cookies de tracking lidos do header `Cookie` da request (server-side).
+ * `_fbp`/`_fbc` melhoram MUITO o match quality da Meta CAPI.
+ */
+export function readTrackingCookies(cookieHeader: string | null | undefined): {
+  fbp?: string;
+  fbc?: string;
+} {
+  const out: { fbp?: string; fbc?: string } = {};
+  if (!cookieHeader) return out;
+  try {
+    for (const part of cookieHeader.split(";")) {
+      const idx = part.indexOf("=");
+      if (idx === -1) continue;
+      const name = part.slice(0, idx).trim();
+      const value = part.slice(idx + 1).trim();
+      if (!value) continue;
+      if (name === "_fbp") out.fbp = value.slice(0, 200);
+      if (name === "_fbc") out.fbc = value.slice(0, 500);
+    }
+  } catch {
+    // cookie malformado — segue sem
+  }
+  return out;
+}
+
+type Ga4Ids = {
+  /** client_id REAL do GA4 (cookie _ga do client). */
+  clientId?: string;
+  /** session_id do GA4 (cookie _ga_<container>). */
+  sessionId?: string;
+};
+
+/**
  * Envia evento pro GA4 via Measurement Protocol.
  *
- * `clientIdOrEmail` vira o client_id do GA4 (email é hasheado antes, nunca
- * mandamos PII crua pro GA). Env-gated em GA4_API_SECRET.
+ * `clientIdOrEmail` é o FALLBACK de client_id (email é hasheado antes, nunca
+ * mandamos PII crua pro GA). Se `ids.clientId` vier do client (cookie _ga),
+ * ele tem prioridade — é o que faz o evento cair no usuário/sessão real do
+ * GA4 em vez de um id fantasma. Env-gated em GA4_API_SECRET.
  */
 export async function ga4Event(
   clientIdOrEmail: string,
   eventName: string,
-  params: Params = {}
+  params: Params = {},
+  ids: Ga4Ids = {}
 ): Promise<void> {
   try {
     const apiSecret = process.env.GA4_API_SECRET;
@@ -65,13 +101,23 @@ export async function ga4Event(
       process.env.GA4_MEASUREMENT_ID ||
       process.env.NEXT_PUBLIC_GA_ID ||
       "G-H6N0QD787X";
-    if (!apiSecret || !measurementId || !clientIdOrEmail) return;
+    if (!apiSecret || !measurementId) return;
 
-    // GA4 não aceita PII no client_id: se veio email, usamos o hash como
+    // Prioridade: client_id real vindo do cookie _ga do client. Fallback:
+    // GA4 não aceita PII no client_id — se veio email, usamos o hash como
     // identificador estável (mesmo email = mesmo client_id entre eventos).
-    const clientId = clientIdOrEmail.includes("@")
-      ? sha256(clientIdOrEmail)
-      : clientIdOrEmail;
+    const realClientId =
+      typeof ids.clientId === "string" && /^[\d.]+$/.test(ids.clientId)
+        ? ids.clientId
+        : undefined;
+    const clientId =
+      realClientId ??
+      (clientIdOrEmail
+        ? clientIdOrEmail.includes("@")
+          ? sha256(clientIdOrEmail)
+          : clientIdOrEmail
+        : undefined);
+    if (!clientId) return;
 
     // Só valores primitivos nos params (GA4 rejeita objetos aninhados).
     const cleanParams: Record<string, string | number | boolean> = {};
@@ -85,6 +131,14 @@ export async function ga4Event(
         cleanParams[k] = typeof v === "string" ? v.slice(0, 100) : v;
       }
     }
+
+    // session_id + engagement_time_msec: sem eles o GA4 não atribui o evento
+    // a nenhuma sessão e ele some dos relatórios padrão (só aparece em
+    // exploração). engagement_time_msec >= 1 marca o usuário como "engajado".
+    if (ids.sessionId && /^\d+$/.test(ids.sessionId)) {
+      cleanParams.session_id = ids.sessionId;
+    }
+    cleanParams.engagement_time_msec = 1;
 
     const url = `https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(
       measurementId
@@ -109,6 +163,23 @@ type MetaUserData = {
   clientIp?: string;
   /** User-Agent do cliente (idem). */
   userAgent?: string;
+  /** Cookie _fbp do browser (browser id do pixel — match quality). */
+  fbp?: string;
+  /** Cookie _fbc do browser (click id de anúncio — atribuição paid). */
+  fbc?: string;
+};
+
+type MetaEventOptions = {
+  /**
+   * Id único do evento pra DEDUPE com o pixel client: o fbq("track", ...,
+   * { eventID }) do browser manda o MESMO id, e a Meta conta o Lead 1x.
+   */
+  eventId?: string;
+  /**
+   * URL da página onde a conversão aconteceu. action_source:"website" exige
+   * esse campo — sem ele o evento pode ser rejeitado/penalizado.
+   */
+  eventSourceUrl?: string;
 };
 
 /**
@@ -120,7 +191,8 @@ type MetaUserData = {
 export async function metaCapiEvent(
   eventName: string,
   userData: MetaUserData,
-  customData: Params = {}
+  customData: Params = {},
+  options: MetaEventOptions = {}
 ): Promise<void> {
   try {
     const token = process.env.META_CAPI_TOKEN;
@@ -131,6 +203,8 @@ export async function metaCapiEvent(
     if (userData.email) user_data.em = [sha256(userData.email)];
     if (userData.clientIp) user_data.client_ip_address = userData.clientIp;
     if (userData.userAgent) user_data.client_user_agent = userData.userAgent;
+    if (userData.fbp) user_data.fbp = userData.fbp;
+    if (userData.fbc) user_data.fbc = userData.fbc;
     if (!user_data.em && !user_data.client_ip_address) return;
 
     // Só valores primitivos no custom_data.
@@ -159,6 +233,12 @@ export async function metaCapiEvent(
             event_name: eventName,
             event_time: Math.floor(Date.now() / 1000),
             action_source: "website",
+            ...(options.eventId
+              ? { event_id: String(options.eventId).slice(0, 100) }
+              : {}),
+            ...(options.eventSourceUrl
+              ? { event_source_url: String(options.eventSourceUrl).slice(0, 1000) }
+              : {}),
             user_data,
             custom_data,
           },

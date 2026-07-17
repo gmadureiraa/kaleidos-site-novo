@@ -11,6 +11,7 @@ import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
 import { track, identifyLead } from "@/lib/analytics";
 import { getAttributionMeta } from "@/lib/attribution";
+import { getTrackingIds } from "@/lib/tracking-ids";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 
 export default function ContatoPage() {
@@ -75,6 +76,8 @@ export default function ContatoPage() {
           locale,
           _hp: hp,
           metadata: getAttributionMeta(),
+          // Ids de tracking (event_id pra dedupe CAPI + client/session do GA4)
+          ...getTrackingIds(),
         }),
       });
       const data = await res.json().catch(() => ({}));

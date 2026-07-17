@@ -24,6 +24,7 @@ import {
 
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { getAttributionMeta } from "@/lib/attribution";
+import { getTrackingIds } from "@/lib/tracking-ids";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -810,19 +811,32 @@ function CTAFinal() {
     if (!form.nome || !form.email) return;
     setStatus("sending");
     try {
+      // Ids de tracking: o MESMO event_id vai no body (server usa na Meta CAPI)
+      // e no fbq eventID abaixo — pixel + CAPI deduplicam e o Lead conta 1x.
+      const tracking = getTrackingIds();
       const r = await fetch("/api/lead-ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, _hp: hp, metadata: getAttributionMeta() }),
+        body: JSON.stringify({
+          ...form,
+          _hp: hp,
+          metadata: getAttributionMeta(),
+          ...tracking,
+        }),
       });
       const data = await r.json();
       if (data.ok) {
         setStatus("ok");
         if (typeof window !== "undefined" && typeof window.fbq === "function") {
-          window.fbq("track", "Lead", {
-            content_name: "Kaleidos LP",
-            content_category: "lp",
-          });
+          window.fbq(
+            "track",
+            "Lead",
+            {
+              content_name: "Kaleidos LP",
+              content_category: "lp",
+            },
+            { eventID: tracking.event_id }
+          );
         }
       } else {
         setStatus("err");

@@ -6,7 +6,12 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
-import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
+import {
+  ga4Event,
+  metaCapiEvent,
+  readTrackingCookies,
+} from "@/lib/analytics-server";
+import { randomUUID } from "crypto";
 
 /** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
 function esc(v: unknown): string {
@@ -37,6 +42,12 @@ export async function POST(request: Request) {
       locale = "pt",
       _hp,
       metadata = {},
+      // Tracking ids vindos do client (opcionais — fallback server-to-server):
+      // event_id deduplica pixel×CAPI; ga_client_id/ga_session_id fazem o
+      // evento GA4 cair no usuário/sessão real em vez de um id fantasma.
+      event_id,
+      ga_client_id,
+      ga_session_id,
     } = data || {};
 
     // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
@@ -88,10 +99,16 @@ export async function POST(request: Request) {
     const fromAddress =
       process.env.RESEND_FROM ?? "Kaleidos <noreply@kaleidos.com.br>";
     const subject = locale === "en" ? `New contact: ${nome}` : `Novo contato: ${nome}`;
-    const to = [
-      "madureira@kaleidosdigital.com",
-      "nathalia@kaleidosdigital.com",
-    ];
+    // Destinatários via env (mesmo padrão do lead-ia) com fallback hardcoded.
+    const parseList = (raw?: string) =>
+      (raw || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    const to = parseList(process.env.LEAD_NOTIFICATION_TO).length
+      ? parseList(process.env.LEAD_NOTIFICATION_TO)
+      : ["madureira@kaleidosdigital.com", "nathalia@kaleidosdigital.com"];
+    const cc = parseList(process.env.LEAD_NOTIFICATION_CC);
     const text = `
 Nome: ${nome}
 Email: ${email}
@@ -141,6 +158,7 @@ ${mensagem}
         await resend.emails.send({
           from: fromAddress,
           to,
+          ...(cc.length ? { cc } : {}),
           replyTo: email,
           subject,
           text,
@@ -225,22 +243,38 @@ ${mensagem}
     // Contato = lead de alta intenção, marcamos isso nos params.
     const emailNorm = String(email).trim().toLowerCase();
     const userAgent = request.headers.get("user-agent") ?? undefined;
+    const { fbp, fbc } = readTrackingCookies(request.headers.get("cookie"));
+    const eventSourceUrl = request.headers.get("referer") ?? undefined;
+    const eventId =
+      typeof event_id === "string" && event_id
+        ? event_id.slice(0, 100)
+        : randomUUID();
     await Promise.all([
-      ga4Event(emailNorm, "generate_lead", {
-        lead_type: "contact",
-        intent: "high",
-        servicos_count: (servicos || []).length,
-        ...attr,
-      }),
+      ga4Event(
+        emailNorm,
+        "generate_lead",
+        {
+          lead_type: "contact",
+          intent: "high",
+          servicos_count: (servicos || []).length,
+          ...attr,
+        },
+        {
+          clientId: typeof ga_client_id === "string" ? ga_client_id : undefined,
+          sessionId:
+            typeof ga_session_id === "string" ? ga_session_id : undefined,
+        }
+      ),
       metaCapiEvent(
         "Lead",
-        { email: emailNorm, clientIp: ip, userAgent },
+        { email: emailNorm, clientIp: ip, userAgent, fbp, fbc },
         {
           content_name: "contact_form",
           content_category: "contact",
           intent: "high",
           ...attr,
-        }
+        },
+        { eventId, eventSourceUrl }
       ),
     ]);
 

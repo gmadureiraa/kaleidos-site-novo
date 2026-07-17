@@ -28,6 +28,7 @@ import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
 import { useAnalytics } from "@/components/analytics";
 import { getAttributionMeta } from "@/lib/attribution";
+import { getTrackingIds } from "@/lib/tracking-ids";
 import CardFlip from "@/components/kokonutui/card-flip";
 import AIStateLoading from "@/components/kokonutui/ai-state-loading";
 import {
@@ -1362,6 +1363,9 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
     if (!form.nome || !form.email || !form.telefone) return;
     setStatus("sending");
     try {
+      // Ids de tracking: o MESMO event_id vai no body (server usa na Meta CAPI)
+      // e no fbq eventID abaixo — pixel + CAPI deduplicam e o Lead conta 1x.
+      const tracking = getTrackingIds();
       const r = await fetch("/api/lead-ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -1372,6 +1376,7 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
           gargalo: form.gargalo,
           _hp: hp,
           metadata: getAttributionMeta(),
+          ...tracking,
         }),
       });
       const data = await r.json();
@@ -1379,10 +1384,15 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
         setStatus("ok");
         // Meta Pixel — dispara Lead event quando form converte (P0 audit)
         if (typeof window !== "undefined" && typeof window.fbq === "function") {
-          window.fbq("track", "Lead", {
-            content_name: "Kaleidos AI · Diagnóstico gratuito",
-            content_category: "ia-automacoes-completa",
-          });
+          window.fbq(
+            "track",
+            "Lead",
+            {
+              content_name: "Kaleidos AI · Diagnóstico gratuito",
+              content_category: "ia-automacoes-completa",
+            },
+            { eventID: tracking.event_id }
+          );
         }
       } else {
         setStatus("err");

@@ -9,7 +9,12 @@ import {
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
 import { captureServerEvent } from "@/lib/posthog-server";
-import { ga4Event, metaCapiEvent } from "@/lib/analytics-server";
+import {
+  ga4Event,
+  metaCapiEvent,
+  readTrackingCookies,
+} from "@/lib/analytics-server";
+import { randomUUID } from "crypto";
 
 /** Escapa input do usuário antes de interpolar no HTML do email (anti-injeção/phishing). */
 function esc(v: unknown): string {
@@ -41,6 +46,12 @@ export async function POST(request: Request) {
       locale = "pt",
       _hp,
       metadata = {},
+      // Tracking ids vindos do client (opcionais — fallback server-to-server):
+      // event_id deduplica pixel×CAPI; ga_client_id/ga_session_id fazem o
+      // evento GA4 cair no usuário/sessão real em vez de um id fantasma.
+      event_id,
+      ga_client_id,
+      ga_session_id,
     } = data || {};
 
     // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
@@ -266,27 +277,105 @@ ${gargalo}
       },
     });
 
+    // INTEGRAÇÃO CRM (KAI): lead-ia é o lead MAIS qualificado do site (form
+    // com gargalo/whatsapp/tamanho de time), então espelhamos no CRM do KAI
+    // além do Resend/Postgres/PostHog. BEST-EFFORT e env-gated: só roda se
+    // KAI_CRM_INGEST_URL estiver setada; timeout curto; nunca lança nem
+    // derruba a resposta (o lead já está seguro acima).
+    let crmSynced = false;
+    const kaiIngestUrl = process.env.KAI_CRM_INGEST_URL;
+    if (kaiIngestUrl) {
+      const crmLogPayload = JSON.stringify({
+        nome: String(nome).slice(0, 200),
+        email: String(email).trim().toLowerCase(),
+        empresa: String(empresa || "").slice(0, 200),
+        whatsapp: String(whatsapp || "").slice(0, 50),
+        tamanho: String(tamanho || "").slice(0, 100),
+        gargalo: String(gargalo || "").slice(0, 2000),
+        ...attr,
+        at: new Date().toISOString(),
+      });
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 4000);
+        const resp = await fetch(kaiIngestUrl, {
+          method: "POST",
+          signal: ctrl.signal,
+          headers: {
+            "Content-Type": "application/json",
+            ...(process.env.KAI_CRM_INGEST_TOKEN
+              ? { Authorization: `Bearer ${process.env.KAI_CRM_INGEST_TOKEN}` }
+              : {}),
+          },
+          body: JSON.stringify({
+            source: "site-lead-ia",
+            name: String(nome).slice(0, 200),
+            email: String(email).trim().toLowerCase(),
+            company: String(empresa || "").slice(0, 200),
+            phone: String(whatsapp || "").slice(0, 50),
+            message: String(gargalo || "").slice(0, 2000),
+            metadata: {
+              tamanho_time: String(tamanho || "").slice(0, 100) || null,
+              gargalo: String(gargalo || "").slice(0, 2000) || null,
+              whatsapp: String(whatsapp || "").slice(0, 50) || null,
+            },
+            channel: attr.channel ?? null,
+            utm_source: attr.utm_source ?? null,
+            utm_campaign: attr.utm_campaign ?? null,
+          }),
+        });
+        clearTimeout(t);
+        crmSynced = resp.ok;
+        if (!resp.ok) {
+          console.error(
+            `[LEAD-FALLBACK] lead-ia->KAI CRM respondeu ${resp.status} — lead preservado: ${crmLogPayload}`
+          );
+        }
+      } catch (err) {
+        console.error(
+          `[LEAD-FALLBACK] lead-ia->KAI CRM falhou — lead preservado: ${crmLogPayload}`,
+          err
+        );
+      }
+    }
+
     // Conversões server-side (GA4 MP + Meta CAPI). BEST-EFFORT e env-gated:
     // helpers nunca lançam e viram no-op sem GA4_API_SECRET / META_CAPI_TOKEN.
     // Lead de IA/automações = alta intenção (form qualificado com gargalo).
     const emailNorm = String(email).trim().toLowerCase();
     const userAgent = request.headers.get("user-agent") ?? undefined;
+    const { fbp, fbc } = readTrackingCookies(request.headers.get("cookie"));
+    const eventSourceUrl = request.headers.get("referer") ?? undefined;
+    const eventId =
+      typeof event_id === "string" && event_id
+        ? event_id.slice(0, 100)
+        : randomUUID();
     await Promise.all([
-      ga4Event(emailNorm, "generate_lead", {
-        lead_type: "lead_ia",
-        intent: "high",
-        tamanho: tamanho || undefined,
-        ...attr,
-      }),
+      ga4Event(
+        emailNorm,
+        "generate_lead",
+        {
+          lead_type: "lead_ia",
+          intent: "high",
+          tamanho: tamanho || undefined,
+          ...attr,
+        },
+        {
+          clientId: typeof ga_client_id === "string" ? ga_client_id : undefined,
+          sessionId:
+            typeof ga_session_id === "string" ? ga_session_id : undefined,
+        }
+      ),
       metaCapiEvent(
         "Lead",
-        { email: emailNorm, clientIp: ip, userAgent },
+        { email: emailNorm, clientIp: ip, userAgent, fbp, fbc },
         {
           content_name: "lead_ia_form",
           content_category: "ia_automacoes",
           intent: "high",
           ...attr,
-        }
+        },
+        { eventId, eventSourceUrl }
       ),
     ]);
 
@@ -299,6 +388,7 @@ ${gargalo}
         welcomeSent,
         audienceAdded,
         internalSimulated,
+        crmSynced,
       }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
