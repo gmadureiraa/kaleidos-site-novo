@@ -35,7 +35,7 @@ export async function sendSequenceEmail(opts: {
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.warn("[lead-sequence] RESEND_API_KEY ausente — simulando envio");
+    console.warn("[lead-sequence] RESEND_API_KEY ausente, simulando envio");
     console.log(`[lead-sequence] WOULD SEND email#${opts.emailNumber} → ${opts.to}: ${built.subject}`);
     return { ok: true, simulated: true };
   }

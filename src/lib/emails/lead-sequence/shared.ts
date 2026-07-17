@@ -42,8 +42,8 @@ export function shell(opts: {
           <tr>
             <td style="padding:0 36px 32px 36px;border-top:1px solid #f1f1ef;">
               <p style="margin:24px 0 8px 0;font-size:12px;color:#9ca3af;line-height:1.5;">
-                Recebeu por ter pedido um diagnóstico em
-                <a href="https://kaleidos.com.br/servicos/ia-automacoes-completa" style="color:#6b7280;">kaleidos.com.br/servicos/ia-automacoes-completa</a>.
+                Você recebeu este email porque pediu um diagnóstico ou baixou um material em
+                <a href="https://kaleidos.com.br" style="color:#6b7280;">kaleidos.com.br</a>.
               </p>
               <p style="margin:0;font-size:12px;color:#9ca3af;">
                 Não quer mais receber?
