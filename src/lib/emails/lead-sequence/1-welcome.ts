@@ -1,10 +1,10 @@
-import { ctaButton, escapeHtml, marcasInline, shell, whatsappUrl } from "./shared";
+import { ctaButton, clientesInline, escapeHtml, shell, whatsappUrl } from "./shared";
 
+/**
+ * Email 1 (dia 0): boas-vindas + pergunta do gargalo.
+ * Sem nome (lead entra só com email). Sem "IA", sem "lançamento", sem "boutique".
+ */
 export function buildWelcomeEmail(opts: { name?: string | null; unsubUrl: string }) {
-  const name = opts.name?.trim().split(" ")[0] || "";
-  const greeting = name ? `Oi, ${escapeHtml(name)}.` : "Oi.";
-  const greetingText = name ? `Oi, ${name}.` : "Oi.";
-
   const subject = `Qual é o teu maior gargalo de marketing hoje?`;
   const wa = whatsappUrl(
     "Oi, vim do email da Kaleidos. Meu maior gargalo de marketing hoje é..."
@@ -12,22 +12,22 @@ export function buildWelcomeEmail(opts: { name?: string | null; unsubUrl: string
 
   const body = `
     <h1 style="font-family:Inter,sans-serif;font-size:24px;font-weight:600;color:#0a0a0a;margin:8px 0 16px 0;line-height:1.25;">
-      ${greeting} Bem-vindo. Antes de qualquer coisa, uma pergunta.
+      Bem-vindo. Antes de qualquer coisa, uma pergunta.
     </h1>
     <p style="margin:0 0 14px 0;">
       <strong>Qual é o teu maior gargalo de marketing hoje?</strong> Falta de clareza no
-      posicionamento, conteúdo que não sai do papel, lançamento que não engrena? Pensa nisso
+      posicionamento, conteúdo que não sai do papel, comunidade que não engaja? Pensa nisso
       enquanto lê, porque é exatamente o tipo de conversa que a gente gosta de ter.
     </p>
     <p style="margin:0 0 14px 0;">
       Rápido sobre quem te escreve: a Kaleidos é uma agência de marketing nativa de cripto,
-      web3 e fintech. A gente opera nesse mercado desde 2020, como agência desde 2022, e une
-      quatro coisas que normalmente vivem separadas: estratégia, conteúdo, lançamentos e IA
-      dentro da operação. Time boutique, tocado pelos fundadores, sem camada de gerente de
-      conta entre tu e quem pensa o teu projeto.
+      web3 e fintech. A gente une quatro coisas que normalmente vivem separadas:
+      <strong>estratégia, conteúdo, conhecimento técnico e distribuição</strong>. Somos um
+      time especializado no mercado cripto e financeiro; trabalhamos com empresas, founders
+      e creators, trazendo sempre o melhor resultado, independente do desafio.
     </p>
     <p style="margin:0 0 14px 0;">
-      Pelo caminho, já trabalhamos com marcas como ${escapeHtml(marcasInline())}. Cada uma
+      Pelo caminho, já trabalhamos com nomes como ${escapeHtml(clientesInline())}. Cada um
       com um desafio diferente, e é justamente por isso que a gente prefere começar ouvindo,
       não apresentando slide.
     </p>
@@ -43,9 +43,9 @@ export function buildWelcomeEmail(opts: { name?: string | null; unsubUrl: string
     </p>
 
     <p style="margin:24px 0 0 0;font-size:13px;color:#9ca3af;border-top:1px solid #f1f1ef;padding-top:14px;">
-      Nos próximos dias mando mais alguns emails curtos, cada um sobre uma frente do que a
-      gente faz: posicionamento, conteúdo com IA, lançamentos. Alguns só com conteúdo útil,
-      sem pitch. Depois disso, silêncio. Só volto se tu quiser.
+      Nos próximos dias mando mais alguns emails curtos: quem a gente é, o que a gente
+      aprendeu nesses anos de mercado e materiais que tu pode usar hoje. Depois disso,
+      silêncio. Só volto se tu quiser.
     </p>
   `;
 
@@ -56,13 +56,13 @@ export function buildWelcomeEmail(opts: { name?: string | null; unsubUrl: string
       bodyHtml: body,
       unsubUrl: opts.unsubUrl,
     }),
-    text: `${greetingText} Bem-vindo. Antes de qualquer coisa, uma pergunta.
+    text: `Bem-vindo. Antes de qualquer coisa, uma pergunta.
 
-Qual é o teu maior gargalo de marketing hoje? Falta de clareza no posicionamento, conteúdo que não sai do papel, lançamento que não engrena? Pensa nisso enquanto lê, porque é exatamente o tipo de conversa que a gente gosta de ter.
+Qual é o teu maior gargalo de marketing hoje? Falta de clareza no posicionamento, conteúdo que não sai do papel, comunidade que não engaja? Pensa nisso enquanto lê, porque é exatamente o tipo de conversa que a gente gosta de ter.
 
-Rápido sobre quem te escreve: a Kaleidos é uma agência de marketing nativa de cripto, web3 e fintech. A gente opera nesse mercado desde 2020, como agência desde 2022, e une quatro coisas que normalmente vivem separadas: estratégia, conteúdo, lançamentos e IA dentro da operação. Time boutique, tocado pelos fundadores.
+Rápido sobre quem te escreve: a Kaleidos é uma agência de marketing nativa de cripto, web3 e fintech. A gente une quatro coisas que normalmente vivem separadas: estratégia, conteúdo, conhecimento técnico e distribuição. Somos um time especializado no mercado cripto e financeiro; trabalhamos com empresas, founders e creators, trazendo sempre o melhor resultado, independente do desafio.
 
-Pelo caminho, já trabalhamos com marcas como ${marcasInline()}. Cada uma com um desafio diferente, e é justamente por isso que a gente prefere começar ouvindo, não apresentando slide.
+Pelo caminho, já trabalhamos com nomes como ${clientesInline()}. Cada um com um desafio diferente, e é justamente por isso que a gente prefere começar ouvindo, não apresentando slide.
 
 A proposta é simples: me conta o teu cenário em uma ou duas frases. Sem compromisso, sem pitch.
 
@@ -70,7 +70,7 @@ Contar meu cenário no WhatsApp: ${wa}
 
 Prefere email? Responde este aqui mesmo. Quem lê é gente do time, não robô.
 
-Nos próximos dias mando mais alguns emails curtos, cada um sobre uma frente do que a gente faz: posicionamento, conteúdo com IA, lançamentos. Alguns só com conteúdo útil, sem pitch. Depois disso, silêncio. Só volto se tu quiser.
+Nos próximos dias mando mais alguns emails curtos: quem a gente é, o que a gente aprendeu nesses anos de mercado e materiais que tu pode usar hoje. Depois disso, silêncio. Só volto se tu quiser.
 
 Descadastrar: ${opts.unsubUrl}`,
   };

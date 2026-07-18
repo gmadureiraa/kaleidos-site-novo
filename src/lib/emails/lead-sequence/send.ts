@@ -2,26 +2,32 @@ import { Resend } from "resend";
 import { tagValue } from "@/lib/resend-contact-props";
 import { unsubUrl } from "../unsubscribe";
 import { buildWelcomeEmail } from "./1-welcome";
-import { buildLucasEmail } from "./2-lucas";
-import { buildDsecEmail } from "./3-dsec";
-import { buildEmail4 } from "./4-conteudo";
-import { buildEmail5 } from "./5-tese";
-import { buildEmail6 } from "./6-breakup";
+import { buildCredibilidadeEmail } from "./2-credibilidade";
+import { buildPlaybookBearEmail } from "./3-playbook-bear";
+import { buildDiagnosticoEmail } from "./4-diagnostico";
+import { buildPosicionamentoEmail } from "./5-posicionamento";
+import { buildPlaybook2026Email } from "./6-playbook-2026";
+import { buildConsultoriaEmail } from "./7-consultoria";
+import { buildBreakupEmail } from "./8-breakup";
 
-const FROM = process.env.LEAD_SEQUENCE_FROM || "Kaleidos <onboarding@resend.dev>";
+const FROM = process.env.LEAD_SEQUENCE_FROM || "Kaleidos <contato@news.kaleidos.com.br>";
 const REPLY_TO = process.env.LEAD_SEQUENCE_REPLY_TO || "madureira@kaleidosdigital.com";
 
-export type EmailNumber = 1 | 2 | 3 | 4 | 5 | 6;
+export type EmailNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
+// `name` é aceito por compat (signup pode mandar), mas os templates NÃO
+// personalizam por nome: o lead entra só com email (regra Gabriel 2026-07).
 export function buildEmail(n: EmailNumber, opts: { name?: string | null; email: string }) {
   const u = unsubUrl(opts.email);
   switch (n) {
     case 1: return buildWelcomeEmail({ name: opts.name, unsubUrl: u });
-    case 2: return buildLucasEmail({ name: opts.name, unsubUrl: u });
-    case 3: return buildDsecEmail({ name: opts.name, unsubUrl: u });
-    case 4: return buildEmail4({ name: opts.name, unsubUrl: u });
-    case 5: return buildEmail5({ name: opts.name, unsubUrl: u });
-    case 6: return buildEmail6({ name: opts.name, unsubUrl: u });
+    case 2: return buildCredibilidadeEmail({ name: opts.name, unsubUrl: u });
+    case 3: return buildPlaybookBearEmail({ name: opts.name, unsubUrl: u });
+    case 4: return buildDiagnosticoEmail({ name: opts.name, unsubUrl: u });
+    case 5: return buildPosicionamentoEmail({ name: opts.name, unsubUrl: u });
+    case 6: return buildPlaybook2026Email({ name: opts.name, unsubUrl: u });
+    case 7: return buildConsultoriaEmail({ name: opts.name, unsubUrl: u });
+    case 8: return buildBreakupEmail({ name: opts.name, unsubUrl: u });
   }
 }
 

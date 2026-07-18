@@ -4,9 +4,11 @@ import { sendSequenceEmail, type EmailNumber } from "@/lib/emails/lead-sequence/
 /**
  * Cron diário (Vercel): dispara email N pra cada lead com idade certa.
  * Cadência: 3 emails nos primeiros 3 dias (empurrão de conversão) e depois
- * 3 emails espaçados ~7 dias (conteúdo/valor + breakup no fim).
- * Mapeamento: dia 0 = 1, dia 1 = 2, dia 3 = 3, dia 10 = 4, dia 17 = 5, dia 24 = 6.
- * Email #1 já é enviado na hora do signup; aqui é só catch-up + 2 a 6.
+ * 5 emails espaçados (valor, playbooks, form, consultoria e breakup no fim).
+ * Mapeamento: dia 0 = 1 (welcome), 1 = 2 (credibilidade), 3 = 3 (playbook bear),
+ * 7 = 4 (form diagnóstico), 12 = 5 (posicionamento), 17 = 6 (playbook 2026),
+ * 23 = 7 (consultoria /agendar), 30 = 8 (breakup).
+ * Email #1 já é enviado na hora do signup; aqui é só catch-up + 2 a 8.
  *
  * Schedule sugerido (vercel.json): "0 13 * * *" (10h BRT, peak abertura email).
  *
@@ -23,12 +25,14 @@ const SEQUENCE_MAP: Record<number, EmailNumber> = {
   0: 1,
   1: 2,
   3: 3,
-  10: 4,
-  17: 5,
-  24: 6,
+  7: 4,
+  12: 5,
+  17: 6,
+  23: 7,
+  30: 8,
 };
 
-const MAX_DAYS = 26;
+const MAX_DAYS = 32;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 function daysSince(d: Date) {

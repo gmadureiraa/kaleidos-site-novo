@@ -1,10 +1,23 @@
 /**
- * Building blocks compartilhados pros 4 templates da sequence Kaleidos AI.
+ * Building blocks compartilhados pros 8 templates da sequence de leads Kaleidos.
  * HTML inline-safe (Outlook + Gmail + Apple Mail).
+ *
+ * Regras da sequência (feedback Gabriel 2026-07):
+ * - Lead entra só com email: NUNCA personalizar subject/heading com nome.
+ * - Reply-to é madureira@kaleidosdigital.com: todo email convida a responder.
+ * - Zero travessão no corpo. Subjects sem colchete. Voz tu/teu informal-direta.
+ * - Cada email fecha com UMA chamada clara e um caminho de conversão.
  */
 
 export const KALEIDOS_LIME = "#7CF067";
 export const KALEIDOS_DARK = "#0A0A0A";
+
+/** Calendly direto (fallback; preferir AGENDAR_URL que rastreia). */
+export const CALENDLY_URL = "https://calendly.com/madureira-kaleidosdigital/30min";
+/** Página de agendamento com rastreio. */
+export const AGENDAR_URL = "https://kaleidos.com.br/agendar";
+/** Form de diagnóstico do site. */
+export const DIAGNOSTICO_URL = "https://kaleidos.com.br/diagnostico";
 
 export function shell(opts: {
   preheader: string;
@@ -30,7 +43,7 @@ export function shell(opts: {
           <tr>
             <td style="padding:32px 36px 8px 36px;">
               <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;font-weight:600;">
-                Kaleidos · IA na operação
+                Kaleidos · Estratégia e marketing para o mercado cripto
               </div>
             </td>
           </tr>
@@ -70,6 +83,59 @@ export function ctaButton(label: string, url: string): string {
           <a href="${url}" style="display:inline-block;padding:14px 28px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:999px;background:${KALEIDOS_DARK};">
             ${escapeHtml(label)} →
           </a>
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
+/**
+ * Bloco de recomendação de leitura: capa do playbook (imagem real hospedada
+ * em kaleidos.com.br/papers/) + título + CTA. Usar em pelo menos 2 emails
+ * da sequência, variando o CTA principal.
+ */
+export function resourceBlock(opts: {
+  title: string;
+  coverUrl: string;
+  url: string;
+  /** Label do botão. Default: "Ler o playbook". */
+  label?: string;
+  /** Linha pequena acima do título. Default: "Leitura recomendada". */
+  kicker?: string;
+}): string {
+  const { title, coverUrl, url } = opts;
+  const label = opts.label || "Ler o playbook";
+  const kicker = opts.kicker || "Leitura recomendada";
+  return `
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:20px 0 24px 0;background:#fafaf9;border:1px solid #e7e5e4;border-radius:12px;">
+      <tr>
+        <td style="padding:22px 22px 16px 22px;" align="center">
+          <a href="${url}" style="text-decoration:none;">
+            <img src="${coverUrl}" width="240" alt="Capa: ${escapeHtml(title)}" style="display:block;width:240px;max-width:100%;height:auto;border-radius:10px;border:1px solid #e7e5e4;" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:0 22px 4px 22px;" align="center">
+          <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6b7280;font-weight:600;margin-bottom:6px;">
+            ${escapeHtml(kicker)}
+          </div>
+          <div style="font-size:17px;font-weight:600;color:#0a0a0a;line-height:1.35;">
+            ${escapeHtml(title)}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding:4px 22px 22px 22px;">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:12px 0 0 0;">
+            <tr>
+              <td bgcolor="${KALEIDOS_DARK}" style="border-radius:999px;">
+                <a href="${url}" style="display:inline-block;padding:12px 24px;font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:999px;background:${KALEIDOS_DARK};">
+                  ${escapeHtml(label)} →
+                </a>
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>
@@ -142,16 +208,63 @@ export const MARCAS = [
   "Ledger",
   "Parfin",
   "Paradigma Education",
-  "Defiverso",
 ] as const;
 
-/** Lista de marcas em texto corrido: "A, B, C, D, E e F". */
+// Founders e creators que a Kaleidos atende. Mesma regra: prova social leve,
+// nunca inventar resultado.
+export const FOUNDERS_CREATORS = [
+  "Lucas Amendola (Defiverso)",
+  "DSEC",
+] as const;
+
+/** Lista de marcas em texto corrido: "A, B, C, D e E". */
 export function marcasInline(): string {
   const m = [...MARCAS];
   return `${m.slice(0, -1).join(", ")} e ${m[m.length - 1]}`;
 }
 
+/** Marcas + founders/creators em texto corrido. */
+export function clientesInline(): string {
+  const todos = [...MARCAS, ...FOUNDERS_CREATORS];
+  return `${todos.slice(0, -1).join(", ")} e ${todos[todos.length - 1]}`;
+}
+
 /** Link de WhatsApp da Kaleidos com mensagem pré-preenchida. */
 export function whatsappUrl(mensagem: string): string {
   return `https://wa.me/5512997796835?text=${encodeURIComponent(mensagem)}`;
+}
+
+/**
+ * Playbooks reais publicados em kaleidos.com.br/papers/<slug>.
+ * Slugs e capas conferidos em src/lib/papers-data.ts. NÃO inventar títulos.
+ */
+export const PLAYBOOKS = {
+  bearMarket: {
+    title: "Como fazer marketing e vender no bear market",
+    url: "https://kaleidos.com.br/papers/bear-market-2026",
+    coverUrl: "https://kaleidos.com.br/papers/cover-bear-market-v4.webp",
+  },
+  bullMarket: {
+    title: "Como se Preparar para o Próximo Bull Market",
+    url: "https://kaleidos.com.br/papers/bull-market-2026",
+    coverUrl: "https://kaleidos.com.br/papers/cover-bull-market.webp",
+  },
+  tge: {
+    title: "Como levar um token do zero ao mercado",
+    url: "https://kaleidos.com.br/papers/playbook-tge-2026",
+    coverUrl: "https://kaleidos.com.br/papers/cover-tge.webp",
+  },
+  cripto2026: {
+    title: "Para onde vai o marketing cripto em 2026",
+    url: "https://kaleidos.com.br/papers/playbook-cripto-2026",
+    coverUrl: "https://kaleidos.com.br/papers/cover-playbook.webp",
+  },
+} as const;
+
+/** Linha padrão de "responde este email" (HTML). Reforça o reply-to humano. */
+export function replyNoteHtml(texto?: string): string {
+  const t =
+    texto ||
+    "Prefere email? Responde este aqui mesmo. Quem lê é gente do time, não robô.";
+  return `<p style="margin:0 0 8px 0;font-size:14px;color:#6b7280;">${escapeHtml(t)}</p>`;
 }
