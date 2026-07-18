@@ -8,6 +8,14 @@ import { ArrowLeft, CalendarDays, Check } from "lucide-react";
 import { CALENDLY_URL } from "@/lib/constants";
 import { track } from "@/lib/analytics";
 
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (opts: { url: string; parentElement: HTMLElement }) => void;
+    };
+  }
+}
+
 /**
  * Embed inline do Calendly + captura do agendamento SEM webhook/plano pago.
  *
@@ -21,6 +29,27 @@ export function AgendarClient() {
   // Guard: rastreia só uma vez por agendamento (o Calendly pode reemitir
   // mensagens em re-render/navegação interna do iframe).
   const bookedRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initedRef = useRef(false);
+
+  // Init explícito do widget (o auto-init por classe não funciona: a div só
+  // monta depois que o widget.js já rodou, no client render do React).
+  const initCalendly = () => {
+    if (initedRef.current) return;
+    const el = containerRef.current;
+    if (!el || !window.Calendly?.initInlineWidget) return;
+    initedRef.current = true;
+    window.Calendly.initInlineWidget({
+      url: `${CALENDLY_URL}?hide_gdpr_banner=1`,
+      parentElement: el,
+    });
+  };
+
+  // Fallback: se o script já estava carregado (cache/nav interna), inicializa.
+  useEffect(() => {
+    if (window.Calendly?.initInlineWidget) initCalendly();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     function onCalendlyMessage(e: MessageEvent) {
@@ -78,10 +107,11 @@ export function AgendarClient() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Script oficial do embed — auto-inicializa a div .calendly-inline-widget */}
+      {/* Script oficial do embed — no onLoad chamamos initInlineWidget explícito */}
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
+        onLoad={initCalendly}
       />
 
       {/* Header */}
@@ -144,8 +174,7 @@ export function AgendarClient() {
             className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
           >
             <div
-              className="calendly-inline-widget"
-              data-url={`${CALENDLY_URL}?hide_gdpr_banner=1`}
+              ref={containerRef}
               style={{ minWidth: "320px", height: "760px" }}
             />
           </motion.div>
