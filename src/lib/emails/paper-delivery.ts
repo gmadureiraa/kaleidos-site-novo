@@ -39,7 +39,7 @@ export function buildPaperDeliveryEmail(opts: { paper: Paper; name?: string | nu
   // Alguns papers só têm PDF (sem read.html) — não oferecer "ler na web" pra não cair em 404.
   const hasRead = paper.readHtml !== false;
 
-  const subject = `[Kaleidos] Seu acesso: ${paper.title}`;
+  const subject = `Seu acesso: ${paper.title}`;
 
   const highlights = (paper.highlights || [])
     .slice(0, 3)
