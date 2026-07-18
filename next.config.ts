@@ -5,11 +5,14 @@ import type { NextConfig } from "next";
 // possível.
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://assets.calendly.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https://fonts.gstatic.com",
-  "connect-src 'self' https://www.google-analytics.com https://*.clarity.ms https://*.facebook.com https://*.resend.com",
+  "connect-src 'self' https://www.google-analytics.com https://*.clarity.ms https://*.facebook.com https://*.resend.com https://calendly.com https://*.calendly.com",
+  // Calendly renderiza o agendamento num iframe (calendly.com); sem frame-src
+  // explícito ele cairia no default-src 'self' e viria em branco.
+  "frame-src 'self' https://calendly.com https://*.calendly.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
