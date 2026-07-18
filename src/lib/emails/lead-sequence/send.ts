@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { tagValue } from "@/lib/resend-contact-props";
 import { unsubUrl } from "../unsubscribe";
 import { buildWelcomeEmail } from "./1-welcome";
 import { buildLucasEmail } from "./2-lucas";
@@ -28,6 +29,8 @@ export async function sendSequenceEmail(opts: {
   to: string;
   name?: string | null;
   emailNumber: EmailNumber;
+  /** Origem do lead (form/popup) — vira tag `source` no Resend (Logs → filtro por tag). */
+  source?: string | null;
   dryRun?: boolean;
 }): Promise<{ ok: boolean; simulated?: boolean; error?: string }> {
   const built = buildEmail(opts.emailNumber, { name: opts.name, email: opts.to });
@@ -46,6 +49,14 @@ export async function sendSequenceEmail(opts: {
 
   try {
     const resend = new Resend(apiKey);
+    // Tags: no dashboard do Resend (Emails/Logs, filtro por tag) dá pra ver
+    // QUAL email da sequência cada lead recebeu e DE ONDE o lead veio.
+    const tags = [
+      { name: "product", value: "kaleidos" },
+      { name: "category", value: "lead-sequence" },
+      { name: "email", value: String(opts.emailNumber) },
+      ...(opts.source ? [{ name: "source", value: tagValue(opts.source) }] : []),
+    ];
     await resend.emails.send({
       from: FROM,
       to: opts.to,
@@ -53,6 +64,7 @@ export async function sendSequenceEmail(opts: {
       subject: built.subject,
       html: built.html,
       text: built.text,
+      tags,
     });
     return { ok: true };
   } catch (err) {

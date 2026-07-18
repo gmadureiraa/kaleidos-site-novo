@@ -28,13 +28,13 @@ export function LeadGate({ articleSlug }: { articleSlug?: string }) {
         body: JSON.stringify({
           email,
           _hp: hp,
-          metadata: getLeadMetadata("article-gate", articleSlug),
+          metadata: getLeadMetadata("blog-lead-gate", articleSlug),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
-      track("lead_captured", { source: "blog-article-gate", article_slug: articleSlug });
-      track("lead_submit", { source: "blog-article-gate", article_slug: articleSlug });
+      track("lead_captured", { source: "blog-lead-gate", article_slug: articleSlug });
+      track("lead_submit", { source: "blog-lead-gate", article_slug: articleSlug });
       identifyLead(email);
       setStatus("success");
       setMsg("Fechou. Os proximos estudos chegam no seu email.");

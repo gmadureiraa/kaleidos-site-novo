@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 import { WHATSAPP_NUMBER } from "@/lib/constants";
-import { getAttributionMeta } from "@/lib/attribution";
+import { getLeadMetadata } from "@/lib/lead-meta";
 import { getTrackingIds } from "@/lib/tracking-ids";
 
 const instrumentSerif = Instrument_Serif({
@@ -820,7 +820,8 @@ function CTAFinal() {
         body: JSON.stringify({
           ...form,
           _hp: hp,
-          metadata: getAttributionMeta(),
+          // source lógico do form + atribuição completa (canal/UTM/first-last)
+          metadata: getLeadMetadata("lp"),
           ...tracking,
         }),
       });

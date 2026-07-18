@@ -90,10 +90,15 @@ export async function GET(req: Request) {
   for (const item of plan) {
     if (item.sending === null) continue;
     const lead = leads.find((l) => l.id === item.leadId)!;
+    // source (origem do lead) vem do metadata jsonb persistido no signup —
+    // vira tag no email pra rastreabilidade no dashboard do Resend.
+    const leadSource =
+      typeof lead.metadata?.source === "string" ? lead.metadata.source : null;
     const result = await sendSequenceEmail({
       to: lead.email,
       name: lead.name,
       emailNumber: item.sending,
+      source: leadSource,
       dryRun: false,
     });
     if (result.ok) {

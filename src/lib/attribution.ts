@@ -322,5 +322,8 @@ export function getAttributionMeta(): Record<string, string> {
   put("first_referrer", a.first_referrer);
   put("first_utm_source", a.first_utm_source);
   put("first_utm_campaign", a.first_utm_campaign);
+  // landing = primeira página que a pessoa acessou NA VIDA (first-touch),
+  // enquanto `path` é a página do acesso atual (last-touch).
+  put("landing", a.first_landing_path);
   return meta;
 }

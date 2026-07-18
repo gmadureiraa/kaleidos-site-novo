@@ -6,6 +6,7 @@
 // @kaleidos.com.br apex (não verificado) — cai no catch e o lead não recebe nada.
 
 import { Resend } from "resend";
+import { tagValue } from "@/lib/resend-contact-props";
 import type { Paper } from "@/lib/papers-data";
 
 const SITE = "https://kaleidos.com.br";
@@ -144,6 +145,8 @@ export async function sendPaperDelivery(opts: {
   to: string;
   paper: Paper;
   name?: string | null;
+  /** Origem do lead (paper-gate, ebook-popup…) — vira tag `source` no Resend. */
+  source?: string | null;
 }): Promise<{ ok: boolean; simulated?: boolean; error?: string }> {
   const built = buildPaperDeliveryEmail({ paper: opts.paper, name: opts.name });
 
@@ -159,6 +162,14 @@ export async function sendPaperDelivery(opts: {
 
   try {
     const resend = new Resend(apiKey);
+    // Tags: filtráveis no dashboard do Resend — qual paper foi entregue e de
+    // qual gate/popup o lead veio.
+    const tags = [
+      { name: "product", value: "kaleidos" },
+      { name: "category", value: "paper-delivery" },
+      { name: "paper", value: tagValue(opts.paper.slug) },
+      ...(opts.source ? [{ name: "source", value: tagValue(opts.source) }] : []),
+    ];
     await resend.emails.send({
       from,
       to: opts.to,
@@ -166,6 +177,7 @@ export async function sendPaperDelivery(opts: {
       subject: built.subject,
       html: built.html,
       text: built.text,
+      tags,
     });
     return { ok: true };
   } catch (err) {

@@ -9,8 +9,12 @@ import { getAttributionMeta } from "@/lib/attribution";
 
 export interface LeadMetadata {
   source: string;
+  /** Detalhe da origem: slug do paper/playbook, path do post do blog, etc. */
+  source_detail?: string;
   article_slug?: string;
   path?: string;
+  /** Primeira página que a pessoa acessou na vida (first-touch landing). */
+  landing?: string;
   referrer?: string;
   channel?: string;
   traffic_source?: string;
@@ -28,7 +32,7 @@ export interface LeadMetadata {
 
 export function getLeadMetadata(
   source: string,
-  articleSlug?: string
+  sourceDetail?: string
 ): LeadMetadata {
   if (typeof window === "undefined") return { source };
 
@@ -40,8 +44,12 @@ export function getLeadMetadata(
   return {
     // form source (paper-gate, article-sidebar, blog-index…) — mantém semântica
     source,
-    article_slug: articleSlug,
+    // detalhe da origem (slug do paper/playbook, path do artigo…) — dupla
+    // gravação em source_detail (padrão novo) + article_slug (compat PostHog)
+    source_detail: sourceDetail,
+    article_slug: sourceDetail,
     path: attr.path || window.location.pathname,
+    landing: attr.landing || undefined,
     referrer: attr.referrer || undefined,
     channel: attr.channel,
     traffic_source: attr.source,

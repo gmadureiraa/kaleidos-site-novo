@@ -7,6 +7,13 @@ export type LeadInput = {
   tamanho?: string;
   whatsapp?: string;
   gargalo?: string;
+  /**
+   * Atribuição completa do lead (jsonb `metadata`): source, source_detail,
+   * channel, traffic_source, utm_*, referrer, path, landing, first_*.
+   * No conflito, merge jsonb: chaves novas atualizam (last-touch), chaves
+   * antigas não enviadas são preservadas (first-touch não some).
+   */
+  metadata?: Record<string, unknown>;
 };
 
 export async function upsertLead(input: LeadInput): Promise<LeadRow | null> {
@@ -15,21 +22,30 @@ export async function upsertLead(input: LeadInput): Promise<LeadRow | null> {
     console.warn("[leads] DATABASE_URL ausente — pulando persistência");
     return null;
   }
-  const { email, name, empresa, tamanho, whatsapp, gargalo } = input;
+  const { email, name, empresa, tamanho, whatsapp, gargalo, metadata } = input;
 
   const result = await pool.query<LeadRow>(
     `
-    INSERT INTO lead_email_sequence (email, name, empresa, tamanho, whatsapp, gargalo)
-    VALUES ($1, $2, $3, $4, $5, $6)
+    INSERT INTO lead_email_sequence (email, name, empresa, tamanho, whatsapp, gargalo, metadata)
+    VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb)
     ON CONFLICT ((lower(email))) DO UPDATE SET
       name     = COALESCE(EXCLUDED.name, lead_email_sequence.name),
       empresa  = COALESCE(EXCLUDED.empresa, lead_email_sequence.empresa),
       tamanho  = COALESCE(EXCLUDED.tamanho, lead_email_sequence.tamanho),
       whatsapp = COALESCE(EXCLUDED.whatsapp, lead_email_sequence.whatsapp),
-      gargalo  = COALESCE(EXCLUDED.gargalo, lead_email_sequence.gargalo)
+      gargalo  = COALESCE(EXCLUDED.gargalo, lead_email_sequence.gargalo),
+      metadata = lead_email_sequence.metadata || EXCLUDED.metadata
     RETURNING *
     `,
-    [email, name ?? null, empresa ?? null, tamanho ?? null, whatsapp ?? null, gargalo ?? null]
+    [
+      email,
+      name ?? null,
+      empresa ?? null,
+      tamanho ?? null,
+      whatsapp ?? null,
+      gargalo ?? null,
+      JSON.stringify(metadata ?? {}),
+    ]
   );
   return result.rows[0] ?? null;
 }

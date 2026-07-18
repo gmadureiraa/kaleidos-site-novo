@@ -165,13 +165,13 @@ export function LeadPopup() {
         body: JSON.stringify({
           email,
           _hp: hp,
-          metadata: getLeadMetadata("popup"),
+          metadata: getLeadMetadata("lead-popup", pathname || undefined),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro");
-      track("lead_captured", { source: "popup", path: pathname });
-      track("lead_submit", { source: "popup", path: pathname });
+      track("lead_captured", { source: "lead-popup", path: pathname });
+      track("lead_submit", { source: "lead-popup", path: pathname });
       identifyLead(email);
       setStatus("success");
       setMsg("Pronto. Você vai receber os próximos estudos no seu email.");

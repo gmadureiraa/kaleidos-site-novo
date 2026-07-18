@@ -10,7 +10,7 @@ import { WHATSAPP_NUMBER, CALENDLY_URL } from "@/lib/constants";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
 import { track, identifyLead } from "@/lib/analytics";
-import { getAttributionMeta } from "@/lib/attribution";
+import { getLeadMetadata } from "@/lib/lead-meta";
 import { getTrackingIds } from "@/lib/tracking-ids";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 
@@ -75,7 +75,8 @@ export default function ContatoPage() {
           servicos: selectedServices,
           locale,
           _hp: hp,
-          metadata: getAttributionMeta(),
+          // source lógico do form + atribuição completa (canal/UTM/first-last)
+          metadata: getLeadMetadata("contato"),
           // Ids de tracking (event_id pra dedupe CAPI + client/session do GA4)
           ...getTrackingIds(),
         }),

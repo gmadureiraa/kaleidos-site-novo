@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { tagValue } from "@/lib/resend-contact-props";
 import {
   getClientIp,
   rateLimit,
@@ -50,12 +51,16 @@ export async function POST(request: Request) {
       ga_session_id,
     } = data || {};
 
-    // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
+    // Atribuição (origem do lead): source lógico do form + detalhe, canal,
+    // origem de tráfego, UTMs, referrer, first/last touch.
     const ATTR_KEYS = [
       "channel",
       "source",
+      "source_detail",
+      "traffic_source",
       "referrer",
       "path",
+      "landing",
       "utm_source",
       "utm_medium",
       "utm_campaign",
@@ -163,6 +168,13 @@ ${mensagem}
           subject,
           text,
           html,
+          tags: [
+            { name: "product", value: "kaleidos" },
+            { name: "category", value: "contact-notification" },
+            ...(attr.source
+              ? [{ name: "source", value: tagValue(attr.source) }]
+              : []),
+          ],
         });
         notified = true;
       } catch (err) {
@@ -182,12 +194,12 @@ ${mensagem}
       // last-touch sempre atualiza; first-touch fixa na primeira conversão
       $set: {
         last_channel: attr.channel ?? null,
-        last_source: attr.source ?? null,
+        last_source: attr.traffic_source ?? attr.source ?? null,
         last_path: attr.path ?? null,
       },
       $set_once: {
         first_channel: attr.first_channel ?? attr.channel ?? null,
-        first_source: attr.first_source ?? attr.source ?? null,
+        first_source: attr.first_source ?? attr.traffic_source ?? null,
         first_referrer: attr.first_referrer ?? attr.referrer ?? null,
       },
     });

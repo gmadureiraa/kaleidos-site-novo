@@ -27,7 +27,7 @@ import { useI18n } from "@/i18n/useI18n";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
 import { useAnalytics } from "@/components/analytics";
-import { getAttributionMeta } from "@/lib/attribution";
+import { getLeadMetadata } from "@/lib/lead-meta";
 import { getTrackingIds } from "@/lib/tracking-ids";
 import CardFlip from "@/components/kokonutui/card-flip";
 import AIStateLoading from "@/components/kokonutui/ai-state-loading";
@@ -1450,7 +1450,8 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
           whatsapp: form.telefone,
           gargalo: form.gargalo,
           _hp: hp,
-          metadata: getAttributionMeta(),
+          // source lógico do form + atribuição completa (canal/UTM/first-last)
+          metadata: getLeadMetadata("lead-ia", "servicos-ia-automacoes-completa"),
           ...tracking,
         }),
       });

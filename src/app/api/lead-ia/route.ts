@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { buildContactProperties, tagValue } from "@/lib/resend-contact-props";
 import { upsertLead } from "@/lib/db/leads";
 import { sendSequenceEmail } from "@/lib/emails/lead-sequence/send";
 import { markEmailSent } from "@/lib/db/leads";
@@ -54,12 +55,16 @@ export async function POST(request: Request) {
       ga_session_id,
     } = data || {};
 
-    // Atribuição (origem do lead): UTMs, referrer, canal, first/last touch.
+    // Atribuição (origem do lead): source lógico do form + detalhe, canal,
+    // origem de tráfego, UTMs, referrer, first/last touch.
     const ATTR_KEYS = [
       "channel",
       "source",
+      "source_detail",
+      "traffic_source",
       "referrer",
       "path",
+      "landing",
       "utm_source",
       "utm_medium",
       "utm_campaign",
@@ -161,6 +166,13 @@ ${gargalo}
           subject,
           text,
           html,
+          tags: [
+            { name: "product", value: "kaleidos" },
+            { name: "category", value: "lead-notification" },
+            ...(attr.source
+              ? [{ name: "source", value: tagValue(attr.source) }]
+              : []),
+          ],
         });
         internalSent = true;
       } catch (err) {
@@ -181,6 +193,9 @@ ${gargalo}
         tamanho,
         whatsapp,
         gargalo,
+        // Atribuição completa no jsonb `metadata` do Neon — fonte de verdade
+        // de ONDE o lead veio (form, canal, UTMs, first/last touch).
+        metadata: attr,
       });
     } catch (err) {
       console.error("[lead-ia] erro persistindo lead:", err);
@@ -213,6 +228,7 @@ ${gargalo}
         to: email,
         name: nome,
         emailNumber: 1,
+        source: attr.source || "lead-ia",
         dryRun: false,
       });
       welcomeSent = r.ok;
@@ -233,14 +249,42 @@ ${gargalo}
         const parts = (nome || "").trim().split(/\s+/).filter(Boolean);
         const firstName = parts[0];
         const lastName = parts.length > 1 ? parts.slice(1).join(" ") : undefined;
-        await resend.contacts.create({
+        // Propriedades custom (aba "Properties" da Audience) — atribuição
+        // visível direto no contato do Resend. Requer resend >= 6.17 e as
+        // properties criadas na conta.
+        const contactProperties = buildContactProperties(attr);
+        const { error: contactError } = await resend.contacts.create({
           email,
           audienceId,
           firstName,
           lastName,
           unsubscribed: false,
+          ...(Object.keys(contactProperties).length
+            ? { properties: contactProperties }
+            : {}),
         });
-        audienceAdded = true;
+        if (contactError) {
+          const errMsg = (contactError as { message?: string })?.message ?? "";
+          if (/exist|already|duplicat/i.test(errMsg)) {
+            // Já está na audience: atualiza last-touch nas properties.
+            try {
+              await resend.contacts.update({
+                audienceId,
+                email,
+                ...(Object.keys(contactProperties).length
+                  ? { properties: contactProperties }
+                  : {}),
+              });
+            } catch {
+              // best-effort: Neon/PostHog seguem como fonte de verdade
+            }
+            audienceAdded = true;
+          } else {
+            console.warn("[lead-ia] resend audience create error", contactError);
+          }
+        } else {
+          audienceAdded = true;
+        }
         if (process.env.NODE_ENV !== "production") {
           console.log(
             `[lead-ia] contact criado na audience ${audienceId} → ${email}`
@@ -267,12 +311,12 @@ ${gargalo}
       ...attr,
       $set: {
         last_channel: attr.channel ?? null,
-        last_source: attr.source ?? null,
+        last_source: attr.traffic_source ?? attr.source ?? null,
         last_path: attr.path ?? null,
       },
       $set_once: {
         first_channel: attr.first_channel ?? attr.channel ?? null,
-        first_source: attr.first_source ?? attr.source ?? null,
+        first_source: attr.first_source ?? attr.traffic_source ?? null,
         first_referrer: attr.first_referrer ?? attr.referrer ?? null,
       },
     });

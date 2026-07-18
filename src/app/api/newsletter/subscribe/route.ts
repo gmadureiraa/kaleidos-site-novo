@@ -15,6 +15,7 @@ import {
 import { randomUUID } from "crypto";
 import { getPaperBySlug } from "@/lib/papers-data";
 import { sendPaperDelivery } from "@/lib/emails/paper-delivery";
+import { buildContactProperties } from "@/lib/resend-contact-props";
 
 // Lazy Resend client — avoids build-time failures when env vars are missing
 let _resend: Resend | null = null;
@@ -78,8 +79,10 @@ export async function POST(req: NextRequest) {
     const rawMeta = (body && body.metadata) || {};
     const META_KEYS = [
       "source",
+      "source_detail",
       "article_slug",
       "path",
+      "landing",
       "referrer",
       "channel",
       "traffic_source",
@@ -154,11 +157,20 @@ export async function POST(req: NextRequest) {
         const lastName = nameParts.length > 1
           ? nameParts.slice(1).join(" ").slice(0, 100)
           : undefined;
+        // Propriedades custom do contato (aba "Properties" da Audience no
+        // dashboard Resend) — deixam a origem do lead VISÍVEL amarrada ao
+        // contato. Requer resend >= 6.17 e as properties criadas na conta
+        // (source, source_detail, channel, traffic_source, utm_source,
+        // utm_campaign, path, landing, first_channel, first_source).
+        const contactProperties = buildContactProperties(meta);
         const { data, error } = await resend.contacts.create({
           audienceId: AUDIENCE_ID,
           email,
           ...(firstName ? { firstName } : {}),
           ...(lastName ? { lastName } : {}),
+          ...(Object.keys(contactProperties).length
+            ? { properties: contactProperties }
+            : {}),
         });
         if (error) {
           // Contato duplicado (já inscrito) NÃO é falha.
@@ -166,6 +178,19 @@ export async function POST(req: NextRequest) {
           const isDuplicate = /exist|already|duplicat/i.test(errMsg);
           if (isDuplicate) {
             subscribed = true;
+            // Contato já existe: atualiza last-touch nas properties (best-effort,
+            // erro aqui nunca derruba a inscrição).
+            if (Object.keys(contactProperties).length) {
+              try {
+                await resend.contacts.update({
+                  audienceId: AUDIENCE_ID,
+                  email,
+                  properties: contactProperties,
+                });
+              } catch {
+                // properties são nice-to-have; Neon/PostHog seguem como fonte
+              }
+            }
           } else {
             console.error(
               `[LEAD-FALLBACK] Resend subscribe error — lead preservado: ${leadLogPayload}`,
@@ -199,6 +224,7 @@ export async function POST(req: NextRequest) {
             to: email,
             paper,
             name: typeof name === "string" ? name : null,
+            source: meta.source || null,
           });
           delivered = r.ok;
         } catch (err) {

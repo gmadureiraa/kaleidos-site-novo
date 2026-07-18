@@ -12,7 +12,6 @@ import {
   AudienceSectionsLang,
 } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
-import { Web3V2ProofStrip } from "@/components/web3v2/proof-strip";
 import { Web3V2Testimonials } from "@/components/web3v2/testimonials";
 import { Web3V2Processo } from "@/components/web3v2/processo-kaleidos";
 import { Web3V2Resources } from "@/components/web3v2/resources";
@@ -84,10 +83,6 @@ export function HomeShell({
       {/* 1b · Marquee de LOGOS de clientes */}
       <Web3V2ClientsMarquee />
 
-      {/* 1b2 · PROVA acima da dobra: números (125M+ views, +R$46mi, 30+ projetos)
-          + quote de cliente. CRO 2026-07: prova social o mais cedo possível. */}
-      <Web3V2ProofStrip />
-
       {/* 1c · Bloco PERSONALIZADO por público (só nas rotas /founders etc). */}
       {audience && audienceEn && (
         <Reveal>
@@ -97,13 +92,6 @@ export function HomeShell({
 
       {/* 2 · Manifesto — mãos full-bleed */}
       <Web3V2Manifesto />
-
-      {/* 2b · Problema — "Post genérico não constrói reputação". Subida do fim
-          da página pra cá (CRO 2026-07): hero → prova → problema → serviços.
-          Visível também no MOBILE nesta posição (antes era hidden md:block no
-          rodapé, onde já repetia CTAs; aqui vem antes dos serviços e agita a
-          dor na hora certa). */}
-      <Web3V2Problema />
 
       {/* 3 · Nossos Serviços */}
       <Reveal>
@@ -115,17 +103,17 @@ export function HomeShell({
         <Web3V2Processo />
       </Reveal>
 
+      {/* 4b · Resultados + Depoimentos — entre Processo e Cases (posição
+          escolhida pelo Gabriel, 17/07). */}
+      <Reveal>
+        <Web3V2Testimonials />
+      </Reveal>
+
       {/* 5 · Cases (fundo claro) */}
       <Reveal>
         <div id="cases-section">
           <CasesCarousel variant="light" />
         </div>
-      </Reveal>
-
-      {/* 5b · Depoimentos — REATIVADO (CRO 2026-07, aprovado pelo Gabriel):
-          prova social logo depois dos cases, antes dos diferenciais/CTA. */}
-      <Reveal>
-        <Web3V2Testimonials />
       </Reveal>
 
       {/* 6 · Diferenciais — "Por que a Kaleidos" / olho */}
@@ -146,7 +134,13 @@ export function HomeShell({
         <FAQSection variant="kaleidos" />
       </Reveal>
 
-      {/* (Problema foi movido pra posição 2b, logo após o Manifesto.) */}
+      {/* 10 · "Post genérico não constrói reputação"
+          MOBILE: escondida. É a 10ª seção densa, repete a mensagem dos
+          Diferenciais e o trio de CTAs que já apareceu 3x antes (hero,
+          serviços, CTA final). No desktop segue igual. */}
+      <div className="hidden md:block">
+        <Web3V2Problema />
+      </div>
 
       {/* 12 · Footer / Contato */}
       <Reveal>

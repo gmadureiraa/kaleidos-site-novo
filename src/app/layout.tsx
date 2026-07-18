@@ -6,6 +6,7 @@ import { StructuredData } from "@/components/structured-data";
 import { AnalyticsRouter } from "@/components/analytics-router";
 import { GoogleAnalytics } from "@/components/analytics";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { ConsentBanner } from "@/components/consent-banner";
 import { MetaPixel } from "@/components/meta-pixel";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
@@ -187,6 +188,9 @@ export default function RootLayout({
             {/* CTA flutuante de WhatsApp, site-wide: puxa o lead pra conversa
                 real no nosso WhatsApp em qualquer página. */}
             <FloatingWhatsApp />
+            {/* Banner LGPD: opt-out do PostHog (replay + capture) no Recusar.
+                A escolha persiste em localStorage ("kal-consent"). */}
+            <ConsentBanner />
           </ErrorBoundary>
         </SmoothScrollProvider>
       </body>
