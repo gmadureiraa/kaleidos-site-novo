@@ -9,7 +9,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
-import { captureServerEvent } from "@/lib/posthog-server";
+import { captureServerEvent, captureServerException } from "@/lib/posthog-server";
 import {
   ga4Event,
   metaCapiEvent,
@@ -472,6 +472,7 @@ ${gargalo}
     );
   } catch (err) {
     console.error("[lead-ia] erro:", err);
+    await captureServerException(err);
     return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

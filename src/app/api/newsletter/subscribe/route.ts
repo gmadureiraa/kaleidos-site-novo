@@ -6,7 +6,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
-import { captureServerEvent } from "@/lib/posthog-server";
+import { captureServerEvent, captureServerException } from "@/lib/posthog-server";
 import {
   ga4Event,
   metaCapiEvent,
@@ -304,6 +304,7 @@ export async function POST(req: NextRequest) {
     // Erro realmente inesperado (antes de termos o email em mãos não há lead
     // pra salvar). Mensagem amigável — os forms exibem `error` direto pro usuário.
     console.error("[newsletter/subscribe] erro inesperado:", error);
+    await captureServerException(error);
     return NextResponse.json(
       { error: "Não conseguimos concluir agora. Tenta de novo em instantes." },
       { status: 500 }

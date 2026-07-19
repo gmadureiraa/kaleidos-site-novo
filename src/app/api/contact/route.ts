@@ -6,7 +6,7 @@ import {
   tooManyRequestsResponse,
 } from "@/lib/security/rate-limit";
 import { isHoneypotTriggered, isValidEmail } from "@/lib/security/validation";
-import { captureServerEvent } from "@/lib/posthog-server";
+import { captureServerEvent, captureServerException } from "@/lib/posthog-server";
 import {
   ga4Event,
   metaCapiEvent,
@@ -298,6 +298,7 @@ ${mensagem}
     // Erro inesperado (ex: JSON inválido). Logar SEMPRE — antes esse catch
     // engolia o erro sem rastro nenhum.
     console.error("[contact] erro inesperado:", err);
+    await captureServerException(err);
     return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
