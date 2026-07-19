@@ -104,6 +104,40 @@ export async function POST(request: Request) {
       );
     }
 
+    // Captura PARCIAL (passo 1 do wizard /diagnostico): só persiste o lead
+    // (upsert) + registra no PostHog. NÃO dispara welcome, notificação interna,
+    // audience nem conversões (GA4/CAPI) — isso evita email duplicado e não
+    // infla a conversão. O enriquecimento + welcome vêm no submit final.
+    if (data?.partial === true) {
+      let partialLead = null;
+      try {
+        partialLead = await upsertLead({
+          email,
+          name: nome,
+          empresa,
+          tamanho,
+          whatsapp,
+          gargalo,
+          metadata: attr,
+        });
+      } catch (err) {
+        console.error("[lead-ia] erro persistindo lead parcial:", err);
+      }
+      await captureServerEvent(email, "lead_ia_partial", {
+        ...attr,
+        persisted: partialLead !== null,
+      });
+      return new Response(
+        JSON.stringify({
+          ok: true,
+          partial: true,
+          persisted: partialLead !== null,
+          leadId: partialLead?.id ?? null,
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     // 1. Notificação interna pro time (Resend)
     const resendApiKey = process.env.RESEND_API_KEY;
     const fromAddress =

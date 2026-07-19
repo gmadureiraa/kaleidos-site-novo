@@ -10,7 +10,7 @@ const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min";
 /**
  * Destaque do playbook flagship na home (estilo Lunar Strategy).
  * Banda full-width escura, com a capa + CTA duplo: baixar o playbook grátis
- * ou marcar uma consultoria grátis (Calendly). O ativo principal do site.
+ * ou agendar um diagnóstico gratuito (Calendly). O ativo principal do site.
  */
 export function PlaybookFeature() {
   return (
@@ -67,7 +67,7 @@ export function PlaybookFeature() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 text-white font-semibold text-sm transition-colors hover:bg-white/10"
                 >
                   <CalendarCheck className="w-4 h-4" />
-                  Marcar consultoria grátis
+                  Agendar diagnóstico
                 </a>
               </div>
             </motion.div>

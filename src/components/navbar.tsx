@@ -17,8 +17,8 @@ import { usePathname } from "next/navigation";
 import { useI18n } from "@/i18n/useI18n";
 import Image from "next/image";
 
-// CTA canônico: Calendly primário, WhatsApp secundário (mesmos links do resto do site).
-const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min";
+// CTA canônico: /agendar primário (embed Calendly com tracking de conversão),
+// WhatsApp secundário.
 const WHATSAPP_URL = "https://wa.me/5512997796835";
 
 const servicesBase = {
@@ -162,12 +162,12 @@ export function Navbar() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            {/* CTA primário → Calendly (agendar reunião) + WhatsApp secundário */}
+            {/* CTA primário → /agendar (embed com tracking de conversão) + WhatsApp secundário */}
             <div className="flex items-center gap-3">
               <Button asChild className="bg-[#7CF067] text-black hover:bg-[#64e04d] font-semibold touch-target">
-                <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
+                <Link href="/agendar">
                   {t('nav','cta')}
-                </a>
+                </Link>
               </Button>
               <a
                 href={WHATSAPP_URL}
@@ -276,12 +276,12 @@ export function Navbar() {
                   {t('nav','about')}
                 </Link>
               </div>
-              {/* Mobile CTA → Calendly primário + WhatsApp secundário */}
+              {/* Mobile CTA → /agendar (embed com tracking) + WhatsApp secundário */}
               <div className="pt-4 border-t border-gray-800 space-y-2">
                 <Button asChild className="w-full bg-[#7CF067] text-black hover:bg-[#64e04d] font-semibold touch-target">
-                  <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
+                  <Link href="/agendar">
                     {t('nav','cta')}
-                  </a>
+                  </Link>
                 </Button>
                 <a
                   href={WHATSAPP_URL}

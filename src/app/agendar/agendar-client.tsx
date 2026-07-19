@@ -95,7 +95,7 @@ export function AgendarClient() {
       // Meta Pixel — "Schedule" é o evento padrão da Meta pra agendamento
       if (typeof window !== "undefined" && typeof window.fbq === "function") {
         window.fbq("track", "Schedule", {
-          content_name: "Consultoria gratuita 30min — Kaleidos",
+          content_name: "Diagnóstico gratuito 30min — Kaleidos",
           content_category: "agendar",
         });
       }
@@ -138,13 +138,13 @@ export function AgendarClient() {
           >
             <span className="inline-flex items-center gap-2 bg-[#7CF067]/15 text-gray-900 text-xs font-mono uppercase tracking-[0.18em] px-4 py-2 rounded-full mb-6">
               <CalendarDays className="w-3.5 h-3.5" />
-              Consultoria gratuita
+              Diagnóstico gratuito
             </span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
               Agenda 30 minutos com o time da Kaleidos
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Uma consultoria gratuita de 30 minutos, sem compromisso. A gente
+              Um diagnóstico gratuito de 30 minutos, sem compromisso. A gente
               mapeia seus canais, aponta onde está a oportunidade e você sai com
               próximos passos claros — mesmo que não feche nada com a gente.
             </p>
