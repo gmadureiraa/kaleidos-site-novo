@@ -7,9 +7,9 @@ import { AgendarClient } from "./agendar-client";
 // momento do agendamento, coisa que o link cru do Calendly não permite.
 export const metadata: Metadata = {
   ...generateSEOMetadata({
-    title: "Agendar consultoria gratuita de 30 minutos | Kaleidos",
+    title: "Agendar diagnóstico gratuito de 30 minutos | Kaleidos",
     description:
-      "Escolhe um horário e agenda uma consultoria gratuita de 30 minutos com o time da Kaleidos. A gente mapeia seus canais e mostra onde está a oportunidade.",
+      "Escolhe um horário e agenda um diagnóstico gratuito de 30 minutos com o time da Kaleidos. A gente mapeia seus canais e mostra onde está a oportunidade.",
     url: "/agendar",
     type: "website",
   }),

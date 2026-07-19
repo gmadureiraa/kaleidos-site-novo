@@ -378,10 +378,8 @@ export function AudienceSections({ audience }: { audience: Audience }) {
             >
               {ctaLine}
             </p>
-            <a
-              href="https://calendly.com/madureira-kaleidosdigital/30min"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               className="cta-btn"
               style={{
                 display: "inline-flex",
@@ -398,7 +396,7 @@ export function AudienceSections({ audience }: { audience: Audience }) {
               }}
             >
               Agendar reunião <ArrowRight size={17} />
-            </a>
+            </Link>
           </div>
         )}
       </div>

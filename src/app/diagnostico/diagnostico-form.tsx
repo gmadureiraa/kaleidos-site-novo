@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
+  ArrowRight,
   CheckCircle2,
   Loader2,
   Send,
@@ -15,11 +16,18 @@ import { getLeadMetadata } from "@/lib/lead-meta";
 import { getTrackingIds } from "@/lib/tracking-ids";
 
 /**
- * Form curto de qualificação de lead — destino do link "diagnóstico" da
- * sequência de email. POSTa pro /api/lead-ia (rota blindada: rate-limit,
- * honeypot, Resend + Neon + CRM KAI + GA4/CAPI server-side), com
+ * Form de qualificação de lead em WIZARD (3 passos) — destino do link
+ * "diagnóstico" da sequência de email. POSTa pro /api/lead-ia (rota blindada:
+ * rate-limit, honeypot, Resend + Neon + CRM KAI + GA4/CAPI server-side), com
  * source "email-diagnostico" e source_detail "/diagnostico".
+ *
+ * Passo 1 (email) dispara um POST PARCIAL (`partial: true`) que só persiste o
+ * lead via upsert — captura mesmo se a pessoa abandonar. Só o submit final do
+ * passo 3 enriquece o lead e dispara o Meta Pixel "Lead" (dedupe com CAPI).
  */
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function DiagnosticoForm() {
   const [form, setForm] = useState({
     nome: "",
@@ -28,22 +36,100 @@ export function DiagnosticoForm() {
     empresa: "",
     desafio: "",
   });
+  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [state, setState] = useState<"idle" | "sending" | "ok" | "error">(
     "idle"
   );
   const [errorMsg, setErrorMsg] = useState("");
   // Honeypot — campo invisível; bots preenchem, humanos não.
   const [hp, setHp] = useState("");
+  // Guard: só manda o POST parcial uma vez por email (evita reenvio ao
+  // voltar/avançar entre passos).
+  const partialSentEmail = useRef<string | null>(null);
 
   const setField = (k: keyof typeof form, v: string) =>
     setForm((prev) => ({ ...prev, [k]: v }));
 
+  const totalSteps = 3;
+
+  /**
+   * POST parcial: captura o lead logo no passo 1 (só email + nome derivado).
+   * Best-effort e fire-and-forget — não bloqueia o avanço do wizard nem quebra
+   * o fluxo se falhar. NÃO dispara Meta Pixel "Lead" (só persistência/PostHog).
+   */
+  function sendPartialLead() {
+    const email = form.email.trim();
+    if (!EMAIL_RE.test(email)) return;
+    if (partialSentEmail.current === email.toLowerCase()) return;
+    partialSentEmail.current = email.toLowerCase();
+
+    const nome =
+      form.nome.trim() || email.split("@")[0] || "Lead diagnóstico";
+    const tracking = getTrackingIds();
+
+    // Persistência parcial (server-side upsert). Fire-and-forget.
+    void fetch("/api/lead-ia", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nome,
+        email,
+        partial: true,
+        _hp: hp,
+        metadata: getLeadMetadata("email-diagnostico", "/diagnostico"),
+        ...tracking,
+      }),
+    }).catch(() => {
+      // Se falhar, tenta de novo no próximo avanço.
+      partialSentEmail.current = null;
+    });
+
+    // PostHog: lead_submit parcial (distinguível por partial:true) — sem Pixel.
+    track("lead_submit", {
+      source: "email-diagnostico",
+      path: "/diagnostico",
+      partial: true,
+      step: "partial",
+    });
+  }
+
+  function goNext() {
+    setErrorMsg("");
+    if (step === 1) {
+      if (!EMAIL_RE.test(form.email.trim())) {
+        setErrorMsg("Preencha um email válido pra gente conseguir responder.");
+        setState("error");
+        return;
+      }
+      setState("idle");
+      sendPartialLead();
+      setStep(2);
+      return;
+    }
+    if (step === 2) {
+      setState("idle");
+      setStep(3);
+    }
+  }
+
+  function goBack() {
+    setErrorMsg("");
+    setState("idle");
+    setStep((s) => (s > 1 ? ((s - 1) as 1 | 2 | 3) : s));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // No passo final o botão submeter; nos demais, "Continuar" só avança.
+    if (step !== totalSteps) {
+      goNext();
+      return;
+    }
     if (state === "sending") return;
-    if (!form.email.trim()) {
-      setErrorMsg("Preencha seu email pra gente conseguir responder.");
+    if (!EMAIL_RE.test(form.email.trim())) {
+      setErrorMsg("Preencha um email válido pra gente conseguir responder.");
       setState("error");
+      setStep(1);
       return;
     }
     setErrorMsg("");
@@ -118,6 +204,13 @@ export function DiagnosticoForm() {
   const inputClass =
     "w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#7CF067] focus:ring-2 focus:ring-[#7CF067]/30 outline-none transition text-sm";
 
+  const stepLabel =
+    step === 1
+      ? "Seu contato"
+      : step === 2
+        ? "Seu projeto"
+        : "Últimos detalhes";
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -182,7 +275,33 @@ export function DiagnosticoForm() {
               className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8 space-y-5"
               aria-label="Formulário de diagnóstico"
             >
-              {/* Honeypot — escondido, bots tendem a preencher */}
+              {/* Indicador de progresso */}
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono uppercase tracking-[0.14em] text-gray-500">
+                    {stepLabel}
+                  </span>
+                  <span className="text-xs font-medium text-gray-400">
+                    Passo {step} de {totalSteps}
+                  </span>
+                </div>
+                <div
+                  className="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden"
+                  role="progressbar"
+                  aria-valuenow={step}
+                  aria-valuemin={1}
+                  aria-valuemax={totalSteps}
+                >
+                  <motion.div
+                    className="h-full rounded-full bg-[#7CF067]"
+                    initial={false}
+                    animate={{ width: `${(step / totalSteps) * 100}%` }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                  />
+                </div>
+              </div>
+
+              {/* Honeypot — escondido, bots tendem a preencher (fica no passo 1) */}
               <div className="hidden" aria-hidden="true">
                 <label>
                   Não preencha:
@@ -197,50 +316,97 @@ export function DiagnosticoForm() {
                 </label>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="nome"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Nome{" "}
-                    <span className="text-gray-400 text-xs font-normal">
-                      (opcional)
-                    </span>
-                  </label>
-                  <input
-                    id="nome"
-                    name="nome"
-                    type="text"
-                    autoComplete="name"
-                    value={form.nome}
-                    onChange={(e) => setField("nome", e.target.value)}
-                    placeholder="Como podemos te chamar?"
-                    className={inputClass}
-                  />
+              {/* Passo 1 — contato */}
+              {step === 1 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Email <span className="text-pink-500">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      autoFocus
+                      value={form.email}
+                      onChange={(e) => setField("email", e.target.value)}
+                      placeholder="voce@empresa.com"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="nome"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Nome{" "}
+                      <span className="text-gray-400 text-xs font-normal">
+                        (opcional)
+                      </span>
+                    </label>
+                    <input
+                      id="nome"
+                      name="nome"
+                      type="text"
+                      autoComplete="name"
+                      value={form.nome}
+                      onChange={(e) => setField("nome", e.target.value)}
+                      placeholder="Como podemos te chamar?"
+                      className={inputClass}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email <span className="text-pink-500">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    value={form.email}
-                    onChange={(e) => setField("email", e.target.value)}
-                    placeholder="voce@empresa.com"
-                    className={inputClass}
-                  />
-                </div>
-              </div>
+              )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Passo 2 — projeto + desafio */}
+              {step === 2 && (
+                <>
+                  <div>
+                    <label
+                      htmlFor="empresa"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Qual seu projeto/empresa?
+                    </label>
+                    <input
+                      id="empresa"
+                      name="empresa"
+                      type="text"
+                      autoComplete="organization"
+                      autoFocus
+                      value={form.empresa}
+                      onChange={(e) => setField("empresa", e.target.value)}
+                      placeholder="Nome do projeto, protocolo, fintech…"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="desafio"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Qual seu maior desafio de marketing hoje?
+                    </label>
+                    <textarea
+                      id="desafio"
+                      name="desafio"
+                      rows={5}
+                      value={form.desafio}
+                      onChange={(e) => setField("desafio", e.target.value)}
+                      placeholder="Ex: conteúdo não converte, comunidade parada, CAC alto, lançamento chegando e nada pronto…"
+                      className={`${inputClass} resize-y`}
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* Passo 3 — whatsapp + envio final */}
+              {step === 3 && (
                 <div>
                   <label
                     htmlFor="whatsapp"
@@ -257,49 +423,18 @@ export function DiagnosticoForm() {
                     type="tel"
                     inputMode="tel"
                     autoComplete="tel"
+                    autoFocus
                     value={form.whatsapp}
                     onChange={(e) => setField("whatsapp", e.target.value)}
                     placeholder="+55 11 90000-0000"
                     className={inputClass}
                   />
+                  <p className="mt-2 text-xs text-gray-500">
+                    Se preferir retorno mais rápido, deixa o WhatsApp. Sem
+                    spam — é só pra alinhar o diagnóstico.
+                  </p>
                 </div>
-                <div>
-                  <label
-                    htmlFor="empresa"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Qual seu projeto/empresa?
-                  </label>
-                  <input
-                    id="empresa"
-                    name="empresa"
-                    type="text"
-                    autoComplete="organization"
-                    value={form.empresa}
-                    onChange={(e) => setField("empresa", e.target.value)}
-                    placeholder="Nome do projeto, protocolo, fintech…"
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="desafio"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Qual seu maior desafio de marketing hoje?
-                </label>
-                <textarea
-                  id="desafio"
-                  name="desafio"
-                  rows={5}
-                  value={form.desafio}
-                  onChange={(e) => setField("desafio", e.target.value)}
-                  placeholder="Ex: conteúdo não converte, comunidade parada, CAC alto, lançamento chegando e nada pronto…"
-                  className={`${inputClass} resize-y`}
-                />
-              </div>
+              )}
 
               {state === "error" && errorMsg && (
                 <p className="text-sm text-red-600" role="alert">
@@ -307,27 +442,54 @@ export function DiagnosticoForm() {
                 </p>
               )}
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <button
-                  type="submit"
-                  disabled={state === "sending"}
-                  className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex-1 sm:flex-none"
-                >
-                  {state === "sending" ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Enviando…
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Quero meu diagnóstico
-                    </>
-                  )}
-                </button>
-                <p className="text-xs text-gray-500 sm:ml-2">
-                  Ao enviar você concorda em receber nosso retorno por email.
-                </p>
+              {/* Navegação */}
+              <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-3 pt-2">
+                {step > 1 && (
+                  <button
+                    type="button"
+                    onClick={goBack}
+                    disabled={state === "sending"}
+                    className="inline-flex items-center justify-center gap-2 min-h-[44px] border border-gray-300 text-gray-700 px-5 py-3 rounded-full font-semibold text-sm hover:bg-gray-50 transition-colors disabled:opacity-60"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    Voltar
+                  </button>
+                )}
+
+                {step < totalSteps ? (
+                  <button
+                    type="button"
+                    onClick={goNext}
+                    className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors flex-1 sm:flex-none"
+                  >
+                    Continuar
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={state === "sending"}
+                    className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex-1 sm:flex-none"
+                  >
+                    {state === "sending" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Enviando…
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Quero meu diagnóstico
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {step === totalSteps && (
+                  <p className="text-xs text-gray-500 sm:ml-2">
+                    Ao enviar você concorda em receber nosso retorno por email.
+                  </p>
+                )}
               </div>
             </motion.form>
           )}

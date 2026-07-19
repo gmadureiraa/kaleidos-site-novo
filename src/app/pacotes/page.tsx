@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 import { getServerLocale, type Locale } from "@/i18n/server";
 import { PacotesCtaTracking } from "./cta-tracking";
@@ -56,9 +57,6 @@ const INK = "#14110D";
 const GREEN = "#7CF067";
 const PINK = "#D262B2";
 const CRU = "#FAFAFA";
-
-// Único destino de CTA da página inteira (consolidação — auditoria RCD).
-const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min";
 
 /* ── CSS escopado sob `.kpac` — nomes de keyframe únicos, sem colisão global ── */
 const STYLE = `
@@ -426,16 +424,14 @@ export default async function PacotesPage({
           </h1>
           <p className="sub">{t.sub}</p>
           <div className="cta-row">
-            <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               className="cta-btn cta-primary"
               data-cta="pacotes-hero"
             >
               <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
               {t.ctaLabel} &rarr;
-            </a>
+            </Link>
           </div>
           <p className="microcopy">{t.heroMicro}</p>
         </div>
@@ -499,15 +495,13 @@ export default async function PacotesPage({
                   {tier.price}
                   <span className="u">{tier.priceUnit}</span>
                 </div>
-                <a
-                  href={CALENDLY}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/agendar"
                   className="cta-btn tier-cta"
                   data-cta={`pacotes-tier-${tier.id}`}
                 >
                   {tier.cta} &rarr;
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -554,16 +548,14 @@ export default async function PacotesPage({
             {t.finalPost}
           </h2>
           <p>{t.finalSub}</p>
-          <a
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/agendar"
             className="cta-btn cta-primary"
             data-cta="pacotes-final"
           >
             <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
             {t.ctaLabel} &rarr;
-          </a>
+          </Link>
           <p className="microcopy">
             {isEn ? m.projetosAtendidos_en : m.projetosAtendidos} {t.finalMicroA} ·{" "}
             {isEn ? m.crescimentoMedio_en : m.crescimentoMedio} {t.finalMicroB} · {t.finalMicroC}

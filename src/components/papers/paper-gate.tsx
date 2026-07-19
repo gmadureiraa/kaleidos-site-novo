@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import type { Paper } from "@/lib/papers-data";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { track, identifyLead } from "@/lib/analytics";
-import { CALENDLY_URL, WHATSAPP_NUMBER } from "@/lib/constants";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 const STORAGE_KEY = "kld_papers_unlocked";
 
@@ -200,14 +200,12 @@ export function PaperGate({ paper }: { paper: Paper }) {
                         Quer aplicar isso no seu projeto?
                       </p>
                       <div className="flex items-center gap-4">
-                        <a
-                          href={CALENDLY_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          href="/agendar"
                           className="text-[13px] font-semibold text-gray-900 underline underline-offset-4 hover:text-black"
                         >
                           Agendar 30min grátis
-                        </a>
+                        </Link>
                         <a
                           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Oi Kaleidos! Li o estudo "${paper.title}" e quero conversar.`)}`}
                           target="_blank"

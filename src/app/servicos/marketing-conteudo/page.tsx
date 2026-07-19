@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { WHATSAPP_NUMBER, CALENDLY_URL } from "@/lib/constants";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
 import { KALEIDOS_METRICS } from "@/lib/metrics";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
@@ -148,17 +148,15 @@ export default function KaleidosContentPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-9">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/agendar"
                 onClick={() => handleCalendly("hero")}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
                 style={{ boxShadow: `5px 5px 0 ${GREEN}` }}
               >
                 {locale==='en' ? 'Book a free diagnosis (30min)' : 'Agendar diagnóstico gratuito (30min)'}
                 <ArrowRight className="ml-1 h-5 w-5" />
-              </a>
+              </Link>
               <button
                 onClick={handleWhatsApp}
                 className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
@@ -597,17 +595,15 @@ export default function KaleidosContentPage() {
             viewport={{ once: true }}
             className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               onClick={() => handleCalendly("final_cta")}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
               style={{ boxShadow: `5px 5px 0 ${GREEN}` }}
             >
               {locale === 'en' ? 'Book a free diagnosis (30min)' : 'Agendar diagnóstico gratuito (30min)'}
               <ArrowRight className="ml-1 h-5 w-5" />
-            </a>
+            </Link>
             <button
               onClick={handleWhatsApp}
               className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"

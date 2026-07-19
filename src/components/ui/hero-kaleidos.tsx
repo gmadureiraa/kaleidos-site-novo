@@ -11,8 +11,6 @@ import { useAnalytics } from "@/components/analytics"
 import { CalendlyIcon } from "@/components/ui/calendly-icon"
 import { EbookPopup } from "@/components/papers/ebook-popup"
 
-const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min"
-
 export default function HeroKaleidos() {
   const { locale } = useI18n()
   const isEn = locale === "en"
@@ -104,29 +102,27 @@ export default function HeroKaleidos() {
             : "Desde 2020 criando conteúdo, estratégia e trazendo crescimento e resultados para projetos, exchanges, creators e founders do mercado cripto."}
         </motion.p>
 
-        {/* CTA único — consultoria grátis */}
+        {/* CTA único — diagnóstico gratuito (→ /agendar, embed com tracking) */}
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
           className="flex justify-center items-center"
         >
-          <a
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick("hero_calendly", "hero")}
+          <Link
+            href="/agendar"
+            onClick={() => trackClick("hero_agendar", "hero")}
             className="w-full sm:w-auto"
           >
             <Button
               size="lg"
               className="group/cta bg-[#7CF067] hover:bg-[#6ae85a] text-black font-bold px-9 py-4 text-lg w-full sm:w-auto shadow-lg shadow-[#7CF067]/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7CF067] focus:ring-offset-2 focus:ring-offset-black"
-              aria-label={isEn ? "Book a free consultation" : "Agendar consultoria grátis"}
+              aria-label={isEn ? "Book a diagnosis call" : "Agendar diagnóstico"}
             >
               <CalendlyIcon className="mr-2 h-5 w-5" />
-              {isEn ? "Free consultation" : "Consultoria grátis"}
+              {isEn ? "Free diagnosis" : "Diagnóstico gratuito"}
             </Button>
-          </a>
+          </Link>
         </motion.div>
       </div>
 

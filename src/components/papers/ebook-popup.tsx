@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { X, ArrowRight, Download, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { track, identifyLead } from "@/lib/analytics";
-import { CALENDLY_URL } from "@/lib/constants";
 
 // Popup do ebook estilo Lunar Strategy: capa grande centralizada + CTA "Baixar
 // grátis", fundo escurecido. Mobile-first (modal centralizado). Captura email e
@@ -158,14 +158,12 @@ export function EbookPopup({
                     </a>
                     <p className="text-[12px] text-gray-500">
                       Quer aplicar no seu projeto?{" "}
-                      <a
-                        href={CALENDLY_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href="/agendar"
                         className="font-semibold text-gray-900 underline underline-offset-2"
                       >
                         Agende 30min grátis
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

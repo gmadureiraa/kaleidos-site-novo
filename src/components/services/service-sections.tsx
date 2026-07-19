@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Minus, type LucideIcon } from "lucide-react";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
-import { CALENDLY_URL } from "@/lib/constants";
 import type { ServiceContent } from "@/lib/service-pages-data";
 
 /* ------------------------------------------------------------------ */
@@ -248,10 +247,8 @@ export function HeroSection({
         </Reveal>
         <Reveal delay={0.18}>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               onClick={() => onCalendly("hero")}
               className="inline-flex items-center gap-2 rounded-full bg-[#14110D] px-8 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
               style={{ boxShadow: `5px 5px 0 ${accent.hex}` }}
@@ -260,7 +257,7 @@ export function HeroSection({
                 ? "Book a free diagnosis (30min)"
                 : "Agendar diagnóstico gratuito (30min)"}
               <ArrowRight className="h-5 w-5" />
-            </a>
+            </Link>
             <button
               onClick={() => openWhatsApp("hero")}
               className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"
@@ -1204,10 +1201,8 @@ export function FinalCta({
             {c.finalCtaSubtitle}
           </p>
           <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               onClick={() => onCalendly("final_cta")}
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold transition-transform hover:-translate-y-0.5"
               style={{ background: accent.hex, color: accent.fg }}
@@ -1216,7 +1211,7 @@ export function FinalCta({
                 ? "Book a free diagnosis (30min)"
                 : "Agendar diagnóstico gratuito (30min)"}
               <ArrowRight className="h-5 w-5" />
-            </a>
+            </Link>
             <button
               onClick={() => openWhatsApp("final_cta")}
               className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[#14110D] bg-white px-8 py-4 text-base font-bold text-[#14110D] transition-transform hover:-translate-y-0.5"

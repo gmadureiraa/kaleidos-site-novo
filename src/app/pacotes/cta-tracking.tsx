@@ -26,7 +26,8 @@ export function PacotesCtaTracking() {
       if (!link) return;
 
       const href = (link.getAttribute("href") || "").toLowerCase();
-      if (!href.includes("calendly")) return;
+      // /agendar = rota interna que embeda o Calendly com tracking de conversão.
+      if (!href.includes("calendly") && !href.includes("/agendar")) return;
 
       const ctaId = link.getAttribute("data-cta") || "pacotes";
       const label = (link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 80);

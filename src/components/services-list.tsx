@@ -184,16 +184,14 @@ export function ServicesList({
             </p>
             {ctaVariant === "whatsapp" ? (
               <div className="mt-7 flex flex-col items-start gap-3">
-                <a
-                  href="https://calendly.com/madureira-kaleidosdigital/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/agendar"
                   onClick={() => trackClick("services_calendly", "services_list")}
                   className="inline-flex items-center gap-2 rounded-xl bg-[#7CF067] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[#6ae05a]"
                 >
                   {isEn ? "Book a meeting" : "Agendar reunião"}
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
                 <a
                   href="https://wa.me/5512997796835"
                   target="_blank"
