@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from "crypto";
-import { captureServerEvent } from "@/lib/posthog-server";
+import { captureServerEvent, captureServerException } from "@/lib/posthog-server";
 
 /**
  * Receptor do webhook do Calendly — fecha o funil "reunião marcada".
@@ -193,6 +193,7 @@ export async function POST(request: Request) {
       `[calendly-webhook] erro inesperado — body: ${rawBody.slice(0, 1500)}`,
       err
     );
+    await captureServerException(err);
     return json(500, { ok: false, error: "server_error" });
   }
 }

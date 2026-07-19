@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 
 /**
  * Web3 V2 — banda de logos de clientes (rota `/2`).
@@ -92,17 +93,12 @@ function ClientLogo({
       rel="noopener noreferrer"
       className="marquee-item block min-w-[120px] cursor-pointer"
       tabIndex={isClone ? -1 : undefined}
-      onClick={() => {
-        try {
-          (
-            window as unknown as {
-              posthog?: { capture: (e: string, p?: Record<string, unknown>) => void };
-            }
-          ).posthog?.capture("client_logo_click", { client: client.name, href: client.url });
-        } catch {
-          /* noop */
-        }
-      }}
+      onClick={() =>
+        // posthog é módulo npm (não se pendura no window) — usar o helper
+        // `track` de @/lib/analytics em vez de window.posthog (que era undefined
+        // e fazia o evento nunca disparar).
+        track("client_logo_click", { client: client.name, href: client.url })
+      }
     >
       {logoImg}
     </Link>

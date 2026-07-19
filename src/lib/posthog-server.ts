@@ -73,3 +73,26 @@ export async function captureServerEvent(
     );
   }
 }
+
+/**
+ * Envia uma exceção do servidor pro Error Tracking do PostHog (posthog-node
+ * `captureException`). BEST-EFFORT: nunca lança — deve ser seguro chamar dentro
+ * de qualquer `catch` sem risco de quebrar a request. O `console.error` original
+ * de cada rota permanece como fallback de log; isso só ADICIONA o rastro no
+ * PostHog. `distinctId` liga o erro à pessoa (email do lead) quando disponível;
+ * sem ele, cai num bucket anônimo estável.
+ */
+export async function captureServerException(
+  error: unknown,
+  distinctId?: string
+): Promise<void> {
+  if (!process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) return;
+  try {
+    const ph = getPostHogClient();
+    ph.captureException(error, distinctId ?? "server", { site: "kaleidos" });
+    await ph.flush();
+  } catch {
+    // never throw from analytics — o console.error da rota chamadora já
+    // garante o rastro do erro nos logs da Vercel.
+  }
+}

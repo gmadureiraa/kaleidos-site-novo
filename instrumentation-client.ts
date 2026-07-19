@@ -23,8 +23,12 @@ if (token) {
     capture_dead_clicks: true,
     capture_heatmaps: true,
     capture_performance: { web_vitals: true, network_timing: false },
-    // perfil rico até pra visitante anônimo (origem/UTM/device em todo evento)
-    person_profiles: "always",
+    // identified_only: visitante anônimo NÃO vira person profile pago (corta
+    // ~4x o custo de perfis sem perder o funil). Quando um form de lead
+    // converte, identifyLead(email) (lib/analytics) faz o merge da jornada
+    // anônima na pessoa identificada; a origem (UTM/canal/referrer) já viaja
+    // em toda a jornada via super-properties (lib/attribution).
+    person_profiles: "identified_only",
     // Session replay consolidado no PostHog (17/07): removemos o Clarity e passamos
     // a gravar sessão aqui, amarrada aos eventos de lead/funil. Máscara de inputs
     // ligada por LGPD (os forms coletam email/nome) — grava a interação e o
@@ -34,7 +38,9 @@ if (token) {
     // Captura os console logs junto da gravação de sessão (Quick start do
     // PostHog): ajuda a debugar erros vendo o replay + o console lado a lado.
     enable_recording_console_log: true,
-    disable_surveys: true,
+    // Habilita o SDK de surveys (nenhuma survey aparece até ser criada no
+    // dashboard do PostHog — só liga a capacidade no client).
+    disable_surveys: false,
     persistence: "localStorage+cookie",
     debug: process.env.NODE_ENV === "development",
     loaded: (ph) => {
