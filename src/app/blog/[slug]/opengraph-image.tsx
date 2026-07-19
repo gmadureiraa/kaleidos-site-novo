@@ -1,6 +1,4 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { getPostBySlugAsync } from "@/lib/blog-data";
 import { categoryLabels } from "@/lib/blog-shared";
 import { coverStyleFor } from "@/lib/cover-style";
@@ -24,15 +22,29 @@ const INK = "#14110D";
 const GREEN = "#7CF067";
 const PINK = "#D262B2";
 
-// Fontes embutidas via fs (Inter cobre PT-BR com acentos; Atelier é display e
-// arrisca glyph faltando em título com acento).
-const FONTS_DIR = "public/Kaleidos/fonts/Inter/static";
-const interExtraBold = readFile(
-  join(process.cwd(), FONTS_DIR, "Inter_28pt-ExtraBold.ttf")
-);
-const interSemiBold = readFile(
-  join(process.cwd(), FONTS_DIR, "Inter_24pt-SemiBold.ttf")
-);
+// Fontes co-localizadas na pasta da rota e carregadas via fetch(new URL(...,
+// import.meta.url)) — padrão oficial do next/og que EMPACOTA o asset na função
+// serverless. (readFile de public/ dava ENOENT/500 em prod porque o Next não
+// traça public/ pra dentro da function.) Inter cobre PT-BR com acentos.
+async function loadFonts() {
+  try {
+    const [extraBold, semiBold] = await Promise.all([
+      fetch(new URL("./Inter_28pt-ExtraBold.ttf", import.meta.url)).then((r) =>
+        r.arrayBuffer()
+      ),
+      fetch(new URL("./Inter_24pt-SemiBold.ttf", import.meta.url)).then((r) =>
+        r.arrayBuffer()
+      ),
+    ]);
+    return [
+      { name: "InterExtraBold", data: extraBold, style: "normal" as const, weight: 800 as const },
+      { name: "InterSemiBold", data: semiBold, style: "normal" as const, weight: 600 as const },
+    ];
+  } catch {
+    // fallback: sem fonte custom → ImageResponse usa a default, nunca 500.
+    return [];
+  }
+}
 
 function titleFontSize(len: number): number {
   if (len <= 38) return 78;
@@ -47,10 +59,7 @@ export default async function Image({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlugAsync(slug);
 
-  const [extraBold, semiBold] = await Promise.all([
-    interExtraBold,
-    interSemiBold,
-  ]);
+  const fonts = await loadFonts();
 
   const title = post?.title ?? "Blog da Kaleidos";
   const category = post?.category ?? "marketing";
@@ -165,10 +174,7 @@ export default async function Image({ params }: Props) {
     ),
     {
       ...size,
-      fonts: [
-        { name: "InterExtraBold", data: extraBold, style: "normal", weight: 800 },
-        { name: "InterSemiBold", data: semiBold, style: "normal", weight: 600 },
-      ],
+      fonts,
     }
   );
 }
