@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CaseCarousel } from "@/components/ui/case-carousel";
@@ -1236,14 +1237,12 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
             >
               {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"}
             </a>
-            <a
-              href="https://calendly.com/madureira-kaleidosdigital/30min"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/agendar"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               {isEn ? "Book a meeting" : "Agendar reunião"}
-            </a>
+            </Link>
           </div>
         </div>
       </section>

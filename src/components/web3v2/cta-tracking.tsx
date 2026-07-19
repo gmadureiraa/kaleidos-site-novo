@@ -45,7 +45,8 @@ export function Web3V2CtaTracking() {
         // `whatsapp_click` agora sai do ConversionTracking GLOBAL (layout) —
         // aqui fica só o cta_clicked com contexto de seção da home.
         track("cta_clicked", { location, cta_type: "whatsapp", label });
-      } else if (href.includes("calendly")) {
+      } else if (href.includes("calendly") || href.includes("/agendar")) {
+        // /agendar = rota interna que embeda o Calendly com tracking de conversão.
         track("cta_clicked", { location, cta_type: "calendly", label });
       }
     }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useI18n } from "@/i18n/useI18n";
 import { useState } from "react";
-import { WHATSAPP_NUMBER, CALENDLY_URL } from "@/lib/constants";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useAnalytics } from "@/components/analytics";
 import { track, identifyLead } from "@/lib/analytics";
@@ -181,18 +181,16 @@ export default function ContatoPage() {
                 : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2019. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech: ${KALEIDOS_METRICS.projetosAtendidos} marcas atendidas, ${KALEIDOS_METRICS.viewsReels} views gerados e ${KALEIDOS_METRICS.faturamentoClientes} em faturamento pros clientes.`}
             </p>
 
-            {/* CTA primário — agendamento Calendly */}
+            {/* CTA primário — agendamento via /agendar (embed com tracking de conversão) */}
             <div className="mt-8 flex flex-col items-center gap-3">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/agendar"
                 onClick={() => track('calendly_click', { source: 'contato_hero', path: '/contato' })}
                 className="inline-flex items-center justify-center gap-3 min-h-[56px] bg-black text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-800 transition-colors"
               >
                 <CalendarDays className="w-5 h-5" />
                 {locale === 'en' ? 'Book a diagnosis call' : 'Agendar diagnóstico'}
-              </a>
+              </Link>
               <p className="text-sm text-gray-500">
                 {locale === 'en'
                   ? '30-minute call, free of charge. We map your channels and show where the opportunity is.'
@@ -624,16 +622,14 @@ export default function ContatoPage() {
                     ? 'During business hours (Mon-Fri, 9am-6pm BRT)'
                     : 'Em horário comercial (Seg-Sex, 9h-18h)'}
                 </p>
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/agendar"
                   onClick={() => track('calendly_click', { source: 'contato_footer', path: '/contato' })}
                   className="mt-5 inline-flex items-center justify-center gap-2 min-h-[44px] bg-[#7CF067] text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#5be04d] transition-colors"
                 >
                   <CalendarDays className="w-4 h-4" />
                   {locale==='en' ? 'Book a diagnosis call' : 'Agendar diagnóstico'}
-                </a>
+                </Link>
               </div>
 
               <div>

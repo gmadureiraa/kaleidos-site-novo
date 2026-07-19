@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CalendlyIcon } from "@/components/ui/calendly-icon";
 import { useI18n } from "@/i18n/useI18n";
 import { useAnalytics } from "@/components/analytics";
 
-const CALENDLY = "https://calendly.com/madureira-kaleidosdigital/30min";
 // Número já usado no /links e no rodapé do site (não inventar).
 const WHATSAPP = "5512997796835";
 
@@ -133,18 +133,16 @@ export function CtaStrategy() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          {/* Primário: agendar reunião (Calendly) */}
-          <a
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Primário: agendar reunião (/agendar, embed com tracking de conversão) */}
+          <Link
+            href="/agendar"
             onClick={() => trackClick("cta_strategy_calendly", "cta_strategy")}
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#7CF067] px-8 py-4 text-lg font-bold text-black shadow-lg shadow-[#7CF067]/25 transition-colors hover:bg-[#6ae85a] sm:w-auto"
           >
             <CalendlyIcon className="h-5 w-5" />
             {isEn ? "Book a meeting" : "Agendar reunião"}
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          </Link>
 
           {/* Secundário: WhatsApp (mensagem pré-preenchida pela intenção) */}
           <a

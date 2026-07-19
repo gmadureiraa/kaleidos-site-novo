@@ -188,7 +188,7 @@ export function heroHtml(o: HeroOpts = {}, l: Locale = "pt") {
       <h1 class="w3-h1" style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(31px,4vw,54px);line-height:1.04;letter-spacing:-1.6px;margin:0;max-width:920px;margin-inline:auto;">${headlineHtml}</h1>
       <p style="font-size:clamp(17px,2vw,21px);line-height:1.55;color:#4a443c;max-width:640px;margin:26px auto 0;">${subHtml}</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
-        <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">${ui.schedule}</a>
+        <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#14110D;color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #7CF067;text-decoration:none;"><img src="/v2/calendly-icon.webp" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain;background:#fff;border-radius:6px;padding:2px;">${ui.schedule}</a>
       </div>
       <div style="margin-top:16px;font-size:14px;color:#6b6258;">${ui.waPrefix} <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${ui.waLink}</a></div>
     </div>
@@ -280,7 +280,7 @@ const problemaHtml = (l: Locale) => {
           <span style="background:#221d17;border:1.5px solid #3a332a;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:600;transform:rotate(-1deg);">${c.chip3}</span>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px;">
-          <a href="https://calendly.com/madureira-kaleidosdigital/30min" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${c.schedule}</a>
+          <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${c.schedule}</a>
           <a href="${c.casesHref}" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">${c.cases}</a>
         </div>
         <div style="margin-top:14px;font-size:14px;color:#9a9186;">${c.waPrefix} <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${c.waLink}</a></div>
