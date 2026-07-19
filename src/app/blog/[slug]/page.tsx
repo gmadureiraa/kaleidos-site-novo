@@ -44,10 +44,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = getSeoTitle(post);
   const description = getSeoDescription(post);
   const tags = getPostTags(post);
-  // Fallback pra OG default da Kaleidos quando o post não tem coverImage —
-  // garante que TODO post emita og:image + twitter:image (link preview nunca vazio).
-  const DEFAULT_OG_IMAGE = "/Kaleidos/imagens/Capa.png";
-  const ogImage = getOgImage(post) || DEFAULT_OG_IMAGE;
+  // og:image por post. Quando o post tem coverImage/ogImage próprio, ele vence.
+  // Quando NÃO tem, deixamos SEM override aqui pra que o `opengraph-image.tsx`
+  // (file-based, gerado por post) injete a capa de marca automaticamente — em vez
+  // da Capa.png fixa que TODOS os posts compartilhavam antes.
+  const ogImage = getOgImage(post);
   const canonical = `/blog/${post.slug}`;
 
   return {
@@ -68,13 +69,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author.name],
       section: post.category,
       tags,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+      ...(ogImage
+        ? { images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }] }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }
