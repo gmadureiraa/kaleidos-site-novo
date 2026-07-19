@@ -36,7 +36,7 @@ export function buildBreakupEmail(opts: { name?: string | null; unsubUrl: string
     ${ctaButton("Conversar agora no WhatsApp", wa)}
 
     <p style="margin:0 0 8px 0;font-size:14px;color:#6b7280;">
-      Prefere call? A consultoria gratuita de 30 minutos continua de pé:
+      Prefere call? O diagnóstico gratuito de 30 minutos continua de pé:
       <a href="${AGENDAR_URL}" style="color:#374151;text-decoration:underline;">agenda aqui</a>.
       Ou responde este email, que cai direto na caixa do time.
     </p>
@@ -70,7 +70,7 @@ Me conta o que tu tem pela frente. Uma conversa curta já diz se faz sentido tra
 
 Conversar agora no WhatsApp: ${wa}
 
-Prefere call? A consultoria gratuita de 30 minutos continua de pé: ${AGENDAR_URL}
+Prefere call? O diagnóstico gratuito de 30 minutos continua de pé: ${AGENDAR_URL}
 Ou responde este email, que cai direto na caixa do time.
 
 Se agora não é o momento, sem rancor. Descadastra aqui e a sequência para: ${opts.unsubUrl}
