@@ -20,8 +20,12 @@ function escapeXml(s: string): string {
 }
 
 export async function GET() {
-  // Só posts já publicados no feed (estáticos + KAI; agendados entram após a data + rebuild/revalidate).
-  const sorted = (await getPublishedPostsAsync()).sort(
+  // Só posts já publicados no feed — mesma lógica/instante do sitemap
+  // (`getPublishedPostsAsync(now)`): posts com `publishedAt` no futuro (agendados
+  // via KAI) ficam FORA e só entram após a data + revalidate. `now` capturado uma
+  // vez pra o filtro e as comparações compartilharem o mesmo instante.
+  const now = new Date();
+  const sorted = (await getPublishedPostsAsync(now)).sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 
