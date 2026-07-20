@@ -240,12 +240,55 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
 }
 
 // --- Resolvers de SEO/GEO com fallback (campos opcionais) ---
+
+// O template do <title> em `blog/[slug]/page.tsx` monta `${getSeoTitle()} | Kaleidos`.
+// O Google corta o <title> por ~600px (na prática ~60 chars). Reservamos o sufixo
+// e damos ao seoTitle um orçamento de (60 - 11) = 49 chars, garantindo que o
+// <title> FINAL caiba em ~60 sem que o sufixo de marca seja cortado no SERP.
+const TITLE_SUFFIX = " | Kaleidos"; // 11 chars
+const TITLE_MAX = 60; // alvo do <title> completo no SERP
+const SEO_TITLE_BUDGET = TITLE_MAX - TITLE_SUFFIX.length; // 49 chars pro seoTitle
+
+// Conectivos que ficam feios pendurados no fim de um título truncado.
+const DANGLING_WORD = /\s+(e|ou|de|da|do|das|dos|que|com|para|pra|a|o|as|os|no|na|em|à|ao|sem|por)$/i;
+
+/**
+ * Clamp inteligente de título: se o seoTitle (já sem sufixo) estoura o orçamento,
+ * trunca em fronteira de palavra, preservando a keyword-cabeça (início) e SEM
+ * reticências (título limpo lê melhor no SERP). Remove pontuação/conectivo solto
+ * no fim pra não cortar "Binance: a máquina de" no meio de uma preposição.
+ */
+function clampSeoTitle(raw: string): string {
+  if (raw.length <= SEO_TITLE_BUDGET) return raw;
+  const clipped = raw.slice(0, SEO_TITLE_BUDGET).replace(/\s+$/, "");
+  const lastSpace = clipped.lastIndexOf(" ");
+  // Recua até o último espaço (não corta palavra no meio), desde que não jogue o
+  // título curto demais.
+  let cut = lastSpace > SEO_TITLE_BUDGET * 0.55 ? clipped.slice(0, lastSpace) : clipped;
+  cut = cut.trim();
+  // Se sobrou um "(" sem fechar, joga fora o fragmento aberto no fim.
+  if ((cut.match(/\(/g)?.length ?? 0) > (cut.match(/\)/g)?.length ?? 0)) {
+    cut = cut.slice(0, cut.lastIndexOf("(")).trim();
+  }
+  // Limpa o fim repetidamente: tirar um conectivo pendurado ("... em cripto: o")
+  // pode reexpor uma pontuação solta (o ":"), então rodamos até estabilizar.
+  let prev: string;
+  do {
+    prev = cut;
+    cut = cut.replace(/[\s:;,.\-–—(]+$/g, ""); // pontuação/abertura solta no fim
+    cut = cut.replace(DANGLING_WORD, ""); // conectivo pendurado ("... marketing e")
+    cut = cut.trim();
+  } while (cut !== prev);
+  return cut;
+}
+
 export function getSeoTitle(post: BlogPost): string {
   const raw = post.seoTitle?.trim() || post.title;
   // 104 posts (gerador antigo) vinham com "| Kaleidos" JÁ embutido no seoTitle —
   // o template do <title> anexa o sufixo de novo e virava "… | Kaleidos | Kaleidos".
   // Strip aqui resolve pra todos sem tocar nos arquivos gerados.
-  return raw.replace(/\s*\|\s*Kaleidos\s*$/i, "").trim();
+  const stripped = raw.replace(/\s*\|\s*Kaleidos\s*$/i, "").trim();
+  return clampSeoTitle(stripped);
 }
 
 export function getSeoDescription(post: BlogPost): string {

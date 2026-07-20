@@ -149,7 +149,7 @@ A Kaleidos trabalha marketing de cripto e web3 partindo do desenho, não do post
     excerpt:
       "Em cripto, o X não é rede social: é o pregão onde narrativa vira preço e atenção vira liquidez. Este artigo mostra como operar conteúdo em tempo real na plataforma: reply game estruturado, timing de narrativa, energia coordenada de time e comunidade, e a rotina diária que separa perfis que participam do mercado dos que só assistem.",
     seoDescription:
-      "Como operar o X em cripto: reply game, timing de narrativa, energia coordenada e rotina diária de conteúdo em tempo real para projetos web3.",
+      "Como operar o X em cripto: reply game, timing de narrativa, energia coordenada e uma rotina diária de conteúdo em tempo real para projetos web3 crescerem.",
     category: "growth",
     author: AUTHOR,
     publishedAt: "2026-07-25",

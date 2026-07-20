@@ -1755,7 +1755,7 @@ Construir esse tipo de comunidade é uma das especialidades da Kaleidos. Ajudamo
     title: "Growth Hacking para Projetos Cripto: Estratégias de Aquisição",
     seoTitle: "Growth Hacking para Projetos Cripto: Estratégias de Aquisição (2026)",
     excerpt: "Growth hacking em cripto não é o growth hacking do Vale do Silício com token no meio. É um jogo diferente com regras próprias. Este guia mostra as estratégias de aquisição que funcionam em projetos cripto e web3, com cases e dados reais.",
-    seoDescription: "Estratégias de growth hacking para projetos cripto e web3: aquisição, retenção e ativação com exemplos reais. Guia completo para 2026.",
+    seoDescription: "Estratégias de growth hacking para projetos cripto e web3: aquisição, retenção e ativação com exemplos reais e táticas testadas. Guia completo para 2026.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-08-18",

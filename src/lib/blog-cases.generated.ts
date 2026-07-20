@@ -866,7 +866,7 @@ export const caseStudies: BlogPost[] = [
     title: "Onchain attribution: medindo marketing cripto de verdade em 2026",
     seoTitle: "Onchain attribution: medindo marketing cripto de verdade em 2026 | Kaleidos",
     excerpt: "Impressão e clique eram as métricas de 2020. Em 2026, o marketing cripto se mede por carteira que transaciona. A distância entre essas duas frases é a diferença entre um projeto que sabe pra onde vai o orçamento e um que gasta no escuro.",
-    seoDescription: "Por que o Google Analytics é cego pro seu funil web3, e o stack que mede marketing cripto por carteira que transaciona em 2026.",
+    seoDescription: "Por que o Google Analytics é cego pro seu funil web3, e o stack que mede marketing cripto por carteira que transaciona on-chain, do clique à conversão em 2026.",
     coverImage: "",
     category: "cripto",
     author: { name: "Gabriel Madureira", avatar: "/Kaleidos/imagens/Equipe/Madureira.png" },
@@ -886,7 +886,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "projetos-cripto-usuarios-overnight",
     title: "Por que alguns projetos cripto atraem milhares de usuários da noite pro dia",
-    seoTitle: "Por que alguns projetos cripto atraem milhares de usuários da noite pro dia | Kaleidos",
+    seoTitle: "Projetos cripto que crescem da noite pro dia | Kaleidos",
     excerpt: "Antes de tudo, o vocabulário. Narrativa = a crença que o projeto vende sobre pra onde o valor vai fluir, não a lista de features. KOL (key opinion leader) = o influenciador on-chain que carrega essa crença pra audiência dele. Airdrop = dist",
     seoDescription: "Tração-relâmpago em cripto não é sorte. É narrativa, incentivo e timing batendo ao mesmo tempo. Veja o mecanismo por trás dos milhares overnight.",
     coverImage: "",
@@ -954,7 +954,7 @@ export const caseStudies: BlogPost[] = [
     title: "ICP em cripto: por que \"todo holder\" não é um público, é uma desculpa",
     seoTitle: "ICP em cripto: por que \"todo holder\" não é um público, é uma desculpa | Kaleidos",
     excerpt: "Pergunte a um fundador de projeto cripto quem é o cliente dele e a resposta vem quase sempre igual: \"todo mundo que tem carteira\", \"qualquer holder\", \"o investidor cripto\". Soa ambicioso. Na prática, é a forma mais educada de dizer \"não faç",
-    seoDescription: "O framework de ICP da a16z roda em 9 atributos e 5 perguntas, e quase nenhum projeto cripto consegue responder a primeira delas.",
+    seoDescription: "O framework de ICP da a16z roda em 9 atributos e 5 perguntas, e quase nenhum projeto cripto consegue responder a primeira delas. Veja como aplicar no seu.",
     coverImage: "",
     category: "growth",
     author: { name: "Gabriel Madureira", avatar: "/Kaleidos/imagens/Equipe/Madureira.png" },
@@ -974,7 +974,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "narrative-marketing-ciclo",
     title: "Colar o projeto na narrativa da vez sem virar o oportunista que o mercado despreza",
-    seoTitle: "Colar o projeto na narrativa da vez sem virar o oportunista que o mercado despreza | Kaleidos",
+    seoTitle: "Narrative marketing sem virar oportunista | Kaleidos",
     excerpt: "Existe um momento em toda reunião de marketing cripto em que alguém aponta pro tema quente do trimestre e pergunta: \"não deveríamos estar falando de RWA também?\". A resposta certa quase nunca é sim ou não. É \"depende de como\", e é exatament",
     seoDescription: "Os RWAs on-chain saíram de US$5,5 bi para mais de US$29 bi em um ano. O guia operacional de como posicionar um projeto na narrativa certa, no momento…",
     coverImage: "",
@@ -996,7 +996,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "points-programs-retencao",
     title: "Points program que retém vs. que destrói: por que a Lombard segurou e a Blast desabou",
-    seoTitle: "Points program que retém vs. que destrói: por que a Lombard segurou e a Blast desabou | Kaleidos",
+    seoTitle: "Points program: o que retém vs. o que destrói | Kaleidos",
     excerpt: "Nos últimos dois anos, points program virou o botão fácil do growth cripto. Todo protocolo que quer tração rápida abre uma temporada de pontos, promete um airdrop no fim, e vê o TVL subir. O gráfico anima o founder, anima o investidor, anim",
     seoDescription: "No dia da distribuição, o token da Lombard caiu 19,4% enquanto a Blast perdeu mais de 50% do TVL. A diferença nunca foi o points program, foi o produto…",
     coverImage: "",
@@ -1064,7 +1064,7 @@ export const caseStudies: BlogPost[] = [
     title: "Airdrop marketing anti-Sybil: como atrair usuário real e não farmer",
     seoTitle: "Airdrop marketing anti-Sybil: como atrair usuário real e não farmer | Kaleidos",
     excerpt: "A Kaleidos vê o mesmo roteiro se repetir a cada temporada de airdrop. Um projeto abre uma campanha de pontos, a métrica de carteiras ativas dispara, o time comemora \"tração\", e três meses depois do TGE o gráfico do token é uma ladeira. A ex",
-    seoDescription: "88% dos tokens de airdrop perdem valor em três meses porque o desenho premia quem vende, não quem fica. Este é o funil pra inverter isso.",
+    seoDescription: "88% dos tokens de airdrop perdem valor em três meses porque o desenho premia quem vende, não quem fica. O funil anti-Sybil pra atrair usuário que fica.",
     coverImage: "",
     category: "cripto",
     author: { name: "Gabriel Madureira", avatar: "/Kaleidos/imagens/Equipe/Madureira.png" },
@@ -1084,7 +1084,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "aeo-cripto-respostas-ia",
     title: "AEO pra cripto: como ser a resposta que a IA dá (e não só o link que ela ignora)",
-    seoTitle: "AEO pra cripto: como ser a resposta que a IA dá (e não só o link que ela ignora) | Kaleidos",
+    seoTitle: "AEO pra cripto: ser a resposta que a IA dá | Kaleidos",
     excerpt: "Existe uma pergunta que a Kaleidos faz em todo diagnóstico novo de projeto cripto: \"pergunta pro ChatGPT qual a melhor plataforma pra fazer o que vocês fazem, e vê quem ele cita\". Na quase totalidade dos casos, o projeto do cliente não apar",
     seoDescription: "Quase 7 em cada 10 buscas no Google já terminam sem clique. Answer Engine Optimization é como um projeto cripto vira a fonte que ChatGPT e Perplexity…",
     coverImage: "",
@@ -1106,7 +1106,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "ser-citado-chatgpt-perplexity-gemini",
     title: "Como virar a fonte que o ChatGPT cita: o passo a passo de AEO pra projeto cripto",
-    seoTitle: "Como virar a fonte que o ChatGPT cita: o passo a passo de AEO pra projeto cripto | Kaleidos",
+    seoTitle: "Como virar a fonte que o ChatGPT cita em cripto | Kaleidos",
     excerpt: "Quando alguém pergunta ao ChatGPT \"qual a melhor corretora descentralizada de perpétuos?\", uma de duas coisas acontece com o seu projeto. Ou ele aparece na resposta, nomeado, com um link, ou não existe. Não há segunda página. Não há posição",
     seoDescription: "Com o ChatGPT batendo 800 milhões de usuários semanais e quase 60% das buscas no Google terminando sem clique, a disputa deixou de ser pela primeira…",
     coverImage: "",
@@ -1128,7 +1128,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "teardown-compound-liquidity-mining",
     title: "Teardown Compound: o token que resolveu o problema da galinha e do ovo da liquidez",
-    seoTitle: "Teardown Compound: o token que resolveu o problema da galinha e do ovo da liquidez | Kaleidos",
+    seoTitle: "Teardown Compound: o token e o liquidity mining | Kaleidos",
     excerpt: "Todo produto de rede tem o mesmo pesadelo no dia zero: ninguém usa porque ninguém usa. Marketplace vazio não atrai vendedor, vendedor ausente não atrai comprador, e o produto morre travado nesse impasse. Em cripto, o pesadelo tem nome técni",
     seoDescription: "Em junho de 2020, a Compound distribuiu o token COMP pra quem usava o protocolo e viu o TVL saltar de cerca de US$100 milhões pra cerca de US$600 milhões…",
     coverImage: "",
@@ -1150,7 +1150,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "crypto-press-release-2026",
     title: "Crypto press release em 2026: como escrever um que a imprensa publica (com templates)",
-    seoTitle: "Crypto press release em 2026: como escrever um que a imprensa publica (com templates) | Kaleidos",
+    seoTitle: "Crypto press release: o que a imprensa publica | Kaleidos",
     excerpt: "Todo fundador de projeto cripto acha que o próprio anúncio é notícia. A redação da CoinDesk discorda. Entre o release que morre na caixa de entrada de um editor e o que aparece em dez veículos na mesma semana existe uma diferença técnica, e",
     seoDescription: "Um press release cripto deve ter de 400 a 600 palavras e liderar com fato, não com hype, e é o ângulo noticiável, não o orçamento de distribuição, que…",
     coverImage: "",
@@ -1260,7 +1260,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "aerodrome-liquidez-como-marketing",
     title: "Aerodrome: como virar a praça central de liquidez de um ecossistema inteiro",
-    seoTitle: "Aerodrome: como virar a praça central de liquidez de um ecossistema inteiro | Kaleidos",
+    seoTitle: "Aerodrome: a praça central de liquidez da Base | Kaleidos",
     excerpt: "A maioria dos projetos de DeFi tenta atrair liquidez pagando rendimento. A Aerodrome fez diferente: ela se posicionou como a camada onde outros projetos vão pagar pra atrair liquidez. Essa inversão é o coração do case, e é o que separa uma ",
     seoDescription: "A Aerodrome subiu de menos de US$ 5 milhões de liquidez nos dois primeiros dias para o maior protocolo da Base, ultrapassando US$ 1 bilhão de TVL em…",
     coverImage: "",
@@ -1282,7 +1282,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "x-twitter-growth-cripto",
     title: "Growth orgânico no X para cripto: o playbook de conversa que o algoritmo premia",
-    seoTitle: "Growth orgânico no X para cripto: o playbook de conversa que o algoritmo premia | Kaleidos",
+    seoTitle: "Growth orgânico no X para cripto: o playbook | Kaleidos",
     excerpt: "Todo projeto cripto sabe que precisa estar no X. Quase nenhum sabe o que o X recompensa. O resultado é um feed cheio de contas de projeto postando thread de roadmap pra uma audiência de bots e caçadores de airdrop, medindo o sucesso em núme",
     seoDescription: "O X é o canal principal de 41,7% da comunidade cripto, e o próprio algoritmo revela que uma resposta que gera conversa vale 150 vezes um like. Este é o…",
     coverImage: "",
@@ -1304,7 +1304,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "farcaster-frames-formato-viral",
     title: "Farcaster: como um formato novo virou loop de crescimento (e por que o pico não segurou)",
-    seoTitle: "Farcaster: como um formato novo virou loop de crescimento (e por que o pico não segurou) | Kaleidos",
+    seoTitle: "Farcaster Frames: o loop viral que não segurou | Kaleidos",
     excerpt: "Frames foi uma das melhores ideias de growth do cripto recente, e ainda assim o Farcaster virou o exemplo canônico de spike sem sustentação. As duas coisas são verdadeiras ao mesmo tempo, e a lição mora exatamente nessa tensão. Este teardow",
     seoDescription: "O Farcaster criou os Frames, transformou o feed em mini-app e viu os usuários ativos diários saltarem cerca de 10 vezes em uma semana. Levantou US$ 150…",
     coverImage: "",
@@ -1392,7 +1392,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "morpho-infraestrutura-invisivel",
     title: "Morpho: como crescer sendo a infraestrutura invisível por trás de uma marca gigante",
-    seoTitle: "Morpho: como crescer sendo a infraestrutura invisível por trás de uma marca gigante | Kaleidos",
+    seoTitle: "Morpho: crescer como infraestrutura invisível | Kaleidos",
     excerpt: "A maioria dos projetos quer ser a marca que o usuário vê. A Morpho fez a aposta contrária: ser a camada que o usuário nunca vê, mas que todo mundo usa. Essa escolha de posicionamento é o coração do case, e ela tem um preço embutido que todo",
     seoDescription: "A Morpho virou os trilhos dos empréstimos cripto da Coinbase, que ultrapassaram US$ 1 bilhão em originações lastreadas em Bitcoin cerca de oito meses após…",
     coverImage: "",
@@ -1436,7 +1436,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "jito-mev-como-produto",
     title: "Jito: como transformar um conceito abstrato (MEV) em produto que as pessoas querem segurar",
-    seoTitle: "Jito: como transformar um conceito abstrato (MEV) em produto que as pessoas querem segurar | Kaleidos",
+    seoTitle: "Jito: como transformar MEV em produto | Kaleidos",
     excerpt: "MEV é um dos termos mais impenetráveis do cripto, e para muita gente soa até negativo, associado a bots que \"roubam\" valor dos usuários. A Jito fez o improvável: transformou esse conceito num motivo pra segurar um token. Esse reenquadrament",
     seoDescription: "A Jito pegou o MEV, um conceito técnico e quase invisível, e transformou em rendimento que flui pra quem faz stake. Seu cliente rodava em cerca de 48% do…",
     coverImage: "",
@@ -1458,7 +1458,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "twitter-spaces-ama-cripto",
     title: "Twitter Spaces e AMAs que convertem: o playbook de áudio ao vivo pra cripto",
-    seoTitle: "Twitter Spaces e AMAs que convertem: o playbook de áudio ao vivo pra cripto | Kaleidos",
+    seoTitle: "Twitter Spaces e AMAs que convertem em cripto | Kaleidos",
     excerpt: "Áudio ao vivo é o formato onde o cripto deveria brilhar e quase nunca brilha. A promessa é perfeita pro setor: sem edição, sem roteiro travado, o founder na frente de uma plateia cética respondendo o que aparecer. É a antítese do press rele",
     seoDescription: "A maioria dos projetos trata o AMA como um evento de uma hora que some no dia seguinte. Este é o playbook pra transformar Spaces e AMAs em aquisição…",
     coverImage: "",
@@ -1502,7 +1502,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "sui-pedigree-e-comunidade",
     title: "Sui: como pedigree abre a porta e a relação com a comunidade decide se você fica",
-    seoTitle: "Sui: como pedigree abre a porta e a relação com a comunidade decide se você fica | Kaleidos",
+    seoTitle: "Sui: pedigree abre a porta, comunidade te segura | Kaleidos",
     excerpt: "Poucos projetos começaram com tanta vantagem de credibilidade quanto a Sui, e poucos gastaram tanto dessa vantagem tão cedo. O case é uma aula sobre os limites do pedigree e sobre como se recupera de um começo áspero. Este teardown separa o",
     seoDescription: "A Sui chegou com o pedigree mais forte que dinheiro pode comprar: engenheiros ex-Meta e uma linguagem própria. Mas trocou o airdrop por um programa que…",
     coverImage: "",
@@ -1546,7 +1546,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "monad-comunidade-antes-do-mainnet",
     title: "Monad: como construir uma comunidade e uma cultura de meme antes de existir produto",
-    seoTitle: "Monad: como construir uma comunidade e uma cultura de meme antes de existir produto | Kaleidos",
+    seoTitle: "Monad: comunidade e memes antes do produto | Kaleidos",
     excerpt: "Existem dezenas de blockchains prometendo alto desempenho. Do ponto de vista do usuário, elas são quase indistinguíveis antes de rodar. A Monad entendeu isso cedo e resolveu o problema pelo lado do marketing, não da engenharia: ela ficou me",
     seoDescription: "A Monad juntou milhões de seguidores, uma identidade roxa e um zoológico de mascotes chamados Monanimals antes de ter mainnet. Levantou US$ 225 milhões…",
     coverImage: "",
@@ -1568,7 +1568,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "blur-vampire-attack-royalties",
     title: "Blur: como usar incentivo agressivo pra destronar o líder (e o preço disso)",
-    seoTitle: "Blur: como usar incentivo agressivo pra destronar o líder (e o preço disso) | Kaleidos",
+    seoTitle: "Blur: o vampire attack que destronou a OpenSea | Kaleidos",
     excerpt: "Poucos projetos derrubaram um líder consolidado tão rápido quanto a Blur derrubou a OpenSea. E poucos ilustram tão bem que vencer a batalha de volume não é o mesmo que vencer a de valor. Este teardown separa a jogada, o mecanismo e o custo.",
     seoDescription: "A Blur atacou o domínio da OpenSea com airdrops, taxa zero e royalties opcionais, e em fevereiro de 2023 já respondia pela maior fatia do volume de NFT…",
     coverImage: "",
@@ -1744,7 +1744,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "marketing-listing-exchange-ieo",
     title: "Marketing de listing e IEO: o dia do anúncio não é a estratégia, é o teste dela",
-    seoTitle: "Marketing de listing e IEO: o dia do anúncio não é a estratégia, é o teste dela | Kaleidos",
+    seoTitle: "Marketing de listing e IEO em cripto | Kaleidos",
     excerpt: "Todo projeto sonha com o listing na exchange grande, e por um bom motivo: é o momento de maior liquidez de atenção e de capital que ele vai ter. Mas o marketing de listing é onde mais se queima orçamento fazendo a coisa errada, porque o pum",
     seoDescription: "As IEOs da Binance Launchpad em 2019 entregaram ROI médio de centenas por cento, e a MATIC chegou a 1.600% de alta em três semanas. Mas o pump do listing…",
     coverImage: "",
@@ -1920,7 +1920,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "comunidade-real-vs-hype-train",
     title: "Comunidade real vs. hype train: como saber a diferença antes de queimar caixa",
-    seoTitle: "Comunidade real vs. hype train: como saber a diferença antes de queimar caixa | Kaleidos",
+    seoTitle: "Comunidade real vs. hype train em cripto | Kaleidos",
     excerpt: "Todo fundador quer mostrar o print do Discord de 40 mil membros e do Telegram fervendo. O problema é que quase nada disso sobrevive ao dia em que o incentivo acaba. Alexandra Thompson resume o erro central em uma frase que a Kaleidos adota ",
     seoDescription: "Se o projeto morre quando o incentivo para, ele nunca teve comunidade, teve fila de airdrop. Entre 50% e 70% dos tokens distribuídos são vendidos em 30…",
     coverImage: "",
@@ -1942,7 +1942,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "kol-crypto-guide-2026-distribuicao",
     title: "KOL crypto guide 2026: como usar influencer como parceiro de distribuição (não como outdoor)",
-    seoTitle: "KOL crypto guide 2026: como usar influencer como parceiro de distribuição (não como outdoor) | Kaleidos",
+    seoTitle: "KOL crypto: influencer como distribuição | Kaleidos",
     excerpt: "Existe um jeito caro e um jeito eficiente de usar influenciador em cripto. O caro é comprar um tweet de um perfil grande, olhar o número de impressões e não saber se uma única carteira apareceu por causa disso. O eficiente é escolher poucos",
     seoDescription: "KOL não é mídia paga avulsa, é canal de distribuição que precisa de alinhamento de narrativa, incentivo de longo prazo e medição on-chain. As melhores…",
     coverImage: "",
@@ -1964,7 +1964,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "verificar-kol-cripto-onchain",
     title: "Como verificar um KOL cripto de verdade: audite a wallet, não os seguidores",
-    seoTitle: "Como verificar um KOL cripto de verdade: audite a wallet, não os seguidores | Kaleidos",
+    seoTitle: "Como verificar um KOL cripto: audite a wallet | Kaleidos",
     excerpt: "Antes de pagar de US$ 6.000 a US$ 80.000 por um post, como saber se aquele KOL vai trazer carteira de verdade ou só emprestar um número inflado? A resposta não está no perfil dele. Está em três camadas de verificação que a Kaleidos roda ant",
     seoDescription: "Contagem de seguidores é o dado mais fácil de falsificar em cripto. Uma auditoria global de 2026 achou 41,3% de atividade fraudulenta em perfis de…",
     coverImage: "",
@@ -1986,7 +1986,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "crypto-ad-networks-2026",
     title: "Top crypto ad networks em 2026: onde vale a pena anunciar (e onde é dinheiro jogado fora)",
-    seoTitle: "Top crypto ad networks em 2026: onde vale a pena anunciar (e onde é dinheiro jogado fora) | Kaleidos",
+    seoTitle: "Crypto ad networks 2026: onde vale anunciar | Kaleidos",
     excerpt: "Anunciar cripto nas grandes plataformas é um campo minado de compliance. Por isso existe um ecossistema inteiro de redes de anúncio nativas, feitas para o setor. O problema deixa de ser \"posso anunciar?\" e passa a ser \"em qual rede, com qua",
     seoDescription: "Google e Meta restringem o cripto, então as redes de anúncio nativas viram canal obrigatório. O problema é escolher: as reais vão de CPC de US$ 0,10 e…",
     coverImage: "",
@@ -2030,7 +2030,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "thought-leadership-web3-autoridade",
     title: "Thought leadership em web3: como virar autoridade num mercado que só grita",
-    seoTitle: "Thought leadership em web3: como virar autoridade num mercado que só grita | Kaleidos",
+    seoTitle: "Thought leadership em web3: virar autoridade real | Kaleidos",
     excerpt: "Em cripto, todo mundo está gritando a mesma coisa: \"revolucionário\", \"próxima grande narrativa\", \"não perca\". No meio desse ruído, o que fica escasso é o oposto: alguém com uma tese clara, defendida com rigor, que ensina o mercado em vez de",
     seoDescription: "Num mercado saturado de shill, autoridade é o ativo mais escasso e mais defensável. O modelo Not Boring prova: conteúdo com tese, não com hype, construiu…",
     coverImage: "",
@@ -2052,7 +2052,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "crypto-presale-marketing-tracao",
     title: "Crypto presale marketing: como construir tração antes do lançamento (e não virar mais uma que falha)",
-    seoTitle: "Crypto presale marketing: como construir tração antes do lançamento (e não virar mais uma que falha) | Kaleidos",
+    seoTitle: "Crypto presale marketing: tração antes do TGE | Kaleidos",
     excerpt: "O maior mito do presale é que o lançamento gera a tração. É o contrário: a tração é construída antes, e o lançamento apenas a colhe. Num mercado onde 20,2 milhões de tokens já estavam listados na GeckoTerminal no fim de 2025, abrir um presa",
     seoDescription: "Em 2025 a CoinGecko registrou 11,6 milhões de falhas de token e a Messari achou que só 6 de 41 vendas deram lucro pós-lançamento. Presale hoje não enche…",
     coverImage: "",
@@ -2098,7 +2098,7 @@ export const caseStudies: BlogPost[] = [
     title: "Seu Discord tem 80 mil membros e nenhuma comunidade",
     seoTitle: "Seu Discord tem 80 mil membros e nenhuma comunidade | Kaleidos",
     excerpt: "Você abre o Discord de qualquer projeto cripto e vê o mesmo número inflado: 40 mil, 80 mil, 200 mil membros. O Telegram tem outro tanto. Parece saúde. Mas headcount de servidor é a métrica mais enganosa do web3 — é a versão cripto do \"segui",
-    seoDescription: "Headcount de Discord engana. Como os projetos que de fato convertem comunidade fazem: dados reais, 3 casos e o anti-padrão que mata no TGE.",
+    seoDescription: "Headcount de Discord engana. Como os projetos que de fato convertem comunidade fazem: dados reais, 3 casos práticos e o anti-padrão que mata a conversão no TGE.",
     coverImage: "",
     category: "growth",
     author: { name: "Gabriel Madureira", avatar: "/Kaleidos/imagens/Equipe/Madureira.png" },
@@ -2120,7 +2120,7 @@ export const caseStudies: BlogPost[] = [
     title: "Funil de aquisição cripto: do anúncio à carteira",
     seoTitle: "Funil de aquisição cripto: do anúncio à carteira | Kaleidos",
     excerpt: "Sua campanha cripto não converte no clique. Converte quando a carteira assina.",
-    seoDescription: "Em cripto, a conversão termina on-chain, não no clique. Os 6 estágios do funil, onde ele vaza dinheiro e como medir do anúncio à carteira.",
+    seoDescription: "Em cripto, a conversão termina on-chain, não no clique. Os 6 estágios do funil de aquisição, onde ele vaza dinheiro e como medir do anúncio à carteira.",
     coverImage: "",
     category: "growth",
     author: { name: "Gabriel Madureira", avatar: "/Kaleidos/imagens/Equipe/Madureira.png" },
@@ -2140,7 +2140,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "growth-exchanges-fintech-cripto",
     title: "Pare de pagar por clique: o CAC que importa em exchange cripto é o depositante que fica",
-    seoTitle: "Pare de pagar por clique: o CAC que importa em exchange cripto é o depositante que fica | Kaleidos",
+    seoTitle: "CAC em exchange cripto: o depositante que fica | Kaleidos",
     excerpt: "Em 2026 aquisição em cripto parou de ser comprar tráfego. O ambiente mudou de forma estrutural: capital mais seletivo, usuário mais educado, instituições exigindo credibilidade e produtos com receita real na mesa.",
     seoDescription: "CAC por tipo de player, os loops de Coinbase, Binance, Bitget e Nubank e um framework pra escalar aquisição em cripto sem queimar caixa em 2026.",
     coverImage: "",
@@ -2272,7 +2272,7 @@ export const caseStudies: BlogPost[] = [
   {
     slug: "tokenomics-e-marketing",
     title: "Sua tokenomics é seu maior ativo de marketing (e ninguém no time de growth escreveu ela)",
-    seoTitle: "Sua tokenomics é seu maior ativo de marketing (e ninguém no time de growth escreveu ela) | Kaleidos",
+    seoTitle: "Tokenomics é seu maior ativo de marketing | Kaleidos",
     excerpt: "O maior erro de marketing em cripto não é o copy. É a tabela de distribuição do token.",
     seoDescription: "88% dos tokens de airdrop perdem valor em 3 meses e até 66% são vendidos no primeiro movimento. O maior erro de marketing em cripto não está no copy, está…",
     coverImage: "",
