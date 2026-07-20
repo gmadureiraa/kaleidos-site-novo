@@ -2,24 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 import { ArrowRight, X, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { track, identifyLead } from "@/lib/analytics";
 import { OPEN_PLAYBOOK_EVENT } from "@/lib/playbook-events";
 
-// Só é baixado quando o popup da home realmente abre — o layout global
-// continua sem o peso do EbookPopup no bundle inicial.
-const EbookPopup = dynamic(
-  () => import("@/components/papers/ebook-popup").then((m) => m.EbookPopup),
-  { ssr: false }
-);
-
 // Popup de captura de email — NÃO intrusivo:
-// - na HOME a oferta é CONCRETA: capa do playbook do bear market + "Baixar
-//   grátis" (mesmo modal do EbookPopup). No blog fica a inscrição genérica.
-// - aparece na HOME (/), no índice do blog (/blog) e nos posts (/blog/<slug>)
+// - aparece só no índice do blog (/blog) e nos posts (/blog/<slug>).
+//   A HOME (/) NÃO tem mais popup central: lá a captura é só o card lateral
+//   direito (Web3V2PlaybookSticky). Ver home-shell.tsx / playbook-sticky.tsx.
 // - 1x por sessão, por: scroll (30% home//blog, 45% em post) OU permanência
 //   (30s, funciona em mobile) OU exit-intent (desktop)
 // - fechável (X / ESC / clique no backdrop), nunca obrigatório
@@ -63,10 +55,12 @@ export function LeadPopup() {
   const [msg, setMsg] = useState("");
   const armed = useRef(false);
 
-  // Home (/), índice do blog (/blog) e posts (/blog/<slug>).
-  const onHome = pathname === "/";
+  // Índice do blog (/blog) e posts (/blog/<slug>).
+  // HOME (/) NÃO tem mais popup central: lá a captura é SÓ o card lateral
+  // direito (Web3V2PlaybookSticky, padrão Lunar Strategy) — sem modal no meio
+  // da tela. Ver home-shell.tsx.
   const onBlogPost = pathname?.startsWith("/blog/") ?? false;
-  const eligible = onHome || pathname === "/blog" || onBlogPost;
+  const eligible = pathname === "/blog" || onBlogPost;
 
   useEffect(() => {
     if (!eligible) return;
@@ -185,12 +179,6 @@ export function LeadPopup() {
   }
 
   if (!open) return null;
-
-  // Home: oferta concreta (capa do playbook + "Baixar grátis") em vez do card
-  // de texto. O EbookPopup já grava UNLOCKED_KEY, então não pedimos de novo.
-  if (onHome) {
-    return <EbookPopup open onClose={dismiss} source="popup-home" />;
-  }
 
   return (
     <div
