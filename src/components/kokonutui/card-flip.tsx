@@ -21,6 +21,7 @@ export interface CardFlipProps {
     description?: string;
     features?: string[];
     onStartNow?: () => void;
+    ctaLabel?: string;
     frontBgGradient?: string;
     frontBorderColor?: string;
     backBgGradient?: string;
@@ -35,6 +36,7 @@ export default function CardFlip({
     description = "Dive deep into the world of modern UI/UX design.",
     features = ["UI/UX", "Modern Design", "Tailwind CSS", "Kokonut UI"],
     onStartNow,
+    ctaLabel = "Começar Agora",
     frontBgGradient = "from-zinc-100 to-white",
     frontBorderColor = "border-zinc-200",
     // backBgGradient = "from-zinc-900 to-black",
@@ -204,7 +206,7 @@ export default function CardFlip({
                             )}
                         >
                             <span className={cn("text-sm font-medium transition-colors duration-300 group-hover/start:text-orange-600 dark:group-hover/start:text-orange-400", onDark ? "text-white" : "text-zinc-900") }>
-                                Começar Agora
+                                {ctaLabel}
                             </span>
                             <div className="relative group/icon">
                                 <div

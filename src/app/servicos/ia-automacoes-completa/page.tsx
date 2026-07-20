@@ -65,12 +65,11 @@ export default function KaleidosIAPage() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
-  const handleWhatsAppSpecific = (service: string) => {
-    const message = isEn
-      ? `Hello! I need help with ${service}. Can you help me?`
-      : `Olá! Preciso de ajuda com ${service}. Podem me ajudar?`;
-    trackWhatsApp("servico_ia_automacoes", `service_${service}`);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+  // CRO: os 6 cards do flip carousel apontam pro MESMO destino do CTA
+  // primário (form de diagnóstico) em vez de abrir 6 conversas de WhatsApp.
+  const scrollToDiagnostico = (origem: string) => {
+    trackClick(`diagnostico_${origem}`, "service-ia-automacoes-completa");
+    document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleCalendly = (where: string) => {
@@ -119,7 +118,7 @@ export default function KaleidosIAPage() {
       {/* ================================================================ */}
       <FlipCarouselSection
         locale={locale}
-        onCard={(t) => handleWhatsAppSpecific(t)}
+        onCard={(t) => scrollToDiagnostico(`flip_${t}`)}
       />
 
       {/* ================================================================ */}
@@ -145,13 +144,12 @@ export default function KaleidosIAPage() {
       {/* ================================================================ */}
       {/* 6. COMO TRABALHAMOS (modalidades sem preço)                       */}
       {/* ================================================================ */}
+      {/* CRO: as 3 modalidades convergem pro MESMO destino — agendar
+          diagnóstico (/agendar). O diagnóstico é a porta de entrada de
+          qualquer modalidade; tracking diferencia a origem. */}
       <ModalitiesSection
         isEn={isEn}
-        onCta={(t) =>
-          t === "diagnostico"
-            ? openCalendly("modalidade_diagnostico")
-            : handleWhatsApp(`modalidade_${t}`)
-        }
+        onCta={(t) => openCalendly(`modalidade_${t}`)}
       />
 
       {/* ================================================================ */}
@@ -324,14 +322,15 @@ function HeroSection({
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"}
         </button>
-        <button
-          onClick={() => document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" })}
-          className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#7CF067]/30 hover:bg-white/[0.06] sm:text-base"
-        >
-          {isEn ? "Get it by email" : "Receber por email"}
-          <ArrowUpRight className="h-4 w-4 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#7CF067]" />
-        </button>
       </div>
+
+      {/* Micro-link discreto — caminho fraco rebaixado (CRO: 2 CTAs no hero) */}
+      <button
+        onClick={() => document.getElementById("agendar")?.scrollIntoView({ behavior: "smooth" })}
+        className="mt-4 text-xs text-gray-500 underline-offset-4 transition-colors hover:text-gray-300 hover:underline"
+      >
+        {isEn ? "Prefer email? Get the diagnosis in 48h" : "Prefere por email? Receba o diagnóstico em 48h"}
+      </button>
 
       {/* AI state pulse — substitui stat bar visual, mostra IA "respirando" */}
       <motion.div
@@ -900,7 +899,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Actionable plan",
             "No cost, no commitment",
           ],
-          ctaLabel: "Book my free call",
+          ctaLabel: "Book my free diagnosis",
           tier: "diagnostico",
           highlight: false,
         },
@@ -915,7 +914,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Code in the client's repository, no lock-in",
             "Monthly meeting with the hours-recovered metric",
           ],
-          ctaLabel: "I want continuous implementation",
+          ctaLabel: "Start with the free diagnosis",
           tier: "mensal",
           highlight: true,
         },
@@ -931,7 +930,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Delivered as a system, not a report",
             "Documentation + technical handoff to the internal team",
           ],
-          ctaLabel: "I want my own system",
+          ctaLabel: "Start with the free diagnosis",
           tier: "custom",
           highlight: false,
         },
@@ -949,7 +948,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Plano de ação executável",
             "Sem custo, sem compromisso",
           ],
-          ctaLabel: "Agendar minha call gratuita",
+          ctaLabel: "Agendar diagnóstico gratuito",
           tier: "diagnostico",
           highlight: false,
         },
@@ -965,7 +964,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Código no repositório do cliente, sem lock-in",
             "Reunião mensal com métrica de hora liberada",
           ],
-          ctaLabel: "Quero implementação contínua",
+          ctaLabel: "Começar pelo diagnóstico gratuito",
           tier: "mensal",
           highlight: true,
         },
@@ -981,7 +980,7 @@ function ModalitiesSection({ isEn, onCta }: { isEn: boolean; onCta: (tier: strin
             "Entrega como sistema, não como relatório",
             "Documentação + handoff técnico pro time interno",
           ],
-          ctaLabel: "Quero um sistema próprio",
+          ctaLabel: "Começar pelo diagnóstico gratuito",
           tier: "custom",
           highlight: false,
         },
@@ -1287,6 +1286,7 @@ function FlipCarouselSection({
                     description={card.back.description}
                     features={card.back.features}
                     onStartNow={() => onCard(card.front.title)}
+                    ctaLabel={locale === "en" ? "Book free diagnosis" : "Agendar diagnóstico"}
                     frontBgGradient={card.front.bgGradient}
                     frontBorderColor={card.front.borderColor}
                     backBgGradient={card.back.bgGradient}
