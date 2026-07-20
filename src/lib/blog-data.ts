@@ -74,6 +74,7 @@ import { blogNew64 } from "./blog-new-64";
 import { blogNew65 } from "./blog-new-65";
 import { blogNew66 } from "./blog-new-66";
 import { blogNew67 } from "./blog-new-67";
+import { blogNew68 } from "./blog-new-68";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -130,7 +131,7 @@ const CANNIBALIZED_SLUGS = new Set([
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-const allPostsRaw: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...caseStudies];
+const allPostsRaw: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...blogNew68, ...caseStudies];
 
 export const blogPosts: BlogPost[] = allPostsRaw.filter(
   (p) => !CANNIBALIZED_SLUGS.has(p.slug)
