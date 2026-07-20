@@ -89,9 +89,52 @@ export type { BlogCategory, BlogFaqItem, BlogPost, BlogCardMeta } from "./blog-s
 export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt } from "./blog-shared";
 
 
+/**
+ * Slugs REMOVIDOS do blog por canibalização de keyword (audit SEO 2026-07-20).
+ * Cada um tem um 301 no `next.config.ts` apontando pro post canônico que ficou.
+ * O conteúdo NÃO foi deletado dos arquivos-fonte — só sai da agregação (assim o
+ * regenerar de `blog-cases.generated.ts` pelo swipe-collector não ressuscita dup).
+ *
+ * Pares (removido → canônico):
+ * - pumpfun-lancamento-como-entretenimento → pumpfun-o-lancamento-que-virou-entretenimento
+ * - kaito-mindshare-tokenizado → kaito-o-mindshare-virou-token
+ * - arbitrum-airdrop-padrao-e-drama → arbitrum-o-airdrop-que-virou-padrao-de-mercado
+ * - base-distribuicao-desleal → base-distribuicao-como-vantagem-desleal
+ * - solana-ressurreicao → solana-a-ressurreicao
+ * - berachain-comunidade-antes-do-produto → berachain-comunidade-e-memes-antes-do-produto
+ * - uniswap-airdrop-fundador → uniswap-o-airdrop-que-escreveu-o-manual
+ * - optimism-retropgf-marca → optimism-financiamento-de-bem-publico-posicionamento-de-marca
+ * - tron-justin-sun-atencao-a-qualquer-custo → tron-justin-sun-marketing-de-atencao-a-qualquer-custo
+ * - story-protocol-ip-onchain → story-protocol-marketar-conceito-abstrato-narrativa-do-ano
+ * - incentivos-token-que-duram → incentivos-de-token-que-duram
+ * - rebrand-projeto-cripto-quando-como → rebranding-projeto-cripto-quando-como
+ * - fintech-content-marketing-tudo-que-precisa-saber → content-marketing-para-fintech
+ * - tokenomics-e-marketing-sell-buy-pressure-growth → tokenomics-e-marketing-sell-buy-pressure
+ */
+const CANNIBALIZED_SLUGS = new Set([
+  "pumpfun-lancamento-como-entretenimento",
+  "kaito-mindshare-tokenizado",
+  "arbitrum-airdrop-padrao-e-drama",
+  "base-distribuicao-desleal",
+  "solana-ressurreicao",
+  "berachain-comunidade-antes-do-produto",
+  "uniswap-airdrop-fundador",
+  "optimism-retropgf-marca",
+  "tron-justin-sun-atencao-a-qualquer-custo",
+  "story-protocol-ip-onchain",
+  "incentivos-token-que-duram",
+  "rebrand-projeto-cripto-quando-como",
+  "fintech-content-marketing-tudo-que-precisa-saber",
+  "tokenomics-e-marketing-sell-buy-pressure-growth",
+]);
+
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-export const blogPosts: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...caseStudies];
+const allPostsRaw: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...caseStudies];
+
+export const blogPosts: BlogPost[] = allPostsRaw.filter(
+  (p) => !CANNIBALIZED_SLUGS.has(p.slug)
+);
 
 /**
  * Gate de agendamento (publishedAt <= agora).
@@ -197,7 +240,11 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
 
 // --- Resolvers de SEO/GEO com fallback (campos opcionais) ---
 export function getSeoTitle(post: BlogPost): string {
-  return post.seoTitle?.trim() || post.title;
+  const raw = post.seoTitle?.trim() || post.title;
+  // 104 posts (gerador antigo) vinham com "| Kaleidos" JÁ embutido no seoTitle —
+  // o template do <title> anexa o sufixo de novo e virava "… | Kaleidos | Kaleidos".
+  // Strip aqui resolve pra todos sem tocar nos arquivos gerados.
+  return raw.replace(/\s*\|\s*Kaleidos\s*$/i, "").trim();
 }
 
 export function getSeoDescription(post: BlogPost): string {

@@ -66,6 +66,29 @@ const nextConfig: NextConfig = {
         destination: "/servicos/ia-automacoes-completa",
         permanent: true,
       },
+      // --- Dedupe de canibalização do blog (audit SEO 2026-07-20) ---
+      // Slug fraco/duplicado → post canônico. Pares documentados em blog-data.ts
+      // (CANNIBALIZED_SLUGS). 301 preserva equity das URLs antigas.
+      ...([
+        ["pumpfun-lancamento-como-entretenimento", "pumpfun-o-lancamento-que-virou-entretenimento"],
+        ["kaito-mindshare-tokenizado", "kaito-o-mindshare-virou-token"],
+        ["arbitrum-airdrop-padrao-e-drama", "arbitrum-o-airdrop-que-virou-padrao-de-mercado"],
+        ["base-distribuicao-desleal", "base-distribuicao-como-vantagem-desleal"],
+        ["solana-ressurreicao", "solana-a-ressurreicao"],
+        ["berachain-comunidade-antes-do-produto", "berachain-comunidade-e-memes-antes-do-produto"],
+        ["uniswap-airdrop-fundador", "uniswap-o-airdrop-que-escreveu-o-manual"],
+        ["optimism-retropgf-marca", "optimism-financiamento-de-bem-publico-posicionamento-de-marca"],
+        ["tron-justin-sun-atencao-a-qualquer-custo", "tron-justin-sun-marketing-de-atencao-a-qualquer-custo"],
+        ["story-protocol-ip-onchain", "story-protocol-marketar-conceito-abstrato-narrativa-do-ano"],
+        ["incentivos-token-que-duram", "incentivos-de-token-que-duram"],
+        ["rebrand-projeto-cripto-quando-como", "rebranding-projeto-cripto-quando-como"],
+        ["fintech-content-marketing-tudo-que-precisa-saber", "content-marketing-para-fintech"],
+        ["tokenomics-e-marketing-sell-buy-pressure-growth", "tokenomics-e-marketing-sell-buy-pressure"],
+      ] as const).map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
       {
         // Atalho amigável pro playbook flagship.
         source: "/bull-market",

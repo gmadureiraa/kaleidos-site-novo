@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "build:check": "node scripts/build-check.js",
+    "og:meta": "bun scripts/generate-og-meta.ts",
     "deploy:check": "npm run build:check && echo '✅ Site pronto para deploy!'"
   },
   "dependencies": {

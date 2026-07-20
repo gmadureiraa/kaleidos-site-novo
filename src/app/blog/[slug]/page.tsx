@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Quando NÃO tem, deixamos SEM override aqui pra que o `opengraph-image.tsx`
   // (file-based, gerado por post) injete a capa de marca automaticamente — em vez
   // da Capa.png fixa que TODOS os posts compartilhavam antes.
-  const ogImage = getOgImage(post) || "/Kaleidos/imagens/Capa.png";
+  const ogImage = getOgImage(post);
   const canonical = `/blog/${post.slug}`;
 
   return {

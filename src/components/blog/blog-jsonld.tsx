@@ -24,7 +24,9 @@ function abs(path: string | undefined): string | undefined {
  */
 export function BlogJsonLd({ post }: { post: BlogPost }) {
   const url = `${SITE_URL}/blog/${post.slug}`;
-  const image = abs(getOgImage(post)) || `${SITE_URL}/Kaleidos/imagens/Capa.png`;
+  // Fallback = capa OG gerada por post (rota edge opengraph-image), não mais a
+  // Capa.png única. Mantém o JSON-LD casado com o og:image real da página.
+  const image = abs(getOgImage(post)) || `${url}/opengraph-image`;
   const isGabriel = post.author.name.toLowerCase().includes("madureira");
 
   const author = {
