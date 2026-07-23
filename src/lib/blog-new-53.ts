@@ -30,7 +30,7 @@ export const blogNew53: BlogPost[] = [
       "aquisição de clientes",
       "kaleidos",
     ],
-    tldr: "Marketing para fintech de dólar digital funciona quando a marca abandona o vocabulário cripto e vende a dor real: proteção contra a desvalorização do real, remessa internacional mais barata e pagamento global sem burocracia. O produto exige educação em camadas (o que é, por que confiar, como usar), disclosure honesto sobre riscos e lastro, e atenção ao marco regulatório que o Banco Central publicou para o setor. Quem comunica confiança com prova concreta ganha a categoria.",
+    tldr: "Marketing para fintech de dólar digital funciona quando a marca abandona o vocabulário cripto e vende a dor real: proteção contra a desvalorização do real, pagamento internacional e reserva em moeda forte. Atenção regulatória: a Resolução BCB 561 veda usar stablecoin na liquidação de operações de câmbio (eFX) a partir de 1º/10/2026, então vender o dólar digital como atalho de câmbio ou remessa mais barata virou risco de compliance. O produto exige educação em camadas (o que é, por que confiar, como usar), disclosure honesto sobre riscos e lastro, e atenção ao marco regulatório que o Banco Central publicou para o setor. Quem comunica confiança com prova concreta ganha a categoria.",
     faq: [
       {
         question: "Como posicionar uma fintech de dólar digital no Brasil?",
@@ -58,7 +58,7 @@ A Kaleidos trabalha com fintechs, cripto e web3, e este guia condensa o que func
 
 ## Principais takeaways
 
-- Venda a dor, não o trilho: proteção cambial, remessa barata e pagamento internacional são os motivos reais de compra. Blockchain é detalhe de implementação.
+- Venda a dor, não o trilho: proteção cambial, pagamento internacional e reserva em moeda forte são os motivos reais de compra (lembrando que, sob a Resolução BCB 561, a stablecoin não pode ser o trilho de liquidação do câmbio/remessa a partir de 1º/10/2026). Blockchain é detalhe de implementação.
 - A audiência é maior e mais leiga do que o mercado cripto assume: freelancer que recebe de fora, e-commerce que importa, família que quer reserva em moeda forte.
 - Educação em camadas é o motor de aquisição: primeiro o problema, depois a solução, só então o funcionamento técnico.
 - Confiança se prova, não se declara: lastro auditado, regulação, custódia e histórico precisam virar conteúdo, não nota de rodapé.
@@ -101,7 +101,7 @@ Stablecoin tem um problema de comunicação embutido: o produto é simples de us
 
 ## Regulação: de obstáculo a argumento de venda
 
-O ambiente regulatório brasileiro para o setor deixou de ser um vácuo. A Lei 14.478/2022 criou o marco legal dos ativos virtuais, o Banco Central foi designado regulador e, depois das consultas públicas de 2024, o BCB publicou em novembro de 2025 o pacote de resoluções que disciplina as prestadoras de serviços de ativos virtuais, com regras específicas para stablecoins e para operações de câmbio envolvendo ativos virtuais.
+O ambiente regulatório brasileiro para o setor deixou de ser um vácuo. A Lei 14.478/2022 criou o marco legal dos ativos virtuais, o Banco Central foi designado regulador e, depois das consultas públicas de 2024, o BCB publicou em novembro de 2025 o pacote de resoluções que disciplina as prestadoras de serviços de ativos virtuais, com regras específicas para stablecoins e para operações de câmbio envolvendo ativos virtuais. Um ponto é crítico para quem comunica remessa e pagamento internacional: a Resolução BCB 561/2026 veda expressamente o uso de stablecoins (e demais ativos virtuais) na liquidação das operações de eFX (o serviço de pagamento e transferência internacional), com prazo de adequação até 1º de outubro de 2026. Na prática, não é lícito vender a stablecoin como um atalho de câmbio mais barato: a liquidação com a contraparte no exterior tem que passar por câmbio tradicional ou por conta em reais de não residente. A norma não proíbe stablecoin no Brasil, mas fecha essa porta específica, e a comunicação da categoria precisa refletir isso.
 
 Para o marketing, isso tem três consequências diretas:
 

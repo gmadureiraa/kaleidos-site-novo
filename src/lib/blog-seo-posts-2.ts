@@ -467,7 +467,7 @@ Surfar narrativa de verdade tem três movimentos:
 
 1. **Posicionar-se como categoria, não como buzzword.** Em vez de "mais um projeto de RWA", defina um sub-território claro: que tipo de ativo, pra que público, resolvendo qual gargalo específico. Categoria própria > competição genérica. (Foi o que a Celestia fez com "modular DA", ver [Celestia: engenharia de narrativa](/blog/celestia-engenharia-de-narrativa).)
 
-![Manchete da CoinDesk sobre a Celestia: ao criar a categoria de "data availability", o projeto virou US$ 345 mi praticamente da noite pro dia. Fonte: CoinDesk.](/blog/narrativas-cripto-2026/print-celestia-345m.png)
+![Manchete da CoinDesk sobre a Celestia: ao criar a categoria de "data availability", o token TIA estreou com US$ 345 mi de valor de mercado (market cap) praticamente da noite pro dia. Fonte: CoinDesk.](/blog/narrativas-cripto-2026/print-celestia-345m.png)
 2. **Provar utilidade real.** Narrativa amplifica utilidade; não substitui. O projeto que surfa e fica é o que entrega algo dentro da narrativa, não o que só fala dela.
 3. **Construir autoridade na narrativa.** Produzir o melhor conteúdo, o melhor dado, a melhor leitura daquele território. Quem o mercado consulta pra entender a narrativa vira referência dentro dela, e referência atrai capital e atenção sem comprar.
 

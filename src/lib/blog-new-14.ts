@@ -34,7 +34,7 @@ export const blogNew14: BlogPost[] = [
       {
         question: "Por que stablecoins cresceram tanto no Brasil?",
         answer:
-          "Três motores: proteção contra a desvalorização do real, remessas internacionais mais baratas e rápidas que o sistema bancário tradicional, e pagamentos de comércio exterior para empresas. Segundo a Chainalysis (2024), o Brasil movimentou cerca de US$ 90 bilhões em cripto no período analisado, o maior volume da América Latina, com stablecoins respondendo pela maior parte do fluxo em exchanges locais.",
+          "Três motores: proteção contra a desvalorização do real, uso em recebimentos e pagamentos internacionais (com ressalva regulatória: desde 1º de outubro de 2026 a Resolução BCB 561 veda stablecoin como meio de liquidação em operações de eFX, então ela não pode ser comunicada como atalho de remessa ou câmbio mais barato), e pagamentos de comércio exterior para empresas. Segundo a Chainalysis (2024), o Brasil movimentou cerca de US$ 90 bilhões em cripto no período analisado, o maior volume da América Latina, com stablecoins respondendo pela maior parte do fluxo em exchanges locais.",
       },
       {
         question: "Qual é a diferença entre comunicar stablecoin para varejo e para empresas?",
@@ -44,7 +44,7 @@ export const blogNew14: BlogPost[] = [
       {
         question: "Stablecoin é regulamentada no Brasil?",
         answer:
-          "Sim. A Lei 14.478/2022 criou o marco legal dos ativos virtuais e o Banco Central publicou em novembro de 2025 as Resoluções BCB 519, 520 e 521, que regulam as prestadoras de serviços de ativos virtuais e enquadram operações com stablecoins lastreadas em moeda estrangeira no mercado de câmbio, com o regime entrando em vigor em fevereiro de 2026.",
+          "Sim. A Lei 14.478/2022 criou o marco legal dos ativos virtuais e o Banco Central publicou em novembro de 2025 as Resoluções BCB 519, 520 e 521, que regulam as prestadoras de serviços de ativos virtuais e enquadram operações com stablecoins lastreadas em moeda estrangeira no mercado de câmbio, com o regime entrando em vigor em fevereiro de 2026. Além disso, a Resolução BCB 561, publicada em 30 de abril de 2026 e em vigor desde 1º de outubro de 2026, vedou expressamente o uso de stablecoins como meio de liquidação em operações de eFX (pagamento ou transferência internacional), o que impede usá-las como trilho de remessa ou câmbio mais barato.",
       },
       {
         question: "Como uma stablecoin ou fintech de dólar digital constrói confiança no marketing?",
@@ -81,7 +81,7 @@ Três forças empurram a adoção, e cada uma delas é um ângulo de comunicaç�
 
 **1. Proteção cambial.** O brasileiro tem memória inflacionária e convive com um real historicamente volátil frente ao dólar. Dolarizar parte do patrimônio sempre foi desejo de classe média, mas era caro e burocrático: conta internacional, IOF alto, spread bancário. Stablecoin transformou isso em algo que se faz em minutos pelo celular. O ângulo de marketing aqui é patrimonial: "proteja seu dinheiro", não "invista em cripto".
 
-**2. Remessas e recebimento internacional.** Freelancers, exportadores de serviço e famílias com parentes fora usam stablecoins para receber e enviar dinheiro com custo e prazo muito menores que os do sistema bancário. O ângulo aqui é utilitário: velocidade, custo e previsibilidade contra a fricção do câmbio tradicional.
+**2. Remessas e recebimento internacional.** Freelancers, exportadores de serviço e famílias com parentes fora usam stablecoins para receber e enviar dinheiro com custo e prazo muito menores que os do sistema bancário. O ângulo aqui é utilitário: velocidade e previsibilidade. Atenção regulatória obrigatória: desde 1º de outubro de 2026, a Resolução BCB 561 veda o uso de stablecoins como meio de liquidação em operações de eFX (serviço de pagamento ou transferência internacional). Ou seja, não comunique stablecoin como atalho de câmbio nem como remessa mais barata que o banco: esse enquadramento virou risco de compliance. O ângulo de remessa só se sustenta dentro de operação de câmbio autorizada, com a instituição licenciada fazendo a liquidação pelo trilho permitido.
 
 **3. Pagamentos e comércio exterior.** Importadores e empresas usam stablecoins como trilho de liquidação B2B. A Receita Federal registrou que o USDT respondeu pela maior parte do volume cripto transacionado no país já em 2023 e 2024, sinal de que o uso é transacional, não especulativo. O ângulo aqui é infraestrutura: tesouraria, liquidez e integração.
 
@@ -125,6 +125,8 @@ Uma regra editorial que a Kaleidos aplica: cada peça de comunicação sobre con
 O Brasil saiu na frente na regulação. A Lei 14.478/2022 criou o marco legal dos ativos virtuais e definiu o Banco Central como regulador. Depois de consultas públicas em 2023 e 2024, o BCB publicou em novembro de 2025 as Resoluções 519, 520 e 521, que estruturam o regime das prestadoras de serviços de ativos virtuais (as chamadas VASPs), com vigência a partir de fevereiro de 2026.
 
 O ponto mais relevante para stablecoins: operações com moedas estáveis lastreadas em moeda estrangeira passam a ser tratadas dentro do mercado de câmbio, com regras específicas de autorização, limites e reporte. Na prática, comprar e vender dólar digital no Brasil virou atividade regulada, executada por instituições autorizadas.
+
+**Nota de compliance obrigatória (Resolução BCB 561/2026).** Publicada em 30 de abril de 2026 e em vigor desde 1º de outubro de 2026, a Resolução BCB 561 alterou a Resolução BCB 277/2022 e passou a vedar expressamente o uso de ativos virtuais, incluindo stablecoins, como meio de liquidação nas operações de eFX (serviço de pagamento ou transferência internacional). A liquidação com a contraparte no exterior deve ocorrer exclusivamente por operação de câmbio ou por conta em reais de não residente mantida no Brasil. A norma não proíbe stablecoin de forma geral, mas fecha a porta de usá-la como trilho de remessa ou câmbio internacional. Consequência direta para marketing: nunca venda stablecoin como atalho de câmbio ou remessa internacional mais barata. Esse enquadramento deixou de ser diferencial e passou a ser risco regulatório. Comunique proteção cambial, pagamentos e utilidade sempre dentro do regime autorizado.
 
 Para o marketing, isso muda o jogo em três frentes:
 

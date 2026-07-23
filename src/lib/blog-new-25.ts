@@ -8,9 +8,9 @@ export const blogNew25: BlogPost[] = [
     title: "Teardown Blast: o L2 que despejou o token e perdeu TVL",
     seoTitle: "Teardown Blast: o L2 que perdeu 97% do TVL",
     excerpt:
-      "O Blast captou US$ 2,2 bilhões antes de ter mainnet e perdeu 97% do TVL depois do airdrop. A Kaleidos disseca o hype, o programa de pontos, o TGE frustrado e o que todo projeto web3 deveria aprender com o colapso.",
+      "O Blast atraiu US$ 2,2 bilhões de TVL antes de ter mainnet e perdeu 97% do TVL depois do airdrop. A Kaleidos disseca o hype, o programa de pontos, o TGE frustrado e o que todo projeto web3 deveria aprender com o colapso.",
     seoDescription:
-      "Teardown do Blast: como o L2 de Pacman captou US$ 2,2 bi antes do mainnet, despejou o token no TGE de 2024 e viu o TVL cair 97%. Análise e lições da Kaleidos.",
+      "Teardown do Blast: como o L2 de Pacman atraiu US$ 2,2 bi de TVL antes do mainnet, despejou o token no TGE de 2024 e viu o TVL cair 97%. Análise e lições da Kaleidos.",
     category: "cases",
     author: AUTHOR,
     publishedAt: "2026-07-12",

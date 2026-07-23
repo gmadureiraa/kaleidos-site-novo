@@ -197,7 +197,7 @@ Se você está planejando um TGE e quer um orçamento honesto — distribuído p
       {
         question: "Quanto do supply alocar em um airdrop?",
         answer:
-          "A faixa mais comum no mercado é de 5% a 15% do supply total. Há casos abaixo (Optimism começou com ~5% na primeira rodada, Jupiter com ~4%) e casos bem acima — a Hyperliquid distribuiu cerca de 31%, um dos maiores da história. A escolha depende de dois fatores: quanto você precisa descentralizar a posse (quanto mais 'projeto-led' e menos VC, mais alto) e quanto quer recompensar a base que já usou. Não existe número universal; existe número coerente com a sua tokenomics e o seu objetivo.",
+          "A faixa mais comum no mercado é de 5% a 15% do supply total. Há casos abaixo (Optimism começou com ~5% na primeira rodada) e casos bem acima — a Hyperliquid distribuiu cerca de 31%, um dos maiores da história. A escolha depende de dois fatores: quanto você precisa descentralizar a posse (quanto mais 'projeto-led' e menos VC, mais alto) e quanto quer recompensar a base que já usou. Não existe número universal; existe número coerente com a sua tokenomics e o seu objetivo.",
       },
       {
         question: "Como medir o ROI de um airdrop?",
@@ -251,7 +251,7 @@ Em vez de chutar, vale olhar o que projetos de referência fizeram. Os números 
 | **Arbitrum** | ~11,6% | Escala enorme, virou referência (e drama) de critério |
 | **dYdX** | ~7,5% | Recompensa de uso de trading |
 | **Optimism** | ~5% | Primeira de várias rodadas (RetroPGF depois) |
-| **Jupiter** | ~4% | Primeira temporada, modelo multi-rodada |
+| **Jupiter** | ~10% | Primeira temporada (Jupuary, jan/2024: ~1B de 10B JUP), modelo multi-rodada |
 
 O gráfico abaixo deixa o contraste claro — a Hyperliquid é o outlier que mostra até onde dá para ir quando o objetivo é descentralizar de verdade a posse e o produto sustenta a retenção.
 
@@ -259,7 +259,7 @@ O gráfico abaixo deixa o contraste claro — a Hyperliquid é o outlier que mos
 
 > **Fonte:** anúncios oficiais e tokenomics públicos de cada projeto. Percentuais referentes à primeira rodada de airdrop. Compilação Kaleidos.
 
-A leitura: **a maioria fica entre 4% e 15%.** Quem vai muito acima geralmente está fazendo uma aposta deliberada em descentralização (caso Hyperliquid). Não copie o 31% sem ter o produto que justifica — copie a coerência entre alocação, objetivo e capacidade de retenção.
+A leitura: **a maioria fica entre 5% e 15%.** Quem vai muito acima geralmente está fazendo uma aposta deliberada em descentralização (caso Hyperliquid). Não copie o 31% sem ter o produto que justifica — copie a coerência entre alocação, objetivo e capacidade de retenção.
 
 ![Página da Hyperliquid no DefiLlama com TVL, receita e volume, mostrando que o airdrop generoso só funcionou porque o produto sustentou a retenção](/blog/airdrop-quanto-alocar-supply-roi/hyperliquid-tvl-defillama.png)
 *O TVL e a receita da Hyperliquid no DefiLlama. O airdrop de ~31% só não virou pressão vendedora porque havia produto retendo a base. Fonte: [DefiLlama](https://defillama.com/protocol/hyperliquid).*
