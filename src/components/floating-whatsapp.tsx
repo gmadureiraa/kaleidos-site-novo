@@ -30,6 +30,9 @@ export function FloatingWhatsApp() {
 
   return (
     <a
+      // Extensões de navegador (ex: Keychainify) injetam classes em links externos
+      // antes do React hidratar → mismatch benigno. Suprime o warning nesse <a>.
+      suppressHydrationWarning
       href={HREF}
       target="_blank"
       rel="noopener noreferrer"
