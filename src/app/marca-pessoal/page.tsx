@@ -24,7 +24,7 @@ import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 const CANONICAL = "/marca-pessoal";
 const TITLE = "Marca Pessoal para Founders | Founder-Led Growth — Kaleidos";
 const DESC =
-  "A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Founder-led growth com método, cadência e medição: você grava, a gente faz o resto.";
+  "A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Instagram como palco principal, LinkedIn e X reforçando a autoridade B2B: você grava, a gente faz o resto.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -106,7 +106,7 @@ const HERO_HTML = `
   <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:92px;padding-bottom:84px;text-align:center;">
     <div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#7CF067;border:1.5px solid #3a332a;border-radius:999px;padding:8px 18px;background:#1d1812;box-shadow:3px 3px 0 #D262B2;margin-bottom:28px;">&#9679; FOUNDER-LED GROWTH</div>
     <h1 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.05;letter-spacing:-1.5px;margin:0 auto;max-width:860px;">Transformamos sua expertise em autoridade. E autoridade em <span style="${HL}color:#14110D;">pipeline</span>.</h1>
-    <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#b8b1a6;max-width:640px;margin:26px auto 0;">A marca pessoal do fundador virou o maior ativo de crescimento da empresa. A Kaleidos constrói a sua com método, cadência e medição. Você dá a cara. A gente faz o resto.</p>
+    <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#b8b1a6;max-width:640px;margin:26px auto 0;">A marca pessoal do fundador virou o maior ativo de crescimento da empresa. A Kaleidos constrói a sua no Instagram, o palco onde a audiência acontece no Brasil, com LinkedIn e X reforçando a autoridade B2B. Você dá a cara. A gente faz o resto.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:38px;">
       <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Ver se faz sentido &rarr;</a>
       <a href="${WA_AUDIT}" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Auditar meu perfil de graça</a>
@@ -114,6 +114,7 @@ const HERO_HTML = `
     <div style="max-width:560px;margin:44px auto 0;background:#1d1812;border:1.5px solid #3a332a;border-radius:14px;padding:18px 22px;box-shadow:4px 4px 0 #7CF067;">
       <p style="font-size:16px;line-height:1.5;color:#FAFAFA;margin:0;font-weight:600;">Perfis pessoais recebem ~65% do feed do LinkedIn. Páginas de empresa, ~5%.</p>
       <p style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;color:#9a9186;margin:8px 0 0;text-transform:uppercase;">Fonte: Digital Applied (compilação de agência, 2026)</p>
+      <p style="font-size:13px;line-height:1.5;color:#9a9186;margin:10px 0 0;">O rosto vence a logo em qualquer rede. No Brasil, o palco principal desse jogo é o Instagram; LinkedIn e X entram como camada de autoridade B2B.</p>
     </div>
   </div>
 </section>
@@ -145,7 +146,7 @@ const PROVA_HTML = `
     </div>
     <div style="max-width:820px;margin:56px auto 0;text-align:center;">
       <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(22px,2.8vw,34px);line-height:1.3;letter-spacing:-.5px;color:#14110D;margin:0;">A gente não só vende founder-led. A gente <span style="${HL}font-weight:800;">É</span> founder-led.</p>
-      <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:600px;margin:18px auto 0;">O fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em si mesmo o método que entrega para os clientes: tese, cadência nas três redes e medição. Quem vende marca pessoal de founder precisa ser a própria prova.</p>
+      <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:600px;margin:18px auto 0;">O fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em si mesmo o método que entrega para os clientes: tese, cadência com o Instagram na frente (e X + LinkedIn de apoio) e medição. Quem vende marca pessoal de founder precisa ser a própria prova.</p>
     </div>
   </div>
 </section>
@@ -194,6 +195,7 @@ const DADOS_HTML = `
     <div style="text-align:center;margin-bottom:48px;">
       <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Os dados</div>
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">Não é tendência.<br>É <span style="${HL}">matemática de distribuição</span>.</h2>
+      <p style="font-size:15px;line-height:1.6;color:#6b6258;max-width:640px;margin:18px auto 0;">A pesquisa de mercado mede sobretudo LinkedIn e B2B, e ela confirma a lógica: pessoa &gt; página. Na prática do Brasil, o Instagram é o palco principal de alcance e audiência; LinkedIn e X reforçam a autoridade junto ao decisor.</p>
     </div>
     <div class="mp-grid4">
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
@@ -234,7 +236,7 @@ const MERCADO_HTML = `
     <div style="text-align:center;margin-bottom:48px;">
       <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Mais dados de mercado</div>
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Os números <span style="color:#7CF067;">não deixam dúvida</span>.</h2>
-      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">Da pesquisa acadêmica revisada por pares ao comitê de compra B2B: a autoridade pública do founder mexe em capital, pipeline e custo de aquisição.</p>
+      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">Da pesquisa acadêmica revisada por pares ao comitê de compra B2B: a autoridade pública do founder mexe em capital, pipeline e custo de aquisição. O alcance dessa autoridade, no Brasil, se constrói primeiro no Instagram; LinkedIn e X consolidam a camada B2B.</p>
     </div>
     <div class="mp-grid3">
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
@@ -338,6 +340,7 @@ const FAZEMOS_HTML = `
     <div style="text-align:center;margin-bottom:48px;">
       <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">O que fazemos</div>
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Você grava. A Kaleidos dirige, escreve,<br>desenha, edita, publica e <span style="color:#7CF067;">mede</span>.</h2>
+      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">O palco principal é o <strong style="color:#7CF067;">Instagram</strong>: carrossel, reels e stories, onde a audiência e o alcance acontecem. LinkedIn e X entram como camada complementar de autoridade B2B, sem produção dobrada.</p>
     </div>
     <div class="mp-grid2" style="max-width:900px;margin:0 auto;">
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 26px;box-shadow:5px 5px 0 #7CF067;">
@@ -363,12 +366,12 @@ const FAZEMOS_HTML = `
       <span style="display:inline-block;background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:12px;padding:14px 26px;font-weight:800;font-size:clamp(17px,2.2vw,22px);box-shadow:5px 5px 0 #D262B2;transform:rotate(-1deg);">~2 horas do seu tempo por mês. O resto é com a gente.</span>
     </div>
     <div class="mp-grid6" style="max-width:1000px;margin:0 auto;">
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">🎠</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Carrossel Instagram</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A peça-mãe: autoridade e salvamento</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">🎬</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Reels</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Aquisição e alcance de topo de funil</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">🧵</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Thread no X</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Repurpose sem produção dobrada</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">💼</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Post LinkedIn</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Thought leadership pro decisor B2B</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">🎙️</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Podcast como convidado</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Prospecção, agendamento e cortes</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="font-size:22px;">📊</div><div style="font-weight:700;font-size:15px;margin-top:8px;">Relatório mensal</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Leitura junto: dobrar no que cresce</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎠</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Carrossel Instagram</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A peça-mãe: autoridade e salvamento</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎬</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Reels</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Aquisição e alcance de topo de funil</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">📱</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Stories com direção</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Bastidor diário que aquece a audiência</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">💼</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Post LinkedIn + thread no X</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Repurpose que reforça a autoridade B2B</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎙️</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Podcast como convidado</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Prospecção, agendamento e cortes</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">📊</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">sempre</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Relatório mensal</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Leitura junto: dobrar no que cresce</div></div>
     </div>
   </div>
 </section>
@@ -392,7 +395,7 @@ const METODO_HTML = `
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #D262B2;transform:rotate(1deg);">
         <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#D262B2;-webkit-text-stroke:1.5px #14110D;">2</div>
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:21px;margin:12px 0 6px;color:#14110D;">Cadência</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Um conteúdo vira três redes: carrossel, reel, thread no X e post no LinkedIn, num calendário aprovado antes de produzir. Ritmo previsível, sem produção dobrada.</p>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Instagram primeiro: carrossel, reel e stories num calendário aprovado antes de produzir. O mesmo conteúdo vira thread no X e post no LinkedIn, sem produção dobrada.</p>
       </div>
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #7CF067;transform:rotate(-1deg);">
         <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#7CF067;-webkit-text-stroke:1.5px #14110D;">3</div>
@@ -477,6 +480,50 @@ const CASES_HTML = `
 </section>
 `;
 
+/* ─────────── S7b · PROVA REAL NO INSTAGRAM — prints (claro) ─────────── */
+// Screenshots reais de perfis PÚBLICOS de clientes da Kaleidos (dado público,
+// capturado 2026-07). Números usados: SÓ o que os prints mostram (173 mil
+// seguidores do Lucas, 17,3 mil do Defiverso, "+15 mil investidores formados").
+// Narrativa: a marca pessoal do founder puxa a empresa. Coerente com "Nossos
+// cases" (S7); NÃO confundir com "Referências de mercado" (S4c).
+const PRINTS_HTML = `
+<section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
+  <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Nossos cases no Instagram</div>
+      <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;color:#14110D;">O founder puxa a empresa.<br><span style="${HL}">Na prática.</span></h2>
+      <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:620px;margin:18px auto 0;">Founder-led growth no palco onde ele acontece: o Instagram. A marca pessoal do Lucas Amendola, construída com a Kaleidos, é o motor de audiência que alimenta a empresa dele, o Defiverso. Print real, perfil público.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;max-width:760px;margin:0 auto;">
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:22px;box-shadow:6px 6px 0 #7CF067;transform:rotate(-.6deg);">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+          <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">1 · O founder</div>
+          <span style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border:1px solid #14110D;border-radius:999px;padding:4px 11px;">173 mil seguidores</span>
+        </div>
+        <div style="background:#14110D;border:1.5px solid #14110D;border-radius:12px;overflow:hidden;">
+          <img src="/marca-pessoal/prints/ig-lucas-amendola.png" alt="Print do perfil público @lucas.amendolaa no Instagram: 173 mil seguidores, verificado, bio Fundador do @defiverso" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+        </div>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:12px 0 0;">Perfil real, dado público. <strong style="color:#14110D;">Lucas Amendola (@lucas.amendolaa)</strong>, fundador do Defiverso: 173 mil seguidores no Instagram, perfil verificado, e a empresa na bio.</p>
+      </div>
+      <div style="text-align:center;padding:18px 0;">
+        <span style="display:inline-flex;align-items:center;gap:10px;background:#14110D;color:#FAFAFA;border:1.5px solid #14110D;border-radius:999px;padding:10px 20px;font-size:13.5px;font-weight:700;box-shadow:4px 4px 0 #D262B2;">a marca pessoal do founder <span style="color:#7CF067;font-size:18px;line-height:1;">&darr;</span> alimenta a empresa</span>
+      </div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:22px;box-shadow:6px 6px 0 #D262B2;transform:rotate(.6deg);">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+          <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">2 · A empresa dele</div>
+          <span style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#14110D;background:#fff;border:1px solid #D262B2;border-radius:999px;padding:4px 11px;">+15 mil investidores formados</span>
+        </div>
+        <div style="background:#14110D;border:1.5px solid #14110D;border-radius:12px;overflow:hidden;">
+          <img src="/marca-pessoal/prints/ig-defiverso.png" alt="Print do perfil público @defiverso no Instagram: 17,3 mil seguidores, bio +15 mil investidores formados" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+        </div>
+        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:12px 0 0;">Perfil real, dado público. <strong style="color:#14110D;">Defiverso (@defiverso)</strong>: 17,3 mil seguidores e mais de 15 mil investidores formados, com o founder como principal canal de aquisição.</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#8a8175;margin:36px auto 0;max-width:640px;">É isso que founder-led growth quer dizer: o rosto do founder concentra a audiência (173 mil) e distribui atenção e confiança pra marca (17,3 mil e crescendo). Clientes da Kaleidos, prints capturados de perfis públicos.</p>
+  </div>
+</section>
+`;
+
 /* ─────────────────────── S8 · COMPARATIVO (claro) ─────────────────────── */
 const COMPARATIVO_HTML = `
 <section style="position:relative;background:#FAFAFA;overflow:hidden;">
@@ -549,7 +596,7 @@ const OFERTA_HTML = `
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Tese, auditoria dos perfis e produção das peças-mãe. Você publica, a gente produz e orienta.</p>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
           <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Tese e bio-manifesto</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Carrosséis mensais + repurpose X e LinkedIn</li>
+          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Carrosséis mensais no Instagram + repurpose X e LinkedIn</li>
           <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Calendário editorial aprovado</li>
           <li style="padding:6px 0;">Publicação por sua conta</li>
         </ul>
@@ -559,10 +606,10 @@ const OFERTA_HTML = `
         <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:999px;padding:5px 14px;font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;">done-for-you</span>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">O carro-chefe</div>
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Founder Brand</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Cadência cheia nas três redes com a Kaleidos operando tudo. Você entra com ~2 horas por mês.</p>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Instagram completo como palco principal, X e LinkedIn de apoio, com a Kaleidos operando tudo. Você entra com ~2 horas por mês.</p>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Reels + carrosséis + threads + LinkedIn</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Publicação e direção de stories pela Kaleidos</li>
+          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Instagram completo (reels, carrosséis e stories) publicado e dirigido pela Kaleidos</li>
+          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Repurpose em X e LinkedIn (autoridade B2B)</li>
           <li style="padding:6px 0;border-bottom:1px solid #2a241d;">1 podcast como convidado por mês, com cortes</li>
           <li style="padding:6px 0;">Relatório mensal + reunião de leitura</li>
         </ul>
@@ -729,6 +776,11 @@ export default function MarcaPessoalPage() {
         {/* S7 · Prova / cases (métricas de case-data.ts) */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: CASES_HTML }} />
+        </Reveal>
+
+        {/* S7b · Prova real no Instagram — prints de perfis públicos de clientes */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: PRINTS_HTML }} />
         </Reveal>
 
         {/* S8 · Comparativo */}
