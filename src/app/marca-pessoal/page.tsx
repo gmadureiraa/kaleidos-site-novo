@@ -222,6 +222,114 @@ const DADOS_HTML = `
 </section>
 `;
 
+/* ────────────── S4b · MAIS DADOS DE MERCADO (dark) ────────────── */
+// Stats novas do doc ENRIQUECIMENTO-pagina-2026-07-24 (vault/015 - BRANDING E
+// GROWTH/marca-pessoal-founders). Todas com fonte e ano visíveis. O card do
+// Nubank leva rótulo de atribuição narrativa (é boca a boca de produto/CX,
+// não estudo controlado de marca pessoal).
+const MERCADO_HTML = `
+<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
+  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Mais dados de mercado</div>
+      <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Os números <span style="color:#7CF067;">não deixam dúvida</span>.</h2>
+      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">Da pesquisa acadêmica revisada por pares ao comitê de compra B2B: a autoridade pública do founder mexe em capital, pipeline e custo de aquisição.</p>
+    </div>
+    <div class="mp-grid3">
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#7CF067;">95%</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">dos "hidden buyers" (os decisores invisíveis do comitê de compra) dizem que thought leadership forte os deixa mais receptivos a uma abordagem de vendas.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn B2B Thought Leadership Report (2025)</p>
+      </div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">79%</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">desses decisores invisíveis têm mais chance de defender a sua proposta no RFP quando o fornecedor produz thought leadership de qualidade consistente.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn B2B Thought Leadership Report (2025)</p>
+      </div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:26px;line-height:1.15;color:#FAFAFA;">Variável mais crítica pra atrair capital</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">Estudo acadêmico revisado por pares conclui que a marca pessoal do founder e do time fundador é a variável mais crítica pra atrair investimento em ventures.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Heliyon / ScienceDirect, estudo peer-reviewed (2019)</p>
+      </div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">89%</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">das pessoas confiam mais em recomendações de gente que conhecem do que em qualquer outro canal. Anúncio pago fica muito abaixo. Pessoas &gt; marcas &gt; anúncios.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Nielsen, Trust in Advertising (2021)</p>
+      </div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#7CF067;">32% &rarr; 39%</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">foi o salto do LinkedIn no share de budget de marketing B2B de 2024 pra 2025. O dinheiro está migrando pro canal onde perfil pessoal domina o feed.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">The Digital Bloom, B2B GTM Benchmarks (2025, benchmark de agência)</p>
+      </div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">US$7</div>
+        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">é o CAC histórico do Nubank, contra US$300 a US$600 de bancos tradicionais: ~80-90% dos clientes chegam por indicação, não por anúncio.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Aakash Gupta / WhiteSight (2024) · atribuição narrativa: boca a boca de produto, não estudo controlado</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:#9a9186;margin:32px auto 0;max-width:640px;">Mesmo padrão de rigor da seção anterior: fonte e ano em todo número. Onde a fonte é benchmark de agência ou a ligação causa-efeito é leitura narrativa, está rotulado no próprio card.</p>
+  </div>
+</section>
+`;
+
+/* ────────────── S4c · CASES FAMOSOS / REFERÊNCIAS DE MERCADO (claro) ────────────── */
+// ⚠️ Referências PÚBLICAS de mercado, NÃO clientes da Kaleidos. Disclaimer
+// visível no topo e em cada contexto. Números do doc de enriquecimento e do
+// paper 2026-07-24 (todos com fonte pública). A ligação marca pessoal →
+// resultado é atribuição narrativa (imprensa/founder), sinalizada no rodapé.
+const FAMOSOS_HTML = `
+<section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
+  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Referências de mercado</div>
+      <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">O mercado <span style="${HL}">já provou</span>.</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:44px;">
+      <span style="display:inline-block;background:#fff;border:1.5px solid #14110D;border-radius:999px;padding:10px 20px;font-size:13.5px;font-weight:600;color:#4a443c;box-shadow:3px 3px 0 #D262B2;">Exemplos públicos e famosos de founder como mídia. <strong style="color:#14110D;">Não são clientes da Kaleidos</strong>: os nossos cases, com métrica auditável, estão logo abaixo.</span>
+    </div>
+    <div class="mp-grid3">
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Luiza Trajano · Magalu</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">4M+ seguidores da "Lu"</div>
+        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">A avatar "Lu do Magalu", inspirada na fundadora, passou de 4 milhões de seguidores no Instagram e é tida como a primeira influenciadora virtual do Brasil, com collab Adidas&times;Farm. <strong>Lição:</strong> a persona do founder pode ser sistematizada em ativo de mídia perene da empresa.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: InfoMoney · registro público</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">David Vélez · Nubank</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">CAC de US$7, NPS 90</div>
+        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">Banco construído sem budget de marketing tradicional: ~80-90% dos clientes por indicação e Vélez como voz pública da tese "velvet rope" (entrada por convite). <strong>Lição:</strong> confiança em pessoas e comunidade escala mais barato que anúncio pago.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Aakash Gupta · WhiteSight · Forbes (2024)</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Sara Blakely · Spanx</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">Zero anúncio até 2016</div>
+        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">Nunca captou investimento externo, deteve 100% da empresa por 21 anos e cresceu na base de mídia espontânea da própria Blakely: 8.000 pares vendidos em 5 minutos na estreia da QVC. <strong>Lição:</strong> a história e o rosto da founder podem substituir a verba de mídia por anos.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Britannica · SUCCESS</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Whitney Wolfe Herd · Bumble</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">IPO de US$2,2 bilhões</div>
+        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">A founder virou o próprio símbolo do produto ("a mulher dá o primeiro passo") e, no IPO de 2021, tornou-se a mulher self-made mais jovem a abrir capital nos EUA, bilionária aos 31. <strong>Lição:</strong> founder-símbolo alinha narrativa pessoal e produto, e vira capa de mídia global.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Forbes (2021)</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">João Adibe · Cimed</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">10x o alcance da empresa</div>
+        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">O perfil pessoal do CEO (~5,2M seguidores) tem cerca de 10x o da própria Cimed, que faturou R$3,6 bilhões em 2024; a collab Carmed&times;Fini fez 1,2 bilhão de views no TikTok e esgotou estoque em 15 dias. <strong>Lição:</strong> quando o founder tem mais alcance que a página, ele vira o canal de lançamento mais barato da companhia.</p>
+        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Origyn · Revista Encontro (2025) · InvestNews</p>
+      </div>
+      <div style="background:#14110D;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;justify-content:center;text-align:center;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">E os cases da Kaleidos?</div>
+        <p style="font-size:15px;line-height:1.6;color:#d8d1c6;margin:14px 0 0;">Esses aí de cima são referências públicas do mercado. Os founders e criadores que a gente atende de verdade, com antes e depois auditável, estão na próxima seção.</p>
+        <a href="#cases-kaleidos" style="margin-top:16px;font-size:14px;font-weight:700;color:#7CF067;text-decoration:underline;text-underline-offset:3px;">Ver os nossos cases &darr;</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#8a8175;margin:32px auto 0;max-width:680px;"><strong>Nota de rigor:</strong> os números acima são fatos públicos (seguidores, faturamento, IPO, views). A ligação "marca pessoal causou o resultado" é atribuição narrativa da imprensa e dos próprios founders, não estudo de atribuição controlado. Citamos assim de propósito.</p>
+  </div>
+</section>
+`;
+
 /* ─────────────────────── S5 · O QUE FAZEMOS (dark) ─────────────────────── */
 const FAZEMOS_HTML = `
 <section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
@@ -327,13 +435,13 @@ const METODO_HTML = `
 // neobankless: reel manifesto 112 curtidas + 20 comentários (maior engajamento do perfil).
 // dsec: 2 artigos/semana no LinkedIn + newsletter semanal + mini-curso de 5 dias.
 const CASES_HTML = `
-<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
+<section id="cases-kaleidos" style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
   <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Prova</div>
+      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Nossos cases</div>
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Antes e depois, <span style="color:#7CF067;">com número</span>.</h2>
-      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:560px;margin:18px auto 0;">Página de marca pessoal sem métrica é ironia. As nossas vêm dos cases publicados, com fonte interna auditável.</p>
+      <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:560px;margin:18px auto 0;">Agora sim, clientes da Kaleidos. Página de marca pessoal sem métrica é ironia: as nossas vêm dos cases publicados, com fonte interna auditável.</p>
     </div>
     <div class="mp-grid3">
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
@@ -596,6 +704,16 @@ export default function MarcaPessoalPage() {
         {/* S4 · Os dados (com fonte) */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: DADOS_HTML }} />
+        </Reveal>
+
+        {/* S4b · Mais dados de mercado (Edelman 2025, acadêmico, Nielsen…) */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: MERCADO_HTML }} />
+        </Reveal>
+
+        {/* S4c · Cases famosos — referências de mercado, NÃO clientes */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: FAMOSOS_HTML }} />
         </Reveal>
 
         {/* S5 · O que fazemos */}
