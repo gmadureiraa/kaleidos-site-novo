@@ -71,7 +71,7 @@ export function ConsentBanner() {
     <div
       role="dialog"
       aria-label="Aviso de privacidade"
-      className="fixed bottom-4 left-4 right-4 z-[60] mx-auto max-w-xl rounded-xl border border-white/10 bg-neutral-900/95 p-4 text-neutral-100 shadow-2xl backdrop-blur sm:left-auto sm:right-6 sm:bottom-6 sm:mx-0"
+      className="fixed bottom-4 left-4 right-4 z-[210] mx-auto max-w-xl rounded-xl border border-white/10 bg-neutral-900/95 p-4 text-neutral-100 shadow-2xl backdrop-blur sm:left-auto sm:right-6 sm:bottom-6 sm:mx-0"
     >
       <p className="text-sm leading-relaxed text-neutral-300">
         Usamos cookies e ferramentas de análise (incluindo gravação de sessão)
