@@ -3,6 +3,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { Web3V2Defs } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
 import { FooterDemo } from "@/components/ui/footer-demo";
+import { Marquee } from "@/components/magicui/marquee";
+import { NumberTicker } from "@/components/magicui/number-ticker";
+import { RotatingWord } from "./rotating-word";
+import { MetodoStepper } from "./metodo-stepper";
 import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 
 /**
@@ -94,138 +98,1018 @@ const MP_STYLE = `
   .kv2 .mp-grid6{grid-template-columns:1fr;}
   .kv2 .mp-pad{padding-left:20px;padding-right:20px;}
 }
+/* ── Hero "parede de prova" ── */
+.kv2 .mp-hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;}
+.kv2 .mp-wall{position:relative;height:640px;display:flex;gap:18px;justify-content:center;}
+.kv2 .mp-wall-mobile{display:none;}
+.kv2 .mp-wall-col{width:158px;height:100%;overflow:hidden;}
+.kv2 .mp-wall-card{width:158px;border-radius:14px;border:1.5px solid #3a332a;overflow:hidden;background:#1d1812;}
+.kv2 .mp-wall-card img{display:block;width:100%;height:auto;}
+.kv2 .mp-wall-fade-top,.kv2 .mp-wall-fade-bottom{position:absolute;left:-20px;right:-20px;height:120px;z-index:20;pointer-events:none;}
+.kv2 .mp-wall-fade-top{top:0;background:linear-gradient(#14110D,transparent);}
+.kv2 .mp-wall-fade-bottom{bottom:0;background:linear-gradient(transparent,#14110D);}
+.kv2 .mp-phone-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(2deg);z-index:10;}
+@media(max-width:1060px){
+  .kv2 .mp-hero-grid{grid-template-columns:1fr;gap:36px;}
+  .kv2 .mp-wall{display:none;}
+  .kv2 .mp-wall-mobile{display:block;}
+}
+/* ── Timeline de dores (pains relieved) ── */
+.kv2 .mp-dores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;}
+.kv2 .mp-dores:before{content:"";position:absolute;top:11px;left:4%;right:4%;border-top:1.5px dashed #3a332a;}
+@media(max-width:980px){.kv2 .mp-dores{grid-template-columns:repeat(2,1fr);} .kv2 .mp-dores:before{display:none;}}
+@media(max-width:560px){.kv2 .mp-dores{grid-template-columns:1fr;}}
 `;
 
-/* ────────────────────────── S1 · HERO (dark) ────────────────────────── */
-const HERO_HTML = `
-<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
-  <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;pointer-events:none;"></div>
-  <div class="mp-hero-deco" style="position:absolute;inset:0;pointer-events:none;">
-    <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:5%;top:14%;width:clamp(56px,7vw,92px);animation:starspin 26s linear infinite;opacity:.9;">
-    <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:6%;top:18%;width:clamp(44px,6vw,72px);animation:starspin2 20s linear infinite;opacity:.85;">
-    <img src="/v2/collage/sticker-tothemoon.png" alt="" loading="lazy" decoding="async" style="position:absolute;right:3%;bottom:10%;width:clamp(96px,11vw,160px);filter:drop-shadow(3px 5px 7px rgba(0,0,0,.4));transform:rotate(6deg);animation:floaty 8s ease-in-out infinite;">
-    <img src="/v2/collage/brain-glasses.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:3%;bottom:8%;width:clamp(88px,9vw,132px);transform:rotate(-8deg);animation:floaty2 9s ease-in-out infinite;opacity:.8;filter:invert(1) contrast(1.05);mix-blend-mode:screen;">
-  </div>
-  <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:92px;padding-bottom:84px;text-align:center;">
-    <div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#7CF067;border:1.5px solid #3a332a;border-radius:999px;padding:8px 18px;background:#1d1812;box-shadow:3px 3px 0 #D262B2;margin-bottom:28px;">&#9679; FOUNDER-LED GROWTH</div>
-    <h1 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.05;letter-spacing:-1.5px;margin:0 auto;max-width:860px;">Transformamos sua expertise em autoridade. E autoridade em <span style="${HL}color:#14110D;">pipeline</span>.</h1>
-    <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#b8b1a6;max-width:640px;margin:26px auto 0;">A marca pessoal do fundador virou o maior ativo de crescimento da empresa. A Kaleidos constrói a sua no Instagram, o palco onde a audiência acontece no Brasil, com LinkedIn e X reforçando a autoridade B2B. Você dá a cara. A gente faz o resto.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:38px;">
-      <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Ver se faz sentido &rarr;</a>
-      <a href="${WA_AUDIT}" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Auditar meu perfil de graça</a>
-    </div>
-    <div style="max-width:560px;margin:44px auto 0;background:#1d1812;border:1.5px solid #3a332a;border-radius:14px;padding:18px 22px;box-shadow:4px 4px 0 #7CF067;">
-      <p style="font-size:16px;line-height:1.5;color:#FAFAFA;margin:0;font-weight:600;">Perfis pessoais recebem ~65% do feed do LinkedIn. Páginas de empresa, ~5%.</p>
-      <p style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;color:#9a9186;margin:8px 0 0;text-transform:uppercase;">Fonte: Digital Applied (compilação de agência, 2026)</p>
-      <p style="font-size:13px;line-height:1.5;color:#9a9186;margin:10px 0 0;">O rosto vence a logo em qualquer rede. No Brasil, o palco principal desse jogo é o Instagram; LinkedIn e X entram como camada de autoridade B2B.</p>
-    </div>
-  </div>
-</section>
-`;
+/* Eyebrow-assinatura (teardown): traço + label mono. Coesão entre seções. */
+const eyebrow = (label: string, color = "#D262B2", justify = "center") =>
+  `<div style="display:flex;align-items:center;justify-content:${justify};gap:12px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:${color};margin-bottom:18px;"><span style="width:36px;height:1.5px;background:currentColor;display:inline-block;"></span><span>${label}</span><span style="width:36px;height:1.5px;background:currentColor;display:inline-block;"></span></div>`;
 
-/* ─────────────── S2 · PROVA AGREGADA + CONGRUÊNCIA (claro) ─────────────── */
-// Números: agregados canônicos do site (+125M views / 30+ projetos) e métricas
-// reais de case-data.ts (Investidor 4.20: 5x faturamento; Layla Foz: 20M+ views).
-const PROVA_HTML = `
-<section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
-  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:72px;padding-bottom:72px;">
-    <div class="mp-stats">
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 28px;box-shadow:5px 5px 0 #7CF067;text-align:center;min-width:200px;transform:rotate(-1deg);">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);line-height:1;color:#14110D;">+125M</div>
-        <div style="font-size:13.5px;color:#6b6258;margin-top:8px;">de views gerados para clientes</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 28px;box-shadow:5px 5px 0 #D262B2;text-align:center;min-width:200px;transform:rotate(1deg);">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);line-height:1;color:#14110D;">5x</div>
-        <div style="font-size:13.5px;color:#6b6258;margin-top:8px;">faturamento no nosso maior case founder-led</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 28px;box-shadow:5px 5px 0 #7CF067;text-align:center;min-width:200px;transform:rotate(-1deg);">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);line-height:1;color:#14110D;">20M+</div>
-        <div style="font-size:13.5px;color:#6b6258;margin-top:8px;">views nos reels de uma única criadora</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 28px;box-shadow:5px 5px 0 #D262B2;text-align:center;min-width:200px;transform:rotate(1deg);">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,42px);line-height:1;color:#14110D;">30+</div>
-        <div style="font-size:13.5px;color:#6b6258;margin-top:8px;">projetos entregues desde 2019</div>
-      </div>
+/* Mesma assinatura em JSX (pras seções novas). */
+function Eyebrow({
+  label,
+  color = "#D262B2",
+  justify = "center",
+}: {
+  label: string;
+  color?: string;
+  justify?: "center" | "flex-start";
+}) {
+  const dash = {
+    width: 36,
+    height: 1.5,
+    background: "currentColor",
+    display: "inline-block",
+  } as const;
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: justify,
+        gap: 12,
+        fontFamily: "Gridlite, monospace",
+        fontSize: 12,
+        letterSpacing: 3,
+        textTransform: "uppercase",
+        color,
+        marginBottom: 18,
+      }}
+    >
+      <span style={dash} />
+      <span>{label}</span>
+      {justify === "center" && <span style={dash} />}
     </div>
-    <div style="max-width:820px;margin:56px auto 0;text-align:center;">
-      <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(22px,2.8vw,34px);line-height:1.3;letter-spacing:-.5px;color:#14110D;margin:0;">A gente não só vende founder-led. A gente <span style="${HL}font-weight:800;">É</span> founder-led.</p>
-      <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:600px;margin:18px auto 0;">O fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em si mesmo o método que entrega para os clientes: tese, cadência com o Instagram na frente (e X + LinkedIn de apoio) e medição. Quem vende marca pessoal de founder precisa ser a própria prova.</p>
-    </div>
-  </div>
-</section>
-`;
+  );
+}
 
-/* ────────────────────────── S3 · PROBLEMA (dark) ────────────────────────── */
-const PROBLEMA_HTML = `
-<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;border-top:2px solid #14110D;">
-  <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
-  <div class="mp-pad" style="position:relative;max-width:1100px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
-    <div style="text-align:center;max-width:780px;margin:0 auto;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:18px;">O problema</div>
-      <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">O mercado já pesquisou seu nome. <span style="color:#7CF067;">O que encontrou?</span></h2>
-      <p style="font-size:18px;line-height:1.6;color:#b8b1a6;max-width:600px;margin:22px auto 0;">O comprador te pesquisa antes de falar com você. Se ele não te acha, acha seu concorrente. E não é só o comprador olhando.</p>
-    </div>
-    <div class="mp-grid3" style="margin-top:44px;">
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:14px;padding:24px 22px;box-shadow:4px 4px 0 #7CF067;">
-        <div style="font-size:26px;line-height:1;">🤝</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;margin:12px 0 6px;color:#FAFAFA;">O cliente</h3>
-        <p style="font-size:14px;line-height:1.55;color:#9a9186;margin:0;">Antes de assinar contrato, ele abre seu LinkedIn e seu Instagram. Perfil parado passa a mensagem errada sobre a empresa inteira.</p>
+/* Moldura de iPhone fluida com "screen-slot" trocável (padrão do teardown:
+   moldura percentual + slot absoluto). CSS puro, hard-shadow da marca. */
+function PhoneFrame({
+  children,
+  width = 250,
+  rotate = 0,
+  shadow = "#7CF067",
+}: {
+  children: React.ReactNode;
+  width?: number;
+  rotate?: number;
+  shadow?: string;
+}) {
+  return (
+    <div
+      style={{
+        width,
+        transform: rotate ? `rotate(${rotate}deg)` : undefined,
+        background: "#14110D",
+        border: "1.5px solid #3a332a",
+        borderRadius: 40,
+        padding: 10,
+        boxShadow: `9px 9px 0 ${shadow}`,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "6px 0 8px",
+        }}
+      >
+        <span
+          style={{
+            width: 68,
+            height: 7,
+            borderRadius: 99,
+            background: "#2a241d",
+            display: "inline-block",
+          }}
+        />
       </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:14px;padding:24px 22px;box-shadow:4px 4px 0 #D262B2;">
-        <div style="font-size:26px;line-height:1;">💼</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;margin:12px 0 6px;color:#FAFAFA;">O investidor</h3>
-        <p style="font-size:14px;line-height:1.55;color:#9a9186;margin:0;">Ele avalia o founder tanto quanto o negócio. Uma tese pública bem construída encurta qualquer due diligence de confiança.</p>
+      <div
+        style={{
+          borderRadius: 28,
+          overflow: "hidden",
+          background: "#000",
+          border: "1px solid #2a241d",
+        }}
+      >
+        {children}
       </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:14px;padding:24px 22px;box-shadow:4px 4px 0 #7CF067;">
-        <div style="font-size:26px;line-height:1;">🚀</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;margin:12px 0 6px;color:#FAFAFA;">O talento</h3>
-        <p style="font-size:14px;line-height:1.55;color:#9a9186;margin:0;">Os melhores profissionais escolhem trabalhar com líderes que admiram. Sua presença pública é o primeiro pitch de recrutamento.</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "8px 0 4px",
+        }}
+      >
+        <span
+          style={{
+            width: 34,
+            height: 4,
+            borderRadius: 99,
+            background: "#2a241d",
+            display: "inline-block",
+          }}
+        />
       </div>
     </div>
-    <div style="text-align:center;margin-top:44px;">
-      <p style="font-family:'Inter',sans-serif;font-weight:600;font-size:clamp(19px,2.4vw,26px);line-height:1.35;color:#FAFAFA;margin:0;">Você não tem tempo pra virar creator. <span style="color:#7CF067;">Ainda bem que não precisa.</span></p>
-    </div>
-  </div>
-</section>
-`;
+  );
+}
 
-/* ─────────────────────── S4 · OS DADOS (claro) ─────────────────────── */
-// Stats de terceiros com fonte visível. Números e fontes conferidos no paper
-// PAPER-marca-pessoal-founders-2026-07-24 (todos com URL primária lá).
-const DADOS_HTML = `
-<section style="position:relative;background:#FAFAFA;overflow:hidden;">
-  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
-    <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Os dados</div>
-      <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">Não é tendência.<br>É <span style="${HL}">matemática de distribuição</span>.</h2>
-      <p style="font-size:15px;line-height:1.6;color:#6b6258;max-width:640px;margin:18px auto 0;">A pesquisa de mercado mede sobretudo LinkedIn e B2B, e ela confirma a lógica: pessoa &gt; página. Na prática do Brasil, o Instagram é o palco principal de alcance e audiência; LinkedIn e X reforçam a autoridade junto ao decisor.</p>
+/* ── Conteúdo REAL publicado nos perfis de clientes (public/Cases/…).
+   Nada aqui é mockup: são capas de reels e slides de carrossel entregues. ── */
+const WALL_COL_A: { src: string; alt: string }[] = [
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola (Investidor 4.20)" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels3.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWFG0_kCUuF-capa.jpg", alt: "Capa de reel publicado no Instagram do Defiverso" },
+];
+const WALL_COL_B: { src: string; alt: string }[] = [
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels2.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-global.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+];
+
+function WallCard({ item }: { item: { src: string; alt: string } }) {
+  return (
+    <div className="mp-wall-card">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
     </div>
-    <div class="mp-grid4">
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#14110D;">45%</div>
-        <p style="font-size:14px;line-height:1.5;color:#4a443c;margin:12px 0 0;flex:1;">da reputação da empresa (e 44% do valor de mercado percebido) são atribuídos pela liderança à reputação do CEO.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Weber Shandwick (estudo de 2015)</p>
+  );
+}
+
+/* ────────────────────────── S1 · HERO (dark) ──────────────────────────
+   "Parede de prova": headline oversized esquerda-alinhada com BlurWord
+   (teardown/compute) + parede de conteúdo REAL de Instagram em marquees
+   verticais (magicui/Marquee) e o print real do perfil do Lucas dentro de
+   uma moldura de iPhone (teardown/iphone: moldura + screen-slot). */
+function HeroSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#14110D",
+        color: "#FAFAFA",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.5,
+          backgroundImage:
+            "radial-gradient(#ffffff22 1.3px,transparent 1.5px)",
+          backgroundSize: "18px 18px",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1280,
+          margin: "0 auto",
+          paddingTop: 72,
+          paddingBottom: 64,
+        }}
+      >
+        <div className="mp-hero-grid">
+          {/* Coluna copy */}
+          <div>
+            <Eyebrow
+              label="Founder-led growth · Instagram-first"
+              color="#7CF067"
+              justify="flex-start"
+            />
+            <h1
+              style={{
+                fontFamily: "Atelier, sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(40px,5.4vw,78px)",
+                lineHeight: 0.95,
+                letterSpacing: "-2px",
+                margin: 0,
+              }}
+            >
+              Sua expertise
+              <br />
+              vira{" "}
+              <span
+                style={{
+                  background: "#7CF067",
+                  color: "#14110D",
+                  padding: ".04em .18em",
+                  borderRadius: 8,
+                  display: "inline-block",
+                }}
+              >
+                <RotatingWord
+                  words={["autoridade", "audiência", "pipeline", "capital"]}
+                />
+              </span>
+              <span style={{ color: "#7CF067" }}>.</span>
+            </h1>
+            <p
+              style={{
+                fontSize: "clamp(16px,1.8vw,19px)",
+                lineHeight: 1.6,
+                color: "#b8b1a6",
+                maxWidth: 520,
+                margin: "26px 0 0",
+              }}
+            >
+              A marca pessoal do fundador virou o maior ativo de crescimento
+              da empresa. A Kaleidos constrói a sua no Instagram, o palco onde
+              a audiência acontece no Brasil, com LinkedIn e X reforçando a
+              autoridade B2B. Você dá a cara. A gente faz o resto.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                gap: 14,
+                flexWrap: "wrap",
+                alignItems: "center",
+                marginTop: 36,
+              }}
+            >
+              <a
+                href="/agendar"
+                className="cta-btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 9,
+                  background: "#7CF067",
+                  color: "#06250a",
+                  fontWeight: 700,
+                  fontSize: 17,
+                  padding: "16px 30px",
+                  borderRadius: 999,
+                  boxShadow: "5px 5px 0 #D262B2",
+                  textDecoration: "none",
+                }}
+              >
+                Ver se faz sentido &rarr;
+              </a>
+              <a
+                href={WA_AUDIT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 9,
+                  background: "transparent",
+                  color: "#FAFAFA",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  padding: "15px 26px",
+                  borderRadius: 999,
+                  border: "1.5px solid #FAFAFA",
+                  textDecoration: "none",
+                }}
+              >
+                Auditar meu perfil de graça
+              </a>
+            </div>
+            <p
+              style={{
+                fontFamily: "Gridlite, monospace",
+                fontSize: 11.5,
+                letterSpacing: 1.5,
+                textTransform: "uppercase",
+                color: "#9a9186",
+                margin: "26px 0 0",
+              }}
+            >
+              &larr; ao lado: conteúdo real publicado em perfis de clientes.
+              nada de mockup.
+            </p>
+          </div>
+
+          {/* Parede de prova (desktop) */}
+          <div className="mp-wall" aria-hidden="true">
+            <div className="mp-wall-fade-top" />
+            <div className="mp-wall-fade-bottom" />
+            <div className="mp-wall-col">
+              <Marquee vertical repeat={3} className="[--duration:44s] [--gap:1.1rem] h-full p-0">
+                {WALL_COL_A.map((item) => (
+                  <WallCard key={item.src} item={item} />
+                ))}
+              </Marquee>
+            </div>
+            <div className="mp-wall-col">
+              <Marquee vertical reverse repeat={3} className="[--duration:52s] [--gap:1.1rem] h-full p-0">
+                {WALL_COL_B.map((item) => (
+                  <WallCard key={item.src} item={item} />
+                ))}
+              </Marquee>
+            </div>
+            <div className="mp-phone-wrap">
+              <div style={{ position: "relative" }}>
+                <PhoneFrame width={250} shadow="#7CF067">
+                  {/* Tela = perfil IG real do Lucas: print do header (público,
+                      capturado 2026-07) + grade de capas de reels publicados. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/marca-pessoal/prints/ig-lucas-amendola.png"
+                    alt="Print do perfil público @lucas.amendolaa no Instagram: 173 mil seguidores, verificado, fundador do @defiverso"
+                    loading="lazy"
+                    decoding="async"
+                    style={{ display: "block", width: "100%", height: "auto" }}
+                  />
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(3,1fr)",
+                      gap: 2,
+                      background: "#000",
+                      paddingTop: 2,
+                    }}
+                  >
+                    {[
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg",
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg",
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg",
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg",
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg",
+                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg",
+                    ].map((src) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={src}
+                        src={src}
+                        alt="Capa de reel publicado no perfil do Lucas Amendola"
+                        loading="lazy"
+                        decoding="async"
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          aspectRatio: "3/4",
+                          objectFit: "cover",
+                          objectPosition: "top",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </PhoneFrame>
+                <span
+                  style={{
+                    position: "absolute",
+                    top: -16,
+                    right: -22,
+                    transform: "rotate(4deg)",
+                    background: "#7CF067",
+                    color: "#06250a",
+                    border: "1.5px solid #14110D",
+                    borderRadius: 999,
+                    padding: "6px 13px",
+                    fontFamily: "Gridlite, monospace",
+                    fontSize: 10.5,
+                    letterSpacing: 1.5,
+                    textTransform: "uppercase",
+                    boxShadow: "3px 3px 0 #D262B2",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  173 mil seguidores · print real
+                </span>
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: 26,
+                    left: -30,
+                    transform: "rotate(-5deg)",
+                    background: "#1d1812",
+                    color: "#FAFAFA",
+                    border: "1.5px solid #3a332a",
+                    borderRadius: 999,
+                    padding: "6px 13px",
+                    fontFamily: "Gridlite, monospace",
+                    fontSize: 10.5,
+                    letterSpacing: 1.5,
+                    textTransform: "uppercase",
+                    boxShadow: "3px 3px 0 #7CF067",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  cliente kaleidos
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Parede de prova (mobile): faixa horizontal */}
+        <div className="mp-wall-mobile" style={{ marginTop: 40 }}>
+          <Marquee repeat={3} className="[--duration:40s] [--gap:.9rem] p-0">
+            {[...WALL_COL_A, ...WALL_COL_B].map((item) => (
+              <div
+                key={item.src}
+                style={{
+                  width: 128,
+                  borderRadius: 12,
+                  border: "1.5px solid #3a332a",
+                  overflow: "hidden",
+                  background: "#1d1812",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ display: "block", width: "100%", height: "auto" }}
+                />
+              </div>
+            ))}
+          </Marquee>
+          <p
+            style={{
+              fontFamily: "Gridlite, monospace",
+              fontSize: 11,
+              letterSpacing: 1.5,
+              textTransform: "uppercase",
+              color: "#9a9186",
+              margin: "14px 0 0",
+              textAlign: "center",
+            }}
+          >
+            conteúdo real publicado em perfis de clientes
+          </p>
+        </div>
       </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#14110D;">73%</div>
-        <p style="font-size:14px;line-height:1.5;color:#4a443c;margin:12px 0 0;flex:1;">dos decisores B2B dizem que thought leadership é base mais confiável pra avaliar um fornecedor do que material de marketing.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn (2024)</p>
+    </section>
+  );
+}
+
+/* ─────────────── S2 · PROVA AGREGADA + CONGRUÊNCIA (claro) ───────────────
+   Números: agregados canônicos do site (+125M views / 30+ projetos) e métricas
+   reais de case-data.ts. Count-up com magicui/NumberTicker. */
+const STATS: {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  shadow: string;
+  rotate: number;
+}[] = [
+  { value: 125, prefix: "+", suffix: "M", label: "de views gerados para clientes", shadow: "#7CF067", rotate: -1 },
+  { value: 5, suffix: "x", label: "faturamento no nosso maior case founder-led", shadow: "#D262B2", rotate: 1 },
+  { value: 20, suffix: "M+", label: "views nos reels de uma única criadora", shadow: "#7CF067", rotate: -1 },
+  { value: 30, suffix: "+", label: "projetos entregues desde 2019", shadow: "#D262B2", rotate: 1 },
+];
+
+function StatsSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#FAFAFA",
+        overflow: "hidden",
+        backgroundImage:
+          "linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px)",
+        backgroundSize: "34px 34px",
+      }}
+    >
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1240,
+          margin: "0 auto",
+          paddingTop: 72,
+          paddingBottom: 72,
+        }}
+      >
+        <div className="mp-stats">
+          {STATS.map((s) => (
+            <div
+              key={s.label}
+              style={{
+                background: "#fff",
+                border: "1.5px solid #14110D",
+                borderRadius: 16,
+                padding: "22px 28px",
+                boxShadow: `5px 5px 0 ${s.shadow}`,
+                textAlign: "center",
+                minWidth: 200,
+                transform: `rotate(${s.rotate}deg)`,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "Atelier, sans-serif",
+                  fontWeight: 800,
+                  fontSize: "clamp(30px,3.4vw,42px)",
+                  lineHeight: 1,
+                  color: "#14110D",
+                }}
+              >
+                <NumberTicker
+                  value={s.value}
+                  prefix={s.prefix ?? ""}
+                  suffix={s.suffix ?? ""}
+                />
+              </div>
+              <div style={{ fontSize: 13.5, color: "#6b6258", marginTop: 8 }}>
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ maxWidth: 820, margin: "56px auto 0", textAlign: "center" }}>
+          <p
+            style={{
+              fontFamily: "'Inter',sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(22px,2.8vw,34px)",
+              lineHeight: 1.3,
+              letterSpacing: "-.5px",
+              color: "#14110D",
+              margin: 0,
+            }}
+          >
+            A gente não só vende founder-led. A gente{" "}
+            <span
+              style={{
+                background: "#7CF067",
+                color: "#14110D",
+                padding: ".06em .22em",
+                borderRadius: 6,
+                fontWeight: 800,
+              }}
+            >
+              É
+            </span>{" "}
+            founder-led.
+          </p>
+          <p
+            style={{
+              fontSize: 16,
+              lineHeight: 1.6,
+              color: "#6b6258",
+              maxWidth: 600,
+              margin: "18px auto 0",
+            }}
+          >
+            O fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em
+            si mesmo o método que entrega para os clientes: tese, cadência com
+            o Instagram na frente (e X + LinkedIn de apoio) e medição. Quem
+            vende marca pessoal de founder precisa ser a própria prova.
+          </p>
+        </div>
+        {/* Stat do feed (estava no hero antigo; aqui vira nota de rodapé da prova) */}
+        <div
+          style={{
+            maxWidth: 560,
+            margin: "40px auto 0",
+            background: "#fff",
+            border: "1.5px solid #14110D",
+            borderRadius: 14,
+            padding: "18px 22px",
+            boxShadow: "4px 4px 0 #7CF067",
+            textAlign: "center",
+          }}
+        >
+          <p style={{ fontSize: 15.5, lineHeight: 1.5, color: "#14110D", margin: 0, fontWeight: 600 }}>
+            Perfis pessoais recebem ~65% do feed do LinkedIn. Páginas de
+            empresa, ~5%.
+          </p>
+          <p
+            style={{
+              fontFamily: "Gridlite, monospace",
+              fontSize: 11,
+              letterSpacing: 1.5,
+              color: "#8a8175",
+              margin: "8px 0 0",
+              textTransform: "uppercase",
+            }}
+          >
+            Fonte: Digital Applied (compilação de agência, 2026)
+          </p>
+        </div>
       </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#14110D;">2,75x</div>
-        <p style="font-size:14px;line-height:1.5;color:#4a443c;margin:12px 0 0;flex:1;">mais impressões no perfil pessoal do que na página da empresa, publicando o mesmo conteúdo.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Refine Labs (experimento de agência)</p>
+    </section>
+  );
+}
+
+/* ────────────────────────── S3 · PROBLEMA (dark) ──────────────────────────
+   Trio de personas (ícones line-art, sem emoji) + timeline "pains relieved"
+   (padrão que o Gabriel amou no estudo): a dor riscada → o alívio no método. */
+const OBSERVADORES = [
+  {
+    nome: "O cliente",
+    texto:
+      "Antes de assinar contrato, ele abre seu LinkedIn e seu Instagram. Perfil parado passa a mensagem errada sobre a empresa inteira.",
+    shadow: "#7CF067",
+    icon: (
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7CF067" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" />
+        <path d="M3.5 19c.8-3 3-4.5 5.5-4.5S13.7 16 14.5 19" />
+        <circle cx="17.5" cy="13.5" r="3" />
+        <path d="m19.8 15.8 2.2 2.2" />
+      </svg>
+    ),
+  },
+  {
+    nome: "O investidor",
+    texto:
+      "Ele avalia o founder tanto quanto o negócio. Uma tese pública bem construída encurta qualquer due diligence de confiança.",
+    shadow: "#D262B2",
+    icon: (
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D262B2" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3 20h18" />
+        <path d="m4 15 5-5 4 3 7-8" />
+        <path d="M16 5h4v4" />
+      </svg>
+    ),
+  },
+  {
+    nome: "O talento",
+    texto:
+      "Os melhores profissionais escolhem trabalhar com líderes que admiram. Sua presença pública é o primeiro pitch de recrutamento.",
+    shadow: "#7CF067",
+    icon: (
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7CF067" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="m12 3 2.5 5.3 5.5.8-4 4 1 5.9-5-2.8-5 2.8 1-5.9-4-4 5.5-.8Z" />
+      </svg>
+    ),
+  },
+];
+
+const DORES = [
+  { dor: "“Não tenho tempo.”", alivio: "~2h/mês: gravação em bloco, dirigida pela gente" },
+  { dor: "“Não sei o que postar.”", alivio: "Calendário editorial chega pronto pra aprovar" },
+  { dor: "“Vai soar robô.”", alivio: "Imersão de voz real; IA só na velocidade" },
+  { dor: "“Posto e rezo.”", alivio: "Relatório mensal + horizontes M1/M3/M6" },
+];
+
+function ProblemaSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#14110D",
+        color: "#FAFAFA",
+        overflow: "hidden",
+        borderTop: "2px solid #14110D",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.4,
+          backgroundImage: "radial-gradient(#ffffff14 1.2px,transparent 1.4px)",
+          backgroundSize: "20px 20px",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1100,
+          margin: "0 auto",
+          paddingTop: 88,
+          paddingBottom: 88,
+        }}
+      >
+        <div style={{ textAlign: "center", maxWidth: 780, margin: "0 auto" }}>
+          <Eyebrow label="O problema" />
+          <h2
+            style={{
+              fontFamily: "Atelier, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(30px,4.2vw,52px)",
+              lineHeight: 1.02,
+              letterSpacing: "-1px",
+              margin: 0,
+            }}
+          >
+            O mercado já pesquisou seu nome.{" "}
+            <span style={{ color: "#7CF067" }}>O que encontrou?</span>
+          </h2>
+          <p
+            style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: "#b8b1a6",
+              maxWidth: 600,
+              margin: "22px auto 0",
+            }}
+          >
+            O comprador te pesquisa antes de falar com você. Se ele não te
+            acha, acha seu concorrente. E não é só o comprador olhando.
+          </p>
+        </div>
+        <div className="mp-grid3" style={{ marginTop: 44 }}>
+          {OBSERVADORES.map((o) => (
+            <div
+              key={o.nome}
+              style={{
+                background: "#1d1812",
+                border: "1.5px solid #3a332a",
+                borderRadius: 14,
+                padding: "24px 22px",
+                boxShadow: `4px 4px 0 ${o.shadow}`,
+              }}
+            >
+              {o.icon}
+              <h3
+                style={{
+                  fontFamily: "Atelier, sans-serif",
+                  fontWeight: 700,
+                  fontSize: 19,
+                  margin: "12px 0 6px",
+                  color: "#FAFAFA",
+                }}
+              >
+                {o.nome}
+              </h3>
+              <p style={{ fontSize: 14, lineHeight: 1.55, color: "#9a9186", margin: 0 }}>
+                {o.texto}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Timeline "as dores que saem da sua mesa" */}
+        <div style={{ marginTop: 64 }}>
+          <Eyebrow label="As dores que saem da sua mesa" color="#7CF067" />
+          <div className="mp-dores" style={{ marginTop: 28 }}>
+            {DORES.map((d) => (
+              <div key={d.dor} style={{ position: "relative", textAlign: "center" }}>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: 22,
+                    height: 22,
+                    borderRadius: 99,
+                    background: "#14110D",
+                    border: "1.5px solid #7CF067",
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      inset: 5,
+                      borderRadius: 99,
+                      background: "#7CF067",
+                    }}
+                  />
+                </span>
+                <p
+                  style={{
+                    fontFamily: "'Inter',sans-serif",
+                    fontWeight: 600,
+                    fontSize: 15.5,
+                    color: "#9a9186",
+                    textDecoration: "line-through",
+                    textDecorationColor: "#D262B2",
+                    textDecorationThickness: "2px",
+                    margin: "14px 0 10px",
+                  }}
+                >
+                  {d.dor}
+                </p>
+                <span
+                  style={{
+                    display: "inline-block",
+                    background: "#1d1812",
+                    border: "1.5px solid #3a332a",
+                    borderRadius: 10,
+                    padding: "9px 13px",
+                    fontSize: 13,
+                    lineHeight: 1.45,
+                    color: "#d8d1c6",
+                  }}
+                >
+                  {d.alivio}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 52 }}>
+          <p
+            style={{
+              fontFamily: "'Inter',sans-serif",
+              fontWeight: 600,
+              fontSize: "clamp(19px,2.4vw,26px)",
+              lineHeight: 1.35,
+              color: "#FAFAFA",
+              margin: 0,
+            }}
+          >
+            Você não tem tempo pra virar creator.{" "}
+            <span style={{ color: "#7CF067" }}>Ainda bem que não precisa.</span>
+          </p>
+        </div>
       </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#14110D;">78%</div>
-        <p style="font-size:14px;line-height:1.5;color:#4a443c;margin:12px 0 0;flex:1;">dos social sellers vendem mais que os pares que não usam redes sociais no processo comercial.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">LinkedIn Sales Solutions</p>
+    </section>
+  );
+}
+
+/* ─────────────────────── S4 · OS DADOS (claro) ───────────────────────
+   Stats de terceiros com fonte visível (paper 2026-07-24). Count-up com
+   magicui/NumberTicker (padrão AnimatedNumber do teardown). */
+const DADOS_CARDS: {
+  value: number;
+  suffix: string;
+  decimals?: number;
+  texto: string;
+  fonte: string;
+  shadow: string;
+}[] = [
+  {
+    value: 45,
+    suffix: "%",
+    texto:
+      "da reputação da empresa (e 44% do valor de mercado percebido) são atribuídos pela liderança à reputação do CEO.",
+    fonte: "Weber Shandwick (estudo de 2015)",
+    shadow: "#7CF067",
+  },
+  {
+    value: 73,
+    suffix: "%",
+    texto:
+      "dos decisores B2B dizem que thought leadership é base mais confiável pra avaliar um fornecedor do que material de marketing.",
+    fonte: "Edelman-LinkedIn (2024)",
+    shadow: "#D262B2",
+  },
+  {
+    value: 2.75,
+    suffix: "x",
+    decimals: 2,
+    texto:
+      "mais impressões no perfil pessoal do que na página da empresa, publicando o mesmo conteúdo.",
+    fonte: "Refine Labs (experimento de agência)",
+    shadow: "#7CF067",
+  },
+  {
+    value: 78,
+    suffix: "%",
+    texto:
+      "dos social sellers vendem mais que os pares que não usam redes sociais no processo comercial.",
+    fonte: "LinkedIn Sales Solutions",
+    shadow: "#D262B2",
+  },
+];
+
+function DadosSection() {
+  return (
+    <section style={{ position: "relative", background: "#FAFAFA", overflow: "hidden" }}>
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1240,
+          margin: "0 auto",
+          paddingTop: 84,
+          paddingBottom: 84,
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <Eyebrow label="Os dados" />
+          <h2
+            style={{
+              fontFamily: "Atelier, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(30px,4.2vw,52px)",
+              lineHeight: 1,
+              letterSpacing: "-1px",
+              margin: 0,
+              color: "#14110D",
+            }}
+          >
+            Não é tendência.
+            <br />É{" "}
+            <span
+              style={{
+                background: "#7CF067",
+                color: "#14110D",
+                padding: ".06em .22em",
+                borderRadius: 6,
+                boxDecorationBreak: "clone",
+                WebkitBoxDecorationBreak: "clone",
+              }}
+            >
+              matemática de distribuição
+            </span>
+            .
+          </h2>
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.6,
+              color: "#6b6258",
+              maxWidth: 640,
+              margin: "18px auto 0",
+            }}
+          >
+            A pesquisa de mercado mede sobretudo LinkedIn e B2B, e ela confirma
+            a lógica: pessoa &gt; página. Na prática do Brasil, o Instagram é o
+            palco principal de alcance e audiência; LinkedIn e X reforçam a
+            autoridade junto ao decisor.
+          </p>
+        </div>
+        <div className="mp-grid4">
+          {DADOS_CARDS.map((c) => (
+            <div
+              key={c.fonte}
+              style={{
+                background: "#fff",
+                border: "1.5px solid #14110D",
+                borderRadius: 16,
+                padding: "26px 22px",
+                boxShadow: `5px 5px 0 ${c.shadow}`,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "Atelier, sans-serif",
+                  fontWeight: 800,
+                  fontSize: 40,
+                  lineHeight: 1,
+                  color: "#14110D",
+                }}
+              >
+                <NumberTicker
+                  value={c.value}
+                  suffix={c.suffix}
+                  decimals={c.decimals ?? 0}
+                />
+              </div>
+              <p style={{ fontSize: 14, lineHeight: 1.5, color: "#4a443c", margin: "12px 0 0", flex: 1 }}>
+                {c.texto}
+              </p>
+              <p
+                style={{
+                  fontFamily: "Gridlite, monospace",
+                  fontSize: 10.5,
+                  letterSpacing: 1,
+                  color: "#8a8175",
+                  margin: "14px 0 0",
+                  textTransform: "uppercase",
+                }}
+              >
+                {c.fonte}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: 14,
+            color: "#6b6258",
+            margin: "32px auto 0",
+            maxWidth: 520,
+          }}
+        >
+          Todo dado aqui tem fonte. É assim que a gente trabalha: número com
+          origem, não frase de vendedor.
+        </p>
       </div>
-    </div>
-    <p style="text-align:center;font-size:14px;color:#6b6258;margin:32px auto 0;max-width:520px;">Todo dado aqui tem fonte. É assim que a gente trabalha: número com origem, não frase de vendedor.</p>
-  </div>
-</section>
-`;
+    </section>
+  );
+}
 
 /* ────────────── S4b · MAIS DADOS DE MERCADO (dark) ────────────── */
 // Stats novas do doc ENRIQUECIMENTO-pagina-2026-07-24 (vault/015 - BRANDING E
@@ -237,7 +1121,7 @@ const MERCADO_HTML = `
   <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Mais dados de mercado</div>
+      ${eyebrow("Mais dados de mercado")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Os números <span style="color:#7CF067;">não deixam dúvida</span>.</h2>
       <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">Da pesquisa acadêmica revisada por pares ao comitê de compra B2B: a autoridade pública do founder mexe em capital, pipeline e custo de aquisição. O alcance dessa autoridade, no Brasil, se constrói primeiro no Instagram; LinkedIn e X consolidam a camada B2B.</p>
     </div>
@@ -287,7 +1171,7 @@ const FAMOSOS_HTML = `
 <section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
     <div style="text-align:center;margin-bottom:20px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Referências de mercado</div>
+      ${eyebrow("Referências de mercado")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">O mercado <span style="${HL}">já provou</span>.</h2>
     </div>
     <div style="text-align:center;margin-bottom:44px;">
@@ -341,7 +1225,7 @@ const FAZEMOS_HTML = `
   <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">O que fazemos</div>
+      ${eyebrow("O que fazemos")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Você grava. A Kaleidos dirige, escreve,<br>desenha, edita, publica e <span style="color:#7CF067;">mede</span>.</h2>
       <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:620px;margin:18px auto 0;">O palco principal é o <strong style="color:#7CF067;">Instagram</strong>: carrossel, reels e stories, onde a audiência e o alcance acontecem. LinkedIn e X entram como camada complementar de autoridade B2B, sem produção dobrada.</p>
     </div>
@@ -380,37 +1264,18 @@ const FAZEMOS_HTML = `
 </section>
 `;
 
-/* ─────────────────────── S6 · O MÉTODO (claro) ─────────────────────── */
-const METODO_HTML = `
-<section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
-  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
-    <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">O método</div>
+/* ─────────────────────── S6 · O MÉTODO (claro) ───────────────────────
+   Header + stepper auto-rotativo (MetodoStepper, padrão how-it-works do
+   teardown) + semana-tipo e princípios preservados do layout anterior. */
+const METODO_TOP_HTML = `
+    <div style="text-align:center;margin-bottom:44px;">
+      ${eyebrow("O método")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">Tese &rarr; Cadência &rarr; <span style="${HL}">Pipeline</span></h2>
       <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:560px;margin:18px auto 0;">Quatro fases com horizonte definido. Marca pessoal sem método é sorte. Com método, é sistema.</p>
     </div>
-    <div class="mp-grid4">
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #7CF067;transform:rotate(-1deg);">
-        <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#7CF067;-webkit-text-stroke:1.5px #14110D;">1</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:21px;margin:12px 0 6px;color:#14110D;">Fundação</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Imersão na sua história, tese e bandeira pessoal. Auditoria dos 3 perfis (Instagram, X, LinkedIn), pilares de conteúdo ponderados e bio-manifesto.</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #D262B2;transform:rotate(1deg);">
-        <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#D262B2;-webkit-text-stroke:1.5px #14110D;">2</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:21px;margin:12px 0 6px;color:#14110D;">Cadência</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Instagram primeiro: carrossel, reel e stories num calendário aprovado antes de produzir. O mesmo conteúdo vira thread no X e post no LinkedIn, sem produção dobrada.</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #7CF067;transform:rotate(-1deg);">
-        <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#7CF067;-webkit-text-stroke:1.5px #14110D;">3</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:21px;margin:12px 0 6px;color:#14110D;">Tração</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Horizonte de mês 3: engajamento acima de 3%, formatos calibrados pelos números e os primeiros leads chegando pelo perfil.</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #D262B2;transform:rotate(1deg);">
-        <div style="font-family:Atelier;font-weight:800;font-size:44px;line-height:1;color:#D262B2;-webkit-text-stroke:1.5px #14110D;">4</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:21px;margin:12px 0 6px;color:#14110D;">Autoridade</h3>
-        <p style="font-size:13.5px;line-height:1.55;color:#6b6258;margin:0;">Horizonte de mês 6: convites orgânicos, presença em podcasts e pipeline atribuível ao perfil. Relatório trimestral e roadmap de escala.</p>
-      </div>
-    </div>
+`;
+
+const METODO_EXTRA_HTML = `
     <div style="max-width:900px;margin:48px auto 0;background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:24px 26px;box-shadow:5px 5px 0 #7CF067;">
       <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:14px;">Semana-tipo de um founder Kaleidos</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -429,9 +1294,39 @@ const METODO_HTML = `
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #7CF067;"><div style="font-weight:800;font-size:15px;color:#14110D;">Reels + carrosséis</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Reel adquire, carrossel constrói autoridade e salvamento.</div></div>
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #D262B2;"><div style="font-weight:800;font-size:15px;color:#14110D;">Autenticidade real</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Bastidor, opinião e história. Nada de roteiro de robô.</div></div>
     </div>
-  </div>
-</section>
 `;
+
+function MetodoSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#FAFAFA",
+        overflow: "hidden",
+        backgroundImage:
+          "linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px)",
+        backgroundSize: "34px 34px",
+      }}
+    >
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1240,
+          margin: "0 auto",
+          paddingTop: 84,
+          paddingBottom: 84,
+        }}
+      >
+        <div dangerouslySetInnerHTML={{ __html: METODO_TOP_HTML }} />
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <MetodoStepper />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: METODO_EXTRA_HTML }} />
+      </div>
+    </section>
+  );
+}
 
 /* ─────────────────────── S7 · PROVA / CASES (dark) ─────────────────────── */
 // Métricas 100% de src/lib/case-data.ts:
@@ -445,24 +1340,36 @@ const CASES_HTML = `
   <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Nossos cases</div>
+      ${eyebrow("Nossos cases")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Antes e depois, <span style="color:#7CF067;">com número</span>.</h2>
       <p style="font-size:16px;line-height:1.6;color:#b8b1a6;max-width:560px;margin:18px auto 0;">Agora sim, clientes da Kaleidos. Página de marca pessoal sem métrica é ironia: as nossas vêm dos cases publicados, com fonte interna auditável.</p>
     </div>
     <div class="mp-grid3">
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="border:1.5px solid #3a332a;border-radius:14px;overflow:hidden;background:#000;margin-bottom:16px;">
+          <div style="display:flex;justify-content:center;padding:5px 0;"><span style="width:44px;height:5px;border-radius:99px;background:#2a241d;display:inline-block;"></span></div>
+          <img src="/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-capa.jpg" alt="Capa de reel publicado no perfil do Lucas Amendola" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
+        </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Lucas Amendola · Investidor 4.20</div>
         <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">50k &rarr; 180k <span style="font-size:16px;color:#9a9186;font-weight:400;">no Instagram</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">YouTube de 200k pra 382k inscritos. Newsletter construída do zero até 30 mil inscritos com 35% de abertura. E o número que importa: faturamento 5x maior desde a nossa entrada.</p>
         <a href="/cases/investidor-4-20" style="margin-top:16px;font-size:14px;font-weight:700;color:#7CF067;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="border:1.5px solid #3a332a;border-radius:14px;overflow:hidden;background:#000;margin-bottom:16px;">
+          <div style="display:flex;justify-content:center;padding:5px 0;"><span style="width:44px;height:5px;border-radius:99px;background:#2a241d;display:inline-block;"></span></div>
+          <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Layla Foz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
+        </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Layla Foz · criadora</div>
         <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">100k &rarr; 172k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">Mais de 20 milhões de views nos reels mantendo a profundidade intelectual do conteúdo. Crescimento de 72% na base sem descaracterizar a voz da criadora.</p>
         <a href="/cases/layla-foz" style="margin-top:16px;font-size:14px;font-weight:700;color:#D262B2;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="border:1.5px solid #3a332a;border-radius:14px;overflow:hidden;background:#000;margin-bottom:16px;">
+          <div style="display:flex;justify-content:center;padding:5px 0;"><span style="width:44px;height:5px;border-radius:99px;background:#2a241d;display:inline-block;"></span></div>
+          <img src="/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg" alt="Slide de carrossel publicado no Instagram do Defiverso" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
+        </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Defiverso · audiência própria</div>
         <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">12M views <span style="font-size:16px;color:#9a9186;font-weight:400;">orgânicos em 90 dias</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">8,6 mil novos seguidores em 3 meses no Instagram e newsletter com 26.554 assinantes ativos e 33% de taxa de abertura, muito acima da média de mercado.</p>
@@ -493,7 +1400,7 @@ const PRINTS_HTML = `
 <section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
   <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
     <div style="text-align:center;margin-bottom:44px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Nossos cases no Instagram</div>
+      ${eyebrow("Nossos cases no Instagram")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;color:#14110D;">O founder puxa a empresa.<br><span style="${HL}">Na prática.</span></h2>
       <p style="font-size:16px;line-height:1.6;color:#6b6258;max-width:620px;margin:18px auto 0;">Founder-led growth no palco onde ele acontece: o Instagram. A marca pessoal do Lucas Amendola, construída com a Kaleidos, é o motor de audiência que alimenta a empresa dele, o Defiverso. Print real, perfil público.</p>
     </div>
@@ -532,7 +1439,7 @@ const COMPARATIVO_HTML = `
 <section style="position:relative;background:#FAFAFA;overflow:hidden;">
   <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
     <div style="text-align:center;margin-bottom:40px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Comparativo</div>
+      ${eyebrow("Comparativo")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">Marca pessoal genérica<br>vs <span style="${HL}">método Kaleidos</span></h2>
     </div>
     <div class="mp-table-wrap" style="background:#fff;border:1.5px solid #14110D;border-radius:16px;box-shadow:6px 6px 0 #7CF067;">
@@ -589,7 +1496,7 @@ const OFERTA_HTML = `
   <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     <div style="text-align:center;margin-bottom:48px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">A oferta</div>
+      ${eyebrow("A oferta")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-1px;margin:0;">Três formas de começar.<br>Uma <span style="color:#7CF067;">conversa honesta</span> primeiro.</h2>
     </div>
     <div class="mp-grid3" style="max-width:1080px;margin:0 auto;align-items:stretch;">
@@ -646,6 +1553,298 @@ const OFERTA_HTML = `
 </section>
 `;
 
+/* ─────────── S8b · NA PRÁTICA, NO FEED (dark) — "see it in the wild" ───────────
+   Galeria em marquee duplo (magicui/Marquee) com entregáveis REAIS publicados:
+   slides de carrossel, posts e capas que a Kaleidos produziu pra clientes. */
+const WILD_ROW_A: { src: string; alt: string }[] = [
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/neobankless/conteudo/instagram-novos/nbs-carrossel-anuncios-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram da NeoBankless" },
+  { src: "/Cases/defiverso/conteudo/breaking-news-defiverso-1.png", alt: "Breaking news publicada no Instagram do Defiverso" },
+];
+const WILD_ROW_B: { src: string; alt: string }[] = [
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DZ7VRWKESte-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-iof.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/layla-foz/conteudo/Reels-3-Layla-1.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/defiverso/conteudo/posts-defiverso-1.png", alt: "Post publicado no Instagram do Defiverso" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-cashback.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+];
+
+function WildCard({ item }: { item: { src: string; alt: string } }) {
+  return (
+    <div
+      style={{
+        width: 210,
+        borderRadius: 14,
+        border: "1.5px solid #3a332a",
+        overflow: "hidden",
+        background: "#1d1812",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.src}
+        alt={item.alt}
+        loading="lazy"
+        decoding="async"
+        style={{
+          display: "block",
+          width: "100%",
+          aspectRatio: "4/5",
+          objectFit: "cover",
+          objectPosition: "top",
+        }}
+      />
+    </div>
+  );
+}
+
+function WildSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#14110D",
+        color: "#FAFAFA",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.4,
+          backgroundImage: "radial-gradient(#ffffff14 1.2px,transparent 1.4px)",
+          backgroundSize: "20px 20px",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "relative",
+          maxWidth: 1400,
+          margin: "0 auto",
+          paddingTop: 84,
+          paddingBottom: 84,
+        }}
+      >
+        <div className="mp-pad" style={{ textAlign: "center", marginBottom: 40 }}>
+          <Eyebrow label="Entregáveis reais" color="#7CF067" />
+          <h2
+            style={{
+              fontFamily: "Atelier, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(30px,4.2vw,52px)",
+              lineHeight: 1.02,
+              letterSpacing: "-1px",
+              margin: 0,
+            }}
+          >
+            Na prática, <span style={{ color: "#7CF067" }}>no feed</span>.
+          </h2>
+          <p
+            style={{
+              fontSize: 16,
+              lineHeight: 1.6,
+              color: "#b8b1a6",
+              maxWidth: 560,
+              margin: "18px auto 0",
+            }}
+          >
+            Carrosséis, posts e capas de reels que a Kaleidos produziu e que
+            estão publicados nos perfis dos clientes agora. Passa o mouse pra
+            pausar e olhar de perto.
+          </p>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <Marquee pauseOnHover repeat={3} className="[--duration:48s] [--gap:1.1rem] p-0">
+            {WILD_ROW_A.map((item) => (
+              <WildCard key={item.src} item={item} />
+            ))}
+          </Marquee>
+          <Marquee pauseOnHover reverse repeat={3} className="[--duration:56s] [--gap:1.1rem] p-0">
+            {WILD_ROW_B.map((item) => (
+              <WildCard key={item.src} item={item} />
+            ))}
+          </Marquee>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────── S8c · QUALIFICADOR (claro) — "not for everyone" ───────────
+   Padrão do estudo: "Não é pra todo mundo. Mas provavelmente é pra você."
+   Split ✓/✗ sem número inventado; ICP founder/C-level. */
+const QUALI_SIM = [
+  "Você é founder ou C-level com expertise real e histórias pra contar",
+  "Sua empresa vende por confiança: B2B, serviços, educação, cripto/fintech",
+  "Você topa dar a cara e gravar (~2 horas por mês, dirigidas pela gente)",
+  "Você pensa em horizonte de 6 meses, não em viral de 2 semanas",
+];
+const QUALI_NAO = [
+  "Você quer viral da noite pro dia (isso é loteria, não método)",
+  "Você não quer aparecer de jeito nenhum",
+  "Você quer uma persona inventada que não é você",
+  "Você quer terceirizar até a própria opinião",
+];
+
+function QualificadorSection() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#FAFAFA",
+        overflow: "hidden",
+        backgroundImage:
+          "linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px)",
+        backgroundSize: "34px 34px",
+      }}
+    >
+      <div
+        className="mp-pad"
+        style={{
+          position: "relative",
+          maxWidth: 1000,
+          margin: "0 auto",
+          paddingTop: 84,
+          paddingBottom: 84,
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: 44 }}>
+          <Eyebrow label="Pra quem é" />
+          <h2
+            style={{
+              fontFamily: "Atelier, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(30px,4.2vw,52px)",
+              lineHeight: 1.02,
+              letterSpacing: "-1px",
+              margin: 0,
+              color: "#14110D",
+            }}
+          >
+            Não é pra todo mundo.
+            <br />
+            Mas{" "}
+            <span
+              style={{
+                background: "#7CF067",
+                color: "#14110D",
+                padding: ".06em .22em",
+                borderRadius: 6,
+              }}
+            >
+              provavelmente é pra você
+            </span>
+            .
+          </h2>
+        </div>
+        <div className="mp-grid2">
+          <div
+            style={{
+              background: "#14110D",
+              border: "1.5px solid #14110D",
+              borderRadius: 18,
+              padding: "28px 26px",
+              boxShadow: "6px 6px 0 #7CF067",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "Gridlite, monospace",
+                fontSize: 11.5,
+                letterSpacing: 2.5,
+                textTransform: "uppercase",
+                color: "#7CF067",
+                marginBottom: 16,
+              }}
+            >
+              É pra você se
+            </div>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {QUALI_SIM.map((item) => (
+                <li
+                  key={item}
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    padding: "9px 0",
+                    borderBottom: "1px solid #2a241d",
+                    fontSize: 14.5,
+                    lineHeight: 1.55,
+                    color: "#d8d1c6",
+                  }}
+                >
+                  <span style={{ color: "#7CF067", fontWeight: 800, flexShrink: 0 }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            style={{
+              background: "#fff",
+              border: "1.5px solid #14110D",
+              borderRadius: 18,
+              padding: "28px 26px",
+              boxShadow: "6px 6px 0 #D262B2",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "Gridlite, monospace",
+                fontSize: 11.5,
+                letterSpacing: 2.5,
+                textTransform: "uppercase",
+                color: "#D262B2",
+                marginBottom: 16,
+              }}
+            >
+              Não é pra você se
+            </div>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {QUALI_NAO.map((item) => (
+                <li
+                  key={item}
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    padding: "9px 0",
+                    borderBottom: "1px solid #e8e2d8",
+                    fontSize: 14.5,
+                    lineHeight: 1.55,
+                    color: "#4a443c",
+                  }}
+                >
+                  <span style={{ color: "#D262B2", fontWeight: 800, flexShrink: 0 }}>✗</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: 15,
+            color: "#6b6258",
+            margin: "32px auto 0",
+            maxWidth: 520,
+          }}
+        >
+          Se você se viu na coluna da esquerda, a conversa de qualificação é o
+          próximo passo. Sem pitch ensaiado: a gente olha seu perfil junto e
+          fala se faz sentido.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────────── S10 · FAQ (claro) ─────────────────────── */
 const FAQ_ITEMS = [
   {
@@ -674,7 +1873,7 @@ const FAQ_HTML = `
 <section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
   <div class="mp-pad" style="position:relative;max-width:820px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
     <div style="text-align:center;margin-bottom:40px;">
-      <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">FAQ</div>
+      ${eyebrow("FAQ")}
       <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,48px);line-height:1;letter-spacing:-1px;margin:0;color:#14110D;">As objeções que todo founder tem.<br><span style="${HL}">Respondidas.</span></h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
@@ -735,25 +1934,25 @@ export default function MarcaPessoalPage() {
         <Web3V2Defs />
         <style dangerouslySetInnerHTML={{ __html: MP_STYLE }} />
 
-        {/* S1 · Hero */}
-        <div dangerouslySetInnerHTML={{ __html: HERO_HTML }} />
+        {/* S1 · Hero "parede de prova" (conteúdo real + print real) */}
+        <HeroSection />
 
         {/* Marquee de logos de clientes (prova social imediata) */}
         <Web3V2ClientsMarquee />
 
-        {/* S2 · Prova agregada + congruência */}
+        {/* S2 · Prova agregada + congruência (NumberTicker) */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: PROVA_HTML }} />
+          <StatsSection />
         </Reveal>
 
-        {/* S3 · Problema */}
+        {/* S3 · Problema + timeline de dores */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: PROBLEMA_HTML }} />
+          <ProblemaSection />
         </Reveal>
 
-        {/* S4 · Os dados (com fonte) */}
+        {/* S4 · Os dados (com fonte, count-up) */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: DADOS_HTML }} />
+          <DadosSection />
         </Reveal>
 
         {/* S4b · Mais dados de mercado (Edelman 2025, acadêmico, Nielsen…) */}
@@ -771,12 +1970,12 @@ export default function MarcaPessoalPage() {
           <div dangerouslySetInnerHTML={{ __html: FAZEMOS_HTML }} />
         </Reveal>
 
-        {/* S6 · O método */}
+        {/* S6 · O método (stepper auto-rotativo) */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: METODO_HTML }} />
+          <MetodoSection />
         </Reveal>
 
-        {/* S7 · Prova / cases (métricas de case-data.ts) */}
+        {/* S7 · Prova / cases (métricas de case-data.ts, device com conteúdo real) */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: CASES_HTML }} />
         </Reveal>
@@ -786,9 +1985,19 @@ export default function MarcaPessoalPage() {
           <div dangerouslySetInnerHTML={{ __html: PRINTS_HTML }} />
         </Reveal>
 
+        {/* S8b · Na prática, no feed — galeria marquee de entregáveis reais */}
+        <Reveal>
+          <WildSection />
+        </Reveal>
+
         {/* S8 · Comparativo */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: COMPARATIVO_HTML }} />
+        </Reveal>
+
+        {/* S8c · Qualificador — não é pra todo mundo */}
+        <Reveal>
+          <QualificadorSection />
         </Reveal>
 
         {/* S9 · Oferta */}
