@@ -21,39 +21,56 @@ const b64 = (p) => fs.readFileSync(p).toString("base64");
 const ATELIER = b64("public/papers/base/fonts/Atelier.ttf");
 const GRIDLITE = b64("public/papers/base/fonts/Gridlite.otf");
 
-// POOL grande: colagens de FUNDO CLARO (recortam limpo) de 3 pastas.
-const DIRS = ["public/v2/elements", "public/v2/collage", "public/v2/hands"];
+// POOL: colagens que JÁ vêm sem fundo (transparentes). Usadas COMO ESTÃO — sem
+// remover fundo, sem recolorir, sem halo (o Gabriel já mandou sem fundo; forçar
+// mastigava a imagem). Filtra por nome de subject + transparência real; trim só
+// pra cortar borda vazia; dedupe png/webp.
+const DIRS = ["public/v2/collage", "public/v2/elements", "public/v2/hands"];
+const SUBJECT = /colagem|hands|david|eye|megafone|mao|mulher|maquina|boca|dali|einstein|olho|brain|estatua|cerebro|relogio|smartphone|dinheiro|cursor|robo|washington|tvs|computador/i;
+const seen = new Set();
 const candidates = [];
 for (const d of DIRS) {
   if (!fs.existsSync(d)) continue;
   for (const f of fs.readdirSync(d)) {
-    if (/\.(webp|png)$/i.test(f) && !/logo|icon|partner/i.test(f)) candidates.push(path.join(d, f));
+    if (!/\.(webp|png)$/i.test(f)) continue;
+    if (!SUBJECT.test(f)) continue;
+    const stem = f.replace(/\.(webp|png)$/i, "");
+    if (seen.has(stem)) continue; seen.add(stem);
+    candidates.push(path.join(d, f));
   }
 }
-// recorta branco→transparente, traço→carvão; guarda só as de fundo claro
-async function toTransparent(fp) {
-  // trim: corta a borda branca uniforme → o elemento preenche o quadro
-  let buf;
-  try { buf = await sharp(fp).trim({ threshold: 15 }).toBuffer(); } catch { buf = await sharp(fp).toBuffer(); }
-  const st = await sharp(buf).grayscale().stats();
-  if (st.channels[0].mean <= 175) return null; // fundo escuro/foto → fora
-  const { data, info } = await sharp(buf).grayscale().raw().toBuffer({ resolveWithObject: true });
-  const { width: w, height: h, channels: c } = info;
-  const out = Buffer.alloc(w * h * 4);
-  for (let i = 0; i < w * h; i++) {
-    const lum = data[i * c];
-    const alpha = lum > 200 ? 0 : Math.min(255, (200 - lum) * 1.8);
-    const v = Math.min(lum, 26); // carvão (recolorido via CSS quando no rosa)
-    out[i * 4] = v; out[i * 4 + 1] = v; out[i * 4 + 2] = v; out[i * 4 + 3] = alpha;
+// saturação média sobre pixels visíveis (pra descartar elemento colorido)
+function meanSat(data, info) {
+  const c = info.channels; let sat = 0, cnt = 0;
+  for (let i = 0; i < info.width * info.height; i++) {
+    if (c === 4 && data[i * c + 3] < 40) continue;
+    const r = data[i * c], g = data[i * c + 1], b = data[i * c + 2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    sat += mx === 0 ? 0 : (mx - mn) / mx; cnt++;
   }
-  return (await sharp(out, { raw: { width: w, height: h, channels: 4 } }).png().toBuffer()).toString("base64");
+  return cnt ? sat / cnt : 0;
+}
+async function loadElement(fp) {
+  const st = await sharp(fp).stats();
+  if (st.isOpaque) return null; // opaco (foto/retângulo com fundo) → fora
+  // é RECORTE DE VERDADE? precisa de bastante área transparente ao redor
+  const { data, info } = await sharp(fp).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const c = info.channels; let transp = 0;
+  for (let i = 0; i < info.width * info.height; i++) if (data[i * c + 3] < 30) transp++;
+  const transpFrac = transp / (info.width * info.height);
+  if (transpFrac < 0.22) return null; // pouca transparência = retângulo (ex: eye-halftone) → fora
+  if (meanSat(data, info) > 0.28) return null; // colorido → clasha com burst → fora
+  // usa COMO ESTÁ, só trim da borda transparente
+  let buf;
+  try { buf = await sharp(fp).trim({ threshold: 8 }).png().toBuffer(); } catch { buf = await sharp(fp).png().toBuffer(); }
+  return buf.toString("base64");
 }
 const POOL = [];
 for (const fp of candidates) {
-  const b = await toTransparent(fp);
+  const b = await loadElement(fp);
   if (b) POOL.push(b);
 }
-console.log(`pool de colagens (fundo claro): ${POOL.length}`);
+console.log(`pool de colagens transparentes (as-is): ${POOL.length}`);
 
 function hashStr(s) {
   let h = 2166136261;
@@ -88,9 +105,9 @@ function html(item) {
   const pinkBurst = (hs >> 3) % 2 === 0; // varia cor do burst
   const burstColor = pinkBurst ? PINK : GREEN;
   const accent = pinkBurst ? GREEN : PINK; // acento complementa o burst
-  // elemento escuro + halo branco (die-cut): destaca do burst rosa E verde. O halo
-  // segue a FORMA do recorte (colagem já é transparente), não um quadrado.
-  const collageFilter = "filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(1px 1px 0 #fff) drop-shadow(-1px -1px 0 #fff);";
+  // elemento usado COMO ESTÁ (cor+alpha originais). Só uma sombra sutil pra
+  // separar do burst — sem remover fundo, sem recolorir, sem halo forçado.
+  const collageFilter = "filter:drop-shadow(0 6px 14px rgba(0,0,0,.55));";
   const label = { cripto: "CRIPTO", cases: "CASE", growth: "GROWTH", marketing: "MARKETING", ia: "IA" }[item.category] || "KALEIDOS";
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   @font-face{font-family:Atelier;src:url(data:font/ttf;base64,${ATELIER});}
