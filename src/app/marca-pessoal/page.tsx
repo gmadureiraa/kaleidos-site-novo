@@ -53,9 +53,12 @@ export const metadata: Metadata = {
   },
 };
 
-// Highlight verde de headline (padrão web3v2): faixa de 40% atrás da palavra.
+// Highlight verde de headline: bloco sólido de altura total com tinta escura por
+// cima. A faixa de 40% deixava topo/base das letras invisíveis em fundo escuro
+// (dark on dark) — palavra virava borrão. Bloco sólido dá contraste máximo e
+// legível em qualquer fundo, mantendo a cara sticker neo-brutal.
 const HL =
-  "background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;";
+  "background:#7CF067;color:#14110D;padding:.06em .22em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone;";
 
 const WA_AUDIT =
   "https://wa.me/5512997796835?text=" +
@@ -101,7 +104,7 @@ const HERO_HTML = `
     <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:5%;top:14%;width:clamp(56px,7vw,92px);animation:starspin 26s linear infinite;opacity:.9;">
     <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:6%;top:18%;width:clamp(44px,6vw,72px);animation:starspin2 20s linear infinite;opacity:.85;">
     <img src="/v2/collage/sticker-tothemoon.png" alt="" loading="lazy" decoding="async" style="position:absolute;right:3%;bottom:10%;width:clamp(96px,11vw,160px);filter:drop-shadow(3px 5px 7px rgba(0,0,0,.4));transform:rotate(6deg);animation:floaty 8s ease-in-out infinite;">
-    <img src="/v2/collage/brain-glasses.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:3%;bottom:8%;width:clamp(88px,9vw,132px);transform:rotate(-8deg);animation:floaty2 9s ease-in-out infinite;opacity:.85;filter:invert(1) contrast(1.05);">
+    <img src="/v2/collage/brain-glasses.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:3%;bottom:8%;width:clamp(88px,9vw,132px);transform:rotate(-8deg);animation:floaty2 9s ease-in-out infinite;opacity:.8;filter:invert(1) contrast(1.05);mix-blend-mode:screen;">
   </div>
   <div class="mp-pad" style="position:relative;max-width:1000px;margin:0 auto;padding-top:92px;padding-bottom:84px;text-align:center;">
     <div style="display:inline-flex;align-items:center;gap:9px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#7CF067;border:1.5px solid #3a332a;border-radius:999px;padding:8px 18px;background:#1d1812;box-shadow:3px 3px 0 #D262B2;margin-bottom:28px;">&#9679; FOUNDER-LED GROWTH</div>
@@ -421,10 +424,10 @@ const METODO_HTML = `
       </div>
     </div>
     <div class="mp-grid4" style="margin-top:32px;">
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;"><div style="font-weight:800;font-size:15px;color:#14110D;">Bio com resultado</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Uma tese, não um cargo. Bandeira pessoal, não currículo.</div></div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;"><div style="font-weight:800;font-size:15px;color:#14110D;">Volume é rei</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Cadência alta e previsível vence perfeição esporádica.</div></div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;"><div style="font-weight:800;font-size:15px;color:#14110D;">Reels + carrosséis</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Reel adquire, carrossel constrói autoridade e salvamento.</div></div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;"><div style="font-weight:800;font-size:15px;color:#14110D;">Autenticidade real</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Bastidor, opinião e história. Nada de roteiro de robô.</div></div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #7CF067;"><div style="font-weight:800;font-size:15px;color:#14110D;">Bio com resultado</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Uma tese, não um cargo. Bandeira pessoal, não currículo.</div></div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #D262B2;"><div style="font-weight:800;font-size:15px;color:#14110D;">Volume é rei</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Cadência alta e previsível vence perfeição esporádica.</div></div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #7CF067;"><div style="font-weight:800;font-size:15px;color:#14110D;">Reels + carrosséis</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Reel adquire, carrossel constrói autoridade e salvamento.</div></div>
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #D262B2;"><div style="font-weight:800;font-size:15px;color:#14110D;">Autenticidade real</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Bastidor, opinião e história. Nada de roteiro de robô.</div></div>
     </div>
   </div>
 </section>
