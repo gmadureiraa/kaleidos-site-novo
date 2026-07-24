@@ -361,8 +361,8 @@ const CASES_HTML = `
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;">Operação founder-brand em curso: carrosséis educativos puxando o engajamento mais qualificado do perfil e o reel de manifesto como peça de maior engajamento (112 curtidas e 20 comentários numa base recém-criada). <a href="/cases/neobankless" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Ver case</a></p>
       </div>
       <div style="background:#1d1812;border:1.5px dashed #3a332a;border-radius:14px;padding:22px 24px;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9a9186;">Em construção · sócios da DSEC Labs</div>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;">Autoridade em segurança Bitcoin em três frentes simultâneas: 2 artigos de thought leadership por semana no LinkedIn, newsletter semanal e mini-curso de 5 dias, com pauta integrada. <a href="/cases/dsec" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Ver case</a></p>
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9a9186;">Em construção · Gui Campos + Léo Maximiliano (DSEC)</div>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;">Dois founders, dois pipelines: Gui (alcance, 17,8k na largada) no modo roteiro-completo e Léo (autoridade técnica) no modo yapping — tema + hook, ele grava, a gente repurposa. Por trás, a base institucional: 2 artigos/semana no LinkedIn, newsletter semanal e mini-curso de 5 dias. <a href="/cases/dsec" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Ver case</a></p>
       </div>
     </div>
   </div>
@@ -437,7 +437,7 @@ const OFERTA_HTML = `
     <div class="mp-grid3" style="max-width:1080px;margin:0 auto;align-items:stretch;">
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9a9186;">Porta de entrada</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Fundação</h3>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Founder Essencial</h3>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Tese, auditoria dos perfis e produção das peças-mãe. Você publica, a gente produz e orienta.</p>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
           <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Tese e bio-manifesto</li>
@@ -445,7 +445,7 @@ const OFERTA_HTML = `
           <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Calendário editorial aprovado</li>
           <li style="padding:6px 0;">Publicação por sua conta</li>
         </ul>
-        <a href="/agendar" class="cta-btn" style="margin-top:22px;display:inline-flex;justify-content:center;background:transparent;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Conversar sobre o Fundação</a>
+        <a href="/agendar" class="cta-btn" style="margin-top:22px;display:inline-flex;justify-content:center;background:transparent;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Conversar sobre o Founder Essencial</a>
       </div>
       <div style="background:#1d1812;border:2px solid #7CF067;border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;box-shadow:6px 6px 0 #7CF067;position:relative;">
         <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:999px;padding:5px 14px;font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;">done-for-you</span>
