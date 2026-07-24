@@ -73,6 +73,7 @@ export function FooterDemo() {
   const pages = locale === 'en'
     ? [
         { title: "Home", href: "/" },
+        { title: "Founder Brand", href: "/marca-pessoal" },
         { title: "Cases", href: "/cases" },
         { title: "Blog", href: "/blog" },
         { title: "Papers", href: "/papers" },
@@ -81,6 +82,7 @@ export function FooterDemo() {
       ]
     : [
         { title: "Início", href: "/" },
+        { title: "Marca Pessoal", href: "/marca-pessoal" },
         { title: "Cases", href: "/cases" },
         { title: "Blog", href: "/blog" },
         { title: "Papers", href: "/papers" },

@@ -148,6 +148,13 @@ export function Navbar() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
+                    <Link href={withLang('/marca-pessoal')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
+                      {locale === 'en' ? 'Founder Brand' : 'Marca Pessoal'}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
                      <Link href={withLang('/sobre')} className="text-white hover:text-gray-200 bg-transparent border-none px-4 py-2 rounded-md">
                       {t('nav','about')}
                     </Link>
@@ -262,6 +269,12 @@ export function Navbar() {
               <div>
                 <Link href={withLang('/portfolio')} className="block text-sm font-medium text-white py-1">
                   {locale === 'en' ? 'Portfolio' : 'Portfólio'}
+                </Link>
+              </div>
+              {/* Marca Pessoal (founder-led growth) */}
+              <div>
+                <Link href={withLang('/marca-pessoal')} className="block text-sm font-medium text-white py-1">
+                  {locale === 'en' ? 'Founder Brand' : 'Marca Pessoal'}
                 </Link>
               </div>
               {/* Blog */}
