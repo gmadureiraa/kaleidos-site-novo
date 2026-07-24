@@ -108,17 +108,18 @@ const MP_STYLE = `
   .kv2 .mp-grid6{grid-template-columns:1fr;}
   .kv2 .mp-pad{padding-left:20px;padding-right:20px;}
 }
-/* ── Hero "parede de prova" ── */
-.kv2 .mp-hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;}
-.kv2 .mp-wall{position:relative;height:640px;display:flex;gap:18px;justify-content:center;}
+/* ── Hero "parede de prova" (só conteúdo real rolando; sem card de print) ── */
+.kv2 .mp-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;}
+.kv2 .mp-wall{position:relative;height:600px;display:flex;gap:16px;justify-content:center;}
 .kv2 .mp-wall-mobile{display:none;}
-.kv2 .mp-wall-col{width:158px;height:100%;overflow:hidden;}
-.kv2 .mp-wall-card{width:158px;border-radius:14px;border:1.5px solid #3a332a;overflow:hidden;background:#1d1812;}
+.kv2 .mp-wall-col{width:162px;height:100%;overflow:hidden;}
+.kv2 .mp-wall-col--mid{margin-top:-38px;}
+.kv2 .mp-wall-card{width:162px;border-radius:14px;border:1.5px solid #3a332a;overflow:hidden;background:#1d1812;}
 .kv2 .mp-wall-card img{display:block;width:100%;height:auto;}
-.kv2 .mp-wall-fade-top,.kv2 .mp-wall-fade-bottom{position:absolute;left:-20px;right:-20px;height:120px;z-index:20;pointer-events:none;}
+.kv2 .mp-wall-fade-top,.kv2 .mp-wall-fade-bottom{position:absolute;left:-24px;right:-24px;height:130px;z-index:20;pointer-events:none;}
 .kv2 .mp-wall-fade-top{top:0;background:linear-gradient(#14110D,transparent);}
 .kv2 .mp-wall-fade-bottom{bottom:0;background:linear-gradient(transparent,#14110D);}
-.kv2 .mp-phone-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(2deg);z-index:10;}
+@media(max-width:1160px){.kv2 .mp-wall-col:nth-child(5){display:none;}}
 @media(max-width:1060px){
   .kv2 .mp-hero-grid{grid-template-columns:1fr;gap:36px;}
   .kv2 .mp-wall{display:none;}
@@ -129,21 +130,24 @@ const MP_STYLE = `
 .kv2 .mp-dores:before{content:"";position:absolute;top:11px;left:4%;right:4%;border-top:1.5px dashed #3a332a;}
 @media(max-width:980px){.kv2 .mp-dores{grid-template-columns:repeat(2,1fr);} .kv2 .mp-dores:before{display:none;}}
 @media(max-width:560px){.kv2 .mp-dores{grid-template-columns:1fr;}}
-/* ── Header de seção: GIGANTE + assimétrico (12-col, não centralizado) ── */
-.kv2 .mp-head{display:grid;grid-template-columns:repeat(12,1fr);gap:20px 34px;align-items:end;margin-bottom:52px;}
-.kv2 .mp-head-l{grid-column:1 / span 8;min-width:0;}
-.kv2 .mp-head-r{grid-column:9 / span 4;align-self:end;padding-bottom:10px;min-width:0;}
-.kv2 .mp-h2{font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(42px,8.2vw,116px);line-height:.84;letter-spacing:-3px;margin:0;text-wrap:balance;}
-.kv2 .mp-h2 .hl{background:#7CF067;color:#14110D;padding:.02em .12em;border-radius:10px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
-.kv2 .mp-h2 .out{-webkit-text-stroke:2px currentColor;color:transparent;}
+/* ── Header de seção: editorial, comedido + assimétrico (12-col) ──
+   Tipografia LIMPA: headline em Inter (legível em texto longo), Atelier fica
+   reservado a números e palavras-âncora curtas. Nada de type gigante gritando. */
+.kv2 .mp-head{display:grid;grid-template-columns:repeat(12,1fr);gap:14px 34px;align-items:end;margin-bottom:46px;}
+.kv2 .mp-head-l{grid-column:1 / span 7;min-width:0;}
+.kv2 .mp-head-r{grid-column:8 / span 5;align-self:end;padding-bottom:8px;min-width:0;}
+.kv2 .mp-h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(30px,3.5vw,50px);line-height:1.05;letter-spacing:-1.6px;margin:0;text-wrap:balance;}
+.kv2 .mp-h2 .hl{font-family:'Inter',sans-serif;background:#7CF067;color:#14110D;padding:.06em .2em;border-radius:7px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+.kv2 .mp-h2 .acc{font-family:Atelier,sans-serif;font-weight:400;letter-spacing:-1px;}
+.kv2 .mp-h2 .out{-webkit-text-stroke:1.5px currentColor;color:transparent;}
 /* variante stack (containers estreitos ≤1000: título largura total, lead abaixo) */
-.kv2 .mp-head--stack{grid-template-columns:1fr;gap:18px;align-items:start;}
+.kv2 .mp-head--stack{grid-template-columns:1fr;gap:16px;align-items:start;}
 .kv2 .mp-head--stack .mp-head-l{grid-column:1 / -1;}
-.kv2 .mp-head--stack .mp-head-r{grid-column:1 / -1;align-self:start;padding-bottom:0;max-width:620px;}
+.kv2 .mp-head--stack .mp-head-r{grid-column:1 / -1;align-self:start;padding-bottom:0;max-width:640px;}
 @media(max-width:900px){
-  .kv2 .mp-head{grid-template-columns:1fr;gap:16px;margin-bottom:36px;}
+  .kv2 .mp-head{grid-template-columns:1fr;gap:14px;margin-bottom:34px;}
   .kv2 .mp-head-l,.kv2 .mp-head-r{grid-column:1 / -1;padding-bottom:0;}
-  .kv2 .mp-h2{font-size:clamp(38px,10.5vw,62px);letter-spacing:-1.6px;line-height:.9;}
+  .kv2 .mp-h2{font-size:clamp(27px,6.4vw,40px);letter-spacing:-1.2px;line-height:1.08;}
 }
 /* ── ASCII torus wrap ── */
 .kv2 .mp-torus-wrap{overflow:hidden;}
@@ -251,79 +255,6 @@ const headHTML = (
   };margin:0;">${lead}</p></div>
 </div>`;
 
-/* Moldura de iPhone fluida com "screen-slot" trocável (padrão do teardown:
-   moldura percentual + slot absoluto). CSS puro, hard-shadow da marca. */
-function PhoneFrame({
-  children,
-  width = 250,
-  rotate = 0,
-  shadow = "#7CF067",
-}: {
-  children: React.ReactNode;
-  width?: number;
-  rotate?: number;
-  shadow?: string;
-}) {
-  return (
-    <div
-      style={{
-        width,
-        transform: rotate ? `rotate(${rotate}deg)` : undefined,
-        background: "#14110D",
-        border: "1.5px solid #3a332a",
-        borderRadius: 40,
-        padding: 10,
-        boxShadow: `9px 9px 0 ${shadow}`,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "6px 0 8px",
-        }}
-      >
-        <span
-          style={{
-            width: 68,
-            height: 7,
-            borderRadius: 99,
-            background: "#2a241d",
-            display: "inline-block",
-          }}
-        />
-      </div>
-      <div
-        style={{
-          borderRadius: 28,
-          overflow: "hidden",
-          background: "#000",
-          border: "1px solid #2a241d",
-        }}
-      >
-        {children}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "8px 0 4px",
-        }}
-      >
-        <span
-          style={{
-            width: 34,
-            height: 4,
-            borderRadius: 99,
-            background: "#2a241d",
-            display: "inline-block",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 /* ── Conteúdo REAL publicado nos perfis de clientes (public/Cases/…).
    Nada aqui é mockup: são capas de reels e slides de carrossel entregues. ── */
 const WALL_COL_A: { src: string; alt: string }[] = [
@@ -341,6 +272,14 @@ const WALL_COL_B: { src: string; alt: string }[] = [
   { src: "/Cases/neobankless/conteudo/instagram/post-global.jpg", alt: "Post publicado no Instagram da NeoBankless" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+];
+const WALL_COL_C: { src: string; alt: string }[] = [
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
 ];
 
 function WallCard({ item }: { item: { src: string; alt: string } }) {
@@ -402,11 +341,11 @@ function HeroSection() {
             />
             <h1
               style={{
-                fontFamily: "Atelier, sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(44px,6vw,92px)",
-                lineHeight: 0.9,
-                letterSpacing: "-2.5px",
+                fontSize: "clamp(38px,4.8vw,68px)",
+                lineHeight: 1.02,
+                letterSpacing: "-2px",
                 margin: 0,
               }}
             >
@@ -417,7 +356,7 @@ function HeroSection() {
                 style={{
                   background: "#7CF067",
                   color: "#14110D",
-                  padding: ".04em .18em",
+                  padding: ".04em .2em",
                   borderRadius: 8,
                   display: "inline-block",
                 }}
@@ -503,120 +442,37 @@ function HeroSection() {
                 margin: "26px 0 0",
               }}
             >
-              &larr; ao lado: conteúdo real publicado em perfis de clientes.
-              nada de mockup.
+              &larr; conteúdo real publicado em perfis de clientes. nada de
+              mockup.
             </p>
           </div>
 
-          {/* Parede de prova (desktop) */}
+          {/* Parede de prova (desktop): só conteúdo real publicado rolando.
+              Três colunas em marquee vertical, sem card de print (o print do
+              Lucas vive na seção "Nossos cases no Instagram", não aqui). */}
           <div className="mp-wall" aria-hidden="true">
             <div className="mp-wall-fade-top" />
             <div className="mp-wall-fade-bottom" />
             <div className="mp-wall-col">
-              <Marquee vertical repeat={3} className="[--duration:44s] [--gap:1.1rem] h-full p-0">
+              <Marquee vertical repeat={3} className="[--duration:46s] [--gap:1rem] h-full p-0">
                 {WALL_COL_A.map((item) => (
                   <WallCard key={item.src} item={item} />
                 ))}
               </Marquee>
             </div>
-            <div className="mp-wall-col">
-              <Marquee vertical reverse repeat={3} className="[--duration:52s] [--gap:1.1rem] h-full p-0">
+            <div className="mp-wall-col mp-wall-col--mid">
+              <Marquee vertical reverse repeat={3} className="[--duration:54s] [--gap:1rem] h-full p-0">
                 {WALL_COL_B.map((item) => (
                   <WallCard key={item.src} item={item} />
                 ))}
               </Marquee>
             </div>
-            <div className="mp-phone-wrap">
-              <div style={{ position: "relative" }}>
-                <PhoneFrame width={250} shadow="#7CF067">
-                  {/* Tela = perfil IG real do Lucas: print do header (público,
-                      capturado 2026-07) + grade de capas de reels publicados. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/marca-pessoal/prints/ig-lucas-amendola.png"
-                    alt="Print do perfil público @lucas.amendolaa no Instagram: 173 mil seguidores, verificado, fundador do @defiverso"
-                    loading="lazy"
-                    decoding="async"
-                    style={{ display: "block", width: "100%", height: "auto" }}
-                  />
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "repeat(3,1fr)",
-                      gap: 2,
-                      background: "#000",
-                      paddingTop: 2,
-                    }}
-                  >
-                    {[
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg",
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg",
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg",
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg",
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg",
-                      "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg",
-                    ].map((src) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={src}
-                        src={src}
-                        alt="Capa de reel publicado no perfil do Lucas Amendola"
-                        loading="lazy"
-                        decoding="async"
-                        style={{
-                          display: "block",
-                          width: "100%",
-                          aspectRatio: "3/4",
-                          objectFit: "cover",
-                          objectPosition: "top",
-                        }}
-                      />
-                    ))}
-                  </div>
-                </PhoneFrame>
-                <span
-                  style={{
-                    position: "absolute",
-                    top: -16,
-                    right: -22,
-                    transform: "rotate(4deg)",
-                    background: "#7CF067",
-                    color: "#06250a",
-                    border: "1.5px solid #14110D",
-                    borderRadius: 999,
-                    padding: "6px 13px",
-                    fontFamily: "Gridlite, monospace",
-                    fontSize: 10.5,
-                    letterSpacing: 1.5,
-                    textTransform: "uppercase",
-                    boxShadow: "3px 3px 0 #D262B2",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  173 mil seguidores · print real
-                </span>
-                <span
-                  style={{
-                    position: "absolute",
-                    bottom: 26,
-                    left: -30,
-                    transform: "rotate(-5deg)",
-                    background: "#1d1812",
-                    color: "#FAFAFA",
-                    border: "1.5px solid #3a332a",
-                    borderRadius: 999,
-                    padding: "6px 13px",
-                    fontFamily: "Gridlite, monospace",
-                    fontSize: 10.5,
-                    letterSpacing: 1.5,
-                    textTransform: "uppercase",
-                    boxShadow: "3px 3px 0 #7CF067",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  cliente kaleidos
-                </span>
-              </div>
+            <div className="mp-wall-col">
+              <Marquee vertical repeat={3} className="[--duration:50s] [--gap:1rem] h-full p-0">
+                {WALL_COL_C.map((item) => (
+                  <WallCard key={item.src} item={item} />
+                ))}
+              </Marquee>
             </div>
           </div>
         </div>
@@ -624,7 +480,7 @@ function HeroSection() {
         {/* Parede de prova (mobile): faixa horizontal */}
         <div className="mp-wall-mobile" style={{ marginTop: 40 }}>
           <Marquee repeat={3} className="[--duration:40s] [--gap:.9rem] p-0">
-            {[...WALL_COL_A, ...WALL_COL_B].map((item) => (
+            {[...WALL_COL_A, ...WALL_COL_B, ...WALL_COL_C].map((item) => (
               <div
                 key={item.src}
                 style={{
@@ -704,6 +560,24 @@ function StatsSection() {
           paddingBottom: 72,
         }}
       >
+        <div style={{ textAlign: "center", marginBottom: 44 }}>
+          <Eyebrow label="A prova, em números" color="#D262B2" />
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(18px,2vw,22px)",
+              lineHeight: 1.4,
+              letterSpacing: "-.4px",
+              color: "#14110D",
+              maxWidth: 560,
+              margin: "0 auto",
+            }}
+          >
+            Quatro anos operando founder-led growth para founders e criadores
+            de cripto, web3 e fintech.
+          </p>
+        </div>
         <div className="mp-stats">
           {STATS.map((s) => (
             <div
@@ -1202,7 +1076,7 @@ const MERCADO_HTML = `
         <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn B2B Thought Leadership Report (2025)</p>
       </div>
       <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:26px;line-height:1.15;color:#FAFAFA;">Variável mais crítica pra atrair capital</div>
+        <div style="font-family:'Inter',sans-serif;font-weight:800;font-size:23px;line-height:1.2;letter-spacing:-.6px;color:#FAFAFA;">Variável mais crítica pra atrair capital</div>
         <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">Estudo acadêmico revisado por pares conclui que a marca pessoal do founder e do time fundador é a variável mais crítica pra atrair investimento em ventures.</p>
         <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Heliyon / ScienceDirect, estudo peer-reviewed (2019)</p>
       </div>
@@ -1318,12 +1192,12 @@ const FAZEMOS_HTML = `
       <span style="display:inline-block;background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:12px;padding:14px 26px;font-weight:800;font-size:clamp(17px,2.2vw,22px);box-shadow:5px 5px 0 #D262B2;transform:rotate(-1deg);">~2 horas do seu tempo por mês. O resto é com a gente.</span>
     </div>
     <div class="mp-grid6" style="max-width:1000px;margin:0 auto;">
-      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎠</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Carrossel Instagram</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A peça-mãe: autoridade e salvamento</div></div>
-      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎬</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Reels</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Aquisição e alcance de topo de funil</div></div>
-      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">📱</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Stories com direção</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Bastidor diário que aquece a audiência</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">💼</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Post LinkedIn + thread no X</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Repurpose que reforça a autoridade B2B</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">🎙️</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Podcast como convidado</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Prospecção, agendamento e cortes</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:22px;">📊</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">sempre</span></div><div style="font-weight:700;font-size:15px;margin-top:8px;">Relatório mensal</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Leitura junto: dobrar no que cresce</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">01</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Carrossel Instagram</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A peça-mãe: autoridade e salvamento</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">02</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Reels</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Aquisição e alcance de topo de funil</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">03</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Stories com direção</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Bastidor diário que aquece a audiência</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">04</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Post LinkedIn + thread no X</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Repurpose que reforça a autoridade B2B</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">05</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Podcast como convidado</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Prospecção, agendamento e cortes</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">06</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">sempre</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Relatório mensal</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Leitura junto: dobrar no que cresce</div></div>
     </div>
   </div>
 </section>
@@ -1435,13 +1309,13 @@ function MetodoSection() {
             </div>
             <p
               style={{
-                fontFamily: "Atelier, sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 700,
-                fontSize: "clamp(20px,2.6vw,30px)",
-                lineHeight: 1.15,
+                fontSize: "clamp(19px,2.2vw,26px)",
+                lineHeight: 1.25,
                 color: "#FAFAFA",
                 margin: 0,
-                letterSpacing: "-0.5px",
+                letterSpacing: "-0.4px",
               }}
             >
               Uma engrenagem só: cada peça de conteúdo alimenta a próxima, mês
@@ -1585,24 +1459,22 @@ function PrintsInvertedSection() {
             <Eyebrow label="Prova · founder-led" color="#D262B2" />
             <h2
               style={{
-                fontFamily: "Atelier, sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(32px,5.4vw,68px)",
-                lineHeight: 0.9,
-                letterSpacing: "-2px",
+                fontSize: "clamp(28px,3.6vw,46px)",
+                lineHeight: 1.06,
+                letterSpacing: "-1.6px",
                 margin: 0,
                 color: "#14110D",
               }}
             >
-              O founder puxa
-              <br />
-              a empresa.{" "}
+              O founder puxa a empresa.{" "}
               <span
                 style={{
                   background: "#7CF067",
                   color: "#14110D",
-                  padding: ".02em .12em",
-                  borderRadius: 10,
+                  padding: ".06em .2em",
+                  borderRadius: 7,
                 }}
               >
                 De verdade.
@@ -2264,7 +2136,7 @@ const CTA_FINAL_HTML = `
   <img src="/v2/collage/star-green.webp" alt="" loading="lazy" decoding="async" style="position:absolute;left:6%;top:20%;width:clamp(48px,6vw,80px);animation:starspin 26s linear infinite;opacity:.85;pointer-events:none;">
   <img src="/v2/collage/star-pink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;right:7%;bottom:18%;width:clamp(40px,5vw,64px);animation:starspin2 20s linear infinite;opacity:.8;pointer-events:none;">
   <div class="mp-pad" style="position:relative;max-width:840px;margin:0 auto;padding-top:96px;padding-bottom:96px;text-align:center;">
-    <h2 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(30px,4.4vw,54px);line-height:1.05;letter-spacing:-1.2px;margin:0;">Sua expertise vira autoridade.<br>Sua autoridade vira <span style="${HL}color:#14110D;">pipeline</span>.</h2>
+    <h2 style="font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,48px);line-height:1.08;letter-spacing:-1.4px;margin:0;">Sua expertise vira autoridade.<br>Sua autoridade vira <span style="${HL}color:#14110D;">pipeline</span>.</h2>
     <p style="font-size:17px;line-height:1.6;color:#b8b1a6;max-width:540px;margin:22px auto 0;">O mercado vai pesquisar seu nome de novo amanhã. A pergunta é o que ele vai encontrar daqui a 6 meses.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
       <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Ver se faz sentido &rarr;</a>
