@@ -20,7 +20,7 @@ export const blogNew54: BlogPost[] = [
     publishedAt: "2026-07-13",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/growth-saas-infraestrutura-web3/cover.png",
     tags: [
       "growth web3",
       "infraestrutura web3",

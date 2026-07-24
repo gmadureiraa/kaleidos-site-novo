@@ -20,7 +20,7 @@ export const blogNew56: BlogPost[] = [
     publishedAt: "2026-07-11",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/dao-governanca-engajamento-comunidade/cover.png",
     tags: [
       "dao",
       "governança web3",

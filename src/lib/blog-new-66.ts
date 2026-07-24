@@ -19,7 +19,7 @@ export const blogNew66: BlogPost[] = [
     publishedAt: "2026-10-18",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/press-release-cripto-que-a-midia-publica/cover.png",
     tags: [
       "press release cripto",
       "pr cripto",
@@ -175,7 +175,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-19",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/gtm-cripto-vs-saas-quadro-comparativo/cover.png",
     tags: [
       "go-to-market",
       "gtm cripto",
@@ -311,7 +311,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-20",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/guia-de-token-distribution-points-airdrop-liquidity/cover.png",
     tags: [
       "token distribution",
       "airdrop",
@@ -451,7 +451,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-21",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/comunicar-tokenomics-sem-soar-como-esquema/cover.png",
     tags: [
       "tokenomics",
       "comunicação de token",
@@ -580,7 +580,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-22",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/web3-gtm-strategy-analytics-on-chain/cover.png",
     tags: [
       "gtm web3",
       "analytics on-chain",
@@ -705,7 +705,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-24",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/playbook-de-lancamento-2026-checklist-tge/cover.png",
     tags: [
       "tge",
       "lançamento de token",

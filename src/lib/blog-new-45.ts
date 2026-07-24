@@ -20,7 +20,7 @@ export const blogNew45: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/quanto-custa-social-media-marketing-precos/cover.png",
     tags: [
       "quanto custa social media",
       "preço social media",

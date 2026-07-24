@@ -17,7 +17,7 @@ export const blogNew23: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/airdrop-pos-mortem-evitar-dump/cover.png",
     tags: [
       "airdrop",
       "dump de token",

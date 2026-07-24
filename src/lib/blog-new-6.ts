@@ -62,7 +62,7 @@ export const blogNew6: BlogPost[] = [
           "Depende da jurisdição e da estrutura. Em fevereiro de 2025, a Divisão de Finanças Corporativas da SEC dos EUA publicou uma nota afirmando que memecoins, em geral, não envolvem a oferta e venda de valores mobiliários. Isso não significa imunidade: fraude continua sendo fraude, e a classificação pode mudar conforme como o token é vendido e promovido.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/marketing-memecoin-o-que-funciona/cover.png",
     content: `# Marketing para memecoins: o que funciona (e o que é só golpe)
 
 Memecoin é, na prática, quase todo marketing. Não tem roadmap de produto para vender, não tem receita, não tem promessa de utilidade complexa. O que move o preço é atenção: narrativa, comunidade, cultura e timing.

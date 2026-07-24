@@ -69,7 +69,7 @@ export const seoPosts: BlogPost[] = [
           "Para a maioria dos projetos até a Série A, a agência sai mais barata e mais rápida que montar time interno: você acessa estrategista, copy, designer, gestor de tráfego e gestor de comunidade por uma fração do custo de contratar todos. Time interno faz sentido quando o marketing vira vantagem competitiva central e o volume justifica os salários. Muitos projetos começam com agência e internalizam depois.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/quanto-custa-marketing-cripto-brasil-2026/cover.png",
     content: `# Quanto custa marketing cripto no Brasil em 2026
 
 ## Resposta rápida: as faixas de preço
@@ -201,7 +201,7 @@ Se você tem um projeto cripto e quer entender qual faixa faz sentido pro seu mo
           "Citação por IA pode aparecer mais rápido que ranking de SEO tradicional, porque modelos com busca em tempo real (Perplexity, ChatGPT com web) leem conteúdo novo em dias. Conteúdo atualizado nos últimos 30 dias recebe mais citações. Mas autoridade consistente (ser citado de forma recorrente) leva meses de publicação densa e presença off-page.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/geo-como-ser-citado-pela-ia-guia-cripto/cover.png",
     content: `# GEO: como ser citado pela IA (ChatGPT, Perplexity, Claude) — guia para cripto
 
 ## O que é GEO, em uma frase
@@ -343,7 +343,7 @@ Se você quer que a IA cite o seu projeto cripto quando alguém pergunta sobre o
           "Não meça por likes. Meça por: tráfego qualificado gerado (com links rastreáveis por KOL), conversões reais (wallets conectadas, signups, participação no airdrop), retenção dessas pessoas depois de 30 dias e qualidade da comunidade que entrou. Um KOL que traz 500 pessoas que ficam vale mais que um que traz 5 mil que dumpam no dia seguinte.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/kol-marketing-fundraising-cripto-guia/cover.png",
     content: `# KOL marketing e fundraising em cripto: o guia
 
 ## O que é KOL marketing, e por que cripto depende tanto dele

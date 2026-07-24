@@ -17,7 +17,7 @@ export const blogNew33: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/melhores-ferramentas-analytics-cripto-2026/cover.png",
     tags: [
       "analytics cripto",
       "dados on-chain",

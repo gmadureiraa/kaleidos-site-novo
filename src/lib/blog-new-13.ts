@@ -17,7 +17,7 @@ export const blogNew13: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/rebranding-projeto-cripto-quando-como/cover.png",
     tags: [
       "rebranding cripto",
       "marketing cripto",

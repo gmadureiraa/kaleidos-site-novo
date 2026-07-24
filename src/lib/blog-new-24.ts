@@ -20,7 +20,7 @@ export const blogNew24: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/jogo-dos-incentivos-airdrops-2026/cover.png",
     tags: [
       "airdrops",
       "incentivos web3",

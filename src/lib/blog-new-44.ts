@@ -17,7 +17,7 @@ export const blogNew44: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/seo-para-varejo-e-commerce/cover.png",
     tags: [
       "seo e-commerce",
       "seo para varejo",

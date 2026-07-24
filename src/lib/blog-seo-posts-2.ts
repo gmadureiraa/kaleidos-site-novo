@@ -71,7 +71,7 @@ export const seoPosts2: BlogPost[] = [
           "Porque a descoberta mudou. Quem vai contratar uma agência, escolher uma exchange ou estudar um protocolo cada vez mais pergunta a uma IA antes de abrir o Google. GEO (Generative Engine Optimization) é estruturar seu conteúdo pra que ChatGPT, Perplexity e Claude citem você na resposta. Em cripto BR, quase ninguém domina isso, o que abre uma janela rara de vantagem assimétrica pra quem chega primeiro.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/marketing-cripto-guia-completo-2026/cover.png",
     content: `# Marketing cripto em 2026: o guia completo
 
 ## Resposta rápida: o que é marketing cripto em 2026
@@ -238,7 +238,7 @@ Se você tem um projeto cripto e quer desenhar essa estratégia pro seu momento 
           "O pós-TGE é onde o lançamento se prova. As táticas que retêm: dar utilidade contínua ao token (não só especulação), rodar temporadas/programas que dão razão pra ficar (o modelo pós-airdrop da Jupiter e da Ethena), manter a comunidade ativa com comunicação e eventos, e cumprir o roadmap pra justificar a confiança. Token que só existe pra ser vendido no TGE dumpa; token com razão pra segurar, retém.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/como-lancar-token-tge-guia-marketing/cover.png",
     content: `# Como lançar um token (TGE): o guia de marketing
 
 ## Resposta rápida: o que é lançar um token, de verdade
@@ -400,7 +400,7 @@ Se você vai lançar um token e quer desenhar o TGE como processo (do pré-lanç
           "InfoFi (Information Finance) é a narrativa que trata atenção, mindshare e informação como ativos mensuráveis e tokenizáveis. Plataformas que tokenizam o valor da atenção e recompensam quem gera mindshare relevante para projetos são exemplos. Para marketing, InfoFi é especialmente relevante: ele transforma a métrica central do marketing cripto (atenção) em algo com mercado próprio, e muda como projetos compram e medem mindshare.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/narrativas-cripto-2026/cover.png",
     content: `# Narrativas cripto: o que move o mercado em 2026
 
 ## Resposta rápida: as narrativas que movem 2026
@@ -545,7 +545,7 @@ Se você quer posicionar seu projeto cripto na narrativa certa (de forma que o m
           "Ownership é o senso de que a comunidade não é plateia, mas co-autora do projeto, através de governança (votar em decisões), contribuição reconhecida (construir junto) ou propriedade real (deter token/NFT que dá voz). Importa porque ownership transforma membro passivo em defensor ativo: quem sente que o projeto é dele defende, traz outros e fica nos momentos difíceis. É o oposto da comunidade-plateia que evapora quando o preço cai.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/comunidade-cripto-que-nao-morre/cover.png",
     content: `# Comunidade cripto que não morre: como construir
 
 ## Resposta rápida: o que faz uma comunidade cripto durar

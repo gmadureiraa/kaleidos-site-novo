@@ -17,7 +17,7 @@ export const blogNew29: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/conferencia-web3-motor-de-crescimento/cover.png",
     tags: [
       "conferência web3",
       "eventos cripto",

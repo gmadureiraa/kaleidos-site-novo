@@ -17,7 +17,7 @@ export const blogNew25: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/teardown-blast-l2-dump-tvl/cover.png",
     tags: [
       "Blast L2",
       "airdrop",

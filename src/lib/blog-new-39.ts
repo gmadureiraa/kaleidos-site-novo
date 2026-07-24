@@ -17,7 +17,7 @@ export const blogNew39: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/social-media-fintech-estrategia/cover.png",
     tags: [
       "social media fintech",
       "marketing fintech",

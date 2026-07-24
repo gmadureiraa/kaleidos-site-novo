@@ -17,7 +17,7 @@ export const blogNew17: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/segredos-agencia-marketing-web3/cover.png",
     tags: [
       "agência web3",
       "marketing cripto",

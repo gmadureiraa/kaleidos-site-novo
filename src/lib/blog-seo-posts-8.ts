@@ -44,7 +44,7 @@ export const seoPosts8: BlogPost[] = [
         answer: "Crie um documento de voz da marca com exemplos reais de tom, vocabulário e frases proibidas. Inclua esse documento no prompt. Use IA para o rascunho e reserve a etapa de edição para garantir que o resultado soe como a marca, não como um modelo genérico.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/como-criar-conteudo-com-ia/cover.png",
     content: `# Como Criar Conteúdo com IA: Guia Prático para Marcas
 
 IA generativa não substitui redator. Substitui o tempo que você perde olhando pra tela em branco.
@@ -221,7 +221,7 @@ O time de conteúdo do futuro não é menor. É diferente: menos redatores gener
         answer: "Não competindo no mesmo campo. Startup ganha com velocidade, nicho e autenticidade. Conteúdo de fundador com opinião forte, comunidade ativa e atendimento personalizado são vantagens que empresa grande não replica facilmente.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/marketing-para-startups/cover.png",
     content: `# Marketing Digital para Startups: Estratégias que Funcionam com Pouco Budget
 
 O maior erro de marketing que uma startup comete não é escolher o canal errado. É copiar o playbook de quem tem 50x mais dinheiro.
@@ -413,7 +413,7 @@ Use essa velocidade. Teste mais rápido que qualquer concorrente. Aprenda antes 
         answer: "Sim, e muitas vezes é onde faz mais diferença. Uma empresa pequena com automação bem configurada (sequência de boas-vindas, nutrição, reativação de inativos) opera como se tivesse um time de marketing cinco vezes maior. O investimento inicial em ferramentas acessíveis como Brevo ou MailerLite se paga em semanas.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/automacao-marketing-2026/cover.png",
     content: `# Automação de Marketing em 2026: Ferramentas e Estratégias
 
 Automação de marketing não é mais vantagem competitiva. É infraestrutura.
@@ -592,7 +592,7 @@ Esse é exatamente o tipo de infraestrutura que a Kaleidos monta pra seus client
         answer: "Use uma combinação de fit (perfil da empresa e do decisor) e engagement (comportamento). Os frameworks mais usados são BANT (Budget, Authority, Need, Timeline) e MEDDIC pra vendas complexas. Lead scoring automatizado ajuda a escalar a qualificação sem depender só de vendedores.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/como-gerar-leads-b2b/cover.png",
     content: `# Como Gerar Leads B2B: 10 Estratégias Comprovadas
 
 A maioria das empresas B2B tem um problema de leads. Só que não é o problema que elas acham.
@@ -789,7 +789,7 @@ Na Kaleidos, a gente constrói esse sistema de ponta a ponta: da estratégia de 
         answer: "Varia muito por escopo. Um projeto de posicionamento e identidade visual básico pode custar de R$ 15 mil a R$ 50 mil com uma agência especializada. Um rebranding completo de empresa estabelecida pode passar de R$ 100 mil. Para startups em estágio inicial, o mais importante é definir posicionamento claro. O visual pode ser refinado depois.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/branding-para-empresas-tech/cover.png",
     content: `# Branding para Empresas de Tecnologia: Guia Completo
 
 O maior mito de branding em tech é que marca é visual. Não é.
@@ -970,7 +970,7 @@ Branding para empresas de tecnologia é uma das competências centrais da Kaleid
         answer: "Use modelos de atribuição e métricas intermediárias. Para B2B com ciclo de venda longo, meça pipeline influenciado (quanto de receita potencial tocou suas ações de marketing), não apenas conversão direta. Para brand awareness, use métricas como branded search volume, share of voice e pesquisa de percepção.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/roi-marketing-digital/cover.png",
     content: `# Como Calcular o ROI do Marketing Digital (com Exemplos)
 
 Se você não sabe o retorno de cada real investido em marketing, não está fazendo marketing. Está fazendo doação.
@@ -1166,7 +1166,7 @@ Na Kaleidos, a gente constrói a infraestrutura de mensuração junto com a estr
         answer: "Conteúdo educa, entretém ou informa. Copy persuade e pede ação. Na prática, o melhor marketing combina os dois: conteúdo que educa com copy que converte. Um blog post pode ser conteúdo no corpo e copy no CTA.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/copywriting-que-converte/cover.png",
     content: `# Copywriting que Converte: Técnicas para Landing Pages e Anúncios
 
 A diferença entre uma landing page que converte 2% e uma que converte 8% quase nunca é design. É copy.
@@ -1386,7 +1386,7 @@ Na Kaleidos, copy é parte central de todo projeto: landing pages, campanhas, fu
         answer: "Investimento mínimo viável: R$ 5.000 a R$ 10.000/mês (equipe interna ou freelancer + ferramentas). Investimento competitivo: R$ 15.000 a R$ 40.000/mês (conteúdo + link building + técnico). O ROI de SEO bem executado em SaaS tipicamente supera 5:1 em 18 meses.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/seo-para-saas/cover.png",
     content: `# SEO para SaaS: Como Rankear seu Produto no Google
 
 SaaS que cresce só com ads está construindo em cima de areia. Cada aumento de CPC é uma crise, cada mudança de algoritmo de anúncio é um risco, e a margem fica espremida à medida que a competição de lances sobe.
@@ -1597,7 +1597,7 @@ O preço é paciência. E a maioria das empresas não paga esse preço, o que é
         answer: "Três medidas que funcionam: verificação em camadas (captcha + quiz sobre o projeto), atividade mínima para acessar canais (progressive access), e recompensas baseadas em contribuição qualitativa (não em volume de mensagens). Projetos que premiam número de mensagens atraem spam, projetos que premiam contribuição atraem membros.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/community-building-web3/cover.png",
     content: `# Community Building em Web3: Como Construir Comunidades que Crescem
 
 Em web3, comunidade não é um canal de marketing. É o departamento de marketing inteiro.
@@ -1778,7 +1778,7 @@ Construir esse tipo de comunidade é uma das especialidades da Kaleidos. Ajudamo
         answer: "As métricas que importam são: Daily Active Wallets (não downloads), TVL real (não subsidiado), retenção de 30/60/90 dias, revenue por protocolo, e custo de aquisição por wallet financiada. Vanity metrics como total de holders ou volume de transactions inflado por bots são armadilhas comuns.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/growth-hacking-cripto/cover.png",
     content: `# Growth Hacking para Projetos Cripto: Estratégias de Aquisição
 
 Growth hacking em cripto não é o growth hacking do Vale do Silício com um token grudado. É um jogo com regras próprias, ferramentas próprias e armadilhas próprias.

@@ -21,7 +21,7 @@ export const blogNew27: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/livro-web3-marketing-amanda-cassatt-aprendizados/cover.png",
     tags: [
       "web3 marketing",
       "amanda cassatt",

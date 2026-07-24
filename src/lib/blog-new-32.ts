@@ -20,7 +20,7 @@ export const blogNew32: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/web3-marketing-arte-perdida/cover.png",
     tags: [
       "web3 marketing",
       "marketing cripto",

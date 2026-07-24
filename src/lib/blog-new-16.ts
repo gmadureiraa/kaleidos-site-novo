@@ -17,7 +17,7 @@ export const blogNew16: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 12,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/growth-loops-cripto-referral-quests/cover.png",
     tags: [
       "growth loops",
       "referral cripto",

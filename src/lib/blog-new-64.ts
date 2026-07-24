@@ -19,7 +19,7 @@ export const blogNew64: BlogPost[] = [
     publishedAt: "2026-09-28",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/utility-audit-token-tem-utilidade-real/cover.png",
     tags: [
       "tokenomics",
       "utility token",
@@ -161,7 +161,7 @@ O momento certo de fazer essa auditoria é antes do lançamento, quando ainda d�
     publishedAt: "2026-10-01",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/crypto-seo-em-bear-market-construir-trafego/cover.png",
     tags: [
       "seo cripto",
       "bear market",
@@ -291,7 +291,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-03",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/distribuicao-press-release-cripto-2026/cover.png",
     tags: [
       "press release",
       "pr cripto",
@@ -424,7 +424,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-04",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/manufacturing-hype-wave-massa-critica-kols/cover.png",
     tags: [
       "kols",
       "influenciadores cripto",
@@ -554,7 +554,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-07",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/thought-leadership-data-driven-crypto-pragmatist/cover.png",
     tags: [
       "thought leadership",
       "newsletter cripto",
@@ -672,7 +672,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-09",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/teardown-opensea-royalties-on-chain/cover.png",
     tags: [
       "opensea",
       "nft",
@@ -793,7 +793,7 @@ A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintec
     publishedAt: "2026-10-10",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/nft-marketing-guide-2026/cover.png",
     tags: [
       "nft",
       "nft marketing",

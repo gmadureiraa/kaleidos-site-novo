@@ -17,7 +17,7 @@ export const blogNew34: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 12,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/melhores-plataformas-yield-farming-2026/cover.png",
     tags: [
       "yield farming",
       "defi",

@@ -17,7 +17,7 @@ export const blogNew35: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/melhores-market-makers-cripto-2026/cover.png",
     tags: [
       "market maker cripto",
       "liquidez",

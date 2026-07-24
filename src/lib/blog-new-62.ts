@@ -19,7 +19,7 @@ export const blogNew62: BlogPost[] = [
     publishedAt: "2026-08-03",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/crypto-telegram-bible-grupos-canais-promocao/cover.png",
     tags: [
       "telegram cripto",
       "comunidade web3",
@@ -156,7 +156,7 @@ Há mais estratégias de aquisição e comunidade na nossa [seção de growth](/
     publishedAt: "2026-08-04",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/como-criar-estrategia-marketing-cripto-do-zero/cover.png",
     tags: [
       "estratégia de marketing",
       "marketing cripto",
@@ -298,7 +298,7 @@ O mercado brasileiro raramente perdoa a inversão dessa ordem: público existe, 
     publishedAt: "2026-08-05",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/web3-marketing-guia-definitivo-2026/cover.png",
     tags: [
       "web3 marketing",
       "marketing cripto",
@@ -430,7 +430,7 @@ Quem trata canal como lista de presença continua produzindo barulho. Quem trata
     publishedAt: "2026-08-06",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/meme-coin-marketing-licoes-dos-projetos/cover.png",
     tags: [
       "meme coins",
       "marketing cripto",
@@ -552,7 +552,7 @@ A postura madura não é desprezo nem imitação: é extração. Símbolo radica
     publishedAt: "2026-08-10",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/pmf-antes-de-gtm-erro-de-lancar-token-cedo/cover.png",
     tags: [
       "product-market fit",
       "go-to-market",
@@ -671,7 +671,7 @@ O teste é simples e ninguém escapa dele: pause o incentivo e veja quem fica. H
     publishedAt: "2026-08-13",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/teardown-blur-points-farming-vs-opensea/cover.png",
     tags: [
       "blur",
       "opensea",
@@ -790,7 +790,7 @@ Pra quem desenha crescimento em web3 hoje, o teardown cabe numa frase: descubra 
     publishedAt: "2026-09-10",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/crypto-promotion-2026-crescimento-on-chain/cover.png",
     tags: [
       "crypto promotion",
       "growth on-chain",

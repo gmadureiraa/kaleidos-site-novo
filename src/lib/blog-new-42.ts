@@ -17,7 +17,7 @@ export const blogNew42: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/por-que-seu-seo-nao-esta-funcionando/cover.png",
     tags: [
       "seo",
       "seo não funciona",

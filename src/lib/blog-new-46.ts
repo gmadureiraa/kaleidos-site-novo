@@ -17,7 +17,7 @@ export const blogNew46: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/inbound-marketing-para-saas/cover.png",
     tags: [
       "inbound marketing",
       "marketing SaaS",

@@ -17,7 +17,7 @@ export const blogNew41: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/redesenhar-site-sem-perder-seo/cover.png",
     tags: [
       "redesign de site",
       "migração de site",

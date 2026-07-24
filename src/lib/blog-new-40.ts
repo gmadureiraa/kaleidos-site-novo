@@ -20,7 +20,7 @@ export const blogNew40: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/onde-desperdica-verba-google-ads/cover.png",
     tags: [
       "google ads",
       "desperdício de verba",

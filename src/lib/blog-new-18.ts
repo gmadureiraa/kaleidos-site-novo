@@ -20,7 +20,7 @@ export const blogNew18: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/o-que-e-agencia-marketing-cripto/cover.png",
     tags: [
       "agência de marketing cripto",
       "marketing web3",

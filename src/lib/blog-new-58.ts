@@ -20,7 +20,7 @@ export const blogNew58: BlogPost[] = [
     publishedAt: "2026-07-09",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/midia-e-imprensa-projetos-cripto-o-que-funciona/cover.png",
     tags: [
       "assessoria de imprensa",
       "pr cripto",

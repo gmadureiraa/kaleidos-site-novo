@@ -20,7 +20,7 @@ export const blogNew52: BlogPost[] = [
     publishedAt: "2026-07-15",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/como-exchanges-cripto-crescem-base-usuarios-brasil/cover.png",
     tags: [
       "exchanges cripto",
       "growth cripto",

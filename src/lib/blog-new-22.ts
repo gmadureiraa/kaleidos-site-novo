@@ -17,7 +17,7 @@ export const blogNew22: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/dao-marketing-crescer-reter/cover.png",
     tags: [
       "dao marketing",
       "governança descentralizada",

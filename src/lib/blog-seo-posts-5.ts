@@ -71,7 +71,7 @@ export const seoPosts5: BlogPost[] = [
           "Devem ser tratados com ceticismo. Projeções de 'tamanho do mercado de RWA em 2030' variam de centenas de bilhões a vários trilhões de dólares dependendo do relatório e das premissas — são estimativas direcionais, não fatos. Use-as sempre citando a fonte exata e o ano do relatório, nunca como número cravado. O dado mais sólido é o presente: o crescimento já realizado e os players que já entraram.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/stablecoins-rwa-tamanho-mercado-oportunidade-marketing/cover.png",
     content: `# Stablecoins e RWA: tamanho de mercado e a oportunidade de marketing
 
 ## Resposta rápida: o segmento mais lastreado de cripto é o mais subatendido pelo marketing
@@ -218,7 +218,7 @@ Se você tem um projeto nesse território e quer comunicar pra esse público —
           "Olhe a qualidade do engajamento, não o número de seguidores: a proporção de comentários relevantes vs. genéricos, se as respostas vêm de contas reais, se o alcance bate com o número de seguidores, e o histórico de campanhas (os projetos que ele promoveu performaram?). Seguidor é fácil de comprar; comunidade engajada e confiança, não. Peça métricas de posts anteriores e desconfie de quem só mostra contagem de seguidores.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/kol-cripto-por-tier-quanto-custa-influencer/cover.png",
     content: `# KOL cripto por tier: quanto custa cada nível de influencer (com tabela)
 
 ## Resposta rápida: o preço varia por tier, mas o que importa é custo por retenção
@@ -359,7 +359,7 @@ Se você vai investir em KOL e quer desenhar a campanha pra reter — escolhendo
           "Retenção se desenha antes do evento de aquisição, não depois. As alavancas: produto que entrega valor real (a base de tudo), utilidade do token além de especular (governança, fees, acesso), programas contínuos que recompensam uso recorrente (temporadas), e ownership de verdade que transforma detentor em defensor. E medir constantemente: sem coorte e curva de retenção, você não sabe se está melhorando. O erro clássico é tentar reter depois do airdrop, quando o desenho já foi feito.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/retencao-comunidade-cripto-metricas-benchmarks/cover.png",
     content: `# Retenção de comunidade cripto: métricas, benchmarks e como medir
 
 ## Resposta rápida: retenção se mede por valor, não por vaidade
@@ -512,7 +512,7 @@ Se você quer medir a retenção real da sua comunidade e desenhar a estratégia
           "GEO (Generative Engine Optimization, ou Otimização para Mecanismos Generativos) é a disciplina de otimizar conteúdo para ser citado, referenciado e usado como fonte pelas IAs generativas — ChatGPT, Gemini, Perplexity, Claude e os AI Overviews do Google. Em vez de competir por uma posição na lista de links (SEO), o GEO compete por ser a fonte que a IA nomeia na resposta que ela dá ao usuário. É a evolução natural do SEO para a era da busca conversacional.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/seo-vs-geo-2026-onde-investir/cover.png",
     content: `# SEO vs GEO em 2026: onde investir pra ser achado (Google + IA)
 
 ## Resposta rápida: não é escolher um — é fazer os dois

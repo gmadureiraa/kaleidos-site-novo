@@ -20,7 +20,7 @@ export const blogNew57: BlogPost[] = [
     publishedAt: "2026-07-10",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/nft-utilidade-gaming-web3-2026/cover.png",
     tags: [
       "nft",
       "gaming web3",

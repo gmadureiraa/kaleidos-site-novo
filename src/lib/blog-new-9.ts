@@ -17,7 +17,7 @@ export const blogNew9: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/twitter-x-crescimento-projeto-cripto/cover.png",
     tags: [
       "twitter cripto",
       "crypto twitter",

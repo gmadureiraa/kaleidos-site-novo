@@ -17,7 +17,7 @@ export const blogNew1: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/regulacao-marketing-cripto-brasil-2026/cover.png",
     tags: [
       "Lei 14.478/2022",
       "Banco Central do Brasil",

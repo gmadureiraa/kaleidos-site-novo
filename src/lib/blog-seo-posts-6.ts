@@ -68,7 +68,7 @@ export const seoPosts6: BlogPost[] = [
           "Um neobank cripto vende confiança e clareza, não recurso técnico. A agência certa precisa entender produto financeiro on-chain, traduzir custódia e stablecoin em linguagem de pessoa comum, dominar compliance (nunca prometer rendimento garantido) e construir narrativa de marca, não só rodar anúncio. O parceiro errado queima orçamento explicando o produto errado para o público errado. O certo posiciona o neobank como uma categoria, não como mais um cartão.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/neobanks-cripto-cartoes-dolar-2026/cover.png",
     content: `# Neobanks cripto e cartões em dólar: como escolher em 2026
 
 ## Resposta rápida: o que é e como decidir
@@ -223,7 +223,7 @@ Se você **constrói** um neobank ou fintech cripto, a lição é a mesma da Lun
           "Tecnicamente há sobreposição (você arrisca capital sobre um resultado incerto), mas o enquadramento é diferente. Mercado de previsão se posiciona como ferramenta de agregação de informação: o preço reflete a sabedoria coletiva de quem tem dinheiro em jogo, e costuma ser mais rápido e às vezes mais preciso que pesquisas. Esse posicionamento de 'ferramenta de probabilidade', não de 'cassino', é parte central de por que a Polymarket conquistou legitimidade na mídia.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/polymarket-mercados-de-previsao-licao-marketing/cover.png",
     content: `# Polymarket: a lição de marketing dos mercados de previsão
 
 ## Resposta rápida: o que a Polymarket ensina
@@ -364,7 +364,7 @@ Se você tem um projeto cripto e quer descobrir qual dado o seu produto pode ori
           "Que posicionamento é escolha estratégica, não acaso. Kalshi e Polymarket vendem produto parecido, mas escolheram narrativas opostas: 'regulado e legal' contra 'cripto-nativo e sem fronteira'. As duas funcionaram porque foram coerentes e atacaram públicos diferentes. A lição: defina em que terreno você quer ser entendido (compliance e instituições, ou soberania e cripto-nativo) e construa toda a comunicação em volta dessa escolha. Tentar agradar os dois lados dilui a narrativa.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/kalshi-mercado-de-previsao-regulado/cover.png",
     content: `# Kalshi: o mercado de previsão regulado e a lição de posicionamento
 
 ## Resposta rápida: o que é e por que importa

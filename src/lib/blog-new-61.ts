@@ -19,7 +19,7 @@ export const blogNew61: BlogPost[] = [
     publishedAt: "2026-07-22",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/tokenomics-e-marketing-sell-buy-pressure-growth/cover.png",
     tags: [
       "tokenomics",
       "sell pressure",
@@ -155,7 +155,7 @@ A Kaleidos trabalha marketing de cripto e web3 partindo do desenho, não do post
     publishedAt: "2026-07-25",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/x-trading-floor-cripto-content-strategy-tempo-real/cover.png",
     tags: [
       "twitter cripto",
       "x cripto",
@@ -289,7 +289,7 @@ A Kaleidos monta e opera essa máquina para projetos de cripto e web3: curadoria
     publishedAt: "2026-07-26",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/content-led-growth-motor-de-aquisicao-web3/cover.png",
     tags: [
       "content-led growth",
       "seo cripto",
@@ -418,7 +418,7 @@ A Kaleidos desenha e opera esse motor para projetos de cripto, web3 e fintech: a
     publishedAt: "2026-07-27",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/crypto-investor-relations-confianca-de-holders/cover.png",
     tags: [
       "investor relations",
       "ir cripto",
@@ -549,7 +549,7 @@ A Kaleidos estrutura comunicação pós-TGE para projetos cripto: narrativa de r
     publishedAt: "2026-07-28",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/exchange-listing-como-evento-de-gtm/cover.png",
     tags: [
       "exchange listing",
       "listagem cex",
@@ -670,7 +670,7 @@ A Kaleidos planeja e executa listagens como lançamentos: narrativa, trader KOLs
     publishedAt: "2026-07-29",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/come-for-purpose-stay-for-community-mindset-web3/cover.png",
     tags: [
       "comunidade web3",
       "propósito",
@@ -785,7 +785,7 @@ A Kaleidos ajuda projetos a construir essa fundação na ordem certa: articulaç
     publishedAt: "2026-07-30",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/gtm-matrix-a16z-quatro-quadrantes/cover.png",
     tags: [
       "gtm matrix",
       "a16z",

@@ -20,7 +20,7 @@ export const blogNew60: BlogPost[] = [
     publishedAt: "2026-08-28",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/growth-de-exchange-cripto-trafego-organico-e-pago/cover.png",
     tags: [
       "exchange cripto",
       "seo programático",
@@ -161,7 +161,7 @@ A Kaleidos monta exatamente esse tipo de operação para exchanges, protocolos e
     publishedAt: "2026-09-02",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/funil-bowtie-aquisicao-retencao-expansao-cripto/cover.png",
     tags: [
       "bowtie model",
       "revenue architecture",
@@ -288,7 +288,7 @@ A Kaleidos desenha essa arquitetura completa para protocolos, exchanges e produt
     publishedAt: "2026-09-03",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/cinco-animais-christoph-janz-ticket-define-canal/cover.png",
     tags: [
       "christoph janz",
       "cinco animais",
@@ -417,7 +417,7 @@ A Kaleidos começa todo trabalho de growth exatamente por aí: ARPA real, animal
     publishedAt: "2026-09-06",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/airdrop-retroativo-vs-proativo-qual-encaixa/cover.png",
     tags: [
       "airdrop",
       "airdrop retroativo",
@@ -539,7 +539,7 @@ A Kaleidos desenha estratégias de token event de ponta a ponta: critérios de e
     publishedAt: "2026-09-09",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/bots-telegram-cripto-ferramentas-e-guia/cover.png",
     tags: [
       "telegram",
       "bots",
@@ -665,7 +665,7 @@ A Kaleidos desenha, implanta e opera comunidades cripto de ponta a ponta: stack 
     publishedAt: "2026-09-14",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/growth-loops-cripto-viral-conteudo-pago-incentivo/cover.png",
     tags: [
       "growth loops",
       "reforge",
@@ -791,7 +791,7 @@ A Kaleidos desenha essa arquitetura de loops para protocolos, exchanges e produt
     publishedAt: "2026-09-23",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/teardown-ens-airdrop-identidade-governanca/cover.png",
     tags: [
       "ens",
       "airdrop",

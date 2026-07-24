@@ -17,7 +17,7 @@ export const blogNew4: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-defi-protocolo-sem-shill/cover.png",
     tags: [
       "marketing DeFi",
       "protocolo DeFi",

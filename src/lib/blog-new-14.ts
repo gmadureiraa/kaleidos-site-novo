@@ -17,7 +17,7 @@ export const blogNew14: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-stablecoin-brasil/cover.png",
     tags: [
       "stablecoin",
       "dólar digital",

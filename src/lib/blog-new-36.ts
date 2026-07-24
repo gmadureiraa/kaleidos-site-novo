@@ -20,7 +20,7 @@ export const blogNew36: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 14,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/guia-seo-para-cripto/cover.png",
     tags: [
       "SEO cripto",
       "SEO web3",

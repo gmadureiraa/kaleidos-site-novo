@@ -17,7 +17,7 @@ export const blogNew37: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/problemas-criticos-seo-tecnico/cover.png",
     tags: [
       "SEO técnico",
       "crawl budget",

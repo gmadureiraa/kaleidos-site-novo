@@ -19,7 +19,7 @@ export const blogNew65: BlogPost[] = [
     publishedAt: "2026-10-11",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/o-que-uma-agencia-de-marketing-web3-faz/cover.png",
     tags: [
       "agência web3",
       "marketing cripto",
@@ -146,7 +146,7 @@ A Kaleidos opera essas frentes de forma integrada para projetos de cripto, web3 
     publishedAt: "2026-10-12",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/giving-money-away-ciencia-dos-airdrops/cover.png",
     tags: [
       "airdrop",
       "tokenomics",
@@ -269,7 +269,7 @@ A Kaleidos desenha estratégias de lançamento e incentivo para projetos web3 co
     publishedAt: "2026-10-13",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/google-ads-para-fintech-alta-performance/cover.png",
     tags: [
       "google ads",
       "fintech",
@@ -394,7 +394,7 @@ A Kaleidos estrutura e opera mídia paga para fintechs e produtos financeiros co
     publishedAt: "2026-10-14",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/guia-de-kol-2026-estruturar-campanha-influencer/cover.png",
     tags: [
       "kol marketing",
       "influenciadores cripto",
@@ -512,7 +512,7 @@ A Kaleidos estrutura campanhas de influência para projetos cripto e web3 com es
     publishedAt: "2026-10-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/blog-cripto-que-rankeia-arquitetura-seo-aeo/cover.png",
     tags: [
       "seo cripto",
       "aeo",
@@ -643,7 +643,7 @@ A Kaleidos constrói operações de conteúdo orgânico para projetos de cripto,
     publishedAt: "2026-10-17",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/email-marketing-fintech-cripto-9-praticas/cover.png",
     tags: [
       "email marketing",
       "fintech",

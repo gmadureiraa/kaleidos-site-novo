@@ -20,7 +20,7 @@ export const blogNew63: BlogPost[] = [
     publishedAt: "2026-09-15",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/founder-como-jardineiro-arquitetar-ecossistema/cover.png",
     tags: [
       "founder",
       "ecossistema",
@@ -147,7 +147,7 @@ A Kaleidos trabalha com essa lente em projetos web3: transformar visão de found
     publishedAt: "2026-09-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/metricas-reais-por-categoria-defi-dao-l1-l2/cover.png",
     tags: [
       "métricas web3",
       "defi",
@@ -270,7 +270,7 @@ A Kaleidos monta esse tipo de sistema de métricas como parte da estratégia de 
     publishedAt: "2026-09-17",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/points-program-que-nao-colapsa-na-distribuicao/cover.png",
     tags: [
       "points program",
       "airdrop",
@@ -386,7 +386,7 @@ A Kaleidos desenha campanhas de incentivo e lançamento para projetos web3 com e
     publishedAt: "2026-09-20",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/fintech-content-marketing-tudo-que-precisa-saber/cover.png",
     tags: [
       "fintech",
       "content marketing",
@@ -515,7 +515,7 @@ A Kaleidos opera esse sistema para fintechs e projetos do mercado financeiro: es
     publishedAt: "2026-09-24",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/cinco-fases-de-gtm-lunar-strategy/cover.png",
     tags: [
       "go-to-market",
       "lunar strategy",
@@ -637,7 +637,7 @@ A Kaleidos aplica a própria versão dessa disciplina em lançamentos web3 e fin
     publishedAt: "2026-09-26",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/layer-de-trend-narrativa-da-vez-sem-oportunismo/cover.png",
     tags: [
       "posicionamento",
       "april dunford",
@@ -757,7 +757,7 @@ A Kaleidos faz esse trabalho de posicionamento para projetos web3 e fintech: ali
     publishedAt: "2026-09-27",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/gtm-hibrido-plg-self-service-sales-enterprise/cover.png",
     tags: [
       "plg",
       "product-led growth",

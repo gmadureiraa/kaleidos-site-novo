@@ -17,7 +17,7 @@ export const blogNew48: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/email-marketing-para-fintech/cover.png",
     tags: [
       "email marketing",
       "fintech",

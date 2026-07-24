@@ -20,7 +20,7 @@ export const blogNew59: BlogPost[] = [
     publishedAt: "2026-08-09",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/engajamento-nao-e-adocao-metricas-de-vaidade-cripto/cover.png",
     tags: [
       "métricas de vaidade",
       "adoção cripto",
@@ -145,7 +145,7 @@ A Kaleidos trabalha exatamente nessa transição: montar o sistema de métricas,
     publishedAt: "2026-08-19",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-de-influencia-em-fintech-como-fazer-dar-certo/cover.png",
     tags: [
       "marketing de influência",
       "fintech",
@@ -260,7 +260,7 @@ A Kaleidos monta esse tipo de operação para fintechs e projetos web3 há anos:
     publishedAt: "2026-08-20",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/anuncios-cripto-facebook-meta-compliance-targeting/cover.png",
     tags: [
       "anúncios cripto",
       "meta ads",
@@ -382,7 +382,7 @@ A Kaleidos estrutura mídia paga para projetos cripto e fintech dentro dessas re
     publishedAt: "2026-08-22",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/seo-tecnico-web3-schema-glossario-paginas-comparacao/cover.png",
     tags: [
       "seo web3",
       "seo técnico",
@@ -502,7 +502,7 @@ A Kaleidos constrói essa arquitetura para projetos cripto e web3 como parte da 
     publishedAt: "2026-08-23",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/newsletter-como-ativo-de-autoridade-cripto-modelo-not-boring/cover.png",
     tags: [
       "newsletter",
       "not boring",
@@ -620,7 +620,7 @@ A Kaleidos desenha e opera newsletters de autoridade para marcas cripto e fintec
     publishedAt: "2026-08-27",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/como-escolher-agencia-marketing-web3-guia-vetting/cover.png",
     tags: [
       "agência web3",
       "agência de marketing cripto",

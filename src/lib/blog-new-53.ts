@@ -20,7 +20,7 @@ export const blogNew53: BlogPost[] = [
     publishedAt: "2026-07-14",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-para-fintech-de-dolar-digital-stablecoin/cover.png",
     tags: [
       "stablecoin",
       "dólar digital",

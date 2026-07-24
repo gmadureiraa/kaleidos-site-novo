@@ -17,7 +17,7 @@ export const blogNew2: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/estatisticas-marketing-cripto-2026/cover.png",
     tags: [
       "marketing cripto",
       "estatísticas cripto",

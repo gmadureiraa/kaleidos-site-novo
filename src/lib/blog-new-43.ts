@@ -17,7 +17,7 @@ export const blogNew43: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/quanto-do-faturamento-investir-em-marketing/cover.png",
     tags: [
       "orçamento de marketing",
       "budget de marketing",

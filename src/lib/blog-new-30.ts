@@ -21,7 +21,7 @@ export const blogNew30: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/facebook-ads-cripto-restricoes/cover.png",
     tags: [
       "facebook ads cripto",
       "meta ads",

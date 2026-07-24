@@ -17,7 +17,7 @@ export const blogNew10: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-wallet-infraestrutura-cripto/cover.png",
     tags: [
       "marketing cripto",
       "wallets",

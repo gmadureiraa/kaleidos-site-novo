@@ -17,7 +17,7 @@ export const blogNew21: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/developer-grants-como-gtm/cover.png",
     tags: [
       "developer grants",
       "go-to-market web3",

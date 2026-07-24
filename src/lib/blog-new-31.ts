@@ -17,7 +17,7 @@ export const blogNew31: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/advertising-cripto-que-converte/cover.png",
     tags: [
       "advertising cripto",
       "mídia paga web3",

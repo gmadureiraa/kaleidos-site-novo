@@ -17,7 +17,7 @@ export const blogNew38: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/auditoria-google-ads-guia/cover.png",
     tags: [
       "auditoria google ads",
       "google ads",

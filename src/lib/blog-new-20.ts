@@ -17,7 +17,7 @@ export const blogNew20: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/tokenomics-e-marketing-sell-buy-pressure/cover.png",
     tags: [
       "tokenomics",
       "marketing cripto",

@@ -17,7 +17,7 @@ export const blogNew19: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/agencias-seo-cripto-o-que-avaliar/cover.png",
     tags: [
       "seo cripto",
       "agência seo",

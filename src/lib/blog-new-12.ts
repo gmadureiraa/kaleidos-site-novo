@@ -17,7 +17,7 @@ export const blogNew12: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 10,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-nft-2026-vale-a-pena/cover.png",
     tags: [
       "NFT",
       "marketing NFT",

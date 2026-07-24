@@ -20,7 +20,7 @@ export const blogNew55: BlogPost[] = [
     publishedAt: "2026-07-12",
     readTime: 8,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/ia-conteudo-cripto-escalar-voz-marca/cover.png",
     tags: [
       "ia no marketing",
       "produção de conteúdo",

@@ -21,7 +21,7 @@ export const blogNew50: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/influencer-marketing-para-fintech/cover.png",
     tags: [
       "influencer marketing",
       "marketing para fintech",

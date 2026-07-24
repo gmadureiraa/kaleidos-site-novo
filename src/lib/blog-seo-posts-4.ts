@@ -72,7 +72,7 @@ export const seoPosts4: BlogPost[] = [
           "Dá, e muitos dos melhores lançamentos foram enxutos. O caso da Hyperliquid mostra que comunidade real e produto bom valem mais que orçamento de mídia — eles cresceram sem rodada de VC tradicional. Com R$ 60 mil a R$ 220 mil bem distribuídos (foco em narrativa, comunidade e retenção, não em KOL caro), um projeto com produto sólido lança bem. O que não dá é fazer TGE sem produto e esperar que o orçamento compense a falta dele.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/orcamento-lancamento-token-tge-custo/cover.png",
     content: `# Orçamento de um lançamento de token (TGE): quanto custa de verdade
 
 ![Capa do Playbook de TGE 2026 da Kaleidos, material que detalha o passo a passo de um lançamento de token](/blog/orcamento-lancamento-token-tge-custo/capa-paper-tge.png)
@@ -220,7 +220,7 @@ Se você está planejando um TGE e quer um orçamento honesto — distribuído p
           "Em muitos casos, sim. Distribuir o airdrop em temporadas (em vez de um evento único) permite premiar uso contínuo, ajustar critérios conforme você aprende, e dar razão para a comunidade ficar — quem vendeu na temporada 1 pode não qualificar na 2. Jupiter e outros usaram variações dessa lógica. O custo é complexidade de comunicação e operação. O ganho é retenção: temporada transforma airdrop de 'pegou e vendeu' em 'continua usando para qualificar'.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/airdrop-quanto-alocar-supply-roi/cover.png",
     content: `# Airdrop: quanto alocar do supply e qual o ROI real
 
 ## Resposta rápida: 5% a 15% é a faixa, mas o ROI é retenção
@@ -377,7 +377,7 @@ Se você está desenhando a tokenomics de um airdrop e quer acertar a alocação
           "Depende do estágio. Projeto em lançamento ou com equipe enxuta ganha velocidade e expertise com agência especializada — evita meses de tentativa e erro e acessa rede de KOLs e comunidades. Projeto maduro, com volume e orçamento, pode internalizar parte (gestão de comunidade, social) e manter agência para estratégia e produções de autoridade. O erro comum é montar time interno sem repertório de cripto e reinventar a roda. Há um checklist disso em nosso guia de como escolher agência.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/mercado-marketing-cripto-brasil-2026/cover.png",
     content: `# O mercado de marketing cripto no Brasil: tamanho, players e tendências 2026
 
 ![Capa do material de marketing cripto da Kaleidos, agência especializada no mercado brasileiro](/blog/mercado-marketing-cripto-brasil-2026/capa-marketing-cripto.png)
@@ -498,7 +498,7 @@ Se você quer entender onde o seu projeto se encaixa nesse mapa — quanto inves
           "Awareness: narrativa forte e distribuição (KOL, conteúdo, GEO). Interesse: conteúdo de autoridade que educa e qualifica. Comunidade: rituais, status, motivos reais para pertencer — não só um Discord vazio. Ativação: reduzir atrito da primeira ação (onboarding, incentivo, airdrop bem desenhado). Conversão: utilidade do token, temporadas, ownership. A regra: não otimize a etapa que está 'ok' — ataque o vazamento maior primeiro, porque é onde cada real rende mais.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/funil-growth-cripto-awareness-conversao/cover.png",
     content: `# Funil de growth cripto: do awareness à conversão (com benchmarks)
 
 ## Resposta rápida: em cripto, a comunidade é uma etapa do funil

@@ -71,7 +71,7 @@ export const seoPosts3: BlogPost[] = [
           "Não. Airdrop funciona quando o produto já tem valor e o drop premia uso real: aí ele acelera adoção e cria donos. Falha quando é usado pra fabricar tração que não existe: atrai mercenários que farmam, recebem e vendem, deixando métricas infladas que desabam no dia seguinte. O airdrop é amplificador, não substituto de produto. Por isso a pergunta certa não é 'devo fazer airdrop?', e sim 'meu produto retém alguém depois que o incentivo acaba?'.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/airdrop-programa-de-pontos-guia-marketing-cripto/cover.png",
     content: `# Airdrop e programa de pontos: o guia de marketing cripto
 
 ## Resposta rápida: airdrop e pontos são marketing, não cupom
@@ -232,7 +232,7 @@ Se você vai distribuir tokens e quer desenhar o airdrop e o programa de pontos 
           "Projetos usam InfoFi de três formas: (1) medir mindshare real, entender quanta atenção capturam vs concorrentes, com dado em vez de achismo; (2) distribuir narrativa via mérito, incentivar criadores a falar do projeto por contribuição relevante, não por suborno de bot; e (3) campanhas de atenção rankeadas, usar leaderboards e recompensas para mobilizar a criação de conteúdo de qualidade num lançamento. O cuidado é não transformar em farming raso: a relevância tem que ser real.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/infofi-kaito-atencao-novo-jogo-cripto/cover.png",
     content: `# InfoFi e Kaito: como ganhar atenção no novo jogo cripto
 
 ## Resposta rápida: o que é InfoFi e por que importa pro seu marketing
@@ -368,7 +368,7 @@ Se você quer entender quanto mindshare seu projeto captura e desenhar uma estra
           "A onda institucional inclui gestoras de ativos de grande porte explorando tokenização, redes de pagamento globais integrando stablecoins aos seus trilhos, e bancos de investimento publicando teses sobre o tamanho do mercado de RWA. Nomes do calibre de a16z (na tese de cripto), Mastercard (em pagamentos com stablecoin) e Standard Chartered (em research de tokenização) sinalizam que o movimento saiu do nicho cripto e entrou na agenda das maiores instituições financeiras do mundo.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/stablecoins-rwa-marketing-onda-institucional/cover.png",
     content: `# Stablecoins e RWA: o marketing da nova onda institucional
 
 ## Resposta rápida: o marketing mudou porque o público mudou
@@ -527,7 +527,7 @@ Se você tem um projeto de stablecoin, RWA ou tokenização e precisa comunicar 
           "Depende do estágio e da dor. In-house faz sentido quando você tem volume contínuo, orçamento pra contratar bem e tempo pra montar e gerir o time. Agência faz sentido quando você precisa de expertise pronta, velocidade e a leitura de quem já viu muitos projetos, especialmente em momentos críticos como um TGE. Muitos projetos começam com agência pra ter direção e estrutura, e internalizam parte depois. O erro é montar in-house sem expertise ou contratar agência genérica: os dois saem caros pelo motivo errado.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/como-escolher-agencia-marketing-cripto-checklist/cover.png",
     content: `# Como escolher uma agência de marketing cripto (checklist)
 
 ## Resposta rápida: o que separa a agência certa da errada

@@ -20,7 +20,7 @@ export const blogNew51: BlogPost[] = [
     publishedAt: "2026-07-16",
     readTime: 9,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/marketing-tokenizacao-rwa-brasil/cover.png",
     tags: [
       "rwa",
       "tokenização de ativos",

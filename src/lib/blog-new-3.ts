@@ -17,7 +17,7 @@ export const blogNew3: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/nubank-teardown-marketing-marca/cover.png",
     tags: [
       "Nubank",
       "marketing de marca",

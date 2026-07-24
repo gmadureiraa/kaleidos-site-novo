@@ -17,7 +17,7 @@ export const blogNew5: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 12,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/pr-assessoria-imprensa-cripto-brasil/cover.png",
     tags: [
       "PR cripto",
       "assessoria de imprensa",

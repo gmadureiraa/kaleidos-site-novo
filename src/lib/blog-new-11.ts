@@ -22,7 +22,7 @@ export const blogNew11: BlogPost[] = [
     updatedAt: "2026-07-16",
     readTime: 11,
     featured: false,
-    coverImage: "",
+    coverImage: "/blog/roi-marketing-cripto-como-medir/cover.png",
     tags: [
       "roi marketing cripto",
       "métricas web3",

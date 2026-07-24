@@ -49,7 +49,7 @@ export const seoPosts7: BlogPost[] = [
         answer: "Sim. A maioria das grandes agências cripto é estrangeira e cobra em dólar, mas existem opções brasileiras. A Kaleidos é uma agência de marketing digital com especialização em cripto, web3 e fintech, posicionada como boutique cripto-nativa: o diferencial é tratar conteúdo de autoridade (papers, estudos de caso, blog técnico) como ativo de aquisição, não como enfeite institucional.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/melhores-agencias-marketing-cripto-brasil-2026/cover.png",
     content: `# As melhores agências de marketing cripto e web3 em 2026 (Brasil e mundo)
 
 > **TL;DR:** Cripto é um mercado global, e as melhores agências de marketing web3 também são. Abaixo estão as agências reais e reconhecidas que dominam o setor em 2026, com o que cada uma faz de verdade e pra quem serve. No final, posicionamos a Kaleidos como a opção boutique cripto-nativa do Brasil. Antes da lista, os critérios honestos pra você não contratar a errada.
@@ -223,7 +223,7 @@ Em 2026, o que converte não é o post mais barulhento, é a fonte mais confiáv
         answer: "Os princípios sim, a cópia literal não. Airdrop sem produto que retém vira mercenário de farm. O que se replica é a sequência: produto que entrega antes da promessa, narrativa com inimigo claro, e incentivo desenhado para premiar uso real, não volume vazio.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/hyperliquid-estrategia-marketing-teardown/cover.png",
     content: `# Hyperliquid: estudo da estratégia de marketing
 
 ## TL;DR
@@ -373,7 +373,7 @@ Os princípios sim, a cópia literal não. Airdrop sem produto que retém vira m
         answer: "Sim, desde que tenha processo e não dependa de uma única pessoa. A boutique certa cresce o escopo com você (de conteúdo pra paid, de paid pra comunidade) mantendo os mesmos seniors no comando. O risco a investigar é capacidade ociosa: pergunte como ela absorve picos de demanda em lançamento.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/agencia-boutique-vs-grande-marketing-cripto/cover.png",
     content: `# Agência boutique vs. agência grande pra marketing cripto: qual escolher
 
 Você é founder de um projeto web3, fechou a rodada, tem produto pra mostrar e agora precisa de growth. A primeira decisão estrutural não é "Twitter ou Discord", "KOL ou paid", "narrativa ou performance". É o tipo de parceiro que vai tocar tudo isso: uma agência boutique especializada em cripto ou uma agência grande de marketing que também atende web3.
@@ -513,7 +513,7 @@ Se você está decidindo o parceiro de growth do seu projeto cripto, comece aval
         answer: "Depois de ter narrativa repetível, audiência própria e prova de reputação. O TGE é um evento de ativação que amplifica o que já existe. Lançar token sem narrativa de pé transforma o evento em saída de liquidez, não em entrada de comunidade.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/gtm-web3-go-to-market-cripto/cover.png",
     content: `# Go-to-market web3: o framework NARRA pra lançar projeto cripto
 
 A maioria dos times cripto trata go-to-market como sinônimo de "campanha de lançamento": ativar KOLs, abrir o airdrop, comprar tráfego, marcar o TGE no calendário. Aí o token lista, faz topo no primeiro dia e some do feed em duas semanas. O problema raramente foi o produto. Foi a ordem.
@@ -686,7 +686,7 @@ Depois de ter narrativa repetível, audiência própria e prova de reputação. 
         answer: "Construindo autoridade com conteúdo técnico e didático, não só campanha de performance. Quem domina a narrativa (papers, estudos de caso, distribuição em comunidade) capta a atenção de quem decide. É o trabalho de marketing web3 que a Kaleidos faz com projetos cripto.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/projetos-web3-brasileiros-2026/cover.png",
     content: `# 15 projetos web3 brasileiros pra ficar de olho em 2026
 
 **TL;DR:** O web3 brasileiro deixou de ser experimento de cripto-nativo e virou infraestrutura financeira. Em 2026 o eixo da cena nacional é claro: tokenização de ativos reais (RWA), stablecoins lastreadas em real e a rede privada que sustenta o Drex, o real digital do Banco Central. Esta lista reúne 15 projetos brasileiros que estão construindo isso de verdade, organizados pela posição que ocupam na cadeia. Não é ranking de hype: é mapa de quem está na mesa onde o dinheiro de verdade está sendo movimentado.
@@ -847,7 +847,7 @@ Se o seu projeto está nessa lista, ou quer estar, o gargalo provavelmente não 
         answer: "Sim, adaptando o princípio, não copiando os canais. O núcleo é: criar um personagem com utilidade emocional, distribuir conteúdo onde as pessoas já estão (não onde sua tese quer que estejam) e dar à comunidade um stake real antes de pedir dinheiro. A Kaleidos aplica essa lógica brand-first em projetos cripto e de consumo no Brasil.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/pudgy-penguins-marketing-marca-teardown/cover.png",
     content: `# Pudgy Penguins: como uma coleção de NFT virou marca global
 
 **TL;DR:** Pudgy Penguins pegou uma coleção de NFT quase morta (floor abaixo de 1 ETH, fundadores expulsos) e a transformou numa marca de consumo global. O segredo não foi cripto: foi brand-building clássico, invertido. Brinquedo de pelúcia no Walmart como funil de aquisição, GIFs no GIPHY como motor de distribuição (65,1 bilhões de views, mais que Disney) e licenciamento de IP que paga royalty real pro dono do NFT. O token PENGU veio depois, e é justamente a parte mais fraca do case. A lição pra qualquer marca: construa demanda no mundo real primeiro, tokenize a comunidade depois.
@@ -1014,7 +1014,7 @@ Sim, adaptando o princípio, não copiando os canais. O núcleo é: criar um per
         answer: "Atenção qualificada que vira ação on-chain. Se a conversa cresce e as wallets ativas, retenção e TVL acompanham, você tem mindshare real. Se a conversa cresce e o on-chain não se mexe, você comprou ruído.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/mindshare-vs-vanity-metrics-cripto/cover.png",
     content: `# Mindshare cripto vs. vanity metrics: o que realmente medir em marketing cripto
 
 **TL;DR:** Likes, seguidores e impressões não pagam a TVL. Mindshare, a parcela de atenção e confiança que um projeto ocupa na cabeça do mercado certo, é o que correlaciona com fluxo, preço e adoção. Este post separa as duas categorias e mostra o que medir de verdade em marketing cripto.
@@ -1158,7 +1158,7 @@ Quer entender quanto mindshare o seu projeto ocupa hoje e onde está vazando ate
         answer: "Escrever em uma frase contra quem você está e por que alguém deveria escolher você. Se a frase serve para qualquer concorrente, você ainda não tem posicionamento, tem só um produto.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/branding-web3-marca-cripto-memoravel/cover.png",
     content: `# Branding web3: como criar uma marca cripto memorável
 
 **TL;DR**
@@ -1315,7 +1315,7 @@ Se você quer ver isso aplicado a casos reais, com a tese de marca destrinchada 
         answer: "Mindshare é a fatia de atenção que seu projeto ocupa dentro da sua narrativa frente aos concorrentes. Importa porque sinaliza para a exchange que listar seu token vai gerar volume de negociação, que é a receita dela.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/listing-exchange-marketing-cripto/cover.png",
     content: `# Listagem em exchange: como o marketing influencia entrar na Binance e Coinbase
 
 **TL;DR:** Listar na Binance ou na Coinbase não é só passar numa auditoria técnica e jurídica. As duas avaliam demanda de mercado, liquidez e força de comunidade, que são produtos diretos de marketing. A Binance chegou a transformar engajamento em critério explícito com o mecanismo de votação da comunidade. Quem trata marketing como algo "para depois do listing" chega à mesa de decisão sem os sinais que a exchange precisa ver. O trabalho começa de 6 a 12 meses antes, e é fundo de funil puro: narrativa, prova de demanda e distribuição.
@@ -1480,7 +1480,7 @@ Mindshare é a fatia de atenção que seu projeto ocupa dentro da sua narrativa 
         answer: "Pelo gargalo mais caro. Se é produção de conteúdo, monte o pipeline editorial primeiro. Se é geração de pipeline comercial, comece pelo enriquecimento e scoring de leads. Resolva um pipeline bem antes de tentar automatizar tudo.",
       },
     ],
-    coverImage: "",
+    coverImage: "/blog/ia-marketing-cripto-automacao-conteudo/cover.png",
     content: `# IA no marketing cripto: automação de conteúdo e business development
 
 **TL;DR.** IA não substitui a estratégia de marketing cripto, ela remove o gargalo de produção e de qualificação de leads. O ganho real vem de montar dois pipelines: conteúdo (pesquisa, primeiro rascunho, repurpose multiplataforma) e business development (enriquecimento e scoring de leads, follow-up). Mantenha um humano no controle da narrativa, da revisão técnica e do compliance. Quem trata IA como operário, não como estrategista, escala sem virar genérico.
