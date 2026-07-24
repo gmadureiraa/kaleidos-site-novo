@@ -24,13 +24,33 @@ const GRIDLITE = b64("public/papers/base/fonts/Gridlite.otf");
 
 // pool de colagens (mesmo do CoverArt) → PNG base64 (webp não decodifica bem em
 // data URI no headless; sharp converte pra PNG que renderiza garantido)
-// só colagens-FOTO (colagem-*); grafismo-*/elemento-* são gráficos, não viram sticker
-const POOL = fs.readdirSync("public/v2/elements").filter((f) => f.startsWith("colagem-") && f.endsWith(".webp"));
-const collageB64 = {};
-for (const f of POOL) {
-  const png = await sharp(path.join("public/v2/elements", f)).png().toBuffer();
-  collageB64[f] = png.toString("base64");
+// só colagens-FOTO de FUNDO CLARO (colagem-*, luminância média >170): essas viram
+// traço solto quando o branco é cortado. Escuras/fotográficas encheriam o burst.
+const ALL_COLLAGES = fs.readdirSync("public/v2/elements").filter((f) => f.startsWith("colagem-") && f.endsWith(".webp"));
+const POOL = [];
+for (const f of ALL_COLLAGES) {
+  const st = await sharp(path.join("public/v2/elements", f)).grayscale().stats();
+  if (st.channels[0].mean > 170) POOL.push(f);
 }
+// converte cada colagem em traço P&B com fundo TRANSPARENTE: alpha = escuridão
+// (branco → transparente, preto → opaco). Assim o elemento flutua sobre o burst
+// sem quadrado branco em volta.
+async function toTransparent(file) {
+  const { data, info } = await sharp(path.join("public/v2/elements", file))
+    .grayscale().normalise().raw().toBuffer({ resolveWithObject: true });
+  const { width: w, height: h, channels: c } = info;
+  const out = Buffer.alloc(w * h * 4);
+  for (let i = 0; i < w * h; i++) {
+    const lum = data[i * c];
+    // quase-branco (>198) some de vez; abaixo disso, quanto mais escuro mais opaco
+    const alpha = lum > 198 ? 0 : Math.min(255, (198 - lum) * 1.7);
+    const v = Math.min(lum, 30); // traço em carvão escuro
+    out[i * 4] = v; out[i * 4 + 1] = v; out[i * 4 + 2] = v; out[i * 4 + 3] = alpha;
+  }
+  return (await sharp(out, { raw: { width: w, height: h, channels: 4 } }).png().toBuffer()).toString("base64");
+}
+const collageB64 = {};
+for (const f of POOL) collageB64[f] = await toTransparent(f);
 
 function hashStr(s) {
   let h = 2166136261;
@@ -79,16 +99,13 @@ function html(item) {
   .swoosh{position:absolute;left:60px;bottom:150px;width:520px;height:120px;z-index:2}
   .tick{position:absolute;stroke:${GREEN};stroke-width:7;stroke-linecap:round}
   .burst{position:absolute;right:64px;top:50%;transform:translateY(-50%);width:490px;height:490px;z-index:2}
-  .sticker{position:absolute;inset:21%;background:#fff;border-radius:24px;z-index:3;
-    display:flex;align-items:center;justify-content:center;overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,.45);}
-  .sticker img{width:82%;height:82%;object-fit:contain;filter:grayscale(1) contrast(1.2)}
+  .collage{position:absolute;inset:17%;width:66%;height:66%;object-fit:contain;z-index:3;}
   .chip{position:absolute;left:76px;bottom:52px;z-index:4;font-family:Gridlite,monospace;
     font-size:15px;letter-spacing:2px;color:#06250a;background:${GREEN};padding:6px 13px;border-radius:4px;font-weight:700}
   </style></head><body>
   <div class="card">
     <div class="frame"></div>
-    <div class="burst">${BURST}<div class="sticker"><img src="data:image/png;base64,${collage}"/></div></div>
+    <div class="burst">${BURST}<img class="collage" src="data:image/png;base64,${collage}"/></div>
     <div class="head">${phrase}<span class="dot">.</span></div>
     <svg class="swoosh" viewBox="0 0 520 120" fill="none">
       <path d="M20 70 C120 118, 360 118, 470 58" stroke="${GREEN}" stroke-width="9" stroke-linecap="round"/>
