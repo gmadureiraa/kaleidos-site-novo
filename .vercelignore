@@ -27,3 +27,4 @@ node_modules
 # Refs de pesquisa scrapeada (concorrente) — nunca no bundle/deploy
 _refs-lunar
 .firecrawl
+public/v2/kaleidos-elementos/

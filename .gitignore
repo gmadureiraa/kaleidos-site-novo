@@ -54,3 +54,4 @@ _refs-lunar/
 
 # stale next build caches
 .next.stale-*
+public/v2/kaleidos-elementos/

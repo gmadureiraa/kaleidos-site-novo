@@ -21,24 +21,13 @@ const b64 = (p) => fs.readFileSync(p).toString("base64");
 const ATELIER = b64("public/papers/base/fonts/Atelier.ttf");
 const GRIDLITE = b64("public/papers/base/fonts/Gridlite.otf");
 
-// POOL: colagens que JÁ vêm sem fundo (transparentes). Usadas COMO ESTÃO — sem
-// remover fundo, sem recolorir, sem halo (o Gabriel já mandou sem fundo; forçar
-// mastigava a imagem). Filtra por nome de subject + transparência real; trim só
-// pra cortar borda vazia; dedupe png/webp.
-const DIRS = ["public/v2/collage", "public/v2/elements", "public/v2/hands"];
-const SUBJECT = /colagem|hands|david|eye|megafone|mao|mulher|maquina|boca|dali|einstein|olho|brain|estatua|cerebro|relogio|smartphone|dinheiro|cursor|robo|washington|tvs|computador/i;
-const seen = new Set();
-const candidates = [];
-for (const d of DIRS) {
-  if (!fs.existsSync(d)) continue;
-  for (const f of fs.readdirSync(d)) {
-    if (!/\.(webp|png)$/i.test(f)) continue;
-    if (!SUBJECT.test(f)) continue;
-    const stem = f.replace(/\.(webp|png)$/i, "");
-    if (seen.has(stem)) continue; seen.add(stem);
-    candidates.push(path.join(d, f));
-  }
-}
+// POOL: set canônico "Elementos Kaleidos" (curado pelo Gabriel). Só os RECORTES
+// de subject (colagem-* / elemento-*), usados COMO ESTÃO. grafismo/padrao/logo/vazio
+// ficam fora do elemento central.
+const DIR = "public/v2/kaleidos-elementos";
+const candidates = fs.readdirSync(DIR)
+  .filter((f) => /^(colagem|elemento)-.*\.png$/i.test(f) && !/vazio/i.test(f))
+  .map((f) => path.join(DIR, f));
 // saturação média sobre pixels visíveis (pra descartar elemento colorido)
 function meanSat(data, info) {
   const c = info.channels; let sat = 0, cnt = 0;
@@ -50,27 +39,57 @@ function meanSat(data, info) {
   }
   return cnt ? sat / cnt : 0;
 }
+// tom do acento (verde/rosa/neutro) sobre pixels visíveis
+function toneOf(data, info) {
+  const c = info.channels; let gS = 0, pS = 0, vis = 0;
+  for (let i = 0; i < info.width * info.height; i++) {
+    if (c === 4 && data[i * c + 3] < 40) continue;
+    vis++;
+    const r = data[i * c], g = data[i * c + 1], b = data[i * c + 2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    if ((mx - mn) / (mx || 1) > 0.35) { if (g > r && g > b) gS++; else if (r > g && b > g * 0.7) pS++; }
+  }
+  if (!vis) return "neutro";
+  if (Math.max(gS, pS) / vis < 0.02) return "neutro";
+  return gS >= pS ? "verde" : "rosa";
+}
 async function loadElement(fp) {
   const st = await sharp(fp).stats();
-  if (st.isOpaque) return null; // opaco (foto/retângulo com fundo) → fora
-  // é RECORTE DE VERDADE? precisa de bastante área transparente ao redor
-  const { data, info } = await sharp(fp).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  const c = info.channels; let transp = 0;
-  for (let i = 0; i < info.width * info.height; i++) if (data[i * c + 3] < 30) transp++;
-  const transpFrac = transp / (info.width * info.height);
-  if (transpFrac < 0.22) return null; // pouca transparência = retângulo (ex: eye-halftone) → fora
-  if (meanSat(data, info) > 0.28) return null; // colorido → clasha com burst → fora
-  // usa COMO ESTÁ, só trim da borda transparente
-  let buf;
-  try { buf = await sharp(fp).trim({ threshold: 8 }).png().toBuffer(); } catch { buf = await sharp(fp).png().toBuffer(); }
-  return buf.toString("base64");
+  let png;
+  if (!st.isOpaque) {
+    // JÁ transparente → usa COMO ESTÁ (só trim). Pula retângulo (pouca transp).
+    const raw = await sharp(fp).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    let t = 0; const c = raw.info.channels;
+    for (let i = 0; i < raw.info.width * raw.info.height; i++) if (raw.data[i * c + 3] < 30) t++;
+    if (t / (raw.info.width * raw.info.height) < 0.15) return null;
+    try { png = await sharp(fp).trim({ threshold: 8 }).png().toBuffer(); } catch { png = await sharp(fp).png().toBuffer(); }
+  } else {
+    // OPACO de fundo claro (line art/colagem P&B em branco) → cutout branco→transparente,
+    // PRESERVANDO a cor (acento verde/rosa sobrevive). Pula fundo escuro/foto.
+    let base;
+    try { base = await sharp(fp).trim({ threshold: 15 }).toBuffer(); } catch { base = await sharp(fp).toBuffer(); }
+    const gs = await sharp(base).grayscale().stats();
+    if (gs.channels[0].mean <= 160) return null; // fundo escuro → fora
+    const { data, info } = await sharp(base).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    const w = info.width, h = info.height, cc = info.channels;
+    const out = Buffer.alloc(w * h * 4);
+    for (let i = 0; i < w * h; i++) {
+      const r = data[i * cc], g = data[i * cc + 1], b = data[i * cc + 2];
+      const lum = (r + g + b) / 3;
+      out[i * 4] = r; out[i * 4 + 1] = g; out[i * 4 + 2] = b;
+      out[i * 4 + 3] = lum > 208 ? 0 : Math.min(255, (208 - lum) * 2.4);
+    }
+    png = await sharp(out, { raw: { width: w, height: h, channels: 4 } }).png().toBuffer();
+  }
+  const { data, info } = await sharp(png).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  return { b64: png.toString("base64"), tone: toneOf(data, info) };
 }
 const POOL = [];
 for (const fp of candidates) {
-  const b = await loadElement(fp);
-  if (b) POOL.push(b);
+  const el = await loadElement(fp);
+  if (el) POOL.push(el);
 }
-console.log(`pool de colagens transparentes (as-is): ${POOL.length}`);
+console.log(`pool de recortes Kaleidos: ${POOL.length} (verde:${POOL.filter(e=>e.tone==='verde').length} rosa:${POOL.filter(e=>e.tone==='rosa').length} neutro:${POOL.filter(e=>e.tone==='neutro').length})`);
 
 function hashStr(s) {
   let h = 2166136261;
@@ -100,9 +119,11 @@ function html(item) {
   const phrase = item.phrase.replace(/[.\s]+$/, "").toUpperCase();
   const size = headlineSize(item.phrase);
   const hs = hashStr(item.slug);
-  const collage = POOL[hs % POOL.length];
+  const el = POOL[hs % POOL.length];
+  const collage = el.b64;
   const rot = (hs % 8) * 15; // rotação do burst
-  const pinkBurst = (hs >> 3) % 2 === 0; // varia cor do burst
+  // burst COMPLEMENTA o tom do elemento (evita elemento sumir na mesma cor)
+  const pinkBurst = el.tone === "verde" ? true : el.tone === "rosa" ? false : (hs >> 3) % 2 === 0;
   const burstColor = pinkBurst ? PINK : GREEN;
   const accent = pinkBurst ? GREEN : PINK; // acento complementa o burst
   // elemento usado COMO ESTÁ (cor+alpha originais). Só uma sombra sutil pra
