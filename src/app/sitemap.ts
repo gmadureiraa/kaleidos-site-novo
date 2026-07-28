@@ -77,6 +77,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.85,
     },
+    // Landing TOFU de Founder-Led Growth (marca pessoal para founders/C-levels).
+    {
+      url: `${baseUrl}/marca-pessoal`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
     // /pacotes é noindex (fundo de funil, decisão D3) — fora do sitemap de propósito
     // pra não gerar "Enviada, mas com noindex" no Search Console.
   ]

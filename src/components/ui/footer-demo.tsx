@@ -48,6 +48,7 @@ export function FooterDemo() {
 
   const services = locale === 'en'
     ? [
+        { title: "Founder-Led Growth", href: "/marca-pessoal" },
         { title: "Content Marketing", href: "/servicos/marketing-conteudo" },
         { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth & Launches", href: "/servicos/growth-lancamentos" },
@@ -56,6 +57,7 @@ export function FooterDemo() {
         { title: "PR & Communications", href: "/servicos/pr-assessoria" },
       ]
     : [
+        { title: "Marca Pessoal para Founders", href: "/marca-pessoal" },
         { title: "Marketing de Conteúdo", href: "/servicos/marketing-conteudo" },
         { title: "Kaleidos AI", href: "/servicos/ia-automacoes-completa" },
         { title: "Growth e Lançamentos", href: "/servicos/growth-lancamentos" },
