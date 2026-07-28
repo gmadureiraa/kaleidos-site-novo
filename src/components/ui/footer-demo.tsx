@@ -90,6 +90,39 @@ export function FooterDemo() {
       viewport={{ once: true }}
       className="w-full bg-black border-t border-gray-800"
     >
+      {/* ── Faixa de destaque: Founder-Led Growth ────────────────────────────
+          Marca Pessoal é o produto que a Kaleidos quer vender, e como link de
+          lista no meio de outros sete ele desaparecia. Aqui ele ganha a
+          largura inteira, antes das colunas, com CTA próprio. */}
+      <div className="border-b border-gray-800">
+        <Link
+          href="/marca-pessoal"
+          className="group block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 lg:py-9"
+        >
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7CF067] mb-2">
+                {locale === 'en' ? 'Founder-Led Growth' : 'Founder-Led Growth'}
+              </span>
+              <h3 className="text-white font-display text-2xl lg:text-3xl leading-tight max-w-2xl">
+                {locale === 'en'
+                  ? <>The company sells. <span className="text-gray-500">The founder convinces.</span></>
+                  : <>Quem vende é a empresa. <span className="text-gray-500">Quem convence é o founder.</span></>}
+              </h3>
+              <p className="text-sm text-gray-400 mt-2 max-w-xl">
+                {locale === 'en'
+                  ? 'Personal brand for CEOs and founders: content, cadence and authority that turn a profile into pipeline.'
+                  : 'Marca pessoal para CEOs e founders: conteúdo, cadência e autoridade que transformam um perfil em pipeline.'}
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-2 bg-[#7CF067] text-black px-5 py-3 rounded-lg font-semibold text-sm group-hover:bg-[#6BE85A] transition-colors">
+              {locale === 'en' ? 'See how it works' : 'Ver como funciona'}
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </div>
+        </Link>
+      </div>
+
       {/* Seção Principal */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:gap-8">

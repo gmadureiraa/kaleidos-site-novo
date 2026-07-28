@@ -1054,6 +1054,57 @@ function DadosSection() {
 // GROWTH/marca-pessoal-founders). Todas com fonte e ano visíveis. O card do
 // Nubank leva rótulo de atribuição narrativa (é boca a boca de produto/CX,
 // não estudo controlado de marca pessoal).
+/* ── S3b · O que é Founder-Led Growth ─────────────────────────────────────
+   Pedido do Gabriel (28/07): a página vendia o serviço sem nunca nomear a
+   categoria. Esta seção define o termo, separa do que ele NÃO é, e mostra os
+   três mecanismos pelos quais o perfil do founder vira pipeline. Fundo escuro
+   entre duas seções claras (Problema #14110D → esta → Dados #FAFAFA): ver a
+   ordem de composição no <main>. */
+const FOUNDER_LED_HTML = `
+<section id="founder-led-growth" style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
+  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
+    ${headHTML(
+      "Founder-Led Growth",
+      'A empresa vende.<br>Quem convence é <span class="hl">o founder</span>.',
+      "Founder-Led Growth é usar a voz de quem construiu a empresa como canal de aquisição. Não é o founder virar influenciador: é a companhia parar de terceirizar a explicação do próprio produto para um anúncio.",
+      false
+    )}
+
+    <div class="mp-grid3" style="margin-top:44px;">
+      <div style="background:#fff;border:1.5px solid #e6e0d6;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #14110D;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.4px;color:#6b6258;text-transform:uppercase;">01 · Distribuição</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:800;font-size:21px;line-height:1.2;color:#14110D;margin:10px 0 0;">Um rosto passa onde uma logo trava</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#4a443c;margin:12px 0 0;flex:1;">Perfil de pessoa entrega organicamente para não seguidores. Perfil de marca precisa comprar quase toda a entrega. A mesma peça, publicada nos dois, não custa o mesmo.</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #e6e0d6;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.4px;color:#6b6258;text-transform:uppercase;">02 · Confiança</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:800;font-size:21px;line-height:1.2;color:#14110D;margin:10px 0 0;">Quem decide compra de gente</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#4a443c;margin:12px 0 0;flex:1;">No B2B a decisão passa por um comitê que você não vê. Esse comitê pesquisa o fundador antes da reunião. O que ele encontra ali é parte da proposta, mesmo que ninguém diga isso em voz alta.</p>
+      </div>
+      <div style="background:#fff;border:1.5px solid #e6e0d6;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.4px;color:#6b6258;text-transform:uppercase;">03 · Custo</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:800;font-size:21px;line-height:1.2;color:#14110D;margin:10px 0 0;">Audiência é ativo, mídia é aluguel</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#4a443c;margin:12px 0 0;flex:1;">Você para de pagar mídia e o pipeline para junto. Uma base construída no perfil do founder continua rendendo depois que a verba acaba, e não sobe de preço a cada leilão.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;display:grid;gap:18px;grid-template-columns:1fr;">
+      <div style="background:#14110D;border-radius:16px;padding:30px 26px;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.4px;color:#7CF067;text-transform:uppercase;margin-bottom:14px;">O que Founder-Led Growth NÃO é</div>
+        <div class="mp-grid3">
+          <p style="font-size:14.5px;line-height:1.6;color:#d8d1c6;margin:0;"><strong style="color:#FAFAFA;">Não é virar influenciador.</strong> Ninguém precisa dançar, opinar sobre tudo, nem postar todo dia. Precisa aparecer com constância no assunto em que já é bom.</p>
+          <p style="font-size:14.5px;line-height:1.6;color:#d8d1c6;margin:0;"><strong style="color:#FAFAFA;">Não é exposição pessoal.</strong> O que vai pro feed é o que você aprendeu construindo, não a sua vida. A linha entre bastidor e intimidade é definida por você, no começo.</p>
+          <p style="font-size:14.5px;line-height:1.6;color:#d8d1c6;margin:0;"><strong style="color:#FAFAFA;">Não é substituir o marketing.</strong> É a camada que faz o resto funcionar melhor: o anúncio converte mais quando quem assina já é conhecido.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;color:#4a443c;margin:32px 0 0;max-width:760px;">
+      Na prática, o trabalho da Kaleidos é tirar isso do campo da intenção. O founder entra com o que só ele tem, que é o repertório de quem está construindo. A gente entra com o resto: pauta, roteiro, edição, design, cadência e distribuição. <strong style="color:#14110D;">A parte que só você faz cabe em dois blocos de 30 minutos por semana.</strong>
+    </p>
+  </div>
+</section>`;
+
 const MERCADO_HTML = `
 <section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
   <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
@@ -2185,6 +2236,11 @@ export default function MarcaPessoalPage() {
         {/* S3 · Problema + timeline de dores */}
         <Reveal>
           <ProblemaSection />
+        </Reveal>
+
+        {/* S3b · O que é Founder-Led Growth (define a categoria antes dos dados) */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: FOUNDER_LED_HTML }} />
         </Reveal>
 
         {/* S4 · Os dados (com fonte, count-up) */}
