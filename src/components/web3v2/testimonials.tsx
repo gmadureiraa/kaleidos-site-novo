@@ -222,7 +222,11 @@ export function Web3V2Testimonials() {
                         alt={t.name}
                         width={42}
                         height={42}
-                        style={{ objectFit: "contain", padding: 3 }}
+                        style={
+                          t.avatarIsPhoto
+                            ? { width: "100%", height: "100%", objectFit: "cover" }
+                            : { objectFit: "contain", padding: 3 }
+                        }
                       />
                     ) : (
                       <span

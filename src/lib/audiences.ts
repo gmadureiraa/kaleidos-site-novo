@@ -29,6 +29,16 @@ export type Audience = {
   slug: string;
   /** rótulo no footer: "Kaleidos para <label>" */
   label: string;
+  /**
+   * Aparece na coluna "Para quem" do rodapé? (2026-07-28)
+   *
+   * A página CONTINUA existindo e indexável em qualquer caso — quem cai nela
+   * pelo Google segue caindo. Este flag controla só a vitrine do rodapé, que
+   * estava com nove links e virou parede de texto.
+   *
+   * Regra: no máximo 5 marcados. Pra trocar o conjunto, mexe só aqui.
+   */
+  inFooter?: boolean;
   badge: string;
   headlineHtml: string;
   subHtml: string;
@@ -111,6 +121,7 @@ export const AUDIENCES: Audience[] = [
   },
   {
     slug: "creators",
+    inFooter: true,
     label: "creators",
     badge: "Pro creator que vive de audiência",
     headlineHtml: `Sua audiência já existe. Falta a máquina de conteúdo que vira <span ${HL}>autoridade</span> (e receita).`,
@@ -177,6 +188,7 @@ export const AUDIENCES: Audience[] = [
   },
   {
     slug: "fintech",
+    inFooter: true,
     label: "fintechs",
     badge: "Pra fintech que precisa de confiança",
     headlineHtml: `Marketing que constrói <span ${HL}>confiança</span>, o ativo mais caro de uma fintech.`,
@@ -375,6 +387,7 @@ export const AUDIENCES: Audience[] = [
   },
   {
     slug: "cripto",
+    inFooter: true,
     label: "cripto",
     badge: "Pra marca que é nativa de cripto",
     headlineHtml: `Marketing cripto de verdade, do conteúdo ao lançamento, feito por quem é <span ${HL}>nativo</span> do mercado.`,
@@ -441,6 +454,7 @@ export const AUDIENCES: Audience[] = [
   },
   {
     slug: "exchanges",
+    inFooter: true,
     label: "exchanges",
     badge: "Pra exchange e corretora cripto",
     headlineHtml: `O time de conteúdo e autoridade que faz sua <span ${HL}>exchange</span> virar referência, não só mais uma corretora.`,
@@ -573,6 +587,7 @@ export const AUDIENCES: Audience[] = [
   },
   {
     slug: "lancamento-de-token",
+    inFooter: true,
     label: "lançamento de token",
     badge: "Pra quem vai lançar um token",
     headlineHtml: `Um <span ${HL}>lançamento</span> de token que constrói base de longo prazo, não um pico de preço que some.`,

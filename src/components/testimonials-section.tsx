@@ -92,7 +92,11 @@ export default function TestimonialsSection() {
                         alt={t.name}
                         width={64}
                         height={64}
-                        className="object-contain p-1"
+                        className={
+                          t.avatarIsPhoto
+                            ? "w-full h-full object-cover"
+                            : "object-contain p-1"
+                        }
                       />
                     ) : (
                       <span className="text-[#7CF067] font-bold text-xl">

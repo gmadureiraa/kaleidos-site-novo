@@ -78,9 +78,11 @@ export const BUNDLES: Bundle[] = [
     pieces: [{ unitId: "post-estatico", qty: 10 }, { unitId: "carrossel-design", qty: 4 }], layerIds: [] },
   { id: "social-essencial-gerenciado", label: "Social Essencial — gerenciado", price: 3500, scope: "16 posts/mês (até 2 perfis) + stories + relatórios", layers: "Gestão & relatórios (leve)", tier: "essencial",
     pieces: [{ unitId: "post-estatico", qty: 10 }, { unitId: "carrossel-design", qty: 4 }, { unitId: "stories", qty: 4 }], layerIds: ["gestao-leve"] },
-  { id: "personal-founder", label: "Personal Founder", price: 3600, scope: "1 perfil: ~12 peças/mês (reels + carrosséis) + stories diários", layers: "Gestão & relatórios (leve)", tier: "founder",
-    pieces: [{ unitId: "reel-edicao", qty: 6 }, { unitId: "carrossel-design", qty: 4 }, { unitId: "post-estatico", qty: 2 }, { unitId: "stories", qty: 5 }], layerIds: ["gestao-leve"] },
-  { id: "personal-founder-duo", label: "Personal Founder Duo", price: 3500, scope: "2 perfis, 16 posts/mês + stories + relatórios", layers: "Gestão & estratégia completa", tier: "founder",
+  { id: "personal-founder-essencial", label: "Personal Founder — Essencial", price: 3000, scope: "1 perfil: 4 reels + 4 carrosséis/mês (roteiro + edição + design + postagem). Sem stories/DM/comentários.", layers: "Gestão leve + relatório", tier: "founder",
+    pieces: [{ unitId: "reel-edicao", qty: 4 }, { unitId: "carrossel-design", qty: 4 }], layerIds: ["gestao-leve"] },
+  { id: "personal-founder-completo", label: "Personal Founder — Completo", price: 4900, scope: "1 perfil: 8 reels + 8 carrosséis + 1 podcast/mês. Engajamento e multicanal via adicional.", layers: "Gestão & estratégia", tier: "founder",
+    pieces: [{ unitId: "reel-edicao", qty: 8 }, { unitId: "carrossel-design", qty: 8 }], layerIds: ["gestao-completa"] },
+  { id: "personal-founder-duo", label: "Personal Founder Duo", price: 5400, scope: "2 perfis, 16 posts/mês + stories + relatórios. Piso reajustado (2×R$3.000 − bundle); DSEC hoje R$3.500 grandfathered até renovação.", layers: "Gestão & estratégia completa", tier: "founder",
     pieces: [{ unitId: "post-estatico", qty: 6 }, { unitId: "carrossel-design", qty: 3 }], layerIds: ["gestao-completa"] },
   { id: "conta-empresa", label: "Conta Empresa Multicanal", price: 4500, scope: "LinkedIn + Twitter + e-mail (multicanal, ~30 peças/mês)", layers: "Gestão & estratégia completa", tier: "empresa",
     pieces: [{ unitId: "post-linkedin", qty: 8 }, { unitId: "tweet", qty: 15 }, { unitId: "thread-x", qty: 2 }], layerIds: ["gestao-completa"] },
@@ -111,6 +113,8 @@ export const ADDONS: AddOn[] = [
   { id: "newsletter-addon", label: "Newsletter add-on", priceMin: 900, type: "recorrente", note: "Acopla newsletter a um pacote social" },
   { id: "stories-extra", label: "Pacote de stories extra", priceMin: 600, type: "recorrente" },
   { id: "dashboard-premium", label: "Relatório/dashboard premium", priceMin: 800, type: "recorrente", note: "BI detalhado + reunião de performance" },
+  { id: "engajamento-founder", label: "+ Engajamento (Personal Founder)", priceMin: 1500, type: "recorrente", note: "Stories + comentários + triagem de DM. Encaixa em Essencial ou Completo (nenhum plano base inclui engajamento)" },
+  { id: "multicanal-founder", label: "+ Multicanal X & LinkedIn", priceMin: 1500, type: "recorrente", note: "Repurpose do conteúdo do founder em X (thread) e LinkedIn (post/carrossel)" },
 ];
 
 // Regras (aba "Como Montar Orçamento")
@@ -119,8 +123,9 @@ export const PRICING_RULES = {
     newsletter: 1100,
     socialSoConteudo: 1500,
     contaGerenciada: 3000,
-    personalFounder: 3500,
+    personalFounder: 3000,
   },
+  minContractMonths: 6, // política jul/2026: contrato mínimo SEMPRE 6 meses
   bundleDiscountRange: [0.1, 0.15] as const, // 10–15% se virar pacote fechado
   margem: {
     markupMin: 2, // preço = custo × 2

@@ -8,6 +8,7 @@ export interface Testimonial {
   role: string;
   company: string;
   avatar?: string; // path to avatar image, fallback to initials
+  avatarIsPhoto?: boolean; // true = foto de rosto (object-cover), false/undefined = logo (object-contain)
   quote: string;
   quote_en: string;
   caseLink?: string;
@@ -51,12 +52,12 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Investidor 4.20",
     avatar: "/Clientes-logo/investidor420.png",
     quote:
-      "Profissionalismo e expertise incomparáveis. A equipe da Kaleidos entende o mercado cripto como ninguém e entrega resultados que realmente fazem diferença. Multiplicamos nosso faturamento em 5x.",
+      "Além de nos ajudar a produzir e implementar novos meios de comunicação para aquisição de clientes, aumentando consideravelmente nossa base de leads, a Kaleidos também nos ajudou a estruturar o comercial para recuperação de vendas e implementações via WhatsApp que fizeram toda a diferença. Sem eles, não teríamos tido o alcance que tivemos. Foram e continuam sendo um parceiro indispensável na nossa empresa.",
     quote_en:
-      "Unmatched professionalism and expertise. The Kaleidos team understands the crypto market like no one else and delivers results that truly make a difference. We multiplied our revenue 5x.",
+      "Beyond helping us produce and implement new communication channels for customer acquisition, considerably growing our lead base, Kaleidos also helped us structure the sales side for revenue recovery and WhatsApp implementations that made all the difference. Without them, we wouldn't have had the reach we did. They were and continue to be an indispensable partner in our company.",
     caseLink: "/cases/investidor-4-20",
-    highlight: "5x faturamento",
-    highlight_en: "5x revenue",
+    highlight: "Parceiro indispensável",
+    highlight_en: "Indispensable partner",
   },
   {
     id: "layla-foz",
@@ -74,16 +75,18 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: "paradigma",
-    name: "Equipe Paradigma",
-    role: "Educação",
+    name: "Henrique",
+    role: "Conteúdo",
     company: "Paradigma Education",
+    avatar: "/depoimentos/henrique-paradigma.png",
+    avatarIsPhoto: true,
     quote:
-      "Vídeos educativos que se destacam pela qualidade técnica e visual. A Kaleidos elevou nosso padrão de motion graphics e entrega com consistência impressionante.",
+      "Trabalhamos com a Kaleidos há um tempo produzindo reels de cortes, e o padrão sempre foi alto: edição e animação de qualidade, pontualidade e um time profissional. Quando pedimos algum ajuste, a resposta é rápida, o que facilita muito o nosso fluxo de conteúdo.",
     quote_en:
-      "Educational videos that stand out for their technical and visual quality. Kaleidos elevated our motion graphics standard and delivers with impressive consistency.",
+      "We've been working with Kaleidos for a while producing clip reels, and the standard has always been high: quality editing and animation, punctuality and a professional team. When we ask for an adjustment, the response is fast, which makes our content flow much easier.",
     caseLink: "/cases/paradigma-education",
-    highlight: "Motion Design premium",
-    highlight_en: "Premium motion design",
+    highlight: "Padrão sempre alto",
+    highlight_en: "Consistently high standard",
   },
   {
     id: "mercado-bitcoin",
@@ -104,6 +107,8 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Matheus Fassheber",
     role: "Fundador",
     company: "NeoBankless",
+    avatar: "/depoimentos/matheus-fassheber.png",
+    avatarIsPhoto: true,
     quote:
       "O que mais me tranquiliza na Kaleidos é a confiança. Quando eu passo alguma coisa pra eles, eu sei que vai ser resolvido, sem precisar ficar em cima. O time assume, cuida de cada detalhe e entrega. Isso me libera pra focar no que só eu posso fazer no negócio.",
     quote_en:
