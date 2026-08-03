@@ -1,3 +1,39 @@
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  LEIA ANTES DE EXCLUIR QUALQUER ASSET DESTE REPOSITÓRIO                   ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+#
+# O erro recorrente aqui NÃO é de sintaxe: é ASSUMIR QUE SE SABE O QUE ESTÁ EM
+# USO. Aconteceu três vezes só em 2026-08-03:
+#
+#   1. Regra cega `public/Cases/**/conteudo/*.webp`, escrita sob a premissa
+#      "zero referências no código". Falsa: eram os `poster` dos vídeos.
+#      → 38 assets referenciados dando 404, /portfolio quebrado em 7 cases.
+#   2. 3 thumbs de YouTube commitadas junto com outra coisa e publicadas sem
+#      ninguém ter decidido que deveriam ir pro deploy (uma delas com logo de
+#      cliente concorrente). → removidas em 6aaca1a.
+#   3. Inventário de "assets órfãos" feito com regex cuja classe de caracteres
+#      não cobria PARÊNTESES. Os 3 mp4 `..._PARADIGMA_..._V2(1).mp4` sumiram do
+#      índice e apareceram como sem uso — estão em case-data.ts:574,579,584.
+#      Pegos antes de apagar, e só porque o poster companheiro deles ESTAVA
+#      referenciado. → vídeo sem uso com poster em uso não fecha.
+#
+# REGRAS, aprendidas na marra:
+#
+# • NUNCA use regex pra inventariar referência de arquivo. Nomes reais têm
+#   parênteses, acento, espaço, hífen duplo. Busque o BASENAME como SUBSTRING
+#   LITERAL no fonte inteiro (src/ + docs/), arquivo por arquivo.
+# • Antes de apagar, cheque o COMPANHEIRO: todo vídeo tem poster em
+#   `<dir>/posters/<mesmo-nome>.jpg`, e o nome do poster pode estar sanitizado
+#   (`(1)` vira `-1`). Se o poster está em uso, o vídeo também está.
+# • `.webp`/`.png`/`.jpg` de mesmo basename NÃO são necessariamente a mesma
+#   peça em formatos diferentes — confira que estão no MESMO diretório.
+# • Ao propor uma lista de remoção, apresente COMO CADA ITEM FOI VALIDADO, não
+#   só o total. Número não mostra falso positivo.
+# • Prefira `git rm` a regra aqui. Arquivo que não deve existir no deploy sai
+#   do repositório; esta lista é só pro que precisa existir no repo e não no
+#   bundle. E aqui a exclusão é EXPLÍCITA por arquivo — nunca glob.
+#
+# ───────────────────────────────────────────────────────────────────────────
 # Arquivos pesados que NÃO devem ir pro deploy da Vercel.
 # (não dá pra rm localmente; o ignore impede que entrem no bundle/upload)
 
