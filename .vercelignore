@@ -1,8 +1,28 @@
 # Arquivos pesados que NÃO devem ir pro deploy da Vercel.
 # (não dá pra rm localmente; o ignore impede que entrem no bundle/upload)
 
-# 258MB de .webp órfãos ao lado dos .mp4 nas case pages — zero referências no código.
-public/Cases/**/conteudo/*.webp
+# .webp PESADOS e órfãos ao lado dos .mp4 nas case pages (~235MB, 8-44MB cada —
+# são animações/vídeos em webp, não thumbnails).
+#
+# ⚠️ 2026-08-03: aqui havia a regra cega `public/Cases/**/conteudo/*.webp`, com o
+# comentário "zero referências no código". A premissa ficou FALSA: os posters dos
+# vídeos e várias mídias de case são .webp nesse mesmo caminho. O resultado foi
+# 38 arquivos referenciados dando 404 em produção (Layla Foz, Alfred, Defiverso,
+# Ledger, Investidor 4.20, DSEC, Buenas Ideias) — thumbs quebradas no /portfolio.
+# Agora a exclusão é EXPLÍCITA por arquivo. Ao adicionar webp órfão novo, some
+# aqui em vez de reintroduzir glob.
+public/Cases/bit-das-minas/conteudo/Reels-3-Gi.webp
+public/Cases/bit-das-minas/conteudo/Reels-4-Gi.webp
+public/Cases/bit-das-minas/conteudo/Reels-5-Gi.webp
+public/Cases/bit-das-minas/conteudo/Reels-6-Gi.webp
+public/Cases/bit-das-minas/conteudo/Reels-7-Gi-1.webp
+public/Cases/investidor-4-20/conteudo/Palestrantes-Defifest-2025-Video-1.webp
+public/Cases/investidor-4-20/conteudo/Reels-2-Lucas-1.webp
+public/Cases/investidor-4-20/conteudo/Reels-3-Lucas.webp
+public/Cases/investidor-4-20/conteudo/Reels-6-Lucas.webp
+public/Cases/investidor-4-20/conteudo/Reels-7-Lucas.webp
+public/Cases/layla-foz/conteudo/Reels-2-Layla-1.webp
+public/Cases/layla-foz/conteudo/Reels-4-Layla.webp
 
 # Pasta de fontes estáticas do Inter (18MB, ~60 TTF) — só as variáveis são usadas.
 public/Kaleidos/fonts/Inter/static
