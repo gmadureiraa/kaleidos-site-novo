@@ -59,7 +59,7 @@ const casesCarouselData = [
     title: "Investidor 4.20",
     tag: "Comercial · Lançamento",
     description: "Desenvolvimento comercial completo e estratégias de lançamento.",
-    metric: "5x Faturamento",
+    metric: "10x Faturamento",
     gradient: "linear-gradient(150deg, #7CF067 0%, #1E7A3A 55%, #0A1A0E 100%)",
     coverImage: "/Cases/investidor-4-20/conteudo/Reels-1-Lucas-1.mp4",
     href: "/cases/investidor-4-20"

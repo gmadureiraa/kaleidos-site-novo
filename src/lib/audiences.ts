@@ -768,9 +768,9 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     proof: {
       caseId: "investidor-4-20",
       client: "Investidor 4.20",
-      metric: "5x revenue growth",
+      metric: "10x revenue growth",
       blurb:
-        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch: revenue multiplied by 5, Instagram from 50,000 to 180,000 followers and a newsletter from 0 to 30,000 subscribers.",
+        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch: revenue multiplied by 10 in 12 months, Instagram from 50,000 to 180,000 followers and a newsletter from 0 to 30,000 subscribers.",
     },
     ctaLine:
       "Your audience already exists. Kaleidos builds the machine that turns it into authority and revenue. Let's talk.",

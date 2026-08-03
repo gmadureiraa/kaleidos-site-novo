@@ -457,7 +457,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Projetos guiados por estratégia",
       cases: [
-        { name: "Investidor 4.20", metric: "5x Faturamento", desc: "Desenvolvimento comercial completo e estratégia de lançamento.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Desenvolvimento comercial completo e estratégia de lançamento.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "+200% Faturamento", desc: "Estratégia de conteúdo e lançamento pra educação cripto feminina.", href: "/cases/bit-das-minas" },
         { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e estratégia de conteúdo pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
@@ -581,7 +581,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Strategy-guided projects",
       cases: [
-        { name: "Investidor 4.20", metric: "5x Revenue", desc: "Full commercial development and launch strategy.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Full commercial development and launch strategy.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "+200% Revenue", desc: "Content and launch strategy for female crypto education.", href: "/cases/bit-das-minas" },
         { name: "Neobankless", metric: "Fintech", desc: "Positioning and content strategy for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
@@ -843,7 +843,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ctaPrimary: "Quero crescer no social",
       accent: "green",
       // Prova social do serviço: cases reais de social media (Defiverso 12M+ views
-      // orgânicas · Mercado Bitcoin +80K seguidores · Investidor 4.20 5x faturamento)
+      // orgânicas · Mercado Bitcoin +80K seguidores · Investidor 4.20 10x faturamento)
       proof: ["defiverso", "mercado-bitcoin", "investidor-420"],
       whoTitle: "Para quem é o Social Media Cripto",
       who: [
@@ -970,7 +970,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ctaPrimary: "Grow my social",
       accent: "green",
       // Service social proof: real social media cases (Defiverso 12M+ organic views
-      // · Mercado Bitcoin +80K followers · Investidor 4.20 5x revenue)
+      // · Mercado Bitcoin +80K followers · Investidor 4.20 10x revenue)
       proof: ["defiverso", "mercado-bitcoin", "investidor-420"],
       whoTitle: "Who Crypto Social Media is for",
       who: [
@@ -1157,7 +1157,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Autoridade & percepção",
       cases: [
         { name: "Defifest", metric: "600+ participantes", desc: "Evento que virou referência e gerou cobertura no ecossistema DeFi BR.", href: "/cases/defifest" },
-        { name: "Investidor 4.20", metric: "5x Faturamento", desc: "Construção de autoridade e percepção de marca pra creator cripto.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Construção de autoridade e percepção de marca pra creator cripto.", href: "/cases/investidor-4-20" },
         { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e narrativa pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_PT,
@@ -1281,7 +1281,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Authority & perception",
       cases: [
         { name: "Defifest", metric: "600+ attendees", desc: "Event that became a reference and drove coverage in the BR DeFi ecosystem.", href: "/cases/defifest" },
-        { name: "Investidor 4.20", metric: "5x Revenue", desc: "Authority and brand perception building for a crypto creator.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Authority and brand perception building for a crypto creator.", href: "/cases/investidor-4-20" },
         { name: "Neobankless", metric: "Fintech", desc: "Positioning and narrative for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_EN,
@@ -1412,7 +1412,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Comunidades que construímos",
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Comunidade do zero: Instagram, Twitter e grupo de WhatsApp ativos.", href: "/cases/defiverso" },
-        { name: "Investidor 4.20", metric: "5x Faturamento", desc: "Comunidade engajada como base do funil orgânico.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Comunidade engajada como base do funil orgânico.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "+200% Faturamento", desc: "Comunidade leal e engajada de educação cripto feminina.", href: "/cases/bit-das-minas" },
       ],
       stats: STATS_BASE_PT,
@@ -1536,7 +1536,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Communities we built",
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Community from scratch: active Instagram, Twitter and WhatsApp group.", href: "/cases/defiverso" },
-        { name: "Investidor 4.20", metric: "5x Revenue", desc: "Engaged community as the base of the organic funnel.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Engaged community as the base of the organic funnel.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "+200% Revenue", desc: "Loyal, engaged female crypto education community.", href: "/cases/bit-das-minas" },
       ],
       stats: STATS_BASE_EN,
@@ -1666,7 +1666,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Amplificação por vozes",
       cases: [
-        { name: "Investidor 4.20", metric: "5x Faturamento", desc: "Creator cripto com audiência engajada e estratégia de amplificação.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Creator cripto com audiência engajada e estratégia de amplificação.", href: "/cases/investidor-4-20" },
         { name: "Layla Foz", metric: "+20M Views", desc: "Crescimento e distribuição via conteúdo de creator.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Ecossistema de conteúdo e creators conectado à comunidade.", href: "/cases/defiverso" },
       ],
@@ -1790,7 +1790,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Amplification through voices",
       cases: [
-        { name: "Investidor 4.20", metric: "5x Revenue", desc: "Crypto creator with engaged audience and amplification strategy.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Crypto creator with engaged audience and amplification strategy.", href: "/cases/investidor-4-20" },
         { name: "Layla Foz", metric: "+20M Views", desc: "Growth and distribution via creator content.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Content and creator ecosystem connected to the community.", href: "/cases/defiverso" },
       ],

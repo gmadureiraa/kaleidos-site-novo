@@ -256,9 +256,16 @@ const headHTML = (
 </div>`;
 
 /* ── Conteúdo REAL publicado nos perfis de clientes (public/Cases/…).
-   Nada aqui é mockup: são capas de reels e slides de carrossel entregues. ── */
+   Nada aqui é mockup: são capas de reels e slides de carrossel entregues.
+
+   ⚠️ Só entra peça de proporção vertical (4:5 a 9:16). O .mp-wall-card usa
+   width:162px + height:auto, sem crop: uma peça 16:9 vira um card de ~91px de
+   altura no meio de cards de ~288px e destoa. Por isso ficaram DE FORA as 3
+   thumbs de YouTube da DSEC e as 2 peças de LinkedIn 16:9 (dsec-li-drex,
+   dsec-li-stablecoins), todas publicadas de verdade mas na proporção errada. ── */
 const WALL_COL_A: { src: string; alt: string }[] = [
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola (Investidor 4.20)" },
+  { src: "/Cases/dsec/conteudo/linkedin/dsec-li-etfs.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre ETFs de Bitcoin" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg", alt: "Post publicado no Instagram da NeoBankless" },
@@ -279,6 +286,7 @@ const WALL_COL_C: { src: string; alt: string }[] = [
   { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NeoBankless" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
+  { src: "/Cases/dsec/conteudo/linkedin/dsec-li-rastreio.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre rastreio de transações entre corretora e carteira" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
 ];
 
@@ -1398,7 +1406,7 @@ function MetodoSection() {
 
 /* ─────────────────────── S7 · PROVA / CASES (dark) ─────────────────────── */
 // Métricas 100% de src/lib/case-data.ts:
-// investidor-4-20: 5x faturamento, IG 50k→180k (+260%), YT 200k→382k (+91%), news 30k/35%.
+// investidor-4-20: 10x faturamento em 12 meses, IG 50k→180k (+260%), YT 200k→382k (+91%), news 30k/35%.
 // layla-foz: 100k→172k (+72%), 20M+ views nos reels.
 // defiverso: 12M views orgânicos em 90 dias, +8,6k seguidores em 3 meses.
 // neobankless: reel manifesto 112 curtidas + 20 comentários (maior engajamento do perfil).
@@ -1421,7 +1429,7 @@ const CASES_HTML = `
         </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Lucas Amendola · Investidor 4.20</div>
         <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">50k &rarr; 180k <span style="font-size:16px;color:#9a9186;font-weight:400;">no Instagram</span></div>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">YouTube de 200k pra 382k inscritos. Newsletter construída do zero até 30 mil inscritos com 35% de abertura. E o número que importa: faturamento 5x maior desde a nossa entrada.</p>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">YouTube de 200k pra 382k inscritos. Newsletter construída do zero até 30 mil inscritos com 35% de abertura. E o número que importa: faturamento 10x maior em 12 meses.</p>
         <a href="/cases/investidor-4-20" style="margin-top:16px;font-size:14px;font-weight:700;color:#7CF067;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
