@@ -1201,7 +1201,29 @@ export const casesData: Record<string, CaseData> = {
         type: "image",
         alt: "DSEC no LinkedIn — No Brasil, o caminho entre a corretora e a carteira agora e rastreado de ponta a ponta",
         link: "https://www.linkedin.com/feed/update/urn:li:activity:7473766107712061440/"
-      }
+      },
+      // Carrossel — "Bitcoin e dinheiro de mentira" (10 slides publicados).
+      // ⚠️ Entra como CARROSSEL, nunca como imagens soltas: o alt de cada peça
+      // precisa casar em looksLikeCarouselSlide() (portfolio-data.ts:166) e só a
+      // CAPA leva `link` — é o `link` que marca o inicio de um novo carrossel no
+      // agrupamento (portfolio-data.ts:377). Solto, o slide-01 vira um card com
+      // a frase "Bitcoin e dinheiro de mentira" isolada, que significa o oposto
+      // do que o carrossel argumenta. O arco só existe navegavel.
+      {
+        src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-01.png",
+        type: "image",
+        alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (capa)",
+        link: "https://www.instagram.com/p/DbMDPdmEfwo/"
+      },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-02.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (2/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-03.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (3/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-04.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (4/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-05.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (5/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-06.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (6/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-07.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (7/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-08.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (8/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-09.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (9/10)" },
+      { src: "/Cases/dsec/conteudo/carrossel-dinheiro-de-mentira/slide-10.png", type: "image", alt: "Carrossel DSEC — Bitcoin e dinheiro de mentira (10/10)" }
     ]
   },
   "alfred": {
