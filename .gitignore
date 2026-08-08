@@ -56,3 +56,7 @@ _refs-lunar/
 .next.stale-*
 public/v2/kaleidos-elementos/
 .claude/worktrees/
+
+# worktrees de agente (mesma razão de .claude/worktrees/): estado de sessão,
+# não código do site.
+.maestri/
