@@ -103,7 +103,7 @@ export type PackageFamily = "founder-brand" | "linkedin-b2b" | "conta-empresa" |
 
 export const FAMILIES: { id: PackageFamily; label: string; blurb: string }[] = [
   { id: "founder-brand", label: "Founder Brand (marca pessoal)", blurb: "Perfil pessoal do fundador. Reels-first, pessoa física, Instagram + TikTok. Padrão 2026 = decisão Gabriel 08/08. Mínimo 6 meses." },
-  { id: "linkedin-b2b", label: "LinkedIn B2B", blurb: "Só LinkedIn, com geração de demanda: lead magnet automatizado, sinais de intenção, Company Page. Mínimo 3 meses (⚠️ diverge dos 6 do resto, de propósito)." },
+  { id: "linkedin-b2b", label: "LinkedIn B2B", blurb: "Só LinkedIn, com geração de demanda: lead magnet automatizado, sinais de intenção, Company Page. Mínimo 6 meses (igual ao resto da casa, decisão Gabriel 2026-08)." },
   { id: "conta-empresa", label: "Conta de empresa", blurb: "Perfil corporativo multicanal (LinkedIn + X + e-mail). Ticket de LTV, entra por cross-sell." },
   { id: "social-marca", label: "Social de marca", blurb: "Instagram da marca em volume, com time dedicado. Nada a ver com founder brand." },
   { id: "produto", label: "Produto avulso", blurb: "Se vende sozinho, sem conta gerenciada (newsletter, só-conteúdo)." },
@@ -276,10 +276,9 @@ export const PACKAGES: Package[] = [
   },
 
   // ---------- LINKEDIN B2B (decisão Gabriel, 08/08/2026) ----------
-  // ⚠️ Contrato mínimo 3 meses, e isso DIVERGE de propósito da política de 6 meses
-  // (PRICING_RULES.minContractMonths) que vale pro resto da casa: a referência de
-  // mercado dessa oferta trabalha em 3 meses e o atrito de fechar cai. Não é
-  // esquecimento — é exceção declarada. Todo pacote aqui carrega minMonths: 3.
+  // Contrato mínimo 6 meses, igual ao resto da casa (PRICING_RULES.minContractMonths).
+  // A régua nasceu em 06-08/08 com 3 meses espelhando a referência de mercado, mas a
+  // divergência DEIXOU DE EXISTIR: decisão Gabriel de 2026-08 unificou tudo em 6.
   // Composição em `pieces` usa post-linkedin + carrossel-linkedin, que já existiam
   // em UNITS. Setup, automação de lead magnet e sinais de intenção NÃO têm linha
   // própria na aba 1 (não há fonte de preço unitário), então entram como escopo e
@@ -297,7 +296,7 @@ export const PACKAGES: Package[] = [
     pieces: [{ unitId: "post-linkedin", qty: 6 }, { unitId: "carrossel-linkedin", qty: 6 }],
     layerIds: ["gestao-leve"],
     allowedAddons: [],
-    minMonths: 3,
+    minMonths: 6,
     tier: "entrada",
   },
   {
@@ -314,7 +313,7 @@ export const PACKAGES: Package[] = [
     layerIds: ["gestao-completa"],
     allowedAddons: [],
     highlight: "Fecha na tabela",
-    minMonths: 3,
+    minMonths: 6,
     tier: "completo",
   },
   {
@@ -330,7 +329,7 @@ export const PACKAGES: Package[] = [
     pieces: [{ unitId: "post-linkedin", qty: 20 }, { unitId: "carrossel-linkedin", qty: 20 }],
     layerIds: ["gestao-completa"],
     allowedAddons: [],
-    minMonths: 3,
+    minMonths: 6,
     tier: "enterprise",
   },
 
@@ -517,9 +516,10 @@ export const PRICING_RULES = {
     /** @deprecated régua antiga da planilha. Ver founderBrand. */
     personalFounder: 3000,
   },
-  // Política padrão jul/2026: contrato mínimo 6 meses. ⚠️ EXCEÇÃO declarada:
-  // a família linkedin-b2b fecha em 3 meses (decisão Gabriel 08/08/2026).
-  // Sempre preferir `package.minMonths` quando houver pacote selecionado.
+  // Política padrão jul/2026: contrato mínimo 6 meses em TODAS as famílias
+  // (a exceção de 3 meses do linkedin-b2b existiu em 08/08 e foi eliminada:
+  // decisão Gabriel 2026-08 unificou em 6). Sempre preferir `package.minMonths`
+  // quando houver pacote selecionado.
   minContractMonths: 6,
   bundleDiscountRange: [0.1, 0.15] as const, // 10–15% se virar pacote fechado
   /** Tolerância de conferência: composição pode divergir do preço até o teto do desconto. */
