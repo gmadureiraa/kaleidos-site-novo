@@ -900,7 +900,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Estratégia de social media completa: IG, X e grupo de WhatsApp.", href: "/cases/defiverso" },
         { name: "Crypto.com", metric: "+210% Curtidas", desc: "Conteúdo pra Instagram e Twitter com estratégia focada.", href: "/cases/crypto-com" },
-        { name: "Layla Foz", metric: "+20M Views", desc: "Crescimento orgânico via vídeo e conteúdo recorrente.", href: "/cases/layla-foz" },
+        { name: "Laylä Föz", metric: "+20M Views", desc: "Crescimento orgânico via vídeo e conteúdo recorrente.", href: "/cases/layla-foz" },
       ],
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para Social Media",
@@ -1027,7 +1027,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Full social media strategy: IG, X and WhatsApp group.", href: "/cases/defiverso" },
         { name: "Crypto.com", metric: "+210% Likes", desc: "Instagram and Twitter content with a focused strategy.", href: "/cases/crypto-com" },
-        { name: "Layla Foz", metric: "+20M Views", desc: "Organic growth via video and recurring content.", href: "/cases/layla-foz" },
+        { name: "Laylä Föz", metric: "+20M Views", desc: "Organic growth via video and recurring content.", href: "/cases/layla-foz" },
       ],
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Social Media",
@@ -1667,7 +1667,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Amplificação por vozes",
       cases: [
         { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Creator cripto com audiência engajada e estratégia de amplificação.", href: "/cases/investidor-4-20" },
-        { name: "Layla Foz", metric: "+20M Views", desc: "Crescimento e distribuição via conteúdo de creator.", href: "/cases/layla-foz" },
+        { name: "Laylä Föz", metric: "+20M Views", desc: "Crescimento e distribuição via conteúdo de creator.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Ecossistema de conteúdo e creators conectado à comunidade.", href: "/cases/defiverso" },
       ],
       stats: STATS_BASE_PT,
@@ -1791,7 +1791,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Amplification through voices",
       cases: [
         { name: "Investidor 4.20", metric: "10x Revenue", desc: "Crypto creator with engaged audience and amplification strategy.", href: "/cases/investidor-4-20" },
-        { name: "Layla Foz", metric: "+20M Views", desc: "Growth and distribution via creator content.", href: "/cases/layla-foz" },
+        { name: "Laylä Föz", metric: "+20M Views", desc: "Growth and distribution via creator content.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Content and creator ecosystem connected to the community.", href: "/cases/defiverso" },
       ],
       stats: STATS_BASE_EN,

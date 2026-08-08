@@ -403,7 +403,7 @@ export default function KaleidosContentPage() {
                 "/Cases/bit-das-minas/conteudo/Reels-1-Gi-2.mp4",
                 "/Cases/bit-das-minas/conteudo/Reels-3-Gi.mp4",
 
-                // Layla Foz - Vídeos
+                // Laylä Föz - Vídeos
                 "/Cases/layla-foz/conteudo/Reels-1-Layla-1.mp4",
                 "/Cases/layla-foz/conteudo/Reels-2-Layla-1.mp4",
 

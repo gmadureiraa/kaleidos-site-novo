@@ -271,16 +271,16 @@ const headHTML = (
 const WALL_COL_A: { src: string; alt: string }[] = [
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DaBYpV9xK7S-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola (Investidor 4.20)" },
   { src: "/Cases/dsec/conteudo/linkedin/dsec-li-etfs.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre ETFs de Bitcoin" },
-  { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg", alt: "Post publicado no Instagram da NeoBankless" },
-  { src: "/Cases/layla-foz/conteudo/Capa_Reels3.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels3.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWFG0_kCUuF-capa.jpg", alt: "Capa de reel publicado no Instagram do Defiverso" },
 ];
 const WALL_COL_B: { src: string; alt: string }[] = [
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
-  { src: "/Cases/layla-foz/conteudo/Capa_Reels2.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels2.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/neobankless/conteudo/instagram/post-global.jpg", alt: "Post publicado no Instagram da NeoBankless" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
@@ -289,7 +289,7 @@ const WALL_COL_C: { src: string; alt: string }[] = [
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NeoBankless" },
-  { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", alt: "Capa de reel publicado no perfil da Layla Foz" },
+  { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/dsec/conteudo/linkedin/dsec-li-rastreio.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre rastreio de transações entre corretora e carteira" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYM_0kqkXgl-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
@@ -957,10 +957,15 @@ function MetodoSection() {
 /* ─────────────────────── S7 · PROVA / CASES (dark) ─────────────────────── */
 // Métricas 100% de src/lib/case-data.ts:
 // investidor-4-20: 10x faturamento em 12 meses, IG 50k→173k, YT 200k→382k.
-// layla-foz: 100k→184k, 20M+ views nos reels.
+// layla-foz: 100k→177k, 20M+ views nos reels.
 // Fontes dos dois números de Instagram estão anotadas em case-data.ts, nos
-// comentários acima de cada case (Layla: LAYLA-FOZ/CLAUDE.md:30, 07/05/2026;
-// Lucas: diario/2026-08-04.md:47, apurado no perfil em 04/08/2026).
+// comentários acima de cada case. Ambos vêm da MESMA apuração: leitura direta dos
+// perfis @laylafoz e @lucas.amendolaa via Apify (`apify~instagram-profile-scraper`)
+// em 08/08/2026 — Layla 176.960, Lucas 173.050.
+// ⚠️ O "100k → 184k" da Layla que ficou publicado na manhã de 08/08 estava INFLADO
+// (vinha de LAYLA-FOZ/CLAUDE.md:30, carimbo de 07/05/2026). Corrigido pra 177k.
+// ⚠️ GRAFIA: "Laylä Föz" com trema é estilização dela (fullName do perfil no IG),
+// NÃO typo. Já foi "corrigido" por engano em 08/08/2026 e revertido. Não normalizar.
 // defiverso: 12M views orgânicos em 90 dias, +8,6k seguidores em 3 meses.
 const CASES_HTML = `
 <section id="cases-kaleidos" style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
@@ -986,10 +991,10 @@ const CASES_HTML = `
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 24px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
         <div style="border:1.5px solid #3a332a;border-radius:14px;overflow:hidden;background:#000;margin-bottom:16px;">
           <div style="display:flex;justify-content:center;padding:5px 0;"><span style="width:44px;height:5px;border-radius:99px;background:#2a241d;display:inline-block;"></span></div>
-          <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Layla Foz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
+          <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Laylä Föz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Layla Foz · criadora</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">100k &rarr; 184k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Laylä Föz · criadora</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">100k &rarr; 177k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">Mais de 20 milhões de views nos reels, sem descaracterizar a voz da criadora.</p>
         <a href="/cases/layla-foz" style="margin-top:16px;font-size:14px;font-weight:700;color:#D262B2;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>

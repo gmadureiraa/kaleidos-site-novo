@@ -200,33 +200,43 @@ export const casesData: Record<string, CaseData> = {
     ]
   },
   // ─── FONTE DOS NÚMEROS (não alterar sem atualizar esta nota) ───
-  // Instagram 100K → 184K: `vault/01 - KALEIDOS/011 - CLIENTES/LAYLA-FOZ/CLAUDE.md:30`
-  //   ("184K seguidores (cresceu de 100K → 184K com Kaleidos)"), campo
-  //   `ultima-atualizacao: 2026-05-07`; revalidado contra o vault em 08/08/2026
-  //   (diário `vault/00 - DASHBOARD/diario/2026-08-08.md`, "Layla 184K ✅").
-  //   Metodologia: contagem de seguidores do perfil @laylafoz registrada no
-  //   cérebro do cliente; o "100K" é o ponto de partida no início do contrato.
-  //   ⚠️ O 172k que vivia aqui era carimbo antigo (corrigido em 08/08/2026);
-  //   `Sobre o Cliente.md:136` registra a série "de 100K para 172K+ (hoje 184K)".
+  // Instagram 100K → 177K (176.960): APURAÇÃO DIRETA no perfil @laylafoz via Apify
+  //   (`apify~instagram-profile-scraper`) em **08/08/2026**. É a fonte mais recente
+  //   que existe e vence qualquer registro do vault.
+  //   ⚠️ HISTÓRICO DESTE NÚMERO (não apagar — a queda é informação, não erro):
+  //     · 172k  → carimbo antigo que vivia aqui, sem data confiável
+  //     · 184K  → `LAYLA-FOZ/CLAUDE.md:30`, apuração de 07/05/2026. Subiu pra cá na
+  //               manhã de 08/08/2026 e estava INFLADO — publicamos número alto.
+  //     · 176.960 → apuração de 08/08/2026. É o que vale.
+  //   Ou seja: o 172k estava baixo, o 184K estava alto. Lição: número de vault sem
+  //   data recente é chute com aparência de fato.
+  //   ⚠️ O "100K" (ponto de partida do contrato) NÃO tem apuração primária no vault.
+  //   Por isso o "+77%" abaixo é aritmética sobre os dois números publicados, não uma
+  //   medição — se o 100K cair, o percentual cai junto.
+  // ⚠️ GRAFIA: "Laylä Föz" com trema é a estilização que ela usa (é literalmente o
+  //   `fullName` do perfil @laylafoz no Instagram, e o vault grafa igual em
+  //   `LAYLA-FOZ/CLAUDE.md:2` e `:10`). NÃO é typo. Já foi achatado por engano para a
+  //   grafia sem trema em 08/08/2026 e revertido no mesmo dia. NÃO normalizar de novo.
+  //   (O `id` e os caminhos de mídia seguem `layla-foz`, sem trema, de propósito.)
   // "20M+ views nos reels": NÃO RASTREADO até fonte primária — herdado do case
   //   original, sem apuração datada no vault. Mantido como estava.
   "layla-foz": {
     id: "layla-foz",
-    nome: "Layla Foz",
+    nome: "Laylä Föz",
     tags: ["Influencer", "Vídeo", "Reels", "Copywriting", "Newsletter"],
     descricao: "Edição de vídeo e criação de newsletters",
     descricao_en: "Video editing and newsletter creation",
     fraseImpactante: "Mais de 20 milhões de views nos reels.",
     fraseImpactante_en: "Over 20 million views on Reels.",
-    detalhes: "O Desafio\n\nLayla Foz já tinha uma audiência engajada, mas precisava de conteúdo que mantivesse sua profundidade intelectual enquanto se adaptava às demandas do algoritmo do Instagram. O desafio era preservar sua autenticidade e criatividade enquanto maximizava o alcance e engajamento.\n\nNossa Estratégia\n\nDesenvolvemos uma abordagem que combinava a profundidade do conteúdo de Layla com formatos otimizados para redes sociais. Criamos reels que mantinham sua essência criativa e intelectual, além de newsletters que nutriam sua audiência com conteúdo de qualidade.\n\n• Edição de vídeos que preserva a profundidade do conteúdo\n• Reels otimizados para engajamento e alcance\n• Newsletters para nutrição de audiência\n• Manutenção da autenticidade e criatividade\n• Foco na inovação e qualidade excepcional\n\nO Resultado\n\nConteúdos editados que mantiveram a profundidade e criatividade de Layla, incluindo reels para engajamento e newsletters para nutrição de audiência. A qualidade excepcional permitiu que ela focasse na inovação, elevando seu impacto em plataformas exigentes.\n\nO resultado foi um crescimento impressionante no Instagram, de 100 mil para 184 mil seguidores, com mais de 20 milhões de views nos reels, estabelecendo Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
-    detalhes_en: "The Challenge\n\nLayla Foz already had an engaged audience, but needed content that maintained her intellectual depth while adapting to Instagram's algorithm demands. The challenge was to preserve her authenticity and creativity while maximizing reach and engagement.\n\nOur Strategy\n\nWe developed an approach that combined Layla's content depth with social media optimized formats. We created reels that maintained her creative and intellectual essence, plus newsletters that nurtured her audience with quality content.\n\n• Video editing that preserves content depth\n• Reels optimized for engagement and reach\n• Newsletters for audience nurturing\n• Maintaining authenticity and creativity\n• Focus on innovation and exceptional quality\n\nThe Result\n\nEdited content that preserved Layla's depth and creativity, including engagement reels and newsletters to nurture her audience. The exceptional quality enabled her to focus on innovation, boosting her impact on demanding platforms.\n\nThe result was impressive Instagram growth from 100k to 184k followers, with over 20 million views on reels, establishing Layla as one of Brazil's leading intellectual content creators.",
+    detalhes: "O Desafio\n\nLaylä Föz já tinha uma audiência engajada, mas precisava de conteúdo que mantivesse sua profundidade intelectual enquanto se adaptava às demandas do algoritmo do Instagram. O desafio era preservar sua autenticidade e criatividade enquanto maximizava o alcance e engajamento.\n\nNossa Estratégia\n\nDesenvolvemos uma abordagem que combinava a profundidade do conteúdo de Layla com formatos otimizados para redes sociais. Criamos reels que mantinham sua essência criativa e intelectual, além de newsletters que nutriam sua audiência com conteúdo de qualidade.\n\n• Edição de vídeos que preserva a profundidade do conteúdo\n• Reels otimizados para engajamento e alcance\n• Newsletters para nutrição de audiência\n• Manutenção da autenticidade e criatividade\n• Foco na inovação e qualidade excepcional\n\nO Resultado\n\nConteúdos editados que mantiveram a profundidade e criatividade de Layla, incluindo reels para engajamento e newsletters para nutrição de audiência. A qualidade excepcional permitiu que ela focasse na inovação, elevando seu impacto em plataformas exigentes.\n\nO resultado foi um crescimento impressionante no Instagram, de 100 mil para 177 mil seguidores, com mais de 20 milhões de views nos reels, estabelecendo Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
+    detalhes_en: "The Challenge\n\nLaylä Föz already had an engaged audience, but needed content that maintained her intellectual depth while adapting to Instagram's algorithm demands. The challenge was to preserve her authenticity and creativity while maximizing reach and engagement.\n\nOur Strategy\n\nWe developed an approach that combined Layla's content depth with social media optimized formats. We created reels that maintained her creative and intellectual essence, plus newsletters that nurtured her audience with quality content.\n\n• Video editing that preserves content depth\n• Reels optimized for engagement and reach\n• Newsletters for audience nurturing\n• Maintaining authenticity and creativity\n• Focus on innovation and exceptional quality\n\nThe Result\n\nEdited content that preserved Layla's depth and creativity, including engagement reels and newsletters to nurture her audience. The exceptional quality enabled her to focus on innovation, boosting her impact on demanding platforms.\n\nThe result was impressive Instagram growth from 100k to 177k followers, with over 20 million views on reels, establishing Layla as one of Brazil's leading intellectual content creators.",
     depoimentos: "Crescimento impressionante no Instagram e engajamento massivo nos reels.",
     links: ["https://www.instagram.com/laylafoz/"],
     externalLink: "https://www.instagram.com/laylafoz",
     externalLabel: "Ver no Instagram",
     externalLabel_en: "See on Instagram",
-    metricas: "20M+ views nos reels\n\nTransformamos o perfil da Layla Foz em uma das principais referências de conteúdo intelectual no Instagram brasileiro, com crescimento exponencial e engajamento massivo.\n\n• 20M+ views nos reels\n• Crescimento de 100k para 184k seguidores (+84%)\n• Engajamento massivo e consistente\n• Estabelecimento como referência intelectual\n• Qualidade excepcional mantida em todos os formatos\n\nA estratégia de preservar a profundidade do conteúdo enquanto otimizava para redes sociais resultou em um crescimento sustentável e uma audiência altamente engajada, consolidando Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
-    metricas_en: "20M+ views on reels\n\nWe transformed Layla Foz's profile into one of the main intellectual content references on Brazilian Instagram, with exponential growth and massive engagement.\n\n• 20M+ views on reels\n• Growth from 100k to 184k followers (+84%)\n• Massive and consistent engagement\n• Establishment as intellectual reference\n• Exceptional quality maintained across all formats\n\nThe strategy of preserving content depth while optimizing for social media resulted in sustainable growth and a highly engaged audience, consolidating Layla as one of Brazil's leading intellectual content creators.",
+    metricas: "20M+ views nos reels\n\nTransformamos o perfil da Laylä Föz em uma das principais referências de conteúdo intelectual no Instagram brasileiro, com crescimento exponencial e engajamento massivo.\n\n• 20M+ views nos reels\n• Crescimento de 100k para 177k seguidores (+77%)\n• Engajamento massivo e consistente\n• Estabelecimento como referência intelectual\n• Qualidade excepcional mantida em todos os formatos\n\nA estratégia de preservar a profundidade do conteúdo enquanto otimizava para redes sociais resultou em um crescimento sustentável e uma audiência altamente engajada, consolidando Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
+    metricas_en: "20M+ views on reels\n\nWe transformed Laylä Föz's profile into one of the main intellectual content references on Brazilian Instagram, with exponential growth and massive engagement.\n\n• 20M+ views on reels\n• Growth from 100k to 177k followers (+77%)\n• Massive and consistent engagement\n• Establishment as intellectual reference\n• Exceptional quality maintained across all formats\n\nThe strategy of preserving content depth while optimizing for social media resulted in sustainable growth and a highly engaged audience, consolidating Layla as one of Brazil's leading intellectual content creators.",
     servicos: ["Edição de vídeos", "Roteiros de Reels", "Newsletter"],
     servicos_en: ["Video editing", "Reels scripting", "Newsletter"],
     media: [

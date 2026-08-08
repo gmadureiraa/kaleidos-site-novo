@@ -61,9 +61,9 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: "layla-foz",
-    name: "Layla Foz",
+    name: "Laylä Föz",
     role: "Travel Creator",
-    company: "Layla Foz",
+    company: "Laylä Föz",
     avatar: "/Clientes-logo/LaylaFoz.png",
     quote:
       "A edição de vídeo da Kaleidos é outro nível. Meus reels ultrapassaram 20 milhões de views. Eles entendem o ritmo, a narrativa e o que faz o algoritmo trabalhar a favor.",

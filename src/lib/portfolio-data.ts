@@ -191,7 +191,7 @@ export const CLIENT_PRIORITY: string[] = [
   "defiverso", // Defiverso
   "bit-das-minas", // Bit das Minas
   "neobankless", // Neobankless
-  "layla-foz", // Layla Foz
+  "layla-foz", // Laylä Föz
   "dsec", // DSEC (institucional)
   "gui-campos", // Gui Campos (marca pessoal — sócio DSEC)
   "leo-maximiliano", // Léo Maximiliano (marca pessoal — CEO DSEC)

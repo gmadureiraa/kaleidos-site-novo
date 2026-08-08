@@ -733,8 +733,8 @@ function OperationsCarouselSection({ isEn }: { isEn: boolean }) {
     {
       kind: "cliente" as const,
       Icon: Sparkles,
-      cliente: "Layla Foz",
-      vertical: isEn ? "Wellness · 184k IG" : "Bem-estar · 184k IG",
+      cliente: "Laylä Föz",
+      vertical: isEn ? "Wellness · 177k IG" : "Bem-estar · 177k IG",
       solucao: isEn
         ? "Brisa da Semana newsletter + YouTube → IG/TikTok repurposing"
         : "Newsletter Brisa da Semana + repurpose YouTube → IG/TikTok",

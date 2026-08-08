@@ -21,12 +21,12 @@ const carouselItems = [
     description: "Reels virais"
   },
   
-  // Layla Foz
+  // Laylä Föz
   {
     src: "/Cases/layla-foz/conteudo/Reels-1-Layla-1.mp4",
     type: "video",
     href: "/cases/layla-foz",
-    title: "Layla Foz",
+    title: "Laylä Föz",
     description: "Reels educativos"
   },
   
@@ -84,12 +84,12 @@ const carouselItems = [
     description: "Design editorial"
   },
   
-  // Layla Foz (segundo exemplo)
+  // Laylä Föz (segundo exemplo)
   {
     src: "/Cases/layla-foz/conteudo/Reels-2-Layla-1.mp4",
     type: "video",
     href: "/cases/layla-foz",
-    title: "Layla Foz",
+    title: "Laylä Föz",
     description: "Conteúdo autêntico"
   },
   

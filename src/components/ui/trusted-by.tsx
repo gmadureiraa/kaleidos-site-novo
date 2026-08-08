@@ -16,7 +16,7 @@ const clients: { name: string; logo: string; url?: string }[] = [
   { name: "Jornal Cripto", logo: "/Clientes-logo/JornalCripto.png", url: "https://jornalcripto.com" },
   { name: "Orlando On Crypto", logo: "/Clientes-logo/OrlandoOnCrypto.png", url: "https://orlandooncrypto.com" },
   { name: "Bit das Minas", logo: "/Clientes-logo/BitdasMinas.png", url: "https://www.instagram.com/bitdasminas" },
-  { name: "Layla Foz", logo: "/Clientes-logo/LaylaFoz.png", url: "https://www.instagram.com/laylafoz" },
+  { name: "Laylä Föz", logo: "/Clientes-logo/LaylaFoz.png", url: "https://www.instagram.com/laylafoz" },
   { name: "Investidor 4.20", logo: "/Clientes-logo/investidor420.png", url: "https://www.youtube.com/@investidor4.20" },
   { name: "Parfin", logo: "/Clientes-logo/Parfin.png", url: "https://parfin.io" },
   { name: "Kast", logo: "/Clientes-logo/Kast.png" },

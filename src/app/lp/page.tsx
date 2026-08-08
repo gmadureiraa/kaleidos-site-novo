@@ -508,8 +508,8 @@ function Cases() {
     },
     {
       type: "cliente",
-      cliente: "Layla Foz",
-      vertical: "Bem-estar · 184k IG",
+      cliente: "Laylä Föz",
+      vertical: "Bem-estar · 177k IG",
       desc: "Newsletter Brisa da Semana + repurpose",
     },
     {

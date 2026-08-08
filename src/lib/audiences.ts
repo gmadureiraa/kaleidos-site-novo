@@ -774,9 +774,16 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     proof: {
       caseId: "investidor-4-20",
       client: "Investidor 4.20",
+      // Instagram 173.050: apuração direta no perfil @lucas.amendolaa via Apify
+      // (`apify~instagram-profile-scraper`) em 08/08/2026. Corrigido de 180,000 —
+      // carimbo velho herdado de `docs/cases-estudo.txt:9`. A versão PT (linha ~176)
+      // já tinha sido corrigida em 08/08; esta EN tinha ficado pra trás.
+      // 🔴 "10x revenue growth" aqui diverge do "5x de faturamento" que a versão PT
+      // deste MESMO bloco publica. Nenhum dos dois tem fonte primária no vault e não
+      // dá pra apurar por scraper. NÃO alterado — decisão do Gabriel.
       metric: "10x revenue growth",
       blurb:
-        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch: revenue multiplied by 10 in 12 months, Instagram from 50,000 to 180,000 followers and a newsletter from 0 to 30,000 subscribers.",
+        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch: revenue multiplied by 10 in 12 months, Instagram from 50,000 to 173,000 followers and a newsletter from 0 to 30,000 subscribers.",
     },
     ctaLine:
       "Your audience already exists. Kaleidos builds the machine that turns it into authority and revenue. Let's talk.",

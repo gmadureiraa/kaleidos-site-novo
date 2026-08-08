@@ -76,7 +76,7 @@ const casesCarouselData = [
   },
   {
     id: "layla-foz",
-    title: "Layla Foz",
+    title: "Laylä Föz",
     tag: "Vídeo · Newsletter",
     description: "Edição de vídeo e criação de newsletters para crescimento orgânico.",
     metric: "+20M Views",
