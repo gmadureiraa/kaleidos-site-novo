@@ -193,6 +193,9 @@ export const CLIENT_PRIORITY: string[] = [
   "neobankless", // Neobankless
   "layla-foz", // Layla Foz
   "dsec", // DSEC (institucional)
+  "gui-campos", // Gui Campos (marca pessoal — sócio DSEC)
+  "leo-maximiliano", // Léo Maximiliano (marca pessoal — CEO DSEC)
+  "matheus-fassheber", // Matheus Fassheber (founder brand — Neobankless)
   "jornal-cripto", // Jornal Cripto
   "alfred", // Alfred (DSEC Labs)
   "orlando", // Orlando
@@ -229,6 +232,12 @@ const CLIENT_ALIASES: Record<string, string> = {
   dsec: "dsec",
   "dsec-labs": "dsec",
   "jornal-cripto": "jornal-cripto",
+  "gui-campos": "gui-campos",
+  "gui-campos-dsec": "gui-campos",
+  "leo-maximiliano": "leo-maximiliano",
+  "leo-maximiliano-dsec": "leo-maximiliano",
+  "matheus-fassheber": "matheus-fassheber",
+  "matheus-fassheber-neobankless": "matheus-fassheber",
   alfred: "alfred",
   orlando: "orlando",
   "hugo-doria": "hugo-doria",

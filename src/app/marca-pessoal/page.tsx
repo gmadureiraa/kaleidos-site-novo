@@ -25,14 +25,23 @@ import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
  *   LinkedIn 2024, Refine Labs, LinkedIn, Digital Applied).
  * - Métricas de case vêm SÓ de src/lib/case-data.ts (Investidor 4.20, Layla
  *   Foz, Defiverso, NeoBankless, DSEC). Nunca inventar número.
- * - Sem preço literal na página (tiers por nome + call de qualificação).
  * - Voz institucional "a Kaleidos", PT-BR, sem travessão no corpo.
+ *
+ * ⚠️ MUDANÇA DE POLÍTICA (08/2026): a regra antiga era "sem preço literal na
+ * página (tiers por nome + call de qualificação)". Ela foi REVERTIDA: preço
+ * público qualifica o lead antes da call. Os valores vêm da decisão registrada
+ * de 2026-07-24 (vault/015 - BRANDING E GROWTH/marca-pessoal-founders/
+ * PLANO-EXECUCAO-marca-pessoal-founders-2026-07-24.md §2.1-2.4). Ver o bloco
+ * de comentário sobre OFERTA_HTML antes de alterar qualquer número.
+ *
+ * ⚠️ HIERARQUIA DE CTA: uma ação primária (/agendar, rótulo CTA_PRIMARY) e uma
+ * secundária (auditoria no WhatsApp). Não introduzir um terceiro rótulo.
  */
 
 const CANONICAL = "/marca-pessoal";
 const TITLE = "Marca Pessoal para Founders | Founder-Led Growth — Kaleidos";
 const DESC =
-  "Founder-Led Growth para founders de cripto, web3 e fintech. A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Instagram como palco principal, LinkedIn e X reforçando a autoridade B2B: você grava, a gente faz o resto.";
+  "Founder-Led Growth para founders de cripto, web3 e fintech. A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Planos a partir de R$ 5.000/mês em Instagram e TikTok, mais uma oferta separada de LinkedIn B2B para empresas: você grava, a gente faz o resto.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -74,11 +83,21 @@ const WA_AUDIT =
     "Oi! Quero a auditoria gratuita do meu perfil (marca pessoal de founder)."
   );
 
-const WA_DIAG =
-  "https://wa.me/5512997796835?text=" +
-  encodeURIComponent(
-    "Oi! Quero saber mais sobre o Diagnóstico de Posicionamento (marca pessoal de founder)."
-  );
+/* ── HIERARQUIA DE CTA (revisão 2026-08) ─────────────────────────────────────
+   A página tinha 5 rótulos de CTA competindo ("Conversar sobre o Founder
+   Start", "Quero a auditoria gratuita", "Pedir o diagnóstico", "Aplicar
+   para o Founder Authority", "Aplicar como time"), cada um com destino
+   diferente. Atenção dividida = ninguém clica.
+
+   Agora existe UMA ação primária e UMA secundária, repetidas:
+   · PRIMÁRIA   → /agendar, sempre com o rótulo CTA_PRIMARY. Todo card de
+                  plano aponta pra cá (com ?plano= só pra contexto interno).
+   · SECUNDÁRIA → auditoria gratuita no WhatsApp, sempre visualmente mais
+                  discreta (outline no hero/CTA final, link de texto no resto).
+   Nenhum outro rótulo de CTA deve ser introduzido nesta página. */
+const CTA_PRIMARY = "Ver se faz sentido &rarr;";
+const CTA_PRIMARY_JSX = "Ver se faz sentido →";
+const AGENDAR = "/agendar";
 
 // CSS escopado da página (grids responsivos + tabela com scroll próprio).
 const MP_STYLE = `
@@ -400,7 +419,7 @@ function HeroSection() {
               }}
             >
               <a
-                href="/agendar"
+                href={AGENDAR}
                 className="cta-btn"
                 style={{
                   display: "inline-flex",
@@ -416,7 +435,7 @@ function HeroSection() {
                   textDecoration: "none",
                 }}
               >
-                Ver se faz sentido &rarr;
+                {CTA_PRIMARY_JSX}
               </a>
               <a
                 href={WA_AUDIT}
@@ -440,6 +459,57 @@ function HeroSection() {
                 Auditar meu perfil de graça
               </a>
             </div>
+            {/* Preço-âncora no hero: qualifica o lead antes do clique, em vez
+                de empurrar a descoberta do valor pra dentro da call. Valor da
+                decisão registrada 2026-07-24 (ver comentário em OFERTA_HTML). */}
+            <p
+              style={{
+                fontSize: 14.5,
+                lineHeight: 1.5,
+                color: "#d8d1c6",
+                margin: "22px 0 0",
+              }}
+            >
+              Planos a partir de{" "}
+              <strong style={{ color: "#FAFAFA" }}>R$ 5.000/mês</strong>, com
+              preço e escopo abertos{" "}
+              <a
+                href="#oferta"
+                style={{
+                  color: "#7CF067",
+                  fontWeight: 700,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                }}
+              >
+                aqui na página
+              </a>
+              .
+            </p>
+            {/* Ponte pra segunda oferta. A página inteira fala de pessoa
+                física no Instagram; quem chega procurando canal de demanda
+                B2B precisa ser desviado logo, não no rodapé. */}
+            <p
+              style={{
+                fontSize: 14.5,
+                lineHeight: 1.5,
+                color: "#b8b1a6",
+                margin: "10px 0 0",
+              }}
+            >
+              É uma empresa B2B e o canal é o LinkedIn?{" "}
+              <a
+                href="#linkedin-b2b"
+                style={{
+                  color: "#D262B2",
+                  fontWeight: 700,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                }}
+              >
+                Tem uma oferta separada pra isso →
+              </a>
+            </p>
             <p
               style={{
                 fontFamily: "Gridlite, monospace",
@@ -447,7 +517,7 @@ function HeroSection() {
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
                 color: "#9a9186",
-                margin: "26px 0 0",
+                margin: "20px 0 0",
               }}
             >
               &larr; conteúdo real publicado em perfis de clientes. nada de
@@ -522,181 +592,6 @@ function HeroSection() {
             }}
           >
             conteúdo real publicado em perfis de clientes
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────── S2 · PROVA AGREGADA + CONGRUÊNCIA (claro) ───────────────
-   Números: agregados canônicos do site (+125M views / 30+ projetos) e métricas
-   reais de case-data.ts. Count-up com magicui/NumberTicker. */
-const STATS: {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-  shadow: string;
-  rotate: number;
-}[] = [
-  { value: 125, prefix: "+", suffix: "M", label: "de views gerados para clientes", shadow: "#7CF067", rotate: -1 },
-  { value: 5, suffix: "x", label: "faturamento no nosso maior case founder-led", shadow: "#D262B2", rotate: 1 },
-  { value: 20, suffix: "M+", label: "views nos reels de uma única criadora", shadow: "#7CF067", rotate: -1 },
-  { value: 30, suffix: "+", label: "projetos entregues desde 2019", shadow: "#D262B2", rotate: 1 },
-];
-
-function StatsSection() {
-  return (
-    <section
-      style={{
-        position: "relative",
-        background: "#FAFAFA",
-        overflow: "hidden",
-        backgroundImage:
-          "linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px)",
-        backgroundSize: "34px 34px",
-      }}
-    >
-      <div
-        className="mp-pad"
-        style={{
-          position: "relative",
-          maxWidth: 1240,
-          margin: "0 auto",
-          paddingTop: 72,
-          paddingBottom: 72,
-        }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 44 }}>
-          <Eyebrow label="A prova, em números" color="#D262B2" />
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(18px,2vw,22px)",
-              lineHeight: 1.4,
-              letterSpacing: "-.4px",
-              color: "#14110D",
-              maxWidth: 560,
-              margin: "0 auto",
-            }}
-          >
-            Quatro anos operando founder-led growth para founders e criadores
-            de cripto, web3 e fintech.
-          </p>
-        </div>
-        <div className="mp-stats">
-          {STATS.map((s) => (
-            <div
-              key={s.label}
-              style={{
-                background: "#fff",
-                border: "1.5px solid #14110D",
-                borderRadius: 16,
-                padding: "22px 28px",
-                boxShadow: `5px 5px 0 ${s.shadow}`,
-                textAlign: "center",
-                minWidth: 200,
-                transform: `rotate(${s.rotate}deg)`,
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "Atelier, sans-serif",
-                  fontWeight: 800,
-                  fontSize: "clamp(30px,3.4vw,42px)",
-                  lineHeight: 1,
-                  color: "#14110D",
-                }}
-              >
-                <AnimatedNumber
-                  value={s.value}
-                  prefix={s.prefix ?? ""}
-                  suffix={s.suffix ?? ""}
-                />
-              </div>
-              <div style={{ fontSize: 13.5, color: "#6b6258", marginTop: 8 }}>
-                {s.label}
-              </div>
-              <DotGraph
-                seed={s.value * 7 + 3}
-                color={s.shadow}
-                height={36}
-                className=""
-              />
-            </div>
-          ))}
-        </div>
-        <div style={{ maxWidth: 820, margin: "56px auto 0", textAlign: "center" }}>
-          <p
-            style={{
-              fontFamily: "'Inter',sans-serif",
-              fontWeight: 500,
-              fontSize: "clamp(22px,2.8vw,34px)",
-              lineHeight: 1.3,
-              letterSpacing: "-.5px",
-              color: "#14110D",
-              margin: 0,
-            }}
-          >
-            A gente não só vende founder-led. A gente{" "}
-            <span
-              style={{
-                background: "#7CF067",
-                color: "#14110D",
-                padding: ".06em .22em",
-                borderRadius: 6,
-                fontWeight: 800,
-              }}
-            >
-              É
-            </span>{" "}
-            founder-led.
-          </p>
-          <p
-            style={{
-              fontSize: 16,
-              lineHeight: 1.6,
-              color: "#6b6258",
-              maxWidth: 600,
-              margin: "18px auto 0",
-            }}
-          >
-            O fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em
-            si mesmo o método que entrega para os clientes: tese, cadência com
-            o Instagram na frente (e X + LinkedIn de apoio) e medição. Quem
-            vende marca pessoal de founder precisa ser a própria prova.
-          </p>
-        </div>
-        {/* Stat do feed (estava no hero antigo; aqui vira nota de rodapé da prova) */}
-        <div
-          style={{
-            maxWidth: 560,
-            margin: "40px auto 0",
-            background: "#fff",
-            border: "1.5px solid #14110D",
-            borderRadius: 14,
-            padding: "18px 22px",
-            boxShadow: "4px 4px 0 #7CF067",
-            textAlign: "center",
-          }}
-        >
-          <p style={{ fontSize: 15.5, lineHeight: 1.5, color: "#14110D", margin: 0, fontWeight: 600 }}>
-            Perfis pessoais recebem ~65% do feed do LinkedIn. Páginas de
-            empresa, ~5%.
-          </p>
-          <p
-            style={{
-              fontFamily: "Gridlite, monospace",
-              fontSize: 11,
-              letterSpacing: 1.5,
-              color: "#8a8175",
-              margin: "8px 0 0",
-              textTransform: "uppercase",
-            }}
-          >
-            Fonte: Digital Applied (compilação de agência, 2026)
           </p>
         </div>
       </div>
@@ -908,9 +803,16 @@ function ProblemaSection() {
   );
 }
 
-/* ─────────────────────── S4 · OS DADOS (claro) ───────────────────────
-   Stats de terceiros com fonte visível (paper 2026-07-24). Count-up com
-   magicui/NumberTicker (padrão AnimatedNumber do teardown). */
+/* ─────────────────────── S4 · PROVA DE MERCADO (claro) ───────────────────────
+   ⚠️ A ÚNICA seção de números de mercado da página (decisão do Gabriel,
+   08/2026: "só uma seção com números para provar o mercado"). As seções
+   "Mais dados de mercado" e "Referências de mercado" (Trajano, Nubank,
+   Spanx, Bumble, Cimed…) foram REMOVIDAS junto com a de prova agregada.
+   Se surgir stat novo, ele entra AQUI no lugar de um dos quatro, nunca
+   como card a mais nem como seção nova.
+
+   Todos os quatro números vêm do paper 2026-07-24 e do doc ENRIQUECIMENTO
+   (vault/015 - BRANDING E GROWTH/marca-pessoal-founders), com fonte visível. */
 const DADOS_CARDS: {
   value: number;
   suffix: string;
@@ -920,20 +822,12 @@ const DADOS_CARDS: {
   shadow: string;
 }[] = [
   {
-    value: 45,
+    value: 65,
     suffix: "%",
     texto:
-      "da reputação da empresa (e 44% do valor de mercado percebido) são atribuídos pela liderança à reputação do CEO.",
-    fonte: "Weber Shandwick (estudo de 2015)",
+      "do feed do LinkedIn vai para perfis pessoais. Páginas de empresa ficam com cerca de 5%. Pessoa ganha de logo, por goleada.",
+    fonte: "Digital Applied (compilação de agência, 2026)",
     shadow: "#7CF067",
-  },
-  {
-    value: 73,
-    suffix: "%",
-    texto:
-      "dos decisores B2B dizem que thought leadership é base mais confiável pra avaliar um fornecedor do que material de marketing.",
-    fonte: "Edelman-LinkedIn (2024)",
-    shadow: "#D262B2",
   },
   {
     value: 2.75,
@@ -942,14 +836,22 @@ const DADOS_CARDS: {
     texto:
       "mais impressões no perfil pessoal do que na página da empresa, publicando o mesmo conteúdo.",
     fonte: "Refine Labs (experimento de agência)",
+    shadow: "#D262B2",
+  },
+  {
+    value: 73,
+    suffix: "%",
+    texto:
+      "dos decisores B2B dizem que thought leadership é base mais confiável pra avaliar um fornecedor do que material de marketing.",
+    fonte: "Edelman-LinkedIn (2024)",
     shadow: "#7CF067",
   },
   {
-    value: 78,
+    value: 95,
     suffix: "%",
     texto:
-      "dos social sellers vendem mais que os pares que não usam redes sociais no processo comercial.",
-    fonte: "LinkedIn Sales Solutions",
+      "dos decisores invisíveis do comitê de compra B2B ficam mais receptivos a uma abordagem comercial quando o fornecedor publica thought leadership forte.",
+    fonte: "Edelman-LinkedIn B2B Thought Leadership Report (2025)",
     shadow: "#D262B2",
   },
 ];
@@ -968,14 +870,14 @@ function DadosSection() {
         }}
       >
         <SectionHead
-          eyebrow="Os dados"
+          eyebrow="O mercado, em números"
           title={
             <>
-              Não é tendência.<br />É{" "}
-              <span className="hl">matemática</span>.
+              Quatro números.<br />E{" "}
+              <span className="hl">chega de número</span>.
             </>
           }
-          lead="A pesquisa mede sobretudo LinkedIn e B2B, e confirma a lógica: pessoa > página. No Brasil, o Instagram é o palco principal de alcance; LinkedIn e X reforçam a autoridade junto ao decisor."
+          lead="A prova de que o mercado existe cabe aqui: pessoa ganha de página, e quem decide a compra confia em quem publica. O resto desta página não é estatística, é o que a gente entrega."
         />
         <div className="mp-grid4">
           {DADOS_CARDS.map((c) => (
@@ -1057,11 +959,6 @@ function DadosSection() {
   );
 }
 
-/* ────────────── S4b · MAIS DADOS DE MERCADO (dark) ────────────── */
-// Stats novas do doc ENRIQUECIMENTO-pagina-2026-07-24 (vault/015 - BRANDING E
-// GROWTH/marca-pessoal-founders). Todas com fonte e ano visíveis. O card do
-// Nubank leva rótulo de atribuição narrativa (é boca a boca de produto/CX,
-// não estudo controlado de marca pessoal).
 /* ── S3b · O que é Founder-Led Growth ─────────────────────────────────────
    Pedido do Gabriel (28/07): a página vendia o serviço sem nunca nomear a
    categoria. Esta seção define o termo, separa do que ele NÃO é, e mostra os
@@ -1113,109 +1010,6 @@ const FOUNDER_LED_HTML = `
   </div>
 </section>`;
 
-const MERCADO_HTML = `
-<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
-  <div style="position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#ffffff14 1.2px,transparent 1.4px);background-size:20px 20px;pointer-events:none;"></div>
-  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
-    ${headHTML(
-      "Mais dados de mercado",
-      'Os números não<br>deixam <span class="hl">dúvida</span>.',
-      "Da pesquisa acadêmica revisada por pares ao comitê de compra B2B: a autoridade pública do founder mexe em capital, pipeline e custo de aquisição. No Brasil, esse alcance se constrói primeiro no Instagram; LinkedIn e X consolidam a camada B2B.",
-      true
-    )}
-    <div class="mp-grid3">
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#7CF067;">95%</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">dos "hidden buyers" (os decisores invisíveis do comitê de compra) dizem que thought leadership forte os deixa mais receptivos a uma abordagem de vendas.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn B2B Thought Leadership Report (2025)</p>
-      </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">79%</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">desses decisores invisíveis têm mais chance de defender a sua proposta no RFP quando o fornecedor produz thought leadership de qualidade consistente.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Edelman-LinkedIn B2B Thought Leadership Report (2025)</p>
-      </div>
-      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:'Inter',sans-serif;font-weight:800;font-size:23px;line-height:1.2;letter-spacing:-.6px;color:#FAFAFA;">Variável mais crítica pra atrair capital</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">Estudo acadêmico revisado por pares conclui que a marca pessoal do founder e do time fundador é a variável mais crítica pra atrair investimento em ventures.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Heliyon / ScienceDirect, estudo peer-reviewed (2019)</p>
-      </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">89%</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">das pessoas confiam mais em recomendações de gente que conhecem do que em qualquer outro canal. Anúncio pago fica muito abaixo. Pessoas &gt; marcas &gt; anúncios.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Nielsen, Trust in Advertising (2021)</p>
-      </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#7CF067;">32% &rarr; 39%</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">foi o salto do LinkedIn no share de budget de marketing B2B de 2024 pra 2025. O dinheiro está migrando pro canal onde perfil pessoal domina o feed.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">The Digital Bloom, B2B GTM Benchmarks (2025, benchmark de agência)</p>
-      </div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:40px;line-height:1;color:#D262B2;">US$7</div>
-        <p style="font-size:14px;line-height:1.55;color:#d8d1c6;margin:12px 0 0;flex:1;">é o CAC histórico do Nubank, contra US$300 a US$600 de bancos tradicionais: ~80-90% dos clientes chegam por indicação, não por anúncio.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#9a9186;margin:14px 0 0;text-transform:uppercase;">Aakash Gupta / WhiteSight (2024) · atribuição narrativa: boca a boca de produto, não estudo controlado</p>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:14px;color:#9a9186;margin:32px auto 0;max-width:640px;">Mesmo padrão de rigor da seção anterior: fonte e ano em todo número. Onde a fonte é benchmark de agência ou a ligação causa-efeito é leitura narrativa, está rotulado no próprio card.</p>
-  </div>
-</section>
-`;
-
-/* ────────────── S4c · CASES FAMOSOS / REFERÊNCIAS DE MERCADO (claro) ────────────── */
-// ⚠️ Referências PÚBLICAS de mercado, NÃO clientes da Kaleidos. Disclaimer
-// visível no topo e em cada contexto. Números do doc de enriquecimento e do
-// paper 2026-07-24 (todos com fonte pública). A ligação marca pessoal →
-// resultado é atribuição narrativa (imprensa/founder), sinalizada no rodapé.
-const FAMOSOS_HTML = `
-<section style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
-  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
-    ${headHTML(
-      "Referências de mercado",
-      'O mercado<br><span class="hl">já provou</span>.',
-      'Exemplos públicos e famosos de founder como mídia. <strong style="color:#14110D;">Não são clientes da Kaleidos</strong>: os nossos, com métrica auditável, estão logo abaixo.',
-      false
-    )}
-    <div class="mp-grid3">
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Luiza Trajano · Magalu</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">4M+ seguidores da "Lu"</div>
-        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">A avatar "Lu do Magalu", inspirada na fundadora, passou de 4 milhões de seguidores no Instagram e é tida como a primeira influenciadora virtual do Brasil, com collab Adidas&times;Farm. <strong>Lição:</strong> a persona do founder pode ser sistematizada em ativo de mídia perene da empresa.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: InfoMoney · registro público</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">David Vélez · Nubank</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">CAC de US$7, NPS 90</div>
-        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">Banco construído sem budget de marketing tradicional: ~80-90% dos clientes por indicação e Vélez como voz pública da tese "velvet rope" (entrada por convite). <strong>Lição:</strong> confiança em pessoas e comunidade escala mais barato que anúncio pago.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Aakash Gupta · WhiteSight · Forbes (2024)</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Sara Blakely · Spanx</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">Zero anúncio até 2016</div>
-        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">Nunca captou investimento externo, deteve 100% da empresa por 21 anos e cresceu na base de mídia espontânea da própria Blakely: 8.000 pares vendidos em 5 minutos na estreia da QVC. <strong>Lição:</strong> a história e o rosto da founder podem substituir a verba de mídia por anos.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Britannica · SUCCESS</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Whitney Wolfe Herd · Bumble</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">IPO de US$2,2 bilhões</div>
-        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">A founder virou o próprio símbolo do produto ("a mulher dá o primeiro passo") e, no IPO de 2021, tornou-se a mulher self-made mais jovem a abrir capital nos EUA, bilionária aos 31. <strong>Lição:</strong> founder-símbolo alinha narrativa pessoal e produto, e vira capa de mídia global.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Forbes (2021)</p>
-      </div>
-      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">João Adibe · Cimed</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1.1;margin:12px 0 0;color:#14110D;">10x o alcance da empresa</div>
-        <p style="font-size:14px;line-height:1.55;color:#4a443c;margin:12px 0 0;flex:1;">O perfil pessoal do CEO (~5,2M seguidores) tem cerca de 10x o da própria Cimed, que faturou R$3,6 bilhões em 2024; a collab Carmed&times;Fini fez 1,2 bilhão de views no TikTok e esgotou estoque em 15 dias. <strong>Lição:</strong> quando o founder tem mais alcance que a página, ele vira o canal de lançamento mais barato da companhia.</p>
-        <p style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1px;color:#8a8175;margin:14px 0 0;text-transform:uppercase;">Fonte: Origyn · Revista Encontro (2025) · InvestNews</p>
-      </div>
-      <div style="background:#14110D;border:1.5px solid #14110D;border-radius:16px;padding:26px 22px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;justify-content:center;text-align:center;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">E os cases da Kaleidos?</div>
-        <p style="font-size:15px;line-height:1.6;color:#d8d1c6;margin:14px 0 0;">Esses aí de cima são referências públicas do mercado. Os founders e criadores que a gente atende de verdade, com antes e depois auditável, estão na próxima seção.</p>
-        <a href="#cases-kaleidos" style="margin-top:16px;font-size:14px;font-weight:700;color:#7CF067;text-decoration:underline;text-underline-offset:3px;">Ver os nossos cases &darr;</a>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:13px;color:#8a8175;margin:32px auto 0;max-width:680px;"><strong>Nota de rigor:</strong> os números acima são fatos públicos (seguidores, faturamento, IPO, views). A ligação "marca pessoal causou o resultado" é atribuição narrativa da imprensa e dos próprios founders, não estudo de atribuição controlado. Citamos assim de propósito.</p>
-  </div>
-</section>
-`;
-
 /* ─────────────────────── S5 · O QUE FAZEMOS (dark) ─────────────────────── */
 const FAZEMOS_HTML = `
 <section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
@@ -1224,7 +1018,7 @@ const FAZEMOS_HTML = `
     ${headHTML(
       "O que fazemos",
       'Você grava.<br>A gente faz <span class="hl">o resto</span>.',
-      'O palco principal é o <strong style="color:#7CF067;">Instagram</strong>: carrossel, reels e stories, onde o alcance acontece. A Kaleidos dirige, escreve, desenha, edita, publica e mede. LinkedIn e X entram como camada de autoridade B2B, sem produção dobrada.',
+      'O palco principal é o <strong style="color:#7CF067;">Instagram</strong>, com o mesmo conteúdo saindo também no TikTok: reels e carrosséis, onde o alcance acontece. A Kaleidos dirige, escreve, desenha, edita, publica e mede. Se o LinkedIn for o canal principal e quem contrata for a empresa, existe uma oferta separada pra isso nesta página.',
       true
     )}
     <div class="mp-grid2" style="max-width:900px;margin:0 auto;">
@@ -1242,7 +1036,7 @@ const FAZEMOS_HTML = `
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;line-height:1.6;color:#d8d1c6;">
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Estratégia, tese e calendário editorial aprovado</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Roteiro, copy, design e edição de tudo</li>
-          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Publicação nas três redes + prospecção de podcast</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Publicação e agendamento em Instagram e TikTok</li>
           <li style="padding:7px 0;">Relatório mensal e reunião de leitura dos números</li>
         </ul>
       </div>
@@ -1253,10 +1047,120 @@ const FAZEMOS_HTML = `
     <div class="mp-grid6" style="max-width:1000px;margin:0 auto;">
       <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">01</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Carrossel Instagram</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A peça-mãe: autoridade e salvamento</div></div>
       <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">02</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Reels</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Aquisição e alcance de topo de funil</div></div>
-      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">03</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram · principal</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Stories com direção</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Bastidor diário que aquece a audiência</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">04</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Post LinkedIn + thread no X</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Repurpose que reforça a autoridade B2B</div></div>
-      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">05</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">e ainda</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Podcast como convidado</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Prospecção, agendamento e cortes</div></div>
+      <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#7CF067;">03</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#06250a;background:#7CF067;border-radius:999px;padding:3px 9px;">Instagram + TikTok</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Postagem e agendamento</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">A mesma peça publicada nas duas redes</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">04</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">no Escala</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Engajamento: DM e comentários</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">O perfil que conversa, não só publica</div></div>
+      <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">05</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">Completo e Escala</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Estratégia</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Tese, pilares e calendário revisados todo mês</div></div>
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-family:Gridlite,monospace;font-size:13px;letter-spacing:1px;color:#D262B2;">06</div><span style="font-family:Gridlite,monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#D262B2;border:1px solid #D262B2;border-radius:999px;padding:3px 9px;">sempre</span></div><div style="font-weight:700;font-size:15px;margin-top:12px;">Relatório mensal</div><div style="font-size:13px;color:#9a9186;margin-top:4px;">Leitura junto: dobrar no que cresce</div></div>
+    </div>
+  </div>
+</section>
+`;
+
+/* ────────────── S5b · O QUE VOCÊ RECEBE (claro) — entregas nomeadas ──────────────
+   Lacuna apontada pelo Gabriel (08/2026): a página explicava muito bem POR QUE
+   founder-led funciona e QUEM faz o quê, mas nunca dizia o que, concretamente,
+   chega na mão do cliente. "Estratégia e produção" é abstração; "roteiro de
+   reel com direção de gravação" é entrega.
+
+   ⚠️ REGRA DE DADO: os artefatos abaixo são os que a página já descreve em
+   outras seções (método, semana-tipo, o que fazemos). NENHUM volume mensal foi
+   inventado. A faixa de cadência usa a semana-tipo que já estava publicada
+   nesta mesma página e está rotulada como REFERÊNCIA, não contrato: o volume
+   fechado sai na proposta. Não transformar isso em promessa numérica sem o
+   Gabriel confirmar. */
+const ENTREGAS = [
+  {
+    n: "01",
+    grupo: "Estratégia",
+    cor: "#7CF067",
+    itens: [
+      "Tese de posicionamento escrita (o que você defende, e contra o quê)",
+      "Bio-manifesto dos 3 perfis, reescrita e implementada",
+      "Pilares de conteúdo ponderados, com peso por objetivo",
+      "Auditoria dos perfis: o que fica, o que sai, o que refaz",
+    ],
+  },
+  {
+    n: "02",
+    grupo: "Planejamento",
+    cor: "#D262B2",
+    itens: [
+      "Calendário editorial do mês, entregue pra sua aprovação antes de produzir",
+      "Pauta e ângulo de cada peça, já amarrados na tese",
+      "Roteiro de reel com direção de gravação (o que falar, como, em que ordem)",
+      "Lista de stories dirigidos pra semana",
+    ],
+  },
+  {
+    n: "03",
+    grupo: "Produção",
+    cor: "#7CF067",
+    itens: [
+      "Carrossel de Instagram desenhado na sua identidade",
+      "Edição dos reels: corte, legenda, capa e trilha",
+      "Copy da legenda e do CTA de cada peça",
+      "Corte vertical da mesma peça pro TikTok, sem produção dobrada",
+    ],
+  },
+  {
+    n: "04",
+    grupo: "Distribuição e leitura",
+    cor: "#D262B2",
+    itens: [
+      "Publicação e agendamento em Instagram e TikTok",
+      "Prospecção, agendamento e cortes de podcast como convidado (projeto à parte)",
+      "Relatório mensal com o que cresceu, o que travou e o que muda",
+      "Reunião de leitura dos números com a gente",
+    ],
+  },
+];
+
+const ENTREGAS_HTML = `
+<section id="entregas" style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
+  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
+    ${headHTML(
+      "O que você recebe",
+      'Entregas com nome,<br>não <span class="hl">promessa</span>.',
+      "Toda agência diz que faz “estratégia e produção”. Isso não é entrega, é categoria. Abaixo está o que efetivamente chega na sua mão, item por item, do primeiro mês em diante.",
+      false
+    )}
+    <div class="mp-grid4">
+      ${ENTREGAS.map(
+        (g) => `
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:24px 22px;box-shadow:5px 5px 0 ${g.cor};display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:10px;">
+          <span style="font-family:Atelier,sans-serif;font-weight:800;font-size:26px;line-height:1;color:${g.cor};-webkit-text-stroke:1.2px #14110D;">${g.n}</span>
+          <span style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">${g.grupo}</span>
+        </div>
+        <ul style="list-style:none;margin:16px 0 0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
+          ${g.itens
+            .map(
+              (i, idx) =>
+                `<li style="display:flex;gap:9px;padding:8px 0;${
+                  idx === g.itens.length - 1
+                    ? ""
+                    : "border-bottom:1px solid #efe9df;"
+                }"><span style="color:${g.cor};font-weight:800;flex-shrink:0;-webkit-text-stroke:.6px #14110D;">&#10003;</span><span>${i}</span></li>`
+            )
+            .join("")}
+        </ul>
+      </div>`
+      ).join("")}
+    </div>
+
+    <div style="max-width:1000px;margin:36px auto 0;background:#14110D;border-radius:18px;padding:28px 30px;box-shadow:6px 6px 0 #D262B2;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7CF067;margin-bottom:6px;">E em volume</div>
+      <p style="font-size:15px;line-height:1.6;color:#d8d1c6;margin:0 0 20px;max-width:660px;">Os artefatos acima são os mesmos nos três planos. O que muda é o volume mensal e o quanto da operação fica com a gente.</p>
+      <div class="mp-grid3">
+        <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px 20px;"><div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#7CF067;">12</div><div style="font-size:13px;color:#b8b1a6;margin-top:6px;">peças por mês na <strong style="color:#FAFAFA;">Entrada</strong>: 6 reels + 6 carrosséis, publicados em Instagram e TikTok.</div></div>
+        <div style="background:#1d1812;border:1.5px solid #7CF067;border-radius:12px;padding:18px 20px;"><div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#7CF067;">20</div><div style="font-size:13px;color:#b8b1a6;margin-top:6px;">peças por mês no <strong style="color:#FAFAFA;">Completo Autoridade</strong>: 12 reels (o dobro da Entrada) + 8 carrosséis, com estratégia.</div></div>
+        <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:12px;padding:18px 20px;"><div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#7CF067;">40</div><div style="font-size:13px;color:#b8b1a6;margin-top:6px;">peças por mês no <strong style="color:#FAFAFA;">Escala</strong>: 20 reels + 20 carrosséis, cerca de um de cada por dia útil, com engajamento incluso.</div></div>
+      </div>
+      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:18px 0 0;">Volume e preço de cada plano estão abertos <a href="#oferta" style="color:#7CF067;font-weight:700;text-decoration:underline;text-underline-offset:3px;">na seção da oferta</a>.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <a href="${AGENDAR}" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
     </div>
   </div>
 </section>
@@ -1296,13 +1200,13 @@ const METODO_EXTRA_HTML = `
       <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:14px;">Semana-tipo de um founder Kaleidos</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">seg · reel</span>
-        <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">ter · stories</span>
+        <span style="background:#FAFAFA;border:1.5px dashed #D262B2;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#6b6258;">ter · stories · no Escala</span>
         <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">qua · carrossel</span>
-        <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">qui · stories + thread</span>
+        <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">qui · reel</span>
         <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">sex · reel</span>
         <span style="background:#FAFAFA;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#14110D;">sáb · carrossel</span>
-        <span style="background:#7CF067;border:1.5px solid #14110D;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700;color:#06250a;">1x/mês · podcast</span>
       </div>
+      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:16px 0 0;">Esse é o ritmo do <strong style="color:#14110D;">Completo Autoridade</strong>: cerca de 3 reels e 2 carrosséis por semana, publicados em Instagram e TikTok. Na Entrada a semana é mais enxuta; no Escala é praticamente um reel e um carrossel por dia útil. <a href="#oferta" style="color:#14110D;font-weight:700;text-decoration:underline;text-underline-offset:3px;">O volume de cada plano está aberto na oferta</a>.</p>
     </div>
     <div class="mp-grid4" style="margin-top:32px;">
       <div style="background:#fff;border:1.5px solid #14110D;border-radius:12px;padding:18px;box-shadow:4px 4px 0 #7CF067;"><div style="font-weight:800;font-size:15px;color:#14110D;">Bio com resultado</div><div style="font-size:13px;color:#6b6258;margin-top:5px;">Uma tese, não um cargo. Bandeira pessoal, não currículo.</div></div>
@@ -1418,7 +1322,7 @@ const CASES_HTML = `
     ${headHTML(
       "Nossos cases",
       'Antes e depois,<br><span class="hl">com número</span>.',
-      "Agora sim, clientes da Kaleidos. Página de marca pessoal sem métrica é ironia: as nossas vêm dos cases publicados, com fonte interna auditável.",
+      "Clientes da Kaleidos, com métrica dos cases publicados e fonte interna auditável. E a congruência: o fundador da Kaleidos, Gabriel Madureira (@ogmadureira), aplica em si mesmo o método que vende aqui.",
       true
     )}
     <div class="mp-grid3">
@@ -1472,7 +1376,7 @@ const CASES_HTML = `
 // capturado 2026-07). Números usados: SÓ o que os prints mostram (173 mil
 // seguidores do Lucas, 17,3 mil do Defiverso, "+15 mil investidores formados").
 // Narrativa: a marca pessoal do founder puxa a empresa. Coerente com "Nossos
-// cases" (S7); NÃO confundir com "Referências de mercado" (S4c).
+// cases" (S7). São métricas NOSSAS (prints públicos), não stats de mercado.
 /* Seção INVERTIDA (teardown/compute: testimonials — clara no meio do dark +
    fundo ASCII sutil). Painel claro flutuando sobre campo ASCII escuro; quebra
    de ritmo forte. Conteúdo: founder (173k) puxa a empresa (17,3k). */
@@ -1774,7 +1678,7 @@ const COMPARATIVO_HTML = `
           <tr>
             <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">Cadência</td>
             <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;">Quando dá, onde dá</td>
-            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;font-weight:600;">Um conteúdo vira três redes, em calendário aprovado</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;font-weight:600;">Um conteúdo rende em mais de uma rede, em calendário aprovado</td>
           </tr>
           <tr>
             <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">Medição</td>
@@ -1798,75 +1702,246 @@ const COMPARATIVO_HTML = `
 </section>
 `;
 
-/* ─────────────────────── S9 · OFERTA (dark) ─────────────────────── */
-// Sem preço literal (decisão do paper): tiers por nome + call de qualificação.
+/* ────────── S8d · PROCESSO DE ENTRADA (claro) — do contato ao primeiro post ──────────
+   Lacuna apontada pelo Gabriel (08/2026): a página tinha "O método" (o que
+   acontece DEPOIS de fechar, em horizonte de meses), mas nada dizia como é
+   entrar. Isso deixava a decisão de clicar no CTA sem forma. Esta seção é o
+   caminho comercial, passo a passo, até a primeira publicação.
+
+   ⚠️ De propósito NÃO existe promessa de prazo em dias aqui ("primeiros
+   conteúdos em 7 dias" e afins). Não há prazo de onboarding registrado que
+   sustente o número. Se o Gabriel confirmar um SLA real, o lugar dele é no
+   passo 04. */
+const PROCESSO = [
+  {
+    n: "01",
+    titulo: "Conversa de qualificação",
+    tempo: "30 minutos",
+    cor: "#7CF067",
+    texto:
+      "A gente abre seus perfis junto com você e fala o que está travando. Se o seu momento não pedir marca pessoal agora, a gente diz isso na call, não depois do contrato.",
+  },
+  {
+    n: "02",
+    titulo: "Proposta com escopo fechado",
+    tempo: "por escrito",
+    cor: "#D262B2",
+    texto:
+      "Plano, volume mensal de peças, redes cobertas, investimento e o que fica com você. Sem escopo aberto e sem custo que aparece no meio do caminho.",
+  },
+  {
+    n: "03",
+    titulo: "Setup e imersão",
+    tempo: "início do contrato",
+    cor: "#7CF067",
+    texto:
+      "Entrevistas de voz com você, definição da tese, bio-manifesto e auditoria dos perfis. Vem incluso no plano, sem taxa de setup à parte, e é o que impede o conteúdo de sair genérico depois.",
+  },
+  {
+    n: "04",
+    titulo: "Calendário aprovado e primeira gravação",
+    tempo: "mês 1",
+    cor: "#D262B2",
+    texto:
+      "O calendário editorial chega pronto pra sua aprovação antes de qualquer produção. Aprovou, a gente dirige a gravação em bloco. Nada é publicado sem passar por você.",
+  },
+  {
+    n: "05",
+    titulo: "Ciclo rodando e leitura dos números",
+    tempo: "toda semana · relatório mensal",
+    cor: "#7CF067",
+    texto:
+      "Produção, publicação e distribuição entram em ritmo. Todo mês tem relatório e uma reunião de leitura pra decidir onde dobrar e o que cortar.",
+  },
+];
+
+const PROCESSO_HTML = `
+<section id="como-comeca" style="position:relative;background:#FAFAFA;overflow:hidden;">
+  <div class="mp-pad" style="position:relative;max-width:1100px;margin:0 auto;padding-top:84px;padding-bottom:84px;">
+    ${headHTML(
+      "Como começa",
+      'Do primeiro contato<br>ao primeiro <span class="hl">post</span>.',
+      "Cinco passos, sem etapa escondida. Você sabe exatamente o que acontece depois de clicar no botão, e onde é o seu ponto de aprovação.",
+      false,
+      true
+    )}
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      ${PROCESSO.map(
+        (p) => `
+      <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 24px;box-shadow:5px 5px 0 ${p.cor};display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;">
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;color:${p.cor};-webkit-text-stroke:1.5px #14110D;">${p.n}</div>
+        <div style="min-width:0;">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:clamp(18px,2.2vw,23px);color:#14110D;margin:0;">${p.titulo}</h3>
+            <span style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#14110D;border:1.5px solid #14110D;border-radius:999px;padding:4px 11px;background:${p.cor};white-space:nowrap;">${p.tempo}</span>
+          </div>
+          <p style="font-size:14.5px;line-height:1.6;color:#4a443c;margin:9px 0 0;">${p.texto}</p>
+        </div>
+      </div>`
+      ).join("")}
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="${AGENDAR}" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
+      <p style="font-size:13.5px;color:#6b6258;margin:14px 0 0;">Começa no passo 01. A call é de qualificação, não de venda.</p>
+    </div>
+  </div>
+</section>
+`;
+
+/* ─────────────────────── S9 · OFERTA (dark) ───────────────────────
+   ⚠️⚠️ PREÇO PÚBLICO — LER ANTES DE MEXER ⚠️⚠️
+
+   HISTÓRICO
+   · até 07/2026: sem preço nenhum na página ("sem tabela de propósito").
+   · 07-08/2026: régua da decisão de 24/07 (R$4.900 / R$7.000 / R$12.900+,
+     nomes Founder Start / Growth / Authority, setup one-time à parte).
+   · 06/08/2026: pacotes da proposta do Matheus Fassheber (R$3.600 / R$7.000
+     + adicionais de R$1.000).
+   · 08/08/2026: RÉGUA ATUAL, decisão do Gabriel. O Essencial de R$3.600
+     DEIXA DE EXISTIR e os adicionais de R$1.000 (Engajamento e LinkedIn)
+     SAEM da oferta. Três degraus, nada de extra pra escolher.
+
+   RÉGUA VIGENTE (não alterar sem decisão equivalente do Gabriel):
+   · Entrada ................... R$ 5.000/mês
+     6 reels + 6 carrosséis · postagem e agendamento · relatório mensal.
+   · Completo Autoridade ....... R$ 7.000/mês  (mais escolhido · destacado)
+     12 reels + 8 carrosséis · postagem e agendamento · estratégia +
+     relatório mensal.
+   · Escala .................... R$ 12.900/mês
+     20 reels + 20 carrosséis (~1 de cada por dia útil) · engajamento
+     incluído (DM e comentários) · estratégia + relatório.
+   · Contrato mínimo 6 meses. Setup, edição de vídeo, design e publicação
+     INCLUSOS nos três planos.
+   · Podcast = projeto à parte, sem preço público.
+
+   🎯 INTENÇÃO COMERCIAL (Gabriel, 08/08/2026) — NÃO DILUIR:
+   a Entrada de R$5.000 existe pra fazer o Completo de R$7.000 parecer
+   compensar. A apresentação PRECISA deixar o salto explícito: +40% no preço
+   DOBRA a produção de reels (6 → 12). Isso é o argumento, não um detalhe a
+   esconder. O card do Completo continua sendo o destacado.
+
+   ⚠️ DIVERGÊNCIAS ABERTAS (pendentes de decisão do Gabriel):
+   1. src/lib/pricing.ts é a planilha mestra e está sendo revisada à parte.
+      Enquanto ela não bate com esta régua, ESTA seção manda pro que é
+      público. O card do Founder Duo perdeu o "a partir de R$5.400" (valor
+      antigo da planilha, abaixo da Entrada nova): ficou sem preço literal
+      até haver decisão. NÃO inventar valor pro Duo.
+   2. O setup deixou de ser cobrado à parte. Se isso não for o desejado, o
+      lugar de reverter é aqui e no passo 03 do PROCESSO.
+   3. Redes: os planos-padrão publicam em Instagram + TikTok. X/Twitter NÃO
+      está no escopo-padrão. Quem quer LinkedIn como canal principal vai pra
+      oferta de LinkedIn B2B (seção própria nesta página).
+   4. Diagnóstico de Posicionamento continua SEM PREÇO DEFINIDO no vault.
+      Placeholder visível abaixo. NÃO inventar valor. */
 const OFERTA_HTML = `
-<section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
+<section id="oferta" style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
   <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;pointer-events:none;"></div>
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
     ${headHTML(
       "A oferta",
-      'Um degrau pra<br>cada <span class="hl">estágio</span>.',
-      "Sem tabela de preço na página, de propósito. Uma conversa de qualificação honesta primeiro, e o escopo certo pro seu momento depois.",
+      'Preço na mesa,<br>antes da <span class="hl">call</span>.',
+      "A maioria das agências esconde o valor pra te obrigar a uma reunião. A gente prefere que você chegue na conversa já sabendo a ordem de grandeza, e decida se faz sentido antes de gastar o seu tempo.",
       true
     )}
-    <div style="max-width:1080px;margin:0 auto 28px;background:#1d1812;border:1.5px dashed #7CF067;border-radius:18px;padding:26px 28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
-      <div style="flex:1;min-width:280px;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Comece por aqui · projeto pontual</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:24px;margin:10px 0 6px;color:#FAFAFA;">Diagnóstico de Posicionamento</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0;">Leitura completa dos seus perfis, tese preliminar e roadmap de marca pessoal. Projeto pontual, sem retainer: se você seguir pra operação, ele vira a Fundação do método. Se não seguir, o roadmap fica com você.</p>
-      </div>
-      <a href="${WA_DIAG}" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#7CF067;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;border:1.5px solid #7CF067;text-decoration:none;white-space:nowrap;">Pedir o diagnóstico &rarr;</a>
-    </div>
-    <div class="mp-grid3" style="max-width:1080px;margin:0 auto;align-items:stretch;">
+
+    <div class="mp-grid3" style="max-width:1120px;margin:0 auto;align-items:stretch;">
+
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9a9186;">Porta de entrada</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Founder Start</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Tese, auditoria dos perfis e produção das peças-mãe. Você publica, a gente produz e orienta.</p>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Entrada</h3>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 20px;">A cara nova no ar e a tese rodando com consistência. Você grava; a gente pensa, escreve, desenha, edita e publica.</p>
+        <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">R$ 5.000<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">setup, edição e design inclusos</div>
+        </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Tese e bio-manifesto</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Carrosséis mensais no Instagram + repurpose X e LinkedIn</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Calendário editorial aprovado</li>
-          <li style="padding:6px 0;">Publicação por sua conta</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">6 reels por mês</strong> (roteiro + edição de vídeo)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">6 carrosséis por mês</strong> (design completo)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Postagem e agendamento por nossa conta</li>
+          <li style="padding:7px 0;">Relatório mensal</li>
         </ul>
-        <a href="/agendar" class="cta-btn" style="margin-top:22px;display:inline-flex;justify-content:center;background:transparent;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Conversar sobre o Founder Start</a>
+        <p style="font-size:12.5px;line-height:1.5;color:#8a8175;margin:16px 0 0;">O piso pra tirar o perfil da inércia. Se o objetivo já é virar canal de aquisição, o degrau de cima entrega o dobro de reels.</p>
+        <a href="${AGENDAR}?plano=entrada" class="cta-btn" style="margin-top:20px;display:inline-flex;justify-content:center;background:transparent;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">${CTA_PRIMARY}</a>
       </div>
+
       <div style="background:#1d1812;border:2px solid #7CF067;border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;box-shadow:6px 6px 0 #7CF067;position:relative;">
-        <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:999px;padding:5px 14px;font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;">done-for-you</span>
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">O carro-chefe</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Founder Growth</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">Instagram completo como palco principal, X e LinkedIn de apoio, com a Kaleidos operando tudo. Você entra com ~2 horas por mês.</p>
+        <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7CF067;color:#06250a;border:1.5px solid #14110D;border-radius:999px;padding:5px 14px;font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;">o mais escolhido</span>
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">O carro-chefe · done-for-you</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Completo Autoridade</h3>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 20px;">Modo alavancagem: cadência de quase todo dia e a máquina rodando forte. Você entra com cerca de 2 horas por mês.</p>
+        <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#7CF067;">R$ 7.000<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">+40% no preço &middot; 2&times; os reels</div>
+        </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Instagram completo (reels, carrosséis e stories) publicado e dirigido pela Kaleidos</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Repurpose em X e LinkedIn (autoridade B2B)</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">1 podcast como convidado por mês, com cortes</li>
-          <li style="padding:6px 0;">Relatório mensal + reunião de leitura</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#7CF067;">12 reels por mês</strong> (o dobro da Entrada)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">8 carrosséis por mês</strong> (design completo)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Postagem e agendamento por nossa conta</li>
+          <li style="padding:7px 0;"><strong style="color:#FAFAFA;">Estratégia</strong> e relatório mensal</li>
         </ul>
-        <a href="/agendar" class="cta-btn" style="margin-top:22px;display:inline-flex;justify-content:center;background:#7CF067;color:#06250a;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;box-shadow:4px 4px 0 #D262B2;text-decoration:none;">Ver se faz sentido &rarr;</a>
+        <p style="font-size:12.5px;line-height:1.5;color:#8a8175;margin:16px 0 0;">É o plano em que a maior parte dos founders entra: R$ 2.000 a mais que a Entrada compram 6 reels a mais por mês, mais a estratégia.</p>
+        <a href="${AGENDAR}?plano=completo-autoridade" class="cta-btn" style="margin-top:20px;display:inline-flex;justify-content:center;background:#7CF067;color:#06250a;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;box-shadow:4px 4px 0 #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
       </div>
+
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Por aplicação · multicanal</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Founder Authority</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;">O sistema completo de autoridade multicanal pra quem já validou o jogo e quer escalar o ativo.</p>
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Volume máximo · operação inteira</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Escala</h3>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 20px;">Presença diária e o perfil conversando: publicação e engajamento na mesma mão. Pra quem já decidiu que o perfil é canal de aquisição.</p>
+        <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">R$ 12.900<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">engajamento incluído</div>
+        </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Tudo do Founder Growth</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Podcast recorrente + newsletter própria</li>
-          <li style="padding:6px 0;border-bottom:1px solid #2a241d;">Ghostwriting de artigos longos e livro</li>
-          <li style="padding:6px 0;">Gestão de crescimento com roadmap dedicado</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">20 reels por mês</strong> (roteiro + edição)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">20 carrosséis por mês</strong> (cerca de um de cada por dia útil)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#D262B2;">Engajamento incluído</strong>: DM e comentários</li>
+          <li style="padding:7px 0;"><strong style="color:#FAFAFA;">Estratégia</strong> e relatório</li>
         </ul>
-        <a href="/agendar" class="cta-btn" style="margin-top:22px;display:inline-flex;justify-content:center;background:transparent;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Aplicar para o Founder Authority</a>
+        <p style="font-size:12.5px;line-height:1.5;color:#8a8175;margin:16px 0 0;">Aqui o perfil deixa de só publicar e passa a conversar: DM e comentários entram no escopo, sem custo separado.</p>
+        <a href="${AGENDAR}?plano=escala" class="cta-btn" style="margin-top:20px;display:inline-flex;justify-content:center;background:transparent;color:#D262B2;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
       </div>
     </div>
-    <div style="max-width:1080px;margin:28px auto 0;background:#1d1812;border:2px solid #D262B2;border-radius:18px;padding:28px 30px;box-shadow:6px 6px 0 #D262B2;display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+
+    <div style="max-width:1120px;margin:26px auto 0;background:#1d1812;border:1.5px dashed #7CF067;border-radius:18px;padding:26px 28px;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;margin-bottom:12px;">A conta do degrau do meio</div>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-size:15px;line-height:1.6;color:#d8d1c6;margin:0;">Da Entrada pro Completo, o preço sobe <strong style="color:#FAFAFA;">40%</strong> e a produção de reels <strong style="color:#7CF067;">dobra</strong>: de 6 para 12 por mês. São 12 peças por mês contra 20, então o custo por peça cai de R$ 417 para R$ 350, e a estratégia mensal entra junto. É por isso que a maioria não fica na Entrada.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <div style="text-align:center;background:#14110D;border:1.5px solid #3a332a;border-radius:12px;padding:14px 18px;min-width:104px;"><div style="font-family:Atelier,sans-serif;font-weight:800;font-size:26px;color:#FAFAFA;line-height:1;">6</div><div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:6px;">reels · R$ 5.000</div></div>
+          <span style="font-family:Atelier,sans-serif;font-size:24px;color:#7CF067;">&rarr;</span>
+          <div style="text-align:center;background:#14110D;border:1.5px solid #7CF067;border-radius:12px;padding:14px 18px;min-width:104px;"><div style="font-family:Atelier,sans-serif;font-weight:800;font-size:26px;color:#7CF067;line-height:1;">12</div><div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:6px;">reels · R$ 7.000</div></div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:16px 0 0;">Sem adicional pra escolher: o que está no card é o que está no contrato. Podcast entra como projeto à parte, quando fizer sentido (por exemplo, gravações presenciais em São Paulo), orçado por escopo.</p>
+    </div>
+
+    <div style="max-width:1120px;margin:26px auto 0;background:#1d1812;border:2px solid #D262B2;border-radius:18px;padding:28px 30px;box-shadow:6px 6px 0 #D262B2;display:flex;gap:26px;align-items:center;flex-wrap:wrap;">
       <div style="flex:1;min-width:280px;">
-        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">O topo da escada · sob aplicação</div>
-        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:10px 0 6px;color:#FAFAFA;">Enterprise · Multi-founder</h3>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0;">Pra times de sócios que querem duas ou mais marcas pessoais rodando em coordenação, cada founder com a sua tese e o seu pipeline, sem canibalizar a narrativa da empresa. É o modelo que a gente opera com os dois founders da DSEC: dois perfis, dois modos de produção, uma base institucional por trás. Escopo desenhado por aplicação.</p>
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Dois sócios · Founder Duo</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:10px 0 6px;color:#FAFAFA;">Duas marcas pessoais em coordenação</h3>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0;">Dois founders, duas teses, dois pipelines, sem canibalizar a narrativa da empresa. É o modelo que a gente opera com os dois sócios da DSEC: dois perfis, dois modos de produção, uma base institucional por trás.</p>
+        <p style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a8175;margin:12px 0 0;">Não é um quarto plano: é a mesma régua aplicada a dois perfis</p>
       </div>
-      <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#D262B2;color:#FAFAFA;font-weight:700;font-size:15px;padding:14px 26px;border-radius:999px;box-shadow:4px 4px 0 #7CF067;text-decoration:none;white-space:nowrap;">Aplicar como time &rarr;</a>
+      <div style="text-align:right;min-width:220px;">
+        <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#D262B2;margin-bottom:6px;">Orçado por escopo,<br>a partir do plano escolhido</div>
+        <a href="${AGENDAR}?plano=founder-duo" class="cta-btn" style="margin-top:16px;display:inline-flex;align-items:center;gap:9px;background:#D262B2;color:#FAFAFA;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;box-shadow:4px 4px 0 #7CF067;text-decoration:none;">${CTA_PRIMARY}</a>
+      </div>
     </div>
+
+    <div style="max-width:1120px;margin:26px auto 0;background:#1d1812;border:1.5px dashed #7CF067;border-radius:18px;padding:26px 28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Não quer retainer ainda · projeto pontual</div>
+        <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:24px;margin:10px 0 6px;color:#FAFAFA;">Diagnóstico de Posicionamento</h3>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0;">Leitura completa dos seus perfis, tese preliminar e roadmap de marca pessoal. Sem recorrência: se você seguir pra operação, ele vira a fase de fundação do plano. Se não seguir, o roadmap fica com você.</p>
+        <p style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:1px;color:#D262B2;margin:14px 0 0;text-transform:uppercase;">Valor definido na conversa &middot; preço deste projeto ainda não é público</p>
+      </div>
+      <a href="${AGENDAR}?plano=diagnostico" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#7CF067;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;border:1.5px solid #7CF067;text-decoration:none;white-space:nowrap;">${CTA_PRIMARY}</a>
+    </div>
+
     <div style="text-align:center;margin-top:36px;">
-      <p style="font-size:14.5px;color:#9a9186;margin:0;">Retainers com contrato mínimo de 3 meses. Sem tabela na página de propósito: a conversa de qualificação define o escopo certo pro seu estágio. Se não fizer sentido, a gente fala.</p>
+      <p style="font-size:14.5px;color:#b8b1a6;margin:0;max-width:720px;margin-left:auto;margin-right:auto;">Contrato mínimo de 6 meses nos três planos, porque marca pessoal abaixo disso não dá tempo de virar resultado. Setup, edição de vídeo, design e publicação em Instagram e TikTok estão inclusos: não existe adicional pra escolher nem custo que aparece no meio do caminho. Se o seu momento não pedir isso agora, a gente fala na call.</p>
       <div style="display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px;font-family:Gridlite,monospace;font-size:12px;letter-spacing:1.5px;text-transform:lowercase;color:#b8b1a6;">
         <span style="border:1.5px solid #3a332a;border-radius:999px;padding:7px 14px;background:#1d1812;">post</span><span style="color:#7CF067;">&rarr;</span>
         <span style="border:1.5px solid #3a332a;border-radius:999px;padding:7px 14px;background:#1d1812;">carrossel</span><span style="color:#7CF067;">&rarr;</span>
@@ -1876,6 +1951,238 @@ const OFERTA_HTML = `
       </div>
       <p style="font-size:12.5px;color:#6b6258;margin:10px 0 0;">A escada do ativo de autoridade: cada degrau vira insumo do próximo.</p>
     </div>
+  </div>
+</section>
+`;
+
+/* ────────────── S9b · LINKEDIN B2B PARA EMPRESAS (claro) ──────────────
+   NOVA OFERTA (06/08/2026), pedida pelo Gabriel e reafirmada por ele depois
+   de eu levantar ressalvas. É uma SEGUNDA oferta, deliberadamente separada
+   do plano de autoridade acima.
+
+   ESTRUTURA modelada em um player brasileiro de LinkedIn B2B que o Gabriel
+   quis usar de referência (processo em 4 passos, três escopos done-for-you,
+   inteligência comercial no fim do funil). A ESTRUTURA é referência; a copy
+   é nossa, o nome deles não aparece em lugar nenhum e nada foi copiado
+   literalmente. Não introduzir menção a concorrente nesta seção.
+
+   ⚠️ PREÇO (RÉGUA DE 08/08/2026, decisão do Gabriel): Starter R$ 4.250 /
+   Full Service R$ 5.900 / LinkedIn 360° R$ 9.900, contrato mínimo de
+   3 MESES. Substituem a régua anterior de R$ 5.500 / 7.500 / 13.000, que
+   espelhava o player de referência. O contrato é de 3 meses (e não 6, como
+   no founder brand) porque é o padrão do mercado nesse serviço e gera menos
+   atrito. Se o Gabriel bater o martelo diferente, o lugar de trocar é SÓ
+   aqui e no slide 12 do pitch deck (kaleidos-papers).
+
+   🔴 "SINAIS DE INTENÇÃO" — LER ANTES DE EDITAR O PASSO 04:
+   · ⚠️⚠️ A PROMESSA MUDOU EM 08/08/2026. O material antes dizia que a gente
+     entrega "a lista de quem interagiu" com nome, cargo e empresa. Uma
+     auditoria técnica (code/sequencia-viral/docs/SPEC-LINKEDIN-2026-08.md,
+     §5) verificou na doc oficial do LinkedIn que ISSO NÃO É POSSÍVEL de
+     forma legítima:
+       – perfil pessoal: `r_member_social` / `r_member_social_feed` são
+         permissões FECHADAS ("not accepting access requests");
+       – Company Page: o autor volta como URN opaco (urn:li:person:…), que
+         não é nome nem empresa, não pode ser resolvido e não pode ser
+         armazenado além do próprio URN.
+     Ou seja: lista nominal de quem curtiu/comentou só sai por scraping de
+     sessão, que viola o User Agreement e põe em risco a conta DO CLIENTE.
+     🔴 NÃO reintroduzir "lista de quem interagiu", "nome, cargo e empresa
+     de quem engajou" ou equivalente. Não inventar capacidade técnica.
+   · O que a oferta entrega, e que é verificável:
+       1. métricas oficiais por post, incluindo VISITAS AO PERFIL vindas do
+          conteúdo e SEGUIDORES GANHOS pelo conteúdo;
+       2. capturas reais de lead magnet em landing própria (nome e e-mail
+          dados voluntariamente pelo lead) — dado nosso, não do LinkedIn;
+       3. fila de follow-up assistida: a Kaleidos redige a mensagem, o
+          CLIENTE envia. Assistência, não automação.
+   · 🔴 NUNCA citar o nome de nenhuma ferramenta de terceiro. Nem nome, nem
+     logo, nem link, nem "usamos uma plataforma chamada X". A entrega é da
+     Kaleidos; ferramenta é meio, não produto.
+   · ⚠️ NÃO escrever integração com CRM, alerta em tempo real, score
+     automático, enriquecimento de dados, número de leads por mês ou
+     qualquer limite. Nada disso está confirmado.
+   · ⚠️ A periodicidade está como "periódico" de propósito. Só trocar por
+     "mensal"/"quinzenal" depois de o Gabriel confirmar.
+
+   ⚠️ Nenhum número de resultado, logo ou depoimento nesta seção. Não temos
+   case de LinkedIn B2B pra mostrar ainda. */
+const LINKEDIN_B2B_HTML = `
+<section id="linkedin-b2b" style="position:relative;background:#FAFAFA;overflow:hidden;background-image:linear-gradient(#14110D0d 1px,transparent 1px),linear-gradient(90deg,#14110D0d 1px,transparent 1px);background-size:34px 34px;">
+  <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:88px;padding-bottom:88px;">
+
+    <div style="max-width:760px;margin:0 auto 44px;text-align:center;">
+      <span style="display:inline-block;background:#D262B2;color:#FAFAFA;border:1.5px solid #14110D;border-radius:999px;padding:7px 18px;font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;box-shadow:3px 3px 0 #14110D;">Segunda oferta &middot; outra coisa</span>
+      <p style="font-size:15px;line-height:1.6;color:#6b6258;margin:20px 0 0;">Tudo acima é marca pessoal de pessoa física, com o Instagram na frente. O que vem agora é um produto diferente, contratado pela empresa, com outro objetivo. Se você caiu aqui procurando geração de demanda B2B, é esta parte que te interessa.</p>
+    </div>
+
+    ${headHTML(
+      "LinkedIn B2B para empresas",
+      'O perfil do seu executivo<br>vira canal de <span class="hl">demanda</span>.',
+      "Para empresas B2B de ticket alto e ciclo de venda longo, onde a decisão passa por várias pessoas e leva meses. A gente usa o LinkedIn de quem decide dentro da sua empresa para produzir conversa comercial com quem decide dentro da empresa do cliente.",
+      false
+    )}
+
+    <div style="max-width:1000px;margin:0 auto 48px;background:#fff;border:1.5px solid #14110D;border-radius:16px;box-shadow:6px 6px 0 #D262B2;" class="mp-table-wrap">
+      <table class="mp-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:16px 20px;font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;border-bottom:1.5px solid #14110D;width:22%;"> </th>
+            <th style="text-align:left;padding:16px 20px;font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14110D;border-bottom:1.5px solid #14110D;background:#7CF06722;">Plano de autoridade</th>
+            <th style="text-align:left;padding:16px 20px;font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#14110D;border-bottom:1.5px solid #14110D;background:#D262B222;">LinkedIn B2B</th>
+          </tr>
+        </thead>
+        <tbody style="font-size:14px;line-height:1.5;color:#4a443c;">
+          <tr>
+            <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">Quem contrata</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;">A pessoa física: founder, criador, executivo</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#D262B211;font-weight:600;">A empresa, com o perfil de um ou mais executivos</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">Onde roda</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;">Instagram e TikTok</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#D262B211;font-weight:600;">LinkedIn como canal central, com reaproveitamento fora dele</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">O que persegue</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;">Audiência, alcance e reconhecimento</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#D262B211;font-weight:600;">Conversa comercial com quem decide a compra</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px;font-weight:700;color:#14110D;border-bottom:1px solid #e8e2d8;">Peça típica</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#7CF06711;">Reel com gancho e carrossel de Instagram</td>
+            <td style="padding:14px 20px;border-bottom:1px solid #e8e2d8;background:#D262B211;font-weight:600;">Tese escrita, infográfico, estudo e lead magnet</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px;font-weight:700;color:#14110D;">Como se mede</td>
+            <td style="padding:14px 20px;background:#7CF06711;">Views, engajamento e crescimento de base</td>
+            <td style="padding:14px 20px;background:#D262B211;font-weight:600;">Sinais de intenção por post, contatos capturados e o que o comercial fez com eles</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="max-width:820px;margin:0 auto 40px;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Para quem é</div>
+      <div class="mp-grid3">
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:14px;padding:18px 20px;box-shadow:4px 4px 0 #D262B2;"><div style="font-weight:700;font-size:15px;color:#14110D;">Venda B2B complexa</div><div style="font-size:13px;line-height:1.55;color:#6b6258;margin-top:6px;">Serviço, software ou consultoria vendidos para outra empresa, não para consumidor final.</div></div>
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:14px;padding:18px 20px;box-shadow:4px 4px 0 #7CF067;"><div style="font-weight:700;font-size:15px;color:#14110D;">Ticket alto</div><div style="font-size:13px;line-height:1.55;color:#6b6258;margin-top:6px;">Contratos em que uma única conversa nova já paga o investimento de meses de conteúdo.</div></div>
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:14px;padding:18px 20px;box-shadow:4px 4px 0 #D262B2;"><div style="font-weight:700;font-size:15px;color:#14110D;">Ciclo longo</div><div style="font-size:13px;line-height:1.55;color:#6b6258;margin-top:6px;">Decisão que leva meses e passa por mais de uma cabeça. É exatamente onde presença constante decide.</div></div>
+      </div>
+    </div>
+
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:18px;">Como funciona &middot; quatro passos</div>
+      <div class="mp-grid4">
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 20px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#7CF067;-webkit-text-stroke:1.4px #14110D;">01</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;color:#14110D;margin:12px 0 8px;">Imersão</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a443c;margin:0;">A gente entra no seu negócio antes de escrever qualquer linha: o que você vende, para quem, contra quem, e quais objeções travam a venda hoje. Sai daqui com a lista das empresas e dos cargos que o conteúdo precisa alcançar.</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 20px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#D262B2;-webkit-text-stroke:1.4px #14110D;">02</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;color:#14110D;margin:12px 0 8px;">Estratégia</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a443c;margin:0;">Tese pública do executivo, pilares de conteúdo amarrados nas objeções reais da venda, calendário editorial e o perfil arrumado para receber quem chega. Você aprova antes de qualquer produção começar.</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 20px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#7CF067;-webkit-text-stroke:1.4px #14110D;">03</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;color:#14110D;margin:12px 0 8px;">Produção completa</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a443c;margin:0;">Redação, design, edição e publicação, tudo por nossa conta. O executivo entra pra dar ponto de vista e aprovar; a operação é nossa, do rascunho ao post no ar.</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:16px;padding:22px 20px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#D262B2;-webkit-text-stroke:1.4px #14110D;">04</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:19px;color:#14110D;margin:12px 0 8px;">Sinais de Intenção</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a443c;margin:0;">Cada post devolve quantas visitas ao perfil e quantos seguidores ele gerou, e cada material de captura devolve contato real de quem baixou. O conteúdo deixa de ser só alcance e passa a apontar onde a atenção comercial está.</p>
+        </div>
+      </div>
+      <div style="background:#fff;border:1.5px dashed #14110D;border-radius:14px;padding:18px 22px;margin-top:16px;">
+        <p style="font-size:13.5px;line-height:1.6;color:#4a443c;margin:0 0 12px;"><strong style="color:#14110D;">O que "Sinais de Intenção" é, na prática.</strong> São três coisas, e todas são dado que a gente pode entregar de forma legítima:</p>
+        <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#4a443c;">
+          <li style="padding:7px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">Métricas oficiais por post</strong>, incluindo quantas visitas ao perfil e quantos seguidores aquele conteúdo gerou. É o indicador mais próximo de intenção que existe de forma oficial, e quase ninguém no mercado mostra isso direito.</li>
+          <li style="padding:7px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">Contatos capturados de verdade</strong>: os materiais de captura ficam numa landing nossa, então quem baixa deixa nome e e-mail por vontade própria. Vira contato do seu comercial, não um identificador anônimo.</li>
+          <li style="padding:7px 0;"><strong style="color:#14110D;">Fila de follow-up assistida</strong>: a gente redige a mensagem de retorno, com o gancho do post que abriu a conversa. Quem envia é o seu time, do perfil dele.</li>
+        </ul>
+        <p style="font-size:12.5px;line-height:1.6;color:#6b6258;margin:14px 0 0;">Uma coisa que a gente não promete: lista nominal de quem curtiu ou comentou. A API oficial do LinkedIn não libera isso para perfil pessoal, e o único jeito de conseguir é por automação que coloca a conta do seu executivo em risco. Preferimos entregar um e-mail dado de livre vontade do que um nome raspado.</p>
+      </div>
+    </div>
+
+    <div style="max-width:1100px;margin:44px auto 0;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:18px;">Done for you &middot; três escopos</div>
+      <div class="mp-grid3">
+
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #7CF067;display:flex;flex-direction:column;">
+          <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Escopo 1</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">Starter</h3>
+          <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Ideal pra complementar 1 perfil que já publica e falta cadência e conversão.</p>
+          <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">R$ 4.250<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 3 meses</div>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup do perfil</li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">12 conteúdos por mês</strong></li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Material de captura com automação</li>
+            <li style="padding:6px 0;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
+          </ul>
+          <a href="${AGENDAR}?plano=linkedin-starter" class="cta-btn" style="margin-top:18px;display:inline-flex;justify-content:center;background:transparent;color:#14110D;font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">${CTA_PRIMARY}</a>
+        </div>
+
+        <div style="background:#fff;border:2px solid #D262B2;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #D262B2;display:flex;flex-direction:column;position:relative;">
+          <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#D262B2;color:#FAFAFA;border:1.5px solid #14110D;border-radius:999px;padding:5px 14px;font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;">recomendado</span>
+          <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Escopo 2</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">Full Service</h3>
+          <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Ideal pra transformar 1 perfil em canal de geração de demanda.</p>
+          <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#D262B2;">R$ 5.900<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 3 meses</div>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup do perfil</li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">20 conteúdos por mês</strong></li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Conteúdo em vídeo / newsletter</li>
+            <li style="padding:6px 0;">Conteúdo de Company Page</li>
+          </ul>
+          <a href="${AGENDAR}?plano=linkedin-full-service" class="cta-btn" style="margin-top:18px;display:inline-flex;justify-content:center;background:#D262B2;color:#FAFAFA;font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:999px;box-shadow:4px 4px 0 #14110D;text-decoration:none;">${CTA_PRIMARY}</a>
+        </div>
+
+        <div style="background:#fff;border:1.5px solid #14110D;border-radius:18px;padding:28px 24px;box-shadow:6px 6px 0 #7CF067;display:flex;flex-direction:column;">
+          <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Escopo 3</div>
+          <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">LinkedIn 360&deg;</h3>
+          <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Ideal pra atuar com múltiplos perfis de executivos + Company Page.</p>
+          <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">R$ 9.900<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 3 meses</div>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup de múltiplos perfis</li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">40 conteúdos por mês</strong></li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">Até 6 materiais de captura por mês</strong>, com automação</li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
+            <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Conteúdo em vídeo / newsletter</li>
+            <li style="padding:6px 0;">Conteúdo de Company Page</li>
+          </ul>
+          <a href="${AGENDAR}?plano=linkedin-360" class="cta-btn" style="margin-top:18px;display:inline-flex;justify-content:center;background:transparent;color:#14110D;font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">${CTA_PRIMARY}</a>
+        </div>
+      </div>
+      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:16px 0 0;text-align:center;">Contrato de 3 meses porque LinkedIn B2B é ciclo curto de validação: em 90 dias dá pra saber se o canal responde. O escopo fechado (quantos executivos, quais formatos) sai por escrito na proposta.</p>
+    </div>
+
+    <div style="max-width:1000px;margin:36px auto 0;background:#14110D;border-radius:18px;padding:28px 30px;box-shadow:6px 6px 0 #7CF067;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7CF067;margin-bottom:8px;">Formatos que a gente produz</div>
+      <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:0 0 18px;max-width:640px;">LinkedIn B2B não é feed de frase motivacional. O mix é escolhido pela etapa da venda que cada peça precisa destravar.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Carrosséis</strong> &middot; a tese destrinchada</span>
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Infográficos</strong> &middot; o dado que só você tem</span>
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Thought leadership</strong> &middot; a opinião que posiciona</span>
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Vídeos</strong> &middot; o rosto por trás da assinatura</span>
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Newsletters</strong> &middot; audiência que não depende de algoritmo</span>
+        <span style="background:#1d1812;border:1.5px solid #3a332a;border-radius:10px;padding:10px 15px;font-size:13.5px;color:#d8d1c6;"><strong style="color:#FAFAFA;">Lead magnets</strong> &middot; o material que troca conteúdo por contato</span>
+      </div>
+      <p style="font-size:13.5px;line-height:1.6;color:#b8b1a6;margin:20px 0 0;max-width:720px;"><strong style="color:#FAFAFA;">E nada morre no LinkedIn.</strong> A mesma peça vira corte para o Instagram, material de apoio no site e argumento que o comercial manda direto na conversa com o lead. Você paga a produção uma vez e usa nos três lugares.</p>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:#8a8175;margin:26px auto 0;max-width:720px;">Esta oferta acabou de entrar no nosso catálogo, então não tem case publicado ainda. Preferimos dizer isso a mostrar número de terceiro como se fosse nosso.</p>
   </div>
 </section>
 `;
@@ -2160,6 +2467,34 @@ const FAQ_ITEMS = [
     q: "Quanto tempo até dar resultado?",
     a: "Trabalhamos com horizontes claros: mês 1 é fundação (tese, perfis, primeiras publicações), mês 3 é tração (engajamento acima de 3% e primeiros leads via perfil) e mês 6 é autoridade (convites orgânicos, podcasts e pipeline atribuível). Quem promete viral em 2 semanas está vendendo loteria.",
   },
+  {
+    q: "Quanto custa?",
+    a: "São três planos, e a diferença entre eles é volume. Entrada em R$ 5.000 por mês (6 reels + 6 carrosséis). Completo Autoridade em R$ 7.000 por mês (12 reels + 8 carrosséis, com estratégia): 40% a mais de investimento que a Entrada, com o dobro de reels, e é onde a maioria dos founders entra por isso. Escala em R$ 12.900 por mês (20 reels + 20 carrosséis, cerca de um de cada por dia útil, com engajamento de DM e comentários incluso). Os três já saem publicando em Instagram e TikTok, com setup, edição de vídeo, design e postagem inclusos, e não existe adicional pra escolher: o que está no card é o que está no contrato. Contrato mínimo de 6 meses. O valor está aberto na página de propósito: se a faixa não couber no seu momento agora, você descobre aqui e não depois de uma reunião.",
+  },
+  {
+    q: "Qual a diferença entre o plano de autoridade e a oferta de LinkedIn B2B?",
+    a: "São duas ofertas separadas, com público e objetivo diferentes. O plano de autoridade (Entrada, Completo e Escala) é para pessoa física: o founder ou executivo constrói audiência própria em Instagram e TikTok, com reels e carrosséis, e o objetivo é reconhecimento e alcance. A oferta de LinkedIn B2B é contratada pela empresa: o perfil do executivo vira canal de demanda dentro do LinkedIn, com conteúdo de tese, e o objetivo é conversa comercial com quem decide. Dá para rodar as duas juntas, mas elas não se substituem: quem precisa das duas coisas contrata as duas, e a gente diz na call se só uma já resolve.",
+  },
+  {
+    q: "Isso é escrito por IA?",
+    a: "IA entra na velocidade: pesquisa, variação de hook, primeira versão, corte. A substância não. A tese sai de entrevistas com você, a linha editorial é decidida por estrategista humano e toda peça passa por redator e designer antes de existir. O critério é simples e é aplicado peça a peça: se não parecer você lendo em voz alta, volta pra mesa. Você aprova tudo antes de publicar.",
+  },
+  {
+    q: "Só funciona pro Instagram?",
+    a: "O Instagram é o palco principal porque é onde o alcance orgânico acontece no Brasil, e a mesma peça já sai no TikTok nos três planos, sem produção dobrada. Se o LinkedIn for o canal principal e quem contrata for a empresa, o lugar certo não é este plano: é a oferta de LinkedIn B2B, que tem seção própria nesta página e é contratada à parte. Newsletter, podcast e artigos longos são degraus seguintes da mesma escada.",
+  },
+  {
+    q: "Já tenho agência (ou time interno de marketing). Isso conflita?",
+    a: "Não, e normalmente soma. Marca pessoal de founder é uma camada diferente da marca da empresa: sua agência atual cuida da página, da campanha e do funil; a gente cuida do perfil de quem assina. Onde há sobreposição, a gente se acerta com o seu time no kickoff, para não haver duas vozes dizendo coisas diferentes na mesma semana.",
+  },
+  {
+    q: "E se eu não gostar do que vocês produzirem?",
+    a: "Você aprova antes. O calendário editorial vai pra sua mão antes de qualquer produção, e cada peça passa por aprovação antes de ir ao ar. Nada é publicado no seu perfil sem o seu sim. Ajuste de rota faz parte: os primeiros dois meses são justamente de calibragem de voz.",
+  },
+  {
+    q: "Preciso já ter audiência pra começar?",
+    a: "Não. Vários dos nossos casos começaram de base pequena ou do zero. O que precisa existir é expertise real e disposição de aparecer: sem isso não há atalho, com isso a audiência é consequência de cadência e tempo.",
+  },
 ];
 
 const FAQ_HTML = `
@@ -2168,7 +2503,7 @@ const FAQ_HTML = `
     ${headHTML(
       "FAQ",
       'As objeções.<br><span class="hl">Respondidas</span>.',
-      "Tudo que todo founder pensa antes de dar a cara: tempo, autopromoção, o que postar, soar robô e prazo de resultado.",
+      "Tudo que todo founder pensa antes de dar a cara, respondido antes de virar atrito: tempo, autopromoção, o que postar, IA, preço, contrato e aprovação.",
       false,
       true
     )}
@@ -2198,7 +2533,7 @@ const CTA_FINAL_HTML = `
     <h2 style="font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,48px);line-height:1.08;letter-spacing:-1.4px;margin:0;">Sua expertise vira autoridade.<br>Sua autoridade vira <span style="${HL}color:#14110D;">pipeline</span>.</h2>
     <p style="font-size:17px;line-height:1.6;color:#b8b1a6;max-width:540px;margin:22px auto 0;">O mercado vai pesquisar seu nome de novo amanhã. A pergunta é o que ele vai encontrar daqui a 6 meses.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;margin-top:36px;">
-      <a href="/agendar" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">Ver se faz sentido &rarr;</a>
+      <a href="${AGENDAR}" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
       <a href="${WA_AUDIT}" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Auditar meu perfil de graça</a>
     </div>
     <p style="margin-top:16px;font-size:14px;color:#9a9186;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></p>
@@ -2236,34 +2571,24 @@ export default function MarcaPessoalPage() {
         {/* Marquee de logos de clientes (prova social imediata) */}
         <Web3V2ClientsMarquee />
 
-        {/* S2 · Prova agregada + congruência (NumberTicker) */}
-        <Reveal>
-          <StatsSection />
-        </Reveal>
-
         {/* S3 · Problema + timeline de dores */}
         <Reveal>
           <ProblemaSection />
         </Reveal>
 
-        {/* S3b · O que é Founder-Led Growth (define a categoria antes dos dados) */}
-        <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: FOUNDER_LED_HTML }} />
-        </Reveal>
-
-        {/* S4 · Os dados (com fonte, count-up) */}
+        {/* S4 · Prova de mercado — a ÚNICA seção de números de mercado */}
         <Reveal>
           <DadosSection />
         </Reveal>
 
-        {/* S4b · Mais dados de mercado (Edelman 2025, acadêmico, Nielsen…) */}
+        {/* S3b · O que é Founder-Led Growth (nomeia a categoria depois da prova) */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: MERCADO_HTML }} />
+          <div dangerouslySetInnerHTML={{ __html: FOUNDER_LED_HTML }} />
         </Reveal>
 
-        {/* S4c · Cases famosos — referências de mercado, NÃO clientes */}
+        {/* S6 · O método (stepper auto-rotativo) */}
         <Reveal>
-          <div dangerouslySetInnerHTML={{ __html: FAMOSOS_HTML }} />
+          <MetodoSection />
         </Reveal>
 
         {/* S5 · O que fazemos */}
@@ -2271,9 +2596,9 @@ export default function MarcaPessoalPage() {
           <div dangerouslySetInnerHTML={{ __html: FAZEMOS_HTML }} />
         </Reveal>
 
-        {/* S6 · O método (stepper auto-rotativo) */}
+        {/* S5b · O que você recebe — entregas nomeadas (revisão 08/2026) */}
         <Reveal>
-          <MetodoSection />
+          <div dangerouslySetInnerHTML={{ __html: ENTREGAS_HTML }} />
         </Reveal>
 
         {/* S7 · Prova / cases (métricas de case-data.ts, device com conteúdo real) */}
@@ -2301,9 +2626,24 @@ export default function MarcaPessoalPage() {
           <QualificadorSection />
         </Reveal>
 
-        {/* S9 · Oferta */}
+        {/* S8d · Como começa — processo de entrada (revisão 08/2026).
+            Vem logo antes da oferta: tira o medo do "e depois do clique?"
+            no exato momento em que o visitante vai ver o preço. */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: PROCESSO_HTML }} />
+        </Reveal>
+
+        {/* S9 · Oferta (agora COM preço público — ver bloco de fonte no const) */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: OFERTA_HTML }} />
+        </Reveal>
+
+        {/* S9b · LinkedIn B2B para empresas — SEGUNDA oferta, separada.
+            Vem logo depois da oferta principal: quem leu o preço do plano de
+            autoridade e concluiu "não é isso que eu preciso" encontra aqui a
+            outra porta, em vez de sair da página. */}
+        <Reveal>
+          <div dangerouslySetInnerHTML={{ __html: LINKEDIN_B2B_HTML }} />
         </Reveal>
 
         {/* S10 · FAQ */}

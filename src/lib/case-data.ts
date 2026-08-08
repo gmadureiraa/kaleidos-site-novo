@@ -1270,6 +1270,55 @@ export const casesData: Record<string, CaseData> = {
       { src: "/Cases/alfred/conteudo/aprovadas/alfred-tweet-selfcustody.jpg", type: "image", alt: "Tweet do Alfred: Brasil torna obrigatorio o reporte de self-custody" }
     ]
   },
+  "matheus-fassheber": {
+    id: "matheus-fassheber",
+    nome: "Matheus Fassheber (Neobankless)",
+    status: "em-andamento",
+    tags: ["Marca Pessoal", "Founder", "Fintech", "Cripto", "Instagram"],
+    descricao: "Founder brand pessoal do Matheus Fassheber (@matheusfassheber), fundador da Neobankless: o CEO como criador de conteúdo. O produto aqui é a figura dele, não a conta da empresa — founder-led growth pra gerar pipeline qualificado a custo baixo.",
+    descricao_en: "Personal founder brand of Matheus Fassheber (@matheusfassheber), founder of Neobankless: the CEO as a content creator. The product here is him, not the company account — founder-led growth to generate qualified pipeline at low cost.",
+    fraseImpactante: "O founder como canal: conteúdo que gera pipeline qualificado sem depender de mídia paga.",
+    fraseImpactante_en: "The founder as the channel: content that generates qualified pipeline without relying on paid media.",
+    detalhes: "O Desafio\n\nO Matheus já tinha audiência (16,8 mil seguidores no Instagram) e um negócio rodando — a Neobankless. O que faltava era transformar a presença dele em canal de aquisição: sair do post ocasional e virar cadência, com uma linha editorial que conecte fintech, cripto e o ponto de vista de quem constrói.\n\nNossa Estratégia\n\nO plano é founder-led growth: a Kaleidos assume tema, roteiro, arte e distribuição; ele grava e aprova. Cada peça sai em dois eixos — o founder explicando o sistema financeiro e o founder mostrando o produto sem parecer anúncio.\n\n• Carrosséis de tese (benefício × característica, institucional da Neobankless)\n• Reels curtos com hook forte, no molde de referências validadas\n• Cadência semanal no Instagram, com repurpose\n• Sistema visual próprio, aplicado por render automatizado\n\nO Resultado\n\nOperação iniciada em agosto/2026. As primeiras peças já foram ao ar; métricas consolidadas entram aqui conforme os ciclos mensais fecham.",
+    detalhes_en: "The Challenge\n\nMatheus already had an audience (16.8k Instagram followers) and a running business — Neobankless. What was missing was turning his presence into an acquisition channel: moving from the occasional post to a real cadence, with an editorial line connecting fintech, crypto and a builder's point of view.\n\nOur Strategy\n\nThe plan is founder-led growth: Kaleidos owns topic, script, art and distribution; he records and approves. Every piece runs on two axes — the founder explaining the financial system, and the founder showing the product without it looking like an ad.\n\n• Thesis carousels (benefit × feature, Neobankless institutional)\n• Short reels with a strong hook, modeled on validated references\n• Weekly Instagram cadence, with repurposing\n• Its own visual system, applied through automated rendering\n\nThe Result\n\nOperation started in August 2026. The first pieces are already live; consolidated metrics land here as the monthly cycles close.",
+    depoimentos: "",
+    links: ["https://www.instagram.com/matheusfassheber/"],
+    externalLink: "https://www.instagram.com/matheusfassheber/",
+    externalLabel: "Ver no Instagram",
+    externalLabel_en: "See on Instagram",
+    metricas: "Operação de founder brand em andamento\n\nBase na largada (ago/2026): 16,8 mil seguidores no Instagram.\n\n• Início da operação: agosto/2026\n• Carrosséis de tese + reels curtos, cadência semanal\n• Kaleidos assume tema, roteiro, arte e distribuição\n• Founder-led growth: o CEO como canal de aquisição\n• Métricas consolidadas entram conforme os ciclos fecham",
+    metricas_en: "Founder brand operation in progress\n\nStarting base (Aug/2026): 16.8k Instagram followers.\n\n• Operation start: August 2026\n• Thesis carousels + short reels, weekly cadence\n• Kaleidos owns topic, script, art and distribution\n• Founder-led growth: the CEO as the acquisition channel\n• Consolidated metrics land as cycles close",
+    servicos: ["Marca Pessoal", "Estratégia de conteúdo", "Roteiro", "Design", "Social Media", "Copywriting"],
+    servicos_en: ["Personal Branding", "Content strategy", "Scriptwriting", "Design", "Social Media", "Copywriting"],
+    media: [
+      // 2026-08-04 · Benefício × característica: os dois lados dizem a mesma coisa, só um vende
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-01.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (capa)", link: "https://www.instagram.com/matheusfassheber/" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-02.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 2/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-03.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 3/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-04.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 4/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-05.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 5/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-06.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 6/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-07.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 7/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-08.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 8/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-04-formato-1-comparacao-carrossel-beneficio-caracte-09.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Benefício × característica: os dois lados dizem a mesma coisa, só um vende (slide 9/9)" },
+      // 2026-08-04 · A IA está nos deixando preguiçosos?
+      { src: "/portfolio/matheus-fassheber/2026-08-04-reel-a-ia-esta-nos-deixando-preguicosos-molde-ro.mp4", type: "video", alt: "Reel Matheus Fassheber — A IA está nos deixando preguiçosos?", poster: "/portfolio/matheus-fassheber/2026-08-04-reel-a-ia-esta-nos-deixando-preguicosos-molde-ro-poster.jpg" },
+      // 2026-08-06 · Institucional — conheça a Neobankless
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-01.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (capa)", link: "https://www.instagram.com/matheusfassheber/" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-02.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 2/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-03.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 3/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-04.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 4/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-05.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 5/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-06.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 6/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-07.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 7/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-08.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 8/9)" },
+      { src: "/portfolio/matheus-fassheber/2026-08-06-institucional-conheca-de-uma-vez-por-todas-a-neo-09.jpg", type: "image", alt: "Carrossel Matheus Fassheber — Institucional — conheça a Neobankless (slide 9/9)" },
+      // 2026-08-06 · Algo muito estranho com o dinheiro dos brasileiros
+      { src: "/portfolio/matheus-fassheber/2026-08-06-reel-algo-muito-estranho-com-o-dinheiro-dos-bras.mp4", type: "video", alt: "Reel Matheus Fassheber — Algo muito estranho com o dinheiro dos brasileiros", poster: "/portfolio/matheus-fassheber/2026-08-06-reel-algo-muito-estranho-com-o-dinheiro-dos-bras-poster.jpg", link: "https://www.instagram.com/reel/Dbsk5AqAFjU/" },
+      // 2026-08-07 · A IA que morre se não pagar a própria conta
+      { src: "/portfolio/matheus-fassheber/2026-08-07-reel-a-ia-que-morre-se-nao-pagar-a-propria-conta.mp4", type: "video", alt: "Reel Matheus Fassheber — A IA que morre se não pagar a própria conta", poster: "/portfolio/matheus-fassheber/2026-08-07-reel-a-ia-que-morre-se-nao-pagar-a-propria-conta-poster.jpg", link: "https://www.instagram.com/reel/Dbvj7d2EvTX/" },
+    ]
+  },
   "gui-campos": {
     id: "gui-campos",
     nome: "Gui Campos (DSEC)",
@@ -1290,7 +1339,58 @@ export const casesData: Record<string, CaseData> = {
     metricas_en: "Personal branding operation in progress\n\nStarting base (Jun/2026): 17.8k Instagram followers, verified profile — the largest reach in the DSEC ecosystem.\n\n• Full-script mode: Kaleidos writes, founder records\n• 2 carousels/week + batch-shot reels + daily stories\n• Repurpose: X threads and LinkedIn posts\n• Full-bleed typographic B&W visual system\n• Anti-vanity lesson: a 2M-view meme brought ~80 followers — we measure qualified engagement, not views\n• Monthly report per founder (top 3 / bottom 3 + editorial read)",
     servicos: ["Marca Pessoal", "Estratégia de conteúdo", "Roteiro", "Copywriting", "Social Media", "Ghostwriting"],
     servicos_en: ["Personal Branding", "Content strategy", "Scriptwriting", "Copywriting", "Social Media", "Ghostwriting"],
-    media: []
+    media: [
+      // 2026-07-14 · Quando te disserem que é fácil empreender no Brasil
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-01.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (capa)", link: "https://www.instagram.com/p/DayTVf4CCdO/" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-02.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 2/7)" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-03.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 3/7)" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-04.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 4/7)" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-05.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 5/7)" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-06.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 6/7)" },
+      { src: "/portfolio/gui-campos/2026-07-14-quando-te-disserem-que-e-facil-empreender-no-bra-07.jpg", type: "image", alt: "Carrossel Gui Campos — Quando te disserem que é fácil empreender no Brasil (slide 7/7)" },
+      // 2026-07-15 · Sobra nada — card de tweet + meme
+      { src: "/portfolio/gui-campos/2026-07-15-reel-meme-sobra-nada-card-de-tweet-meme-so-na-ab-01.mp4", type: "video", alt: "Reel Gui Campos — Sobra nada — card de tweet + meme", poster: "/portfolio/gui-campos/2026-07-15-reel-meme-sobra-nada-card-de-tweet-meme-so-na-ab-01-poster.jpg", link: "https://www.instagram.com/reel/Da06pcujcP-/" },
+      // 2026-07-16 · Quem te deixa mais pobre não é o empresário
+      { src: "/portfolio/gui-campos/2026-07-16-opcao-b-estatico-card-de-tweet-quem-te-deixa-mai-01.jpg", type: "image", alt: "Estático Gui Campos — Quem te deixa mais pobre não é o empresário", link: "https://www.instagram.com/p/Da3hyxkDZuP/" },
+      // 2026-07-17 · O pitch do Gui Campos
+      { src: "/portfolio/gui-campos/2026-07-17-pitch-novo-reel-gui-campos.mp4", type: "video", alt: "Reel Gui Campos — O pitch do Gui Campos", poster: "/portfolio/gui-campos/2026-07-17-pitch-novo-reel-gui-campos-poster.jpg", link: "https://www.instagram.com/reel/Da6BHgUk03n/" },
+      // 2026-07-20 · Você trabalha meses do ano só pra pagar imposto
+      { src: "/portfolio/gui-campos/2026-07-20-post-voce-trabalha-meses-do-ano-so-pra-pagar-imp-02.jpg", type: "image", alt: "Carrossel Gui Campos — Você trabalha meses do ano só pra pagar imposto (capa)", link: "https://www.instagram.com/p/DbB0En2jbOj/" },
+      { src: "/portfolio/gui-campos/2026-07-20-post-voce-trabalha-meses-do-ano-so-pra-pagar-imp-03.jpg", type: "image", alt: "Carrossel Gui Campos — Você trabalha meses do ano só pra pagar imposto (slide 2/2)" },
+      // 2026-07-21 · Gui Campos — reel de 21/07
+      { src: "/portfolio/gui-campos/2026-07-21-reel-gui-campos-21-07.mp4", type: "video", alt: "Reel Gui Campos — Gui Campos — reel de 21/07", poster: "/portfolio/gui-campos/2026-07-21-reel-gui-campos-21-07-poster.jpg", link: "https://www.instagram.com/reel/DbEcyrXjjUV/" },
+      // 2026-07-24 · Forex × Stablecoins × Bitcoin: volume por dia
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-01.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (capa)", link: "https://www.instagram.com/p/DbMLhnTDBEf/" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-02.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 2/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-03.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 3/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-04.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 4/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-05.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 5/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-06.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 6/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-07.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 7/8)" },
+      { src: "/portfolio/gui-campos/2026-07-24-forex-x-stablecoins-x-bitcoin-volume-por-dia-08.jpg", type: "image", alt: "Carrossel Gui Campos — Forex × Stablecoins × Bitcoin: volume por dia (slide 8/8)" },
+      // 2026-07-27 · Gui Campos — reel de 27/07
+      { src: "/portfolio/gui-campos/2026-07-27-video.mp4", type: "video", alt: "Reel Gui Campos — Gui Campos — reel de 27/07", poster: "/portfolio/gui-campos/2026-07-27-video-poster.jpg", link: "https://www.instagram.com/reel/DbTxhlRlDkN/" },
+      // 2026-07-28 · Kwid 2020 × 2026: o que não é inflação
+      { src: "/portfolio/gui-campos/2026-07-28-kwid-2020-x-2026-o-que-nao-e-inflacao-01.jpg", type: "image", alt: "Carrossel Gui Campos — Kwid 2020 × 2026: o que não é inflação (capa)", link: "https://www.instagram.com/p/DbWb5mmlviI/" },
+      { src: "/portfolio/gui-campos/2026-07-28-kwid-2020-x-2026-o-que-nao-e-inflacao-02.jpg", type: "image", alt: "Carrossel Gui Campos — Kwid 2020 × 2026: o que não é inflação (slide 2/2)" },
+      // 2026-07-31 · Nascido para...
+      { src: "/portfolio/gui-campos/2026-07-31-reels-nascido-para-01.mp4", type: "video", alt: "Reel Gui Campos — Nascido para...", poster: "/portfolio/gui-campos/2026-07-31-reels-nascido-para-01-poster.jpg", link: "https://twitter.com/i/web/status/2083287327258915072" },
+      // 2026-08-03 · Poder de compra em 10 anos: café e plano de saúde
+      { src: "/portfolio/gui-campos/2026-08-03-poder-de-compra-em-10-anos-cafe-e-plano-de-saude-01.jpg", type: "image", alt: "Carrossel Gui Campos — Poder de compra em 10 anos: café e plano de saúde (capa)", link: "https://www.instagram.com/guicampossc/" },
+      { src: "/portfolio/gui-campos/2026-08-03-poder-de-compra-em-10-anos-cafe-e-plano-de-saude-02.jpg", type: "image", alt: "Carrossel Gui Campos — Poder de compra em 10 anos: café e plano de saúde (slide 2/5)" },
+      { src: "/portfolio/gui-campos/2026-08-03-poder-de-compra-em-10-anos-cafe-e-plano-de-saude-03.jpg", type: "image", alt: "Carrossel Gui Campos — Poder de compra em 10 anos: café e plano de saúde (slide 3/5)" },
+      { src: "/portfolio/gui-campos/2026-08-03-poder-de-compra-em-10-anos-cafe-e-plano-de-saude-04.jpg", type: "image", alt: "Carrossel Gui Campos — Poder de compra em 10 anos: café e plano de saúde (slide 4/5)" },
+      { src: "/portfolio/gui-campos/2026-08-03-poder-de-compra-em-10-anos-cafe-e-plano-de-saude-05.jpg", type: "image", alt: "Carrossel Gui Campos — Poder de compra em 10 anos: café e plano de saúde (slide 5/5)" },
+      // 2026-08-04 · Seu salário depois dos impostos
+      { src: "/portfolio/gui-campos/2026-08-04-seu-salario-depois-dos-impostos.mp4", type: "video", alt: "Reel Gui Campos — Seu salário depois dos impostos", poster: "/portfolio/gui-campos/2026-08-04-seu-salario-depois-dos-impostos-poster.jpg", link: "https://www.instagram.com/reel/DboX8Y5COOE/" },
+      // 2026-08-05 · Quanto você precisa faturar hoje pra viver como em 2016
+      { src: "/portfolio/gui-campos/2026-08-05-quanto-voce-precisa-faturar-hoje-pra-viver-como--04.mp4", type: "video", alt: "Reel Gui Campos — Quanto você precisa faturar hoje pra viver como em 2016", poster: "/portfolio/gui-campos/2026-08-05-quanto-voce-precisa-faturar-hoje-pra-viver-como--04-poster.jpg", link: "https://www.instagram.com/p/Dbq80hWiUvJ/" },
+      { src: "/portfolio/gui-campos/2026-08-05-quanto-voce-precisa-faturar-hoje-pra-viver-como--05.jpg", type: "image", alt: "Carrossel Gui Campos — Quanto você precisa faturar hoje pra viver como em 2016 (capa)", link: "https://www.instagram.com/p/Dbq80hWiUvJ/" },
+      { src: "/portfolio/gui-campos/2026-08-05-quanto-voce-precisa-faturar-hoje-pra-viver-como--06.jpg", type: "image", alt: "Carrossel Gui Campos — Quanto você precisa faturar hoje pra viver como em 2016 (slide 2/3)" },
+      { src: "/portfolio/gui-campos/2026-08-05-quanto-voce-precisa-faturar-hoje-pra-viver-como--07.jpg", type: "image", alt: "Carrossel Gui Campos — Quanto você precisa faturar hoje pra viver como em 2016 (slide 3/3)" },
+      // 2026-08-06 · Na minha vez é imposto pra tudo
+      { src: "/portfolio/gui-campos/2026-08-06-na-minha-vez-e-imposto-pra-tudo.mp4", type: "video", alt: "Reel Gui Campos — Na minha vez é imposto pra tudo", poster: "/portfolio/gui-campos/2026-08-06-na-minha-vez-e-imposto-pra-tudo-poster.jpg", link: "https://www.instagram.com/reel/DbthndMABBr/" },
+    ]
   },
   "leo-maximiliano": {
     id: "leo-maximiliano",
@@ -1312,7 +1412,107 @@ export const casesData: Record<string, CaseData> = {
     metricas_en: "Personal branding operation in progress\n\nStarting base (Jun/2026): 2.6k Instagram followers, verified profile — the DSEC ecosystem's technical authority.\n\n• Yapping mode: Kaleidos delivers topic + hook, founder records unscripted, repurposing in post\n• 2 carousels/week + founder-shot reels + daily stories\n• ~4-5 X threads/month + ~2 LinkedIn posts/month\n• Validated champion post: ~350 likes vs a 100-200 feed\n• B&W visual system + exclusive #ea4705 orange\n• Monthly report across 3 networks (IG + X + LinkedIn)",
     servicos: ["Marca Pessoal", "Estratégia de conteúdo", "Direcional tema + hook", "Repurpose", "Social Media", "Copywriting"],
     servicos_en: ["Personal Branding", "Content strategy", "Topic + hook direction", "Repurposing", "Social Media", "Copywriting"],
-    media: []
+    media: [
+      // 2026-07-14 · Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (capa)", link: "https://www.instagram.com/p/DayYRO8ClBc/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 2/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 3/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 4/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 5/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 6/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 7/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-14-aaron-swartz-4-8-milhoes-de-artigos-35-anos-de-p-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Aaron Swartz: 4,8 milhões de artigos, 35 anos de prisão pedidos (slide 8/8)" },
+      // 2026-07-16 · Bolsa Família num oráculo on-chain
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (capa)", link: "https://www.instagram.com/p/Da3iWYgEepz/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 2/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 3/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 4/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 5/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 6/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 7/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-16-bolsa-familia-num-oraculo-on-chain-20-milhoes-de-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bolsa Família num oráculo on-chain (slide 8/8)" },
+      // 2026-07-17 · O complexo de vira-lata tecnológico
+      { src: "/portfolio/leo-maximiliano/2026-07-17-o-complexo-de-vira-lata-tecnologico.mp4", type: "video", alt: "Reel Léo Maximiliano — O complexo de vira-lata tecnológico", poster: "/portfolio/leo-maximiliano/2026-07-17-o-complexo-de-vira-lata-tecnologico-poster.jpg", link: "https://www.instagram.com/reel/Da56uT7AjVm/" },
+      // 2026-07-20 · WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn)
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 2/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 3/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 4/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 5/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 6/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 7/8)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-20-wikileaks-cancelado-por-visa-mastercard-e-paypal-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: cancelado por Visa, Mastercard e PayPal (LinkedIn) (slide 8/8)" },
+      // 2026-07-21 · WikiLeaks: o Bitcoin salvou a organização
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (capa)", link: "https://www.linkedin.com/feed/update/urn:li:share:7485425455421079553/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 2/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 3/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 4/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 5/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 6/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 7/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 8/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-09.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 9/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-21-carrossel-leo-wikileaks-o-bitcoin-salvou-a-organ-10.jpg", type: "image", alt: "Carrossel Léo Maximiliano — WikiLeaks: o Bitcoin salvou a organização (slide 10/10)" },
+      // 2026-07-24 · Bitcoin é dinheiro de mentira
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 2/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 3/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 4/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 5/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 6/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 7/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 8/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-09.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 9/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-10.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 10/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-11.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 11/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-12.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 12/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-13.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 13/14)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-24-bitcoin-e-dinheiro-de-mentira-carrossel-publicad-14.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é dinheiro de mentira (slide 14/14)" },
+      // 2026-07-27 · Revolução Cognitiva: primeiro omitiram, depois mentiram
+      { src: "/portfolio/leo-maximiliano/2026-07-27-reel-leo-revolucao-cognitiva-primeiro-omitiram-d.mp4", type: "video", alt: "Reel Léo Maximiliano — Revolução Cognitiva: primeiro omitiram, depois mentiram", poster: "/portfolio/leo-maximiliano/2026-07-27-reel-leo-revolucao-cognitiva-primeiro-omitiram-d-poster.jpg", link: "https://www.instagram.com/reel/DbTxlb-ipFh/" },
+      // 2026-07-29 · Bitcoin é golpe, disse seu professor de economia
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 2/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 3/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 4/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 5/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 6/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 7/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 8/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-09.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 9/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-29-carrossel-bitcoin-e-golpe-disse-seu-professor-de-10.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Bitcoin é golpe, disse seu professor de economia (slide 10/10)" },
+      // 2026-07-31 · Você não tem senha. Você tem permissão.
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 2/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 3/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 4/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 5/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 6/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 7/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 8/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-09.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 9/10)" },
+      { src: "/portfolio/leo-maximiliano/2026-07-31-carrossel-leo-voce-nao-tem-senha-voce-tem-permis-10.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Você não tem senha. Você tem permissão. (slide 10/10)" },
+      // 2026-08-03 · BitBox #05 — Bitcoin é chato
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 2/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 3/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 4/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 5/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-06.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 6/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-07.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 7/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-08.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 8/9)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-03-bitbox-05-bitcoin-e-chato-09.jpg", type: "image", alt: "Carrossel Léo Maximiliano — BitBox #05 — Bitcoin é chato (slide 9/9)" },
+      // 2026-08-04 · Indo comprar Bitcoin
+      { src: "/portfolio/leo-maximiliano/2026-08-04-indo-comprar-bitcoin.mp4", type: "video", alt: "Reel Léo Maximiliano — Indo comprar Bitcoin", poster: "/portfolio/leo-maximiliano/2026-08-04-indo-comprar-bitcoin-poster.jpg", link: "https://www.instagram.com/reel/DboX2-PE8B0/" },
+      // 2026-08-05 · Reel Krux
+      { src: "/portfolio/leo-maximiliano/2026-08-05-reels-krux.mp4", type: "video", alt: "Reel Léo Maximiliano — Reel Krux", poster: "/portfolio/leo-maximiliano/2026-08-05-reels-krux-poster.jpg", link: "https://www.instagram.com/reel/Dbq9dDREgQq/" },
+      // 2026-08-07 · Se você é bitcoiner!
+      { src: "/portfolio/leo-maximiliano/2026-08-07-se-voce-e-bitcoiner-01.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Se você é bitcoiner! (capa)", link: "https://www.instagram.com/leommaximiliano/" },
+      { src: "/portfolio/leo-maximiliano/2026-08-07-se-voce-e-bitcoiner-02.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Se você é bitcoiner! (slide 2/5)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-07-se-voce-e-bitcoiner-03.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Se você é bitcoiner! (slide 3/5)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-07-se-voce-e-bitcoiner-04.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Se você é bitcoiner! (slide 4/5)" },
+      { src: "/portfolio/leo-maximiliano/2026-08-07-se-voce-e-bitcoiner-05.jpg", type: "image", alt: "Carrossel Léo Maximiliano — Se você é bitcoiner! (slide 5/5)" },
+    ]
   }
 };
 // Cases que possuem rota/página completa em /cases/<id> (pasta estática dedicada).

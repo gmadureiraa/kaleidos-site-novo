@@ -5,15 +5,20 @@ import {
   UNITS,
   LAYERS,
   ADDONS,
-  BUNDLES,
+  PACKAGES,
+  FAMILIES,
   buildQuote,
+  verifyPackage,
   PRICING_RULES,
+  type Package,
+  type PackageStatus,
 } from "@/lib/pricing";
 
 const INK = "#14110D";
 const GREEN = "#7CF067";
 const PINK = "#D262B2";
 const CRU = "#FAFAFA";
+const AMBER = "#f2b544";
 
 const brl = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
@@ -26,13 +31,21 @@ const card: React.CSSProperties = {
   padding: 18,
 };
 
+// Selo de status: o Gabriel precisa ver de longe se pode vender aquilo.
+const STATUS_BADGE: Record<PackageStatus, { text: string; bg: string; fg: string }> = {
+  padrao: { text: "padrão 2026", bg: GREEN, fg: INK },
+  legado: { text: "fora de linha", bg: "#e6e2da", fg: "#6b645a" },
+  grandfathered: { text: "grandfathered", bg: AMBER, fg: INK },
+};
+
 export function OrcamentoCalculator() {
   const [qty, setQty] = useState<Record<string, number>>({});
   const [layers, setLayers] = useState<Set<string>>(new Set());
   const [addons, setAddons] = useState<Set<string>>(new Set());
   const [discount, setDiscount] = useState(0);
   const [costPct, setCostPct] = useState(45); // custo estimado como % do preço
-  const [selectedBundle, setSelectedBundle] = useState<string | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+  const [showLegacy, setShowLegacy] = useState(false);
 
   const setPiece = (id: string, v: number) =>
     setQty((q) => ({ ...q, [id]: Math.max(0, v) }));
@@ -42,6 +55,8 @@ export function OrcamentoCalculator() {
     fn(next);
   };
 
+  const pkg = PACKAGES.find((p) => p.id === selectedPackage);
+
   const quote = useMemo(
     () =>
       buildQuote({
@@ -49,31 +64,44 @@ export function OrcamentoCalculator() {
         layerIds: [...layers],
         addonIds: [...addons],
         bundleDiscount: discount / 100,
+        family: pkg?.family,
       }),
-    [qty, layers, addons, discount]
+    [qty, layers, addons, discount, pkg?.family]
   );
 
-  const cost = Math.round((quote.totalMonthly * costPct) / 100);
-  const margin = quote.totalMonthly > 0 ? 1 - cost / quote.totalMonthly : 0;
-  const marginColor =
-    margin >= 0.5 ? GREEN : margin >= PRICING_RULES.margem.redFlagBelow ? "#f2b544" : "#ff5a5a";
+  // ⚠️ Com pacote selecionado, o número que vai pra proposta é o PREÇO DE TABELA
+  // do pacote + adicionais — NÃO a soma das peças. Desde a régua de 06/08 os dois
+  // divergem (o reel está subprecificado na aba 1 da planilha), e mostrar só a
+  // soma faria a gente cotar founder brand abaixo do que foi vendido ao Matheus.
+  const check = pkg ? verifyPackage(pkg) : null;
+  const quoteTotal = pkg ? pkg.price + quote.addonsRecurring : quote.totalMonthly;
 
-  // Clicar num pacote PREENCHE a calculadora com as peças + camadas dele (e o total
-  // recalcula sozinho). Clicar de novo no mesmo pacote limpa tudo.
-  const applyBundle = (b: (typeof BUNDLES)[number]) => {
-    if (b.id === selectedBundle) {
-      setSelectedBundle(null);
+  const cost = Math.round((quoteTotal * costPct) / 100);
+  const margin = quoteTotal > 0 ? 1 - cost / quoteTotal : 0;
+  const marginColor =
+    margin >= 0.5 ? GREEN : margin >= PRICING_RULES.margem.redFlagBelow ? AMBER : "#ff5a5a";
+
+  // Clicar num pacote PREENCHE a calculadora com as peças + camadas dele.
+  // Clicar de novo no mesmo pacote limpa tudo (inclusive adicionais).
+  const applyPackage = (p: Package) => {
+    if (p.id === selectedPackage) {
+      setSelectedPackage(null);
       setQty({});
       setLayers(new Set());
+      setAddons(new Set());
       return;
     }
-    setSelectedBundle(b.id);
+    setSelectedPackage(p.id);
     const q: Record<string, number> = {};
-    (b.pieces ?? []).forEach((p) => { q[p.unitId] = p.qty; });
+    (p.pieces ?? []).forEach((x) => { q[x.unitId] = x.qty; });
     setQty(q);
-    setLayers(new Set(b.layerIds ?? []));
+    setLayers(new Set(p.layerIds ?? []));
+    // Adicional é escolha do cliente, nunca vem ligado por padrão.
+    setAddons(new Set());
   };
-  const bundle = BUNDLES.find((b) => b.id === selectedBundle);
+
+  const visible = (p: Package) => showLegacy || p.status === "padrao";
+  const allowedAddonIds = pkg?.allowedAddons;
 
   return (
     <main style={{ background: CRU, minHeight: "100vh", color: INK, fontFamily: "Inter, system-ui, sans-serif" }}>
@@ -87,36 +115,105 @@ export function OrcamentoCalculator() {
             Calculadora de orçamento Kaleidos
           </h1>
         </div>
-        <p style={{ color: "#5a534a", marginTop: 8, maxWidth: 720 }}>
-          Monte o orçamento pela fórmula da tabela 2026: Σ(peças × preço em volume) + camadas de gestão + add-ons,
-          com desconto de bundle e piso mínimo. Preços em volume (dentro de pacote recorrente).
+        <p style={{ color: "#5a534a", marginTop: 8, maxWidth: 760 }}>
+          Escolha um <b>pacote</b> (o preço de tabela é o que vai pra proposta) e some os <b>adicionais</b>.
+          Sem pacote, monte pela fórmula: Σ(peças × preço em volume) + camadas de gestão + adicionais, com desconto de bundle e piso mínimo.
+          {/* ⚠️ Não usar minContractMonths cegamente: LinkedIn B2B fecha em 3 meses,
+              e cotar 6 aqui já geraria proposta errada. O pacote manda. */}
+          Contrato mínimo de <b>{pkg?.minMonths ?? PRICING_RULES.minContractMonths} meses</b>
+          {pkg?.minMonths && pkg.minMonths !== PRICING_RULES.minContractMonths
+            ? ` (exceção da família ${FAMILIES.find((f) => f.id === pkg.family)?.label} — o padrão da casa é ${PRICING_RULES.minContractMonths})`
+            : ""}.
         </p>
 
-        {/* bundles de referência */}
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 22 }}>
-          {BUNDLES.map((b) => (
-            <button
-              key={b.id}
-              onClick={() => applyBundle(b)}
-              style={{
-                border: `1.5px solid ${INK}`,
-                background: selectedBundle === b.id ? PINK : "#fff",
-                color: INK,
-                borderRadius: 999,
-                padding: "10px 16px",
-                minHeight: 44,
-                fontSize: 13,
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              {b.label} · {brl(b.price)}
-            </button>
-          ))}
+        {/* pacotes, agrupados por família — a taxonomia é o ponto */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
+          <h2 style={{ fontSize: 15, margin: 0, textTransform: "uppercase", letterSpacing: 1 }}>Pacotes</h2>
+          <label style={{ fontSize: 13, color: "#5a534a", display: "flex", alignItems: "center", gap: 7, cursor: "pointer" }}>
+            <input type="checkbox" checked={showLegacy} onChange={() => setShowLegacy((v) => !v)} style={{ width: 18, height: 18, accentColor: INK }} />
+            mostrar fora de linha / grandfathered
+          </label>
         </div>
-        {bundle && (
-          <div style={{ ...card, marginTop: 12, background: "#fff8fd" }}>
-            <b>{bundle.label}</b> — {brl(bundle.price)}/mês de referência. <span style={{ color: "#5a534a" }}>{bundle.scope} · Camadas: {bundle.layers}</span>
+
+        {FAMILIES.map((fam) => {
+          const list = PACKAGES.filter((p) => p.family === fam.id && visible(p));
+          if (!list.length) return null;
+          return (
+            <section key={fam.id} style={{ marginTop: 18 }}>
+              <div style={{ fontFamily: "Gridlite, monospace", fontSize: 11.5, letterSpacing: 1.6, textTransform: "uppercase", color: INK }}>{fam.label}</div>
+              <div style={{ fontSize: 12.5, color: "#8a8078", margin: "3px 0 10px", maxWidth: 720 }}>{fam.blurb}</div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {list.map((p) => {
+                  const on = selectedPackage === p.id;
+                  const badge = STATUS_BADGE[p.status];
+                  return (
+                    <button
+                      key={p.id}
+                      onClick={() => applyPackage(p)}
+                      style={{
+                        border: `1.5px solid ${INK}`,
+                        background: on ? PINK : "#fff",
+                        color: INK,
+                        borderRadius: 4,
+                        padding: "10px 14px",
+                        minHeight: 44,
+                        textAlign: "left",
+                        cursor: "pointer",
+                        opacity: p.status === "legado" && !on ? 0.62 : 1,
+                      }}
+                    >
+                      <div style={{ fontSize: 13.5, fontWeight: 700 }}>
+                        {p.label} · {brl(p.price)}<span style={{ fontWeight: 400, color: on ? INK : "#8a8078" }}>/mês</span>
+                      </div>
+                      <div style={{ display: "flex", gap: 6, marginTop: 5, flexWrap: "wrap" }}>
+                        <span style={{ fontFamily: "Gridlite, monospace", fontSize: 9.5, letterSpacing: 1, textTransform: "uppercase", background: badge.bg, color: badge.fg, padding: "2px 6px", border: `1px solid ${INK}` }}>{badge.text}</span>
+                        {p.highlight && <span style={{ fontFamily: "Gridlite, monospace", fontSize: 9.5, letterSpacing: 1, textTransform: "uppercase", background: INK, color: GREEN, padding: "2px 6px" }}>{p.highlight}</span>}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
+
+        {pkg && (
+          <div style={{ ...card, marginTop: 16, background: "#fff8fd" }}>
+            <div style={{ fontSize: 15, fontWeight: 700 }}>{pkg.label} — {brl(pkg.price)}/mês</div>
+            <div style={{ color: "#5a534a", fontSize: 13.5, marginTop: 6 }}>{pkg.scope}</div>
+            <div style={{ color: "#5a534a", fontSize: 13.5, marginTop: 6 }}>
+              Camadas: {pkg.layers}{pkg.channels ? ` · Canais: ${pkg.channels}` : ""}{pkg.minMonths ? ` · Mínimo ${pkg.minMonths} meses` : ""}
+            </div>
+            <div style={{ fontSize: 12, color: "#8a8078", marginTop: 8 }}>Fonte: {pkg.source}</div>
+            {pkg.replacedBy && (
+              <div style={{ fontSize: 12.5, marginTop: 8, color: "#8a4a00" }}>
+                ↪ Substituído por <b>{PACKAGES.find((x) => x.id === pkg.replacedBy)?.label}</b> — não oferecer a lead novo.
+              </div>
+            )}
+            {/* Conferência composição × preço: antes isso era uma promessa tácita
+                do modelo. Agora é visível, porque parou de fechar. */}
+            {check && (
+              <div style={{ marginTop: 12, borderTop: "1px solid #eadfe6", paddingTop: 10, fontSize: 13 }}>
+                <Row label="Σ peças + camadas (tabela de unidades)" value={brl(check.composed)} small />
+                <Row label="Preço de tabela do pacote" value={brl(check.price)} small bold />
+                <Row
+                  label={check.delta >= 0 ? "Prêmio sobre a tabela de unidades" : "Desconto sobre a tabela de unidades"}
+                  value={`${check.delta >= 0 ? "+" : "−"} ${brl(Math.abs(check.delta))} (${Math.abs(Math.round(check.deltaPct * 100))}%)`}
+                  small
+                />
+                {!check.ok && (
+                  <div style={{ marginTop: 8, background: "#fff3d6", border: `1px solid ${AMBER}`, padding: "7px 10px", borderRadius: 4, fontSize: 12.5 }}>
+                    ⚠ Fora da tolerância de {Math.round(PRICING_RULES.compositionTolerance * 100)}% (faixa do desconto de bundle).{" "}
+                    {pkg.family === "founder-brand"
+                      ? "Causa conhecida: o reel de roteiro + edição está subprecificado na aba 1 (R$150 em volume; os pacotes de 08/08 implicam R$275–433). Ou o preço do reel sobe, ou o pacote assume um prêmio documentado."
+                      : pkg.family === "linkedin-b2b"
+                        ? "Causa conhecida: setup de perfil, automação de lead magnet e relatório de sinais de intenção não têm linha na aba 1 — são escopo real que a soma das peças não enxerga."
+                        : "Ou o preço da unidade na aba 1 sobe, ou o pacote assume um prêmio documentado."}{" "}
+                    <b>Decisão do Gabriel.</b>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -124,11 +221,63 @@ export function OrcamentoCalculator() {
           {/* builder */}
           <div style={{ display: "grid", gap: 18 }}>
             <section style={card}>
-              <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Peças (mensal)</h2>
+              <h2 style={{ fontSize: 15, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>Adicionais (mensal)</h2>
+              <p style={{ fontSize: 12.5, color: "#8a8078", margin: "0 0 12px" }}>
+                Somam por cima do preço do pacote.{" "}
+                {pkg && allowedAddonIds?.length
+                  ? "Marcados com ✓ são os que a proposta do pacote prevê."
+                  : pkg && allowedAddonIds?.length === 0
+                    ? "⚠ Este pacote não prevê adicional nenhum — a escada de 08/08 tirou os extras (quem quer engajamento sobe de degrau; LinkedIn virou família própria). Marcar algo aqui é sair da régua."
+                    : ""}
+              </p>
+              <div style={{ display: "grid", gap: 8 }}>
+                {ADDONS.filter((a) => a.kind === "adicional" && (showLegacy || a.status === "padrao")).map((a) => {
+                  const fits = allowedAddonIds?.includes(a.id);
+                  return (
+                    <label key={a.id} style={{ display: "flex", gap: 12, alignItems: "flex-start", fontSize: 14, cursor: "pointer", padding: "6px 0", opacity: a.status === "legado" ? 0.62 : 1 }}>
+                      <input type="checkbox" checked={addons.has(a.id)} onChange={() => toggle(addons, a.id, setAddons)} style={{ marginTop: 2, width: 22, height: 22, flex: "none", accentColor: INK }} />
+                      <span style={{ flex: 1 }}>
+                        {fits && <span style={{ color: "#2e8a1f", fontWeight: 700 }}>✓ </span>}
+                        {a.label} <span style={{ color: "#8a8078" }}>· {brl(a.priceMin)}{a.priceMax ? `–${brl(a.priceMax)}` : ""}/mês</span>
+                        {a.status !== "padrao" && <span style={{ fontFamily: "Gridlite, monospace", fontSize: 9.5, letterSpacing: 1, textTransform: "uppercase", background: STATUS_BADGE[a.status].bg, color: STATUS_BADGE[a.status].fg, padding: "1px 5px", marginLeft: 6, border: `1px solid ${INK}` }}>{STATUS_BADGE[a.status].text}</span>}
+                        {a.note && <><br /><span style={{ color: "#8a8078", fontSize: 12.5 }}>{a.note}</span></>}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section style={card}>
+              <h2 style={{ fontSize: 15, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>Projetos avulsos (one-off)</h2>
+              <p style={{ fontSize: 12.5, color: "#8a8078", margin: "0 0 12px" }}>
+                Nunca entram na mensalidade. Podcast é sempre projeto à parte (regra da proposta 06/08).
+              </p>
+              <div style={{ display: "grid", gap: 8 }}>
+                {ADDONS.filter((a) => a.kind === "projeto").map((a) => (
+                  <label key={a.id} style={{ display: "flex", gap: 12, alignItems: "flex-start", fontSize: 14, cursor: "pointer", padding: "6px 0" }}>
+                    <input type="checkbox" checked={addons.has(a.id)} onChange={() => toggle(addons, a.id, setAddons)} style={{ marginTop: 2, width: 22, height: 22, flex: "none", accentColor: INK }} />
+                    <span style={{ flex: 1 }}>
+                      {a.label} <span style={{ color: "#8a8078" }}>· {brl(a.priceMin)}{a.priceMax ? `–${brl(a.priceMax)}` : "+"}</span>
+                      {a.note && <><br /><span style={{ color: "#8a8078", fontSize: 12.5 }}>{a.note}</span></>}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </section>
+
+            <section style={card}>
+              <h2 style={{ fontSize: 15, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>Peças (mensal)</h2>
+              <p style={{ fontSize: 12.5, color: "#8a8078", margin: "0 0 12px" }}>
+                Composição do pacote. Mexer aqui muda a <i>soma da tabela</i>, não o preço do pacote — use pra montar orçamento sob medida (sem pacote selecionado).
+              </p>
               <div style={{ display: "grid", gap: 8 }}>
                 {UNITS.filter((u) => !u.oneOff).map((u) => (
                   <div key={u.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ flex: 1, minWidth: 0, fontSize: 14 }}>{u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}/{u.unidade}</span></span>
+                    <span style={{ flex: 1, minWidth: 0, fontSize: 14 }}>
+                      {u.label} <span style={{ color: "#8a8078" }}>· {brl(u.volume)}/{u.unidade}</span>
+                      {u.note && <><br /><span style={{ color: AMBER, fontSize: 12 }}>⚠ {u.note}</span></>}
+                    </span>
                     <QtyInput value={qty[u.id] ?? 0} onChange={(v) => setPiece(u.id, v)} />
                   </div>
                 ))}
@@ -136,7 +285,7 @@ export function OrcamentoCalculator() {
             </section>
 
             <section style={card}>
-              <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>One-off (projeto pontual)</h2>
+              <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Peças one-off</h2>
               <div style={{ display: "grid", gap: 8 }}>
                 {UNITS.filter((u) => u.oneOff).map((u) => (
                   <div key={u.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -158,27 +307,26 @@ export function OrcamentoCalculator() {
                 ))}
               </div>
             </section>
-
-            <section style={card}>
-              <h2 style={{ fontSize: 15, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Add-ons</h2>
-              <div style={{ display: "grid", gap: 8 }}>
-                {ADDONS.map((a) => (
-                  <label key={a.id} style={{ display: "flex", gap: 12, alignItems: "center", fontSize: 14, cursor: "pointer", padding: "6px 0" }}>
-                    <input type="checkbox" checked={addons.has(a.id)} onChange={() => toggle(addons, a.id, setAddons)} style={{ width: 22, height: 22, flex: "none", accentColor: INK }} />
-                    <span style={{ flex: 1 }}>{a.label} <span style={{ color: "#8a8078" }}>· {brl(a.priceMin)}{a.priceMax ? `–${brl(a.priceMax)}` : "+"} · {a.type}</span></span>
-                  </label>
-                ))}
-              </div>
-            </section>
           </div>
 
           {/* resumo (sticky) */}
           <aside style={{ position: "sticky", top: 20, display: "grid", gap: 16 }}>
             <div style={{ ...card, background: INK, color: CRU, boxShadow: `6px 6px 0 ${GREEN}` }}>
-              <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 2, color: GREEN }}>Total mensal</div>
-              <div style={{ fontFamily: "Atelier, sans-serif", fontSize: 40, fontWeight: 800, lineHeight: 1.1, marginTop: 4 }}>{brl(quote.totalMonthly)}<span style={{ fontSize: 16, fontWeight: 500, color: "#b8b2a8" }}>/mês</span></div>
-              {quote.oneOff > 0 && <div style={{ fontSize: 13, color: "#b8b2a8", marginTop: 6 }}>+ {brl(quote.oneOff)} one-off (projeto)</div>}
-              {quote.belowPiso && (
+              <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 2, color: GREEN }}>
+                {pkg ? "Total a cobrar" : "Total mensal (sob medida)"}
+              </div>
+              <div style={{ fontFamily: "Atelier, sans-serif", fontSize: 40, fontWeight: 800, lineHeight: 1.1, marginTop: 4 }}>
+                {brl(quoteTotal)}<span style={{ fontSize: 16, fontWeight: 500, color: "#b8b2a8" }}>/mês</span>
+              </div>
+              {pkg && (
+                <div style={{ fontSize: 12.5, color: "#b8b2a8", marginTop: 6 }}>
+                  {brl(pkg.price)} do pacote{quote.addonsRecurring > 0 ? ` + ${brl(quote.addonsRecurring)} de adicionais` : ""}
+                </div>
+              )}
+              {(quote.oneOff > 0 || quote.addonsOneOff > 0) && (
+                <div style={{ fontSize: 13, color: "#b8b2a8", marginTop: 6 }}>+ {brl(quote.oneOff + quote.addonsOneOff)} one-off (projeto, à parte)</div>
+              )}
+              {!pkg && quote.belowPiso && (
                 <div style={{ marginTop: 10, background: "#4a1f1f", border: "1px solid #ff5a5a", padding: "6px 10px", borderRadius: 4, fontSize: 12.5, color: "#ffb3b3" }}>
                   ⚠ Abaixo do piso de {brl(quote.pisoFloor)} — ajustado pro piso.
                 </div>
@@ -186,9 +334,10 @@ export function OrcamentoCalculator() {
             </div>
 
             <div style={card}>
+              <div style={{ fontSize: 11.5, textTransform: "uppercase", letterSpacing: 1, color: "#8a8078", marginBottom: 6 }}>Soma pela tabela de unidades</div>
               <Row label="Conteúdo (mensal)" value={brl(quote.contentMonthly)} />
               <Row label="Camadas" value={brl(quote.layersMonthly)} />
-              <Row label="Add-ons recorrentes" value={brl(quote.addonsRecurring)} />
+              <Row label="Adicionais mensais" value={brl(quote.addonsRecurring)} />
               <hr style={{ border: 0, borderTop: `1px solid #eee`, margin: "8px 0" }} />
               <Row label="Subtotal/mês" value={brl(quote.subtotalMonthly)} bold />
               <div style={{ marginTop: 10 }}>
@@ -196,6 +345,11 @@ export function OrcamentoCalculator() {
                 <input type="range" min={0} max={15} value={discount} onChange={(e) => setDiscount(+e.target.value)} style={{ width: "100%", height: 32, accentColor: PINK, touchAction: "pan-y" }} />
               </div>
               <Row label="Desconto aplicado" value={`− ${brl(quote.discountApplied)}`} />
+              {pkg && (
+                <div style={{ fontSize: 11.5, color: "#8a8078", marginTop: 8 }}>
+                  Com pacote selecionado esta soma é só conferência — o preço cobrado é o de tabela acima.
+                </div>
+              )}
             </div>
 
             <div style={card}>
@@ -210,7 +364,7 @@ export function OrcamentoCalculator() {
 
             {quote.breakdown.length > 0 && (
               <div style={card}>
-                <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: "#8a8078", marginBottom: 8 }}>Detalhe</div>
+                <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 1, color: "#8a8078", marginBottom: 8 }}>Detalhe das peças</div>
                 {quote.breakdown.map((b, i) => (
                   <Row key={i} label={`${b.qty}× ${b.label}`} value={brl(b.total)} small />
                 ))}
