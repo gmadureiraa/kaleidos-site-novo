@@ -37,9 +37,9 @@ export function ServicesList({
     locale === "en" ? `${path}${path.includes("?") ? "&" : "?"}lang=en` : path;
   const { trackClick } = useAnalytics();
 
-  // MOBILE: a lista de 9 serviços ficava longa demais numa tela pequena.
+  // MOBILE: a lista de 10 serviços ficava longa demais numa tela pequena.
   // Mostramos os 5 primeiros e um botão "Ver todos" expande o resto.
-  // Desktop (sm+) sempre mostra os 9. Nenhum serviço foi removido.
+  // Desktop (sm+) sempre mostra os 10. Nenhum serviço foi removido.
   const MOBILE_VISIBLE = 5;
   const [showAllMobile, setShowAllMobile] = useState(false);
 

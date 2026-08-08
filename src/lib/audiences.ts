@@ -165,9 +165,15 @@ export const AUDIENCES: Audience[] = [
     proof: {
       caseId: "investidor-4-20",
       client: "Investidor 4.20",
+      // Instagram 173 mil: apurado em 04/08/2026 no perfil @lucas.amendolaa
+      // (`vault/00 - DASHBOARD/diario/2026-08-04.md:47`). Corrigido de 180 mil
+      // em 08/08/2026. Fonte completa no comentário do case em case-data.ts.
+      // 🔴 "5x de faturamento" diverge do "10x" que case-data.ts publica para o
+      // MESMO case. Nenhum dos dois tem fonte primária no vault. NÃO alterado
+      // aqui por falta de apuração — decisão de qual número vale é do Gabriel.
       metric: "5x de faturamento",
       blurb:
-        "A Kaleidos estruturou conteúdo, newsletter e operação comercial do Investidor 4.20 do zero: faturamento multiplicado por 5, Instagram de 50 mil para 180 mil e newsletter de 0 a 30 mil inscritos.",
+        "A Kaleidos estruturou conteúdo, newsletter e operação comercial do Investidor 4.20 do zero: faturamento multiplicado por 5, Instagram de 50 mil para 173 mil e newsletter de 0 a 30 mil inscritos.",
     },
     ctaLine:
       "Sua audiência já existe. A Kaleidos constrói a máquina que transforma ela em autoridade e receita. Vamos conversar.",

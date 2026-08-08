@@ -51,6 +51,15 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       a3_3: "Sem compromisso: se fizer sentido pros dois lados, montamos o escopo e começamos.",
       q4: "Como funcionam os contratos?",
       a4_1: "Trabalhamos em dois formatos: contrato mensal recorrente, com escopo contínuo de conteúdo e growth, ou projeto fechado, como um lançamento, um site ou uma campanha específica. O formato certo sai do diagnóstico, de acordo com o momento do seu projeto.",
+      // 🔴 As respostas a5_1 e a6_1 replicam, hardcoded, três números sem fonte
+      // primária: "30 marcas atendidas", "125 milhões de views" e "R$46 milhões
+      // em faturamento pros clientes". O rastreamento de 08/08/2026 não achou
+      // apuração para nenhum — a cadeia de origem está em `src/lib/metrics.ts`.
+      // Aqui eles ainda ganham um recorte que o metrics.ts não tem ("desde
+      // 2020"), sem nada que sustente a janela. (2026-08-08: o ano canônico é
+      // 2020 — foundingDate do Organization schema + auditoria 16/07 — e o site
+      // inteiro foi padronizado nisso; o "desde 2019" do hero era erro de copy.)
+      // ⛔ Não replicar número novo aqui sem fonte + data + metodologia.
       q5: "O que diferencia a Kaleidos de outras agências?",
       a5_1: "Somos cripto-nativos desde 2020. Não precisamos aprender o que é DeFi, staking ou tokenomics no seu onboarding: já operamos nesse mercado com mais de 30 marcas atendidas e sabemos o que funciona (e o que queima reputação) em cada ciclo.",
       q6: "Que tipo de resultado vocês já geraram?",

@@ -11,6 +11,33 @@ interface FAQItem {
   answer: string | string[];
 }
 
+/** As respostas do dicionário são texto puro; URLs internas conhecidas viram
+ *  link de verdade aqui (ex.: "kaleidos.com.br/marca-pessoal" no q7). */
+const ANSWER_LINKS: Record<string, string> = {
+  "kaleidos.com.br/marca-pessoal": "/marca-pessoal",
+};
+
+function renderAnswer(paragraph: string): React.ReactNode {
+  for (const [needle, href] of Object.entries(ANSWER_LINKS)) {
+    const idx = paragraph.indexOf(needle);
+    if (idx === -1) continue;
+    return (
+      <>
+        {paragraph.slice(0, idx)}
+        <a
+          href={href}
+          className="font-semibold underline underline-offset-2"
+          style={{ color: "inherit" }}
+        >
+          {needle}
+        </a>
+        {paragraph.slice(idx + needle.length)}
+      </>
+    );
+  }
+  return paragraph;
+}
+
 function useFaqData(t: ReturnType<typeof useI18n>["t"]) {
   return useMemo<FAQItem[]>(() => ([
     {
@@ -134,7 +161,7 @@ export default function FAQSection({ variant = "default" }: { variant?: "default
                         <div className="px-5 sm:px-6 pb-5 pt-1 space-y-3">
                           {answerArray.map((paragraph, pIndex) => (
                             <p key={pIndex} className="leading-relaxed text-sm sm:text-base" style={{ color: "#6b6258" }}>
-                              {paragraph}
+                              {renderAnswer(paragraph)}
                             </p>
                           ))}
                         </div>
@@ -225,7 +252,7 @@ export default function FAQSection({ variant = "default" }: { variant?: "default
                                 transition={{ delay: 0.05 + pIndex * 0.04 }}
                                 className="text-neutral-700 leading-relaxed text-sm sm:text-base"
                               >
-                                {paragraph}
+                                {renderAnswer(paragraph)}
                               </motion.p>
                             ))}
                           </div>

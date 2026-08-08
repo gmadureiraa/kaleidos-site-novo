@@ -123,12 +123,22 @@ export function Web3V2PlaybookSticky() {
 .kld-sticky-badge{display:inline-block;font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#3a0a2c;background:${PINK};border:1.5px solid ${INK};border-radius:6px;padding:3px 8px;font-weight:700;white-space:nowrap;}
 .kld-sticky-btn{width:100%;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:${INK};color:#fff;border:1.5px solid ${INK};border-radius:11px;box-shadow:3px 3px 0 ${GREEN};padding:11px 16px;font-weight:800;font-size:14px;font-family:Atelier,sans-serif;cursor:pointer;transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s;}
 .kld-sticky-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 ${GREEN};}
+/* MOBILE: o card com a capa 2:3 cobria o CTA ("Agendar reunião"/"Prefere
+   WhatsApp") e metade do FAQ (~55%×60% do viewport). Vira uma pílula
+   compacta só com "Playbook grátis →" + X, ancorada no canto. */
 @media (max-width:600px){
-  .kld-sticky{right:12px;left:auto;bottom:12px;width:150px;}
-  .kld-sticky-body{padding:9px 10px 10px;}
-  .kld-sticky-badge{font-size:8px;letter-spacing:.5px;padding:2px 6px;}
-  .kld-sticky-btn{font-size:12px;padding:8px 10px;border-radius:9px;gap:5px;margin-top:8px;}
-  .kld-sticky-x{width:22px;height:22px;font-size:12px;top:6px;right:6px;}
+  .kld-sticky{right:12px;left:auto;bottom:12px;width:auto;border-radius:999px;box-shadow:-4px 4px 0 ${GREEN}, 0 12px 28px -14px rgba(0,0,0,.5);}
+  .kld-sticky-cover{display:none;}
+  .kld-sticky-body{padding:5px 42px 5px 6px;display:flex;align-items:center;}
+  .kld-sticky-badge{display:none;}
+  .kld-sticky-btn{width:auto;margin-top:0;font-size:13px;padding:9px 14px;border-radius:999px;gap:5px;white-space:nowrap;box-shadow:none;}
+  .kld-sticky-btn:hover{transform:none;box-shadow:none;}
+  .kld-sticky-x{width:24px;height:24px;font-size:12px;top:50%;right:8px;transform:translateY(-50%);}
+  .kld-sticky .kld-sticky-btn-long{display:none;}
+  .kld-sticky .kld-sticky-btn-short{display:inline;}
+}
+@media (min-width:601px){
+  .kld-sticky .kld-sticky-btn-short{display:none;}
 }
 /* telas baixas: o card inteiro (capa 2:3 + corpo) não pode passar da viewport */
 @media (max-height:720px){ .kld-sticky{width:170px;} }
@@ -156,7 +166,10 @@ export function Web3V2PlaybookSticky() {
           {/* Sem <h3>: o título do playbook já está escrito na capa. */}
           <span className="kld-sticky-badge">Playbook grátis</span>
           <button type="button" className="kld-sticky-btn" onClick={() => openPopup("button")}>
-            Baixar grátis →
+            {/* Mobile mostra "Playbook grátis" porque a capa e o badge somem
+                na pílula compacta — sem eles, "Baixar grátis" perde o contexto. */}
+            <span className="kld-sticky-btn-long">Baixar grátis →</span>
+            <span className="kld-sticky-btn-short">Playbook grátis →</span>
           </button>
         </div>
       </aside>

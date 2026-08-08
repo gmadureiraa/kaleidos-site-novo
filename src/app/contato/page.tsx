@@ -177,8 +177,8 @@ export default function ContatoPage() {
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
               {locale === 'en'
-                ? `Kaleidos is a crypto-native agency, in the market since 2019. Content, growth and AI for crypto, web3 and fintech projects: ${KALEIDOS_METRICS.projetosAtendidos_en} brands served, ${KALEIDOS_METRICS.viewsReels_en} views generated and ${KALEIDOS_METRICS.faturamentoClientes_en} in client revenue.`
-                : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2019. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech: ${KALEIDOS_METRICS.projetosAtendidos} marcas atendidas, ${KALEIDOS_METRICS.viewsReels} views gerados e ${KALEIDOS_METRICS.faturamentoClientes} em faturamento pros clientes.`}
+                ? `Kaleidos is a crypto-native agency, in the market since 2020. Content, growth and AI for crypto, web3 and fintech projects: ${KALEIDOS_METRICS.projetosAtendidos_en} brands served, ${KALEIDOS_METRICS.viewsReels_en} views generated and ${KALEIDOS_METRICS.faturamentoClientes_en} in client revenue.`
+                : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2020. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech: ${KALEIDOS_METRICS.projetosAtendidos} marcas atendidas, ${KALEIDOS_METRICS.viewsReels} views gerados e ${KALEIDOS_METRICS.faturamentoClientes} em faturamento pros clientes.`}
             </p>
 
             {/* CTA primário — agendamento via /agendar (embed com tracking de conversão) */}

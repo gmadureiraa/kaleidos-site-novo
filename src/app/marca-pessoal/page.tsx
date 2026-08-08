@@ -140,6 +140,7 @@ const MP_STYLE = `
 @media(max-width:1060px){
   .kv2 .mp-hero-grid{grid-template-columns:1fr;gap:36px;}
   .kv2 .mp-wall{display:none;}
+  .kv2 .mp-wall-caption{display:none;}
   .kv2 .mp-wall-mobile{display:block;}
 }
 /* ── Header de seção: editorial, comedido + assimétrico (12-col) ── */
@@ -482,7 +483,10 @@ function HeroSection() {
                 Tem uma oferta separada pra isso →
               </a>
             </p>
+            {/* Legenda da parede desktop: some junto com a .mp-wall (≤1060px),
+                onde a faixa mobile tem a própria legenda. */}
             <p
+              className="mp-wall-caption"
               style={{
                 fontFamily: "Gridlite, monospace",
                 fontSize: 11.5,
@@ -492,8 +496,8 @@ function HeroSection() {
                 margin: "20px 0 0",
               }}
             >
-              &larr; conteúdo real publicado em perfis de clientes. nada de
-              mockup.
+              conteúdo real publicado em perfis de clientes. nada de mockup.
+              &rarr;
             </p>
           </div>
 
@@ -829,7 +833,7 @@ const FAZEMOS_HTML = `
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 26px;box-shadow:5px 5px 0 #D262B2;">
         <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Kaleidos</div>
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;line-height:1.6;color:#d8d1c6;">
-          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Tese, estratégia e calendário aprovado por você</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Tese inicial e calendário aprovado por você (estratégia contínua a partir do Completo)</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Roteiro, copy, design e edição de tudo</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Publicação em Instagram e TikTok</li>
           <li style="padding:7px 0;">Relatório mensal e leitura dos números junto</li>
@@ -952,8 +956,11 @@ function MetodoSection() {
 
 /* ─────────────────────── S7 · PROVA / CASES (dark) ─────────────────────── */
 // Métricas 100% de src/lib/case-data.ts:
-// investidor-4-20: 10x faturamento em 12 meses, IG 50k→180k, YT 200k→382k.
-// layla-foz: 100k→172k, 20M+ views nos reels.
+// investidor-4-20: 10x faturamento em 12 meses, IG 50k→173k, YT 200k→382k.
+// layla-foz: 100k→184k, 20M+ views nos reels.
+// Fontes dos dois números de Instagram estão anotadas em case-data.ts, nos
+// comentários acima de cada case (Layla: LAYLA-FOZ/CLAUDE.md:30, 07/05/2026;
+// Lucas: diario/2026-08-04.md:47, apurado no perfil em 04/08/2026).
 // defiverso: 12M views orgânicos em 90 dias, +8,6k seguidores em 3 meses.
 const CASES_HTML = `
 <section id="cases-kaleidos" style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
@@ -972,7 +979,7 @@ const CASES_HTML = `
           <img src="/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-capa.jpg" alt="Capa de reel publicado no perfil do Lucas Amendola" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Lucas Amendola · Investidor 4.20</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">50k &rarr; 180k <span style="font-size:16px;color:#9a9186;font-weight:400;">no Instagram</span></div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">50k &rarr; 173k <span style="font-size:16px;color:#9a9186;font-weight:400;">no Instagram</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">E o número que importa: faturamento 10x maior em 12 meses.</p>
         <a href="/cases/investidor-4-20" style="margin-top:16px;font-size:14px;font-weight:700;color:#7CF067;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>
@@ -982,7 +989,7 @@ const CASES_HTML = `
           <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Layla Foz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Layla Foz · criadora</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">100k &rarr; 172k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 4px;color:#FAFAFA;">100k &rarr; 184k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
         <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;flex:1;">Mais de 20 milhões de views nos reels, sem descaracterizar a voz da criadora.</p>
         <a href="/cases/layla-foz" style="margin-top:16px;font-size:14px;font-weight:700;color:#D262B2;text-decoration:underline;text-underline-offset:3px;">Ver o case completo &rarr;</a>
       </div>
@@ -1171,7 +1178,7 @@ const OFERTA_HTML = `
     ${headHTML(
       "Oferta 1 · Marca Pessoal",
       'Escopo na mesa,<br>antes da <span class="hl">call</span>.',
-      "Três planos com entrega contável, aberta aqui embaixo. Os valores vão por escrito na proposta, logo depois de uma call de 30 minutos: você não sai da conversa sem número na mão.",
+      "Três planos com entrega contável, aberta aqui embaixo. Os valores vão por escrito na proposta, logo depois de uma call de 30 minutos: cada plano com o número aberto, sem pegadinha.",
       true
     )}
 
@@ -1221,7 +1228,7 @@ const OFERTA_HTML = `
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">20 reels por mês</strong> (roteiro + edição)</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#FAFAFA;">20 carrosséis por mês</strong> (~1 de cada por dia útil)</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#D262B2;">Engajamento incluído</strong>: DM e comentários</li>
-          <li style="padding:7px 0;"><strong style="color:#FAFAFA;">Estratégia</strong> e relatório</li>
+          <li style="padding:7px 0;"><strong style="color:#FAFAFA;">Estratégia</strong> e relatório mensal</li>
         </ul>
         <a href="${AGENDAR}?plano=escala" class="cta-btn" style="margin-top:20px;display:inline-flex;justify-content:center;background:transparent;color:#D262B2;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;border:1.5px solid #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
       </div>
@@ -1236,7 +1243,7 @@ const OFERTA_HTML = `
       </div>
       <div style="background:#1d1812;border:1.5px dashed #7CF067;border-radius:16px;padding:24px 26px;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Sem retainer · Diagnóstico de Posicionamento</div>
-        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;">Leitura dos perfis, tese preliminar e roadmap, sem recorrência. Valor definido na conversa. <a href="${AGENDAR}?plano=diagnostico" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${CTA_PRIMARY}</a></p>
+        <p style="font-size:14px;line-height:1.6;color:#b8b1a6;margin:10px 0 0;">Leitura dos perfis, tese preliminar e roadmap, sem recorrência. Valor por escrito, junto com a proposta. <a href="${AGENDAR}?plano=diagnostico" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">${CTA_PRIMARY}</a></p>
       </div>
     </div>
 

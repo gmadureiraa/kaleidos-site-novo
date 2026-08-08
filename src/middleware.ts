@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// HTTP Basic Auth no painel interno /app. Senha SÓ via env (APP_DASHBOARD_PASSWORD).
+// HTTP Basic Auth nas superfícies internas (/app e /orcamento).
+// Senha SÓ via env (APP_DASHBOARD_PASSWORD).
 // Sem fallback: se a env não estiver setada, nega tudo (fail-closed) em vez de
 // cair numa senha commitada no repo. Usuário: kaleidos.
 const USER = "kaleidos";
@@ -41,5 +42,13 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/app", "/app/:path*"],
+  // /orcamento entrou aqui em 08/08/2026: a calculadora é interna (ela mesma se
+  // rotula "interno · não publicar") e expõe a régua inteira, os pisos por
+  // família, a margem-alvo e os pacotes aposentados. Estava protegida só por
+  // `robots: { index: false }`, o que não impede ninguém com o link de abrir.
+  // Contradizia a decisão do mesmo dia de tirar preço da /marca-pessoal.
+  // Verificado antes de trancar: nenhum CTA, campanha ou material comercial
+  // linka /orcamento (grep em code/ e no vault) — não é ferramenta pública de
+  // qualificação de lead.
+  matcher: ["/app", "/app/:path*", "/orcamento", "/orcamento/:path*"],
 };
