@@ -17,6 +17,7 @@ const BY_CATEGORY: Record<BlogCategory, CoverStyle> = {
   marketing: "light",
   ia: "light",
   growth: "light",
+  "marca-pessoal": "light",
 };
 
 /** Sanitiza overrides legados (ex: "dark-glow") pros 2 looks válidos. */

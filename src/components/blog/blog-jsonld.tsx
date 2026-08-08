@@ -87,7 +87,16 @@ export function BlogJsonLd({ post }: { post: BlogPost }) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: url },
+      // Nível de categoria: amarra o post ao hub da trilha (/blog/categoria/X),
+      // que é a URL crawlável do cluster. Sem ele o crawler/LLM vê 265 posts
+      // pendurados direto no /blog, sem estrutura tópica.
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: categoryLabels[post.category],
+        item: `${SITE_URL}/blog/categoria/${post.category}`,
+      },
+      { "@type": "ListItem", position: 4, name: post.title, item: url },
     ],
   };
 

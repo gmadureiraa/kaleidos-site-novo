@@ -180,7 +180,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Hubs de categoria SSG (/blog/categoria/[cat]) — clusters crawláveis que o
   // filtro client-only do /blog não expõe. Mesma lista de HUBS da rota.
   const blogCategories: MetadataRoute.Sitemap = (
-    ['cripto', 'growth', 'marketing', 'ia', 'cases'] as const
+    ['cripto', 'growth', 'marketing', 'ia', 'cases', 'marca-pessoal'] as const
   ).map((cat) => ({
     url: `${baseUrl}/blog/categoria/${cat}`,
     lastModified: latestBlogDate,

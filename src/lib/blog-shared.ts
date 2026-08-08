@@ -7,7 +7,16 @@
 
 import type { CoverStyle } from "@/lib/cover-style";
 
-export type BlogCategory = "marketing" | "ia" | "cases" | "growth" | "cripto";
+export type BlogCategory =
+  | "marketing"
+  | "ia"
+  | "cases"
+  | "growth"
+  | "cripto"
+  // Trilha de marca pessoal para founder (oferta /marca-pessoal). Categoria
+  // própria de propósito: o blog é ~90% cripto, e sem trilha esses posts somem
+  // no meio da grade. Ver DECISAO-POSICIONAMENTO-HOME-E-BLOG-2026-08-08 §2.3.
+  | "marca-pessoal";
 
 export interface BlogFaqItem {
   question: string;
@@ -96,6 +105,7 @@ export const categoryLabels: Record<BlogCategory, string> = {
   cases: "Cases",
   growth: "Growth",
   cripto: "Cripto",
+  "marca-pessoal": "Marca Pessoal",
 };
 
 export const categoryColors: Record<BlogCategory, string> = {
@@ -104,6 +114,7 @@ export const categoryColors: Record<BlogCategory, string> = {
   cases: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   growth: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
   cripto: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+  "marca-pessoal": "bg-orange-500/10 text-orange-400 border-orange-500/20",
 };
 
 export function formatDate(dateString: string): string {

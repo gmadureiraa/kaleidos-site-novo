@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getPublishedPostCardsByCategoryAsync } from "@/lib/blog-data";
 import { BlogCategory, categoryLabels } from "@/lib/blog-shared";
 import { BlogCard } from "@/components/blog/blog-card";
@@ -16,7 +16,14 @@ export const revalidate = 3600;
 // Metadados editoriais por hub. Slug da URL = valor da categoria (lowercase).
 const HUBS: Record<
   BlogCategory,
-  { h1: string; intro: string; title: string; description: string }
+  {
+    h1: string;
+    intro: string;
+    title: string;
+    description: string;
+    /** Faixa de oferta no fim do hub. Só onde existe página de serviço casada. */
+    cta?: { label: string; href: string; text: string };
+  }
 > = {
   cripto: {
     h1: "Marketing cripto e web3",
@@ -57,6 +64,19 @@ const HUBS: Record<
     title: "Cases de Marketing Cripto e Web3 | Kaleidos",
     description:
       "Estudos de caso de marketing cripto e web3: decisões, números e aprendizados de projetos reais atendidos pela Kaleidos.",
+  },
+  "marca-pessoal": {
+    h1: "Marca pessoal para founder",
+    intro:
+      "A trilha completa sobre transformar a autoridade do fundador em canal de aquisição: posicionamento, LinkedIn, conteúdo, ROI e os riscos reais da exposição. Escrito pra quem toca uma empresa e tem pouca agenda.",
+    title: "Marca Pessoal para Founder — Artigos | Kaleidos",
+    description:
+      "Guia completo de marca pessoal para founder: posicionamento, LinkedIn, conteúdo, ROI e riscos da exposição. A trilha editorial da Kaleidos.",
+    cta: {
+      label: "Marca pessoal como serviço",
+      href: "/marca-pessoal",
+      text: "A Kaleidos constrói a marca pessoal de fundador como serviço: posicionamento, extração da sua voz e cadência sustentada. Veja como funciona.",
+    },
   },
 };
 
@@ -161,6 +181,44 @@ export default async function CategoryHubPage({ params }: Props) {
             ))}
           </div>
         )}
+
+        {/* Faixa de oferta: fecha o hub com a página de serviço casada. Sem ela
+            o leitor da trilha lê 20 artigos e nunca descobre que existe oferta. */}
+        {hub.cta && (
+          <div className="mt-16 rounded-2xl border border-black/10 bg-[#F0F0EF] px-6 py-8 sm:px-10 sm:py-10">
+            <p className="font-mono uppercase tracking-[0.18em] text-[10px] text-[#b8479a] mb-2">
+              {hub.cta.label}
+            </p>
+            <p className="text-lg text-gray-800 leading-relaxed max-w-2xl">
+              {hub.cta.text}
+            </p>
+            <Link
+              href={hub.cta.href}
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+            >
+              Ver a oferta
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
+
+        {/* Trilhas irmãs — mantém o leitor circulando entre hubs em vez de sair. */}
+        <nav aria-label="Outras trilhas" className="mt-16 border-t border-black/10 pt-8">
+          <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-gray-400 mb-4">
+            Outras trilhas
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.filter((c) => c !== cat).map((c) => (
+              <Link
+                key={c}
+                href={`/blog/categoria/${c}`}
+                className="rounded-full border border-gray-200 px-4 py-2 text-[13px] font-medium text-gray-600 transition-colors hover:border-gray-900 hover:text-gray-900"
+              >
+                {categoryLabels[c]}
+              </Link>
+            ))}
+          </div>
+        </nav>
       </div>
 
       <PapersBand />

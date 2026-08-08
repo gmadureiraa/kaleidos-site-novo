@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { getPublishedPostsAsync } from "@/lib/blog-data";
-import { BlogIndexJsonLd } from "@/components/blog/blog-jsonld";
 
-const TITLE = "Blog — Marketing Cripto, Web3, IA e Growth | Kaleidos";
+const TITLE = "Blog — Marketing Cripto, Web3, IA e Marca Pessoal | Kaleidos";
 const DESCRIPTION =
-  "Estudos e análises densas sobre marketing cripto e web3, lançamento de token, IA e growth. Por que projetos crescem — e como aplicar no seu.";
+  "Estudos e análises densas sobre marketing cripto e web3, lançamento de token, IA, growth e marca pessoal de founder. Por que projetos e pessoas crescem — e como aplicar no seu caso.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -30,18 +28,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  // Posts publicados (estáticos + KAI). Agendados ficam fora.
-  const posts = await getPublishedPostsAsync();
-  return (
-    <>
-      {/* JSON-LD de índice só com posts já publicados (agendados ficam fora). */}
-      <BlogIndexJsonLd posts={posts} />
-      {children}
-    </>
-  );
+// O JSON-LD de índice (Blog + BreadcrumbList + ItemList) vive em `page.tsx`, NÃO
+// aqui. No layout ele era injetado em TODA rota /blog/* — cada post e cada hub de
+// categoria declarava um segundo BreadcrumbList apontando pro índice, além de se
+// anunciar como a entidade `Blog`. Sinal conflitante pro crawler e pro LLM, e um
+// fetch de todos os posts (com markdown) em toda página. Corrigido em 08/08/2026.
+export default function BlogLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

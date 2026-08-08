@@ -7,6 +7,7 @@ import { ArrowLeft, Clock, Calendar, CalendarCheck, MessageCircle, Globe } from 
 import { motion } from "framer-motion";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import {
+  BlogCategory,
   BlogPost,
   categoryLabels,
   formatDate,
@@ -19,6 +20,18 @@ import { ShareButtons } from "@/components/blog/share-buttons";
 import { LeadGate } from "@/components/blog/lead-gate";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { FooterDemo } from "@/components/ui/footer-demo";
+
+// Trilhas com página de serviço casada. Só entra aqui categoria que tem oferta
+// real no site — o resto do blog segue sem faixa (nada muda).
+const TRACK_CTA: Partial<
+  Record<BlogCategory, { text: string; href: string; cta: string }>
+> = {
+  "marca-pessoal": {
+    text: "Este artigo faz parte da trilha de marca pessoal para founder da Kaleidos. A gente também faz isso como serviço: posicionamento, extração da sua voz e cadência sustentada, pra quem não tem agenda pra virar produtor de conteúdo.",
+    href: "/marca-pessoal",
+    cta: "Conhecer o serviço",
+  },
+};
 
 // Consultoria grátis 30min — caminho primário de conversão de lead (estratégia §4.2).
 const CALENDLY_URL = "https://calendly.com/madureira-kaleidosdigital/30min";
@@ -130,6 +143,17 @@ export function ArticleContent({
                   Blog
                 </Link>
               </li>
+              <li aria-hidden="true" className="text-gray-300">/</li>
+              <li>
+                {/* Nível de trilha: do post o leitor volta pro hub da categoria,
+                    não pro /blog inteiro (~90% cripto). */}
+                <Link
+                  href={`/blog/categoria/${post.category}`}
+                  className="hover:text-gray-900 transition-colors whitespace-nowrap"
+                >
+                  {categoryLabels[post.category]}
+                </Link>
+              </li>
               <li aria-hidden="true" className="hidden sm:block text-gray-300">/</li>
               <li className="hidden sm:block min-w-0">
                 <span className="text-gray-700 truncate inline-block max-w-[280px] align-bottom">
@@ -152,9 +176,12 @@ export function ArticleContent({
             className="space-y-6"
           >
             <div className="flex items-center gap-3 text-[13px] text-gray-500">
-              <span className="text-[#b8479a] font-semibold">
+              <Link
+                href={`/blog/categoria/${post.category}`}
+                className="text-[#b8479a] font-semibold hover:underline"
+              >
                 {categoryLabels[post.category]}
-              </span>
+              </Link>
               <span className="text-gray-300">/</span>
               <div className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" />
@@ -251,6 +278,38 @@ export function ArticleContent({
                 );
               })()}
             </motion.div>
+
+            {/* Faixa de trilha — só nas categorias que têm oferta casada. Fecha o
+                post com o hub (continuar na trilha) + a página de serviço. Sem
+                isso, o leitor que chega por um post de marca pessoal cai no
+                "Relacionados" e some no acervo de cripto. */}
+            {TRACK_CTA[post.category] && (
+              <aside
+                aria-label="Continue na trilha"
+                className="mt-14 rounded-2xl border border-black/10 bg-[#F0F0EF] px-6 py-7 md:px-8"
+              >
+                <p className="font-mono uppercase tracking-[0.18em] text-[10px] text-[#b8479a] mb-2">
+                  Trilha: {categoryLabels[post.category]}
+                </p>
+                <p className="text-[15px] text-gray-800 leading-relaxed">
+                  {TRACK_CTA[post.category]!.text}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Link
+                    href={`/blog/categoria/${post.category}`}
+                    className="inline-flex items-center rounded-full border border-gray-300 px-4 py-2 text-[13px] font-semibold text-gray-800 transition-colors hover:border-gray-900"
+                  >
+                    Ver todos os artigos da trilha
+                  </Link>
+                  <Link
+                    href={TRACK_CTA[post.category]!.href}
+                    className="inline-flex items-center rounded-full bg-black px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-gray-800"
+                  >
+                    {TRACK_CTA[post.category]!.cta}
+                  </Link>
+                </div>
+              </aside>
+            )}
 
             {/* FAQ visível — casa com o FAQPage JSON-LD (sinal GEO de alto impacto) */}
             {post.faq && post.faq.length > 0 && (

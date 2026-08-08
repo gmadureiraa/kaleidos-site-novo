@@ -133,16 +133,16 @@ const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
   pt: {
     badge: "Agência de marketing para cripto desde 2019",
     headlineHtml:
-      'A agência de marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativa</span> do mercado cripto e financeiro.',
+      'Marketing <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">nativo</span> pra marcas e founders do mercado cripto e financeiro.',
     subHtml:
-      'Fazemos <strong style="color:#14110D;">estratégia</strong>, <strong style="color:#14110D;">conteúdo</strong>, <strong style="color:#14110D;">lançamentos</strong> e <strong style="color:#14110D;">crescimento</strong> para projetos de cripto, web3 e fintech.',
+      'Fazemos <strong style="color:#14110D;">estratégia</strong>, <strong style="color:#14110D;">conteúdo</strong>, <strong style="color:#14110D;">lançamentos</strong> e <strong style="color:#14110D;">marca pessoal</strong>: pro projeto e pra pessoa que está na frente dele.',
   },
   en: {
     badge: "Marketing agency for crypto since 2019",
     headlineHtml:
-      'The <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">native</span> marketing agency of the crypto and financial market.',
+      '<span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">Native</span> marketing for brands and founders in the crypto and financial market.',
     subHtml:
-      'We do <strong style="color:#14110D;">strategy</strong>, <strong style="color:#14110D;">content</strong>, <strong style="color:#14110D;">launches</strong> and <strong style="color:#14110D;">growth</strong> for crypto, web3 and fintech projects.',
+      'We do <strong style="color:#14110D;">strategy</strong>, <strong style="color:#14110D;">content</strong>, <strong style="color:#14110D;">launches</strong> and <strong style="color:#14110D;">personal branding</strong>: for the project and for the person leading it.',
   },
 };
 

@@ -36,6 +36,10 @@ function useFaqData(t: ReturnType<typeof useI18n>["t"]) {
     {
       question: t('faq','q6'),
       answer: [t('faq','a6_1')]
+    },
+    {
+      question: t('faq','q7'),
+      answer: [t('faq','a7_1'), t('faq','a7_2')]
     }
   ]), [t]);
 }

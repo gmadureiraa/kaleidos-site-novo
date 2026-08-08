@@ -168,10 +168,36 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
               Estudos e análises densas sobre marketing cripto e web3,
-              lançamento de token, IA e growth. Dissecamos por que projetos
-              crescem, e como aplicar no seu.
+              lançamento de token, IA, growth e marca pessoal de founder.
+              Dissecamos por que projetos e pessoas crescem, e como aplicar no
+              seu caso.
             </p>
           </motion.div>
+
+          {/* Destaque de trilha: com ~90% do acervo em cripto, a trilha nova
+              some na grade se não tiver porta de entrada própria. */}
+          <Link
+            href="/blog/categoria/marca-pessoal"
+            className="group mb-12 flex flex-col gap-3 rounded-2xl border border-black/10 bg-[#F0F0EF] px-6 py-6 transition-colors hover:border-black/30 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <p className="font-mono uppercase tracking-[0.18em] text-[10px] text-[#b8479a] mb-1.5">
+                Trilha
+              </p>
+              <p className="text-[17px] font-semibold text-gray-900">
+                Marca pessoal para founder
+              </p>
+              <p className="text-[14px] text-gray-600 mt-1 max-w-xl leading-relaxed">
+                Posicionamento, LinkedIn, ROI e riscos da exposição — a trilha
+                completa pra quem toca uma empresa e quer virar referência no
+                próprio mercado.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 whitespace-nowrap">
+              Ver a trilha
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </Link>
 
           {/* Estudos Kaleidos (papers em PDF, gated por email) */}
           <PapersBand />
@@ -200,7 +226,9 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
                 linkagem interna real pros clusters /blog/categoria/[cat]. */}
             <nav aria-label="Categorias" className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500">
               <span className="text-gray-400">Explore por tema:</span>
-              {(["cripto", "growth", "marketing", "ia", "cases"] as const).map(
+              {(
+                ["cripto", "growth", "marketing", "ia", "cases", "marca-pessoal"] as const
+              ).map(
                 (cat) => (
                   <Link
                     key={cat}

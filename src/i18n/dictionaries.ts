@@ -55,6 +55,9 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       a5_1: "Somos cripto-nativos desde 2020. Não precisamos aprender o que é DeFi, staking ou tokenomics no seu onboarding: já operamos nesse mercado com mais de 30 marcas atendidas e sabemos o que funciona (e o que queima reputação) em cada ciclo.",
       q6: "Que tipo de resultado vocês já geraram?",
       a6_1: "Os conteúdos que produzimos pra clientes somam mais de 125 milhões de views, e as estratégias de conteúdo e lançamento já ajudaram a gerar mais de R$46 milhões em faturamento pros nossos clientes desde 2020. Os números completos de cada projeto estão nos nossos cases.",
+      q7: "Vocês também cuidam da minha marca pessoal como founder?",
+      a7_1: "Sim, é um braço dedicado da Kaleidos. Cuidamos do perfil do founder no Instagram e TikTok (reels, carrosséis, crescimento e autoridade) e do LinkedIn da empresa e dos executivos, com conteúdo e geração de demanda B2B.",
+      a7_2: "Funciona junto com o marketing do projeto ou de forma independente. Os detalhes estão em kaleidos.com.br/marca-pessoal.",
     },
     footer: {
       tagline: "Transformando ideias em experiências digitais",
@@ -180,6 +183,9 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       a5_1: "We've been crypto-native since 2020. We don't need to learn what DeFi, staking or tokenomics are during your onboarding: we've already operated in this market with 30+ brands and we know what works (and what burns reputation) in every cycle.",
       q6: "What kind of results have you generated?",
       a6_1: "The content we produce for clients adds up to 125M+ views, and our content and launch strategies have helped generate over $46M in revenue for our clients since 2020. The full numbers for each project are in our case studies.",
+      q7: "Do you also handle my personal brand as a founder?",
+      a7_1: "Yes, it's a dedicated arm of Kaleidos. We run the founder's profile on Instagram and TikTok (reels, carousels, growth and authority) and the company's and executives' LinkedIn, with content and B2B demand generation.",
+      a7_2: "It works alongside the project's marketing or on its own. Details at kaleidos.com.br/marca-pessoal.",
     },
     footer: {
       tagline: "Turning ideas into digital experiences",

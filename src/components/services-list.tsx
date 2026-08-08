@@ -14,6 +14,7 @@ import {
   Users,
   MessagesSquare,
   Brain,
+  UserRound,
 } from "lucide-react";
 import { useI18n } from "@/i18n/useI18n";
 import { useAnalytics } from "@/components/analytics";
@@ -49,6 +50,12 @@ export function ServicesList({
           title: "Content Marketing",
           desc: "Strategy, copy, scripts, design and editing across IG, X, YouTube and LinkedIn. The editorial engine behind the brand's authority.",
           href: "/servicos/marketing-conteudo",
+        },
+        {
+          icon: UserRound,
+          title: "Personal Branding & B2B LinkedIn",
+          desc: "The founder's profile on Instagram and TikTok, plus LinkedIn for the company and its executives: reels, carousels and content that build authority and generate demand.",
+          href: "/marca-pessoal",
         },
         {
           icon: Share2,
@@ -105,6 +112,12 @@ export function ServicesList({
           title: "Marketing de Conteúdo",
           desc: "Estratégia, copy, roteiros, design e edição no IG, X, YouTube e LinkedIn. O motor editorial que sustenta a autoridade da marca.",
           href: "/servicos/marketing-conteudo",
+        },
+        {
+          icon: UserRound,
+          title: "Marca Pessoal & LinkedIn B2B",
+          desc: "O perfil do founder no Instagram e TikTok, e o LinkedIn da empresa e dos executivos: reels, carrosséis e conteúdo que constroem autoridade e geram demanda.",
+          href: "/marca-pessoal",
         },
         {
           icon: Share2,

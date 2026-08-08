@@ -15,6 +15,7 @@ const allCategories: (BlogCategory | "all")[] = [
   "cases",
   "growth",
   "cripto",
+  "marca-pessoal",
 ];
 
 export function CategoryFilter({ selected, onSelect }: CategoryFilterProps) {

@@ -35,10 +35,13 @@ import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
  * a seção "Como começa" (virou strip de 3 passos dentro da oferta).
  * O que ENTROU: bifurcação explícita das duas ofertas logo após o hero.
  *
- * ⚠️ MUDANÇA DE POLÍTICA (08/2026): preço público na página (qualifica o lead
- * antes da call). Valores da decisão registrada de 2026-07-24 + decisão
- * Gabriel 08/08/2026. Ver o bloco de comentário sobre OFERTA_HTML antes de
- * alterar qualquer número.
+ * ⚠️ MUDANÇA DE POLÍTICA (decisão Gabriel 08/08/2026): NENHUM preço nesta
+ * página. Os valores ficam só na proposta privada (plano.kaleidos.com.br/
+ * marca-pessoal, noindex). A vitrine pública mostra o ESCOPO contável de cada
+ * plano (quantos reels/carrosséis/conteúdos por mês) e o contrato mínimo de
+ * 6 meses; o número em real vai por escrito na proposta, depois da call.
+ * NÃO reintroduzir valor em real aqui sem decisão nova. A calculadora
+ * /orcamento (src/lib/pricing.ts) segue mostrando preço e NÃO muda.
  *
  * ⚠️ HIERARQUIA DE CTA: uma ação primária (/agendar, rótulo CTA_PRIMARY) e uma
  * secundária (auditoria no WhatsApp). Não introduzir um terceiro rótulo.
@@ -47,7 +50,7 @@ import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 const CANONICAL = "/marca-pessoal";
 const TITLE = "Marca Pessoal para Founders | Founder-Led Growth — Kaleidos";
 const DESC =
-  "Founder-Led Growth para founders de cripto, web3 e fintech. A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Planos a partir de R$ 5.000/mês em Instagram e TikTok, mais uma oferta separada de LinkedIn B2B para empresas: você grava, a gente faz o resto.";
+  "Founder-Led Growth para founders de cripto, web3 e fintech. A Kaleidos transforma a expertise do founder em autoridade, e autoridade em pipeline. Marca pessoal em Instagram e TikTok (você grava, a gente faz o resto), mais uma oferta separada de LinkedIn B2B para empresas. Escopo aberto na página, valores por escrito na proposta.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -91,11 +94,14 @@ const WA_AUDIT =
    UMA ação primária e UMA secundária, repetidas:
    · PRIMÁRIA   → /agendar, sempre com o rótulo CTA_PRIMARY. Todo card de
                   plano aponta pra cá (com ?plano= só pra contexto interno).
+                  Sem preço na página, o CTA é quem qualifica: o rótulo promete
+                  a PROPOSTA (que traz os valores por escrito), não uma call
+                  genérica de vendas.
    · SECUNDÁRIA → auditoria gratuita no WhatsApp, sempre visualmente mais
                   discreta (outline no hero/CTA final, link de texto no resto).
    Nenhum outro rótulo de CTA deve ser introduzido nesta página. */
-const CTA_PRIMARY = "Ver se faz sentido &rarr;";
-const CTA_PRIMARY_JSX = "Ver se faz sentido →";
+const CTA_PRIMARY = "Receber a proposta &rarr;";
+const CTA_PRIMARY_JSX = "Receber a proposta →";
 const AGENDAR = "/agendar";
 
 // CSS escopado da página (grids responsivos).
@@ -429,7 +435,7 @@ function HeroSection() {
                 Auditar meu perfil de graça
               </a>
             </div>
-            {/* Preço-âncora: qualifica o lead antes do clique. */}
+            {/* Transparência de processo: escopo aberto aqui, valores na proposta. */}
             <p
               style={{
                 fontSize: 14.5,
@@ -438,9 +444,7 @@ function HeroSection() {
                 margin: "22px 0 0",
               }}
             >
-              Planos a partir de{" "}
-              <strong style={{ color: "#FAFAFA" }}>R$ 5.000/mês</strong>, com
-              preço aberto{" "}
+              O escopo de cada plano está{" "}
               <a
                 href="#oferta"
                 style={{
@@ -450,9 +454,11 @@ function HeroSection() {
                   textUnderlineOffset: 3,
                 }}
               >
-                aqui na página
+                aberto aqui na página
               </a>
-              .
+              . Os valores vão{" "}
+              <strong style={{ color: "#FAFAFA" }}>por escrito na proposta</strong>,
+              depois de uma call de 30 minutos.
             </p>
             {/* Ponte pra segunda oferta, logo no hero. */}
             <p
@@ -581,7 +587,7 @@ const BIFURCACAO_HTML = `
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:30px;color:#14110D;margin:14px 0 10px;">Marca Pessoal</h3>
         <p style="font-size:15px;line-height:1.6;color:#4a443c;margin:0;flex:1;">Você é founder ou criador e quer virar autoridade. Reels e carrosséis: você grava, a gente faz o resto.</p>
         <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#14110D;">a partir de R$ 5.000/mês</span>
+          <span style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#14110D;">3 planos &middot; de 6 a 20 reels/mês</span>
           <span style="font-size:15px;font-weight:800;color:#14110D;">Ver os planos &darr;</span>
         </div>
       </a>
@@ -590,7 +596,7 @@ const BIFURCACAO_HTML = `
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:30px;color:#FAFAFA;margin:14px 0 10px;">LinkedIn B2B</h3>
         <p style="font-size:15px;line-height:1.6;color:#b8b1a6;margin:0;flex:1;">Sua empresa vende pra outras empresas. O perfil de quem decide vira canal de geração de demanda.</p>
         <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#FAFAFA;">a partir de R$ 4.250/mês</span>
+          <span style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#FAFAFA;">3 escopos &middot; de 12 a 40 conteúdos/mês</span>
           <span style="font-size:15px;font-weight:800;color:#D262B2;">Ver os planos &darr;</span>
         </div>
       </a>
@@ -1131,28 +1137,31 @@ function QualificadorSection() {
 }
 
 /* ─────────────────────── S9 · OFERTA MARCA PESSOAL (dark) ───────────────────────
-   ⚠️⚠️ PREÇO PÚBLICO — LER ANTES DE MEXER ⚠️⚠️
+   ⚠️⚠️ SEM PREÇO PÚBLICO — LER ANTES DE MEXER ⚠️⚠️
 
-   RÉGUA VIGENTE (decisão Gabriel 08/08/2026; não alterar sem decisão nova):
-   · Entrada ................... R$ 5.000/mês — 6 reels + 6 carrosséis ·
-     postagem e agendamento · relatório mensal.
-   · Completo Autoridade ....... R$ 7.000/mês  (mais escolhido · destacado)
-     12 reels + 8 carrosséis · estratégia + relatório mensal.
-   · Escala .................... R$ 12.900/mês — 20 reels + 20 carrosséis
-     (~1 de cada por dia útil) · engajamento incluído (DM e comentários).
-   · Contrato mínimo 6 meses. Setup, edição de vídeo, design e publicação
-     INCLUSOS nos três planos. Podcast = projeto à parte, sem preço público.
+   Decisão Gabriel 08/08/2026: os VALORES não aparecem nesta página; ficam só
+   na proposta privada (plano.kaleidos.com.br/marca-pessoal). Aqui fica o
+   ESCOPO contável de cada plano. NÃO reintroduzir número em real.
 
-   🎯 INTENÇÃO COMERCIAL (Gabriel, 08/08/2026) — NÃO DILUIR:
-   a Entrada de R$5.000 existe pra fazer o Completo de R$7.000 parecer
-   compensar. O salto fica explícito no badge do card ("+40% no preço ·
-   2× os reels") e na nota abaixo da grade. O Completo é o destacado.
+   RÉGUA DE ESCOPO VIGENTE (não alterar sem decisão nova):
+   · Entrada ................... 6 reels + 6 carrosséis/mês · postagem e
+     agendamento · relatório mensal.
+   · Completo Autoridade ....... (mais escolhido · destacado) 12 reels +
+     8 carrosséis/mês · estratégia + relatório mensal.
+   · Escala .................... 20 reels + 20 carrosséis/mês (~1 de cada
+     por dia útil) · engajamento incluído (DM e comentários).
+   · Contrato mínimo 6 meses (condição, não preço: FICA na página). Setup,
+     edição de vídeo, design e publicação INCLUSOS nos três planos.
+     Podcast = projeto à parte.
+
+   🎯 INTENÇÃO COMERCIAL — NÃO DILUIR: a Entrada existe pra fazer o Completo
+   parecer compensar. Sem preço, o salto fica no dobro de reels ("2× os
+   reels da Entrada", badge + nota abaixo da grade). O Completo é o destacado.
 
    ⚠️ DIVERGÊNCIAS ABERTAS:
-   1. Founder Duo sem preço literal (valor antigo da planilha ficou abaixo da
-      Entrada nova). NÃO inventar valor pro Duo.
+   1. Founder Duo é orçado por escopo. NÃO inventar valor pro Duo (nem aqui
+      nem na proposta sem decisão).
    2. Diagnóstico de Posicionamento continua SEM PREÇO DEFINIDO no vault.
-      NÃO inventar valor.
    3. Redes: os planos publicam em Instagram + TikTok. LinkedIn é a outra
       oferta (#linkedin-b2b), não um add-on daqui. */
 const OFERTA_HTML = `
@@ -1161,8 +1170,8 @@ const OFERTA_HTML = `
   <div class="mp-pad" style="position:relative;max-width:1240px;margin:0 auto;padding-top:96px;padding-bottom:96px;">
     ${headHTML(
       "Oferta 1 · Marca Pessoal",
-      'Preço na mesa,<br>antes da <span class="hl">call</span>.',
-      "Pra você chegar na conversa já sabendo a ordem de grandeza, e decidir se faz sentido antes de gastar o seu tempo.",
+      'Escopo na mesa,<br>antes da <span class="hl">call</span>.',
+      "Três planos com entrega contável, aberta aqui embaixo. Os valores vão por escrito na proposta, logo depois de uma call de 30 minutos: você não sai da conversa sem número na mão.",
       true
     )}
 
@@ -1172,7 +1181,7 @@ const OFERTA_HTML = `
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9a9186;">Porta de entrada</div>
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Entrada</h3>
         <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
-          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">R$ 5.000<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">12 peças<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
           <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">setup, edição e design inclusos</div>
         </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
@@ -1189,8 +1198,8 @@ const OFERTA_HTML = `
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">O carro-chefe · done-for-you</div>
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Completo Autoridade</h3>
         <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
-          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#7CF067;">R$ 7.000<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
-          <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">+40% no preço &middot; 2&times; os reels</div>
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#7CF067;">20 peças<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">2&times; os reels da Entrada</div>
         </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;"><strong style="color:#7CF067;">12 reels por mês</strong> (o dobro da Entrada)</li>
@@ -1205,7 +1214,7 @@ const OFERTA_HTML = `
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Volume máximo · operação inteira</div>
         <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:#FAFAFA;">Escala</h3>
         <div style="border-top:1px solid #2a241d;border-bottom:1px solid #2a241d;padding:16px 0;margin-bottom:18px;">
-          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">R$ 12.900<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
+          <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:34px;line-height:1;color:#FAFAFA;">40 peças<span style="font-size:15px;font-weight:400;color:#9a9186;">/mês</span></div>
           <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:8px;">engajamento incluído</div>
         </div>
         <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.6;color:#d8d1c6;flex:1;">
@@ -1218,7 +1227,7 @@ const OFERTA_HTML = `
       </div>
     </div>
 
-    <p style="max-width:720px;margin:28px auto 0;text-align:center;font-size:14.5px;line-height:1.6;color:#d8d1c6;">Da Entrada pro Completo, o preço sobe <strong style="color:#FAFAFA;">40%</strong> e a produção de reels <strong style="color:#7CF067;">dobra</strong>: de 6 pra 12 por mês, com a estratégia junto. É por isso que a maioria não fica na Entrada.</p>
+    <p style="max-width:720px;margin:28px auto 0;text-align:center;font-size:14.5px;line-height:1.6;color:#d8d1c6;">Da Entrada pro Completo, a produção de reels <strong style="color:#7CF067;">dobra</strong>: de 6 pra 12 por mês, com a estratégia junto. É por isso que a maioria não fica na Entrada. O valor de cada plano vai aberto na proposta, e a diferença entre eles é menor do que o salto de entrega sugere.</p>
 
     <div class="mp-grid2" style="max-width:1120px;margin:40px auto 0;">
       <div style="background:#1d1812;border:1.5px dashed #D262B2;border-radius:16px;padding:24px 26px;">
@@ -1236,7 +1245,7 @@ const OFERTA_HTML = `
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:#d8d1c6;">
         <span style="background:#14110D;border:1.5px solid #3a332a;border-radius:10px;padding:10px 14px;"><strong style="color:#FAFAFA;">01</strong> · Call de 30 min (qualificação, não venda)</span>
         <span style="color:#7CF067;">&rarr;</span>
-        <span style="background:#14110D;border:1.5px solid #3a332a;border-radius:10px;padding:10px 14px;"><strong style="color:#FAFAFA;">02</strong> · Proposta com escopo fechado, por escrito</span>
+        <span style="background:#14110D;border:1.5px solid #3a332a;border-radius:10px;padding:10px 14px;"><strong style="color:#FAFAFA;">02</strong> · Proposta por escrito, com escopo fechado e valores abertos</span>
         <span style="color:#7CF067;">&rarr;</span>
         <span style="background:#14110D;border:1.5px solid #3a332a;border-radius:10px;padding:10px 14px;"><strong style="color:#FAFAFA;">03</strong> · Setup e imersão de voz, inclusos no plano</span>
       </div>
@@ -1252,11 +1261,13 @@ const OFERTA_HTML = `
    A ESTRUTURA foi modelada em um player brasileiro de referência; a copy é
    nossa e o nome dele não aparece. Não introduzir menção a concorrente.
 
-   ⚠️ PREÇO (decisão Gabriel 08/08/2026): Starter R$ 4.250 / Full Service
-   R$ 5.900 / LinkedIn 360° R$ 9.900. Contrato mínimo de 6 MESES: a exceção
-   de 3 meses existiu na régua de 08/08 e foi ELIMINADA (decisão Gabriel,
-   2026-08: contrato de 6 meses em tudo). Mesma mudança aplicada em
-   src/lib/pricing.ts (minMonths: 6 nos três pacotes).
+   ⚠️ PREÇO (decisão Gabriel 08/08/2026): NENHUM valor em real nesta página;
+   os números dos três escopos vivem só na proposta privada
+   (plano.kaleidos.com.br/marca-pessoal) e em src/lib/pricing.ts (calculadora
+   /orcamento, que continua com preço). Aqui fica o escopo contável (12/20/40
+   conteúdos por mês). Contrato mínimo de 6 MESES em tudo: a exceção de
+   3 meses foi ELIMINADA (decisão Gabriel, 2026-08); minMonths: 6 nos três
+   pacotes de pricing.ts.
 
    🔴 "SINAIS DE INTENÇÃO" — LER ANTES DE EDITAR:
    · ⚠️⚠️ NUNCA prometer "lista de quem interagiu" / "nome, cargo e empresa
@@ -1343,12 +1354,11 @@ const LINKEDIN_B2B_HTML = `
           <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">Starter</h3>
           <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Pra 1 perfil que já publica e falta cadência e conversão.</p>
           <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
-            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">R$ 4.250<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">12 conteúdos<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
             <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 6 meses</div>
           </div>
           <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup do perfil</li>
-            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">12 conteúdos por mês</strong></li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Material de captura com automação</li>
             <li style="padding:6px 0;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
           </ul>
@@ -1361,12 +1371,11 @@ const LINKEDIN_B2B_HTML = `
           <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">Full Service</h3>
           <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Pra transformar 1 perfil em canal de geração de demanda.</p>
           <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
-            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#D262B2;">R$ 5.900<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#D262B2;">20 conteúdos<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
             <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 6 meses</div>
           </div>
           <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup do perfil</li>
-            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">20 conteúdos por mês</strong></li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Conteúdo em vídeo / newsletter</li>
             <li style="padding:6px 0;">Conteúdo de Company Page</li>
@@ -1379,12 +1388,11 @@ const LINKEDIN_B2B_HTML = `
           <h3 style="font-family:Atelier,sans-serif;font-weight:700;font-size:26px;color:#14110D;margin:10px 0 6px;">LinkedIn 360&deg;</h3>
           <p style="font-size:13.5px;line-height:1.6;color:#6b6258;margin:0 0 18px;">Pra múltiplos perfis de executivos + Company Page.</p>
           <div style="border-top:1px solid #efe9df;border-bottom:1px solid #efe9df;padding:14px 0;margin-bottom:16px;">
-            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">R$ 9.900<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
+            <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:30px;line-height:1;color:#14110D;">40 conteúdos<span style="font-size:14px;font-weight:400;color:#8a8175;">/mês</span></div>
             <div style="font-family:Gridlite,monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin-top:7px;">contrato de 6 meses</div>
           </div>
           <ul style="list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.55;color:#4a443c;flex:1;">
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Setup de múltiplos perfis</li>
-            <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">40 conteúdos por mês</strong></li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;"><strong style="color:#14110D;">Até 6 materiais de captura por mês</strong>, com automação</li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Relatório de <strong style="color:#14110D;">Sinais de Intenção</strong></li>
             <li style="padding:6px 0;border-bottom:1px solid #efe9df;">Conteúdo em vídeo / newsletter</li>
@@ -1393,7 +1401,7 @@ const LINKEDIN_B2B_HTML = `
           <a href="${AGENDAR}?plano=linkedin-360" class="cta-btn" style="margin-top:18px;display:inline-flex;justify-content:center;background:transparent;color:#14110D;font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:999px;border:1.5px solid #14110D;text-decoration:none;">${CTA_PRIMARY}</a>
         </div>
       </div>
-      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:16px 0 0;text-align:center;">Contrato mínimo de 6 meses, como em toda oferta da casa. O escopo fechado (quantos executivos, quais formatos) sai por escrito na proposta.</p>
+      <p style="font-size:12.5px;line-height:1.55;color:#8a8175;margin:16px 0 0;text-align:center;">Contrato mínimo de 6 meses, como em toda oferta da casa. O escopo fechado (quantos executivos, quais formatos) sai por escrito na proposta, junto com os valores de cada escopo.</p>
     </div>
 
     <p style="text-align:center;font-size:13px;color:#8a8175;margin:32px auto 0;max-width:640px;">Esta oferta acabou de entrar no catálogo, então não tem case publicado ainda. Preferimos dizer isso a mostrar número de terceiro como se fosse nosso.</p>
@@ -1421,7 +1429,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Quanto custa?",
-    a: "Marca pessoal: Entrada R$ 5.000/mês (6 reels + 6 carrosséis), Completo Autoridade R$ 7.000/mês (12 reels + 8 carrosséis, com estratégia) e Escala R$ 12.900/mês (20 + 20, com engajamento incluso), sempre em Instagram e TikTok. LinkedIn B2B: R$ 4.250, R$ 5.900 ou R$ 9.900/mês. Contrato mínimo de 6 meses em tudo, com setup, edição, design e publicação inclusos. O valor fica aberto na página de propósito: se não couber no seu momento, você descobre aqui, não depois de uma reunião.",
+    a: "Os valores vão por escrito na proposta, que você recebe logo depois de uma call de 30 minutos: cada plano com seu número aberto, sem pegadinha de rodapé. Na página fica o que é contável: Marca Pessoal em três planos (6+6, 12+8 e 20+20 reels e carrosséis por mês, em Instagram e TikTok) e LinkedIn B2B em três escopos (12, 20 e 40 conteúdos por mês). Contrato mínimo de 6 meses em tudo, com setup, edição, design e publicação inclusos. A call é de qualificação, não de pressão: se não fizer sentido, a gente diz.",
   },
   {
     q: "Qual a diferença entre Marca Pessoal e LinkedIn B2B?",
@@ -1476,7 +1484,7 @@ const CTA_FINAL_HTML = `
       <a href="${AGENDAR}" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:#7CF067;color:#06250a;font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;box-shadow:5px 5px 0 #D262B2;text-decoration:none;">${CTA_PRIMARY}</a>
       <a href="${WA_AUDIT}" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#FAFAFA;font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;border:1.5px solid #FAFAFA;text-decoration:none;">Auditar meu perfil de graça</a>
     </div>
-    <p style="margin-top:16px;font-size:14px;color:#9a9186;">Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></p>
+    <p style="margin-top:16px;font-size:14px;color:#9a9186;">Call de 30 minutos e a proposta chega por escrito, com escopo fechado e valores abertos. Prefere WhatsApp? <a href="https://wa.me/5512997796835" target="_blank" rel="noopener noreferrer" style="color:#FAFAFA;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Fala com a gente por aqui &rarr;</a></p>
   </div>
 </section>
 `;
@@ -1546,7 +1554,7 @@ export default function MarcaPessoalPage() {
           <QualificadorSection />
         </Reveal>
 
-        {/* S9 · Oferta 1 — Marca Pessoal (preço público) */}
+        {/* S9 · Oferta 1 — Marca Pessoal (escopo aberto; valores na proposta) */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: OFERTA_HTML }} />
         </Reveal>

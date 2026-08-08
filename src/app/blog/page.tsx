@@ -1,4 +1,5 @@
-import { getPublishedPostCardsAsync } from "@/lib/blog-data";
+import { getPublishedPostCardsAsync, getPublishedPostsAsync } from "@/lib/blog-data";
+import { BlogIndexJsonLd } from "@/components/blog/blog-jsonld";
 import { BlogIndexClient } from "./blog-index-client";
 
 // ISR: revalida a listagem de hora em hora pra que posts agendados apareçam na
@@ -12,5 +13,12 @@ export const revalidate = 3600;
 // bundle/payload do client (economiza ~1MB de JS).
 export default async function BlogPage() {
   const posts = await getPublishedPostCardsAsync();
-  return <BlogIndexClient posts={posts} />;
+  // JSON-LD de índice: só AQUI (antes vivia no layout e vazava pra todo post).
+  const full = await getPublishedPostsAsync();
+  return (
+    <>
+      <BlogIndexJsonLd posts={full} />
+      <BlogIndexClient posts={posts} />
+    </>
+  );
 }
