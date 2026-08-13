@@ -110,7 +110,7 @@ export function BlogIndexClient({ posts }: { posts: BlogCardMeta[] }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro ao assinar");
       setSubscribeStatus("success");
-      setSubscribeMsg("Inscricao realizada! Fique de olho no seu email.");
+      setSubscribeMsg("Inscrição realizada! Fique de olho no seu email.");
       setEmail("");
     } catch (err) {
       setSubscribeStatus("error");

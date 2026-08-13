@@ -37,7 +37,7 @@ export function LeadGate({ articleSlug }: { articleSlug?: string }) {
       track("lead_submit", { source: "blog-lead-gate", article_slug: articleSlug });
       identifyLead(email);
       setStatus("success");
-      setMsg("Fechou. Os proximos estudos chegam no seu email.");
+      setMsg("Fechou. Os próximos estudos chegam no seu email.");
       setEmail("");
     } catch (err) {
       setStatus("error");
@@ -64,7 +64,7 @@ export function LeadGate({ articleSlug }: { articleSlug?: string }) {
           Um estudo denso por quinzena, direto no seu email.
         </h3>
         <p className="text-[14px] text-gray-300 mb-5 max-w-md leading-relaxed">
-          Os bastidores de por que tokens e projetos crescem. Sem ruido, sem
+          Os bastidores de por que tokens e projetos crescem. Sem ruído, sem
           spam.
         </p>
         {status === "success" ? (

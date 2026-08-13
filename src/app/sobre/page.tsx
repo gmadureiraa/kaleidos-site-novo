@@ -279,7 +279,10 @@ export default function SobrePage() {
                   description: isEn
                     ? "The creative side of the Kaleidos brain. A crypto market specialist and copywriter, he brought a new paradigm to marketing strategies for the crypto world, and knows how to work with people better than anyone."
                     : "Pode ser considerado o lado criativo do cérebro da Kaleidos. Especialista no mercado cripto e copywriter, trouxe um novo paradigma nas estratégias de marketing para o mundo cripto, sabendo lidar com as pessoas da melhor forma.",
-                  social: { instagram: "https://www.instagram.com/gabrielmadureira", twitter: "https://twitter.com/gabrielmadureira", linkedin: "https://www.linkedin.com/in/gabrielmadureira", email: "madureira@kaleidosdigital.com" }
+                  // Handle social canônico = @ogmadureira (desde 2026-04-29).
+                  // Os links antigos (@gabrielmadureira) mandavam o visitante
+                  // pro lugar errado. O LinkedIn segue /in/gabrielmadureira.
+                  social: { instagram: "https://www.instagram.com/ogmadureira", twitter: "https://twitter.com/ogmadureira", linkedin: "https://www.linkedin.com/in/gabrielmadureira", email: "madureira@kaleidosdigital.com" }
                 },
                 {
                   name: "Nathalia Maciente",

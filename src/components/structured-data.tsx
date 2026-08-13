@@ -26,10 +26,15 @@ export function StructuredData() {
       "@type": "Person",
       "name": "Gabriel Madureira",
       "jobTitle": "Fundador da Kaleidos",
+      // Mesmo `@id` do hub de autor /gabriel-madureira: consolida a entidade
+      // entre Organization.founder e as 300 assinaturas do blog.
+      "@id": "https://kaleidos.com.br/gabriel-madureira#gabriel-madureira",
+      "url": "https://kaleidos.com.br/gabriel-madureira",
       // Mesmos perfis usados em blog-jsonld.tsx (autor Gabriel).
       "sameAs": [
         "https://twitter.com/ogmadureira",
         "https://www.linkedin.com/in/gabrielmadureira",
+        "https://www.instagram.com/ogmadureira",
       ],
     },
     "knowsAbout": [

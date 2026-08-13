@@ -101,7 +101,7 @@ export function toBlogCard(post: BlogPost): BlogCardMeta {
 
 export const categoryLabels: Record<BlogCategory, string> = {
   marketing: "Marketing",
-  ia: "IA & Automacao",
+  ia: "IA & Automação",
   cases: "Cases",
   growth: "Growth",
   cripto: "Cripto",

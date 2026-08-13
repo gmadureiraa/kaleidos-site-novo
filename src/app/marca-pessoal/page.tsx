@@ -10,6 +10,7 @@ import { HeroCanvas } from "@/components/marca-pessoal/hero-canvas";
 import { AsciiTorus } from "@/components/marca-pessoal/ascii-torus";
 import { AnimatedNumber } from "@/components/marca-pessoal/animated-number";
 import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
+import { getPublishedPostCardsByCategoryAsync } from "@/lib/blog-data";
 
 /**
  * /marca-pessoal — Founder-Led Growth (marca pessoal para founders e C-levels).
@@ -1125,6 +1126,103 @@ const CTA_FINAL_HTML = `
 </section>
 `;
 
+/* ───────────── S7b · Trilha editorial (prova de que a gente escreve) ─────────────
+ *
+ * Por que existe: a trilha de marca pessoal do blog linka PRA cá (CTA no hub
+ * /blog/categoria/marca-pessoal e nos posts), mas a LP não linkava de volta.
+ * Resultado: quem chega direto na oferta não vê nenhuma prova de método antes
+ * de decidir, e o cluster de SEO fica com link só numa direção. Faixa leve de
+ * propósito: a LP acabou de ser cortada de 12 pra 9 seções por peso mobile.
+ */
+async function TrilhaSection() {
+  const posts = (await getPublishedPostCardsByCategoryAsync("marca-pessoal")).slice(0, 4);
+  if (posts.length === 0) return null;
+
+  return (
+    <section style={{ position: "relative", background: "#FAFAFA", overflow: "hidden" }}>
+      <div
+        className="mp-pad"
+        style={{ position: "relative", maxWidth: 900, margin: "0 auto", paddingTop: 84, paddingBottom: 84 }}
+      >
+        <p
+          style={{
+            fontFamily: "'IBM Plex Mono',monospace",
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            fontSize: 10,
+            color: "#D262B2",
+            margin: 0,
+          }}
+        >
+          Antes de contratar
+        </p>
+        <h2
+          style={{
+            fontFamily: "'Inter',sans-serif",
+            fontWeight: 800,
+            fontSize: "clamp(24px,3vw,36px)",
+            lineHeight: 1.12,
+            letterSpacing: "-1px",
+            color: "#14110D",
+            margin: "10px 0 12px",
+          }}
+        >
+          Leia o que a gente pensa sobre isso.
+        </h2>
+        <p style={{ fontSize: 16, lineHeight: 1.6, color: "#4a443c", maxWidth: 560, margin: 0 }}>
+          O método não é segredo. Está escrito e público, artigo por artigo.
+        </p>
+
+        <ul style={{ listStyle: "none", padding: 0, margin: "28px 0 0", display: "grid", gap: 10 }}>
+          {posts.map((p) => (
+            <li key={p.slug}>
+              <a
+                href={`/blog/${p.slug}`}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: 16,
+                  background: "#fff",
+                  border: "1.5px solid #14110D",
+                  borderRadius: 14,
+                  boxShadow: "4px 4px 0 #7CF067",
+                  padding: "16px 20px",
+                  textDecoration: "none",
+                  color: "#14110D",
+                  fontWeight: 700,
+                  fontSize: 15,
+                  lineHeight: 1.35,
+                }}
+              >
+                <span>{p.title}</span>
+                <span style={{ color: "#D262B2", flexShrink: 0 }}>&rarr;</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="/blog/categoria/marca-pessoal"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: 22,
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#14110D",
+            textDecoration: "underline",
+            textUnderlineOffset: 3,
+          }}
+        >
+          Ver a trilha completa &rarr;
+        </a>
+      </div>
+    </section>
+  );
+}
+
 export default function MarcaPessoalPage() {
   const faqSchema = generateFAQSchema(
     FAQ_ITEMS.map((f) => ({ question: f.q, answer: f.a }))
@@ -1183,6 +1281,11 @@ export default function MarcaPessoalPage() {
         {/* S7 · FAQ */}
         <Reveal>
           <div dangerouslySetInnerHTML={{ __html: FAQ_HTML }} />
+        </Reveal>
+
+        {/* S7b · Trilha editorial do blog (fecha o loop LP <-> conteúdo) */}
+        <Reveal>
+          <TrilhaSection />
         </Reveal>
 
         {/* S8 · CTA final */}

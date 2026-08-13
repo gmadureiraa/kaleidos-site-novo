@@ -84,6 +84,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.85,
     },
+    // Hub de autor do fundador. É o `author.url` de todos os posts do blog e o
+    // alvo de busca por nome, então precisa ser rastreável por si.
+    {
+      url: `${baseUrl}/gabriel-madureira`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
     // /pacotes é noindex (fundo de funil, decisão D3) — fora do sitemap de propósito
     // pra não gerar "Enviada, mas com noindex" no Search Console.
   ]

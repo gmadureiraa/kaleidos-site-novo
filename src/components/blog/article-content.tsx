@@ -110,7 +110,7 @@ export function ArticleContent({
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erro ao assinar");
       setStatus("success");
-      setMsg("Pronto! Os proximos estudos chegam no seu email.");
+      setMsg("Pronto! Os próximos estudos chegam no seu email.");
       setEmail("");
     } catch (err) {
       setStatus("error");
@@ -431,7 +431,7 @@ export function ArticleContent({
               </div>
               <p className="text-[13px] text-gray-600 leading-relaxed mb-5">
                 A Kaleidos disseca o que faz tokens e projetos crescerem, e aplica
-                isso em quem constroi no cripto/web3.
+                isso em quem constrói no cripto/web3.
               </p>
               <a
                 href={CALENDLY_URL}
@@ -449,7 +449,7 @@ export function ArticleContent({
             {/* Newsletter */}
             <div className="rounded-2xl border border-gray-200 p-6">
               <p className="text-sm font-semibold text-gray-900 mb-1">
-                Receba os proximos estudos
+                Receba os próximos estudos
               </p>
               <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
                 Um estudo denso por quinzena, direto no seu email.

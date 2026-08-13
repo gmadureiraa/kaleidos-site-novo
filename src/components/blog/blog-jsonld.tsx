@@ -32,15 +32,22 @@ export function BlogJsonLd({ post }: { post: BlogPost }) {
   const author = {
     "@type": "Person",
     name: post.author.name,
-    url: `${SITE_URL}/sobre`,
+    // Hub de autor dedicado. Antes apontava pra /sobre (página institucional da
+    // agência, com carrossel de time), o que não dá ao Google/LLM uma página
+    // canônica da entidade "Gabriel Madureira".
+    url: isGabriel ? `${SITE_URL}/gabriel-madureira` : `${SITE_URL}/sobre`,
     image: abs(post.author.avatar),
     ...(isGabriel
       ? {
           jobTitle: "Fundador da Kaleidos",
           worksFor: { "@type": "Organization", name: "Kaleidos Digital", url: SITE_URL },
+          // `@id` casa esta menção com o Person do /gabriel-madureira, pra que
+          // Google/LLM tratem as 300 assinaturas como UMA entidade, não 300.
+          "@id": `${SITE_URL}/gabriel-madureira#gabriel-madureira`,
           sameAs: [
             "https://twitter.com/ogmadureira",
             "https://www.linkedin.com/in/gabrielmadureira",
+            "https://www.instagram.com/ogmadureira",
           ],
         }
       : {}),
