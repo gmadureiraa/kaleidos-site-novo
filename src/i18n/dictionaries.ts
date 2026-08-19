@@ -51,19 +51,22 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       a3_3: "Sem compromisso: se fizer sentido pros dois lados, montamos o escopo e começamos.",
       q4: "Como funcionam os contratos?",
       a4_1: "Trabalhamos em dois formatos: contrato mensal recorrente, com escopo contínuo de conteúdo e growth, ou projeto fechado, como um lançamento, um site ou uma campanha específica. O formato certo sai do diagnóstico, de acordo com o momento do seu projeto.",
-      // 🔴 As respostas a5_1 e a6_1 replicam, hardcoded, três números sem fonte
-      // primária: "30 marcas atendidas", "125 milhões de views" e "R$46 milhões
-      // em faturamento pros clientes". O rastreamento de 08/08/2026 não achou
-      // apuração para nenhum — a cadeia de origem está em `src/lib/metrics.ts`.
-      // Aqui eles ainda ganham um recorte que o metrics.ts não tem ("desde
-      // 2020"), sem nada que sustente a janela. (2026-08-08: o ano canônico é
-      // 2020 — foundingDate do Organization schema + auditoria 16/07 — e o site
-      // inteiro foi padronizado nisso; o "desde 2019" do hero era erro de copy.)
+      // ⚠️ 19/08/2026 — a5_1 e a6_1 foram reescritas SEM número. Replicavam,
+      // hardcoded, três valores sem fonte primária: "30 marcas atendidas",
+      // "125 milhões de views" e "R$46 milhões em faturamento pros clientes".
+      // O rastreamento de 08/08/2026 não achou apuração para nenhum, e aqui eles
+      // ainda ganhavam um recorte que nem o metrics.ts tinha ("desde 2020"),
+      // sem nada que sustentasse a janela. Ver `src/lib/metrics.ts`.
+      // O ano 2020 continua: é o `foundingDate` do Organization schema e foi
+      // padronizado no site inteiro em 08/08 (o "desde 2019" do hero era erro).
+      // A a6_1 agora manda o lead para os cases, que é onde os números com print
+      // de fato estão. Responder "vá ver o case" é mais forte que um agregado
+      // que ninguém consegue reconstruir.
       // ⛔ Não replicar número novo aqui sem fonte + data + metodologia.
       q5: "O que diferencia a Kaleidos de outras agências?",
-      a5_1: "Somos cripto-nativos desde 2020. Não precisamos aprender o que é DeFi, staking ou tokenomics no seu onboarding: já operamos nesse mercado com mais de 30 marcas atendidas e sabemos o que funciona (e o que queima reputação) em cada ciclo.",
+      a5_1: "Somos cripto-nativos desde 2020. Não precisamos aprender o que é DeFi, staking ou tokenomics no seu onboarding: operamos nesse mercado desde antes do último ciclo e sabemos o que funciona (e o que queima reputação) em cada um deles.",
       q6: "Que tipo de resultado vocês já geraram?",
-      a6_1: "Os conteúdos que produzimos pra clientes somam mais de 125 milhões de views, e as estratégias de conteúdo e lançamento já ajudaram a gerar mais de R$46 milhões em faturamento pros nossos clientes desde 2020. Os números completos de cada projeto estão nos nossos cases.",
+      a6_1: "Preferimos responder isso por cliente, não por agregado. No Defiverso foram 12 milhões de views orgânicos em 90 dias e uma newsletter com 26.556 assinantes a 33% de abertura, tudo apurado em print de plataforma. O Investidor 4.20 e a Laylä Föz estão hoje em 173 mil e 177 mil seguidores no Instagram, e você confere nos perfis agora. Cada case tem o número, a janela e de onde ele saiu.",
       q7: "Vocês também cuidam da minha marca pessoal como founder?",
       a7_1: "Sim, é um braço dedicado da Kaleidos. Cuidamos do perfil do founder no Instagram e TikTok (reels, carrosséis, crescimento e autoridade) e do LinkedIn da empresa e dos executivos, com conteúdo e geração de demanda B2B.",
       a7_2: "Funciona junto com o marketing do projeto ou de forma independente. Os detalhes estão em kaleidos.com.br/marca-pessoal.",
@@ -109,8 +112,8 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       teamSubtitle: "Os talentos por trás de cada projeto de sucesso",
       ourValues: "Nossos Valores",
       valuesSubtitle: "Os pilares que guiam cada projeto e decisão",
-      ourNumbers: "Nossos Números",
-      numbersSubtitle: "Resultados que falam por si só",
+      ourNumbers: "Os Números dos Clientes",
+      numbersSubtitle: "Quatro resultados que você consegue conferir na fonte",
       ctaTitle: "Pronto para fazer parte da nossa história?",
       ctaText: "Vamos criar algo incrível juntos e transformar sua marca em uma referência no digital",
       ctaButton: "Vamos Conversar",
@@ -189,9 +192,9 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       q4: "How do contracts work?",
       a4_1: "We work in two formats: a monthly recurring contract, with ongoing content and growth scope, or a closed project, such as a launch, a website or a specific campaign. The right format comes out of the diagnostic, based on where your project is right now.",
       q5: "What sets Kaleidos apart from other agencies?",
-      a5_1: "We've been crypto-native since 2020. We don't need to learn what DeFi, staking or tokenomics are during your onboarding: we've already operated in this market with 30+ brands and we know what works (and what burns reputation) in every cycle.",
+      a5_1: "We've been crypto-native since 2020. We don't need to learn what DeFi, staking or tokenomics are during your onboarding: we've operated in this market since before the last cycle and we know what works (and what burns reputation) in each one.",
       q6: "What kind of results have you generated?",
-      a6_1: "The content we produce for clients adds up to 125M+ views, and our content and launch strategies have helped generate over $46M in revenue for our clients since 2020. The full numbers for each project are in our case studies.",
+      a6_1: "We prefer to answer that per client, not as an aggregate. At Defiverso it was 12 million organic views in 90 days and a newsletter with 26,556 subscribers at a 33% open rate, all measured from platform screenshots. Investidor 4.20 and Laylä Föz are at 173k and 177k Instagram followers today, and you can check the profiles right now. Every case study carries the number, the time window and where it came from.",
       q7: "Do you also handle my personal brand as a founder?",
       a7_1: "Yes, it's a dedicated arm of Kaleidos. We run the founder's profile on Instagram and TikTok (reels, carousels, growth and authority) and the company's and executives' LinkedIn, with content and B2B demand generation.",
       a7_2: "It works alongside the project's marketing or on its own. Details at kaleidos.com.br/marca-pessoal.",
@@ -237,8 +240,8 @@ export const dictionaries: Record<Locale, Record<string, Dictionary>> = {
       valuesSubtitle: "The pillars that guide every project and decision",
       ourTeam: "Our Team",
       teamSubtitle: "Professionals passionate about creating extraordinary digital experiences",
-      ourNumbers: "Our Numbers",
-      numbersSubtitle: "Results that speak for themselves",
+      ourNumbers: "Our Clients' Numbers",
+      numbersSubtitle: "Four results you can verify at the source",
       ctaTitle: "Ready to be part of our story?",
       ctaText: "Let's create something amazing together and turn your brand into a digital reference",
       ctaButton: "Let's Talk",

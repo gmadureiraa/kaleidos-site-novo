@@ -196,26 +196,34 @@ export function heroHtml(o: HeroOpts = {}, l: Locale = "pt") {
 `;
 }
 
-// 🔴 Os números deste manifesto (125M de views, R$46mi movimentados pelos
-// clientes, 30+ projetos) estão HARDCODED aqui, fora do `src/lib/metrics.ts`.
-// Nenhum dos três tem fonte primária: o rastreamento de 08/08/2026 (vault +
-// code + git desde o commit inicial) não achou apuração para nenhum. A cadeia
-// de origem de cada um está documentada linha a linha em `src/lib/metrics.ts`.
-// ⛔ Não replicar número novo aqui sem fonte + data + metodologia.
+// ⚠️ 19/08/2026 — OS TRÊS NÚMEROS DESTE MANIFESTO SAÍRAM. Eram "+125M de views",
+// "+R$46mi movimentados pelos clientes" e "30+ projetos", hardcoded aqui (fora do
+// `src/lib/metrics.ts`, o que os deixou de fora de duas auditorias anteriores).
+// Nenhum dos três tinha fonte primária: o rastreamento de 08/08/2026 varreu vault +
+// code + git desde o commit inicial e não achou apuração para nenhum. O "R$46mi" é o
+// mais sensível — afirmação sobre a receita de terceiros, sem definição do que conta
+// como "movimentado". A cadeia de origem está documentada em `src/lib/metrics.ts`.
+//
+// No lugar entrou o que é verificável sem fonte nenhuma: os clientes têm nome, os
+// logos estão no marquee logo abaixo e a prova com número (com print e janela) está
+// no `Web3V2ProofStrip`, na dobra anterior. O manifesto agora afirma o que fazemos e
+// para quem — que é o que ele sempre deveria ter feito.
+// ⛔ Não repor número aqui. Se houver apuração, ela entra em `metrics.ts` com
+//    `source` + `apurado`, e o manifesto continua sem número.
 const MANIFESTO_COPY = {
   pt: {
     handsAlt: "Duas mãos quase se tocando, em duotone verde e rosa Kaleidos",
     paragraph:
-      'Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, agência de marketing nativa de <span style="color:#D262B2;font-weight:700;">cripto</span>, <span style="color:#D262B2;font-weight:700;">web3</span> e <span style="color:#D262B2;font-weight:700;">fintech</span>, especializada em fazer crescer <strong style="font-weight:800;">empresas</strong> e <strong style="font-weight:800;">marcas pessoais</strong>: transformamos projetos complexos, e os founders e creators na frente deles, em marcas que o mercado não ignora. <span style="color:#2E9E32;font-weight:800;">+125M de views</span>, <span style="color:#2E9E32;font-weight:800;">+R$46mi</span> movimentados pelos clientes, <span style="color:#2E9E32;font-weight:800;">30+ projetos</span>.',
+      'Somos a <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, agência de marketing nativa de <span style="color:#D262B2;font-weight:700;">cripto</span>, <span style="color:#D262B2;font-weight:700;">web3</span> e <span style="color:#D262B2;font-weight:700;">fintech</span>, especializada em fazer crescer <strong style="font-weight:800;">empresas</strong> e <strong style="font-weight:800;">marcas pessoais</strong>: transformamos projetos complexos, e os founders e creators na frente deles, em marcas que o mercado não ignora. Somos <span style="color:#2E9E32;font-weight:800;">o time de conteúdo</span> de quem já é referência: <span style="color:#2E9E32;font-weight:800;">Defiverso</span>, <span style="color:#2E9E32;font-weight:800;">Investidor 4.20</span>, <span style="color:#2E9E32;font-weight:800;">Laylä Föz</span>, <span style="color:#2E9E32;font-weight:800;">DSEC</span>.',
     paragraphShort:
-      'Somos a <strong style="font-weight:800;">Kaleidos</strong>, agência de marketing nativa de <span style="color:#D262B2;font-weight:700;">cripto, web3 e fintech</span>: fazemos crescer <strong style="font-weight:800;">empresas</strong> e <strong style="font-weight:800;">marcas pessoais</strong> — founders e creators. <span style="color:#2E9E32;font-weight:800;">+125M de views</span>, <span style="color:#2E9E32;font-weight:800;">+R$46mi</span> movimentados pelos clientes, <span style="color:#2E9E32;font-weight:800;">30+ projetos</span>.',
+      'Somos a <strong style="font-weight:800;">Kaleidos</strong>, agência de marketing nativa de <span style="color:#D262B2;font-weight:700;">cripto, web3 e fintech</span>: fazemos crescer <strong style="font-weight:800;">empresas</strong> e <strong style="font-weight:800;">marcas pessoais</strong> — founders e creators. Somos <span style="color:#2E9E32;font-weight:800;">o time de conteúdo</span> de quem já é referência no mercado.',
   },
   en: {
     handsAlt: "Two hands almost touching, in Kaleidos green and pink duotone",
     paragraph:
-      'We are <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, a marketing agency native to <span style="color:#D262B2;font-weight:700;">crypto</span>, <span style="color:#D262B2;font-weight:700;">web3</span> and <span style="color:#D262B2;font-weight:700;">fintech</span>, specialized in growing <strong style="font-weight:800;">companies</strong> and <strong style="font-weight:800;">personal brands</strong>: we turn complex projects, and the founders and creators leading them, into brands the market cannot ignore. <span style="color:#2E9E32;font-weight:800;">125M+ views</span>, <span style="color:#2E9E32;font-weight:800;">R$46M+</span> moved by our clients, <span style="color:#2E9E32;font-weight:800;">30+ projects</span>.',
+      'We are <span style="display:inline-flex;align-items:center;gap:.28em;"><svg style="width:.92em;height:.64em;fill:#14110D;vertical-align:middle;"><use href="#kal-eye"></use></svg></span> <strong style="font-weight:800;">Kaleidos</strong>, a marketing agency native to <span style="color:#D262B2;font-weight:700;">crypto</span>, <span style="color:#D262B2;font-weight:700;">web3</span> and <span style="color:#D262B2;font-weight:700;">fintech</span>, specialized in growing <strong style="font-weight:800;">companies</strong> and <strong style="font-weight:800;">personal brands</strong>: we turn complex projects, and the founders and creators leading them, into brands the market cannot ignore. We are <span style="color:#2E9E32;font-weight:800;">the content team</span> behind names that are already references: <span style="color:#2E9E32;font-weight:800;">Defiverso</span>, <span style="color:#2E9E32;font-weight:800;">Investidor 4.20</span>, <span style="color:#2E9E32;font-weight:800;">Laylä Föz</span>, <span style="color:#2E9E32;font-weight:800;">DSEC</span>.',
     paragraphShort:
-      'We are <strong style="font-weight:800;">Kaleidos</strong>, a marketing agency native to <span style="color:#D262B2;font-weight:700;">crypto, web3 and fintech</span>: we grow <strong style="font-weight:800;">companies</strong> and <strong style="font-weight:800;">personal brands</strong> — founders and creators. <span style="color:#2E9E32;font-weight:800;">125M+ views</span>, <span style="color:#2E9E32;font-weight:800;">R$46M+</span> moved by our clients, <span style="color:#2E9E32;font-weight:800;">30+ projects</span>.',
+      'We are <strong style="font-weight:800;">Kaleidos</strong>, a marketing agency native to <span style="color:#D262B2;font-weight:700;">crypto, web3 and fintech</span>: we grow <strong style="font-weight:800;">companies</strong> and <strong style="font-weight:800;">personal brands</strong> — founders and creators. We are <span style="color:#2E9E32;font-weight:800;">the content team</span> behind names that are already references in the market.',
   },
 } as const;
 

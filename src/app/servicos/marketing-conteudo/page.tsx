@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
@@ -219,20 +219,28 @@ export default function KaleidosContentPage() {
                   </div>
                 </div>
 
+                {/* ⚠️ 19/08/2026 — saíram "500+ vídeos editados", "125M+ views nos
+                    reels" e "600+ peças de design". Nenhum tinha fonte primária;
+                    o "600+ designs" era o mais órfão dos oito (existia em dois
+                    lugares no vault, ambos citando o site). Ver `src/lib/metrics.ts`.
+                    Entrou prova de cliente com print e janela. */}
                 <div className="grid grid-cols-3 gap-6 pt-2">
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_METRICS.videosEditados_en : KALEIDOS_METRICS.videosEditados}</div>
-                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Edited videos' : 'Vídeos editados'}</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_PROOF.defiversoViews.value_en : KALEIDOS_PROOF.defiversoViews.value}</div>
+                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Organic views · Defiverso' : 'Views orgânicos · Defiverso'}</div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_METRICS.viewsReels_en : KALEIDOS_METRICS.viewsReels}</div>
-                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Reels views' : 'Views nos reels'}</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_PROOF.lucasInstagram.value_en : KALEIDOS_PROOF.lucasInstagram.value}</div>
+                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Followers · Investidor 4.20' : 'Seguidores · Investidor 4.20'}</div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_METRICS.designsCriados_en : KALEIDOS_METRICS.designsCriados}</div>
-                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Design assets' : 'Peças de Design'}</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_PROOF.laylaInstagram.value_en : KALEIDOS_PROOF.laylaInstagram.value}</div>
+                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Followers · Laylä Föz' : 'Seguidores · Laylä Föz'}</div>
                   </div>
                 </div>
+                <p className="text-xs leading-relaxed text-[#8a8078] max-w-xl">
+                  {locale==='en' ? PROOF_NOTE_EN : PROOF_NOTE}
+                </p>
               </div>
 
               {/* Right Column - Image */}
@@ -544,8 +552,8 @@ export default function KaleidosContentPage() {
             </h2>
             <p className="text-[#5c544a] text-lg max-w-2xl mx-auto leading-relaxed">
               {locale === 'en'
-                ? `${KALEIDOS_METRICS.viewsReels_en} views on reels and ${KALEIDOS_METRICS.videosEditados_en} videos edited. Who lived it:`
-                : `${KALEIDOS_METRICS.viewsReels} de views em reels e ${KALEIDOS_METRICS.videosEditados} vídeos editados. Quem viveu isso:`}
+                ? 'Not a promise: clients who ran this operation with us, and what came out of it.'
+                : 'Não é promessa: clientes que rodaram essa operação com a gente, e o que saiu dela.'}
             </p>
           </motion.div>
 

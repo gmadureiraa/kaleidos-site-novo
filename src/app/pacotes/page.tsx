@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 import { getServerLocale, type Locale } from "@/i18n/server";
 import { PacotesCtaTracking } from "./cta-tracking";
 
@@ -28,7 +28,9 @@ import { PacotesCtaTracking } from "./cta-tracking";
  *
  * ⚠️ PLACEHOLDERS PRA GABRIEL: os blocos marcados `{{PROVA_REAL}}` (o
  * depoimento above-the-fold) precisam de um número/quote REAL. Não inventei.
- * As métricas numéricas vêm de `KALEIDOS_METRICS` (fonte única já usada no site).
+ * As métricas numéricas vêm de `KALEIDOS_PROOF` (`src/lib/metrics.ts`), que só
+ * aceita número com `source` + `apurado`. As 4 métricas institucionais que
+ * ficavam aqui saíram em 19/08/2026 por não terem fonte.
  */
 
 export async function generateMetadata({
@@ -44,8 +46,8 @@ export async function generateMetadata({
       ? "Kaleidos Packages: crypto marketing by objective"
       : "Pacotes Kaleidos — marketing cripto por objetivo",
     description: isEn
-      ? "Choose by objective: Authority, Growth or Launch. A crypto-native team that has edited 500+ videos, generated 125M+ views and executed 50+ launches. Book a call."
-      : "Escolha por objetivo: Autoridade, Growth ou Lançamento. Um time cripto-nativo que já editou 500+ vídeos, gerou 125M+ de views e executou 50+ lançamentos. Marque uma call.",
+      ? "Choose by objective: Authority, Growth or Launch. The crypto-native team behind Defiverso, Investidor 4.20, Laylä Föz and DSEC. Book a call."
+      : "Escolha por objetivo: Autoridade, Growth ou Lançamento. O time cripto-nativo por trás de Defiverso, Investidor 4.20, Laylä Föz e DSEC. Marque uma call.",
     alternates: { canonical: "/pacotes" },
     // Fundo de funil: acessível por link direto (proposta / CTA de blog), fora do
     // índice de busca — decisão D3/A4 do Ultraplan (preço não público no topo).
@@ -338,10 +340,10 @@ const COPY = {
     sub: "Autoridade, Growth ou Lançamento. Um time cripto-nativo cuida de conteúdo, estratégia e distribuição pra sua marca virar referência, não só mais ruído no feed.",
     ctaLabel: "Marcar uma call",
     heroMicro: "30 min · sem compromisso · sem enrolação",
-    statViews: "views em Reels",
-    statVideos: "vídeos editados",
-    statLaunches: "lançamentos executados",
-    statSatisfaction: "de satisfação",
+    statViews: "views orgânicos em 90 dias · Defiverso",
+    statVideos: "de abertura na newsletter · Defiverso",
+    statLaunches: "seguidores · Investidor 4.20",
+    statSatisfaction: "seguidores · Laylä Föz",
     kicker: "Como a gente trabalha",
     tiersH2: "Três objetivos, um mesmo padrão de exigência.",
     tiersLead:
@@ -355,9 +357,9 @@ const COPY = {
     finalPost: ".",
     finalSub:
       "Marque uma call. A gente entende o projeto e mostra exatamente onde a Kaleidos move o ponteiro, e qual pacote faz sentido pro seu momento.",
-    finalMicroA: "projetos atendidos",
-    finalMicroB: "de crescimento médio",
-    finalMicroC: "desde 2020",
+    finalMicroA: "Cripto-nativa desde 2020",
+    finalMicroB: "Defiverso, Investidor 4.20, Laylä Föz e DSEC",
+    finalMicroC: "call de 30 minutos, sem compromisso",
     tiers: TIERS_PT,
     faq: FAQ_PT,
   },
@@ -369,10 +371,10 @@ const COPY = {
     sub: "Authority, Growth or Launch. A crypto-native team handles content, strategy and distribution so your brand becomes the reference, not more noise in the feed.",
     ctaLabel: "Book a call",
     heroMicro: "30 min · no commitment · no fluff",
-    statViews: "Reels views",
-    statVideos: "videos edited",
-    statLaunches: "launches executed",
-    statSatisfaction: "satisfaction",
+    statViews: "organic views in 90 days · Defiverso",
+    statVideos: "newsletter open rate · Defiverso",
+    statLaunches: "followers · Investidor 4.20",
+    statSatisfaction: "followers · Laylä Föz",
     kicker: "How we work",
     tiersH2: "Three objectives, one standard of excellence.",
     tiersLead:
@@ -386,9 +388,9 @@ const COPY = {
     finalPost: ".",
     finalSub:
       "Book a call. We get to know your project and show exactly where Kaleidos moves the needle, and which package makes sense for your stage.",
-    finalMicroA: "projects served",
-    finalMicroB: "average growth",
-    finalMicroC: "since 2020",
+    finalMicroA: "Crypto-native since 2020",
+    finalMicroB: "Defiverso, Investidor 4.20, Laylä Föz and DSEC",
+    finalMicroC: "a 30-minute call, no strings attached",
     tiers: TIERS_EN,
     faq: FAQ_EN,
   },
@@ -403,7 +405,7 @@ export default async function PacotesPage({
   const locale = getServerLocale(lang);
   const t = COPY[locale];
   const isEn = locale === "en";
-  const m = KALEIDOS_METRICS;
+  const m = KALEIDOS_PROOF;
   return (
     <main id="main-content" className="kpac" role="main">
       <style dangerouslySetInnerHTML={{ __html: STYLE }} />
@@ -437,27 +439,32 @@ export default async function PacotesPage({
         </div>
       </section>
 
-      {/* 2 · PROVA ACIMA DA DOBRA — números reais (KALEIDOS_METRICS) + depoimento */}
+      {/* 2 · PROVA ACIMA DA DOBRA — resultado de cliente com fonte (KALEIDOS_PROOF).
+          ⚠️ 19/08/2026: saíram daqui "125M+ views", "500+ vídeos", "50+ lançamentos"
+          e "98% de satisfação" — nenhum tinha fonte. Ver `src/lib/metrics.ts`. */}
       <section className="proof">
         <div className="wrap">
           <div className="stats">
             <div className="stat">
-              <div className="n">{isEn ? m.viewsReels_en : m.viewsReels}</div>
+              <div className="n">{isEn ? m.defiversoViews.value_en : m.defiversoViews.value}</div>
               <div className="l">{t.statViews}</div>
             </div>
             <div className="stat">
-              <div className="n">{isEn ? m.videosEditados_en : m.videosEditados}</div>
+              <div className="n">{isEn ? m.defiversoNewsletter.value_en : m.defiversoNewsletter.value}</div>
               <div className="l">{t.statVideos}</div>
             </div>
             <div className="stat">
-              <div className="n">{isEn ? m.lancamentos_en : m.lancamentos}</div>
+              <div className="n">{isEn ? m.lucasInstagram.value_en : m.lucasInstagram.value}</div>
               <div className="l">{t.statLaunches}</div>
             </div>
             <div className="stat">
-              <div className="n">{isEn ? m.satisfacaoCliente_en : m.satisfacaoCliente}</div>
+              <div className="n">{isEn ? m.laylaInstagram.value_en : m.laylaInstagram.value}</div>
               <div className="l">{t.statSatisfaction}</div>
             </div>
           </div>
+          <p style={{ marginTop: 14, fontSize: 12, lineHeight: 1.5, color: "#8a8078", maxWidth: 780 }}>
+            {isEn ? PROOF_NOTE_EN : PROOF_NOTE}
+          </p>
           {/* ⚠️ GABRIEL: bloco de depoimento oculto até ter um quote REAL de cliente
               (Crypto.com / Ledger / Mercado Bitcoin / Defiverso / Parfin). O
               placeholder {{PROVA_REAL}} estava renderizando VISÍVEL em produção
@@ -556,9 +563,12 @@ export default async function PacotesPage({
             <Image src="/v2/calendly-icon.webp" alt="" aria-hidden width={18} height={18} />
             {t.ctaLabel} &rarr;
           </Link>
+          {/* ⚠️ 19/08/2026 — este microcopy trazia "30+ projetos atendidos" e
+              "200% de crescimento médio". O segundo era o pior dos oito: uma
+              média da agência calculada sobre n=1, a partir do autorrelato de um
+              único cliente. Ver `src/lib/metrics.ts`. */}
           <p className="microcopy">
-            {isEn ? m.projetosAtendidos_en : m.projetosAtendidos} {t.finalMicroA} ·{" "}
-            {isEn ? m.crescimentoMedio_en : m.crescimentoMedio} {t.finalMicroB} · {t.finalMicroC}
+            {t.finalMicroA} · {t.finalMicroB} · {t.finalMicroC}
           </p>
         </div>
       </section>

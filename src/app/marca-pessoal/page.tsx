@@ -890,11 +890,19 @@ function MetodoSection() {
    janela/data de apuração, caminho de verificação (link pro perfil público),
    prova visual, linha "o que a Kaleidos fez" e link pro case.
    Métricas 100% de src/lib/case-data.ts:
-   · investidor-4-20: IG 50k→173k (173.050 lido via Apify em 08/08/2026).
-     ⚠️ "10x faturamento" NÃO entra: marcado NÃO RASTREADO em case-data.ts
-     (e audiences.ts diz "5x"). Sem autorização por escrito do Lucas, nem
-     como citação. YouTube 200k→382k: NÃO RASTREADO, também fora.
-   · layla-foz: 100k→177k (176.960 via Apify em 08/08/2026), 20M+ views.
+   · investidor-4-20: IG 173 mil (173.050 lido via Apify em 08/08/2026).
+     ⚠️ "10x faturamento" NÃO entra: sem fonte primária no vault (e audiences.ts
+     chegou a publicar "5x" pro mesmo case). Sem autorização por escrito do
+     Lucas, nem como citação. YouTube 200k→382k: fora — o print do canal mostra
+     386 mil, e a baseline de 200k não tem fonte.
+     ⚠️ 19/08/2026: a BASELINE "50k" também saiu. Só existe em
+     `docs/cases-estudo.txt:9`, questionário sem data e sem autor, e não há
+     snapshot histórico do perfil. Sem baseline confiável, o "50k → 173k" afirma
+     um crescimento que a gente não consegue provar — que é exatamente o que
+     esta página promete não fazer. Ficou só a ponta com print.
+   · layla-foz: 177 mil (176.960 via Apify em 08/08/2026).
+     ⚠️ 19/08/2026: baseline "100k" e "20M+ views" SAÍRAM, mesma razão —
+     origem única em `docs/cases-estudo.txt:33`, sem print e sem janela.
    · defiverso: 12M views orgânicos em 90 dias — prova visual é o SCREENSHOT
      REAL do Instagram Insights (estudo/metricas-instagram.png, período
      02/08–30/10 visível, orgânico 12.000.732). Não trocar por capa.
@@ -916,8 +924,8 @@ const CASES_HTML = `
 
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Lucas Amendola &middot; Investidor 4.20</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">50k &rarr; 173k <span style="font-size:16px;color:#9a9186;font-weight:400;">no Instagram</span></div>
-        <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">do in&iacute;cio do contrato &agrave; leitura de 08/2026, direto no perfil</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">173 mil <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores no Instagram</span></div>
+        <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">lido direto no perfil em 08/2026</div>
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;">
           <img src="/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-capa.jpg" alt="Capa de reel publicado no perfil do Lucas Amendola" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
@@ -930,12 +938,12 @@ const CASES_HTML = `
 
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 24px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Layl&auml; F&ouml;z &middot; criadora</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">100k &rarr; 177k <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
-        <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">do in&iacute;cio do contrato &agrave; leitura de 08/2026, direto no perfil</div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">177 mil <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
+        <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">lido direto no perfil em 08/2026</div>
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;">
           <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Laylä Föz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
-        <p style="font-size:13.5px;line-height:1.55;color:#b8b1a6;margin:0;flex:1;"><strong style="color:#d8d1c6;">O que fizemos:</strong> roteiro e edi&ccedil;&atilde;o dos reels (20M+ de views) e newsletter, sem descaracterizar a voz dela.</p>
+        <p style="font-size:13.5px;line-height:1.55;color:#b8b1a6;margin:0;flex:1;"><strong style="color:#d8d1c6;">O que fizemos:</strong> roteiro e edi&ccedil;&atilde;o dos reels e da newsletter, sem descaracterizar a voz dela.</p>
         <div style="margin-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;">
           ${VERIFY_LINK("https://www.instagram.com/laylafoz/", "Confira ao vivo: @laylafoz", "#D262B2")}
           <a href="/cases/layla-foz" style="font-size:13px;color:#9a9186;text-decoration:underline;text-underline-offset:3px;">Ver o case &rarr;</a>
@@ -949,7 +957,7 @@ const CASES_HTML = `
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#fff;margin-bottom:14px;">
           <img src="/Cases/defiverso/estudo/metricas-instagram.png" alt="Painel nativo do Instagram Insights do Defiverso: 12.000.732 visualizações orgânicas no período de 90 dias exibido no gráfico" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
         </div>
-        <p style="font-size:13.5px;line-height:1.55;color:#b8b1a6;margin:0;flex:1;"><strong style="color:#d8d1c6;">O que fizemos:</strong> conte&uacute;do org&acirc;nico di&aacute;rio (reels, carross&eacute;is, memes) e funil de e-mail. +8,6 mil seguidores no mesmo trimestre.</p>
+        <p style="font-size:13.5px;line-height:1.55;color:#b8b1a6;margin:0;flex:1;"><strong style="color:#d8d1c6;">O que fizemos:</strong> conte&uacute;do org&acirc;nico di&aacute;rio (reels, carross&eacute;is, memes) e funil de e-mail.</p>
         <div style="margin-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;">
           <span style="font-size:13px;color:#9a9186;">O print acima &eacute; o painel nativo, sem retoque.</span>
           <a href="/cases/defiverso" style="font-size:13px;color:#9a9186;text-decoration:underline;text-underline-offset:3px;">Ver o case &rarr;</a>

@@ -53,13 +53,24 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
   );
 }
 
+/**
+ * ⚠️ 19/08/2026 — três `metric` foram trocadas por não terem fonte documentada:
+ * "10x Faturamento" (Investidor 4.20), "+200% Faturamento" (Bit das Minas) e
+ * "+20M Views" (Laylä Föz). As três vinham, direta ou indiretamente, de
+ * `docs/cases-estudo.txt`, questionário em prosa sem data e sem autor — arquivo
+ * desqualificado como fonte porque erra os dois números dele que dá pra conferir
+ * contra print. As duas primeiras eram ainda afirmação sobre o faturamento de um
+ * terceiro. Ver `src/lib/case-data.ts` e `src/lib/metrics.ts`.
+ * ✅ "12M Views" (Defiverso) FICOU: tem print de Instagram Insights.
+ * ⛔ Não coloque número aqui sem fonte primária citável.
+ */
 const casesCarouselData = [
   {
     id: "investidor-4-20",
     title: "Investidor 4.20",
     tag: "Comercial · Lançamento",
     description: "Desenvolvimento comercial completo e estratégias de lançamento.",
-    metric: "10x Faturamento",
+    metric: "173 mil seguidores",
     gradient: "linear-gradient(150deg, #7CF067 0%, #1E7A3A 55%, #0A1A0E 100%)",
     coverImage: "/Cases/investidor-4-20/conteudo/Reels-1-Lucas-1.mp4",
     href: "/cases/investidor-4-20"
@@ -69,7 +80,7 @@ const casesCarouselData = [
     title: "Bit das Minas",
     tag: "Conteúdo · Lançamento",
     description: "Edição de vídeo, copywriting e roteiro para lançamentos virais.",
-    metric: "+200% Faturamento",
+    metric: "4+ lançamentos",
     gradient: "linear-gradient(150deg, #D262B2 0%, #7A2E78 55%, #1A0E1A 100%)",
     coverImage: "/Cases/bit-das-minas/conteudo/Reels-1-Gi-2.mp4",
     href: "/cases/bit-das-minas"
@@ -79,7 +90,7 @@ const casesCarouselData = [
     title: "Laylä Föz",
     tag: "Vídeo · Newsletter",
     description: "Edição de vídeo e criação de newsletters para crescimento orgânico.",
-    metric: "+20M Views",
+    metric: "177 mil seguidores",
     gradient: "linear-gradient(150deg, #FF8A5B 0%, #C13E7A 55%, #1A0E16 100%)",
     coverImage: "/Cases/layla-foz/conteudo/Reels-1-Layla-1.mp4",
     href: "/cases/layla-foz"

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 import Image from "next/image";
 import { FooterDemo } from "@/components/ui/footer-demo";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 import {
   Carousel,
   CarouselContent,
@@ -120,11 +120,20 @@ export default function SobrePage() {
     ? "CONTENT ✺ STRATEGY ✺ LAUNCHES ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺ "
     : "CONTEÚDO ✺ ESTRATÉGIA ✺ LANÇAMENTOS ✺ SOCIAL ✺ WEB3 ✺ DEFI ✺ KOLs ✺ BRANDING ✺ ";
 
+  /**
+   * ⚠️ 19/08/2026 — as 4 métricas institucionais que ficavam aqui SAÍRAM:
+   * "500+ Vídeos Editados", "125M+ Views nos Reels", "50+ Lançamentos" e
+   * "98% Satisfação". Nenhuma tinha fonte primária (ver `src/lib/metrics.ts`);
+   * a de satisfação afirmava uma pesquisa de NPS que nunca foi feita.
+   * No lugar entrou resultado de cliente nomeado, com print e janela.
+   * ⛔ Não repor número de agência aqui sem `source` + `apurado` em metrics.ts.
+   */
+  const P = KALEIDOS_PROOF;
   const metrics = [
-    { value: isEn ? KALEIDOS_METRICS.videosEditados_en : KALEIDOS_METRICS.videosEditados, label: isEn ? 'Edited Videos' : 'Vídeos Editados', accent: GREEN },
-    { value: isEn ? KALEIDOS_METRICS.viewsReels_en : KALEIDOS_METRICS.viewsReels, label: isEn ? 'Reels Views' : 'Views nos Reels', accent: PINK },
-    { value: isEn ? KALEIDOS_METRICS.lancamentos_en : KALEIDOS_METRICS.lancamentos, label: isEn ? 'Launches' : 'Lançamentos', accent: GREEN },
-    { value: isEn ? KALEIDOS_METRICS.satisfacaoCliente_en : KALEIDOS_METRICS.satisfacaoCliente, label: isEn ? 'Satisfaction' : 'Satisfação', accent: PINK },
+    { value: isEn ? P.defiversoViews.value_en : P.defiversoViews.value, label: isEn ? 'Organic views · Defiverso' : 'Views orgânicos · Defiverso', accent: GREEN },
+    { value: isEn ? P.defiversoNewsletter.value_en : P.defiversoNewsletter.value, label: isEn ? 'Newsletter open rate · Defiverso' : 'Abertura da newsletter · Defiverso', accent: PINK },
+    { value: isEn ? P.lucasInstagram.value_en : P.lucasInstagram.value, label: isEn ? 'Followers · Investidor 4.20' : 'Seguidores · Investidor 4.20', accent: GREEN },
+    { value: isEn ? P.laylaInstagram.value_en : P.laylaInstagram.value, label: isEn ? 'Followers · Laylä Föz' : 'Seguidores · Laylä Föz', accent: PINK },
   ];
 
   return (
@@ -452,6 +461,11 @@ export default function SobrePage() {
             </motion.div>
           ))}
         </div>
+
+        {/* Procedência — obrigatória sempre que este bloco mostrar número. */}
+        <p style={{ marginTop: 18, fontSize: 12.5, lineHeight: 1.5, color: "#8a8078", maxWidth: 760, fontFamily: "var(--font-inter), Inter, sans-serif" }}>
+          {isEn ? PROOF_NOTE_EN : PROOF_NOTE}
+        </p>
       </section>
 
       {/* CTA Final */}

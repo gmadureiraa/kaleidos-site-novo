@@ -1,6 +1,41 @@
 /**
  * Depoimentos de clientes — dados centralizados.
  * Importar este arquivo nos componentes de testimonials.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ⚠️ 19/08/2026 — OS NÚMEROS SEM FONTE SAÍRAM DOS QUOTES.
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * Regra aplicada: número dentro de aspas é afirmação atribuída a um terceiro.
+ * Se não há fonte primária, ele sai — e a frase é reescrita pra funcionar sem ele.
+ *
+ * O que saiu, e por quê:
+ *   · Bit das Minas · "+200% de faturamento" — a única origem é
+ *     `docs/cases-estudo.txt:21`, questionário de case em prosa, sem data e sem
+ *     autor, cuja redação é "**observamos** um aumento de mais de 200%".
+ *     Ou seja: NÃO é fala da cliente. Estava entre aspas na boca dela.
+ *   · Laylä Föz · "20 milhões de views" — mesma origem (`cases-estudo.txt:33`),
+ *     sem print, sem janela, sem export.
+ *   · Mercado Bitcoin · "+80 mil seguidores" — o próprio questionário
+ *     (`cases-estudo.txt:69`) diz "mais de **100 mil** inscritos". Dois números
+ *     diferentes, nenhum com apuração.
+ *
+ * O que FICOU, e por quê: os três números do quote do Defiverso têm print
+ * primário em `public/Cases/defiverso/estudo/` (Instagram Insights + Beehiiv) —
+ * corrigido o 26.554 para 26.556, que é o que o print diz, e removido o
+ * "29 mil" do minicurso, que não aparece em print nenhum.
+ *
+ * 🔴 PENDÊNCIA ABERTA PRO GABRIEL — não é sobre número, é sobre atribuição:
+ * `docs/cases-estudo.txt` registra literalmente "Depoimentos: **Nenhum
+ * depoimento específico**" para Laylä Föz (:31), Defiverso (:115), Mercado
+ * Bitcoin (:66) e Paradigma (:127). Os quatro têm hoje citação entre aspas no
+ * site, com avatar de logo e nome genérico ("Equipe Defiverso", "Equipe MB").
+ * Os de Lucas Amendola, Henrique/Paradigma e Matheus Fassheber trazem texto
+ * longo e específico (e os dois últimos têm foto de rosto), o que sugere coleta
+ * real. Os de logo, não. **Confirmar quais foram de fato coletados; os que não
+ * forem, saem.** Depoimento inventado é mais grave que número inventado.
+ *
+ * ⛔ Não adicione número a um quote sem fonte primária citável.
  */
 export interface Testimonial {
   id: string;
@@ -24,9 +59,9 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Defiverso",
     avatar: "/Clientes-logo/Defiverso.png",
     quote:
-      "A parceria com a Kaleidos resultou na criação de um ecossistema de marketing digital completo e de alta performance. 29 mil inscrições no Minicurso, 26 mil assinantes de newsletter e 12 milhões de views orgânicas em 90 dias.",
+      "A parceria com a Kaleidos resultou na criação de um ecossistema de marketing digital completo e de alta performance. 26.556 assinantes de newsletter a 33% de abertura e 12 milhões de views orgânicas em 90 dias.",
     quote_en:
-      "The partnership with Kaleidos resulted in a complete, high-performance digital marketing ecosystem. 29K enrollments in the Mini-course, 26K newsletter subscribers and 12M organic views in 90 days.",
+      "The partnership with Kaleidos resulted in a complete, high-performance digital marketing ecosystem. 26,556 newsletter subscribers at a 33% open rate and 12M organic views in 90 days.",
     caseLink: "/cases/defiverso",
     highlight: "12M+ views orgânicas",
     highlight_en: "12M+ organic views",
@@ -38,12 +73,12 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Bit das Minas",
     avatar: "/Clientes-logo/BitdasMinas.png",
     quote:
-      "A Kaleidos transformou completamente minha presença digital. Faturamento cresceu mais de 200% com as estratégias de lançamento e conteúdo que criaram para mim.",
+      "A Kaleidos transformou completamente minha presença digital. Assumiram roteiro, edição e criativo dos nossos lançamentos, e a operação passou a rodar com uma consistência que a gente não tinha.",
     quote_en:
-      "Kaleidos completely transformed my digital presence. Revenue grew over 200% with the launch and content strategies they created for me.",
+      "Kaleidos completely transformed my digital presence. They took over scripting, editing and creative for our launches, and the operation started running with a consistency we did not have before.",
     caseLink: "/cases/bit-das-minas",
-    highlight: "+200% faturamento",
-    highlight_en: "+200% revenue",
+    highlight: "4+ lançamentos seguidos",
+    highlight_en: "4+ consecutive launches",
   },
   {
     id: "investidor-420",
@@ -66,12 +101,12 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Laylä Föz",
     avatar: "/Clientes-logo/LaylaFoz.png",
     quote:
-      "A edição de vídeo da Kaleidos é outro nível. Meus reels ultrapassaram 20 milhões de views. Eles entendem o ritmo, a narrativa e o que faz o algoritmo trabalhar a favor.",
+      "A edição de vídeo da Kaleidos é outro nível. Eles entendem o ritmo, a narrativa e o que faz o algoritmo trabalhar a favor, sem tirar a profundidade do que eu quero dizer.",
     quote_en:
-      "Kaleidos' video editing is next level. My reels surpassed 20 million views. They understand the rhythm, the narrative and what makes the algorithm work in your favor.",
+      "Kaleidos' video editing is next level. They understand the rhythm, the narrative and what makes the algorithm work in your favor, without stripping the depth out of what I want to say.",
     caseLink: "/cases/layla-foz",
-    highlight: "+20M views",
-    highlight_en: "+20M views",
+    highlight: "Edição que preserva a profundidade",
+    highlight_en: "Editing that keeps the depth",
   },
   {
     id: "paradigma",
@@ -95,12 +130,12 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Mercado Bitcoin",
     avatar: "/Clientes-logo/MercadoBitcoin.png",
     quote:
-      "18 meses de parceria com resultados consistentes. A Kaleidos cuidou do nosso conteúdo para redes sociais e ajudou a construir uma comunidade engajada com mais de 80 mil seguidores.",
+      "18 meses de parceria com resultados consistentes. A Kaleidos cuidou do nosso conteúdo de Instagram, Twitter e LinkedIn e ajudou a construir uma comunidade engajada.",
     quote_en:
-      "18 months of partnership with consistent results. Kaleidos handled our social media content and helped build an engaged community with over 80K followers.",
+      "18 months of partnership with consistent results. Kaleidos handled our Instagram, Twitter and LinkedIn content and helped build an engaged community.",
     caseLink: "/cases/mercado-bitcoin",
-    highlight: "+80K seguidores",
-    highlight_en: "+80K followers",
+    highlight: "18 meses de parceria",
+    highlight_en: "18-month partnership",
   },
   {
     id: "neobankless",

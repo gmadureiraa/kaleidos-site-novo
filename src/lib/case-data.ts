@@ -120,6 +120,22 @@ export const casesData: Record<string, CaseData> = {
       }
     ]
   },
+  // ─── FONTE DOS NÚMEROS · DEFIFEST ───
+  // ⚠️ 19/08/2026 — "600+ participantes", "15+ palestrantes", "100% de satisfação
+  // dos participantes" e "3x mais networking que eventos similares" SAÍRAM.
+  // · O "600+" NÃO EXISTE em lugar nenhum do vault. Grep por "defifest" retorna 3
+  //   menções em texto e nenhuma traz esse número — o único número associado ao
+  //   evento é "100 ingressos" (`DEFIVERSO/04-EMAILS/BEEHIIV-FLUXOS/
+  //   _HARVEST-A-AQUECIMENTO.md:99`). Não há lista de inscritos, export de
+  //   plataforma de ingresso, nem pasta do evento em `011 - CLIENTES/`.
+  // · "100% de satisfação dos participantes" é da mesma família do "98% de
+  //   satisfação" institucional: não existe pesquisa. Uma revisão interna de
+  //   17/06 já tinha listado "100% satisfação" entre as métricas fabricadas.
+  // · "3x mais networking que eventos similares" não tem nem definição: 3x de quê,
+  //   medido como, contra quais eventos.
+  // ✅ Ficou o que é verificável e público: data, local, formato e nome dos
+  //   palestrantes, tudo conferível na página do evento.
+  // ⛔ Só volta com export da plataforma de ingressos.
   "defifest": {
     id: "defifest",
     nome: "Defifest",
@@ -128,15 +144,15 @@ export const casesData: Record<string, CaseData> = {
     descricao_en: "We produced the entire visual identity of the event with banners, intermission scenes between talks, small motion pieces and more.",
     fraseImpactante: "O evento que revolucionou o DeFi brasileiro.",
     fraseImpactante_en: "The event that revolutionized Brazilian DeFi.",
-    detalhes: "O Desafio\n\nO mercado DeFi brasileiro estava fragmentado, com eventos pequenos e desconectados. A comunidade precisava de um espaço unificado para educação, networking e crescimento conjunto. O desafio era criar um evento que não apenas educasse, mas que estabelecesse conexões duradouras entre os principais players do ecossistema.\n\nNossa Estratégia\n\nDesenvolvemos uma identidade visual completa que comunicasse inovação e profissionalismo. Criamos materiais que funcionassem tanto para marketing digital quanto para o ambiente físico do evento, garantindo consistência visual em todos os touchpoints.\n\n• Design System completo com paleta de cores e tipografia\n• Banners e materiais promocionais para redes sociais\n• Cenas de transição animadas para as palestras\n• Identidade visual para coffee breaks e networking\n• Materiais impressos para o evento presencial\n\nO Resultado\n\nDefifest 2025 se tornou o maior evento DeFi do Brasil, reunindo 600+ participantes em um dia completo de educação e networking. O evento contou com palestras de especialistas como Victor Castaneda, Mychel Mendes e Coruja Cripto, cobrindo temas como o futuro do Bitcoin, tributação cripto, DeFi em mercados de baixa e IA no setor.\n\nDestaques incluem networking com lunch, coffee breaks e happy hour all-inclusive, além de um show de encerramento com DJ renomado. O evento ocorreu em 7 de junho de 2025 no Clube Pinheiros, São Paulo, estabelecendo um novo padrão para eventos DeFi no Brasil.",
+    detalhes: "O Desafio\n\nO mercado DeFi brasileiro estava fragmentado, com eventos pequenos e desconectados. A comunidade precisava de um espaço unificado para educação, networking e crescimento conjunto. O desafio era criar um evento que não apenas educasse, mas que estabelecesse conexões duradouras entre os principais players do ecossistema.\n\nNossa Estratégia\n\nDesenvolvemos uma identidade visual completa que comunicasse inovação e profissionalismo. Criamos materiais que funcionassem tanto para marketing digital quanto para o ambiente físico do evento, garantindo consistência visual em todos os touchpoints.\n\n• Design System completo com paleta de cores e tipografia\n• Banners e materiais promocionais para redes sociais\n• Cenas de transição animadas para as palestras\n• Identidade visual para coffee breaks e networking\n• Materiais impressos para o evento presencial\n\nO Resultado\n\nDefifest 2025 se tornou o maior evento DeFi presencial do Brasil, com um dia completo de educação e networking. O evento contou com palestras de especialistas como Victor Castaneda, Mychel Mendes e Coruja Cripto, cobrindo temas como o futuro do Bitcoin, tributação cripto, DeFi em mercados de baixa e IA no setor.\n\nDestaques incluem networking com lunch, coffee breaks e happy hour all-inclusive, além de um show de encerramento com DJ renomado. O evento ocorreu em 7 de junho de 2025 no Clube Pinheiros, São Paulo, estabelecendo um novo padrão para eventos DeFi no Brasil.",
     detalhes_en: "The Challenge\n\nThe Brazilian DeFi market was fragmented, with small and disconnected events. The community needed a unified space for education, networking and joint growth. The challenge was to create an event that not only educated, but established lasting connections between the main players in the ecosystem.\n\nOur Strategy\n\nWe developed a complete visual identity that communicated innovation and professionalism. We created materials that worked for both digital marketing and the physical event environment, ensuring visual consistency across all touchpoints.\n\n• Complete Design System with color palette and typography\n• Banners and promotional materials for social media\n• Animated transition scenes for talks\n• Visual identity for coffee breaks and networking\n• Print materials for the in-person event\n\nThe Result\n\nDefifest 2025 became the largest DeFi event in Brazil, bringing together 600+ participants for a complete day of education and networking. The event featured talks by experts such as Victor Castaneda, Mychel Mendes and Coruja Cripto, covering topics like Bitcoin's future, crypto taxation, DeFi in bear markets and AI in the industry.\n\nHighlights included networking with lunch, coffee breaks and an all-inclusive happy hour, plus a closing show with a renowned DJ. Held on June 7, 2025 at Clube Pinheiros (São Paulo), it established a new standard for DeFi events in Brazil.",
     depoimentos: "Evento revolucionário que conectou a comunidade DeFi brasileira.",
     links: ["https://defiverso.com"],
     externalLink: "https://defiverso.com",
     externalLabel: "Ver o evento",
     externalLabel_en: "See the event",
-    metricas: "600+ participantes\n\nO maior evento DeFi do Brasil em 2025, reunindo a elite da comunidade cripto brasileira para um dia completo de educação, networking e conexões estratégicas.\n\n• 600+ participantes presenciais\n• 15+ palestrantes especialistas\n• 8 horas de conteúdo educacional\n• 100% de satisfação dos participantes\n• 3x mais networking que eventos similares\n\nO evento estabeleceu um novo padrão para eventos DeFi no Brasil, combinando educação de alta qualidade com experiências memoráveis de networking.",
-    metricas_en: "600+ attendees\n\nThe largest DeFi event in Brazil in 2025, bringing together the elite of the Brazilian crypto community for a complete day of education, networking and strategic connections.\n\n• 600+ in-person attendees\n• 15+ expert speakers\n• 8 hours of educational content\n• 100% participant satisfaction\n• 3x more networking than similar events\n\nThe event established a new standard for DeFi events in Brazil, combining high-quality education with memorable networking experiences.",
+    metricas: "O maior evento DeFi presencial do Brasil\n\nO Defifest 2025 reuniu a comunidade cripto brasileira num dia completo de educação, networking e conexões estratégicas, no Clube Pinheiros, em São Paulo, em 7 de junho de 2025.\n\n• Palestras de Victor Castaneda, Mychel Mendes e Coruja Cripto\n• Pautas do dia: futuro do Bitcoin, tributação cripto, DeFi em mercado de baixa e IA no setor\n• Networking com lunch, coffee breaks e happy hour all-inclusive\n• Show de encerramento com DJ\n• Identidade visual, banners, cenas de transição e materiais impressos por nossa conta\n\nO evento estabeleceu um novo padrão para encontros de DeFi no Brasil, combinando conteúdo denso com uma experiência que a comunidade queria repetir.",
+    metricas_en: "Brazil's largest in-person DeFi event\n\nDefifest 2025 brought the Brazilian crypto community together for a full day of education, networking and strategic connections, at Clube Pinheiros in São Paulo, on 7 June 2025.\n\n• Talks by Victor Castaneda, Mychel Mendes and Coruja Cripto\n• Agenda: the future of Bitcoin, crypto taxation, DeFi in bear markets and AI in the sector\n• Networking with lunch, coffee breaks and an all-inclusive happy hour\n• Closing DJ set\n• Visual identity, banners, transition scenes and printed materials handled by us\n\nThe event set a new standard for DeFi gatherings in Brazil, pairing dense content with an experience the community wanted to repeat.",
     servicos: ["Design", "Motion", "Edição de vídeo", "Copywriting"],
     servicos_en: ["Design", "Motion", "Video editing", "Copywriting"],
     media: [
@@ -147,23 +163,42 @@ export const casesData: Record<string, CaseData> = {
       },
     ]
   },
+  // ─── FONTE DOS NÚMEROS · BIT DAS MINAS ───
+  // ⚠️ 19/08/2026 — "+200% de faturamento", "−50% de custo por lead" e
+  // "150+ vídeos" SAÍRAM. Decisão: número sem fonte documentada sai do ar.
+  // · "−50% de CPL" já tinha sido removido do deck /cripto em 08/08: no vault ele
+  //   está SEMPRE atribuído ao Defiverso, nunca à Bit das Minas
+  //   (`copywriting-kaleidos/SKILL.md:111`, `013 - COMERCIAL/
+  //   email-sequences-outbound.md:74`, `015 - BRANDING E GROWTH/
+  //   MARKETING-AUDIT.md:149`). É métrica que migrou de um cliente pro outro.
+  //   Atribuir CPL/faturamento ao cliente errado é o pior erro possível aqui.
+  // · "+200%" e "150+ vídeos" tinham origem única em `docs/cases-estudo.txt:21`,
+  //   questionário em prosa sem data e sem autor, cuja redação é "observamos um
+  //   aumento de mais de 200%" — autorrelato, sem base, sem janela. Esse arquivo
+  //   está desqualificado como fonte (ver a nota do case do Investidor 4.20).
+  // · Agravante: a Bit das Minas NÃO tem pasta em `011 - CLIENTES/` e não está na
+  //   carteira ativa. É case histórico — não há ninguém pra confirmar.
+  // ✅ O que ficou é o escopo real do trabalho, que está descrito no próprio
+  //   questionário e não depende de apuração: 4+ lançamentos, edição, roteiro,
+  //   copy e criativo de anúncio.
+  // ⛔ Só volta com apuração da conta da própria Bit das Minas.
   "bit-das-minas": {
     id: "bit-das-minas",
     nome: "Bit das Minas",
     tags: ["Reels", "Roteiros"],
     descricao: "Trabalhamos com edição de vídeo, copywrite e roteiro para vídeos e para anuncios, fizemos mais de 4 lançamentos e trabalhamos para construção de reels para crescimento orgânico do perfil",
     descricao_en: "We worked on video editing, copywriting and scripts for videos and ads, did over 4 launches and built reels for organic growth.",
-    fraseImpactante: "200% de aumento no faturamento dos lançamentos e diminuição de 50% de custo por lead.",
-    fraseImpactante_en: "200% revenue increase in launches and 50% lower cost per lead.",
+    fraseImpactante: "Quatro ciclos de lançamento seguidos, do roteiro ao criativo.",
+    fraseImpactante_en: "Four consecutive launch cycles, from script to creative.",
     detalhes: "O Desafio\n\nO mercado de educação em cripto no Brasil era dominado por conteúdo masculino e técnico, deixando muitas mulheres de fora. A Bit das Minas precisava criar uma abordagem única que fosse educativa, acessível e empoderadora para o público feminino, diferenciando-se da concorrência.\n\nNossa Estratégia\n\nDesenvolvemos uma estratégia de conteúdo multicanal focada em educação prática e empoderamento feminino. Criamos roteiros que transformavam conceitos complexos em linguagem acessível, sempre conectando o aprendizado com a realidade das mulheres brasileiras.\n\n• Roteiros educativos com linguagem acessível\n• Reels com dicas práticas e cases reais\n• Copywriting focado em empoderamento feminino\n• Estratégia de lançamentos com storytelling envolvente\n• Newsletter semanal com análises contextualizadas\n\nO Resultado\n\nMais de 4 lançamentos bem-sucedidos, incluindo cursos como 'Revolução Cripto' para iniciantes. O crescimento orgânico via reels educativos e dicas práticas resultou em uma comunidade engajada e fiel. A newsletter 'Bit News' com análises semanais se tornou referência no mercado.\n\nO projeto reforçou a missão de empoderamento feminino em cripto, criando um espaço seguro e educativo para mulheres que queriam aprender sobre investimentos digitais.",
     detalhes_en: "The Challenge\n\nThe Brazilian crypto education market was dominated by male and technical content, leaving many women out. Bit das Minas needed to create a unique approach that was educational, accessible and empowering for the female audience, differentiating itself from the competition.\n\nOur Strategy\n\nWe developed a multi-channel content strategy focused on practical education and female empowerment. We created scripts that transformed complex concepts into accessible language, always connecting learning with the reality of Brazilian women.\n\n• Educational scripts with accessible language\n• Reels with practical tips and real cases\n• Copywriting focused on female empowerment\n• Launch strategy with engaging storytelling\n• Weekly newsletter with contextualized analyses\n\nThe Result\n\nOver 4 successful launches, including beginner courses like 'Crypto Revolution'. Organic growth through educational reels and practical tips resulted in an engaged and loyal community. The 'Bit News' newsletter with weekly analyses became a market reference.\n\nThe project reinforced the mission of empowering women in crypto, creating a safe and educational space for women who wanted to learn about digital investments.",
-    depoimentos: "Crescimento exponencial no faturamento e engajamento da comunidade.",
+    depoimentos: "Comunidade engajada e operação de lançamento rodando com consistência.",
     links: ["https://www.instagram.com/bitdasminas/?hl=en", "https://apps.apple.com/us/app/bit-das-minas/id6476791912"],
     externalLink: "https://www.instagram.com/bitdasminas/?hl=en",
     externalLabel: "Ver no site",
     externalLabel_en: "Visit website",
-    metricas: "200% de aumento no faturamento\n\nTransformamos a Bit das Minas em uma das principais referências de educação cripto para mulheres no Brasil, com resultados impressionantes em engajamento e conversão.\n\n• 200% de aumento no faturamento dos lançamentos\n• 50% de redução no custo por lead\n• 150+ vídeos editados para anúncios\n• 4+ lançamentos bem-sucedidos\n• Comunidade engajada com alta retenção\n\nA estratégia de conteúdo empoderador e educativo resultou em uma comunidade fiel e um crescimento sustentável, estabelecendo a Bit das Minas como líder no segmento feminino de educação cripto.",
-    metricas_en: "200% revenue increase\n\nWe transformed Bit das Minas into one of the main crypto education references for women in Brazil, with impressive results in engagement and conversion.\n\n• 200% increase in launch revenue\n• 50% reduction in cost per lead\n• 150+ videos edited for ads\n• 4+ successful launches\n• Engaged community with high retention\n\nThe empowering and educational content strategy resulted in a loyal community and sustainable growth, establishing Bit das Minas as a leader in the female crypto education segment.",
+    metricas: "Quatro ciclos de lançamento seguidos\n\nA Bit das Minas é a maior comunidade de mulheres investidoras em cripto do Brasil. A Kaleidos assumiu a operação de conteúdo e de lançamento da marca por mais de quatro ciclos consecutivos.\n\n• 4+ lançamentos executados de ponta a ponta\n• Roteiro, edição e copy de vídeos para anúncio\n• Criativos testados a cada ciclo, com funil refeito entre um e outro\n• Reels educativos para crescimento orgânico do perfil\n• Conteúdo de educação cripto acessível, sem o jargão que afasta o público\n\nO trabalho combinou educação acessível com operação de lançamento consistente, numa vertical que o mercado tratava como nicho.",
+    metricas_en: "Four consecutive launch cycles\n\nBit das Minas is Brazil's largest community of women crypto investors. Kaleidos took over the brand's content and launch operation across more than four consecutive cycles.\n\n• 4+ launches executed end to end\n• Scripting, editing and copy for ad videos\n• Creatives tested every cycle, with the funnel rebuilt between them\n• Educational reels for organic profile growth\n• Accessible crypto education, without the jargon that pushes the audience away\n\nThe work combined accessible education with a consistent launch operation, in a vertical the market treated as niche.",
     servicos: ["Edição de vídeo", "Copywriting", "Roteiro", "Lançamentos"],
     servicos_en: ["Video editing", "Copywriting", "Scripting", "Launches"],
     media: [
@@ -218,25 +253,33 @@ export const casesData: Record<string, CaseData> = {
   //   `LAYLA-FOZ/CLAUDE.md:2` e `:10`). NÃO é typo. Já foi achatado por engano para a
   //   grafia sem trema em 08/08/2026 e revertido no mesmo dia. NÃO normalizar de novo.
   //   (O `id` e os caminhos de mídia seguem `layla-foz`, sem trema, de propósito.)
-  // "20M+ views nos reels": NÃO RASTREADO até fonte primária — herdado do case
-  //   original, sem apuração datada no vault. Mantido como estava.
+  // ⚠️ 19/08/2026 — "20M+ views nos reels" e a baseline "100 mil" SAÍRAM.
+  //   Origem única: `docs/cases-estudo.txt:33` ("crescimento no Instagram de 100
+  //   mil para 172 mil seguidores; mais de 20 milhões de views nos reels"),
+  //   questionário em prosa sem data e sem autor — arquivo desqualificado como
+  //   fonte (ver a nota do case do Investidor 4.20: erra 2 de 2 no que dá pra
+  //   conferir contra print). Não há export de Insights, print ou janela para o
+  //   20M, e o mesmo trecho já publica um seguidor errado (172k, quando a
+  //   apuração direta deu 176.960).
+  // ✅ FICOU o 177 mil, apurado direto no perfil @laylafoz em 08/08/2026.
+  // ⛔ O 20M só volta com print de Insights com janela declarada.
   "layla-foz": {
     id: "layla-foz",
     nome: "Laylä Föz",
     tags: ["Influencer", "Vídeo", "Reels", "Copywriting", "Newsletter"],
     descricao: "Edição de vídeo e criação de newsletters",
     descricao_en: "Video editing and newsletter creation",
-    fraseImpactante: "Mais de 20 milhões de views nos reels.",
-    fraseImpactante_en: "Over 20 million views on Reels.",
-    detalhes: "O Desafio\n\nLaylä Föz já tinha uma audiência engajada, mas precisava de conteúdo que mantivesse sua profundidade intelectual enquanto se adaptava às demandas do algoritmo do Instagram. O desafio era preservar sua autenticidade e criatividade enquanto maximizava o alcance e engajamento.\n\nNossa Estratégia\n\nDesenvolvemos uma abordagem que combinava a profundidade do conteúdo de Layla com formatos otimizados para redes sociais. Criamos reels que mantinham sua essência criativa e intelectual, além de newsletters que nutriam sua audiência com conteúdo de qualidade.\n\n• Edição de vídeos que preserva a profundidade do conteúdo\n• Reels otimizados para engajamento e alcance\n• Newsletters para nutrição de audiência\n• Manutenção da autenticidade e criatividade\n• Foco na inovação e qualidade excepcional\n\nO Resultado\n\nConteúdos editados que mantiveram a profundidade e criatividade de Layla, incluindo reels para engajamento e newsletters para nutrição de audiência. A qualidade excepcional permitiu que ela focasse na inovação, elevando seu impacto em plataformas exigentes.\n\nO resultado foi um crescimento impressionante no Instagram, de 100 mil para 177 mil seguidores, com mais de 20 milhões de views nos reels, estabelecendo Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
-    detalhes_en: "The Challenge\n\nLaylä Föz already had an engaged audience, but needed content that maintained her intellectual depth while adapting to Instagram's algorithm demands. The challenge was to preserve her authenticity and creativity while maximizing reach and engagement.\n\nOur Strategy\n\nWe developed an approach that combined Layla's content depth with social media optimized formats. We created reels that maintained her creative and intellectual essence, plus newsletters that nurtured her audience with quality content.\n\n• Video editing that preserves content depth\n• Reels optimized for engagement and reach\n• Newsletters for audience nurturing\n• Maintaining authenticity and creativity\n• Focus on innovation and exceptional quality\n\nThe Result\n\nEdited content that preserved Layla's depth and creativity, including engagement reels and newsletters to nurture her audience. The exceptional quality enabled her to focus on innovation, boosting her impact on demanding platforms.\n\nThe result was impressive Instagram growth from 100k to 177k followers, with over 20 million views on reels, establishing Layla as one of Brazil's leading intellectual content creators.",
+    fraseImpactante: "Alcance de reel sem perder a profundidade do que ela quer dizer.",
+    fraseImpactante_en: "Reel reach without losing the depth of what she wants to say.",
+    detalhes: "O Desafio\n\nLaylä Föz já tinha uma audiência engajada, mas precisava de conteúdo que mantivesse sua profundidade intelectual enquanto se adaptava às demandas do algoritmo do Instagram. O desafio era preservar sua autenticidade e criatividade enquanto maximizava o alcance e engajamento.\n\nNossa Estratégia\n\nDesenvolvemos uma abordagem que combinava a profundidade do conteúdo de Layla com formatos otimizados para redes sociais. Criamos reels que mantinham sua essência criativa e intelectual, além de newsletters que nutriam sua audiência com conteúdo de qualidade.\n\n• Edição de vídeos que preserva a profundidade do conteúdo\n• Reels otimizados para engajamento e alcance\n• Newsletters para nutrição de audiência\n• Manutenção da autenticidade e criatividade\n• Foco na inovação e qualidade excepcional\n\nO Resultado\n\nConteúdos editados que mantiveram a profundidade e criatividade de Layla, incluindo reels para engajamento e newsletters para nutrição de audiência. A qualidade excepcional permitiu que ela focasse na inovação, elevando seu impacto em plataformas exigentes.\n\nO resultado é um perfil hoje em 177 mil seguidores, com reels que sustentam alcance sem abrir mão da densidade, estabelecendo Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
+    detalhes_en: "The Challenge\n\nLaylä Föz already had an engaged audience, but needed content that maintained her intellectual depth while adapting to Instagram's algorithm demands. The challenge was to preserve her authenticity and creativity while maximizing reach and engagement.\n\nOur Strategy\n\nWe developed an approach that combined Layla's content depth with social media optimized formats. We created reels that maintained her creative and intellectual essence, plus newsletters that nurtured her audience with quality content.\n\n• Video editing that preserves content depth\n• Reels optimized for engagement and reach\n• Newsletters for audience nurturing\n• Maintaining authenticity and creativity\n• Focus on innovation and exceptional quality\n\nThe Result\n\nEdited content that preserved Layla's depth and creativity, including engagement reels and newsletters to nurture her audience. The exceptional quality enabled her to focus on innovation, boosting her impact on demanding platforms.\n\nThe result is a profile now at 177k followers, with reels that sustain reach without giving up density, establishing Layla as one of Brazil's leading intellectual content creators.",
     depoimentos: "Crescimento impressionante no Instagram e engajamento massivo nos reels.",
     links: ["https://www.instagram.com/laylafoz/"],
     externalLink: "https://www.instagram.com/laylafoz",
     externalLabel: "Ver no Instagram",
     externalLabel_en: "See on Instagram",
-    metricas: "20M+ views nos reels\n\nTransformamos o perfil da Laylä Föz em uma das principais referências de conteúdo intelectual no Instagram brasileiro, com crescimento exponencial e engajamento massivo.\n\n• 20M+ views nos reels\n• Crescimento de 100k para 177k seguidores (+77%)\n• Engajamento massivo e consistente\n• Estabelecimento como referência intelectual\n• Qualidade excepcional mantida em todos os formatos\n\nA estratégia de preservar a profundidade do conteúdo enquanto otimizava para redes sociais resultou em um crescimento sustentável e uma audiência altamente engajada, consolidando Layla como uma das principais criadoras de conteúdo intelectual do Brasil.",
-    metricas_en: "20M+ views on reels\n\nWe transformed Laylä Föz's profile into one of the main intellectual content references on Brazilian Instagram, with exponential growth and massive engagement.\n\n• 20M+ views on reels\n• Growth from 100k to 177k followers (+77%)\n• Massive and consistent engagement\n• Establishment as intellectual reference\n• Exceptional quality maintained across all formats\n\nThe strategy of preserving content depth while optimizing for social media resulted in sustainable growth and a highly engaged audience, consolidating Layla as one of Brazil's leading intellectual content creators.",
+    metricas: "177 mil seguidores no Instagram\n\nA Laylä Föz é uma das principais criadoras de conteúdo intelectual do Brasil, e o número acima você confere abrindo o perfil @laylafoz agora.\n\n• 177 mil seguidores (apurado direto no perfil em 08/2026)\n• Edição de vídeo que preserva a profundidade do conteúdo\n• Reels otimizados para alcance sem achatar a narrativa\n• Newsletters para nutrição da audiência\n• Autenticidade e criatividade mantidas em todos os formatos\n\nA estratégia de preservar a profundidade enquanto otimizava para o algoritmo resultou num crescimento sustentável e numa audiência altamente engajada.",
+    metricas_en: "177k Instagram followers\n\nLaylä Föz is one of Brazil's leading intellectual content creators, and you can verify the number above by opening @laylafoz right now.\n\n• 177k followers (measured directly on the profile in 08/2026)\n• Video editing that preserves the depth of the content\n• Reels optimized for reach without flattening the narrative\n• Newsletters to nurture the audience\n• Authenticity and creativity kept across every format\n\nThe strategy of preserving depth while optimizing for the algorithm produced sustainable growth and a highly engaged audience.",
     servicos: ["Edição de vídeos", "Roteiros de Reels", "Newsletter"],
     servicos_en: ["Video editing", "Reels scripting", "Newsletter"],
     media: [
@@ -417,29 +460,58 @@ export const casesData: Record<string, CaseData> = {
     ]
   },
   // ─── FONTE DOS NÚMEROS (não alterar sem atualizar esta nota) ───
-  // Instagram 50k → 173k: apuração de **04/08/2026**, registrada em
-  //   `vault/00 - DASHBOARD/diario/2026-08-04.md:47` ("Lucas 173k"), coletada
-  //   abrindo o perfil @lucas.amendolaa logado no Chrome (captura de pic+grid).
-  //   Corroborado pela proposta de 22/07/2026 (marcada "verificado") e usado no
-  //   deck `plano.kaleidos.com.br/marca-pessoal` (slide 07).
-  //   ⚠️ Divergências conhecidas, NÃO usar: 180k (carimbo antigo que vivia aqui,
-  //   corrigido em 08/08/2026) e 174K (`LUCAS-AMENDOLA/CLAUDE.md:26`, apuração de
-  //   05/07/2026 — mais antiga que a de 04/08). O "50k" é o ponto de partida no
-  //   início do contrato, sem data primária no vault.
-  // "10x de faturamento em 12 meses": NÃO RASTREADO — afirmação sobre o
-  //   faturamento do cliente, sem apuração, período ou metodologia no vault.
-  //   ⚠️ `src/lib/audiences.ts` afirma "5x" para o mesmo case. Os dois não podem
-  //   estar certos. Decisão de qual manter é do Gabriel.
-  // YouTube 200k → 382k, newsletter 30k / 35% abertura, 700+ criativos,
-  //   250+ vídeos: NÃO RASTREADOS até fonte primária.
+  //
+  // ⚠️ 19/08/2026 — SANEAMENTO. Decisão do Gabriel: número sem fonte documentada
+  // sai do ar. Deste case saíram SEIS afirmações.
+  //
+  // ❌ "10x de faturamento em 12 meses" — REMOVIDO. Não existe NENHUM documento
+  //    com faturamento do Lucas: `01 - KALEIDOS/014 - FINANCEIRO/Faturamento/`
+  //    tem só um template vazio. Pior, havia duas versões publicadas do MESMO
+  //    case ("10x" aqui, "5x" em `audiences.ts` PT), e essa divergência interna é
+  //    a própria prova de que não há apuração — número medido não tem duas
+  //    versões. O valor já tinha sido trocado uma vez (5x → 10x em 03/08) por
+  //    decisão verbal. É afirmação sobre a receita de um terceiro: só o Lucas
+  //    pode confirmar. ⛔ Só volta com autorização escrita dele.
+  // ❌ Baseline "50k" no Instagram e "+246%" — REMOVIDOS. A única origem do 50k é
+  //    `docs/cases-estudo.txt:9`, questionário em prosa sem data e sem autor, e
+  //    não existe snapshot histórico do perfil em lugar nenhum. Sem baseline
+  //    confiável, o percentual não se sustenta.
+  // ❌ "YouTube 200k → 382k (+91%)" — REMOVIDO e SUBSTITUÍDO. Mesmo questionário.
+  //    E o print que existe o desmente: `public/Cases/lucas-amendola/estudo/
+  //    canal-youtube.png` mostra **386 mil inscritos**, não 382 mil. A baseline
+  //    de 200k não tem fonte nenhuma.
+  // ❌ "Newsletter: 30k inscritos com 35% de abertura" — REMOVIDO. O print do
+  //    Beehiiv (`public/Cases/defiverso/estudo/metricas-newsletter.png`) mostra
+  //    **26.556 assinantes e 33,01% de abertura**. Os 35% não existem em lugar
+  //    nenhum: os únicos "35%" do vault são META projetada num spec de automação.
+  // ❌ "700+ criativos estáticos e 250+ vídeos testados" — REMOVIDOS. Nenhum
+  //    inventário, planilha ou export de Meta Ads sustenta as contagens, e o
+  //    rascunho de 04/08 do mesmo material dizia "800 estáticos". 800 → 700+ sem
+  //    explicação. ⚠️ Armadilha registrada: um doc do vault alega que "o 700+ foi
+  //    apurado porque está publicado no site" — isso é circular, não é apuração.
+  //
+  // ✅ O QUE FICOU, e por quê:
+  // · Instagram **173 mil**: apuração de 04/08/2026 (`vault/00 - DASHBOARD/
+  //   diario/2026-08-04.md:47`), com print em
+  //   `public/marca-pessoal/prints/ig-lucas-amendola.png`. Conferível ao vivo.
+  //   ⚠️ Divergências mortas, NÃO usar: 180k e 174k.
+  // · YouTube **386 mil**: print em `public/Cases/lucas-amendola/estudo/
+  //   canal-youtube.png` (página do canal logada, "386 mil inscritos, 770 vídeos").
+  //
+  // 🔴 SOBRE `docs/cases-estudo.txt`: é a origem única de quase todo número deste
+  // arquivo, e está DESQUALIFICADO como fonte. É questionário em prosa, sem data e
+  // sem autor — e os dois números dele que dá pra conferir contra print estão os
+  // dois errados (diz IG 180k onde o print mostra 173k; diz YT 382k onde o print
+  // mostra 386k). Uma fonte que erra 2 de 2 no que é verificável não sustenta o
+  // que não é verificável. ⛔ Não use esse arquivo como lastro de nada.
   "investidor-4-20": {
     id: "investidor-4-20",
     nome: "Investidor 4.20",
     tags: ["Cripto", "Educação", "Influencer", "Lançamentos"],
-    descricao: "10x de faturamento em 12 meses, puxado por quatro frentes: estruturação comercial, criação da newsletter do zero (30 mil inscritos), fortalecimento do e-mail marketing e teste e desenvolvimento de novos formatos. Somado a isso: edição de vídeo (Reels e YouTube), copywriter, automações com IA (n8n), nova estratégia de lançamento, criativos para anúncios em vídeo, estáticos e carrosséis, e participação contínua em lançamentos.",
-    descricao_en: "10x revenue in 12 months, driven by four fronts: commercial structuring, building the newsletter from scratch (30k subscribers), strengthening email marketing, and testing and developing new formats. On top of that: video editing (Reels and YouTube), copywriting, AI automations (n8n), a new launch strategy, ad creatives in video, static and carousel formats, and ongoing launch participation.",
-    fraseImpactante: "Faturamento 10x maior em 12 meses.",
-    fraseImpactante_en: "10x revenue in 12 months.",
+    descricao: "Quatro frentes construídas do zero: estruturação comercial, criação da newsletter, fortalecimento do e-mail marketing e teste e desenvolvimento de novos formatos. Somado a isso: edição de vídeo (Reels e YouTube), copywriter, automações com IA (n8n), nova estratégia de lançamento, criativos para anúncios em vídeo, estáticos e carrosséis, e participação contínua em lançamentos.",
+    descricao_en: "Four fronts built from scratch: commercial structuring, building the newsletter, strengthening email marketing, and testing and developing new formats. On top of that: video editing (Reels and YouTube), copywriting, AI automations (n8n), a new launch strategy, ad creatives in video, static and carousel formats, and ongoing launch participation.",
+    fraseImpactante: "De referência técnica a operação de aquisição completa.",
+    fraseImpactante_en: "From technical reference to a full acquisition operation.",
     detalhes: "Contexto\n\nO Investidor 4.20, liderado por Lucas Amendola, já era uma das principais referências em educação cripto no Brasil. A comunidade buscava escalar a produção de vídeos longos e curtos sem perder a profundidade técnica que sempre fez parte da marca.\n\nO Desafio\n\nManter a qualidade analítica enquanto ampliávamos a frequência e a viralidade do conteúdo. Precisávamos transformar análises complexas em formatos envolventes tanto para YouTube quanto para Shorts/Reels, garantindo performance nos algoritmos e retenção da audiência.\n\nNossa Abordagem\n\n**Edição de Vídeos Longos (YouTube):** Refinamos a narrativa visual dos vídeos semanais, com ritmo dinâmico, gráficos e elementos que simplificam conceitos avançados de mercado e DeFi.\n**Pílulas Virais (Shorts/Reels):** Criamos um formato proprietário de cortes com legendas dinâmicas, ganchos fortes e otimização de retenção, garantindo publicação diária e alcance orgânico constante.\n\nLançamentos e Estrutura Comercial\n\n• Desenvolvimento completo de criativos, roteiros e vídeos para tráfego pago.\n• Construção da jornada comercial (funil, narrativa, páginas de captura e follow-up).\n• Implementação de automações oficiais via API do WhatsApp para nutrição e grupos de comunidade.\n\nResultados do Lançamento\n\nA operação integrada de conteúdo, criativos e tecnologia permitiu executar lançamentos em escala, mantendo consistência de mensagem e conversão elevada durante todo o funil.\n\nConclusão\n\nO case reforça a nossa capacidade de transformar conteúdos de nicho em máquinas de crescimento. A estratégia 360º garantiu performance, escalabilidade e fortalecimento da comunidade Investidor 4.20 em todos os canais digitais.",
     detalhes_en: "Context\n\nInvestidor 4.20, led by Lucas Amendola, was already a top crypto education reference in Brazil. The community wanted to scale long-form and short-form production without losing the deep analysis that defines the brand.\n\nThe Challenge\n\nKeep analytical quality while increasing content frequency and virality. We needed to turn complex market insights into engaging formats for both YouTube and Shorts/Reels, securing algorithm performance and audience retention.\n\nOur Approach\n\n**Long-form Editing (YouTube):** We refined weekly videos with dynamic pacing, graphics and elements that simplify advanced market and DeFi concepts.\n**Viral Capsules (Shorts/Reels):** We created a proprietary cut format with dynamic captions, strong hooks and retention optimization, ensuring daily publishing and steady organic reach.\n\nLaunches and Commercial Structure\n\n• Full development of ad creatives, scripts and videos for paid traffic.\n• Funnel architecture: storytelling, capture pages and follow-up flows.\n• Official WhatsApp API automations for nurturing groups and community management.\n\nLaunch Outcomes\n\nThe integrated operation across content, creatives and technology enabled scalable launches with consistent messaging and high conversion throughout the funnel.\n\nConclusion\n\nThis case highlights our ability to turn niche expertise into growth machines. The 360º strategy delivered performance, scalability and a stronger Investidor 4.20 community across every channel.",
     depoimentos: "Nenhum específico, mas posts destacam crescimento.",
@@ -447,8 +519,8 @@ export const casesData: Record<string, CaseData> = {
     externalLink: "https://www.youtube.com/@investidor4.20",
     externalLabel: "Ver no YouTube",
     externalLabel_en: "See on YouTube",
-    metricas: "10x de faturamento em 12 meses\n\nTransformamos o Investidor 4.20 em uma das principais referências do setor cripto brasileiro, com crescimento exponencial em todos os canais e resultados comerciais excepcionais.\n\n• 10x de faturamento em 12 meses, puxado por estruturação comercial, criação da newsletter, fortalecimento do e-mail marketing e teste de novos formatos\n• Instagram: 50k → 173k seguidores (+246%)\n• YouTube: 200k → 382k inscritos (+91%)\n• Newsletter: 30k inscritos com 35% de abertura\n• 700+ criativos estáticos testados e 250+ vídeos testados\n• Estrutura comercial completa desenvolvida do zero\n\nA estratégia integrada de conteúdo, automações e lançamentos resultou em um crescimento extraordinário, estabelecendo o Investidor 4.20 como uma das principais referências no setor cripto brasileiro.",
-    metricas_en: "10x revenue in 12 months\n\nWe transformed Investidor 4.20 into one of the main references in the Brazilian crypto sector, with exponential growth across all channels and exceptional commercial results.\n\n• 10x revenue in 12 months, driven by commercial structuring, newsletter creation, stronger email marketing and new format testing\n• Instagram: 50k → 173k followers (+246%)\n• YouTube: 200k → 382k subscribers (+91%)\n• Newsletter: 30k subscribers with 35% open rate\n• 700+ static creatives tested and 250+ videos tested\n• Complete commercial structure built from scratch\n\nThe integrated strategy of content, automations and launches resulted in extraordinary growth, establishing Investidor 4.20 as one of the main references in the Brazilian crypto sector.",
+    metricas: "173 mil seguidores no Instagram, 386 mil inscritos no YouTube\n\nO Investidor 4.20 é hoje uma das principais referências do setor cripto brasileiro, e os dois números acima você confere abrindo os perfis agora.\n\n• Instagram: 173 mil seguidores (apurado no perfil @lucas.amendolaa em 08/2026)\n• YouTube: 386 mil inscritos e 770 vídeos publicados (print da página do canal)\n• Newsletter criada do zero, hoje um canal próprio de aquisição\n• Estrutura comercial completa desenvolvida do zero\n• Criativos de anúncio testados em volume, em vídeo, estático e carrossel\n• Automações com IA (n8n) e jornada de WhatsApp via API oficial\n\nA estratégia integrada de conteúdo, automações e lançamentos consolidou o Investidor 4.20 como referência, com uma operação de aquisição que não depende só do alcance orgânico.",
+    metricas_en: "173k Instagram followers, 386k YouTube subscribers\n\nInvestidor 4.20 is today one of the main references in the Brazilian crypto sector, and you can verify both numbers above by opening the profiles right now.\n\n• Instagram: 173k followers (measured on @lucas.amendolaa in 08/2026)\n• YouTube: 386k subscribers and 770 published videos (channel page screenshot)\n• Newsletter built from scratch, now an acquisition channel of its own\n• Complete commercial structure built from scratch\n• Ad creatives tested at volume, in video, static and carousel formats\n• AI automations (n8n) and a WhatsApp journey via the official API\n\nThe integrated strategy of content, automations and launches consolidated Investidor 4.20 as a reference, with an acquisition operation that no longer depends on organic reach alone.",
     servicos: ["Edição de vídeos", "Desenvolvimento comercial", "Newsletter", "Copywriter", "Automações IA", "Estratégias de lançamento", "Criativos para anúncios", "Páginas de captura", "Design"],
     servicos_en: ["Video editing", "Commercial development", "Newsletter", "Copywriting", "AI automations", "Launch strategies", "Ad creatives", "Capture pages", "Design"],
     media: [
@@ -624,14 +696,39 @@ export const casesData: Record<string, CaseData> = {
       },
     ]
   },
+  // ─── FONTE DOS NÚMEROS · DEFIVERSO ───
+  // ✅ Este é o case mais bem lastreado do site. Os prints primários estão em
+  //    `public/Cases/defiverso/estudo/` — não apague essa pasta: ela é o único
+  //    lastro documental de 4 métricas e não existe cópia no vault.
+  //    · `metricas-instagram.png` — Instagram Insights, janela 02/ago–30/out:
+  //      total 13.915.069, "de orgânico: 12.000.732 (↑28,4%)". ✅ o 12M confere.
+  //    · `metricas-newsletter.png` — Beehiiv, filtro "All time" (nov/2025):
+  //      Active subscribers 26.556 · Open rate 33,01% · CTR 2,26%.
+  //    · `metricas-7-dias-defi-primeiro-email.png` — 30.229 entradas, abertura
+  //      54,76%. · `...-ultimo-email.png` — 29.789, CTR 24,55%.
+  //
+  // ⚠️ 19/08/2026 — três correções:
+  // · **26.554 → 26.556.** O print diz 26.556. O 26.554 era erro de transcrição
+  //   propagado desde 2025 (pendência aberta desde 08/08, agora fechada).
+  //   ⚠️ O mesmo erro sobrevive em `vault/01 - KALEIDOS/011 - CLIENTES/DEFIVERSO/
+  //   07-ESTRATEGIAS/Benchmark-e-Diretrizes-2026.md:31` — corrigir lá também.
+  // · **"29.000+ inscrições" saiu da headline.** Não aparece em print nenhum: o
+  //   print da automação mostra 30.229. A ressalva de 08/08 dizia "mantido porque
+  //   subestima a fonte, mas precisa de reapuração antes de voltar a ser
+  //   headline" — e ele voltou a ser headline. Trocado pelo número do print.
+  // · **"8,6 mil novos seguidores em 3 meses" REMOVIDO.** A única origem é
+  //   `DEFIVERSO/07-ESTRATEGIAS/Benchmark-e-Diretrizes-2026.md:29`, que traz a
+  //   palavra **"Estimado"** no próprio documento. O print que ancora o 12M não
+  //   cobre contagem de seguidores.
+  // ⚠️ Os números são de nov/2025. Reapurar antes de usar como headline nova.
   "defiverso": {
     id: "defiverso",
     nome: "Defiverso",
     tags: ["Cripto", "Educação", "Social Media", "Marketing de Conteúdo", "Geração de Leads", "Automação"],
     descricao: "Acelerando o Universo Cripto com Conteúdo Estratégico e Máquina de Leads. Desde junho de 2025, gestão completa da estratégia de marketing de conteúdo e aquisição de leads do Defiverso.",
     descricao_en: "Accelerating the Crypto Universe with Strategic Content and Lead Generation Machine. Since June 2025, complete management of Defiverso's content marketing strategy and lead acquisition.",
-    fraseImpactante: "29.000+ inscrições no Minicurso, 26.554 assinantes na Newsletter e 12 Milhões de visualizações orgânicas em 90 dias.",
-    fraseImpactante_en: "29,000+ course enrollments, 26,554 newsletter subscribers and 12 Million organic views in 90 days.",
+    fraseImpactante: "26.556 assinantes na Newsletter a 33,01% de abertura e 12 milhões de visualizações orgânicas em 90 dias.",
+    fraseImpactante_en: "26,556 newsletter subscribers at a 33.01% open rate and 12 million organic views in 90 days.",
     detalhes: "Desde junho de 2025, a Kaleidos assumiu a gestão completa da estratégia de marketing de conteúdo e aquisição de leads do Defiverso. O objetivo central foi estabelecer a marca como a **maior plataforma educacional cripto do Brasil**, transformando informações complexas de mercado em conteúdo acessível, de alto valor e que gerasse resultados concretos.\n\nNossa atuação se concentrou em três frentes principais:\n\n**1. Social Media (Instagram & Twitter):** Criação de conteúdo educativo de ponta, desenvolvimento de identidade visual e gestão completa do Instagram, com foco em crescimento orgânico. Implementação de um fluxo de automação via IA para o Twitter, garantindo presença constante e direcionamento de tráfego.\n\n**2. Email Marketing & Geração de Leads:** Criação da newsletter do zero e desenvolvimento de um **Minicurso de 7 Dias** como *lead magnet* de alta conversão.\n\n**3. Suporte a Lançamentos:** Colaboração na criação de **criativos estáticos e carrosséis** para campanhas de tráfego pago, otimizando a performance das mídias.",
     detalhes_en: "Since June 2025, Kaleidos has taken complete management of Defiverso's content marketing strategy and lead acquisition. The central goal was to establish the brand as Brazil's largest crypto education platform, transforming complex market information into accessible, high-value content that generates concrete results.\n\nOur work focused on three main fronts:\n\n**1. Social Media (Instagram & Twitter):** Creation of cutting-edge educational content, visual identity development and complete Instagram management, focusing on organic growth. Implementation of an AI-powered automation flow for Twitter, ensuring constant presence and traffic direction.\n\n**2. Email Marketing & Lead Generation:** Newsletter creation from scratch and development of a **7-Day Mini Course** as a high-converting lead magnet.\n\n**3. Launch Support:** Collaboration in creating **static creatives and carousels** for paid traffic campaigns, optimizing media performance.",
     depoimentos: "A parceria Kaleidos e Defiverso resultou na criação de um ecossistema de marketing digital completo e de alta performance.",
@@ -639,8 +736,8 @@ export const casesData: Record<string, CaseData> = {
     externalLink: "https://defiverso.com",
     externalLabel: "Ver no site",
     externalLabel_en: "Visit website",
-    metricas: "**Máquina de Aquisição de Leads - Email Marketing:**\n\n• **Mais de 29.000 inscrições** no Minicurso \"7 Dias DeFi\"\n• **26.554 assinantes ativos** da Newsletter\n• **Taxa de Abertura Média de 33.01%** (muito acima da média do mercado de 15-25%)\n• **Taxa de Abertura do Minicurso no pico: 54.76%**\n• **Taxa de Cliques (CTR) do Minicurso no pico: 24.55%**\n\n**Construção de Audiência - Instagram (90 dias):**\n\n• **12 Milhões de Visualizações** de Alcance Orgânico\n• **Crescimento de 28,4%** no Alcance Orgânico\n• **302.9 Mil contas** de Alcance Total\n• **136.9 Mil interações** com conteúdo (curtidas, comentários, salvos e compartilhamentos)\n• **14.4 Mil cliques no link** (tráfego qualificado)\n• **8.6 Mil novos seguidores** em apenas 3 meses\n\n**Otimização de Processos:**\n\n• Automação no Twitter via IA para presença constante\n• Criação de criativos estáticos e carrosséis para tráfego pago\n\nEstes resultados concretos demonstram a capacidade da Kaleidos de entregar não apenas conteúdo de qualidade, mas também **crescimento sustentável e conversão em escala** para o Defiverso.",
-    metricas_en: "**Lead Generation Machine - Email Marketing:**\n\n• **Over 29,000 enrollments** in the \"7 Days DeFi\" Mini Course\n• **26,554 active subscribers** to the Newsletter\n• **Average Open Rate of 33.01%** (well above market average of 15-25%)\n• **Mini Course Peak Open Rate: 54.76%**\n• **Mini Course Peak Click-Through Rate (CTR): 24.55%**\n\n**Audience Building - Instagram (90 days):**\n\n• **12 Million Organic Reach** views\n• **28.4% growth** in Organic Reach\n• **302.9 Thousand accounts** of Total Reach\n• **136.9 Thousand interactions** with content (likes, comments, saves and shares)\n• **14.4 Thousand link clicks** (qualified traffic)\n• **8.6 Thousand new followers** in just 3 months\n\n**Process Optimization:**\n\n• Twitter automation via AI for constant presence\n• Creation of static creatives and carousels for paid traffic\n\nThese concrete results demonstrate Kaleidos' ability to deliver not only quality content, but also **sustainable growth and scale conversion** for Defiverso.",
+    metricas: "**Máquina de Aquisição de Leads - Email Marketing:**\n\n• **26.556 assinantes ativos** da Newsletter\n• **Taxa de Abertura Média de 33,01%** (bem acima da média de 15-25% do mercado)\n• Minicurso \"7 Dias DeFi\": **30.229 entradas** no primeiro e-mail, com **54,76% de abertura**\n• **24,55% de cliques** no e-mail final do minicurso\n\n**Construção de Audiência - Instagram (90 dias):**\n\n• **12 Milhões de Visualizações** de Alcance Orgânico\n• **Crescimento de 28,4%** no Alcance Orgânico\n• **302,9 Mil contas** de Alcance Total\n• **136,9 Mil interações** com conteúdo (curtidas, comentários, salvos e compartilhamentos)\n• **14,4 Mil cliques no link** (tráfego qualificado)\n\n**Otimização de Processos:**\n\n• Automação no Twitter via IA para presença constante\n• Criação de criativos estáticos e carrosséis para tráfego pago\n\nTodos os números acima saem de print de plataforma (Instagram Insights e painel Beehiiv), apurados em nov/2025.",
+    metricas_en: "**Lead Generation Machine - Email Marketing:**\n\n• **26,556 active subscribers** to the Newsletter\n• **Average Open Rate of 33.01%** (well above the 15-25% market average)\n• \"7 Days DeFi\" mini course: **30,229 entries** on the first email, at **54.76% open rate**\n• **24.55% click-through rate** on the final mini course email\n\n**Audience Building - Instagram (90 days):**\n\n• **12 Million Organic Reach** views\n• **28.4% growth** in Organic Reach\n• **302.9 Thousand accounts** of Total Reach\n• **136.9 Thousand interactions** with content (likes, comments, saves and shares)\n• **14.4 Thousand link clicks** (qualified traffic)\n\n**Process Optimization:**\n\n• Twitter automation via AI for constant presence\n• Static creatives and carousels for paid traffic\n\nEvery number above comes from a platform screenshot (Instagram Insights and the Beehiiv dashboard), measured in Nov/2025.",
     servicos: ["Design posts", "Instagram Defiverso", "Newsletter Defiverso", "Curso 7 dias DeFi", "Twitter", "Resultados gerais"],
     servicos_en: ["Design posts", "Instagram Defiverso", "Newsletter Defiverso", "7 Days DeFi Course", "Twitter", "General results"],
     media: [

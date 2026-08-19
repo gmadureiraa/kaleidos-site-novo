@@ -12,7 +12,7 @@ import { useAnalytics } from "@/components/analytics";
 import { track, identifyLead } from "@/lib/analytics";
 import { getLeadMetadata } from "@/lib/lead-meta";
 import { getTrackingIds } from "@/lib/tracking-ids";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 
 export default function ContatoPage() {
   const { t, locale } = useI18n();
@@ -177,8 +177,8 @@ export default function ContatoPage() {
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
               {locale === 'en'
-                ? `Kaleidos is a crypto-native agency, in the market since 2020. Content, growth and AI for crypto, web3 and fintech projects: ${KALEIDOS_METRICS.projetosAtendidos_en} brands served, ${KALEIDOS_METRICS.viewsReels_en} views generated and ${KALEIDOS_METRICS.faturamentoClientes_en} in client revenue.`
-                : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2020. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech: ${KALEIDOS_METRICS.projetosAtendidos} marcas atendidas, ${KALEIDOS_METRICS.viewsReels} views gerados e ${KALEIDOS_METRICS.faturamentoClientes} em faturamento pros clientes.`}
+                ? `Kaleidos is a crypto-native agency, in the market since 2020. Content, growth and AI for crypto, web3 and fintech projects — the team behind Defiverso, Investidor 4.20, Laylä Föz and DSEC.`
+                : `A Kaleidos é uma agência cripto-nativa, no mercado desde 2020. Conteúdo, growth e IA pra projetos de cripto, web3 e fintech — o time por trás de Defiverso, Investidor 4.20, Laylä Föz e DSEC.`}
             </p>
 
             {/* CTA primário — agendamento via /agendar (embed com tracking de conversão) */}
@@ -567,27 +567,34 @@ export default function ContatoPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <h2 className="text-3xl font-display font-bold mb-8">
-                {locale==='en' ? 'Numbers that speak for themselves' : 'Números que falam por si'}
+              {/* ⚠️ 19/08/2026 — os 4 números institucionais que ficavam aqui saíram
+                  ("30+ projetos", "500+ vídeos", "125M+ views", "98% satisfação").
+                  Nenhum tinha fonte. Ver `src/lib/metrics.ts`. Entrou prova de
+                  cliente com print e janela + a nota de procedência. */}
+              <h2 className="text-3xl font-display font-bold mb-3">
+                {locale==='en' ? 'Numbers you can verify' : 'Números que dá pra conferir'}
               </h2>
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                <div>
-                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.projetosAtendidos}</div>
-                  <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Projects' : 'Projetos atendidos'}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.videosEditados}</div>
-                  <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Edited videos' : 'Vídeos editados'}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.viewsReels}</div>
-                  <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Reels views' : 'Views nos reels'}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#7CF067]">{KALEIDOS_METRICS.satisfacaoCliente}</div>
-                  <div className="text-gray-400 text-sm mt-1">{locale==='en' ? 'Client satisfaction' : 'Satisfação dos clientes'}</div>
-                </div>
+              <p className="text-gray-400 text-sm mb-8">
+                {locale==='en'
+                  ? 'Client results, not agency averages. Every one of them has a screenshot or a public profile behind it.'
+                  : 'Resultado de cliente, não média de agência. Cada um tem print ou perfil público por trás.'}
+              </p>
+              <div className="grid grid-cols-2 gap-6 mb-6">
+                {[
+                  KALEIDOS_PROOF.defiversoViews,
+                  KALEIDOS_PROOF.defiversoNewsletter,
+                  KALEIDOS_PROOF.lucasInstagram,
+                  KALEIDOS_PROOF.laylaInstagram,
+                ].map((p) => (
+                  <div key={p.client + p.value}>
+                    <div className="text-3xl font-bold text-[#7CF067]">{locale==='en' ? p.value_en : p.value}</div>
+                    <div className="text-gray-400 text-sm mt-1">{locale==='en' ? p.label_en : p.label}</div>
+                  </div>
+                ))}
               </div>
+              <p className="text-gray-500 text-xs leading-relaxed mb-8">
+                {locale==='en' ? PROOF_NOTE_EN : PROOF_NOTE}
+              </p>
 
               {/* Mini depoimento */}
               <div className="bg-neutral-900 rounded-xl p-6 border border-neutral-800">
@@ -596,12 +603,21 @@ export default function ContatoPage() {
                     <Star key={i} className="w-4 h-4 fill-[#7CF067] text-[#7CF067]" />
                   ))}
                 </div>
+                {/* ⚠️ 19/08/2026 — o quote anterior atribuía a "Gi, Bit das Minas" a
+                    frase "Faturamento cresceu 200% com as estratégias deles". O
+                    único registro do +200% é `docs/cases-estudo.txt:26`, um
+                    questionário de case em prosa, sem data e sem autor, cuja
+                    redação é "observamos um aumento de mais de 200%" — ou seja,
+                    NÃO é fala da cliente. Era afirmação sobre o faturamento de
+                    terceiro colocada entre aspas na boca dela. Trocado pelo
+                    depoimento do Lucas Amendola, que é literal e está em
+                    `src/lib/testimonials-data.ts`. ⛔ Não repor. */}
                 <p className="text-gray-300 text-sm leading-relaxed italic">
                   {locale==='en'
-                    ? '"Kaleidos understands the crypto market like no one else. Revenue grew 200% with their strategies."'
-                    : '"A Kaleidos entende o mercado cripto como ninguém. Faturamento cresceu 200% com as estratégias deles."'}
+                    ? '"Kaleidos helped us build new acquisition channels and structure the sales side. Without them, we wouldn\'t have had the reach we did."'
+                    : '"A Kaleidos nos ajudou a criar novos meios de aquisição e a estruturar o comercial. Sem eles, não teríamos tido o alcance que tivemos."'}
                 </p>
-                <p className="text-[#7CF067] text-xs font-medium mt-3">Gi, Bit das Minas</p>
+                <p className="text-[#7CF067] text-xs font-medium mt-3">Lucas Amendola, Investidor 4.20</p>
               </div>
             </motion.div>
 

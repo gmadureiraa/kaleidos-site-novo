@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useI18n } from "@/i18n/useI18n";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF } from "@/lib/metrics";
 import { TESTIMONIALS } from "@/lib/testimonials-data";
 import Image from "next/image";
 import { FooterDemo } from "@/components/ui/footer-demo";
@@ -212,14 +212,19 @@ export default function KaleidosGrowthPage() {
                   </div>
                 </div>
 
+                {/* ⚠️ 19/08/2026 — saíram "50+ lançamentos" e "125M+ views gerados"
+                    (este último estava HARDCODED, fora do metrics.ts). Nenhum tinha
+                    fonte: não existe lista de lançamentos no vault, e a série de
+                    views foi 20M → 30M → 125M por decisão editorial, sem apuração.
+                    Ver `src/lib/metrics.ts`. */}
                 <div className="grid grid-cols-3 gap-6 pt-2">
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_METRICS.lancamentos_en : KALEIDOS_METRICS.lancamentos}</div>
-                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Launches' : 'Lançamentos'}</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_PROOF.defiversoViews.value_en : KALEIDOS_PROOF.defiversoViews.value}</div>
+                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Organic views · Defiverso' : 'Views orgânicos · Defiverso'}</div>
                   </div>
                   <div>
-                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>125M+</div>
-                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Views generated' : 'Views gerados'}</div>
+                    <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? KALEIDOS_PROOF.defiversoNewsletter.value_en : KALEIDOS_PROOF.defiversoNewsletter.value}</div>
+                    <div className="text-sm text-[#5c544a]">{locale==='en' ? 'Newsletter open rate · Defiverso' : 'Abertura da newsletter · Defiverso'}</div>
                   </div>
                   <div>
                     <div className="font-display text-3xl font-bold mb-1" style={{ color: GREEN_DEEP }}>{locale==='en' ? 'Since 2020' : 'Desde 2020'}</div>
@@ -539,8 +544,8 @@ export default function KaleidosGrowthPage() {
             </h2>
             <p className="text-[#5c544a] text-lg max-w-2xl mx-auto leading-relaxed">
               {locale === 'en'
-                ? `${KALEIDOS_METRICS.lancamentos_en} launches executed and ${KALEIDOS_METRICS.faturamentoClientes_en} in revenue generated for clients. Two of them:`
-                : `${KALEIDOS_METRICS.lancamentos} lançamentos executados e ${KALEIDOS_METRICS.faturamentoClientes} de faturamento gerado pra clientes. Dois deles:`}
+                ? 'Two clients who ran a full launch with us, in their own words.'
+                : 'Dois clientes que rodaram lançamento inteiro com a gente, nas palavras deles.'}
             </p>
           </motion.div>
 

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { CtaAjuda } from "@/components/ui/cta-ajuda";
-import { KALEIDOS_METRICS } from "@/lib/metrics";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 import { useAnalytics } from "@/components/analytics";
 import { useI18n } from "@/i18n/useI18n";
 
@@ -333,11 +333,16 @@ export default function ServicosPage() {
         <div className="relative mx-auto max-w-6xl">
           <Reveal>
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border-[1.5px] border-white/20 bg-white/15 md:grid-cols-4">
+              {/* ⚠️ 19/08/2026 — saíram "500+ vídeos editados", "600+ peças de design",
+                  "50+ lançamentos" e "98% satisfação". Nenhum tinha fonte primária:
+                  não existe tracker de produção, lista de lançamentos nem pesquisa
+                  de satisfação em lugar nenhum do GOS. Ver `src/lib/metrics.ts`.
+                  Entrou prova de cliente, com print e janela. */}
               {[
-                { v: KALEIDOS_METRICS.videosEditados, l: isEn ? "Videos edited" : "Vídeos editados" },
-                { v: KALEIDOS_METRICS.designsCriados, l: isEn ? "Design assets" : "Peças de design" },
-                { v: KALEIDOS_METRICS.lancamentos, l: isEn ? "Launches" : "Lançamentos" },
-                { v: KALEIDOS_METRICS.satisfacaoCliente, l: isEn ? "Satisfaction" : "Satisfação" },
+                { v: isEn ? KALEIDOS_PROOF.defiversoViews.value_en : KALEIDOS_PROOF.defiversoViews.value, l: isEn ? "Organic views · Defiverso" : "Views orgânicos · Defiverso" },
+                { v: isEn ? KALEIDOS_PROOF.defiversoNewsletter.value_en : KALEIDOS_PROOF.defiversoNewsletter.value, l: isEn ? "Newsletter open rate · Defiverso" : "Abertura da newsletter · Defiverso" },
+                { v: isEn ? KALEIDOS_PROOF.lucasInstagram.value_en : KALEIDOS_PROOF.lucasInstagram.value, l: isEn ? "Followers · Investidor 4.20" : "Seguidores · Investidor 4.20" },
+                { v: isEn ? KALEIDOS_PROOF.laylaInstagram.value_en : KALEIDOS_PROOF.laylaInstagram.value, l: isEn ? "Followers · Laylä Föz" : "Seguidores · Laylä Föz" },
               ].map((m) => (
                 <div key={m.l} className="bg-[#14110D] p-8 text-center">
                   <div className="font-display text-4xl font-bold sm:text-5xl" style={{ color: GREEN }}>
@@ -347,6 +352,9 @@ export default function ServicosPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-4 text-xs leading-relaxed text-[#8a8078]">
+              {isEn ? PROOF_NOTE_EN : PROOF_NOTE}
+            </p>
           </Reveal>
 
           {/* CTA de conversão — /agendar primário (embed com tracking de conversão) */}

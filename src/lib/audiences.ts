@@ -59,7 +59,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pro founder que está construindo em cripto",
     headlineHtml: `O time de marketing que seu projeto cripto ainda não tem, do conteúdo ao <span ${HL}>lançamento</span>.`,
     subHtml:
-      '<strong style="color:#14110D;">125M+ de views</strong> e <strong style="color:#14110D;">50+ lançamentos</strong>: a Kaleidos vira o braço de marca, conteúdo e go-to-market do seu projeto, pra ele virar referência de mercado, não um ticker que aparece e some.',
+      '<strong style="color:#14110D;">Cripto-nativa desde 2020</strong>: a Kaleidos vira o braço de marca, conteúdo e go-to-market do seu projeto, pra ele virar referência de mercado, não um ticker que aparece e some.',
     metaTitle: "Kaleidos para founders — marketing e lançamento de projeto cripto",
     metaDesc:
       "A Kaleidos é o time de marketing, conteúdo e go-to-market do seu projeto cripto. Do posicionamento ao lançamento, com autoridade de verdade.",
@@ -126,7 +126,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pro creator que vive de audiência",
     headlineHtml: `Sua audiência já existe. Falta a máquina de conteúdo que vira <span ${HL}>autoridade</span> (e receita).`,
     subHtml:
-      'A Kaleidos estrutura conteúdo, narrativa e distribuição pro creator cripto escalar sem virar refém do feed. <strong style="color:#14110D;">125M+ de views</strong> construídas com quem vive de atenção.',
+      'A Kaleidos estrutura conteúdo, narrativa e distribuição pro creator cripto escalar sem virar refém do feed. É o time por trás do <strong style="color:#14110D;">Investidor 4.20</strong> e da <strong style="color:#14110D;">Laylä Föz</strong>, dois perfis que vivem de atenção.',
     metaTitle: "Kaleidos para creators — conteúdo e monetização de audiência cripto",
     metaDesc:
       "Transforme sua audiência em autoridade e receita. A Kaleidos estrutura a máquina de conteúdo, narrativa e distribuição do creator cripto.",
@@ -165,15 +165,24 @@ export const AUDIENCES: Audience[] = [
     proof: {
       caseId: "investidor-4-20",
       client: "Investidor 4.20",
-      // Instagram 173 mil: apurado em 04/08/2026 no perfil @lucas.amendolaa
-      // (`vault/00 - DASHBOARD/diario/2026-08-04.md:47`). Corrigido de 180 mil
-      // em 08/08/2026. Fonte completa no comentário do case em case-data.ts.
-      // 🔴 "5x de faturamento" diverge do "10x" que case-data.ts publica para o
-      // MESMO case. Nenhum dos dois tem fonte primária no vault. NÃO alterado
-      // aqui por falta de apuração — decisão de qual número vale é do Gabriel.
-      metric: "5x de faturamento",
+      // ⚠️ 19/08/2026 — O MULTIPLICADOR DE FATURAMENTO SAIU. Havia duas versões
+      // publicadas do MESMO case ("5x" aqui, "10x" na versão EN e em case-data.ts),
+      // e a divergência interna era a própria prova de que não havia fonte: um
+      // número apurado não tem duas versões. A varredura do vault não achou NENHUM
+      // documento com faturamento do Lucas — a pasta `014 - FINANCEIRO/Faturamento/`
+      // tem só um template vazio. O número já tinha sido trocado uma vez (5x → 10x
+      // em 03/08) por decisão verbal, sem apuração. É afirmação sobre a receita de
+      // um terceiro: não é apurável por scraper, só pelo próprio Lucas.
+      // ⛔ Só volta com autorização escrita do cliente + o número que ele confirmar.
+      // ⚠️ Também saíram a baseline "50 mil" (só existe no questionário
+      //    `docs/cases-estudo.txt:9`, sem data/autor) e o "30 mil inscritos" da
+      //    newsletter — o print do Beehiiv mostra 26.556, não 30 mil.
+      // ✅ FICOU o 173 mil: apurado em 04/08/2026 no perfil @lucas.amendolaa
+      //    (`vault/00 - DASHBOARD/diario/2026-08-04.md:47`), com print em
+      //    `public/marca-pessoal/prints/ig-lucas-amendola.png`. Conferível ao vivo.
+      metric: "173 mil seguidores no Instagram",
       blurb:
-        "A Kaleidos estruturou conteúdo, newsletter e operação comercial do Investidor 4.20 do zero: faturamento multiplicado por 5, Instagram de 50 mil para 173 mil e newsletter de 0 a 30 mil inscritos.",
+        "A Kaleidos estruturou conteúdo, newsletter e operação comercial do Investidor 4.20 do zero. Hoje o perfil está em 173 mil seguidores, e a newsletter, que começou em zero, é um canal próprio de aquisição.",
     },
     ctaLine:
       "Sua audiência já existe. A Kaleidos constrói a máquina que transforma ela em autoridade e receita. Vamos conversar.",
@@ -199,7 +208,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pra fintech que precisa de confiança",
     headlineHtml: `Marketing que constrói <span ${HL}>confiança</span>, o ativo mais caro de uma fintech.`,
     subHtml:
-      'Conteúdo educativo e estratégia que fazem sua fintech ganhar autoridade num mercado regulado e cético. A mesma máquina que gerou <strong style="color:#14110D;">125M+ de views</strong> e fez clientes faturarem <strong style="color:#14110D;">+R$46mi</strong>.',
+      'Conteúdo educativo e estratégia que fazem sua fintech ganhar autoridade num mercado regulado e cético. A mesma máquina que gerou <strong style="color:#14110D;">12 milhões de views orgânicos em 90 dias</strong> pro Defiverso.',
     metaTitle: "Kaleidos para fintechs — marketing estratégico e conteúdo de confiança",
     metaDesc:
       "Marketing que constrói confiança pra fintech: conteúdo educativo, estratégia e autoridade num mercado regulado e cético.",
@@ -265,7 +274,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pra SaaS que quer crescer orgânico",
     headlineHtml: `Conteúdo que vira <span ${HL}>aquisição</span>: o motor de crescimento orgânico do seu SaaS.`,
     subHtml:
-      'SEO, conteúdo de autoridade e distribuição que trazem usuário qualificado sem depender só de paid. A Kaleidos aplica no seu SaaS o que fez marcas virarem referência, com <strong style="color:#14110D;">125M+ de views</strong>.',
+      'SEO, conteúdo de autoridade e distribuição que trazem usuário qualificado sem depender só de paid. A Kaleidos aplica no seu SaaS o mesmo motor que construiu uma newsletter de <strong style="color:#14110D;">26.556 assinantes a 33% de abertura</strong>.',
     metaTitle: "Kaleidos para SaaS — content-led growth e aquisição orgânica",
     metaDesc:
       "Content-led growth pro seu SaaS: SEO, conteúdo de autoridade e distribuição que trazem usuário qualificado sem depender só de paid.",
@@ -370,9 +379,21 @@ export const AUDIENCES: Audience[] = [
     proof: {
       caseId: "bit-das-minas",
       client: "Bit das Minas",
-      metric: "200% de faturamento nos lançamentos",
+      // ⚠️ 19/08/2026 — "200% de faturamento" e "50% de redução no CPL" SAÍRAM.
+      // O "−50% de CPL" já tinha sido removido do deck /cripto em 08/08: no vault
+      // ele está SEMPRE atribuído ao Defiverso, nunca à Bit das Minas — forte
+      // indício de métrica que migrou de um cliente pro outro. O "+200%" tinha
+      // como única origem `docs/cases-estudo.txt:21`, questionário em prosa, sem
+      // data e sem autor, e a redação é "observamos um aumento de mais de 200%".
+      // Esse mesmo arquivo erra os dois números dele que dá pra conferir contra
+      // print (diz IG 180k onde o print mostra 173k; diz YouTube 382k onde o print
+      // mostra 386k), então não sustenta o que não dá pra conferir.
+      // Agravante: a Bit das Minas não tem pasta em `011 - CLIENTES/` nem está na
+      // carteira ativa — é case histórico, sem ninguém pra confirmar.
+      // ⛔ Só volta com apuração da conta da própria Bit das Minas.
+      metric: "4+ lançamentos seguidos",
       blurb:
-        "A Kaleidos assumiu conteúdo, roteiro e lançamentos da Bit das Minas: 200% de aumento no faturamento dos lançamentos e 50% de redução no custo por lead.",
+        "A Kaleidos assumiu conteúdo, roteiro, criativo e operação de lançamento da Bit das Minas, a maior comunidade de mulheres investidoras em cripto do Brasil, por mais de quatro ciclos seguidos.",
     },
     ctaLine:
       "A Kaleidos leva a criatividade e o rigor do mercado cripto pra qualquer empresa. Vamos fazer a sua sair do ruído.",
@@ -398,7 +419,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pra marca que é nativa de cripto",
     headlineHtml: `Marketing cripto de verdade, do conteúdo ao lançamento, feito por quem é <span ${HL}>nativo</span> do mercado.`,
     subHtml:
-      'A Kaleidos é o time de marca, conteúdo e go-to-market de projetos cripto desde 2020. <strong style="color:#14110D;">125M+ de views</strong> e <strong style="color:#14110D;">+R$46mi</strong> gerados pra clientes como Crypto.com, Mercado Bitcoin e Ledger.',
+      'A Kaleidos é o time de marca, conteúdo e go-to-market de projetos cripto <strong style="color:#14110D;">desde 2020</strong>, com passagem por Crypto.com, Mercado Bitcoin e Ledger.',
     metaTitle: "Kaleidos para cripto — agência de marketing cripto e web3 no Brasil",
     metaDesc:
       "Agência de marketing nativa de cripto: conteúdo, growth e lançamento pra projetos web3. Cripto-nativa desde 2020, com resultado de verdade.",
@@ -598,7 +619,7 @@ export const AUDIENCES: Audience[] = [
     badge: "Pra quem vai lançar um token",
     headlineHtml: `Um <span ${HL}>lançamento</span> de token que constrói base de longo prazo, não um pico de preço que some.`,
     subHtml:
-      'Go-to-market completo de TGE: narrativa, comunidade, criativos e funil. A Kaleidos já executou <strong style="color:#14110D;">50+ lançamentos</strong>, com casos de <strong style="color:#14110D;">200% de aumento no faturamento</strong> de lançamento.',
+      'Go-to-market completo de TGE: narrativa, comunidade, criativos e funil. A Kaleidos opera <strong style="color:#14110D;">ciclo de lançamento inteiro</strong>, da narrativa ao criativo testado em volume, desde 2020.',
     metaTitle: "Kaleidos para lançamento de token — go-to-market e marketing de TGE",
     metaDesc:
       "Marketing de lançamento de token (TGE): narrativa, comunidade, criativos e funil. Um go-to-market que constrói base de longo prazo, não só pico de preço.",
@@ -637,9 +658,21 @@ export const AUDIENCES: Audience[] = [
     proof: {
       caseId: "bit-das-minas",
       client: "Bit das Minas",
-      metric: "200% de faturamento nos lançamentos",
+      // ⚠️ 19/08/2026 — "200% de faturamento" e "50% de redução no CPL" SAÍRAM.
+      // O "−50% de CPL" já tinha sido removido do deck /cripto em 08/08: no vault
+      // ele está SEMPRE atribuído ao Defiverso, nunca à Bit das Minas — forte
+      // indício de métrica que migrou de um cliente pro outro. O "+200%" tinha
+      // como única origem `docs/cases-estudo.txt:21`, questionário em prosa, sem
+      // data e sem autor, e a redação é "observamos um aumento de mais de 200%".
+      // Esse mesmo arquivo erra os dois números dele que dá pra conferir contra
+      // print (diz IG 180k onde o print mostra 173k; diz YouTube 382k onde o print
+      // mostra 386k), então não sustenta o que não dá pra conferir.
+      // Agravante: a Bit das Minas não tem pasta em `011 - CLIENTES/` nem está na
+      // carteira ativa — é case histórico, sem ninguém pra confirmar.
+      // ⛔ Só volta com apuração da conta da própria Bit das Minas.
+      metric: "4+ lançamentos seguidos",
       blurb:
-        "A Kaleidos assumiu conteúdo, roteiro e lançamentos da Bit das Minas: 200% de aumento no faturamento dos lançamentos e 50% de redução no custo por lead.",
+        "A Kaleidos assumiu conteúdo, roteiro, criativo e operação de lançamento da Bit das Minas, a maior comunidade de mulheres investidoras em cripto do Brasil, por mais de quatro ciclos seguidos.",
     },
     ctaLine:
       "O melhor momento pra estruturar um lançamento é antes do TGE. A Kaleidos desenha o seu go-to-market. Vamos conversar.",
@@ -666,7 +699,10 @@ export function getAudience(slug: string): Audience | undefined {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // EN: variantes em inglês por slug (?lang=en). Mesma estrutura, mesmas
-// métricas canônicas (125M+ / 30+ / R$46mi e métricas reais dos cases).
+// ⚠️ 19/08/2026: as métricas institucionais (125M+ / 30+ / R$46mi / 50+) saíram
+// de TODOS os blocos abaixo por não terem fonte. Ver `src/lib/metrics.ts`.
+// O que ficou é nome de cliente, descrição do trabalho e os números do Defiverso,
+// que têm print primário. ⛔ Não repor número sem fonte + data.
 // Voz institucional, sem hype vazio, sem travessão. Nenhum número novo.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -677,7 +713,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For founders building in crypto",
     headlineHtml: `The marketing team your crypto project still does not have, from content to <span ${HL}>launch</span>.`,
     subHtml:
-      '<strong style="color:#14110D;">125M+ views</strong> and <strong style="color:#14110D;">50+ launches</strong>: Kaleidos becomes the brand, content and go-to-market arm of your project, so it becomes a market reference, not a ticker that shows up and disappears.',
+      '<strong style="color:#14110D;">Crypto-native since 2020</strong>: Kaleidos becomes the brand, content and go-to-market arm of your project, so it becomes a market reference, not a ticker that shows up and disappears.',
     pains: [
       {
         title: "Launching without becoming exit liquidity",
@@ -738,7 +774,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For creators who live off their audience",
     headlineHtml: `Your audience already exists. What is missing is the content machine that turns it into <span ${HL}>authority</span> (and revenue).`,
     subHtml:
-      'Kaleidos structures content, narrative and distribution so the crypto creator can scale without being hostage to the feed. <strong style="color:#14110D;">125M+ views</strong> built with people who live off attention.',
+      'Kaleidos structures content, narrative and distribution so the crypto creator can scale without being hostage to the feed. We are the team behind <strong style="color:#14110D;">Investidor 4.20</strong> and <strong style="color:#14110D;">Laylä Föz</strong>, two profiles that live off attention.',
     pains: [
       {
         title: "Hostage to the feed",
@@ -774,16 +810,24 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     proof: {
       caseId: "investidor-4-20",
       client: "Investidor 4.20",
-      // Instagram 173.050: apuração direta no perfil @lucas.amendolaa via Apify
-      // (`apify~instagram-profile-scraper`) em 08/08/2026. Corrigido de 180,000 —
-      // carimbo velho herdado de `docs/cases-estudo.txt:9`. A versão PT (linha ~176)
-      // já tinha sido corrigida em 08/08; esta EN tinha ficado pra trás.
-      // 🔴 "10x revenue growth" aqui diverge do "5x de faturamento" que a versão PT
-      // deste MESMO bloco publica. Nenhum dos dois tem fonte primária no vault e não
-      // dá pra apurar por scraper. NÃO alterado — decisão do Gabriel.
-      metric: "10x revenue growth",
+      // ⚠️ 19/08/2026 — O MULTIPLICADOR DE FATURAMENTO SAIU. Havia duas versões
+      // publicadas do MESMO case ("5x" aqui, "10x" na versão EN e em case-data.ts),
+      // e a divergência interna era a própria prova de que não havia fonte: um
+      // número apurado não tem duas versões. A varredura do vault não achou NENHUM
+      // documento com faturamento do Lucas — a pasta `014 - FINANCEIRO/Faturamento/`
+      // tem só um template vazio. O número já tinha sido trocado uma vez (5x → 10x
+      // em 03/08) por decisão verbal, sem apuração. É afirmação sobre a receita de
+      // um terceiro: não é apurável por scraper, só pelo próprio Lucas.
+      // ⛔ Só volta com autorização escrita do cliente + o número que ele confirmar.
+      // ⚠️ Também saíram a baseline "50 mil" (só existe no questionário
+      //    `docs/cases-estudo.txt:9`, sem data/autor) e o "30 mil inscritos" da
+      //    newsletter — o print do Beehiiv mostra 26.556, não 30 mil.
+      // ✅ FICOU o 173 mil: apurado em 04/08/2026 no perfil @lucas.amendolaa
+      //    (`vault/00 - DASHBOARD/diario/2026-08-04.md:47`), com print em
+      //    `public/marca-pessoal/prints/ig-lucas-amendola.png`. Conferível ao vivo.
+      metric: "173k Instagram followers",
       blurb:
-        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch: revenue multiplied by 10 in 12 months, Instagram from 50,000 to 173,000 followers and a newsletter from 0 to 30,000 subscribers.",
+        "Kaleidos structured Investidor 4.20's content, newsletter and sales operation from scratch. The profile sits at 173,000 followers today, and the newsletter, which started at zero, is now an acquisition channel of its own.",
     },
     ctaLine:
       "Your audience already exists. Kaleidos builds the machine that turns it into authority and revenue. Let's talk.",
@@ -806,7 +850,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For fintechs that need trust",
     headlineHtml: `Marketing that builds <span ${HL}>trust</span>, the most expensive asset of a fintech.`,
     subHtml:
-      'Educational content and strategy that make your fintech earn authority in a regulated, skeptical market. The same machine that generated <strong style="color:#14110D;">125M+ views</strong> and helped clients earn <strong style="color:#14110D;">+R$46mi</strong> in revenue.',
+      'Educational content and strategy that make your fintech earn authority in a regulated, skeptical market. The same machine that generated <strong style="color:#14110D;">12 million organic views in 90 days</strong> for Defiverso.',
     pains: [
       {
         title: "Trust is the most expensive asset, and the hardest",
@@ -867,7 +911,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For SaaS that wants organic growth",
     headlineHtml: `Content that becomes <span ${HL}>acquisition</span>: the organic growth engine of your SaaS.`,
     subHtml:
-      'SEO, authority content and distribution that bring qualified users without depending only on paid. Kaleidos applies to your SaaS what made brands become references, with <strong style="color:#14110D;">125M+ views</strong>.',
+      'SEO, authority content and distribution that bring qualified users without depending only on paid. Kaleidos applies to your SaaS the same engine that built a newsletter of <strong style="color:#14110D;">26,556 subscribers at a 33% open rate</strong>.',
     pains: [
       {
         title: "Hostage to expensive paid",
@@ -964,9 +1008,21 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     proof: {
       caseId: "bit-das-minas",
       client: "Bit das Minas",
-      metric: "200% launch revenue growth",
+      // ⚠️ 19/08/2026 — "200% de faturamento" e "50% de redução no CPL" SAÍRAM.
+      // O "−50% de CPL" já tinha sido removido do deck /cripto em 08/08: no vault
+      // ele está SEMPRE atribuído ao Defiverso, nunca à Bit das Minas — forte
+      // indício de métrica que migrou de um cliente pro outro. O "+200%" tinha
+      // como única origem `docs/cases-estudo.txt:21`, questionário em prosa, sem
+      // data e sem autor, e a redação é "observamos um aumento de mais de 200%".
+      // Esse mesmo arquivo erra os dois números dele que dá pra conferir contra
+      // print (diz IG 180k onde o print mostra 173k; diz YouTube 382k onde o print
+      // mostra 386k), então não sustenta o que não dá pra conferir.
+      // Agravante: a Bit das Minas não tem pasta em `011 - CLIENTES/` nem está na
+      // carteira ativa — é case histórico, sem ninguém pra confirmar.
+      // ⛔ Só volta com apuração da conta da própria Bit das Minas.
+      metric: "4+ consecutive launches",
       blurb:
-        "Kaleidos took over Bit das Minas' content, scripts and launches: a 200% increase in launch revenue and a 50% reduction in cost per lead.",
+        "Kaleidos took over Bit das Minas' content, scripts, creative and launch operation — Brazil's largest community of women crypto investors — across more than four consecutive cycles.",
     },
     ctaLine:
       "Kaleidos brings the creativity and rigor of the crypto market to any company. Let's get yours out of the noise.",
@@ -989,7 +1045,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For brands native to crypto",
     headlineHtml: `Real crypto marketing, from content to launch, made by people who are <span ${HL}>native</span> to the market.`,
     subHtml:
-      'Kaleidos has been the brand, content and go-to-market team of crypto projects since 2020. <strong style="color:#14110D;">125M+ views</strong> and <strong style="color:#14110D;">+R$46mi</strong> generated for clients like Crypto.com, Mercado Bitcoin and Ledger.',
+      'Kaleidos has been the brand, content and go-to-market team of crypto projects <strong style="color:#14110D;">since 2020</strong>, with work for clients like Crypto.com, Mercado Bitcoin and Ledger.',
     pains: [
       {
         title: "Generalist agencies do not get the market",
@@ -1172,7 +1228,7 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     badge: "For those about to launch a token",
     headlineHtml: `A token <span ${HL}>launch</span> that builds a long-term base, not a price spike that fades.`,
     subHtml:
-      'A complete TGE go-to-market: narrative, community, creatives and funnel. Kaleidos has executed <strong style="color:#14110D;">50+ launches</strong>, with cases of <strong style="color:#14110D;">200% launch revenue growth</strong>.',
+      'A complete TGE go-to-market: narrative, community, creatives and funnel. Kaleidos runs the <strong style="color:#14110D;">entire launch cycle</strong>, from narrative to creative tested at volume, and has done so since 2020.',
     pains: [
       {
         title: "Launching without becoming exit liquidity",
@@ -1208,9 +1264,21 @@ const AUDIENCES_EN: Record<string, AudienceEnOverride> = {
     proof: {
       caseId: "bit-das-minas",
       client: "Bit das Minas",
-      metric: "200% launch revenue growth",
+      // ⚠️ 19/08/2026 — "200% de faturamento" e "50% de redução no CPL" SAÍRAM.
+      // O "−50% de CPL" já tinha sido removido do deck /cripto em 08/08: no vault
+      // ele está SEMPRE atribuído ao Defiverso, nunca à Bit das Minas — forte
+      // indício de métrica que migrou de um cliente pro outro. O "+200%" tinha
+      // como única origem `docs/cases-estudo.txt:21`, questionário em prosa, sem
+      // data e sem autor, e a redação é "observamos um aumento de mais de 200%".
+      // Esse mesmo arquivo erra os dois números dele que dá pra conferir contra
+      // print (diz IG 180k onde o print mostra 173k; diz YouTube 382k onde o print
+      // mostra 386k), então não sustenta o que não dá pra conferir.
+      // Agravante: a Bit das Minas não tem pasta em `011 - CLIENTES/` nem está na
+      // carteira ativa — é case histórico, sem ninguém pra confirmar.
+      // ⛔ Só volta com apuração da conta da própria Bit das Minas.
+      metric: "4+ consecutive launches",
       blurb:
-        "Kaleidos took over Bit das Minas' content, scripts and launches: a 200% increase in launch revenue and a 50% reduction in cost per lead.",
+        "Kaleidos took over Bit das Minas' content, scripts, creative and launch operation — Brazil's largest community of women crypto investors — across more than four consecutive cycles.",
     },
     ctaLine:
       "The best time to structure a launch is before the TGE. Kaleidos designs your go-to-market. Let's talk.",

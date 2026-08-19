@@ -124,15 +124,25 @@ const HERO_IMAGES: Record<string, string> = {
   "influencer-kol": "/Kaleidos/servicos/v2/influencer.png",
 };
 
+/**
+ * ⚠️ 19/08/2026 — "30+ projetos" e "125M+ views" SAÍRAM destes stats.
+ * Nenhum tinha fonte primária (ver `src/lib/metrics.ts`): o "30+" contradiz o
+ * próprio vault, que registra 19 clientes identificados e 8 ativos + 4 em
+ * briefing no INDEX corrente; e o "125M+" veio de uma série 20M → 30M → 125M
+ * feita por decisão editorial, sem apuração nenhuma.
+ * O que ficou é verificável: o ano de fundação (`foundingDate` do Organization
+ * schema) e resultado de cliente com print (`KALEIDOS_PROOF`).
+ * ⛔ Não repor número aqui sem `source` + `apurado`.
+ */
 const STATS_BASE_PT: ServiceStat[] = [
-  { value: "30+", label: "Projetos cripto atendidos" },
   { value: "Desde 2020", label: "Nativos de cripto e web3" },
-  { value: "125M+", label: "Views gerados" },
+  { value: "12M", label: "views orgânicos em 90 dias · Defiverso" },
+  { value: "33,01%", label: "abertura da newsletter · Defiverso" },
 ];
 const STATS_BASE_EN: ServiceStat[] = [
-  { value: "30+", label: "Crypto projects served" },
   { value: "Since 2020", label: "Crypto & web3 native" },
-  { value: "125M+", label: "Views generated" },
+  { value: "12M", label: "organic views in 90 days · Defiverso" },
+  { value: "33.01%", label: "newsletter open rate · Defiverso" },
 ];
 
 export const SERVICE_PAGES: ServiceData[] = [
@@ -457,8 +467,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Projetos guiados por estratégia",
       cases: [
-        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Desenvolvimento comercial completo e estratégia de lançamento.", href: "/cases/investidor-4-20" },
-        { name: "Bit das Minas", metric: "+200% Faturamento", desc: "Estratégia de conteúdo e lançamento pra educação cripto feminina.", href: "/cases/bit-das-minas" },
+        { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Desenvolvimento comercial completo e estratégia de lançamento.", href: "/cases/investidor-4-20" },
+        { name: "Bit das Minas", metric: "4+ lançamentos", desc: "Estratégia de conteúdo e lançamento pra educação cripto feminina.", href: "/cases/bit-das-minas" },
         { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e estratégia de conteúdo pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_PT,
@@ -581,8 +591,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Strategy-guided projects",
       cases: [
-        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Full commercial development and launch strategy.", href: "/cases/investidor-4-20" },
-        { name: "Bit das Minas", metric: "+200% Revenue", desc: "Content and launch strategy for female crypto education.", href: "/cases/bit-das-minas" },
+        { name: "Investidor 4.20", metric: "173k followers", desc: "Full commercial development and launch strategy.", href: "/cases/investidor-4-20" },
+        { name: "Bit das Minas", metric: "4+ launches", desc: "Content and launch strategy for female crypto education.", href: "/cases/bit-das-minas" },
         { name: "Neobankless", metric: "Fintech", desc: "Positioning and content strategy for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_EN,
@@ -712,14 +722,14 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Eventos que produzimos",
       cases: [
-        { name: "Defifest", metric: "600+ participantes", desc: "Maior evento DeFi do Brasil: identidade, materiais e produção visual completa.", href: "/cases/defifest" },
+        { name: "Defifest", metric: "Maior evento DeFi do Brasil", desc: "Maior evento DeFi do Brasil: identidade, materiais e produção visual completa.", href: "/cases/defifest" },
         { name: "Paradigma Education", metric: "Motion & Educação", desc: "Conteúdo e motion graphics pra ativações educativas do ecossistema.", href: "/cases/paradigma-education" },
         { name: "Defiverso", metric: "12M Views", desc: "Estratégia e conteúdo de comunidade que sustentam ativações presenciais.", href: "/cases/defiverso" },
       ],
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para Eventos Cripto",
       whyUs: [
-        { title: "Marca do maior evento DeFi do Brasil", desc: "Cuidamos da identidade, dos materiais e da produção visual do Defifest, 600+ participantes." },
+        { title: "Marca do maior evento DeFi do Brasil", desc: "Cuidamos da identidade, dos materiais e da produção visual do Defifest, do banner ao palco." },
         { title: "Amplificação além do dia", desc: "Cada evento vira conteúdo: a Kaleidos é máquina de conteúdo, não só uma produtora visual." },
         { title: "Rede e parcerias no ecossistema", desc: "Conexões com projetos, speakers e comunidades pra fortalecer a narrativa do seu evento." },
         { title: "Da estratégia à cobertura", desc: "Conceito, identidade, conteúdo e amplificação num time só, integrados à sua marca." },
@@ -800,14 +810,14 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Events we produced",
       cases: [
-        { name: "Defifest", metric: "600+ attendees", desc: "Brazil's largest DeFi event: identity, materials and full visual production.", href: "/cases/defifest" },
+        { name: "Defifest", metric: "Brazil's largest DeFi event", desc: "Brazil's largest DeFi event: identity, materials and full visual production.", href: "/cases/defifest" },
         { name: "Paradigma Education", metric: "Motion & Education", desc: "Content and motion graphics for ecosystem educational activations.", href: "/cases/paradigma-education" },
         { name: "Defiverso", metric: "12M Views", desc: "Community strategy and content that sustain in-person activations.", href: "/cases/defiverso" },
       ],
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Crypto Events",
       whyUs: [
-        { title: "The brand behind Brazil's largest DeFi event", desc: "We handled identity, materials and visual production for Defifest, 600+ attendees." },
+        { title: "The brand behind Brazil's largest DeFi event", desc: "We handled identity, materials and visual production for Defifest, from banners to the stage." },
         { title: "Amplification beyond the day", desc: "Every event becomes content: Kaleidos is a content machine, not just a visual producer." },
         { title: "Ecosystem network & partnerships", desc: "Connections with projects, speakers and communities to strengthen your event's narrative." },
         { title: "From strategy to coverage", desc: "Concept, identity, content and amplification in one team, integrated with your brand." },
@@ -843,7 +853,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ctaPrimary: "Quero crescer no social",
       accent: "green",
       // Prova social do serviço: cases reais de social media (Defiverso 12M+ views
-      // orgânicas · Mercado Bitcoin +80K seguidores · Investidor 4.20 10x faturamento)
+      // orgânicas · Investidor 4.20 em 173 mil seguidores, apurado no perfil)
       proof: ["defiverso", "mercado-bitcoin", "investidor-420"],
       whoTitle: "Para quem é o Social Media Cripto",
       who: [
@@ -907,7 +917,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       whyUs: [
         { title: "Voz cripto-nativa", desc: "Falamos a língua do X cripto: narrativa, reply, timing. Não é social genérico." },
         { title: "Conteúdo que retém", desc: "Threads e carrosséis desenhados pra parar o scroll e gerar compartilhamento." },
-        { title: "125M+ views gerados", desc: "Track record real de conteúdo que viraliza, não promessa." },
+        { title: "Track record verificável", desc: "12 milhões de views orgânicos em 90 dias no Defiverso, apurados em print do Instagram Insights. Não é promessa: é conferível." },
         { title: "Consistência que constrói confiança", desc: "Presença constante e coerente, o que separa projeto sério de projeto fantasma." },
       ],
       faqTitle: "Perguntas frequentes",
@@ -952,7 +962,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signatureTitle: "Presença que vira ativo",
       signatureSubtitle: "Consistência e voz constroem a confiança que paid nenhum compra.",
       signature: [
-        { value: "125M+", label: "views gerados em conteúdo cripto" },
+        { value: "12M", label: "views orgânicos em 90 dias no Defiverso" },
         { value: "Real-time", label: "engajamento nas janelas de narrativa" },
         { value: "Voz própria", label: "inconfundível, não social genérico" },
       ],
@@ -970,7 +980,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ctaPrimary: "Grow my social",
       accent: "green",
       // Service social proof: real social media cases (Defiverso 12M+ organic views
-      // · Mercado Bitcoin +80K followers · Investidor 4.20 10x revenue)
+      // · Investidor 4.20 at 173k followers, measured on the profile)
       proof: ["defiverso", "mercado-bitcoin", "investidor-420"],
       whoTitle: "Who Crypto Social Media is for",
       who: [
@@ -1034,7 +1044,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       whyUs: [
         { title: "Crypto-native voice", desc: "We speak crypto X: narrative, replies, timing. This isn't generic social." },
         { title: "Content that retains", desc: "Threads and carousels designed to stop the scroll and drive shares." },
-        { title: "125M+ views generated", desc: "A real track record of content that goes viral, not a promise." },
+        { title: "A verifiable track record", desc: "12 million organic views in 90 days at Defiverso, measured from an Instagram Insights screenshot. Not a promise: you can check it." },
         { title: "Consistency that builds trust", desc: "Constant, coherent presence, what separates a serious project from a ghost." },
       ],
       faqTitle: "Frequently asked questions",
@@ -1079,7 +1089,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       signatureTitle: "Presence that becomes an asset",
       signatureSubtitle: "Consistency and voice build the trust no paid budget can buy.",
       signature: [
-        { value: "125M+", label: "views generated in crypto content" },
+        { value: "12M", label: "organic views in 90 days at Defiverso" },
         { value: "Real-time", label: "engagement in narrative windows" },
         { value: "Own voice", label: "unmistakable, not generic social" },
       ],
@@ -1156,8 +1166,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Autoridade & percepção",
       cases: [
-        { name: "Defifest", metric: "600+ participantes", desc: "Evento que virou referência e gerou cobertura no ecossistema DeFi BR.", href: "/cases/defifest" },
-        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Construção de autoridade e percepção de marca pra creator cripto.", href: "/cases/investidor-4-20" },
+        { name: "Defifest", metric: "Maior evento DeFi do Brasil", desc: "Evento que virou referência e gerou cobertura no ecossistema DeFi BR.", href: "/cases/defifest" },
+        { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Construção de autoridade e percepção de marca pra creator cripto.", href: "/cases/investidor-4-20" },
         { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e narrativa pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_PT,
@@ -1280,8 +1290,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Authority & perception",
       cases: [
-        { name: "Defifest", metric: "600+ attendees", desc: "Event that became a reference and drove coverage in the BR DeFi ecosystem.", href: "/cases/defifest" },
-        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Authority and brand perception building for a crypto creator.", href: "/cases/investidor-4-20" },
+        { name: "Defifest", metric: "Brazil's largest DeFi event", desc: "Event that became a reference and drove coverage in the BR DeFi ecosystem.", href: "/cases/defifest" },
+        { name: "Investidor 4.20", metric: "173k followers", desc: "Authority and brand perception building for a crypto creator.", href: "/cases/investidor-4-20" },
         { name: "Neobankless", metric: "Fintech", desc: "Positioning and narrative for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_EN,
@@ -1412,8 +1422,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Comunidades que construímos",
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Comunidade do zero: Instagram, Twitter e grupo de WhatsApp ativos.", href: "/cases/defiverso" },
-        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Comunidade engajada como base do funil orgânico.", href: "/cases/investidor-4-20" },
-        { name: "Bit das Minas", metric: "+200% Faturamento", desc: "Comunidade leal e engajada de educação cripto feminina.", href: "/cases/bit-das-minas" },
+        { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Comunidade engajada como base do funil orgânico.", href: "/cases/investidor-4-20" },
+        { name: "Bit das Minas", metric: "4+ lançamentos", desc: "Comunidade leal e engajada de educação cripto feminina.", href: "/cases/bit-das-minas" },
       ],
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para Comunidade",
@@ -1536,8 +1546,8 @@ export const SERVICE_PAGES: ServiceData[] = [
       casesTitle: "Communities we built",
       cases: [
         { name: "Defiverso", metric: "12M Views", desc: "Community from scratch: active Instagram, Twitter and WhatsApp group.", href: "/cases/defiverso" },
-        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Engaged community as the base of the organic funnel.", href: "/cases/investidor-4-20" },
-        { name: "Bit das Minas", metric: "+200% Revenue", desc: "Loyal, engaged female crypto education community.", href: "/cases/bit-das-minas" },
+        { name: "Investidor 4.20", metric: "173k followers", desc: "Engaged community as the base of the organic funnel.", href: "/cases/investidor-4-20" },
+        { name: "Bit das Minas", metric: "4+ launches", desc: "Loyal, engaged female crypto education community.", href: "/cases/bit-das-minas" },
       ],
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Community",
@@ -1666,7 +1676,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Amplificação por vozes",
       cases: [
-        { name: "Investidor 4.20", metric: "10x Faturamento", desc: "Creator cripto com audiência engajada e estratégia de amplificação.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Creator cripto com audiência engajada e estratégia de amplificação.", href: "/cases/investidor-4-20" },
         { name: "Laylä Föz", metric: "+20M Views", desc: "Crescimento e distribuição via conteúdo de creator.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Ecossistema de conteúdo e creators conectado à comunidade.", href: "/cases/defiverso" },
       ],
@@ -1790,7 +1800,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       ],
       casesTitle: "Amplification through voices",
       cases: [
-        { name: "Investidor 4.20", metric: "10x Revenue", desc: "Crypto creator with engaged audience and amplification strategy.", href: "/cases/investidor-4-20" },
+        { name: "Investidor 4.20", metric: "173k followers", desc: "Crypto creator with engaged audience and amplification strategy.", href: "/cases/investidor-4-20" },
         { name: "Laylä Föz", metric: "+20M Views", desc: "Growth and distribution via creator content.", href: "/cases/layla-foz" },
         { name: "Defiverso", metric: "12M Views", desc: "Content and creator ecosystem connected to the community.", href: "/cases/defiverso" },
       ],

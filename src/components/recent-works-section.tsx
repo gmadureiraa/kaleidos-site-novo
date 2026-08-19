@@ -4,6 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 
+/**
+ * ⚠️ 19/08/2026 — "+200% faturamento" (Bit das Minas) e "10x faturamento"
+ * (Investidor 4.20) saíram dos badges e dos resumos: eram afirmação sobre o
+ * faturamento de terceiros sem nenhuma fonte primária no vault. Ver
+ * `src/lib/case-data.ts`. ⛔ Não repor sem autorização escrita do cliente.
+ */
 const CLIENTS = [
   {
     id: "defiverso",
@@ -19,9 +25,9 @@ const CLIENTS = [
     id: "bit-das-minas",
     name: "Bit das Minas",
     logo: "/Clientes-logo/BitdasMinas.png",
-    resultSummary: "Estratégia completa de lançamento e conteúdo que resultou em crescimento explosivo de faturamento e audiência.",
-    resultBadge: "+200% faturamento",
-    testimonial: "A Kaleidos transformou completamente minha presença digital. Faturamento cresceu mais de 200% com as estratégias de conteúdo.",
+    resultSummary: "Estratégia completa de lançamento e conteúdo pra maior comunidade de mulheres investidoras em cripto do Brasil, por mais de quatro ciclos seguidos.",
+    resultBadge: "4+ lançamentos seguidos",
+    testimonial: "A Kaleidos transformou completamente minha presença digital. Assumiram roteiro, edição e criativo dos nossos lançamentos.",
     author: "Gi",
     role: "Criadora de Conteúdo",
   },
@@ -49,8 +55,8 @@ const CLIENTS = [
     id: "investidor-4-20",
     name: "Investidor 4.20",
     logo: "/Clientes-logo/investidor420.png",
-    resultSummary: "Desenvolvimento comercial completo, estratégias de lançamento e conteúdo que multiplicaram o faturamento em 10x em 12 meses.",
-    resultBadge: "10x faturamento",
+    resultSummary: "Desenvolvimento comercial completo, criação da newsletter do zero e estratégia de lançamento. O perfil está hoje em 173 mil seguidores.",
+    resultBadge: "173 mil seguidores",
     testimonial: "Profissionalismo e expertise incomparáveis. A equipe entende o mercado cripto como ninguém e entrega resultados que fazem diferença.",
     author: "Lucas Amendola",
     role: "Fundador",

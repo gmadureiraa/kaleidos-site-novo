@@ -5,7 +5,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateServiceMetadata(
     "marketing-conteudo",
     "Marketing de Conteúdo para Cripto e Web3",
-    "Conteúdo criativo para projetos cripto, DeFi e Web3. Copy persuasiva, roteiros virais, edição de vídeos e estratégias que convertem. 500+ vídeos, 125M+ views."
+    "Conteúdo criativo para projetos cripto, DeFi e Web3. Copy persuasiva, roteiros virais, edição de vídeos e estratégias que convertem. O time por trás do Defiverso e do Investidor 4.20."
   );
 }
 
