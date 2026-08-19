@@ -958,6 +958,23 @@ const CASES_HTML = `
     </div>
 
     <p style="max-width:720px;margin:28px auto 0;text-align:center;font-family:Gridlite,monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;line-height:1.8;">seguidores lidos direto dos perfis p&uacute;blicos em 08/08/2026: lucas 173.050 &middot; layl&auml; f&ouml;z 176.960. nenhum n&uacute;mero desta se&ccedil;&atilde;o &eacute; estimado.</p>
+
+    <!-- ⚠️ Operações de founder brand em andamento — cases QUALITATIVOS (roteados 19/08/2026).
+         Entram SEM número de resultado de propósito: começaram em jul-ago/2026 e nenhum
+         ciclo mensal fechou com apuração. NÃO adicionar métrica aqui sem fonte e data —
+         a seção acima promete que todo número tem origem verificável, e essa promessa é
+         o ativo mais caro da página. Se um dia houver apuração, ela vira card lá em cima. -->
+    <div style="max-width:900px;margin:40px auto 0;padding-top:28px;border-top:1px solid #3a332a;text-align:center;">
+      <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Em opera&ccedil;&atilde;o agora &middot; ciclo ainda aberto</div>
+      <p style="font-size:14px;line-height:1.7;color:#b8b1a6;margin:12px 0 0;">Tr&ecirc;s marcas pessoais de founder que come&ccedil;aram em 2026 e ainda n&atilde;o fecharam janela de apura&ccedil;&atilde;o. Publicamos o que <strong style="color:#d8d1c6;">foi feito</strong>, n&atilde;o quanto rendeu &mdash; o n&uacute;mero entra quando houver de onde conferir.</p>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <a href="/cases/matheus-fassheber" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">Matheus Fassheber &middot; Neobankless &rarr;</a>
+        <span style="color:#4a443c;">/</span>
+        <a href="/cases/gui-campos" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">Gui Campos &middot; DSEC &rarr;</a>
+        <span style="color:#4a443c;">/</span>
+        <a href="/cases/leo-maximiliano" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">L&eacute;o Maximiliano &middot; DSEC &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 `;

@@ -1574,6 +1574,13 @@ export const ROUTED_CASE_IDS: string[] = [
   "yasmin",
   "defifest",
   "ledger",
+  // Marca pessoal de founder — roteados em 19/08/2026. Cases QUALITATIVOS por decisão:
+  // as três operações começaram em jul-ago/2026 e ainda não fecharam ciclo mensal, então
+  // `metricas` traz só a base de largada (com data) e o que está sendo feito. Nenhum
+  // número de RESULTADO deve ser adicionado aqui sem apuração com fonte e data.
+  "matheus-fassheber",
+  "gui-campos",
+  "leo-maximiliano",
 ];
 
 export function getCaseData(id: string): CaseData | null {
