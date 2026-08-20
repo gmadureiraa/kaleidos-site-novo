@@ -24,6 +24,20 @@
  *     (+80K seguidores).
  *   · Paradigma / Henrique — nunca foi alterado; permanece como está.
  *
+ * ✅ 19/08/2026 (mesma régua, segunda rodada) — BIT DAS MINAS TAMBÉM CONFIRMADO.
+ * O quote da Gi era o que faltava confirmar quando os outros quatro voltaram. O
+ * Gabriel confirmou em 19/08/2026 que o depoimento é REAL e que o "+200% de
+ * faturamento" é fala dela, não prosa da agência. Restaurados ao texto original:
+ *   · Bit das Minas / Gi — "Faturamento cresceu mais de 200% com as estratégias
+ *     de lançamento e conteúdo que criaram para mim" (PT e EN) + highlight
+ *     "+200% faturamento". Também em `recent-works-section.tsx` e em `/contato`.
+ *
+ * ⚠️ O "+200%" volta APENAS dentro das aspas, como fala da cliente. Ele NÃO
+ * volta como badge de card nem como métrica da agência solta na página: o
+ * `resultBadge` da Bit das Minas em `recent-works-section.tsx` segue
+ * "4+ lançamentos seguidos", e `metrics.ts` segue sem o "200% de crescimento
+ * médio". Depoimento e métrica institucional são categorias diferentes.
+ *
  * ⚠️ Distinção que continua valendo: depoimento é fala de cliente, e fala de
  * cliente não se edita. MÉTRICA INSTITUCIONAL da agência (as 8 de `metrics.ts`:
  * 125M+ views, R$46mi+, 98% de satisfação etc.) continua FORA do ar, por não ter
@@ -67,12 +81,12 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Bit das Minas",
     avatar: "/Clientes-logo/BitdasMinas.png",
     quote:
-      "A Kaleidos transformou completamente minha presença digital. Assumiram roteiro, edição e criativo dos nossos lançamentos, e a operação passou a rodar com uma consistência que a gente não tinha.",
+      "A Kaleidos transformou completamente minha presença digital. Faturamento cresceu mais de 200% com as estratégias de lançamento e conteúdo que criaram para mim.",
     quote_en:
-      "Kaleidos completely transformed my digital presence. They took over scripting, editing and creative for our launches, and the operation started running with a consistency we did not have before.",
+      "Kaleidos completely transformed my digital presence. Revenue grew over 200% with the launch and content strategies they created for me.",
     caseLink: "/cases/bit-das-minas",
-    highlight: "4+ lançamentos seguidos",
-    highlight_en: "4+ consecutive launches",
+    highlight: "+200% faturamento",
+    highlight_en: "+200% revenue",
   },
   {
     id: "investidor-420",

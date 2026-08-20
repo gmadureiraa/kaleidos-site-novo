@@ -596,28 +596,44 @@ export default function ContatoPage() {
                 {locale==='en' ? PROOF_NOTE_EN : PROOF_NOTE}
               </p>
 
-              {/* Mini depoimento */}
-              <div className="bg-neutral-900 rounded-xl p-6 border border-neutral-800">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-4 h-4 fill-[#7CF067] text-[#7CF067]" />
-                  ))}
-                </div>
-                {/* ⚠️ 19/08/2026 — o quote anterior atribuía a "Gi, Bit das Minas" a
-                    frase "Faturamento cresceu 200% com as estratégias deles". O
-                    único registro do +200% é `docs/cases-estudo.txt:26`, um
-                    questionário de case em prosa, sem data e sem autor, cuja
-                    redação é "observamos um aumento de mais de 200%" — ou seja,
-                    NÃO é fala da cliente. Era afirmação sobre o faturamento de
-                    terceiro colocada entre aspas na boca dela. Trocado pelo
-                    depoimento do Lucas Amendola, que é literal e está em
-                    `src/lib/testimonials-data.ts`. ⛔ Não repor. */}
-                <p className="text-gray-300 text-sm leading-relaxed italic">
-                  {locale==='en'
-                    ? '"Kaleidos helped us build new acquisition channels and structure the sales side. Without them, we wouldn\'t have had the reach we did."'
-                    : '"A Kaleidos nos ajudou a criar novos meios de aquisição e a estruturar o comercial. Sem eles, não teríamos tido o alcance que tivemos."'}
-                </p>
-                <p className="text-[#7CF067] text-xs font-medium mt-3">Lucas Amendola, Investidor 4.20</p>
+              {/* Mini depoimentos.
+                  ✅ 19/08/2026 — o quote da "Gi, Bit das Minas" VOLTOU ao texto
+                  original. Ele tinha saído em `75f7b69` por causa do "+200% de
+                  faturamento", e o Lucas Amendola entrou no lugar dele. O Gabriel
+                  confirmou em 19/08/2026 que o depoimento da Gi é REAL e que o
+                  número é fala dela. Como o do Lucas também é legítimo e já estava
+                  no ar, os dois ficam — ninguém precisou sair.
+                  ⚠️ O "+200%" vale AQUI DENTRO DAS ASPAS, como fala da cliente. Ele
+                  não volta pro bloco de números acima, que é prova institucional e
+                  exige `source` + `apurado` em `src/lib/metrics.ts`.
+                  ⛔ Não reescrever nenhum dos dois sem o Gabriel. */}
+              <div className="space-y-4">
+                {[
+                  {
+                    id: 'bit-das-minas',
+                    quote: '"A Kaleidos entende o mercado cripto como ninguém. Faturamento cresceu 200% com as estratégias deles."',
+                    quote_en: '"Kaleidos understands the crypto market like no one else. Revenue grew 200% with their strategies."',
+                    author: 'Gi, Bit das Minas',
+                  },
+                  {
+                    id: 'investidor-420',
+                    quote: '"A Kaleidos nos ajudou a criar novos meios de aquisição e a estruturar o comercial. Sem eles, não teríamos tido o alcance que tivemos."',
+                    quote_en: '"Kaleidos helped us build new acquisition channels and structure the sales side. Without them, we wouldn\'t have had the reach we did."',
+                    author: 'Lucas Amendola, Investidor 4.20',
+                  },
+                ].map((d) => (
+                  <div key={d.id} className="bg-neutral-900 rounded-xl p-6 border border-neutral-800">
+                    <div className="flex gap-1 mb-3">
+                      {[1,2,3,4,5].map(i => (
+                        <Star key={i} className="w-4 h-4 fill-[#7CF067] text-[#7CF067]" />
+                      ))}
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed italic">
+                      {locale==='en' ? d.quote_en : d.quote}
+                    </p>
+                    <p className="text-[#7CF067] text-xs font-medium mt-3">{d.author}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
 

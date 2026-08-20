@@ -9,6 +9,17 @@ import { Star, ExternalLink } from "lucide-react";
  * (Investidor 4.20) saíram dos badges e dos resumos: eram afirmação sobre o
  * faturamento de terceiros sem nenhuma fonte primária no vault. Ver
  * `src/lib/case-data.ts`. ⛔ Não repor sem autorização escrita do cliente.
+ *
+ * ✅ 19/08/2026 — AUTENTICIDADE DO DEPOIMENTO DA BIT DAS MINAS CONFIRMADA PELO
+ * GABRIEL. O `testimonial` da Gi voltou ao texto original, com o "+200% de
+ * faturamento" dentro das aspas: é fala da cliente, e fala de cliente não se
+ * reescreve. Ver o cabeçalho de `src/lib/testimonials-data.ts`.
+ *
+ * ⚠️ O que NÃO voltou, de propósito: `resultBadge` e `resultSummary`. O badge é
+ * renderizado FORA das aspas, como resultado que a agência afirma — categoria de
+ * métrica institucional, que segue precisando de fonte primária. Por isso a Bit
+ * das Minas mantém "4+ lançamentos seguidos" e o Investidor 4.20 mantém
+ * "173 mil seguidores". ⛔ Não mova o "+200%" de dentro das aspas pro badge.
  */
 const CLIENTS = [
   {
@@ -27,7 +38,7 @@ const CLIENTS = [
     logo: "/Clientes-logo/BitdasMinas.png",
     resultSummary: "Estratégia completa de lançamento e conteúdo pra maior comunidade de mulheres investidoras em cripto do Brasil, por mais de quatro ciclos seguidos.",
     resultBadge: "4+ lançamentos seguidos",
-    testimonial: "A Kaleidos transformou completamente minha presença digital. Assumiram roteiro, edição e criativo dos nossos lançamentos.",
+    testimonial: "A Kaleidos transformou completamente minha presença digital. Faturamento cresceu mais de 200% com as estratégias de conteúdo.",
     author: "Gi",
     role: "Criadora de Conteúdo",
   },
