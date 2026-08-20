@@ -18,6 +18,7 @@ export const blogNew56: BlogPost[] = [
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-11",
+    updatedAt: "2026-07-11",
     readTime: 8,
     featured: false,
     coverImage: "/blog/dao-governanca-engajamento-comunidade/cover.png",

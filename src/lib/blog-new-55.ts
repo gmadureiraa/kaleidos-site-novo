@@ -18,6 +18,7 @@ export const blogNew55: BlogPost[] = [
     category: "ia",
     author: AUTHOR,
     publishedAt: "2026-07-12",
+    updatedAt: "2026-07-12",
     readTime: 8,
     featured: false,
     coverImage: "/blog/ia-conteudo-cripto-escalar-voz-marca/cover.png",

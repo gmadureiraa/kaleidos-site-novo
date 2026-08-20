@@ -18,6 +18,7 @@ export const blogNew54: BlogPost[] = [
     category: "growth",
     author: AUTHOR,
     publishedAt: "2026-07-13",
+    updatedAt: "2026-07-13",
     readTime: 8,
     featured: false,
     coverImage: "/blog/growth-saas-infraestrutura-web3/cover.png",

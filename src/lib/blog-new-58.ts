@@ -18,6 +18,7 @@ export const blogNew58: BlogPost[] = [
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-09",
+    updatedAt: "2026-07-09",
     readTime: 8,
     featured: false,
     coverImage: "/blog/midia-e-imprensa-projetos-cripto-o-que-funciona/cover.png",

@@ -18,6 +18,7 @@ export const blogNew51: BlogPost[] = [
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-16",
+    updatedAt: "2026-07-16",
     readTime: 9,
     featured: false,
     coverImage: "/blog/marketing-tokenizacao-rwa-brasil/cover.png",

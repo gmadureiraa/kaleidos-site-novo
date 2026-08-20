@@ -31,7 +31,7 @@ export const seoPosts5: BlogPost[] = [
     author: AUTHOR,
     publishedAt: "2026-05-27",
     updatedAt: "2026-06-16",
-    readTime: 14,
+    readTime: 7,
     featured: false,
     tags: [
       "stablecoins",
@@ -178,7 +178,7 @@ Se você tem um projeto nesse território e quer comunicar pra esse público —
     author: AUTHOR,
     publishedAt: "2026-04-24",
     updatedAt: "2026-06-16",
-    readTime: 14,
+    readTime: 7,
     featured: false,
     tags: [
       "KOL cripto",
@@ -319,7 +319,7 @@ Se você vai investir em KOL e quer desenhar a campanha pra reter — escolhendo
     author: AUTHOR,
     publishedAt: "2026-05-04",
     updatedAt: "2026-06-16",
-    readTime: 14,
+    readTime: 7,
     featured: false,
     tags: [
       "retenção",
@@ -472,7 +472,7 @@ Se você quer medir a retenção real da sua comunidade e desenhar a estratégia
     author: AUTHOR,
     publishedAt: "2026-06-06",
     updatedAt: "2026-06-16",
-    readTime: 14,
+    readTime: 7,
     featured: false,
     tags: [
       "SEO",

@@ -18,6 +18,7 @@ export const blogNew57: BlogPost[] = [
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-10",
+    updatedAt: "2026-07-10",
     readTime: 8,
     featured: false,
     coverImage: "/blog/nft-utilidade-gaming-web3-2026/cover.png",

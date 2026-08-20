@@ -18,6 +18,7 @@ export const blogNew53: BlogPost[] = [
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-14",
+    updatedAt: "2026-07-14",
     readTime: 8,
     featured: false,
     coverImage: "/blog/marketing-para-fintech-de-dolar-digital-stablecoin/cover.png",

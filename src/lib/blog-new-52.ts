@@ -18,6 +18,7 @@ export const blogNew52: BlogPost[] = [
     category: "growth",
     author: AUTHOR,
     publishedAt: "2026-07-15",
+    updatedAt: "2026-07-15",
     readTime: 9,
     featured: false,
     coverImage: "/blog/como-exchanges-cripto-crescem-base-usuarios-brasil/cover.png",
