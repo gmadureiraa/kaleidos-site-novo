@@ -24,11 +24,15 @@ const METRICS: { value: string; label: string }[] = [
   { value: KALEIDOS_PROOF.laylaInstagram.value, label: KALEIDOS_PROOF.laylaInstagram.label },
 ];
 
-// Depoimento real (Defiverso). Os três números do quote têm print primário em
-// `public/Cases/defiverso/estudo/` — ver `metrics.ts`.
+// Depoimento real (Defiverso). ✅ 19/08/2026 — autenticidade CONFIRMADA pelo
+// Gabriel: o depoimento foi de fato coletado e o texto original volta como está,
+// números inclusive. Uma varredura anterior (`75f7b69`) tinha tirado o "29 mil
+// inscrições no minicurso" por não achar print; o print não é a fonte da coleta.
+// ⛔ Não reescreva a fala do cliente. Métrica INSTITUCIONAL da agência (sem fonte)
+// continua fora — ver `src/lib/metrics.ts`.
 const PROOF = {
   quote:
-    "A parceria com a Kaleidos resultou num ecossistema de marketing completo e de alta performance: 26,5 mil assinantes de newsletter a 33% de abertura e 12 milhões de views orgânicas em 90 dias.",
+    "A parceria com a Kaleidos resultou num ecossistema de marketing completo e de alta performance: 29 mil inscrições no minicurso, 26 mil assinantes de newsletter e 12 milhões de views orgânicas em 90 dias.",
   author: "Equipe Defiverso",
   role: "Marketing & Conteúdo",
   href: "/cases/defiverso",
