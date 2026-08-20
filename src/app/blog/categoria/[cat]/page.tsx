@@ -101,6 +101,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: hub.title,
     description: hub.description,
     alternates: { canonical },
+    // ⚠️ 19/08/2026 — og:image estava FALTANDO nos 6 hubs de categoria. Em Next
+    // App Router um objeto `openGraph` parcial SUBSTITUI o do root layout
+    // inteiro: sem `images` aqui, a capa herdada some e o hub compartilhado sai
+    // sem imagem. Mesma armadilha documentada em src/app/[audience]/page.tsx.
     openGraph: {
       title: hub.title,
       description: hub.description,
@@ -108,11 +112,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       siteName: "Kaleidos Digital",
       locale: "pt_BR",
+      images: [
+        {
+          url: "/Kaleidos/imagens/Capa.png",
+          width: 1200,
+          height: 630,
+          alt: hub.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: hub.title,
       description: hub.description,
+      images: ["/Kaleidos/imagens/Capa.png"],
     },
   };
 }

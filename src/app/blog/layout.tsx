@@ -13,6 +13,12 @@ export const metadata: Metadata = {
       "application/rss+xml": "/blog/rss.xml",
     },
   },
+  // ⚠️ 19/08/2026 — og:image estava FALTANDO. Em Next App Router um objeto
+  // `openGraph` parcial SUBSTITUI o do root layout inteiro: declarar openGraph
+  // sem `images` apaga a capa herdada, e o /blog compartilhado no LinkedIn, X ou
+  // WhatsApp saía sem imagem. Mesma armadilha já documentada em
+  // src/app/[audience]/page.tsx. ⛔ Ao declarar openGraph numa rota, sempre
+  // incluir `images` e `twitter.images` junto.
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -20,11 +26,20 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Kaleidos Digital",
     locale: "pt_BR",
+    images: [
+      {
+        url: "/Kaleidos/imagens/Capa.png",
+        width: 1200,
+        height: 630,
+        alt: TITLE,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: ["/Kaleidos/imagens/Capa.png"],
   },
 };
 
