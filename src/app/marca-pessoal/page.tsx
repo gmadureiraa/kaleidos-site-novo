@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
 import { Web3V2Defs } from "@/components/web3v2/sections";
 import { Web3V2ClientsMarquee } from "@/components/web3v2/clients-marquee";
@@ -1235,7 +1236,10 @@ async function TrilhaSection() {
           ))}
         </ul>
 
-        <a
+        {/* ⚠️ 19/08/2026 — era <a href>, o que quebrava o lint
+            (@next/next/no-html-link-for-pages) e forçava reload cheio numa rota
+            interna. Virou <Link>: navegação client-side e lint verde. */}
+        <Link
           href="/blog/categoria/marca-pessoal"
           style={{
             display: "inline-flex",
@@ -1250,7 +1254,7 @@ async function TrilhaSection() {
           }}
         >
           Ver a trilha completa &rarr;
-        </a>
+        </Link>
       </div>
     </section>
   );

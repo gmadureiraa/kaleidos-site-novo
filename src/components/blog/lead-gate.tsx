@@ -87,6 +87,7 @@ export function LeadGate({ articleSlug }: { articleSlug?: string }) {
             <input
               type="email"
               placeholder="seu@email.com"
+              aria-label="Seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import posthog from "posthog-js";
 
 /**
@@ -77,12 +78,15 @@ export function ConsentBanner() {
         Usamos cookies e ferramentas de análise (incluindo gravação de sessão)
         para melhorar sua experiência e medir nosso marketing. Você pode
         recusar sem perder acesso ao site. Saiba mais na nossa{" "}
-        <a
+        {/* ⚠️ 19/08/2026 — <a href> numa rota interna: quebrava o lint
+            (@next/next/no-html-link-for-pages) e recarregava o site inteiro
+            no meio do consentimento. Virou <Link>. */}
+        <Link
           href="/privacidade"
           className="underline underline-offset-2 hover:text-white"
         >
           Política de Privacidade
-        </a>
+        </Link>
         .
       </p>
       <div className="mt-3 flex items-center justify-end gap-2">

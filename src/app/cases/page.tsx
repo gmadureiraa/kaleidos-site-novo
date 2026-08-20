@@ -233,9 +233,13 @@ export default function CasesPage() {
                           </span>
                         )}
                       </div>
-                      <h3 className="mb-2 text-lg font-bold leading-snug text-gray-900 transition-colors group-hover:text-emerald-600">
+                      {/* ⚠️ 19/08/2026 — era <h3> logo abaixo do <h1> da página, sem <h2>
+                          nenhum no meio: leitor de tela anunciava um pulo de nível.
+                          O card é o item de primeiro nível da grade, então é <h2>.
+                          O tamanho vem da className, o visual não muda. */}
+                      <h2 className="mb-2 text-lg font-bold leading-snug text-gray-900 transition-colors group-hover:text-emerald-600">
                         {locale==='en' && (proj as unknown as { nome_en?: string }).nome_en ? (proj as unknown as { nome_en?: string }).nome_en : proj.nome}
-                      </h3>
+                      </h2>
                       <p className="mb-4 flex-1 text-sm font-medium leading-relaxed text-gray-600">
                         {getEntregamosLine(proj)}
                       </p>
@@ -273,9 +277,9 @@ export default function CasesPage() {
                     </span>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-bold mb-2 text-gray-400">
+                    <h2 className="text-lg font-bold mb-2 text-gray-400">
                       {locale==='en' && (proj as unknown as { nome_en?: string }).nome_en ? (proj as unknown as { nome_en?: string }).nome_en : proj.nome}
-                    </h3>
+                    </h2>
                     <div className="flex flex-wrap gap-1 mb-2">
                       {proj.tags.slice(0, 3).map(tagItem => (
                         <span key={tagItem} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full opacity-50">
