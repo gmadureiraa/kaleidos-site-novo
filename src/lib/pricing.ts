@@ -14,12 +14,15 @@
 //   (a) planilha/pricing.ts antigo ...... 3.000 / 4.900 / Duo 5.400
 //   (b) decisão 24/07 (PLANO-EXECUCAO) .. 4.900 / 7.000 / 12.900 + setup à parte
 //   (c) proposta Matheus 06/08 .......... 3.600 / 7.000 + adicionais de 1.000
+//       ⚠️ o CONTRATO que o Matheus de fato assinou NÃO é o 3.600 do rascunho:
+//       é R$6.000/mês por 3 meses de vigência (Gabriel, 19/08/2026). Ver o
+//       pacote `founder-matheus-fassheber` abaixo.
 //   (d) decisão Gabriel 08/08 ........... 5.000 / 7.000 / 12.900, SEM adicionais
 // A régua PADRÃO hoje é (d). Ela não inventa número novo no topo: o 12.900 do
 // Escala é o MESMO 12.900 do "Founder OS" da decisão de 24/07 (b) — em vez de
 // criar uma quarta régua, a de 08/08 fecha a divergência reaproveitando o valor
 // que já tinha fonte. O 7.000 do Completo também vem intacto de (b)+(c). O que
-// mudou de fato: o piso subiu de 3.600 → 5.000 (o Essencial Presença saiu de
+// mudou de fato: o piso de TABELA subiu de 3.600 → 5.000 (o Essencial Presença saiu de
 // linha) e os adicionais de R$1.000 saíram da oferta (no Escala o engajamento
 // virou ESCOPO INCLUSO, não add-on).
 // Nada aqui é apagado: o que saiu de linha vira status "legado" (não vender
@@ -159,7 +162,7 @@ export const PACKAGES: Package[] = [
     scope: "6 reels/mês (roteiro + edição) · 6 carrosséis/mês (design completo) · postagem e agendamento · relatório mensal. SEM stories, DM ou comentários.",
     layers: "Gestão & relatórios (leve)",
     channels: "Instagram + TikTok",
-    source: "Decisão Gabriel 08/08/2026 — novo piso de founder brand, substitui o Essencial Presença de R$3.600 (proposta Matheus 06/08)",
+    source: "Decisão Gabriel 08/08/2026 — novo piso de founder brand, substitui o degrau Essencial Presença do rascunho de 06/08 (o contrato do Matheus fechou em R$6.000/mês por 3 meses; ver `founder-essencial-presenca`)",
     pieces: [{ unitId: "reel-roteiro-edicao", qty: 6 }, { unitId: "carrossel-design", qty: 6 }],
     layerIds: ["gestao-leve"],
     allowedAddons: [],
@@ -203,20 +206,25 @@ export const PACKAGES: Package[] = [
   // ---------- FOUNDER BRAND — fora de linha ----------
   // ⚠️ Os abaixo são as réguas que conflitavam. Ficam pra explicar proposta já
   // enviada; NÃO oferecer a lead novo.
+  // ✅ 19/08/2026 — CONTRATO REAL DO MATHEUS, informado pelo Gabriel:
+  // R$6.000/mês, 3 meses de vigência. O R$3.600 que estava aqui era o degrau
+  // "Essencial Presença" do RASCUNHO de proposta de 06/08 — nunca foi o valor
+  // fechado — e o `minMonths: 6` contradizia a vigência real. Os dois foram
+  // corrigidos. ⛔ Não voltar a citar 3.600 nem 6 meses para este contrato.
   {
     id: "founder-essencial-presenca",
-    label: "Essencial Presença (proposta Matheus 06/08)",
+    label: "Founder Brand Matheus Fassheber (contrato vigente)",
     family: "founder-brand",
     status: "legado",
-    price: 3600,
+    price: 6000,
     scope: "4 reels/mês (roteiro + edição de vídeo) · 4 carrosséis/mês (design completo) · postagem e agendamento · relatório mensal. SEM stories, DM ou comentários.",
     layers: "Gestão & relatórios (leve)",
     channels: "Instagram + TikTok",
-    source: "Proposta Matheus Fassheber 06/08/2026 (code/plano-kaleidos/matheus) — fechado em R$3.600. SAIU DE LINHA por decisão Gabriel 08/08/2026: o piso de founder brand subiu pra R$5.000",
+    source: "Contrato Matheus Fassheber — R$6.000/mês por 3 meses de vigência (informado pelo Gabriel em 19/08/2026, corrige o R$3.600/6 meses que vinha do rascunho de proposta de 06/08). Preço fora da régua padrão de 08/08: não replicar para lead novo, que entra pelo Entrada de R$5.000.",
     pieces: [{ unitId: "reel-roteiro-edicao", qty: 4 }, { unitId: "carrossel-design", qty: 4 }],
     layerIds: ["gestao-leve"],
     replacedBy: "founder-entrada",
-    minMonths: 6,
+    minMonths: 3,
     tier: "founder",
   },
   {
@@ -511,7 +519,9 @@ export const PRICING_RULES = {
     founderBrand: 5000,
     /** Piso de LinkedIn B2B = degrau Starter (decisão Gabriel 08/08/2026). */
     linkedinB2b: 4250,
-    /** @deprecated piso da proposta Matheus 06/08 (Essencial Presença). Ver founderBrand. */
+    /** @deprecated degrau do RASCUNHO de proposta de 06/08. NÃO é o contrato do
+     * Matheus, que fechou em R$6.000/mês por 3 meses (Gabriel, 19/08/2026).
+     * O piso vigente de founder brand é `founderBrand` (R$5.000). */
     founderBrandMatheus: 3600,
     /** @deprecated régua antiga da planilha. Ver founderBrand. */
     personalFounder: 3000,
