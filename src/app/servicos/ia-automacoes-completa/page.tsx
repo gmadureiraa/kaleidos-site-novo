@@ -1493,7 +1493,13 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
             {isEn ? "Free diagnosis in 48h." : "Diagnóstico gratuito em 48h."}
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#7CF067]">
-            {isEn ? "No lock-in · No contract · LGPD" : "Sem fidelidade · Sem contrato · LGPD"}
+            {/* ⚠️ 19/08/2026 — este selo dizia "Sem fidelidade · Sem contrato" na MESMA
+                página que vende "Mês a mês · mín. 3 meses" (card de plano) e "mínimo 3
+                meses" (FAQ). Contradição literal, e no bloco de maior confiança da
+                página. O selo é sobre PEDIR O DIAGNÓSTICO (que é grátis e não obriga
+                a nada), não sobre o plano mensal — a redação nova diz só isso.
+                ⛔ Não repor "sem contrato" aqui enquanto o plano tiver ciclo mínimo. */}
+            {isEn ? "Free diagnosis · No commitment · LGPD" : "Diagnóstico grátis · Sem compromisso · LGPD"}
           </p>
           <p className="mx-auto mt-4 max-w-xl text-center text-base text-gray-400 sm:text-lg">
             {isEn
@@ -1612,8 +1618,8 @@ function FinalCtaSection({ isEn }: { isEn: boolean }) {
                 </button>
                 <p className="text-[11px] text-gray-500 text-center">
                   {isEn
-                    ? "No lock-in · No contract · Reply in 48h · Data protected under LGPD"
-                    : "Sem fidelidade · Sem contrato · Resposta em 48h · Dados protegidos pela LGPD"}
+                    ? "Free diagnosis · No commitment · Reply in 48h · Data protected under LGPD"
+                    : "Diagnóstico grátis · Sem compromisso · Resposta em 48h · Dados protegidos pela LGPD"}
                 </p>
                 {status === "err" && (
                   <p className="text-xs text-red-400">

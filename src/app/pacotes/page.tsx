@@ -291,8 +291,14 @@ const FAQ_PT: FAQItem[] = [
     a: "Somos cripto-nativos desde 2020. Já atendemos de exchanges globais a creators brasileiros: Crypto.com, Ledger, Mercado Bitcoin, Parfin, Paradigma. A gente vive o mercado, não fala de fora.",
   },
   {
+    // ⚠️ 19/08/2026 — a resposta dizia "Sem amarra que prende quem não quer
+    // ficar", e a política da casa é contrato mínimo de 6 meses
+    // (`PRICING_RULES.minContractMonths`, e /marca-pessoal já diz 6 meses em
+    // público). Esta página é fundo de funil e vai linkada em proposta: o lead
+    // lia "sem amarra" e recebia contrato de 6 meses. Corrigido pra bater com a
+    // régua. ⛔ Não voltar a prometer ausência de ciclo mínimo aqui.
     q: "Tem fidelidade ou multa?",
-    a: "Trabalhamos por ciclo. O que traz resultado escala, o que não traz sai. Sem amarra que prende quem não quer ficar.",
+    a: "Trabalhamos por ciclo, com contrato mínimo de 6 meses: é o tempo que conteúdo leva pra virar resultado medível. Sem multa de saída e sem letrinha pequena, e dentro do ciclo o que traz resultado escala e o que não traz sai.",
   },
   {
     q: "Quanto tempo até o primeiro resultado?",
@@ -319,7 +325,7 @@ const FAQ_EN: FAQItem[] = [
   },
   {
     q: "Is there a lock-in or cancellation fee?",
-    a: "We work in cycles. What brings results scales, what doesn't gets cut. No contract traps holding anyone who doesn't want to stay.",
+    a: "We work in cycles, with a 6-month minimum contract: that is how long content takes to turn into measurable results. No exit fee and no fine print, and within the cycle what brings results scales and what doesn't gets cut.",
   },
   {
     q: "How long until the first results?",
@@ -349,8 +355,11 @@ const COPY = {
     tiersLead:
       "Todo pacote nasce de um diagnóstico. Você não compra peça solta: compra um time cripto-nativo focado no resultado que importa pro seu momento.",
     badge: "Mais escolhido",
+    // ⚠️ 19/08/2026 — a nota falava de "preços são ponto de partida" numa página
+    // que, por decisão D3, não exibe preço nenhum (os três cards dizem "Sob
+    // diagnóstico"). Reescrita pra descrever o que a página de fato mostra.
     undernote:
-      "Preços são ponto de partida (a soma das peças + gestão fecha no diagnóstico). Frentes modulares (vídeo, newsletter, comunidade, lançamento) podem rodar à parte ou combinadas.",
+      "O investimento fecha no diagnóstico, pela soma das peças + gestão. Frentes modulares (vídeo, newsletter, comunidade, lançamento) podem rodar à parte ou combinadas.",
     faqH2: "Perguntas diretas, respostas diretas.",
     finalPre: "Vamos construir algo que ",
     finalHl: "funciona",
@@ -381,7 +390,7 @@ const COPY = {
       "Every package starts with a diagnosis. You don't buy loose deliverables: you get a crypto-native team focused on the result that matters for your stage.",
     badge: "Most chosen",
     undernote:
-      "Prices are a starting point (deliverables + management are closed in the diagnosis). Modular fronts (video, newsletter, community, launch) can run separately or combined.",
+      "Investment is closed in the diagnosis, from deliverables + management. Modular fronts (video, newsletter, community, launch) can run separately or combined.",
     faqH2: "Direct questions, direct answers.",
     finalPre: "Let's build something that ",
     finalHl: "works",

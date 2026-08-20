@@ -118,8 +118,12 @@ export function OrcamentoCalculator() {
         <p style={{ color: "#5a534a", marginTop: 8, maxWidth: 760 }}>
           Escolha um <b>pacote</b> (o preço de tabela é o que vai pra proposta) e some os <b>adicionais</b>.
           Sem pacote, monte pela fórmula: Σ(peças × preço em volume) + camadas de gestão + adicionais, com desconto de bundle e piso mínimo.
-          {/* ⚠️ Não usar minContractMonths cegamente: LinkedIn B2B fecha em 3 meses,
-              e cotar 6 aqui já geraria proposta errada. O pacote manda. */}
+          {/* ⚠️ 19/08/2026 — este comentário dizia "LinkedIn B2B fecha em 3 meses" e
+              hoje isso é FALSO: os três pacotes `linkedin-*` estão com minMonths 6
+              (pricing.ts), porque a decisão de 08/08 unificou a régua. Ficou como
+              comentário morto que ia reintroduzir o 3 no próximo edit. A lógica em si
+              (preferir `pkg.minMonths` ao padrão da casa) continua certa e vale pra
+              qualquer exceção futura — por isso o fallback não mudou. */}
           Contrato mínimo de <b>{pkg?.minMonths ?? PRICING_RULES.minContractMonths} meses</b>
           {pkg?.minMonths && pkg.minMonths !== PRICING_RULES.minContractMonths
             ? ` (exceção da família ${FAMILIES.find((f) => f.id === pkg.family)?.label} — o padrão da casa é ${PRICING_RULES.minContractMonths})`

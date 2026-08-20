@@ -29,6 +29,18 @@
 // mais) ou "grandfathered" (cliente ativo no preço antigo, ex. DSEC). Todo preço
 // carrega `source` — se não tem fonte, NÃO entra no arquivo.
 
+// 📌 19/08/2026 — TAXONOMIA PARALELA NÃO MAPEADA (pendência de decisão).
+// A página /pacotes vende TRÊS degraus com outros nomes: "Autoridade",
+// "Growth" e "Lançamento / GTM" (src/app/pacotes/page.tsx). Nenhum dos três
+// existe em `PACKAGES`, que fala em Entrada / Completo Autoridade / Escala
+// (founder-brand) e Starter / Full Service / 360° (linkedin-b2b). São
+// catálogos diferentes — /pacotes é oferta de PROJETO cripto, PACKAGES é
+// founder brand e LinkedIn — mas não há mapeamento em lugar nenhum do código.
+// Risco comercial: o lead vê "Pacote 02 Growth" no site e recebe proposta com
+// "Completo Autoridade R$7.000". Precisa de decisão do Gabriel: ou os nomes
+// convergem, ou fica registrado que são ofertas distintas. Enquanto isso, não
+// assuma equivalência entre um degrau de /pacotes e um degrau daqui.
+
 export type Unit = {
   id: string;
   label: string;

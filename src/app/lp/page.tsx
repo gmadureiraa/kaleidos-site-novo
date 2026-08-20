@@ -742,8 +742,11 @@ function FAQ() {
       a: "Diagnóstico é grátis (48h). Implementação varia pelo escopo: projeto custom começa em R$ 8.000 (entrega única) ou plano mensal a partir de R$ 4.500/mês com mínimo de 3 meses. ROI típico: time libera 60-100h/mês, paga sozinho em 30-60 dias.",
     },
     {
+      // ⚠️ 19/08/2026 — a resposta abria com "Não." e em seguida dizia que o plano
+      // exige 3 meses. Contradizia a si mesma em duas frases. O conteúdo da
+      // política não mudou; só a abertura, que agora bate com o resto.
       q: "Tem fidelidade?",
-      a: "Não. O mensal exige 3 meses pra fazer sentido (gargalo grande não resolve em 30 dias). Depois disso é mês a mês, cancela quando quiser. Sem multa, sem letrinha pequena.",
+      a: "Ciclo mínimo de 3 meses no plano mensal (gargalo grande não se resolve em 30 dias). Depois disso é mês a mês, cancela quando quiser. Sem multa, sem letrinha pequena.",
     },
   ];
 
@@ -970,7 +973,11 @@ function CTAFinal() {
                   <ArrowUpRight className="h-4 w-4" />
                 </button>
                 <p className="mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] text-center">
-                  Sem fidelidade · Sem contrato · Resposta em 48h · LGPD
+                  {/* ⚠️ 19/08/2026 — era "Sem fidelidade · Sem contrato", e a FAQ da
+                      MESMA página diz que o mensal tem ciclo mínimo de 3 meses. O selo
+                      cobre o formulário de diagnóstico (grátis, sem compromisso), não o
+                      plano. ⛔ Não repor "sem contrato". */}
+                  Diagnóstico grátis · Sem compromisso · Resposta em 48h · LGPD
                 </p>
                 {status === "err" && (
                   <p className="mono text-[11px] text-[var(--rec)]">

@@ -742,6 +742,14 @@ function ProblemaSection() {
 }
 
 /* ─────────────────────── S3 · O QUE FAZEMOS (dark) ─────────────────────── */
+// ⚠️ 19/08/2026 — o bullet "Tese inicial e calendário aprovado por você" dizia
+// antes "(estratégia contínua a partir do Completo)". "o Completo" é nome de
+// degrau interno (founder-completo-autoridade, em src/lib/pricing.ts) que esta
+// página NUNCA define — por decisão do Gabriel de 08/08 a /marca-pessoal não
+// traz escopo contável nem preço. Era referência órfã: o lead lia uma condição
+// atrelada a um plano que não existe na página. Removida.
+// ⛔ Não citar nome de degrau aqui. Nota em JS de propósito: comentário HTML
+// dentro deste template literal vai parar no view-source do site.
 const FAZEMOS_HTML = `
 <section style="position:relative;background:#14110D;color:#FAFAFA;overflow:hidden;">
   <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.5px);background-size:18px 18px;pointer-events:none;"></div>
@@ -764,7 +772,7 @@ const FAZEMOS_HTML = `
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:28px 26px;box-shadow:5px 5px 0 #D262B2;">
         <div style="font-family:Gridlite,monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#D262B2;margin-bottom:16px;">Kaleidos</div>
         <ul style="list-style:none;margin:0;padding:0;font-size:15px;line-height:1.6;color:#d8d1c6;">
-          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Tese inicial e calendário aprovado por você (estratégia contínua a partir do Completo)</li>
+          <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Tese inicial e calendário aprovado por você</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Roteiro, copy, design e edição de tudo</li>
           <li style="padding:7px 0;border-bottom:1px solid #2a241d;">Publicação em Instagram e TikTok</li>
           <li style="padding:7px 0;">Relatório mensal e leitura dos números junto</li>
