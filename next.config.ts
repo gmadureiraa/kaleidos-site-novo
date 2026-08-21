@@ -84,6 +84,8 @@ const nextConfig: NextConfig = {
         ["rebrand-projeto-cripto-quando-como", "rebranding-projeto-cripto-quando-como"],
         ["fintech-content-marketing-tudo-que-precisa-saber", "content-marketing-para-fintech"],
         ["tokenomics-e-marketing-sell-buy-pressure-growth", "tokenomics-e-marketing-sell-buy-pressure"],
+        // --- Segunda rodada (2026-08-21): par publicado × publicado ---
+        ["marketing-de-influencia-em-fintech-como-fazer-dar-certo", "influencer-marketing-para-fintech"],
       ] as const).map(([from, to]) => ({
         source: `/blog/${from}`,
         destination: `/blog/${to}`,

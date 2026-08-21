@@ -79,6 +79,8 @@ import { blogNew66 } from "./blog-new-66";
 import { blogNew67 } from "./blog-new-67";
 import { blogNew68 } from "./blog-new-68";
 import { blogWeb3Gtm } from "./blog-web3-gtm";
+import { blogBacklogKai } from "./blog-backlog-kai";
+import { blogBacklogC } from "./blog-backlog-c";
 import { fetchExternalPosts } from "./blog-external";
 
 // Tipos + helpers de card/labels/data vivem em `blog-shared.ts` (client-safe,
@@ -115,6 +117,17 @@ export { toBlogCard, categoryLabels, categoryColors, formatDate, getModifiedAt }
  * - rebrand-projeto-cripto-quando-como → rebranding-projeto-cripto-quando-como
  * - fintech-content-marketing-tudo-que-precisa-saber → content-marketing-para-fintech
  * - tokenomics-e-marketing-sell-buy-pressure-growth → tokenomics-e-marketing-sell-buy-pressure
+ *
+ * Segunda rodada (2026-08-21), canibalização entre posts JÁ PUBLICADOS:
+ * - marketing-de-influencia-em-fintech-como-fazer-dar-certo → influencer-marketing-para-fintech
+ *   Os dois eram o MESMO artigo: título quase idêntico ("como fazer dar certo"),
+ *   os mesmos 4 filtros de seleção de creator, as mesmas 3 camadas de briefing
+ *   (obrigatória/mensagem/livre) e a mesma régua de medição. O canônico é o de
+ *   11/07 porque tem a regulação BRASILEIRA (CDC art. 36, CONAR 2021, CVM 20/2021),
+ *   é o dono do termo-cabeça e recebe 3 links internos; o removido tinha zero.
+ *   O material exclusivo do removido (caso SEC × Kim Kardashian/EthereumMax,
+ *   estudo Finfluencer Appeal da CFA Institute, as 5 cláusulas de contrato e a
+ *   retenção por coorte) foi MIGRADO para o canônico antes da remoção.
  */
 const CANNIBALIZED_SLUGS = new Set([
   "pumpfun-lancamento-como-entretenimento",
@@ -131,11 +144,12 @@ const CANNIBALIZED_SLUGS = new Set([
   "rebrand-projeto-cripto-quando-como",
   "fintech-content-marketing-tudo-que-precisa-saber",
   "tokenomics-e-marketing-sell-buy-pressure-growth",
+  "marketing-de-influencia-em-fintech-como-fazer-dar-certo",
 ]);
 
 // Blog: cases reais (teardowns web3) + posts SEO/GEO project-led (motor de conteúdo
 // _SEO-GEO-CONTENT-ENGINE.md). Cases vêm do gerado; SEO posts são escritos à mão aqui.
-const allPostsRaw: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...blogNew68, ...blogNew69, ...blogSetGtmFintech, ...blogWeb3Gtm, ...blogMarcaPessoal, ...caseStudies];
+const allPostsRaw: BlogPost[] = [...seoPosts, ...seoPosts2, ...seoPosts3, ...seoPosts4, ...seoPosts5, ...seoPosts6, ...seoPosts7, ...seoPosts8, ...blogNew1, ...blogNew2, ...blogNew3, ...blogNew4, ...blogNew5, ...blogNew6, ...blogNew7, ...blogNew8, ...blogNew9, ...blogNew10, ...blogNew11, ...blogNew12, ...blogNew13, ...blogNew14, ...blogNew15, ...blogNew16, ...blogNew17, ...blogNew18, ...blogNew19, ...blogNew20, ...blogNew21, ...blogNew22, ...blogNew23, ...blogNew24, ...blogNew25, ...blogNew26, ...blogNew27, ...blogNew28, ...blogNew29, ...blogNew30, ...blogNew31, ...blogNew32, ...blogNew33, ...blogNew34, ...blogNew35, ...blogNew36, ...blogNew37, ...blogNew38, ...blogNew39, ...blogNew40, ...blogNew41, ...blogNew42, ...blogNew43, ...blogNew44, ...blogNew45, ...blogNew46, ...blogNew47, ...blogNew48, ...blogNew49, ...blogNew50, ...blogNew51, ...blogNew52, ...blogNew53, ...blogNew54, ...blogNew55, ...blogNew56, ...blogNew57, ...blogNew58, ...blogNew59, ...blogNew60, ...blogNew61, ...blogNew62, ...blogNew63, ...blogNew64, ...blogNew65, ...blogNew66, ...blogNew67, ...blogNew68, ...blogNew69, ...blogSetGtmFintech, ...blogWeb3Gtm, ...blogBacklogKai, ...blogBacklogC, ...blogMarcaPessoal, ...caseStudies];
 
 export const blogPosts: BlogPost[] = allPostsRaw.filter(
   (p) => !CANNIBALIZED_SLUGS.has(p.slug)
@@ -149,10 +163,19 @@ export const blogPosts: BlogPost[] = allPostsRaw.filter(
  * As LISTAGENS públicas (index do /blog, carrossel da home, sitemap, RSS, JSON-LD
  * de índice) devem usar `getPublishedPosts()` para esconder o que ainda não saiu.
  *
- * Como o site é estático, o "auto-publish" depende de um rebuild: um post agendado
- * só aparece nas listagens depois que a data chega E o site é reconstruído
- * (rebuild semanal — não há cron neste repo). Em componentes client, o filtro roda
- * a cada render com o horário do navegador, então também aparece após a data.
+ * ⚠️ CORREÇÃO DE DIAGNÓSTICO (2026-08-21). Circulava a ideia de que "o site é
+ * estático e não tem cron, então post agendado nunca aparece sozinho". Não é
+ * verdade: `/blog`, `sitemap.ts`, `rss.xml` e `/blog/[slug]` todos declaram
+ * `export const revalidate = 3600`. A fila de agendados entra sozinha, em até
+ * uma hora depois da data, sem redeploy e sem cron nenhum. Não crie GitHub
+ * Action de rebuild pra "resolver" isso: já está resolvido.
+ *
+ * O que de fato está errado é o outro lado: a rota do post NÃO filtra por data
+ * (ver o comentário longo em getPostBySlugAsync), então o agendado responde 200
+ * antes da hora enquanto fica fora de toda listagem. Os 7 posts do lote GTM
+ * tiveram a data trazida pro presente nesta data por causa disso; os ~89
+ * restantes seguem nesse estado até o gate ser ligado, o que depende de auditar
+ * 33 links internos primeiro.
  */
 export function isPublished(post: BlogPost, now: Date = new Date()): boolean {
   return new Date(post.publishedAt).getTime() <= now.getTime();
@@ -374,6 +397,28 @@ export async function getPublishedPostsAsync(now: Date = new Date()): Promise<Bl
 }
 
 /** Igual a getPostBySlug(), mas resolve também slugs vindos do KAI. */
+/**
+ * Post por slug para a ROTA PÚBLICA `/blog/[slug]`.
+ *
+ * ⚠️ NÃO HÁ GATE DE DATA AQUI, e isso é uma divergência conhecida (medida em
+ * 2026-08-21). O comentário no topo de `src/app/blog/[slug]/page.tsx` afirma que
+ * "o gate de data vive em getPostBySlugAsync" — não vive. A função devolve
+ * qualquer post, inclusive os de `publishedAt` no futuro. O efeito é que um post
+ * AGENDADO responde 200 na URL enquanto está fora da listagem, do sitemap e do
+ * RSS (que usam getPublishedPosts). Soft-launch involuntário: público e
+ * indexável antes da data, sem constar do sitemap.
+ *
+ * O gate seria uma linha (`return isPublished(local) ? local : undefined`), e o
+ * `revalidate = 3600` da rota faria o 404 virar 200 sozinho na data, sem cron e
+ * sem redeploy — exatamente o desenho que o comentário da rota descreve.
+ *
+ * 🔴 NÃO LIGUE O GATE ANTES DE RESOLVER OS LINKS. Em 21/08/2026 havia 89 posts
+ * com data futura no acervo e 33 links internos, espalhados por posts JÁ NO AR,
+ * apontando pra eles. Ligar o gate hoje transforma esses 33 links em 404 até a
+ * data de cada destino — troca um problema de SEO por um pior. A sequência certa
+ * é: (1) auditar os 33 links e ou antecipar o destino ou remover o link, depois
+ * (2) ligar o gate. Script de medição: ver diário de 21/08.
+ */
 export async function getPostBySlugAsync(slug: string): Promise<BlogPost | undefined> {
   const local = getPostBySlug(slug);
   if (local) return local;

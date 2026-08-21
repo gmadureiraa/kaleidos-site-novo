@@ -9,16 +9,16 @@ export const blogNew27: BlogPost[] = [
   {
     slug: "livro-web3-marketing-amanda-cassatt-aprendizados",
     title:
-      "O livro 'Web3 Marketing' da Amanda Cassatt: os aprendizados centrais (e o que aplica no Brasil)",
-    seoTitle: "Web3 Marketing, de Amanda Cassatt: resumo e lições",
+      "As ideias de Amanda Cassatt sobre web3 marketing (e o que aplica no Brasil)",
+    seoTitle: "Amanda Cassatt: as ideias centrais e o Brasil",
     excerpt:
-      "A Kaleidos destrincha 'Web3 Marketing: A Handbook for the Next Internet Revolution' (Wiley, 2023), de Amanda Cassatt: o funil web3, o conceito de Web2.5, comunidade como modelo de negócio e uma leitura crítica do que funciona (ou não) no mercado brasileiro.",
+      "As ideias que Amanda Cassatt, autora de 'Web3 Marketing' (Wiley, 2023) e fundadora da Serotonin, defende publicamente: o funil web3, o conceito de Web2.5, comunidade como modelo de negócio, e uma leitura crítica do que funciona (ou não) no mercado brasileiro. Leitura de fontes públicas, não do livro inteiro.",
     seoDescription:
-      "Resumo crítico do livro Web3 Marketing de Amanda Cassatt (2023): funil web3, Web2.5, comunidade e tokens. O que vale aplicar em projetos cripto no Brasil.",
+      "As ideias de Amanda Cassatt sobre marketing web3: funil que termina em comunidade, Web2.5 e educação. O que vale aplicar em projetos cripto no Brasil.",
     category: "cripto",
     author: AUTHOR,
     publishedAt: "2026-07-12",
-    updatedAt: "2026-07-16",
+    updatedAt: "2026-08-21",
     readTime: 10,
     featured: false,
     coverImage: "/blog/livro-web3-marketing-amanda-cassatt-aprendizados/cover.png",
@@ -32,7 +32,7 @@ export const blogNew27: BlogPost[] = [
       "livros de marketing",
       "kaleidos",
     ],
-    tldr: "Em 'Web3 Marketing' (Wiley, 2023), Amanda Cassatt, ex-CMO da ConsenSys e fundadora da Serotonin, sistematiza o marketing de projetos cripto: o funil web3 termina em comunidade e propriedade, não em compra, e a transição de marcas tradicionais passa pelo estágio intermediário que ela chama de Web2.5. Boa parte aplica ao Brasil, com adaptações de canal e de confiança.",
+    tldr: "Amanda Cassatt, ex-CMO da ConsenSys e fundadora da Serotonin, defende publicamente um modelo de marketing cripto em que o funil termina em comunidade e propriedade, não em compra, e em que a transição de marcas tradicionais passa pelo estágio intermediário que ela chama de Web2.5. Boa parte aplica ao Brasil, com adaptações de canal e de confiança. Este texto é leitura de fontes públicas da autora, não do livro dela na íntegra.",
     faq: [
       {
         question: "Sobre o que é o livro Web3 Marketing de Amanda Cassatt?",
@@ -60,13 +60,15 @@ export const blogNew27: BlogPost[] = [
           "Vale como base conceitual, mas exige adaptação. O Brasil tem canais próprios (WhatsApp e Instagram pesam mais que Discord para o público geral), um histórico de pirâmides financeiras que aumenta a desconfiança e um marco regulatório específico, a Lei 14.478/2022, com supervisão do Banco Central. A camada de educação e prova de legitimidade precisa ser maior aqui.",
       },
     ],
-    content: `# O livro 'Web3 Marketing' da Amanda Cassatt: os aprendizados centrais (e o que aplica no Brasil)
+    content: `# As ideias de Amanda Cassatt sobre web3 marketing (e o que aplica no Brasil)
 
 Poucos livros tentam sistematizar o marketing de projetos cripto. A maioria do conhecimento do setor vive em threads, newsletters e conversas de bastidor. Por isso, quando a Wiley publicou "Web3 Marketing: A Handbook for the Next Internet Revolution" em abril de 2023, o livro virou referência quase imediata: é o registro mais organizado de como se constrói marca, comunidade e demanda em cripto.
 
 A autora tem lastro. Amanda Cassatt foi CMO da ConsenSys entre 2016 e 2019, na fase em que o Ethereum precisava ser explicado e vendido para o mundo, e depois fundou a Serotonin, consultoria de marketing web3 que já trabalhou com projetos como Polygon, Chainlink, Arbitrum e Decentraland, além de marcas tradicionais como a Sotheby's. O livro recebeu endossos de nomes como Joseph Lubin, cofundador do Ethereum, e Kim Milosevich, CMO da a16z crypto, que o chamou de o livro definitivo sobre marketing em web3 (fonte: [site oficial do livro](https://amandacassatt.com/), 2023).
 
-A Kaleidos trabalha com marketing cripto no Brasil e usa vários dos frameworks do livro no dia a dia, com adaptações. Neste post, a gente resume as ideias centrais e faz a leitura crítica: o que atravessa bem para o contexto brasileiro e o que precisa de tradução.
+> **Nota de método (revisão de 21/08/2026).** Este texto foi construído a partir de **fontes públicas da autora**: o site oficial do livro, o sumário e a apresentação publicados pela editora, e entrevistas e aparições em que ela mesma explica os próprios conceitos, todas linkadas ao longo do texto e na lista de fontes no fim. **Ninguém da Kaleidos leu o livro de capa a capa**, e por isso aqui não há citação literal de trecho, número tirado do miolo nem descrição de capítulo por dedução. O que está abaixo são ideias que Cassatt defende em público, com a fonte de cada uma, mais a nossa leitura crítica do que atravessa para o Brasil. Quando alguém da casa ler o livro inteiro, este post é reescrito a partir dele e a nota some. A mesma regra e o motivo dela estão no post [Amanda Cassatt: o que a estratégia dela ensina sobre marketing web3](/blog/amanda-cassatt-serotonin-arquitetura-de-autoridade).
+
+A Kaleidos trabalha com marketing cripto no Brasil e usa vários desses frameworks no dia a dia, com adaptações. Abaixo, as ideias centrais e a leitura crítica: o que atravessa bem para o contexto brasileiro e o que precisa de tradução.
 
 ## Principais takeaways
 
@@ -78,15 +80,15 @@ A Kaleidos trabalha com marketing cripto no Brasil e usa vários dos frameworks 
 
 ## O contexto: por que esse livro existe
 
-A primeira metade do livro é uma introdução não técnica ao web3: a história do Bitcoin e do Ethereum, o que são tokens, NFTs, DAOs e DeFi, e por que essas tecnologias mudam a relação entre empresas e usuários. Para quem já vive o setor, essa parte é revisão. O valor real está na segunda metade, em que Cassatt destila a prática de marketing que desenvolveu na ConsenSys e na Serotonin.
+Pelo sumário e pela apresentação publicados pela editora, o livro se divide em duas partes: uma introdução não técnica ao web3 (história do Bitcoin e do Ethereum, o que são tokens, NFTs, DAOs e DeFi) e uma segunda parte em que a autora trata da prática de marketing que desenvolveu na ConsenSys e na Serotonin. Para quem já vive o setor, a primeira parte é revisão, e é na segunda que mora o interesse.
 
-A tese de fundo é que o web3 não muda apenas as ferramentas do marketing; muda a estrutura econômica sobre a qual o marketing opera. No Web2, empresa, investidor e usuário são três grupos separados, muitas vezes com interesses conflitantes: a empresa quer extrair valor do usuário para remunerar o investidor. No web3, segundo o livro, esses três papéis colapsam em uma única categoria com alinhamento econômico: a comunidade. Quem usa o protocolo pode ser dono de uma fração dele, e quem é dono tem incentivo para que ele cresça.
+A tese de fundo que ela sustenta em público é que o web3 não muda apenas as ferramentas do marketing; muda a estrutura econômica sobre a qual o marketing opera. No Web2, empresa, investidor e usuário são três grupos separados, muitas vezes com interesses conflitantes: a empresa quer extrair valor do usuário para remunerar o investidor. No web3, segundo o argumento dela, esses três papéis colapsam em uma única categoria com alinhamento econômico: a comunidade. Quem usa o protocolo pode ser dono de uma fração dele, e quem é dono tem incentivo para que ele cresça.
 
 Isso parece abstrato até você ver as consequências práticas. Se o usuário é sócio, o marketing deixa de ser convencimento e vira coordenação: dar às pessoas motivos, ferramentas e narrativas para que elas mesmas espalhem o projeto.
 
 ## Aprendizado 1: o funil web3 termina em comunidade, não em conversão
 
-O framework mais citado do livro é a adaptação do funil de marketing para o web3. O funil clássico segue etapas conhecidas: descoberta, consideração, conversão, retenção. O objetivo final é a compra, e o pós-venda é um departamento separado.
+O framework mais citado dela é a adaptação do funil de marketing para o web3. O funil clássico segue etapas conhecidas: descoberta, consideração, conversão, retenção. O objetivo final é a compra, e o pós-venda é um departamento separado.
 
 No funil que Cassatt descreve, a jornada muda de destino. O usuário descobre o projeto (conteúdo, PR, influenciadores), aprende sobre ele (educação, documentação, comunidade aberta), realiza a primeira ação on-chain (compra o token, minta o NFT, usa o protocolo) e então entra na fase que não existe no funil tradicional: vira membro. Com um ativo do projeto na carteira, ele tem interesse direto no sucesso da rede.
 
@@ -98,9 +100,9 @@ O efeito é um ciclo, não um funil linear. Membros satisfeitos produzem conteú
 
 No Web2, comunidade é um canal: um grupo de Facebook, um servidor de Discord, um programa de embaixadores. Algo que o marketing gerencia para apoiar o produto.
 
-No web3, pelo argumento do livro, a comunidade é o produto em um grau muito maior. Um protocolo sem comunidade é código parado; o valor de rede vem das pessoas que usam, integram, desenvolvem e defendem. Por isso, funções que no Web2 seriam periféricas (community manager, DevRel, governança) viram centrais.
+No web3, pelo argumento dela, a comunidade é o produto em um grau muito maior. Um protocolo sem comunidade é código parado; o valor de rede vem das pessoas que usam, integram, desenvolvem e defendem. Por isso, funções que no Web2 seriam periféricas (community manager, DevRel, governança) viram centrais.
 
-Na prática, isso se traduz em algumas disciplinas que o livro trata com detalhe:
+Na prática, isso se traduz em algumas disciplinas que ela defende publicamente:
 
 - **Presença fundadora ativa:** no web3, o público espera acesso direto aos construtores. Fundadores que aparecem, respondem e explicam constroem confiança que nenhuma campanha compra.
 - **Transparência como padrão:** roadmap público, decisões documentadas, erros assumidos. O setor pune opacidade com velocidade.
@@ -110,31 +112,31 @@ Na prática, isso se traduz em algumas disciplinas que o livro trata com detalhe
 
 ## Aprendizado 3: Web2.5 é a ponte para marcas tradicionais
 
-Um dos conceitos mais úteis do livro para quem trabalha com marcas fora do setor é o de Web2.5: a zona intermediária entre o Web2 e o Web3. Em entrevista ao Digiday, Cassatt defendeu que marcas deveriam adotar exatamente essa abordagem, porque a migração não precisa ser tudo ou nada (fonte: [Digiday](https://digiday.com/marketing/why-serotonins-ceo-believes-brands-should-be-taking-a-web2-5-approach/), 2022).
+Um dos conceitos mais úteis dela para quem trabalha com marcas fora do setor é o de Web2.5: a zona intermediária entre o Web2 e o Web3. Em entrevista ao Digiday, Cassatt defendeu que marcas deveriam adotar exatamente essa abordagem, porque a migração não precisa ser tudo ou nada (fonte: [Digiday](https://digiday.com/marketing/why-serotonins-ceo-believes-brands-should-be-taking-a-web2-5-approach/), 2022).
 
 Na prática, Web2.5 significa que uma empresa tradicional pode começar com passos reversíveis: um colecionável digital ligado a um produto físico, um programa de fidelidade com resgate on-chain, uma experiência token-gated para clientes de alto valor, aceitar pagamento em stablecoin. O cliente talvez nem perceba que há blockchain envolvida, e é esse o ponto: a tecnologia como infraestrutura, não como manchete.
 
-O caso que o livro e a trajetória da Serotonin ilustram bem é o da Sotheby's, casa de leilões fundada em 1744 que entrou no mercado de NFTs traduzindo sua competência central, curadoria de arte, para o novo meio, em vez de fingir ser uma empresa cripto.
+O caso que a trajetória da Serotonin ilustra bem é o da Sotheby's, casa de leilões fundada em 1744 que entrou no mercado de NFTs traduzindo sua competência central, curadoria de arte, para o novo meio, em vez de fingir ser uma empresa cripto.
 
 **Leitura crítica pro Brasil:** o conceito aplica direto, e talvez até melhor que nos Estados Unidos. O Brasil tem um dos maiores mercados de adoção de cripto do mundo em volume de usuários, e o Banco Central regulamentou o setor a partir da Lei 14.478/2022, o marco legal dos ativos virtuais. Para uma marca brasileira, o caminho Web2.5 mais óbvio hoje passa por pagamentos e fidelidade: stablecoins para remessas e recebíveis, benefícios tokenizados, colecionáveis ligados a experiências. O erro comum é começar pelo mais barulhento (lançar NFT de marketing sem utilidade) em vez do mais útil.
 
 ## Aprendizado 4: educação é a base do funil, não um extra
 
-Um fio que atravessa o livro inteiro: no web3, o maior gargalo de conversão é entendimento. A pessoa não compra o que não entende, e quase tudo no setor exige explicação: carteira, seed phrase, gas, custódia.
+Um fio que atravessa o trabalho dela: no web3, o maior gargalo de conversão é entendimento. A pessoa não compra o que não entende, e quase tudo no setor exige explicação: carteira, seed phrase, gas, custódia.
 
 A resposta de Cassatt, testada desde a época de levar o Ethereum ao mercado, é tratar educação como a fundação da estratégia de conteúdo. Documentação clara, artigos que explicam conceitos sem jargão, conteúdo que responde às perguntas reais do público em cada etapa. Isso serve ao funil duas vezes: atrai tráfego qualificado no topo e remove objeções no meio.
 
 **Leitura crítica pro Brasil:** esse aprendizado vale em dobro aqui. O brasileiro médio já foi exposto a pirâmides financeiras vestidas de cripto, e a desconfiança é racional. Conteúdo educativo honesto, que explica riscos junto com oportunidades, é o ativo de marketing mais barato e mais durável que um projeto pode construir no país. É também a base de qualquer estratégia de busca orgânica, como mostramos no [guia de SEO para cripto e web3](/blog/guia-seo-para-cripto). É também o que separa projetos sérios de oportunistas aos olhos do público, da imprensa e do regulador.
 
-## O que o livro não resolve
+## O que esse arcabouço não resolve
 
-Nenhum livro de 2023 sobreviveria intacto ao ritmo do setor, e vale registrar as lacunas:
+Nenhum material de 2023 sobreviveria intacto ao ritmo do setor, e vale registrar as lacunas:
 
-- **O cenário de canais mudou.** O livro foi escrito antes da consolidação de tendências como o crescimento do marketing de KOLs asiático, a ascensão de plataformas de vídeo curto como canal cripto dominante e a integração de IA na produção de conteúdo.
-- **Regulação é tratada em nível global e genérico.** Para operar no Brasil, você precisa conhecer o marco local: a Lei 14.478/2022, a supervisão do Banco Central e as regras da CVM para ofertas que caracterizam valores mobiliários. Nada disso está (nem poderia estar) no livro.
+- **O cenário de canais mudou.** O material é anterior à consolidação de tendências como o crescimento do marketing de KOLs asiático, a ascensão de plataformas de vídeo curto como canal cripto dominante e a integração de IA na produção de conteúdo.
+- **Regulação é tratada em nível global e genérico.** Para operar no Brasil, você precisa conhecer o marco local: a Lei 14.478/2022, a supervisão do Banco Central e as regras da CVM para ofertas que caracterizam valores mobiliários. Nada disso está (nem poderia estar) num material escrito para o mercado americano.
 - **O viés de sobrevivência existe.** Os casos citados são, em maioria, projetos que deram certo com orçamento relevante. O founder brasileiro com orçamento apertado precisa filtrar o que é replicável e o que era privilégio de quem tinha a Serotonin no discado.
 
-Nada disso invalida o livro. Ele continua sendo o melhor ponto de partida estruturado para quem quer entender marketing cripto, justamente porque os fundamentos (comunidade como modelo, funil que termina em pertencimento, educação como base) envelhecem bem. As táticas datam; a estrutura, não. É a mesma conclusão a que chegamos ao analisar [onde os projetos de web3 marketing erram](/blog/web3-marketing-arte-perdida): quem abandonou os fundamentos foi quem quebrou.
+Nada disso invalida o arcabouço. Ele continua sendo um bom ponto de partida estruturado para quem quer entender marketing cripto, justamente porque os fundamentos (comunidade como modelo, funil que termina em pertencimento, educação como base) envelhecem bem. As táticas datam; a estrutura, não. É a mesma conclusão a que chegamos ao analisar [onde os projetos de web3 marketing erram](/blog/web3-marketing-arte-perdida): quem abandonou os fundamentos foi quem quebrou.
 
 ## Como a Kaleidos usa esses frameworks
 

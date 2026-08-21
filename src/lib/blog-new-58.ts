@@ -9,39 +9,39 @@ export const blogNew58: BlogPost[] = [
   {
     slug: "midia-e-imprensa-projetos-cripto-o-que-funciona",
     title:
-      "Assessoria de imprensa e mídia para projetos cripto no Brasil: o que funciona",
-    seoTitle: "Assessoria de imprensa para cripto no Brasil",
+      "Como virar pauta na imprensa cripto: os 4 formatos que jornalista aceita",
+    seoTitle: "Como virar pauta na imprensa cripto brasileira",
     excerpt:
-      "Projeto cripto que só fala de si mesmo no próprio Twitter não constrói credibilidade. Este guia mostra o que funciona em assessoria de imprensa e mídia para cripto no Brasil: quais veículos importam, como montar pauta que jornalista aceita, o que evitar e como medir o resultado de earned media.",
+      "Press release institucional tem aproveitamento perto de zero. Este guia mostra os quatro formatos de pauta que um jornalista de cripto no Brasil de fato aceita, como escolher o grupo de veículo certo para cada ângulo, o que queima o remetente e como medir earned media sem contar recorte.",
     seoDescription:
-      "Assessoria de imprensa para projetos cripto no Brasil: veículos que importam, como montar pauta que jornalista aceita, erros que queimam a marca e medição.",
+      "Os 4 formatos de pauta que jornalista de cripto aceita no Brasil: dado inédito, newsjacking, porta-voz com tese e fato concreto. E o que queima o remetente.",
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-09",
-    updatedAt: "2026-07-09",
+    updatedAt: "2026-08-21",
     readTime: 8,
     featured: false,
     coverImage: "/blog/midia-e-imprensa-projetos-cripto-o-que-funciona/cover.png",
     tags: [
-      "assessoria de imprensa",
-      "pr cripto",
+      "pauta de imprensa",
+      "newsjacking",
       "earned media",
+      "pitch para jornalista",
+      "porta-voz",
+      "dado inédito",
       "mídia cripto brasil",
-      "relações públicas",
-      "marketing cripto",
-      "kaleidos",
     ],
-    tldr: "Assessoria de imprensa para cripto no Brasil funciona quando o projeto para de mandar press release genérico e passa a oferecer o que jornalista precisa: dado inédito, porta-voz preparado e pauta conectada ao noticiário. O caminho é mapear os veículos certos (nativos cripto, negócios e tech), construir relacionamento antes de precisar dele e medir menções, tráfego de referência e busca pela marca em vez de contar recortes.",
+    tldr: "Jornalista de cripto aceita quatro formatos de pauta: dado inédito que só você tem, gancho com o noticiário do dia (newsjacking), porta-voz com tese própria e disponibilidade real, e fato concreto com data. Press release institucional exaltando o próprio produto tem aproveitamento perto de zero e ainda queima o remetente para os envios seguintes.",
     faq: [
       {
-        question: "Assessoria de imprensa vale a pena para projeto cripto no Brasil?",
+        question: "Qual formato de pauta tem mais chance de virar matéria em cripto?",
         answer:
-          "Vale, principalmente porque cripto é um setor onde a desconfiança é o estado padrão do público e uma matéria em veículo independente carrega uma validação que anúncio e post da própria marca não carregam. O Edelman Trust Barometer registra, edição após edição, um ambiente de desconfiança generalizada nas instituições, e nesse cenário a chancela de um terceiro independente vira ativo estratégico. A ressalva: PR é jogo de médio prazo, não canal de aquisição imediata.",
+          "Dado inédito. Levantamento exclusivo, número de uso que só o seu projeto tem, pesquisa própria com metodologia aberta. É o formato com melhor taxa de aproveitamento porque resolve o problema do jornalista em vez de criar mais um: entrega a ele algo que o concorrente não tem. Depois dele vêm, nessa ordem, o gancho com o noticiário do dia, o porta-voz com tese própria e o fato concreto com data marcada.",
       },
       {
-        question: "Quais veículos cobrem cripto no Brasil?",
+        question: "Para qual grupo de veículo eu mando cada ângulo?",
         answer:
-          "Três grupos: a imprensa nativa cripto (Portal do Bitcoin, Livecoins, Cointelegraph Brasil, BeInCrypto Brasil), a imprensa de negócios e finanças que mantém cobertura do setor (Exame, InfoMoney, Valor Econômico, NeoFeed) e a imprensa de tecnologia e startups. Cada grupo pede um ângulo diferente: o nativo cripto aceita profundidade técnica, o de negócios quer números de mercado e impacto econômico, e o de tech quer produto e história de empresa.",
+          "A cobertura se divide em três grupos com réguas diferentes. A imprensa nativa cripto aceita profundidade técnica e é a porta de entrada. A imprensa de negócios e finanças quer impacto econômico, número de mercado e movimento de empresa. A imprensa de tecnologia e startups quer produto, captação e história de founder. Mandar o mesmo texto para os três é o erro que mais queima remetente. O mapa veículo a veículo está no nosso guia de PR e assessoria de imprensa cripto.",
       },
       {
         question: "Como conseguir que um jornalista escreva sobre o meu projeto?",
@@ -49,26 +49,28 @@ export const blogNew58: BlogPost[] = [
           "Oferecendo pauta, não propaganda. Jornalista aceita história quando ela tem pelo menos um destes elementos: dado inédito ou levantamento exclusivo, gancho com algo que já está no noticiário (regulação, movimento de mercado, caso relevante), porta-voz com opinião própria e disponibilidade real, ou anúncio de fato concreto (captação, lançamento, parceria com nome conhecido). Press release genérico exaltando o próprio produto vai para a lixeira.",
       },
       {
-        question: "Como medir o resultado de assessoria de imprensa para cripto?",
+        question: "Como saber se a operação de pauta está funcionando?",
         answer:
           "Combine quatro camadas: volume e qualidade das menções (veículo, destaque, se o porta-voz foi citado), tráfego de referência e busca direta pela marca depois de cada matéria, uso das matérias como prova social em vendas e captação, e evolução de share of voice contra concorrentes diretos. Contar recortes sem olhar o que eles geraram é medir esforço, não resultado.",
       },
     ],
-    content: `# Assessoria de imprensa e mídia para projetos cripto no Brasil: o que funciona
+    content: `# Como virar pauta na imprensa cripto: os 4 formatos que jornalista aceita
 
 Existe um padrão curioso no mercado cripto brasileiro: projetos que investem pesado em conteúdo próprio, comunidade e mídia paga, mas que nunca apareceram em um único veículo de imprensa que não fosse deles mesmos. O founder posta todo dia, o blog publica toda semana, e ainda assim, quando um investidor ou parceiro pesquisa o nome do projeto no Google, só encontra o que o próprio projeto disse sobre si.
 
 Isso é um problema de credibilidade. Em qualquer setor, validação de terceiro vale mais do que autopromoção. Em cripto, onde o público já viu esquema demais e a desconfiança é o estado padrão, vale o dobro. O Edelman Trust Barometer registra, ano após ano, um ambiente global de desconfiança nas instituições, e é exatamente nesse ambiente que a chancela de um veículo independente se torna um ativo que nenhum canal próprio substitui.
 
-A boa notícia: o Brasil aparece de forma consistente entre os primeiros países do Índice Global de Adoção de Cripto da Chainalysis, e esse interesse do público sustenta um ecossistema de mídia que cobre o setor com frequência. Espaço existe. O que falta, na maioria dos projetos, é saber ocupá-lo. Já publicamos um [guia geral de PR e assessoria de imprensa para cripto](/blog/pr-assessoria-imprensa-cripto-brasil); este artigo desce um nível e foca no que funciona na prática, com o mapa de veículos, os formatos de pauta que jornalista aceita e os erros que queimam a marca.
+A boa notícia: o Brasil aparece de forma consistente entre os primeiros países do Índice Global de Adoção de Cripto da Chainalysis, e esse interesse do público sustenta um ecossistema de mídia que cobre o setor com frequência. Espaço existe. O que falta, na maioria dos projetos, é saber ocupá-lo.
+
+**Este artigo é sobre uma coisa só: o que faz um jornalista dizer sim.** A estratégia de assessoria como um todo (como escolher e trabalhar cada veículo brasileiro um a um, PR de TGE e listagem, wire versus relacionamento, gestão de FUD e o painel de medição) está no nosso [guia de PR e assessoria de imprensa cripto no Brasil](/blog/pr-assessoria-imprensa-cripto-brasil), e não vou repetir aqui. Aqui a pergunta é mais estreita e mais imediata: você tem uma novidade na mão, e ela precisa virar matéria.
 
 ## Principais takeaways
 
-- Earned media resolve o que canal próprio não resolve: prova social independente para investidor, parceiro e usuário desconfiado.
-- A mídia que cobre cripto no Brasil tem três grupos (nativa cripto, negócios, tech) e cada um pede um ângulo diferente.
-- Jornalista aceita pauta, não propaganda: dado inédito, gancho de noticiário, porta-voz com opinião e fato concreto.
+- Jornalista aceita pauta, não propaganda. Os quatro formatos que funcionam: dado inédito, gancho de noticiário, porta-voz com tese própria e fato concreto com data.
+- Dado inédito é o de maior aproveitamento, porque resolve o problema do jornalista em vez de criar mais um.
+- Os três grupos de veículo (nativa cripto, negócios, tech) pedem ângulos diferentes. O mesmo texto para os três queima o remetente.
 - Relacionamento se constrói antes da necessidade. Quem só aparece quando quer matéria não tem relacionamento, tem demanda.
-- Medição séria combina menções qualificadas, tráfego de referência, busca pela marca e share of voice.
+- Earned media resolve o que canal próprio não resolve: prova social independente para investidor, parceiro e usuário desconfiado.
 
 ## Por que earned media pesa mais em cripto do que em outros setores
 
@@ -78,17 +80,17 @@ Em cripto, essa diferença é amplificada por dois fatores. Primeiro, o históri
 
 Há ainda um efeito de segunda ordem: matéria em veículo relevante vira insumo para todo o resto do marketing. Vira prova social no pitch de vendas, argumento no deck de captação, conteúdo para redes sociais e backlink de autoridade para o SEO da marca.
 
-## O mapa da mídia cripto no Brasil
+## Antes do formato: para quem essa pauta é
 
-Antes de sair disparando e-mail, entenda o terreno. A cobertura de cripto no Brasil se divide em três grupos, e tratar todos do mesmo jeito é o primeiro erro.
+Uma pauta boa mandada para o veículo errado é uma pauta ruim. A cobertura de cripto no Brasil opera com três réguas distintas, e o ângulo tem que ser cortado para a régua de quem vai ler.
 
-**Imprensa nativa cripto.** Portal do Bitcoin, Livecoins, Cointelegraph Brasil, BeInCrypto Brasil e similares. Cobrem o setor todos os dias, entendem a linguagem e aceitam profundidade técnica. São o caminho mais acessível para um projeto começar a aparecer, e o público deles é qualificado: já está dentro do mercado. A limitação é o alcance fora da bolha.
+**Régua da imprensa nativa cripto.** Aceita profundidade técnica, entende o vocabulário e cobre o setor todos os dias. É a porta de entrada, e o público já está dentro do mercado. Ângulo que funciona: mecanismo, produto, número on-chain, opinião de quem constrói.
 
-**Imprensa de negócios e finanças.** Exame, InfoMoney, Valor Econômico, NeoFeed e afins mantêm cobertura recorrente de cripto, mas com outra régua: querem impacto econômico, números de mercado, movimento de empresas e regulação. Uma matéria aqui alcança investidor institucional, executivo e o público que ainda não está em cripto, exatamente quem os canais próprios do projeto não alcançam.
+**Régua da imprensa de negócios e finanças.** Quer impacto econômico, tamanho de mercado, movimento de empresa e regulação. Alcança investidor institucional e o público que ainda não está em cripto, exatamente quem os canais próprios do projeto nunca alcançam. Ângulo que funciona: dinheiro, escala, consequência.
 
-**Imprensa de tecnologia e startups.** Cobre cripto pela lente de produto, inovação e história de empresa. Funciona bem para projetos com narrativa de startup: captação, produto novo, founder com trajetória interessante.
+**Régua da imprensa de tecnologia e startups.** Quer produto, inovação e história de empresa. Ângulo que funciona: captação, lançamento, trajetória de founder.
 
-A estratégia madura escalona os três: constrói presença na mídia nativa, usa essa tração para chegar aos veículos de negócios e reserva a imprensa de tech para os marcos de empresa. Querer começar pelo Valor sem nunca ter aparecido em lugar nenhum é receita de frustração.
+A ordem madura escalona os três: presença na nativa primeiro, essa tração como credencial para os veículos de negócios, e a imprensa de tech reservada para marco de empresa. Querer estrear no veículo de maior porte sem nunca ter aparecido em lugar nenhum é receita de frustração. Quem cobre o quê, veículo a veículo, está mapeado no [guia de PR cripto](/blog/pr-assessoria-imprensa-cripto-brasil).
 
 ## O que funciona: os quatro formatos de pauta que jornalista aceita
 
@@ -135,7 +137,9 @@ O horizonte honesto: earned media é construção de médio prazo. Os primeiros 
 
 ## Conclusão
 
-Assessoria de imprensa para cripto no Brasil funciona, mas não do jeito que a maioria pratica. Não é disparar release e contar recorte. É entender o mapa da mídia, oferecer aos jornalistas o que eles de fato precisam (dado, gancho, fonte, fato), construir relacionamento antes da necessidade e medir o que a cobertura gera para o negócio.
+Virar pauta não é sorte nem contato mágico. É oferecer ao jornalista uma das quatro coisas que ele precisa (dado que ninguém tem, gancho com o que já está no ar, fonte com tese, fato com data), cortada na régua do veículo certo, por alguém com quem ele já falou antes de precisar.
+
+O resto da operação de imprensa (relacionamento veículo a veículo, PR de lançamento de token, crise e o painel de medição completo) está no [guia de PR e assessoria de imprensa cripto](/blog/pr-assessoria-imprensa-cripto-brasil).
 
 Num setor em que a desconfiança é o ponto de partida de qualquer conversa, a validação de terceiros independentes deixa de ser vaidade e vira infraestrutura de credibilidade. Há mais estratégias de construção de autoridade e aquisição na nossa [seção de marketing](/blog/categoria/marketing).
 

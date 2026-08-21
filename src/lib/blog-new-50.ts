@@ -10,7 +10,7 @@ export const blogNew50: BlogPost[] = [
     slug: "influencer-marketing-para-fintech",
     title:
       "Influencer marketing para fintech: como fazer dar certo (sem risco regulatório)",
-    seoTitle: "Influencer marketing para fintech: guia completo",
+    seoTitle: "Influencer marketing para fintech: guia 2026",
     excerpt:
       "Influencer marketing funciona para fintech, mas o setor financeiro tem regras que a maioria das marcas ignora até tomar susto. Este guia mostra como escolher creators, montar briefing, cuidar de disclosure e compliance e medir resultado de verdade no contexto brasileiro.",
     seoDescription:
@@ -18,8 +18,8 @@ export const blogNew50: BlogPost[] = [
     category: "marketing",
     author: AUTHOR,
     publishedAt: "2026-07-11",
-    updatedAt: "2026-07-16",
-    readTime: 9,
+    updatedAt: "2026-08-21",
+    readTime: 12,
     featured: false,
     coverImage: "/blog/influencer-marketing-para-fintech/cover.png",
     tags: [
@@ -76,6 +76,7 @@ A Kaleidos trabalha com marcas de fintech, cripto e web3, e a posição da agên
 - Recomendação de investimento é atividade de analista registrado (Resolução CVM 20/2021): o creator fala de produto e educação, não de "compre este ativo".
 - Briefing bom protege a mensagem obrigatória e libera a voz do creator no resto.
 - Meça o funil inteiro: cadastro, conta aberta, ativação. Alcance é meio, não fim.
+- O precedente internacional já está posto: a SEC fechou acordo de US$ 1,26 milhão com Kim Kardashian por promover um token sem revelar o pagamento.
 
 ## Por que influencer marketing funciona tão bem para fintech
 
@@ -111,6 +112,14 @@ Aqui está a parte que separa campanha profissional de problema jurídico. Três
 
 **Resolução CVM 20/2021.** Essa é a que mais pega fintechs de investimento. A resolução regula a atividade de analista de valores mobiliários e reserva a recomendação de investimento a profissionais registrados. Um creator sem registro não pode recomendar compra de ativo específico, projetar rentabilidade ou orientar decisão de investimento. A CVM já atuou publicamente contra influenciadores por esse tipo de conduta.
 
+### O precedente que fixou a régua lá fora
+
+A referência que todo jurídico de fintech deveria conhecer é o caso EthereumMax. Em 2022, a SEC fechou acordo de US$ 1,26 milhão com Kim Kardashian por ela ter promovido o token EMAX no Instagram sem revelar que havia recebido US$ 250 mil pelo post, conforme o [comunicado oficial da SEC](https://www.sec.gov/news/press-release/2022-183). O recado do regulador americano foi explícito: promover ativo financeiro sem disclosure de pagamento tem consequência, inclusive para quem tem centenas de milhões de seguidores.
+
+O caso importa fora dos Estados Unidos porque fixou a gramática que reguladores do mundo todo passaram a seguir, cada um com seus instrumentos. Transparência sobre relação comercial deixou de ser boa prática e virou exigência. A fintech que constrói o programa já no padrão exigente não refaz nada quando a régua sobe aqui.
+
+E a régua ainda está longe de ser cumprida. O estudo Finfluencer Appeal, da [CFA Institute](https://www.cfainstitute.org/about/press-room/2024/policy-recommendations-for-finfluencer-social-media-content), analisou conteúdo de influenciadores financeiros e encontrou disclosure em apenas 53% dos conteúdos com promoção de investimento, caindo para 20% naqueles que faziam recomendação direta. O mesmo estudo registra que 37% dos investidores da geração Z citam influenciadores como fator importante na decisão de começar a investir. Ou seja: o canal move decisão de dinheiro de verdade, e a maior parte dele opera sem a transparência mínima. Para quem faz certo, isso é vantagem competitiva, não obstáculo.
+
 Na prática, o que o creator pode e não pode fazer:
 
 - **Pode:** apresentar o produto, mostrar a experiência de uso, falar de educação financeira em termos gerais (a mesma base do [content marketing para fintech](/blog/content-marketing-para-fintech)), explicar como funciona uma categoria de investimento.
@@ -132,6 +141,18 @@ O briefing bem construído separa três camadas:
 
 Um teste simples de qualidade: se você trocar o creator por outro e o conteúdo ficar idêntico, o briefing está engessado demais.
 
+## O contrato: as cinco cláusulas que não podem faltar
+
+Briefing organiza a campanha. Contrato é o que protege a marca no dia em que um post de dois anos atrás volta como pergunta de auditoria. Em fintech, cinco cláusulas são inegociáveis:
+
+1. **Aprovação prévia do roteiro pelo compliance**, com prazo definido e registro de quem aprovou o quê.
+2. **Obrigação de disclosure em formato e posição definidos**, e não "a critério do creator".
+3. **Proibição explícita de promessa de rentabilidade e de aconselhamento individual**, escrita com todas as letras e não deduzida do bom senso.
+4. **Direito de remoção imediata do conteúdo** em caso de erro factual ou mudança regulatória, sem depender de renegociação.
+5. **Trilha de auditoria**: arquivamento de toda peça publicada, com data, print e link, guardado pela marca e não pelo creator.
+
+Some a isso a cláusula de moralidade descrita mais adiante e você tem um contrato que aguenta escrutínio.
+
 ## Como medir (de verdade)
 
 Alcance e engajamento são métricas de meio de funil. Fintech vive de conta aberta e cliente ativo, então a medição precisa chegar lá. A estrutura mínima:
@@ -139,6 +160,7 @@ Alcance e engajamento são métricas de meio de funil. Fintech vive de conta abe
 - **Atribuição por creator:** link rastreado (UTM) e cupom ou código exclusivo para cada perfil. Sem isso, você não sabe quem trouxe o quê.
 - **Funil completo:** clique, cadastro iniciado, conta aberta, ativação (primeiro depósito, primeira transação ou o evento que define cliente real no seu produto).
 - **Custo por ativação por creator:** o número que permite comparar creators entre si e contra mídia paga. É ele que decide quem renova.
+- **Retenção da coorte:** o cliente que veio de creator retém melhor ou pior que a média da base? Essa resposta separa canal que traz cliente de canal que traz caçador de bônus, e nenhum custo por ativação sozinho revela isso.
 - **Janela de atribuição realista:** produto financeiro tem ciclo de decisão mais longo que e-commerce. Medir só a semana do post subestima o resultado; combine atribuição direta com pesquisa de "como conheceu a marca" no onboarding.
 
 E um ponto que quase ninguém mede: **efeito de marca.** Campanhas com creators bons costumam elevar busca orgânica pelo nome da fintech e melhorar a taxa de conversão dos outros canais, inclusive da [estratégia de social media](/blog/social-media-fintech-estrategia). Acompanhe o volume de busca da marca antes e depois das ondas de campanha.
