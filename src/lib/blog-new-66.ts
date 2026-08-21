@@ -160,7 +160,7 @@ Press release cripto que a mídia publica não é uma peça de marketing mais be
 
 Num setor onde a desconfiança é o ponto de partida, cada release genérico cobra juros: queima o remetente para o envio seguinte. Já cada release bem construído compõe: vira matéria, que vira prova social, que vira porta aberta na próxima pauta. Há mais estratégias de aquisição e autoridade na nossa [seção de growth](/blog/categoria/growth).
 
-A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintech, com mais de 30 projetos no portfólio, e trata comunicação com imprensa como parte da estratégia de crescimento: pauta de verdade, relacionamento com os veículos certos e medição do que a cobertura gera. Se o seu projeto precisa aparecer fora da própria bolha, [fale com a Kaleidos](/contato).
+A Kaleidos é uma agência especializada em marketing para cripto, web3 e fintech, e trata comunicação com imprensa como parte da estratégia de crescimento: pauta de verdade, relacionamento com os veículos certos e medição do que a cobertura gera. Se o seu projeto precisa aparecer fora da própria bolha, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -678,7 +678,7 @@ Voltando às três fases da Formo, o papel do analytics muda em cada uma [Fonte]
 
 **Fase 2, lançamento (semanas -3 a +6).** Campanhas coordenadas, quests, airdrops e referrals geram o pico de tráfego, e cada campanha precisa nascer com rastreamento próprio ligando origem a comportamento on-chain. O monitoramento é em tempo quase real: taxa de conexão por canal, conversão para primeira ação, sinais precoces de Sybil (padrões de carteiras recém-criadas executando o mínimo elegível). Detectar farming na semana 1 e ajustar critérios vale mais que qualquer post-mortem.
 
-**Fase 3, escala (mês 2 em diante).** Aqui o funil medido vira motor de decisão: cortar canais com Core Action Completion Rate baixa, dobrar nos que retêm, rodar mini-GTMs por feature com a mesma instrumentação e reportar as métricas que importam. Na experiência da Kaleidos com projetos de web3 e fintech, que somam mais de R$ 46 milhões faturados pelos clientes, a diferença entre operação madura e imatura raramente está na criatividade das campanhas: está em quem consegue responder, com dados, qual canal trouxe usuários que ficaram.
+**Fase 3, escala (mês 2 em diante).** Aqui o funil medido vira motor de decisão: cortar canais com Core Action Completion Rate baixa, dobrar nos que retêm, rodar mini-GTMs por feature com a mesma instrumentação e reportar as métricas que importam. Na experiência da Kaleidos com projetos de web3 e fintech, a diferença entre operação madura e imatura raramente está na criatividade das campanhas: está em quem consegue responder, com dados, qual canal trouxe usuários que ficaram.
 
 ## Os erros de medição mais comuns
 
@@ -827,7 +827,7 @@ Dois pontos merecem ênfase.
 
 **Unlocks são eventos de marketing.** Com a estrutura de float baixo da safra atual, cada unlock relevante é discutido publicamente em agregadores, com ou sem o projeto. Antecipar o calendário, contextualizar cada evento e reportar depois transforma a maior vulnerabilidade narrativa do pós-TGE em demonstração recorrente de maturidade.
 
-**Métricas de negócio, não de vaidade.** A recomendação central do playbook da Lunar Strategy para 2026 vale dobrado no pós-listagem: rastrear métricas de negócio com inteligência on-chain [Fonte](https://www.lunarstrategy.com/guides/crypto-marketing-in-2026-a-complete-playbook). Preço do token é o que o projeto menos controla; usuários executando a ação principal, retenção por coorte e receita de protocolo são o que sustenta o preço quando o hype acaba. É o que a Kaleidos, com mais de 50 lançamentos executados, viu separar os projetos que atravessam ciclos dos que viram nota de rodapé.
+**Métricas de negócio, não de vaidade.** A recomendação central do playbook da Lunar Strategy para 2026 vale dobrado no pós-listagem: rastrear métricas de negócio com inteligência on-chain [Fonte](https://www.lunarstrategy.com/guides/crypto-marketing-in-2026-a-complete-playbook). Preço do token é o que o projeto menos controla; usuários executando a ação principal, retenção por coorte e receita de protocolo são o que sustenta o preço quando o hype acaba. É o que a Kaleidos, pelos lançamentos que executou, viu separar os projetos que atravessam ciclos dos que viram nota de rodapé.
 
 ## O checklist condensado
 

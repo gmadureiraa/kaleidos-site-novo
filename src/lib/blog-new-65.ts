@@ -57,7 +57,7 @@ export const blogNew65: BlogPost[] = [
 
 Existe uma pergunta que quase todo founder de projeto cripto faz em algum momento: "o que exatamente eu estou contratando quando contrato uma agência de marketing web3?". A dúvida é legítima. O mercado mistura agências sérias com vendedores de hype, e a diferença entre as duas só aparece quando se entende o que o trabalho de verdade envolve.
 
-Este artigo abre a caixa-preta. Serviço por serviço, mostra o que uma agência especializada executa, onde ela agrega valor que uma agência generalista não consegue agregar e quais sinais separam operação profissional de fábrica de barulho. A referência de escopo vem de guias do próprio setor, como o da [Coinbound sobre o que faz uma agência web3](https://coinbound.io/what-does-a-web3-marketing-agency-do-services-explained/), cruzada com a prática da Kaleidos em mais de 30 projetos de cripto, web3 e fintech.
+Este artigo abre a caixa-preta. Serviço por serviço, mostra o que uma agência especializada executa, onde ela agrega valor que uma agência generalista não consegue agregar e quais sinais separam operação profissional de fábrica de barulho. A referência de escopo vem de guias do próprio setor, como o da [Coinbound sobre o que faz uma agência web3](https://coinbound.io/what-does-a-web3-marketing-agency-do-services-explained/), cruzada com a prática da Kaleidos em projetos de cripto, web3 e fintech.
 
 ## Principais takeaways
 
@@ -247,7 +247,7 @@ Os autores não concluem que airdrop é inútil. Concluem que o formato dominant
 3. **Supervisão da comunidade.** Processo transparente e auditável reduz o risco de informação privilegiada e o dano de reputação associado.
 4. **Recompensa proporcional ao custo do usuário.** Escalar o benefício conforme o custo real de uso aproxima o incentivo de um desconto de aquisição e o afasta de uma loteria.
 
-Na prática de mercado, isso se traduz em vesting com condição de comportamento, critérios de elegibilidade que valorizam profundidade de uso em vez de contagem de transações e metas de retenção pós-incentivo definidas antes do lançamento. A experiência da Kaleidos em mais de 50 lançamentos aponta na mesma direção: incentivo funciona quando é desenhado como programa de retenção com orçamento de aquisição, e falha quando é desenhado como fogos de artifício.
+Na prática de mercado, isso se traduz em vesting com condição de comportamento, critérios de elegibilidade que valorizam profundidade de uso em vez de contagem de transações e metas de retenção pós-incentivo definidas antes do lançamento. A experiência da Kaleidos em lançamento aponta na mesma direção: incentivo funciona quando é desenhado como programa de retenção com orçamento de aquisição, e falha quando é desenhado como fogos de artifício.
 
 ## Conclusão
 
@@ -309,7 +309,7 @@ A Kaleidos desenha estratégias de lançamento e incentivo para projetos web3 co
 
 Fintech e Google Ads têm uma relação de amor e atrito. De um lado, o Google é onde a intenção mora: alguém que digita "melhor conta PJ digital" está a um passo da decisão. Do outro, produtos financeiros enfrentam o regime mais duro da plataforma: políticas restritivas, verificações, CPCs inflados pela concorrência e um usuário que não converte sem confiar.
 
-O resultado é que a maioria das contas de fintech no Google Ads opera longe do potencial: campanhas mal estruturadas, otimização para clique e landing pages que ignoram o fator confiança. Este guia organiza o que funciona, com base em referências do setor como o guia da [NinjaPromo sobre Google Ads para fintech](https://ninjapromo.io/google-ads-for-fintech) e na operação da Kaleidos com produtos financeiros, um portfólio de clientes que já soma mais de R$46 milhões faturados.
+O resultado é que a maioria das contas de fintech no Google Ads opera longe do potencial: campanhas mal estruturadas, otimização para clique e landing pages que ignoram o fator confiança. Este guia organiza o que funciona, com base em referências do setor como o guia da [NinjaPromo sobre Google Ads para fintech](https://ninjapromo.io/google-ads-for-fintech) e na operação da Kaleidos com produtos financeiros.
 
 ## Principais takeaways
 
@@ -435,7 +435,7 @@ A Kaleidos estrutura e opera mídia paga para fintechs e produtos financeiros co
 
 KOL marketing é, ao mesmo tempo, o canal mais poderoso e o mais mal executado do marketing cripto. Poderoso porque, em um setor onde a confiança é escassa, a recomendação de uma voz respeitada move mais do que qualquer anúncio. Mal executado porque a maioria das campanhas ainda se resume a pagar por post, torcer e contar impressões.
 
-A boa notícia é que o playbook amadureceu. O [guia de KOL cripto 2026 da Flexe](https://flexe.io/blog/kol-crypto-guide/) consolidou o estado da arte: arquétipos de criador, faixas de preço, estrutura de campanha em fases, exigências de disclosure e mensuração on-chain. Este artigo organiza esse material em um roteiro prático de ponta a ponta, do vetting ao relatório final, cruzado com a experiência da Kaleidos em produção e distribuição de conteúdo que já passou de 125 milhões de views em reels.
+A boa notícia é que o playbook amadureceu. O [guia de KOL cripto 2026 da Flexe](https://flexe.io/blog/kol-crypto-guide/) consolidou o estado da arte: arquétipos de criador, faixas de preço, estrutura de campanha em fases, exigências de disclosure e mensuração on-chain. Este artigo organiza esse material em um roteiro prático de ponta a ponta, do vetting ao relatório final, cruzado com a experiência da Kaleidos em produção e distribuição de conteúdo em vídeo curto.
 
 ## Principais takeaways
 
@@ -615,7 +615,7 @@ O ponto central: nada disso conflita com o bom SEO tradicional. AEO é o bom SEO
 
 Conteúdo sobre cripto é tratado pelo Google na categoria YMYL (Your Money or Your Life), a que exige os sinais mais fortes de experiência, expertise, autoridade e confiabilidade. Para o blog, isso se traduz em práticas concretas: autoria real com página de autor e credenciais, fontes citadas com link em todo dado, datas de publicação e atualização visíveis, e revisão periódica dos artigos com mais tráfego, porque em cripto a informação envelhece rápido.
 
-Há um alinhamento raro aqui: os mesmos sinais que o Google exige são os que fazem um leitor cético de cripto confiar no conteúdo. Fonte linkada, autor identificado e dado verificável não são custo de compliance editorial; são o produto. Na experiência da Kaleidos, cujos clientes crescem em média 200%, o conteúdo com fonte e profundidade real é também o que mais gera citação espontânea, backlinks e menção em respostas de IA.
+Há um alinhamento raro aqui: os mesmos sinais que o Google exige são os que fazem um leitor cético de cripto confiar no conteúdo. Fonte linkada, autor identificado e dado verificável não são custo de compliance editorial; são o produto. Na experiência da Kaleidos, o conteúdo com fonte e profundidade real é também o que mais gera citação espontânea, backlinks e menção em respostas de IA.
 
 ## O processo: cadência e manutenção
 
@@ -687,7 +687,7 @@ A Kaleidos constrói operações de conteúdo orgânico para projetos de cripto,
 
 Nas planilhas de marketing de fintech, o email costuma aparecer como coadjuvante: o canal dos avisos de sistema e da newsletter que ninguém mede. É um erro de casting. Produto financeiro tem o ciclo de decisão mais longo do consumo digital, ninguém confia o próprio dinheiro por impulso, e o email é exatamente o canal onde a confiança amadurece: direto, próprio e sem algoritmo decidindo quem vê.
 
-Os números do canal sustentam o argumento: o email marketing é projetado para gerar US$17,9 bilhões até 2027, segundo dados da Tidio citados no guia da [NinjaPromo sobre email para fintech](https://ninjapromo.io/fintech-email-marketing). Este artigo organiza as 9 práticas desse guia em um sistema aplicável, com as adaptações que cripto exige, a partir da operação da Kaleidos em mais de 30 projetos de fintech, cripto e web3.
+Os números do canal sustentam o argumento: o email marketing é projetado para gerar US$17,9 bilhões até 2027, segundo dados da Tidio citados no guia da [NinjaPromo sobre email para fintech](https://ninjapromo.io/fintech-email-marketing). Este artigo organiza as 9 práticas desse guia em um sistema aplicável, com as adaptações que cripto exige, a partir da operação da Kaleidos em projetos de fintech, cripto e web3.
 
 ## Principais takeaways
 

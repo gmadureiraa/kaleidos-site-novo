@@ -60,7 +60,7 @@ Existe uma cena que se repete em projeto cripto: o time passa meses refinando la
 
 O erro não foi de comunicação. Foi de arquitetura. Tokenomics é a peça de marketing mais lida e mais escrutinada de um projeto web3: antes de acreditar no pitch, investidor sofisticado e usuário atento abrem a tabela de distribuição, o cronograma de vesting e a utilidade real do token. Se o desenho conta uma história de extração (time com fatia gorda, cliff curto, utility vaga), nenhuma campanha conserta a primeira impressão.
 
-Não é por acaso que agências especializadas em web3 tratam o desenho do token como serviço de growth. A Lunar Strategy, que reporta atuação em mais de 250 projetos cripto desde 2019, inclui explicitamente auditoria de utility, auditoria de mecânica de airdrop, gestão de sell pressure e recomendação de mecanismos de buy pressure dentro do escopo de go-to-market, ao lado de branding e canais [Lunar Strategy](https://www.lunarstrategy.com/go-to-market-strategy). A Kaleidos, com 30+ projetos atendidos em cripto e web3, chegou à mesma conclusão pelo caminho prático: quando o token trabalha contra o marketing, o marketing perde sempre.
+Não é por acaso que agências especializadas em web3 tratam o desenho do token como serviço de growth. A Lunar Strategy, que reporta atuação em mais de 250 projetos cripto desde 2019, inclui explicitamente auditoria de utility, auditoria de mecânica de airdrop, gestão de sell pressure e recomendação de mecanismos de buy pressure dentro do escopo de go-to-market, ao lado de branding e canais [Lunar Strategy](https://www.lunarstrategy.com/go-to-market-strategy). A Kaleidos, pelos projetos que atende em cripto e web3, chegou à mesma conclusão pelo caminho prático: quando o token trabalha contra o marketing, o marketing perde sempre.
 
 ## Principais takeaways
 
@@ -197,7 +197,7 @@ Toda indústria tem o lugar onde o mercado de verdade acontece. Na bolsa tradici
 
 Isso muda completamente o que "estratégia de conteúdo" significa. O calendário editorial mensal, herdado do marketing tradicional, pressupõe um mundo onde a pauta é previsível. O X cripto é o oposto: a pauta muda três vezes por dia, e o valor de um post depende menos da qualidade absoluta e mais do timing relativo. Conteúdo excelente sobre a narrativa de ontem vale menos que conteúdo bom sobre a narrativa de agora.
 
-Os resultados de quem opera bem essa lógica aparecem em casos públicos. A Lunar Strategy, agência com histórico de mais de 250 projetos no setor, reporta uma campanha para o Applied Primate que gerou mais de 500 mil impressões no X e mais de 280 mil visualizações em artigos, contribuindo para o sellout de uma coleção de 10 mil NFTs [Lunar Strategy](https://www.lunarstrategy.com/article/the-lunar-strategy-approach-to-blockchain-marketing-why-pr-matters-in-web3). A Kaleidos, que já operou 50+ lançamentos, vê o mesmo padrão: o projeto que trata o X como pregão, com rotina e velocidade de resposta, captura uma atenção que o projeto que trata como mural de anúncios nunca vê.
+Os resultados de quem opera bem essa lógica aparecem em casos públicos. A Lunar Strategy, agência com histórico de mais de 250 projetos no setor, reporta uma campanha para o Applied Primate que gerou mais de 500 mil impressões no X e mais de 280 mil visualizações em artigos, contribuindo para o sellout de uma coleção de 10 mil NFTs [Lunar Strategy](https://www.lunarstrategy.com/article/the-lunar-strategy-approach-to-blockchain-marketing-why-pr-matters-in-web3). A Kaleidos, pelos lançamentos que já operou, vê o mesmo padrão: o projeto que trata o X como pregão, com rotina e velocidade de resposta, captura uma atenção que o projeto que trata como mural de anúncios nunca vê.
 
 ## Principais takeaways
 
@@ -399,7 +399,7 @@ Sobre cadência e fôlego, vale a régua realista que a NinjaPromo recomenda par
 - **Mês 2, produção:** 2 a 4 pilares publicados, cada um derivado em posts sociais e em uma edição de newsletter; primeiros testes de citação em motores de resposta.
 - **Mês 3, ciclo:** análise do que ranqueou e do que converteu, atualização dos pilares com dados novos, pauta do trimestre seguinte extraída das perguntas reais de leitores e da busca.
 
-A Kaleidos aplica esse desenho com uma convicção que veio da prática em 30+ projetos: o loop só compõe se alguém for dono dele. Conteúdo sem dono vira campanha de novo, só que mais lenta.
+A Kaleidos aplica esse desenho com uma convicção que veio da prática nos projetos que atende: o loop só compõe se alguém for dono dele. Conteúdo sem dono vira campanha de novo, só que mais lenta.
 
 ## Conclusão
 
@@ -462,7 +462,7 @@ O dia do TGE é o dia em que o marketing de um projeto cripto muda de profissão
 
 O sintoma é conhecido: comunidade que só recebe notícia boa, silêncio nos períodos difíceis, unlock descoberto pelo gráfico, tesouraria que ninguém sabe quanto tem. Cada um desses vácuos é preenchido por especulação, e especulação em cripto tem custo de mercado imediato.
 
-A boa notícia é que a disciplina para resolver isso já existe e foi adaptada ao setor. O playbook de investor relations da Coinbound parte de uma constatação importante: alocadores institucionais passaram a exigir infraestrutura formal de disclosure junto com a avaliação de token e time, e a transparência dos dados on-chain não resolveu o problema de comunicação, porque dado bruto sem tradução estruturada não vira informação acionável [Coinbound](https://coinbound.io/crypto-investor-relations-marketing-playbook/). A Kaleidos, depois de 50+ lançamentos acompanhados, resume assim: o pós-TGE define se o projeto construiu uma base de holders ou uma fila de saída.
+A boa notícia é que a disciplina para resolver isso já existe e foi adaptada ao setor. O playbook de investor relations da Coinbound parte de uma constatação importante: alocadores institucionais passaram a exigir infraestrutura formal de disclosure junto com a avaliação de token e time, e a transparência dos dados on-chain não resolveu o problema de comunicação, porque dado bruto sem tradução estruturada não vira informação acionável [Coinbound](https://coinbound.io/crypto-investor-relations-marketing-playbook/). A Kaleidos, pelos lançamentos que acompanhou, resume assim: o pós-TGE define se o projeto construiu uma base de holders ou uma fila de saída.
 
 ## Principais takeaways
 
@@ -594,7 +594,7 @@ Existe uma fantasia recorrente em projeto cripto: a de que a listagem em uma boa
 
 A forma correta de enxergar uma listagem é como evento de go-to-market: uma janela curta de atenção máxima cujo resultado se define quase inteiramente antes de ela abrir. A exchange coloca o token na prateleira e, nos melhores casos, empresta algum holofote. Todo o resto (quem vai comprar, por que, com que convicção) é trabalho do projeto, feito nas semanas anteriores.
 
-E a escala do palco justifica o trabalho. Os dados compilados pela Flexe.io dão a dimensão do tráfego das grandes exchanges: cerca de 38 milhões de visitas mensais na Binance, na faixa de 22 milhões na OKX e na Coinbase, com 74% do tráfego de sites blockchain vindo de mobile [Flexe.io](https://flexe.io/blog/exchange-traffic/). É audiência real. Mas audiência da exchange não é demanda pelo seu token: essa conversão ninguém faz pelo projeto. A Kaleidos, com 50+ lançamentos no histórico, trata listagem com a mesma disciplina de um lançamento de produto: plano por fases, demanda construída antes, ativação no dia, sustentação depois.
+E a escala do palco justifica o trabalho. Os dados compilados pela Flexe.io dão a dimensão do tráfego das grandes exchanges: cerca de 38 milhões de visitas mensais na Binance, na faixa de 22 milhões na OKX e na Coinbase, com 74% do tráfego de sites blockchain vindo de mobile [Flexe.io](https://flexe.io/blog/exchange-traffic/). É audiência real. Mas audiência da exchange não é demanda pelo seu token: essa conversão ninguém faz pelo projeto. A Kaleidos, pelo histórico de lançamentos que operou, trata listagem com a mesma disciplina de um lançamento de produto: plano por fases, demanda construída antes, ativação no dia, sustentação depois.
 
 ## Principais takeaways
 
@@ -769,7 +769,7 @@ Para DAOs e projetos de comunidade, o framework detalha: atividade nos canais (D
 - **A comunidade decide algo que importa?** Ownership sem poder de decisão é programa de fidelidade. Governança real, grants comunitários e espaço para membros construírem são o que a a16z descreve nos casos que funcionaram. O exemplo-limite é a Yuga Labs declarando que se vê como administradora temporária de uma propriedade intelectual em processo de se tornar da comunidade.
 - **O founder aceita ser jardineiro?** O framework descreve a mudança de papel: de construtor que executa roadmap para arquiteto que cria condições. Founder que quer comunidade obediente quer audiência, e audiência se compra com mídia, não com token.
 
-Passar nas três perguntas não é obrigatório para todo projeto (empresas centralizadas do ecossistema seguem GTM tradicional com legitimidade), mas usar o vocabulário de comunidade sem a substância é a forma mais rápida de queimar credibilidade no setor. A Kaleidos, em 30+ projetos de cripto e web3, viu a diferença de perto: comunidade com ownership real atravessa ciclo de baixa; audiência fantasiada de comunidade evapora no primeiro trimestre vermelho.
+Passar nas três perguntas não é obrigatório para todo projeto (empresas centralizadas do ecossistema seguem GTM tradicional com legitimidade), mas usar o vocabulário de comunidade sem a substância é a forma mais rápida de queimar credibilidade no setor. A Kaleidos, nos projetos de cripto e web3 que atende, viu a diferença de perto: comunidade com ownership real atravessa ciclo de baixa; audiência fantasiada de comunidade evapora no primeiro trimestre vermelho.
 
 ## Conclusão
 
@@ -832,7 +832,7 @@ Boa parte dos erros de marketing em web3 nasce de uma confusão de identidade. O
 
 O framework mais útil para desfazer essa confusão veio da a16z crypto. No ensaio sobre go-to-market em web3, Maggie Hsu propõe uma matriz 2x2 com dois eixos: estrutura organizacional (centralizada ou descentralizada) e incentivo econômico (com token ou sem token). A posição na matriz determina quais estratégias de GTM fazem sentido, e uma das observações centrais do texto é que os stakeholders também mudam: em web2 o stakeholder primário é o cliente; em web3, entram desenvolvedores, investidores e parceiros [a16z crypto](https://a16zcrypto.com/posts/article/go-to-market-in-web3/).
 
-A Kaleidos usa essa matriz como primeira pergunta de diagnóstico com projetos do setor, e a experiência de 30+ projetos confirma o padrão: quando o marketing não funciona em web3, a causa raiz frequentemente não é a execução, é o playbook do quadrante errado. Este artigo mapeia os quatro quadrantes, os exemplos de cada um e o processo para localizar o seu projeto.
+A Kaleidos usa essa matriz como primeira pergunta de diagnóstico com projetos do setor, e a experiência nos projetos que atende confirma o padrão: quando o marketing não funciona em web3, a causa raiz frequentemente não é a execução, é o playbook do quadrante errado. Este artigo mapeia os quatro quadrantes, os exemplos de cada um e o processo para localizar o seu projeto.
 
 ## Principais takeaways
 

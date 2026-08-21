@@ -135,7 +135,7 @@ A conta final é simples: o Telegram existe pra mover o negócio. Se o grupo cre
 - **Rituais de comunidade:** AMA mensal, atualização semanal do time, espaço pra feedback de produto. Ritual é o que transforma audiência em comunidade.
 - **Rastreamento:** links únicos por campanha e por canal parceiro, sempre.
 
-Na Kaleidos, que já operou comunidade e conteúdo em mais de 30 projetos de cripto e web3, o padrão que observamos é constante: o Telegram que funciona é o que tem operação, não o que tem orçamento.
+Na Kaleidos, que já operou comunidade e conteúdo em projetos de cripto e web3, o padrão que observamos é constante: o Telegram que funciona é o que tem operação, não o que tem orçamento.
 
 ## Conclusão
 
@@ -256,7 +256,7 @@ A divisão que recomendamos pra quem monta orçamento do zero:
 
 **Amplificação:** mídia paga, KOLs, patrocínios, PR. Entra quando a fundação existe e a mensagem foi validada no orgânico.
 
-O anti-padrão mais caro do setor é inverter a ordem: gastar seis dígitos em KOLs e listagem apontando pra um site que não explica o produto e uma comunidade que não retém ninguém. Nos mais de 50 lançamentos que a Kaleidos já acompanhou, a correlação é clara: quem investe em fundação primeiro gasta menos pra crescer depois.
+O anti-padrão mais caro do setor é inverter a ordem: gastar seis dígitos em KOLs e listagem apontando pra um site que não explica o produto e uma comunidade que não retém ninguém. Nos lançamentos que a Kaleidos já acompanhou, a correlação é clara: quem investe em fundação primeiro gasta menos pra crescer depois.
 
 ## Camada 5: execução com cadência
 
@@ -386,7 +386,7 @@ Em vez de listar táticas soltas, organize por objetivo de negócio:
 
 **Pra construir autoridade:** tese pública do founder no X, conteúdo de profundidade recorrente (análises, pesquisas, teardowns), participação em podcasts e veículos do setor. Autoridade é o ativo que barateia aquisição em todos os outros canais.
 
-**Pra adquirir usuários:** KOLs com afinidade real de público, parcerias e integrações com protocolos adjacentes, SEO pra capturar demanda existente, quests pra experimentação guiada do produto. Na experiência da Kaleidos, que já produziu mais de 500 vídeos pra marcas do setor, formato nativo de criador supera adaptação de peça institucional em praticamente todos os testes.
+**Pra adquirir usuários:** KOLs com afinidade real de público, parcerias e integrações com protocolos adjacentes, SEO pra capturar demanda existente, quests pra experimentação guiada do produto. Na experiência da Kaleidos produzindo vídeo pra marcas do setor, formato nativo de criador supera adaptação de peça institucional em praticamente todos os testes.
 
 **Pra ativar e reter:** onboarding que leva o usuário à primeira ação de valor em minutos, incentivos desenhados pra recompensar comportamento que o produto quer (não só volume), rituais de comunidade que dão motivo pra voltar.
 
@@ -534,7 +534,7 @@ Pra quem faz marketing de qualquer produto, a síntese é boa: símbolo consiste
 - **Teste a mensagem de uma frase.** Se um usuário não consegue explicar o projeto em dez segundos, volte ao posicionamento.
 - **Meça retenção, não pico.** A métrica que separa crescimento de espetáculo é quem fica 30 e 90 dias depois.
 
-Nos mais de 50 lançamentos que a Kaleidos já acompanhou no setor, os que melhor usaram essas lições foram justamente os que nunca lançaram meme coin: usaram a energia do formato pra construir marca com produto embaixo.
+Nos lançamentos que a Kaleidos já acompanhou no setor, os que melhor usaram essas lições foram justamente os que nunca lançaram meme coin: usaram a energia do formato pra construir marca com produto embaixo.
 
 ## Conclusão
 
@@ -646,7 +646,7 @@ Se o projeto não passa nesses testes, a conclusão é desconfortável e liberta
 
 **Fase 3: token como coroação (com função e estrutura).** O token chega quando tem função real no produto, quando a demanda já existe sem ele e quando o projeto tem estrutura pra carregar as obrigações. Nesse cenário, o lançamento converte uma comunidade de usuários reais em stakeholders, em vez de convocar uma multidão de estranhos pra extrair o tesouro.
 
-Nos mais de 30 projetos que a Kaleidos já atendeu no setor, essa sequência nunca foi a mais rápida no papel; foi, invariavelmente, a mais barata na prática.
+Nos projetos que a Kaleidos já atendeu no setor, essa sequência nunca foi a mais rápida no papel; foi, invariavelmente, a mais barata na prática.
 
 ## Como resistir à pressão (porque ela vai existir)
 
@@ -895,7 +895,7 @@ A operação que amarra tudo é simples de descrever e rara de encontrar:
 - **O custo se divide pelo que ficou, não pelo que chegou:** custo por wallet retida em 30 dias é a métrica que permite comparar KOL com quest com parceria na mesma régua.
 - **Coorte incentivada se mede separada da orgânica:** misturar as duas é a receita clássica pra superestimar o incentivo.
 
-Com esse sistema rodando, as decisões de orçamento deixam de ser opinião. O canal que gera alcance mas nenhuma wallet retida perde verba; o formato modesto que entrega coorte fiel ganha escala. Nos projetos que a Kaleidos acompanha, empresas com crescimento médio de 200% entre nossos clientes têm um traço comum: decidem alocação por esse tipo de dado, não por senso de obrigação de estar em todo canal.
+Com esse sistema rodando, as decisões de orçamento deixam de ser opinião. O canal que gera alcance mas nenhuma wallet retida perde verba; o formato modesto que entrega coorte fiel ganha escala. Nos projetos que a Kaleidos acompanha, as empresas que mais crescem têm um traço comum: decidem alocação por esse tipo de dado, não por senso de obrigação de estar em todo canal.
 
 ## Os anti-padrões que ainda dominam o setor
 

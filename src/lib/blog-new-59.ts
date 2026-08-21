@@ -129,7 +129,7 @@ Se o seu funil de aquisição depende de anúncio, o mesmo princípio vale para 
 
 Engajamento é insumo. Adoção é resultado. Projetos que confundem os dois otimizam a máquina errada durante os meses em que ainda dá tempo de consertar o produto, e descobrem o abismo na pior hora: quando o mercado esfria e só sobrevive quem tem usuário de verdade.
 
-A Kaleidos trabalha exatamente nessa transição: montar o sistema de métricas, separar o que é barulho do que é uso e construir aquisição que retém. São mais de 30 projetos atendidos e 200% de crescimento médio entre os clientes, medido em métrica de negócio, não em membros de Discord. Se o seu dashboard hoje só tem número que sobe, [fale com a Kaleidos](/contato) e monte uma régua que aguenta due diligence.
+A Kaleidos trabalha exatamente nessa transição: montar o sistema de métricas, separar o que é barulho do que é uso e construir aquisição que retém. É trabalho medido em métrica de negócio, não em membros de Discord. Se o seu dashboard hoje só tem número que sobe, [fale com a Kaleidos](/contato) e monte uma régua que aguenta due diligence.
 `,
   },
   {
@@ -245,7 +245,7 @@ Um ciclo de teste razoável: 3 a 5 creators por trimestre, brief idêntico, aval
 
 Marketing de influência em fintech dá certo quando a operação respeita a natureza do produto: dinheiro exige confiança, confiança exige transparência, e transparência exige processo. Seleção com due diligence, compliance dentro do fluxo criativo, disclosure sem letra miúda e medição de cliente ativado separam os programas que constroem marca dos que constroem passivo.
 
-A Kaleidos monta esse tipo de operação para fintechs e projetos web3 há anos: são mais de 50 lançamentos executados e 98% de satisfação entre clientes, com creators tratados como canal estratégico e não como compra de post. Se a sua fintech quer usar influência sem herdar o risco dos finfluencers, [fale com a Kaleidos](/contato) e desenhe o programa do jeito certo desde o primeiro contrato.
+A Kaleidos monta esse tipo de operação para fintechs e projetos web3 há anos, com creators tratados como canal estratégico e não como compra de post. Se a sua fintech quer usar influência sem herdar o risco dos finfluencers, [fale com a Kaleidos](/contato) e desenhe o programa do jeito certo desde o primeiro contrato.
 `,
   },
   {
@@ -368,7 +368,7 @@ Sobre mensuração do funil completo (do clique até a carteira ativa), vale cru
 
 Anunciar cripto no Meta não é loteria, é regime regulatório: produtos restritos com permissão mediante licença, camada educativa liberada, e uma revisão que pune promessa financeira e inconsistência. Quem aprende as regras ganha acesso ao maior inventário de atenção do mundo enquanto os concorrentes seguem presumindo proibição ou queimando contas em atalhos.
 
-A Kaleidos estrutura mídia paga para projetos cripto e fintech dentro dessas regras: são mais de 30 projetos atendidos e 200% de crescimento médio entre clientes, com contas que sobrevivem porque a campanha nasce em compliance. Se o seu projeto quer escalar aquisição no Meta sem colecionar reprovação, [fale com a Kaleidos](/contato) e monte a estrutura certa desde o pixel.
+A Kaleidos estrutura mídia paga para projetos cripto e fintech dentro dessas regras, com contas que sobrevivem porque a campanha nasce em compliance. Se o seu projeto quer escalar aquisição no Meta sem colecionar reprovação, [fale com a Kaleidos](/contato) e monte a estrutura certa desde o pixel.
 `,
   },
   {
@@ -489,7 +489,7 @@ A malha completa fecha o funil: o glossário captura quem aprende, o blog captur
 
 SEO em web3 é a rara oportunidade de canal grande, durável e pouco disputado: metade do tráfego da internet, num setor que insiste em viver de feed. A arquitetura de quatro camadas (fundação técnica, schema, glossário, comparação) transforma o site de cartão de visita em ativo de aquisição que trabalha durante o bear market inteiro.
 
-A Kaleidos constrói essa arquitetura para projetos cripto e web3 como parte da operação de marketing completa: são mais de 30 projetos atendidos, com 98% de satisfação, e a busca tratada como ativo composto, não como checklist. Se o seu projeto quer parar de depender do algoritmo da semana, [fale com a Kaleidos](/contato) e comece pela auditoria das quatro camadas.
+A Kaleidos constrói essa arquitetura para projetos cripto e web3 como parte da operação de marketing completa, com a busca tratada como ativo composto, não como checklist. Se o seu projeto quer parar de depender do algoritmo da semana, [fale com a Kaleidos](/contato) e comece pela auditoria das quatro camadas.
 `,
   },
   {
@@ -608,7 +608,7 @@ O desenho recomendado para empresa: cadência sustentável (quinzenal bem-feita 
 
 O modelo Not Boring, reduzido ao essencial, é isto: tese própria, profundidade que o feed não entrega, consistência de anos e a autoridade resultante convertida em oportunidade. Nenhuma dessas peças exige sorte ou timing de mercado. Exigem decisão editorial e paciência, os dois insumos que a maioria das marcas cripto não tem, e é exatamente por isso que o formato segue funcionando para quem tem.
 
-A Kaleidos desenha e opera newsletters de autoridade para marcas cripto e fintech: tese, formato, cadência e a conexão com o funil comercial. São mais de 50 lançamentos executados e 600+ designs produzidos para clientes do setor. Se a sua empresa quer construir o ativo que trabalha por anos em vez de mais um e-mail semanal ignorado, [fale com a Kaleidos](/contato).
+A Kaleidos desenha e opera newsletters de autoridade para marcas cripto e fintech: tese, formato, cadência e a conexão com o funil comercial. É esse o formato que a agência opera para clientes do setor. Se a sua empresa quer construir o ativo que trabalha por anos em vez de mais um e-mail semanal ignorado, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -716,7 +716,7 @@ Duas respostas evasivas encerram o processo. Não por rigor teatral: porque a ev
 - **Propriedade dos ativos.** Contas de anúncio, pixels, listas e conteúdo devem pertencer ao cliente, em contrato. Agência que retém acesso como mecanismo de retenção comercial é red flag por si só.
 - **Subcontratação invisível.** Cláusula que permite terceirizar a execução sem seu consentimento explica muitos casos de queda brusca de qualidade no terceiro mês.
 
-Vale dizer o óbvio do outro lado do balcão: essas exigências também filtram clientes ruins, e agência boa gosta delas. Quando a Kaleidos entra em um processo de seleção, os números que apresentamos são os verificáveis da operação: mais de 30 projetos atendidos, 50+ lançamentos executados, R$ 46 milhões+ faturados por clientes e 98% de satisfação. É esse o padrão de concretude que você deve exigir de qualquer candidata, nós incluídos.
+Vale dizer o óbvio do outro lado do balcão: essas exigências também filtram clientes ruins, e agência boa gosta delas. Quando a Kaleidos entra em um processo de seleção, os números que apresentamos são só os que têm fonte primária: resultado de cliente nomeado, com janela de apuração e print da plataforma. Onde não houve apuração, a resposta é \"não rastreado\". É esse o padrão de concretude que você deve exigir de qualquer candidata, nós incluídos.
 
 ## Conclusão
 

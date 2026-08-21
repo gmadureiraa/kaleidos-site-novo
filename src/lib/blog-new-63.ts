@@ -131,7 +131,7 @@ A leitura correta dessas métricas é diagnóstica: quando a contribuição espo
 
 O founder-jardineiro não é um founder que faz menos. É um founder que atua em outra camada: escolhe o que plantar, desenha solo, clima, estrutura e ferramentas, poda sem dó e protege o propósito. O resultado que ele colhe é maior do que qualquer roadmap conseguiria ditar, precisamente porque não foi ditado.
 
-A Kaleidos trabalha com essa lente em projetos web3: transformar visão de founder em arquitetura de condições, com narrativa, incentivos e comunidade desenhados como sistema. São mais de 30 projetos atendidos com essa abordagem. Se o seu projeto cresce menos do que a comunidade dele permitiria, [fale com a Kaleidos](/contato).
+A Kaleidos trabalha com essa lente em projetos web3: transformar visão de founder em arquitetura de condições, com narrativa, incentivos e comunidade desenhados como sistema. É essa a abordagem aplicada nos projetos que a agência atende. Se o seu projeto cresce menos do que a comunidade dele permitiria, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -255,7 +255,7 @@ E uma regra de comunicação: no material público e no deck, declare a categori
 
 Não existe métrica universal em web3 porque não existe projeto universal. DeFi prova dispersão, uso e integração; social DAO prova gente ativa, governança viva e trabalho pago; redes provam construtores, retenção e a honra estranha de serem copiadas. Medir a categoria errada não é neutro: direciona o time inteiro a otimizar a coisa errada.
 
-A Kaleidos monta esse tipo de sistema de métricas como parte da estratégia de growth de projetos web3, com a régua certa por categoria e narrativa construída sobre dado real. São mais de 30 projetos atendidos, com 200% de crescimento médio entre clientes. Se o seu dashboard hoje se resume a TVL e membros de Discord, [fale com a Kaleidos](/contato).
+A Kaleidos monta esse tipo de sistema de métricas como parte da estratégia de growth de projetos web3, com a régua certa por categoria e narrativa construída sobre dado real. É esse o método aplicado nos projetos que a agência atende. Se o seu dashboard hoje se resume a TVL e membros de Discord, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -373,7 +373,7 @@ A régua honesta trata o programa como o que ele é: aquisição paga com token.
 
 Points program não colapsa na distribuição; ele colapsa no desenho, meses antes, quando alguém decide pagar por volume bruto sem defesa de sybil, sem sublinearidade e sem vesting. A distribuição só revela a escolha. As mecânicas que seguram (duração, sublinearidade, caps, anti-sybil, vesting) estão documentadas e testadas; o que falta na maioria dos programas é a disciplina de aplicá-las antes do hype.
 
-A Kaleidos desenha campanhas de incentivo e lançamento para projetos web3 com essa engenharia desde o primeiro dia: são mais de 50 lançamentos executados, com incentivo tratado como aquisição mensurável, não como fábrica de métrica. Se o seu programa de pontos está a caminho da distribuição, [fale com a Kaleidos](/contato) antes do snapshot.
+A Kaleidos desenha campanhas de incentivo e lançamento para projetos web3 com essa engenharia desde o primeiro dia, com incentivo tratado como aquisição mensurável, não como fábrica de métrica. Se o seu programa de pontos está a caminho da distribuição, [fale com a Kaleidos](/contato) antes do snapshot.
 `,
   },
   {
@@ -503,7 +503,7 @@ Sobre cadência, a referência do guia é objetiva: 2 a 4 peças de conteúdo lo
 
 Content marketing em fintech é a resposta estrutural ao gargalo estrutural do setor: a confiança que precisa existir antes da transação. O sistema completo tem tese (educação como aquisição), arquitetura (funil de três estágios com tom próprio), arsenal (dos guias às calculadoras), convívio maduro com compliance e distribuição concentrada em busca, LinkedIn e email.
 
-A Kaleidos opera esse sistema para fintechs e projetos do mercado financeiro: estratégia editorial, produção e distribuição com compliance dentro do fluxo. São mais de 500 vídeos e 600 designs produzidos para clientes do ecossistema cripto e fintech. Se a sua fintech publica sem sistema ou nem publica, [fale com a Kaleidos](/contato).
+A Kaleidos opera esse sistema para fintechs e projetos do mercado financeiro: estratégia editorial, produção e distribuição com compliance dentro do fluxo. É produção contínua de vídeo e design para clientes do ecossistema cripto e fintech. Se a sua fintech publica sem sistema ou nem publica, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -625,7 +625,7 @@ Duas respostas negativas já explicam por que a maioria dos lançamentos web3 pe
 
 O framework da Lunar Strategy vale o estudo menos pelas fases em si (discovery, estratégia, planejamento, delivery, entregáveis são o arroz com feijão de qualquer GTM sério) e mais pelo que a estrutura afirma: sequência importa, integração entre produto, marca, marketing e token importa mais, e a pressa que pula as duas primeiras fases é a causa raiz da maioria dos lançamentos fracassados do setor.
 
-A Kaleidos aplica a própria versão dessa disciplina em lançamentos web3 e fintech: estratégia antes de tática, tokenomics na mesa desde o primeiro dia e integração como critério de qualidade. São mais de 50 lançamentos executados com esse método. Se o seu projeto tem data de lançamento e não tem resposta para as cinco perguntas acima, [fale com a Kaleidos](/contato).
+A Kaleidos aplica a própria versão dessa disciplina em lançamentos web3 e fintech: estratégia antes de tática, tokenomics na mesa desde o primeiro dia e integração como critério de qualidade. É esse o método aplicado nos lançamentos que a agência executa. Se o seu projeto tem data de lançamento e não tem resposta para as cinco perguntas acima, [fale com a Kaleidos](/contato).
 `,
   },
   {
@@ -746,7 +746,7 @@ Aprovado o teste, a aplicação é cirúrgica, não cosmética total:
 
 A narrativa da vez é uma força real de mercado: organiza atenção, capital e critério de decisão, e ignorá-la por purismo é tão amador quanto persegui-la por pânico. O framework de Dunford dá a régua exata: cinco componentes de alicerce, verificados e documentados, e o trend como camada opcional por cima, aplicada só quando a aderência sobrevive ao teste. Quem domina essa ordem surfa ciclos sucessivos com a mesma identidade; quem a inverte recomeça do zero a cada inverno.
 
-A Kaleidos faz esse trabalho de posicionamento para projetos web3 e fintech: alicerce primeiro, narrativa depois, com o teste de aderência antes de qualquer rebranding. São mais de 30 projetos atendidos por essa lente. Se o seu projeto está tentado a se rebatizar para o próximo ciclo, [fale com a Kaleidos](/contato) antes de trocar a bio.
+A Kaleidos faz esse trabalho de posicionamento para projetos web3 e fintech: alicerce primeiro, narrativa depois, com o teste de aderência antes de qualquer rebranding. É por essa lente que a agência olha os projetos que atende. Se o seu projeto está tentado a se rebatizar para o próximo ciclo, [fale com a Kaleidos](/contato) antes de trocar a bio.
 `,
   },
   {
@@ -864,7 +864,7 @@ O guia da a16z acrescenta duas peças ao quadro de expansão: customer success c
 
 GTM híbrido não é indecisão entre dois modelos; é o reconhecimento de que produtos de infraestrutura têm dois compradores estruturais e de que cada um exige a motion desenhada para ele. PLG entrega escala e sinal; vendas entrega os contratos que o produto sozinho não fecha; a estrutura de pares, o roteamento explícito e o pricing em camadas impedem que uma frente devore a outra. O projeto que domina o híbrido cresce pelos dois lados do mercado enquanto os concorrentes escolhem um.
 
-A Kaleidos desenha operações de go-to-market para projetos cripto e fintech exatamente nessa arquitetura: segmentação de ICP, funil por motion e narrativa que serve às duas frentes. São mais de 30 projetos atendidos, com 200% de crescimento médio entre clientes. Se o seu produto tem dois públicos e um funil só, [fale com a Kaleidos](/contato).
+A Kaleidos desenha operações de go-to-market para projetos cripto e fintech exatamente nessa arquitetura: segmentação de ICP, funil por motion e narrativa que serve às duas frentes. É esse o método aplicado nos projetos que a agência atende. Se o seu produto tem dois públicos e um funil só, [fale com a Kaleidos](/contato).
 `,
   },
 ];

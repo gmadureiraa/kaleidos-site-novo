@@ -114,7 +114,7 @@ Para um token novo, o resultado da auditoria deve decidir três coisas concretas
 
 **Se o token deve existir agora.** A conclusão mais valiosa de um utility audit costuma ser "ainda não". Se nenhuma utilidade passa no teste de demanda funcional, a resposta certa é lançar o produto primeiro, provar uso e desenhar o token sobre comportamento real. Token lançado antes do produto vira apenas preço, e preço sem uso vira gráfico de decepção.
 
-**O que entra na narrativa.** Só as utilidades que passaram no teste. Uma utilidade real comunicada com profundidade converte mais do que cinco genéricas listadas em slide. A Kaleidos aplica essa régua nos mais de 30 projetos que já atendeu: a narrativa de lançamento se constrói sobre o que o token de fato faz, porque tudo o que for prometido além disso vira passivo de credibilidade cobrado depois.
+**O que entra na narrativa.** Só as utilidades que passaram no teste. Uma utilidade real comunicada com profundidade converte mais do que cinco genéricas listadas em slide. A Kaleidos aplica essa régua nos projetos que já atendeu: a narrativa de lançamento se constrói sobre o que o token de fato faz, porque tudo o que for prometido além disso vira passivo de credibilidade cobrado depois.
 
 **Como o incentivo se desenha.** Airdrop, pontos e recompensas devem premiar o comportamento de valor identificado na auditoria (o uso real), e não o comportamento fácil de simular (a transação vazia). Incentivo desenhado sobre a métrica errada atrai exatamente o público errado.
 
@@ -260,7 +260,7 @@ Nada disso exige a estrutura de conteúdo de um bull market. Uma operação enxu
 
 Dois cuidados técnicos completam a operação e custam pouco. Primeiro, a base do site: velocidade de carregamento decente, estrutura de URLs limpa, sitemap atualizado e marcação de dados estruturados nas páginas de conteúdo. Nada disso ganha posição sozinho, mas qualquer falha grave aqui anula o trabalho editorial inteiro. Segundo, a interligação interna: cada peça nova deve linkar e ser linkada pelas peças do mesmo cluster, porque é essa malha que transfere autoridade entre páginas e sinaliza cobertura de tema. Blogs cripto costumam falhar exatamente nisso: acumulam posts órfãos que nunca se referenciam, e desperdiçam a autoridade que cada um constrói isoladamente.
 
-A Kaleidos opera essa lógica de acúmulo nos próprios canais e nos de clientes, e o padrão observado nos mais de 50 lançamentos que a agência já apoiou se repete: os projetos que chegam ao momento de lançamento com acervo orgânico construído pagam menos por aquisição em todos os outros canais, porque a busca já trabalha a favor deles.
+A Kaleidos opera essa lógica de acúmulo nos próprios canais e nos de clientes, e o padrão observado nos lançamentos que a agência já apoiou se repete: os projetos que chegam ao momento de lançamento com acervo orgânico construído pagam menos por aquisição em todos os outros canais, porque a busca já trabalha a favor deles.
 
 ## Como medir sem se iludir
 
@@ -891,7 +891,7 @@ As direções que o mercado de 2026 validou:
 - **Benefício recorrente sobre benefício de mint.** Utility que se esgota no lançamento produz coleção que se esgota junto. O desenho maduro entrega valor em cadência: capítulos, drops derivados para holders, benefícios que renovam.
 - **Integração com a operação da marca.** Para marcas entrando no espaço, o NFT que funciona é o conectado ao negócio real (fidelidade, acesso a produto, colecionável com lastro na marca), não o experimento isolado do departamento de inovação.
 
-A Kaleidos aplica nesse desenho a mesma régua de audit que usa para tokens: remova o ativo mentalmente e veja o que quebra. Se nada quebra para o holder, o trabalho não está pronto para marketing, porque o marketing só amplifica o que existe. Nos mais de 30 projetos que a agência já atendeu, essa verificação prévia é o que mais separa lançamentos que sustentam valor de lançamentos que dependem de maré.
+A Kaleidos aplica nesse desenho a mesma régua de audit que usa para tokens: remova o ativo mentalmente e veja o que quebra. Se nada quebra para o holder, o trabalho não está pronto para marketing, porque o marketing só amplifica o que existe. Nos projetos que a agência já atendeu, essa verificação prévia é o que mais separa lançamentos que sustentam valor de lançamentos que dependem de maré.
 
 ## Frente 4: o secundário como produto
 

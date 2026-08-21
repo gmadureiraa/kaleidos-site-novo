@@ -130,7 +130,7 @@ As alavancas com melhor retorno:
 - **Reativação segmentada.** Dormência de 14 e 30 dias com gatilho contextual (movimento do ativo que a pessoa tem) supera newsletter genérica.
 - **Indicação.** Usuário retido é canal: programa de referral bem calibrado transforma retenção em aquisição, fechando o loop.
 
-A Kaleidos aplica essa lógica de funil completo nos projetos que atende: são mais de 30 projetos de cripto e fintech no portfólio, e a lição constante é que o canal da moda muda a cada ciclo, mas a máquina composta (orgânico + confiança + retenção) é o que sobrevive ao bear market.
+A Kaleidos aplica essa lógica de funil completo nos projetos de cripto e fintech que atende, e a lição constante é que o canal da moda muda a cada ciclo, mas a máquina composta (orgânico + confiança + retenção) é o que sobrevive ao bear market.
 
 ## Sequência por estágio: quem faz o quê primeiro
 
@@ -267,7 +267,7 @@ E a regra dos incentivos: recompense profundidade e permanência, não só entra
 
 **A maioria dos times de growth em cripto tem cargos apenas para a metade esquerda do bowtie.** Marketing, comunidade, BD, growth de aquisição: todo mundo empurrando gente para dentro, ninguém dono do que acontece depois do nó.
 
-O ajuste mínimo não exige contratar um departamento: exige nomear donos. Uma pessoa dona do onboarding (com meta de ativação), uma dona de retenção e expansão (com meta de NRR), e um ritual mensal de leitura de coortes com o mesmo peso que a leitura de aquisição. Nos diagnósticos de growth que a Kaleidos conduz em projetos web3 (são mais de 30 projetos no portfólio, com 200% de crescimento médio entre clientes), esse é o desequilíbrio mais comum: não falta verba de aquisição, falta dono da metade direita.
+O ajuste mínimo não exige contratar um departamento: exige nomear donos. Uma pessoa dona do onboarding (com meta de ativação), uma dona de retenção e expansão (com meta de NRR), e um ritual mensal de leitura de coortes com o mesmo peso que a leitura de aquisição. Nos diagnósticos de growth que a Kaleidos conduz em projetos web3, esse é o desequilíbrio mais comum: não falta verba de aquisição, falta dono da metade direita.
 
 ## Conclusão
 
@@ -388,7 +388,7 @@ Duas observações que o mapa revela. Primeiro: o airdrop e o programa de pontos
 3. **Liste os canais compatíveis e corte os incompatíveis.** Para cada canal atual, estime o CAC e compare com o teto do seu ticket. Canal com CAC estruturalmente acima do teto sai do orçamento hoje, por melhor que seja a execução.
 4. **Cheque o tamanho do mercado.** Coelho de 100 mil clientes exige que existam milhões de compradores potenciais. Se o seu nicho tem 5 mil empresas no mundo, o seu animal é cervo ou elefante e o preço precisa subir para refletir isso.
 
-É o mesmo exercício que a Kaleidos roda no diagnóstico de novos clientes, e a conclusão mais frequente em web3 é desconfortável: o produto tem preço de coelho, sonho de elefante e marketing de mosca. Nos mais de 50 lançamentos que a agência já executou, os que performaram tinham uma coisa em comum antes de qualquer criativo: animal e arma alinhados.
+É o mesmo exercício que a Kaleidos roda no diagnóstico de novos clientes, e a conclusão mais frequente em web3 é desconfortável: o produto tem preço de coelho, sonho de elefante e marketing de mosca. Nos lançamentos que a agência já executou, os que performaram tinham uma coisa em comum antes de qualquer criativo: animal e arma alinhados.
 
 ## Os erros clássicos (e o movimento entre animais)
 
@@ -526,7 +526,7 @@ E uma regra transversal: o claim deve exigir (ou fortemente convidar a) uma aç�
 
 Retroativo e proativo não competem: respondem a momentos diferentes. O retroativo é o instrumento de quem já construiu uso real e quer transformar usuários em donos com justiça auditável. O proativo é o instrumento de ignição de quem precisa criar o uso que ainda não existe, pagando o preço da qualidade mista e mitigando com desenho. O desastre é o meio-termo não intencional: prometer como proativo e entregar critérios como retroativo, frustrando as duas populações ao mesmo tempo.
 
-A Kaleidos desenha estratégias de token event de ponta a ponta: critérios de elegibilidade, narrativa, comunicação e o plano de retenção do dia seguinte, que é onde o airdrop se paga ou se perde. São mais de 50 lançamentos executados no mercado cripto. Se o seu projeto está decidindo como distribuir propriedade, [fale com a Kaleidos](/contato) antes de fotografar o snapshot.
+A Kaleidos desenha estratégias de token event de ponta a ponta: critérios de elegibilidade, narrativa, comunicação e o plano de retenção do dia seguinte, que é onde o airdrop se paga ou se perde. É trabalho de lançamento feito no mercado cripto, não teoria de slide. Se o seu projeto está decidindo como distribuir propriedade, [fale com a Kaleidos](/contato) antes de fotografar o snapshot.
 `,
   },
   {
@@ -648,7 +648,7 @@ O modelo é potente e arriscado pela mesma razão: a execução instantânea via
 - **Grupo de conteúdo/educação.** Rose com FAQs e comandos + Group Help para autoatendimento + filtros de link rígidos. O objetivo é escalar resposta sem escalar equipe.
 - **Comunidade de trading.** Camada 1 completa + bots de dados + regras duras sobre indicação de ferramenta (o terreno onde o golpe prospera). Moderação humana ainda necessária nos horários de pico.
 
-Em todos os casos, a métrica de sucesso da automação não é "menos trabalho": é a razão entre conversa real e ruído, que o Combot permite acompanhar semana a semana. A Kaleidos monta e opera essas estruturas nas comunidades dos projetos que atende, e a experiência de mais de 30 projetos aponta o mesmo padrão: a comunidade que retém não é a maior, é a mais habitável.
+Em todos os casos, a métrica de sucesso da automação não é "menos trabalho": é a razão entre conversa real e ruído, que o Combot permite acompanhar semana a semana. A Kaleidos monta e opera essas estruturas nas comunidades dos projetos que atende, e a experiência acumulada aponta o mesmo padrão: a comunidade que retém não é a maior, é a mais habitável.
 
 ## Conclusão
 
@@ -775,7 +775,7 @@ As salvaguardas dos desenhos maduros: recompensar profundidade e permanência (n
 | Pago | Margem financia aquisição | Payback por coorte | CAC escalado com LTV imaginário |
 | Incentivo | Token recompensa valor de rede | Retenção pós-incentivo | Recompensar atividade vazia (loop inverte) |
 
-**Como combinar: um loop dominante, um ou dois de suporte, e disciplina de medição comum.** O padrão dos projetos que crescem de forma composta: o loop de incentivo como ignição com prazo, o de conteúdo como base de longo prazo, o viral embutido no produto e o pago como amplificador do que já compõe sozinho. A auditoria honesta de qualquer ação de marketing vira uma pergunta só: isto realimenta algum circuito, ou é despesa que termina em si mesma? Nos mais de 30 projetos que a Kaleidos atende, essa pergunta elimina, em média, um terço do plano de marketing herdado, e é o que explica um crescimento médio de 200% entre os clientes: não fazer mais, fazer o que compõe.
+**Como combinar: um loop dominante, um ou dois de suporte, e disciplina de medição comum.** O padrão dos projetos que crescem de forma composta: o loop de incentivo como ignição com prazo, o de conteúdo como base de longo prazo, o viral embutido no produto e o pago como amplificador do que já compõe sozinho. A auditoria honesta de qualquer ação de marketing vira uma pergunta só: isto realimenta algum circuito, ou é despesa que termina em si mesma? Nos projetos que a Kaleidos atende, essa pergunta costuma eliminar boa parte do plano de marketing herdado, e o que sobra é o que realimenta: não fazer mais, fazer o que compõe.
 
 ## Conclusão
 
@@ -894,7 +894,7 @@ E a honestidade do teardown exige o contraponto: nem tudo se copia. O ENS tinha 
 
 O airdrop do ENS virou padrão-ouro porque tratou a distribuição como o que ela realmente é: a decisão de go-to-market mais permanente da vida de um protocolo. O critério declarou a missão (identidade, não especulação), a economia do desenho tornou a fraude irracional, e o claim converteu o pico de atenção em fundação de governança. Três anos de decisões acumuladas em um único fluxo de resgate.
 
-A Kaleidos aplica essa lente de teardown ao desenhar token events para os projetos que atende: critério alinhado à missão, mecânica de claim que converte atenção em participação e o plano do dia seguinte. São mais de 50 lançamentos executados e 98% de satisfação entre clientes. Se o seu protocolo está a um snapshot de distância da decisão mais permanente da sua história, [fale com a Kaleidos](/contato) antes de defini-la.
+A Kaleidos aplica essa lente de teardown ao desenhar token events para os projetos que atende: critério alinhado à missão, mecânica de claim que converte atenção em participação e o plano do dia seguinte. É trabalho de token event feito de ponta a ponta, do critério ao dia seguinte. Se o seu protocolo está a um snapshot de distância da decisão mais permanente da sua história, [fale com a Kaleidos](/contato) antes de defini-la.
 `,
   },
 ];
