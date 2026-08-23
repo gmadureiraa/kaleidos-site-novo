@@ -55,6 +55,15 @@ const SCHEDULE: Record<string, string> = {
   "marca-pessoal-canal-aquisicao": "2026-10-07",
   "conteudo-fundo-de-funil-linkedin": "2026-10-10",
   "aparecer-no-chatgpt-busca-ia": "2026-10-14",
+
+  // --- Lote 4: escritos 10/08/2026 (marca pessoal + LinkedIn B2B + Instagram
+  // B2C + retenção). Todo número tem fonte primária linkada e datada, e cada
+  // draft fecha com uma seção `## Fontes`. Datas futuras de propósito: nada
+  // vai ao ar sem revisão do Gabriel. ---
+  "marca-pessoal-founder-rosto-que-aparece": "2026-10-17",
+  "linkedin-b2b-perfil-fundador-vs-pagina": "2026-10-21",
+  "instagram-founder-b2c-quem-fala-e-pessoa": "2026-10-24",
+  "crescer-sem-depender-de-alcance": "2026-10-28",
 };
 
 /**
@@ -62,9 +71,14 @@ const SCHEDULE: Record<string, string> = {
  *
  * - `dados-thought-leadership-b2b`: o "61% dos decisores B2B pagam mais por
  *   thought leadership" que dá TÍTULO ao post não existe em nenhuma edição do
- *   relatório Edelman-LinkedIn. As primárias trazem 41% (2020) e 49%/47% (2017).
- *   O texto ainda mistura três edições diferentes (2016, 2022, 2024) chamando
- *   todas de "o mesmo estudo". Ver `hold_motivo` no frontmatter do draft.
+ *   relatório Edelman-LinkedIn. O texto ainda mistura três edições diferentes
+ *   (2016, 2022, 2024) chamando todas de "o mesmo estudo".
+ *
+ *   CORREÇÃO 10/08/2026 (re-apuração nas primárias, ver `hold_motivo`): a nota
+ *   original do fact-check de 08/08 estava ERRADA em dois pontos. (1) A edição
+ *   2024 TEM percentual de prêmio: 60%. (2) A edição 2020 traz 42%, não 41%.
+ *   O número correto de 2017 é 49% decisores / 47% C-suite. E as três edições
+ *   perguntaram coisas diferentes, então 49% → 42% → 60% NÃO é série histórica.
  */
 const HELD = ["dados-thought-leadership-b2b"];
 
@@ -87,6 +101,10 @@ const EXTRA_TAGS: Record<string, string[]> = {
   "marca-pessoal-canal-aquisicao": ["aquisição", "canal", "b2b"],
   "marca-pessoal-vs-marca-empresa": ["marca", "posicionamento", "b2b"],
   "conteudo-fundo-de-funil-linkedin": ["funil", "conversão", "b2b"],
+  "marca-pessoal-founder-rosto-que-aparece": ["distribuição", "confiança", "b2b"],
+  "linkedin-b2b-perfil-fundador-vs-pagina": ["página da empresa", "b2b", "distribuição"],
+  "instagram-founder-b2c-quem-fala-e-pessoa": ["instagram", "b2c", "consumo"],
+  "crescer-sem-depender-de-alcance": ["alcance", "audiência própria", "retenção"],
 };
 
 type Front = Record<string, string>;

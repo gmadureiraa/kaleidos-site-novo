@@ -398,7 +398,7 @@ Vetting (vetagem) é o que separa campanha de growth de dinheiro jogado fora. Qu
 - **Histórico de projetos:** o que ele promoveu antes performou ou virou pó? Reputação por associação é real.
 - **Consistência da audiência:** o perfil cresceu de forma orgânica ou teve picos suspeitos? Crescimento estranho é bandeira vermelha.
 
-Esse trabalho de vetagem é parecido com o que destrinchamos no nosso estudo sobre [como a Solana reconstruiu comunidade depois da FTX](/blog/solana-ressurreicao): confiança não se compra no atacado, se constrói no varejo, um relacionamento de cada vez.
+Esse trabalho de vetagem é parecido com o que destrinchamos no nosso estudo sobre [como a Solana reconstruiu comunidade depois da FTX](/blog/solana-a-ressurreicao): confiança não se compra no atacado, se constrói no varejo, um relacionamento de cada vez.
 
 ![A Solana de volta com US$ 4,8 bi de TVL no DefiLlama, anos depois do colapso da FTX: prova de que comunidade reconstruída no varejo, e não KOL comprado no atacado, é o que sustenta um projeto. Fonte: DefiLlama](/blog/kol-marketing-fundraising-cripto-guia/defillama-solana.png)
 

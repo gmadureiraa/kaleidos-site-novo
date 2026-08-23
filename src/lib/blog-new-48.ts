@@ -34,7 +34,7 @@ export const blogNew48: BlogPost[] = [
       {
         question: "Email marketing ainda funciona para fintech?",
         answer:
-          "Sim, e costuma ser o canal de melhor retorno. A Litmus estima um retorno médio de US$ 36 para cada US$ 1 investido em email (Litmus, 2023). Em fintech o efeito é amplificado: o usuário já espera comunicação por email sobre a própria conta, então a caixa de entrada é um canal natural, não uma interrupção.",
+          "Sim, e costuma ser o canal de melhor retorno. A Litmus não publica um número único: publica uma distribuição. No State of Email, 35% dos líderes de marketing dizem receber entre US$ 10 e US$ 36 por dólar investido em e-mail, e 30% dizem receber entre US$ 36 e US$ 50. É resposta de survey, autodeclarada, não medição. Em fintech o efeito é amplificado: o usuário já espera comunicação por email sobre a própria conta, então a caixa de entrada é um canal natural, não uma interrupção.",
       },
       {
         question: "Como segmentar a base de uma fintech sem violar a LGPD?",
@@ -65,7 +65,7 @@ Fintech é um negócio de confiança. As pessoas estão entregando dinheiro, dad
 
 O problema: a maioria das fintechs trata email como canal de disparo em massa. Newsletter genérica pra base inteira, promoção de cartão pra quem nem ativou a conta, e zero cuidado com a infraestrutura que decide se a mensagem chega na caixa de entrada ou no spam. Enquanto isso, o jurídico trava tudo que parece ousado demais, e o marketing conclui que "email não funciona pra gente".
 
-Funciona. A Litmus estima retorno médio de US$ 36 para cada US$ 1 investido em email marketing (Litmus, 2023), e serviços financeiros historicamente ficam acima da média. O que não funciona é fazer email de fintech como se fosse email de e-commerce. Neste guia, a Kaleidos mostra o que muda: segmentação, automação de onboarding, deliverabilidade, tom de comunicação e LGPD, com as métricas certas pra fechar o ciclo.
+Funciona. O retorno costuma ser alto — mas cuidado com o número que circula: a Litmus não publica uma média de US$ 36 por dólar, publica uma [distribuição de respostas](https://www.litmus.com/blog/infographic-the-roi-of-email-marketing) em que 35% dizem receber entre US$ 10 e US$ 36 e 30% dizem receber entre US$ 36 e US$ 50. É survey, não medição. O que não funciona é fazer email de fintech como se fosse email de e-commerce. Neste guia, a Kaleidos mostra o que muda: segmentação, automação de onboarding, deliverabilidade, tom de comunicação e LGPD, com as métricas certas pra fechar o ciclo.
 
 ## Principais takeaways
 

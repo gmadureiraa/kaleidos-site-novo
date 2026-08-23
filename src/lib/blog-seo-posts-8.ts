@@ -955,7 +955,7 @@ Branding para empresas de tecnologia é uma das competências centrais da Kaleid
     readTime: 10,
     featured: false,
     tags: ["ROI", "retorno sobre investimento", "marketing digital", "métricas", "analytics", "CAC", "LTV", "performance"],
-    tldr: "ROI de marketing digital = (Receita gerada pelo marketing - Custo do marketing) / Custo do marketing. Mas essa fórmula básica esconde complexidade real: atribuição multi-touch, distinção entre ROAS e ROI, e a necessidade de medir por canal, por campanha e por coorte. Benchmarks: ROAS médio em Google Ads fica em torno de 2:1 a 4:1, email marketing pode chegar a 36:1 a 42:1 em ROI, e SEO tem ROI alto mas com payback de 6+ meses.",
+    tldr: "ROI de marketing digital = (Receita gerada pelo marketing - Custo do marketing) / Custo do marketing. Mas essa fórmula básica esconde complexidade real: atribuição multi-touch, distinção entre ROAS e ROI, e a necessidade de medir por canal, por campanha e por coorte. Benchmarks: ROAS médio em Google Ads fica em torno de 2:1 a 4:1, e-mail é o canal de melhor retorno declarado, mas o famoso “42:1” é o recorte de AGÊNCIA de um survey, não uma média de mercado, e SEO tem ROI alto mas com payback de 6+ meses.",
     faq: [
       {
         question: "O que é ROI de marketing digital?",
@@ -963,7 +963,7 @@ Branding para empresas de tecnologia é uma das competências centrais da Kaleid
       },
       {
         question: "Qual o ROI médio do marketing digital?",
-        answer: "Varia muito por canal. Email marketing tem ROI médio de 36:1 a 42:1 (US$ 36 a 42 por dólar investido). Google Ads fica entre 2:1 e 8:1 em ROAS. SEO orgânico pode chegar a 5:1 a 10:1, mas com payback mais longo. O importante é comparar com seu setor e modelo de negócio, não com médias genéricas.",
+        answer: "Varia muito por canal. E-mail costuma liderar, mas o “42:1” que circula é o recorte de AGÊNCIA de um survey da Litmus, não uma média de mercado — no mesmo levantamento, mídia ficou em 32:1 e software em 36:1. E é autodeclarado. Google Ads fica entre 2:1 e 8:1 em ROAS. SEO orgânico pode chegar a 5:1 a 10:1, mas com payback mais longo. O importante é comparar com seu setor e modelo de negócio, não com médias genéricas.",
       },
       {
         question: "Como medir ROI de marketing quando a venda não é direta?",
@@ -1057,7 +1057,7 @@ Exemplo: empresa B2B SaaS investindo R$ 8.000/mês em conteúdo SEO.
 
 ### Email marketing
 
-**ROI benchmark:** 36:1 a 42:1 (dado clássico da DMA/Litmus).
+**ROI benchmark:** cuidado com este número. O “42:1” que virou folclore é o recorte de **agência de marketing/PR** num survey da [Litmus](https://www.litmus.com/blog/infographic-the-roi-of-email-marketing) — no mesmo corte, mídia deu 32:1, software 36:1 e varejo 45:1. A versão da DMA UK é uma **estimativa dos próprios profissionais** (£38,33 por £1), e a última edição pública é de 2021. Ou seja: é resposta de survey, não medição, e varia por setor.
 
 É o canal com maior ROI porque o custo é baixíssimo (ferramenta + tempo) e a audiência já é sua. Cada email enviado custa centavos, e a conversão de base qualificada é alta.
 

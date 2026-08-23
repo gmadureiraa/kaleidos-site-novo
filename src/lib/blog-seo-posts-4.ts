@@ -549,7 +549,7 @@ Dois vazamentos dominam os diagnósticos da Kaleidos:
 
 ### Vazamento 1: interesse que não vira pertencimento
 
-O projeto investe pesado em alcance, gera interesse, e... para ali. A comunidade é um Discord vazio, sem ritual, sem status, sem motivo real para ficar. Resultado: **muito seguidor, pouco membro.** O conserto não é mais alcance — é transformar a comunidade em algo que vale a pena pertencer. O [Notcoin no Telegram](/blog/notcoin-ton-telegram) e a [Berachain, que construiu comunidade antes do produto](/blog/berachain-comunidade-antes-do-produto), são estudos de caso de como acertar essa etapa.
+O projeto investe pesado em alcance, gera interesse, e... para ali. A comunidade é um Discord vazio, sem ritual, sem status, sem motivo real para ficar. Resultado: **muito seguidor, pouco membro.** O conserto não é mais alcance — é transformar a comunidade em algo que vale a pena pertencer. O [Notcoin no Telegram](/blog/notcoin-ton-telegram) e a [Berachain, que construiu comunidade antes do produto](/blog/berachain-comunidade-e-memes-antes-do-produto), são estudos de caso de como acertar essa etapa.
 
 ### Vazamento 2: ativação sem follow-up
 

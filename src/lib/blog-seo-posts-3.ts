@@ -124,7 +124,7 @@ Combater sybil é trabalho de análise on-chain séria:
 - **Grafos de transação.** Mapear como as wallets se conectam revela as fazendas.
 - **Filtros de elegibilidade que custam caro ao bot.** Critérios que exigem uso real e contínuo encarecem a operação de farming a ponto de não compensar.
 
-Projetos que levaram anti-sybil a sério distribuíram pra uma base mais limpa e tiveram menos dump. Os que não levaram viraram estudo de caso de drop farmado. A Arbitrum, um dos maiores airdrops da história, virou referência justamente pela escala, e pelo drama em torno de critério e elegibilidade que todo projeto grande enfrenta; o padrão e as lições estão no nosso [estudo do airdrop da Arbitrum](/blog/arbitrum-airdrop-padrao-e-drama).
+Projetos que levaram anti-sybil a sério distribuíram pra uma base mais limpa e tiveram menos dump. Os que não levaram viraram estudo de caso de drop farmado. A Arbitrum, um dos maiores airdrops da história, virou referência justamente pela escala, e pelo drama em torno de critério e elegibilidade que todo projeto grande enfrenta; o padrão e as lições estão no nosso [estudo do airdrop da Arbitrum](/blog/arbitrum-o-airdrop-que-virou-padrao-de-mercado).
 
 ![Cobertura da imprensa sobre filtros anti-sybil e exclusão de carteiras no airdrop da Arbitrum: a guerra contra a fazenda de bots é pública e documentada (fonte: Cryptonews)](/blog/arbitrum-airdrop-padrao-e-drama/print-sybil-cryptonews.png)
 
@@ -140,7 +140,7 @@ A teoria fica clara nos casos. Três que ensinam, cada um uma lição diferente.
 
 ![The Block sobre a DAO da Jupiter: o airdrop foi desenhado como ativação de governança, não como evento de saída (fonte: The Block)](/blog/jupiter-airdrop-como-dao/print-theblock-dao.png)
 
-**Arbitrum: a escala e o drama.** Um dos maiores drops já feitos, a Arbitrum mostra o que acontece quando airdrop encontra escala massiva: o desafio de critério, a inevitabilidade do debate de elegibilidade, e a tensão entre recompensar amplo e recompensar fundo. É leitura obrigatória de quem vai distribuir pra muita gente, em [Arbitrum: o padrão e o drama](/blog/arbitrum-airdrop-padrao-e-drama).
+**Arbitrum: a escala e o drama.** Um dos maiores drops já feitos, a Arbitrum mostra o que acontece quando airdrop encontra escala massiva: o desafio de critério, a inevitabilidade do debate de elegibilidade, e a tensão entre recompensar amplo e recompensar fundo. É leitura obrigatória de quem vai distribuir pra muita gente, em [Arbitrum: o padrão e o drama](/blog/arbitrum-o-airdrop-que-virou-padrao-de-mercado).
 
 Para a tese estrutural de por que airdrops funcionam (e quando falham), o nosso [estudo sobre por que airdrops funcionam](/blog/por-que-airdrops-funcionam) amarra os mecanismos.
 
@@ -267,7 +267,7 @@ O **Kaito** é a aplicação que tornou InfoFi concreto. Em essência, ele faz d
 
 ![O leaderboard de mindshare do Kaito por projeto: marketing deixa de ser "acho que estamos sendo comentados" e vira "capturamos X% da conversa da categoria" (fonte: Kaito, via estudo Kaleidos)](/blog/narrativas-cripto-2026/print-kaito-leaderboard.png)
 
-Destrinchamos a tese de tokenizar atenção no nosso estudo [Kaito: mindshare tokenizado](/blog/kaito-mindshare-tokenizado), que mostra por que isso é uma das ideias mais interessantes (e arriscadas) do ciclo.
+Destrinchamos a tese de tokenizar atenção no nosso estudo [Kaito: mindshare tokenizado](/blog/kaito-o-mindshare-virou-token), que mostra por que isso é uma das ideias mais interessantes (e arriscadas) do ciclo.
 
 ## Yap-to-earn: falar para ganhar (e a linha entre mérito e farming)
 

@@ -451,7 +451,7 @@ Para marketing, IA-cripto atrai o **público mais técnico e antenado** do setor
 
 ## Narrativa 4: InfoFi, a atenção vira ativo
 
-**InfoFi (Information Finance)** é a narrativa que trata **atenção, mindshare e informação como ativos** mensuráveis e tokenizáveis. Plataformas que medem e tokenizam o valor da atenção que projetos recebem (recompensando quem gera mindshare relevante) são a ponta visível disso. O Kaito é o exemplo que destrinchamos em [Kaito: mindshare tokenizado](/blog/kaito-mindshare-tokenizado).
+**InfoFi (Information Finance)** é a narrativa que trata **atenção, mindshare e informação como ativos** mensuráveis e tokenizáveis. Plataformas que medem e tokenizam o valor da atenção que projetos recebem (recompensando quem gera mindshare relevante) são a ponta visível disso. O Kaito é o exemplo que destrinchamos em [Kaito: mindshare tokenizado](/blog/kaito-o-mindshare-virou-token).
 
 ![Leaderboard Polygon x Kaito: projeto recompensa em USDC quem gera mindshare relevante, InfoFi na prática, com atenção virando ativo com payout. Fonte: Polygon.](/blog/narrativas-cripto-2026/print-kaito-leaderboard.png)
 
@@ -574,7 +574,7 @@ Toda comunidade que dura tem um **porquê que transcende o preço**. Pode ser um
 
 Quando o único motivo pra estar ali é ganhar token, a comunidade está refém do preço: sobe o preço, todo mundo eufórico; cai, todo mundo some. Quando há propósito, o preço vira consequência e não causa do engajamento. A galera fica nos momentos difíceis porque acredita em algo, e é nos momentos difíceis que a comunidade real se distingue da fila.
 
-O caso âncora de propósito que segurou comunidade através do pior momento é a **Solana**: depois do colapso da FTX, quando muitos davam o ecossistema como morto, a comunidade reconstruiu o projeto porque acreditava na tese, não no preço. Destrinchamos em [Solana: a ressurreição pela comunidade](/blog/solana-ressurreicao). Comunidade movida a propósito é antifrágil.
+O caso âncora de propósito que segurou comunidade através do pior momento é a **Solana**: depois do colapso da FTX, quando muitos davam o ecossistema como morto, a comunidade reconstruiu o projeto porque acreditava na tese, não no preço. Destrinchamos em [Solana: a ressurreição pela comunidade](/blog/solana-a-ressurreicao). Comunidade movida a propósito é antifrágil.
 
 ![TVL da Solana no DefiLlama: o mergulho pós-FTX e a recuperação de volta aos bilhões, a curva de uma comunidade que reconstruiu na baixa. Fonte: DefiLlama.](/blog/comunidade-cripto-que-nao-morre/print-solana-tvl.png)
 
