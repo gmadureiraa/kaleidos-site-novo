@@ -41,7 +41,7 @@ function ColumnTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function FooterDemo() {
-  const { t, locale } = useI18n();
+  const { t, locale, switchLocale } = useI18n();
   const { trackWhatsApp } = useAnalytics();
   const twitterHandle = (process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@digitalkaleidos").replace(/^@/, "");
   const instagramHandle = "digitalkaleidos";
@@ -287,6 +287,46 @@ export function FooterDemo() {
               <Link href="/termos" className="flex items-center min-h-11 md:min-h-0 hover:text-[#7CF067] transition-colors">
                 {locale === 'en' ? 'Terms' : 'Termos'}
               </Link>
+
+              {/* SELETOR DE IDIOMA — chegou aqui em 23/08/2026, vindo da barra
+                  do topo (decisão do Gabriel: "no menu do topo tem coisas
+                  demais"). Trocar de idioma é ato raro e deliberado; o rodapé
+                  é onde a web inteira o guarda.
+
+                  Aqui ele é discreto de propósito: mesmo tamanho dos links
+                  institucionais ao lado, com o idioma ATIVO em verde da marca
+                  e o outro em cinza. `aria-pressed` continua marcando qual
+                  está valendo pra quem usa leitor de tela — era o que os
+                  botões do topo faziam, e não se perde na mudança. */}
+              <div
+                className="flex items-center gap-2"
+                role="group"
+                aria-label={locale === 'en' ? 'Language selector' : 'Seletor de idioma'}
+              >
+                <button
+                  type="button"
+                  onClick={() => switchLocale('pt')}
+                  aria-label="Alterar idioma para Português"
+                  aria-pressed={locale === 'pt'}
+                  className={`flex items-center min-h-11 md:min-h-0 transition-colors ${
+                    locale === 'pt' ? 'text-[#7CF067]' : 'hover:text-[#7CF067]'
+                  }`}
+                >
+                  PT
+                </button>
+                <span aria-hidden className="text-gray-700">/</span>
+                <button
+                  type="button"
+                  onClick={() => switchLocale('en')}
+                  aria-label="Alterar idioma para Inglês"
+                  aria-pressed={locale === 'en'}
+                  className={`flex items-center min-h-11 md:min-h-0 transition-colors ${
+                    locale === 'en' ? 'text-[#7CF067]' : 'hover:text-[#7CF067]'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
             </div>
           </div>
         </div>

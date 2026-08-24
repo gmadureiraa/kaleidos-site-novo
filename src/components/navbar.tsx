@@ -71,7 +71,7 @@ function ListItem({
 }
 
 export function Navbar() {
-  const { t, locale, switchLocale } = useI18n();
+  const { t, locale } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -185,47 +185,20 @@ export function Navbar() {
                 {locale === 'en' ? 'WhatsApp' : 'WhatsApp'}
               </a>
             </div>
-            {/* Language switcher - desktop */}
-            <div className="flex items-center gap-1 ml-2" role="group" aria-label="Seletor de idioma">
-              <button 
-                onClick={() => switchLocale('pt')} 
-                className={`text-xs px-3 py-2 rounded touch-target ${locale==='pt'?'bg-white text-black':'text-white border border-white/30'}`}
-                aria-label="Alterar idioma para Português"
-                aria-pressed={locale === 'pt'}
-              >
-                PT
-              </button>
-              <button 
-                onClick={() => switchLocale('en')} 
-                className={`text-xs px-3 py-2 rounded touch-target ${locale==='en'?'bg-white text-black':'text-white border border-white/30'}`}
-                aria-label="Alterar idioma para Inglês"
-                aria-pressed={locale === 'en'}
-              >
-                EN
-              </button>
-            </div>
+            {/* O SELETOR DE IDIOMA SAIU DAQUI — 23/08/2026, decisão do Gabriel:
+                "no menu do topo parece que tem coisas demais, tire o botão de
+                mudar de idioma e deixe só no rodapé".
+
+                Ele ocupava o mesmo peso visual do CTA de WhatsApp numa barra
+                que já carrega logo, 5 links e o CTA. Trocar de idioma é ato
+                raro e deliberado — pertence ao rodapé, junto de institucional,
+                que é a convenção. Vive agora em `ui/footer-demo.tsx`.
+                `switchLocale` continua exportado pelo `useI18n` e o `?lang=en`
+                segue funcionando em qualquer URL. */}
           </div>
 
-          {/* Mobile: language switch + menu button */}
+          {/* Mobile: botão do menu (o seletor de idioma foi pro rodapé em 23/08) */}
           <div className="lg:hidden flex items-center gap-2">
-            <div className="flex items-center gap-1" role="group" aria-label="Seletor de idioma">
-              <button 
-                onClick={() => switchLocale('pt')} 
-                className={`text-xs px-3 py-2 rounded touch-target ${locale==='pt'?'bg-white text-black':'text-white border border-white/30'}`}
-                aria-label="Alterar idioma para Português"
-                aria-pressed={locale === 'pt'}
-              >
-                PT
-              </button>
-              <button 
-                onClick={() => switchLocale('en')} 
-                className={`text-xs px-3 py-2 rounded touch-target ${locale==='en'?'bg-white text-black':'text-white border border-white/30'}`}
-                aria-label="Alterar idioma para Inglês"
-                aria-pressed={locale === 'en'}
-              >
-                EN
-              </button>
-            </div>
             <Button
               variant="ghost"
               size="sm"
