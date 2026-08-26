@@ -60,3 +60,8 @@ public/v2/kaleidos-elementos/
 # worktrees de agente (mesma razão de .claude/worktrees/): estado de sessão,
 # não código do site.
 .maestri/
+
+# lockfile canonico e o bun.lock (packageManager: bun@1.3.10)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
