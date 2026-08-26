@@ -26,7 +26,10 @@ const CLIENTS = [
     id: "defiverso",
     name: "Defiverso",
     logo: "/Clientes-logo/Defiverso.png",
-    resultSummary: "29.000+ inscrições no Minicurso 7 Dias DeFi, 26.554 assinantes na Newsletter e 12 milhões de visualizações orgânicas em 90 dias.",
+    // 26.556 = KALEIDOS_PROOF.defiversoNewsletter (Beehiiv, 11/2025). Estava
+    // 26.554 aqui — o erro de transcrição que metrics.ts registra ter sido
+    // corrigido em 19/08 e que sobreviveu neste arquivo. Corrigido em 26/08/2026.
+    resultSummary: "29.000+ inscrições no Minicurso 7 Dias DeFi, 26.556 assinantes na Newsletter e 12 milhões de visualizações orgânicas em 90 dias.",
     resultBadge: "12M+ views orgânicas",
     testimonial: "A parceria Kaleidos e Defiverso resultou na criação de um ecossistema de marketing digital completo e de alta performance.",
     author: "Equipe Defiverso",

@@ -48,6 +48,23 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Serviço "Eventos Cripto" removido a pedido do Gabriel.
+        //
+        // ⚠️ 26/08/2026 — a rota existia como `page.tsx` chamando `notFound()`
+        // direto. Medido contra produção: devolvia **HTTP 200** com o corpo
+        // "Página não encontrada". É o MESMO engano do gate do blog: `notFound()`
+        // não é sinal de status confiável, é só um corpo de página. Efeito: o
+        // Google indexava uma página de erro como conteúdo válido, e a auditoria
+        // de links internos ("todos 200") passava por cima do problema.
+        //
+        // 301 pro índice de serviços: resolve o status mentiroso E preserva o
+        // equity de qualquer link externo antigo. Redirect roda ANTES do
+        // roteamento de arquivo, então a rota foi removida junto.
+        source: "/servicos/eventos-cripto",
+        destination: "/servicos",
+        permanent: true,
+      },
+      {
         source: "/manifesto",
         destination: "/sobre",
         permanent: true,

@@ -12,6 +12,7 @@ import { AsciiTorus } from "@/components/marca-pessoal/ascii-torus";
 import { AnimatedNumber } from "@/components/marca-pessoal/animated-number";
 import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
 import { getPublishedPostCardsByCategoryAsync } from "@/lib/blog-data";
+import { KALEIDOS_PROOF } from "@/lib/metrics";
 
 /**
  * /marca-pessoal — Founder-Led Growth (marca pessoal para founders e C-levels).
@@ -929,11 +930,17 @@ const CASES_HTML = `
       "Todo número aqui tem origem, data e um caminho pra você checar agora. O que a gente não consegue provar, não publica.",
       true
     )}
+    <!-- ⚠️ Os três números destes cards vêm de KALEIDOS_PROOF (src/lib/metrics.ts),
+         a fonte única de número em copy da Kaleidos. Estavam hardcoded como texto
+         dentro desta string HTML ("173 mil", "177 mil", "12M views") — batiam com o
+         canônico por coincidência, e atualizar metrics.ts não atualizava aqui.
+         Ligados ao import em 26/08/2026. Se precisar de um número que não está em
+         KALEIDOS_PROOF, PARE e peça apuração; não escreva o número aqui. -->
     <div class="mp-grid3">
 
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Lucas Amendola &middot; Investidor 4.20</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">173 mil <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores no Instagram</span></div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">${KALEIDOS_PROOF.lucasInstagram.value} <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores no Instagram</span></div>
         <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">lido direto no perfil em 08/2026</div>
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;">
           <img src="/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DZlGIGoRnew-capa.jpg" alt="Capa de reel publicado no perfil do Lucas Amendola" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
@@ -947,7 +954,7 @@ const CASES_HTML = `
 
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 24px;box-shadow:5px 5px 0 #D262B2;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D262B2;">Layl&auml; F&ouml;z &middot; criadora</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">177 mil <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">${KALEIDOS_PROOF.laylaInstagram.value} <span style="font-size:16px;color:#9a9186;font-weight:400;">seguidores</span></div>
         <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">lido direto no perfil em 08/2026</div>
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;">
           <img src="/Cases/layla-foz/conteudo/Capa_Reels4.webp" alt="Capa de reel publicado no perfil da Laylä Föz" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">
@@ -961,7 +968,7 @@ const CASES_HTML = `
 
       <div style="background:#1d1812;border:1.5px solid #3a332a;border-radius:16px;padding:26px 24px;box-shadow:5px 5px 0 #7CF067;display:flex;flex-direction:column;">
         <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7CF067;">Defiverso &middot; audi&ecirc;ncia pr&oacute;pria</div>
-        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">12M views <span style="font-size:16px;color:#9a9186;font-weight:400;">org&acirc;nicos</span></div>
+        <div style="font-family:Atelier,sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,34px);line-height:1.1;margin:14px 0 2px;color:#FAFAFA;">${KALEIDOS_PROOF.defiversoViews.value} views <span style="font-size:16px;color:#9a9186;font-weight:400;">org&acirc;nicos</span></div>
         <div style="font-family:Gridlite,monospace;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8a8175;margin:6px 0 14px;">em 90 dias &middot; per&iacute;odo vis&iacute;vel no painel abaixo</div>
         <div style="border:1.5px solid #3a332a;border-radius:12px;overflow:hidden;background:#fff;margin-bottom:14px;">
           <img src="/Cases/defiverso/estudo/metricas-instagram.png" alt="Painel nativo do Instagram Insights do Defiverso: 12.000.732 visualizações orgânicas no período de 90 dias exibido no gráfico" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;">

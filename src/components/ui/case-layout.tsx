@@ -849,11 +849,15 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                       <ul className="space-y-2 text-white">
                         <li className="flex items-start gap-2">
                           <span className="text-[#7CF067] font-bold">•</span>
-                          <span><strong>26.554 assinantes ativos</strong> em crescimento constante</span>
+                          {/* 26.556 e 33,01% são os valores de KALEIDOS_PROOF.defiversoNewsletter
+                              (Beehiiv, 11/2025). Estavam aqui como 26.554 / "33.01%" — o 26.554 é o
+                              erro de transcrição que metrics.ts registra ter sido corrigido em 19/08,
+                              e a grafia com ponto é EN numa página PT. Corrigido em 26/08/2026. */}
+                          <span><strong>26.556 assinantes ativos</strong> em crescimento constante</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#7CF067] font-bold">•</span>
-                          <span><strong>Taxa de Abertura Média de 33.01%</strong> - muito acima da média do mercado (15-25%)</span>
+                          <span><strong>Taxa de Abertura Média de 33,01%</strong> - muito acima da média do mercado (15-25%)</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#7CF067] font-bold">•</span>

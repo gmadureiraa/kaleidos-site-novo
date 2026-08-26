@@ -27,6 +27,15 @@ const JOBS = [
   ["papers/cover-bull-market.png", 800, 82],
   // Olho do hero-diferenciais (hero visual grande).
   ["v2/collage/eye-halftone.png", 800, 80],
+  // Stickers do hero da HOME. 26/08/2026: eram os 2 únicos assets de
+  // /v2/collage/ sem gêmeo .webp — 1.080x1080 PNG (1.035KB + 656KB) servidos
+  // CRUS (images.unoptimized:true) e exibidos a ~148px/188px, acima da dobra.
+  // 1,7MB competindo por banda exatamente na janela do LCP da home.
+  ["v2/collage/sticker-bitcoin.png", 400, 82],
+  ["v2/collage/sticker-tothemoon.png", 400, 82],
+  // Colagem do hero de /sobre. O brain-glasses.webp já existia no disco e o
+  // código apontava pro .png de 437KB; o einstein.png (364KB) não tinha gêmeo.
+  ["v2/collage/einstein.png", 400, 82],
   // Pool de capas de blog (blog-cover-variants) — exibidas em card ~300-400px,
   // aparecem na seção de recursos da home. Todas a 700px webp.
   ["v2/elements/colagem-cerebro-oculos.png", 700, 82],

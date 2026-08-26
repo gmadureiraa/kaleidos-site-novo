@@ -43,6 +43,13 @@ export function BlogCover({
           alt=""
           className="w-full h-full object-cover"
           loading={variant === "article" || variant === "feature" ? undefined : "lazy"}
+          // `article`/`feature` é a capa no topo do post — o elemento de LCP de
+          // /blog/*. Tirar o `lazy` (acima) só o desqualifica do adiamento; não o
+          // promove na fila. Como é <img> cru com `images.unoptimized:true`, nada
+          // mais vai priorizá-lo: o fetchPriority é o único sinal disponível.
+          fetchPriority={
+            variant === "article" || variant === "feature" ? "high" : "auto"
+          }
         />
       </div>
     );

@@ -10,6 +10,41 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
+/**
+ * Escapa um valor que vai DENTRO de um atributo HTML entre aspas duplas.
+ *
+ * `escapeHtml` (acima) roda no markdown inteiro e não escapa `"` — o que é
+ * correto pro corpo do texto e ERRADO pra atributo. Sem isto, um alt como
+ * `![Capa do whitepaper "Bitcoin: ..."](x.png)` fecha o atributo no meio: o alt
+ * sai truncado em `alt="Capa do whitepaper "` e o resto da frase vira lixo de
+ * atributo. Havia 11 imagens assim no acervo em 26/08/2026 — o `<figcaption>`
+ * (text node) saía íntegro, então ninguém via; quem perdia era leitor de tela e
+ * SEO de imagem.
+ *
+ * É também a única barreira que impede breakout de atributo aqui. Hoje o
+ * DOMPurify em `/blog/[slug]` limparia um `onerror=` injetado assim, mas depender
+ * disso é depender de defesa que vive em OUTRO arquivo — e este markdown também
+ * é usado nos papers.
+ */
+function escapeAttr(s: string): string {
+  return s.replace(/"/g, "&quot;");
+}
+
+/**
+ * `true` quando o href aponta pro próprio site (path relativo, âncora ou
+ * kaleidos.com.br). Link interno NÃO deve abrir em aba nova: o corpo dos posts
+ * linka `/contato` (126x), `/pacotes` (52x), `/marca-pessoal` (39x) e dezenas de
+ * outros posts, e todos abriam `target="_blank"` porque a regra de link era uma
+ * só pra tudo.
+ */
+function isInternalHref(href: string): boolean {
+  const h = href.trim();
+  if (h.startsWith("#")) return true;
+  if (h.startsWith("//")) return false;
+  if (h.startsWith("/")) return true;
+  return /^https?:\/\/(www\.)?kaleidos\.com\.br(\/|$)/i.test(h);
+}
+
 export function markdownToHtml(markdown: string): string {
   let html = escapeHtml(markdown.trim());
 
@@ -58,7 +93,7 @@ export function markdownToHtml(markdown: string): string {
       const cap = caption
         ? `<figcaption>${caption}</figcaption>`
         : "";
-      return `<figure class="study-fig"><img src="${src}" alt="${alt}" loading="lazy" />${cap}</figure>`;
+      return `<figure class="study-fig"><img src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" loading="lazy" />${cap}</figure>`;
     }
   );
 
@@ -66,10 +101,13 @@ export function markdownToHtml(markdown: string): string {
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, "$1<em>$2</em>");
   html = html.replace(/`([^`]+?)`/g, "<code>$1</code>");
-  html = html.replace(
-    /\[(.+?)\]\((.+?)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-  );
+  html = html.replace(/\[(.+?)\]\((.+?)\)/g, (_m, text: string, href: string) => {
+    const safeHref = escapeAttr(href);
+    // Interno abre na mesma aba; externo mantém _blank + rel de segurança.
+    return isInternalHref(href)
+      ? `<a href="${safeHref}">${text}</a>`
+      : `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  });
 
   // Listas (-)
   html = html.replace(/(?:^- .+$\n?)+/gm, (match) => {

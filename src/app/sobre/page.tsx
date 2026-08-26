@@ -158,8 +158,8 @@ export default function SobrePage() {
       <section className="relative overflow-hidden">
         {/* deco */}
         <div className="sb-deco pointer-events-none absolute inset-0">
-          <Image src="/v2/collage/brain-glasses.png" alt="" width={170} height={170} style={{ position: "absolute", right: "5%", top: "14%", width: 150, height: "auto", mixBlendMode: "multiply", ['--r' as string]: "8deg", animation: "sbFloat 7s ease-in-out infinite" } as React.CSSProperties} />
-          <Image src="/v2/collage/einstein.png" alt="" width={120} height={120} style={{ position: "absolute", left: "3%", bottom: "12%", width: 120, height: "auto", mixBlendMode: "multiply", ['--r' as string]: "-6deg", animation: "sbFloat2 9s ease-in-out infinite" } as React.CSSProperties} />
+          <Image src="/v2/collage/brain-glasses.webp" alt="" width={170} height={170} style={{ position: "absolute", right: "5%", top: "14%", width: 150, height: "auto", mixBlendMode: "multiply", ['--r' as string]: "8deg", animation: "sbFloat 7s ease-in-out infinite" } as React.CSSProperties} />
+          <Image src="/v2/collage/einstein.webp" alt="" width={120} height={120} style={{ position: "absolute", left: "3%", bottom: "12%", width: 120, height: "auto", mixBlendMode: "multiply", ['--r' as string]: "-6deg", animation: "sbFloat2 9s ease-in-out infinite" } as React.CSSProperties} />
           <div style={{ position: "absolute", left: "4%", top: "16%", ['--r' as string]: "-12deg", animation: "sbFloat 10s ease-in-out infinite" } as React.CSSProperties}>
             <svg width={92} height={64} style={{ fill: PINK }}><use href="#sb-kal-eye" /></svg>
           </div>
