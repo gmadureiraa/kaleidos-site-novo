@@ -1,3 +1,4 @@
+import { defuseUnresolvedInternalLinks } from "./blog-links";
 import { caseStudies } from "./blog-cases.generated";
 import { seoPosts } from "./blog-seo-posts";
 import { seoPosts2 } from "./blog-seo-posts-2";
@@ -158,8 +159,9 @@ export const blogPosts: BlogPost[] = allPostsRaw.filter(
 /**
  * Gate de agendamento (publishedAt <= agora).
  *
- * `blogPosts` mantém TODOS os posts (inclusive os com data futura) para que a
- * rota `/blog/[slug]` continue resolvendo cada slug e o build gere as páginas.
+ * `blogPosts` mantém TODOS os posts (inclusive os com data futura) para que o
+ * build gere a página de cada slug (`generateStaticParams` + `dynamicParams =
+ * false`). A página do agendado é gerada como 404 e vira 200 na revalidação.
  * As LISTAGENS públicas (index do /blog, carrossel da home, sitemap, RSS, JSON-LD
  * de índice) devem usar `getPublishedPosts()` para esconder o que ainda não saiu.
  *
@@ -170,12 +172,10 @@ export const blogPosts: BlogPost[] = allPostsRaw.filter(
  * uma hora depois da data, sem redeploy e sem cron nenhum. Não crie GitHub
  * Action de rebuild pra "resolver" isso: já está resolvido.
  *
- * O que de fato está errado é o outro lado: a rota do post NÃO filtra por data
- * (ver o comentário longo em getPostBySlugAsync), então o agendado responde 200
- * antes da hora enquanto fica fora de toda listagem. Os 7 posts do lote GTM
- * tiveram a data trazida pro presente nesta data por causa disso; os ~89
- * restantes seguem nesse estado até o gate ser ligado, o que depende de auditar
- * 33 links internos primeiro.
+ * ✅ 2026-08-26: o outro lado foi fechado. A rota do post passou a filtrar por
+ * data (`getPostBySlugAsync`), e os links internos pra destino ainda não
+ * publicado são neutralizados no render (`blog-links.ts`). Agendado agora é 404
+ * até a data, sem deixar link quebrado pra trás.
  */
 export function isPublished(post: BlogPost, now: Date = new Date()): boolean {
   return new Date(post.publishedAt).getTime() <= now.getTime();
@@ -400,30 +400,55 @@ export async function getPublishedPostsAsync(now: Date = new Date()): Promise<Bl
 /**
  * Post por slug para a ROTA PÚBLICA `/blog/[slug]`.
  *
- * ⚠️ NÃO HÁ GATE DE DATA AQUI, e isso é uma divergência conhecida (medida em
- * 2026-08-21). O comentário no topo de `src/app/blog/[slug]/page.tsx` afirma que
- * "o gate de data vive em getPostBySlugAsync" — não vive. A função devolve
- * qualquer post, inclusive os de `publishedAt` no futuro. O efeito é que um post
- * AGENDADO responde 200 na URL enquanto está fora da listagem, do sitemap e do
- * RSS (que usam getPublishedPosts). Soft-launch involuntário: público e
- * indexável antes da data, sem constar do sitemap.
+ * ✅ TEM GATE DE DATA (ligado em 2026-08-26). Post com `publishedAt` no futuro
+ * NÃO é devolvido: a rota chama `notFound()` e o slug responde 404 até a data.
+ * Antes disso, os agendados respondiam 200 na URL enquanto ficavam fora da
+ * listagem, do sitemap e do RSS — público e indexável, sem nada denunciando.
+ * Eram 83 posts em 26/08/2026.
  *
- * O gate seria uma linha (`return isPublished(local) ? local : undefined`), e o
- * `revalidate = 3600` da rota faria o 404 virar 200 sozinho na data, sem cron e
- * sem redeploy — exatamente o desenho que o comentário da rota descreve.
+ * O 404 vira 200 sozinho na data: o `revalidate = 3600` da rota rerenderiza a
+ * página em até 1h depois de `publishedAt`. Sem cron, sem redeploy.
  *
- * 🔴 NÃO LIGUE O GATE ANTES DE RESOLVER OS LINKS. Em 21/08/2026 havia 89 posts
- * com data futura no acervo e 33 links internos, espalhados por posts JÁ NO AR,
- * apontando pra eles. Ligar o gate hoje transforma esses 33 links em 404 até a
- * data de cada destino — troca um problema de SEO por um pior. A sequência certa
- * é: (1) auditar os 33 links e ou antecipar o destino ou remover o link, depois
- * (2) ligar o gate. Script de medição: ver diário de 21/08.
+ * ⚠️ O gate NÃO vem sozinho. Ele só é seguro porque os links internos que
+ * apontam pra posts ainda não publicados são neutralizados no render — ver
+ * `defuseUnresolvedInternalLinks` em `blog-links.ts` e o uso em
+ * `src/app/blog/[slug]/page.tsx`. Se você mexer num, mexa no outro: sem a
+ * neutralização, ligar o gate produz links quebrados em páginas que estão no ar.
+ *
+ * `now` é injetável só pra teste.
  */
-export async function getPostBySlugAsync(slug: string): Promise<BlogPost | undefined> {
+export async function getPostBySlugAsync(
+  slug: string,
+  now: Date = new Date()
+): Promise<BlogPost | undefined> {
   const local = getPostBySlug(slug);
-  if (local) return local;
+  if (local) return isPublished(local, now) ? local : undefined;
   const all = await getAllPostsAsync();
-  return all.find((post) => post.slug === slug);
+  const external = all.find((post) => post.slug === slug);
+  if (!external) return undefined;
+  return isPublished(external, now) ? external : undefined;
+}
+
+/**
+ * Slugs que a rota pública consegue resolver AGORA (estáticos + KAI, já com o
+ * gate de data aplicado). É a fonte de verdade pra decidir qual link interno
+ * sobrevive no render de um post.
+ */
+export async function getResolvableSlugsAsync(now: Date = new Date()): Promise<Set<string>> {
+  const published = await getPublishedPostsAsync(now);
+  return new Set(published.map((post) => post.slug));
+}
+
+/**
+ * Markdown do post pronto pra render: links internos pra destino não resolvível
+ * (agendado ou removido do acervo) já neutralizados. Ver `blog-links.ts`.
+ */
+export async function getRenderableContentAsync(
+  post: BlogPost,
+  now: Date = new Date()
+): Promise<string> {
+  const resolvable = await getResolvableSlugsAsync(now);
+  return defuseUnresolvedInternalLinks(post.content, (slug) => resolvable.has(slug));
 }
 
 /** Igual a getRelatedPosts(), considerando também posts do KAI. */
