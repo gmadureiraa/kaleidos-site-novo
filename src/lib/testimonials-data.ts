@@ -149,7 +149,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: "neobankless",
     name: "Matheus Fassheber",
     role: "Fundador",
-    company: "NeoBankless",
+    company: "NBS Finance",
     avatar: "/depoimentos/matheus-fassheber.png",
     avatarIsPhoto: true,
     quote:

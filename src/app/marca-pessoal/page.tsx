@@ -293,7 +293,7 @@ const WALL_COL_A: { src: string; alt: string }[] = [
   { src: "/Cases/dsec/conteudo/linkedin/dsec-li-etfs.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre ETFs de Bitcoin" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels1.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DO9ZQ2_kirU-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
-  { src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-dolarizar.jpg", alt: "Post publicado no Instagram da NBS Finance" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels3.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DWFG0_kCUuF-capa.jpg", alt: "Capa de reel publicado no Instagram do Defiverso" },
 ];
@@ -301,14 +301,14 @@ const WALL_COL_B: { src: string; alt: string }[] = [
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DU8ZciOkcLo-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTQy_Bbkkzo-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels2.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
-  { src: "/Cases/neobankless/conteudo/instagram/post-global.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-global.jpg", alt: "Post publicado no Instagram da NBS Finance" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DXeZ4I2EYiE-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTi3Re1Eox--capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
 ];
 const WALL_COL_C: { src: string; alt: string }[] = [
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DOO62uUEvMu-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/defiverso/conteudo/portfolio-novos/dfv-DYFTrH5jGL9-slide-01.jpg", alt: "Slide de carrossel publicado no Instagram do Defiverso" },
-  { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NeoBankless" },
+  { src: "/Cases/neobankless/conteudo/instagram/post-cartao.jpg", alt: "Post publicado no Instagram da NBS Finance" },
   { src: "/Cases/layla-foz/conteudo/Capa_Reels4.webp", alt: "Capa de reel publicado no perfil da LaylÃ¤ FÃ¶z" },
   { src: "/Cases/investidor-4-20/conteudo/portfolio-novos/dfv-DTWArqxkhuK-capa.jpg", alt: "Capa de reel publicado no perfil do Lucas Amendola" },
   { src: "/Cases/dsec/conteudo/linkedin/dsec-li-rastreio.jpg", alt: "Peça publicada no LinkedIn da DSEC sobre rastreio de transações entre corretora e carteira" },
@@ -992,7 +992,7 @@ const CASES_HTML = `
       <div style="font-family:Gridlite,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8175;">Em opera&ccedil;&atilde;o agora &middot; ciclo ainda aberto</div>
       <p style="font-size:14px;line-height:1.7;color:#b8b1a6;margin:12px 0 0;">Tr&ecirc;s marcas pessoais de founder que come&ccedil;aram em 2026 e ainda n&atilde;o fecharam janela de apura&ccedil;&atilde;o. Publicamos o que <strong style="color:#d8d1c6;">foi feito</strong>, n&atilde;o quanto rendeu &mdash; o n&uacute;mero entra quando houver de onde conferir.</p>
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-        <a href="/cases/matheus-fassheber" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">Matheus Fassheber &middot; Neobankless &rarr;</a>
+        <a href="/cases/matheus-fassheber" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">Matheus Fassheber &middot; NBS Finance &rarr;</a>
         <span style="color:#4a443c;">/</span>
         <a href="/cases/gui-campos" style="font-size:13px;color:#FAFAFA;text-decoration:underline;text-underline-offset:3px;">Gui Campos &middot; DSEC &rarr;</a>
         <span style="color:#4a443c;">/</span>

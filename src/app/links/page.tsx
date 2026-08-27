@@ -8,26 +8,20 @@ import {
   Twitter,
   MessageCircle,
   Sparkles,
-  Film,
-  Radar,
-  PenLine,
-  Megaphone,
-  Wallet,
-  LineChart,
   Newspaper,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Links — Kaleidos",
   description:
-    "Todos os produtos de IA da Kaleidos: Sequência Viral, Reels Viral, Radar Viral e mais.",
+    "Os produtos de IA da Kaleidos: Viral OS, Jornal Cripto e o que vem depois.",
   alternates: {
     canonical: "/links",
   },
   openGraph: {
     title: "Links — Kaleidos",
     description:
-      "Todos os produtos de IA da Kaleidos: Sequência Viral, Reels Viral, Radar Viral e mais.",
+      "Os produtos de IA da Kaleidos: Viral OS, Jornal Cripto e o que vem depois.",
     url: "https://kaleidos.com.br/links",
     siteName: "Kaleidos Digital",
     images: [
@@ -45,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Links — Kaleidos",
     description:
-      "Todos os produtos de IA da Kaleidos: Sequência Viral, Reels Viral, Radar Viral e mais.",
+      "Os produtos de IA da Kaleidos: Viral OS, Jornal Cripto e o que vem depois.",
     images: ["/Kaleidos/imagens/Capa.png"],
     creator: "@digitalkaleidos",
     site: "@digitalkaleidos",
@@ -76,80 +70,25 @@ type Secondary = {
 
 const heroProducts: Hero[] = [
   {
-    name: "Sequência Viral",
+    name: "Viral OS",
     href: "https://viral.kaleidos.com.br",
     domain: "viral.kaleidos.com.br",
-    tagline: "Carrosséis virais em 60 segundos com IA na sua voz.",
-    shortTagline: "Carrossel pronto pra postar",
+    tagline:
+      "Carrosséis, roteiros e threads na sua voz, com radar do nicho e planejamento no mesmo sistema.",
+    shortTagline: "Do sinal ao próximo post",
     Icon: Sparkles,
     accent: "text-[#C5F23E]",
     accentBg: "bg-[#C5F23E]/10",
     accentRing: "shadow-[0_0_60px_-12px_rgba(197,242,62,0.45)]",
-    badge: "Carrosséis IA",
-  },
-  {
-    name: "Reels Viral",
-    href: "https://reels.kaleidos.com.br",
-    domain: "reels.kaleidos.com.br",
-    tagline: "Cole um Reel viral. Receba roteiro adaptado cena por cena.",
-    shortTagline: "Roteiro cena por cena",
-    Icon: Film,
-    accent: "text-[#FF3D2E]",
-    accentBg: "bg-[#FF3D2E]/10",
-    accentRing: "shadow-[0_0_60px_-12px_rgba(255,61,46,0.45)]",
-    badge: "Roteiros Reels",
-  },
-  {
-    name: "Radar Viral",
-    href: "https://radar.kaleidos.com.br",
-    domain: "radar.kaleidos.com.br",
-    tagline: "Inteligência diária cross-platform: brief IA dos temas em alta.",
-    shortTagline: "Tendências em tempo real",
-    Icon: Radar,
-    accent: "text-[#FF3D2E]",
-    accentBg: "bg-[#FF3D2E]/10",
-    accentRing: "shadow-[0_0_60px_-12px_rgba(255,61,46,0.4)]",
-    badge: "Inteligência diária",
+    badge: "Conteúdo com IA",
   },
 ];
 
 const secondaryProducts: Secondary[] = [
   {
-    name: "AutoBlogger",
-    href: "https://autoblogger.kaleidos.com.br",
-    domain: "autoblogger.kaleidos.com.br",
-    tagline: "Posts de blog SEO automáticos com IA.",
-    Icon: PenLine,
-    status: "soon",
-  },
-  {
-    name: "AdFlow",
-    href: "https://adflow.kaleidos.com.br",
-    domain: "adflow.kaleidos.com.br",
-    tagline: "IA pra ads Meta — criativo, copy e variantes.",
-    Icon: Megaphone,
-    status: "soon",
-  },
-  {
-    name: "Folio",
-    href: "https://folio.kaleidos.com.br",
-    domain: "folio.kaleidos.com.br",
-    tagline: "Portfolio investidor cripto consolidado.",
-    Icon: Wallet,
-    status: "soon",
-  },
-  {
-    name: "DeFi Radar",
-    href: "https://radar.kaleidos.com.br",
-    domain: "radar.kaleidos.com.br",
-    tagline: "Yield scanner DeFi.",
-    Icon: LineChart,
-    status: "soon",
-  },
-  {
     name: "Jornal Cripto",
-    href: "https://jornal-cripto.vercel.app",
-    domain: "jornal-cripto.vercel.app",
+    href: "https://jornalcripto.com.br",
+    domain: "jornalcripto.com.br",
     tagline: "Newsletter cripto diária.",
     Icon: Newspaper,
     status: "live",
@@ -201,13 +140,13 @@ export default function LinksPage() {
           </h1>
           <p className="mt-3 max-w-xl text-sm text-gray-400 sm:text-base">
             Tudo que a Kaleidos tá construindo num só lugar. Carrosséis,
-            roteiros, radar de tendências, ads e mais.
+            roteiros, radar de tendências e publicação.
           </p>
         </header>
 
         {/* Trio viral — em destaque */}
         <section
-          aria-label="Trio viral"
+          aria-label="Produtos em destaque"
           className="mt-12 grid w-full grid-cols-1 gap-4 sm:mt-16"
         >
           {heroProducts.map((p) => (

@@ -37,9 +37,9 @@ export function ServicesList({
     locale === "en" ? `${path}${path.includes("?") ? "&" : "?"}lang=en` : path;
   const { trackClick } = useAnalytics();
 
-  // MOBILE: a lista de 10 serviços ficava longa demais numa tela pequena.
+  // MOBILE: a lista completa ficava longa demais numa tela pequena.
   // Mostramos os 5 primeiros e um botão "Ver todos" expande o resto.
-  // Desktop (sm+) sempre mostra os 10. Nenhum serviço foi removido.
+  // Desktop (sm+) sempre mostra a lista inteira. Nenhum serviço foi removido.
   const MOBILE_VISIBLE = 5;
   const [showAllMobile, setShowAllMobile] = useState(false);
 
@@ -279,8 +279,8 @@ export function ServicesList({
               className="mt-6 w-full rounded-xl border border-white/15 bg-white/[0.03] py-3.5 text-sm font-semibold text-gray-300 transition-colors hover:text-white sm:hidden"
             >
               {isEn
-                ? `See all ${services.length} services`
-                : `Ver todos os ${services.length} serviços`}
+                ? "See all services"
+                : "Ver todos os serviços"}
             </button>
           )}
           </div>

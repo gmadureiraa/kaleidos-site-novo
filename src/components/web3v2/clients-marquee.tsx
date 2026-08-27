@@ -28,7 +28,7 @@ const clients: { name: string; logo: string; url?: string }[] = [
   { name: "Bit das Minas", logo: "/v2/partners/bit-das-minas.webp", url: "https://www.instagram.com/bitdasminas" },
   { name: "Defiverso", logo: "/v2/partners/defiverso.webp", url: "https://defiverso.com" },
   { name: "Laylä Föz", logo: "/v2/partners/layla-foz.webp", url: "https://www.instagram.com/laylafoz" },
-  { name: "Neobankless", logo: "/v2/partners/neobankless.webp", url: "https://neobankless.com" },
+  { name: "NBS Finance", logo: "/v2/partners/neobankless.webp", url: "https://neobankless.com" },
   { name: "Orlando On Crypto", logo: "/v2/partners/orlando-on-crypto.webp", url: "https://www.instagram.com/orlandooncrypto" },
   { name: "Jornal Cripto", logo: "/v2/partners/jornal-cripto.webp", url: "https://jornalcripto.com" },
   { name: "DSEC Labs", logo: "/v2/partners/dsec-labs.webp" },

@@ -14,6 +14,16 @@ export type ServiceStatement = {
   kicker: string;
   bigValue: string;
   bigLabel: string;
+  /**
+   * Fonte primária do `bigValue`, quando ele for um número.
+   *
+   * 🔴 REGRA DURA (CLAUDE.md): número em copy da Kaleidos só sai de
+   * `KALEIDOS_PROOF` (`src/lib/metrics.ts`). A ÚNICA exceção é estatística de
+   * MERCADO — afirmação sobre o setor, não sobre a casa nem sobre resultado de
+   * cliente — e ela só pode entrar com `bigSource` apontando pro estudo real.
+   * Sem fonte, o `bigValue` NÃO é número: vira palavra ou contraste.
+   */
+  bigSource?: { label: string; href: string };
   headline: string;
   body: string;
 };
@@ -235,8 +245,13 @@ export const SERVICE_PAGES: ServiceData[] = [
       finalCtaSubtitle: "Vamos mapear onde seu projeto pode ranquear e ser citado pelas IAs.",
       statement: {
         kicker: "A busca mudou de lugar",
-        bigValue: "~60%",
-        bigLabel: "dos cliques ficam no top 3 do Google",
+        bigValue: "~55%",
+        bigLabel:
+          "dos cliques orgânicos ficam nas três primeiras posições do Google (28,5% + 15,7% + 11,0%)",
+        bigSource: {
+          label: "Fonte: Estudo Sistrix · 80 milhões de keywords",
+          href: "https://www.sistrix.com/blog/why-almost-everything-you-knew-about-google-ctr-is-no-longer-valid/",
+        },
         headline: "Quem não está na primeira resposta, não existe.",
         body: "Parte da sua audiência ainda abre o Google. A outra parte já pergunta direto pra uma IA. Em ambos os casos, a decisão acontece nos três primeiros resultados, ou dentro de uma única resposta gerada. Fora disso, você entrega demanda qualificada de graça pro concorrente que estruturou o conteúdo primeiro.",
       },
@@ -359,8 +374,13 @@ export const SERVICE_PAGES: ServiceData[] = [
       finalCtaSubtitle: "Let's map where your project can rank and get cited by AI.",
       statement: {
         kicker: "Search moved",
-        bigValue: "~60%",
-        bigLabel: "of clicks stay in Google's top 3",
+        bigValue: "~55%",
+        bigLabel:
+          "of organic clicks stay in Google's first three positions (28.5% + 15.7% + 11.0%)",
+        bigSource: {
+          label: "Source: Sistrix study · 80 million keywords",
+          href: "https://www.sistrix.com/blog/why-almost-everything-you-knew-about-google-ctr-is-no-longer-valid/",
+        },
         headline: "If you're not the first answer, you don't exist.",
         body: "Part of your audience still opens Google. The other part asks an AI directly. Either way, the decision happens in the first three results, or inside a single generated answer. Outside of that, you hand qualified demand away for free to the competitor who structured their content first.",
       },
@@ -469,7 +489,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Desenvolvimento comercial completo e estratégia de lançamento.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "4+ lançamentos", desc: "Estratégia de conteúdo e lançamento pra educação cripto feminina.", href: "/cases/bit-das-minas" },
-        { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e estratégia de conteúdo pra fintech de dólar digital.", href: "/cases/neobankless" },
+        { name: "NBS Finance", metric: "Fintech", desc: "Posicionamento e estratégia de conteúdo pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para Consultoria & GTM",
@@ -490,8 +510,13 @@ export const SERVICE_PAGES: ServiceData[] = [
       finalCtaSubtitle: "Vamos desenhar o sistema de crescimento do seu projeto.",
       statement: {
         kicker: "O verdadeiro motivo do fracasso",
-        bigValue: "90%",
-        bigLabel: "dos projetos cripto morrem por distribuição, não por produto",
+        // ⚠️ 27/08/2026: aqui havia "90% dos projetos cripto morrem por
+        // distribuição". Não existe estudo que meça causa de morte de projeto
+        // cripto, e o número era o argumento central da página. O argumento
+        // sobrevive sem ele. Não repor sem fonte primária.
+        bigValue: "Produto ≠ Tração",
+        bigLabel:
+          "O que mata projeto cripto quase nunca é a tecnologia. É ninguém ficar sabendo dela.",
         headline: "Marketing é a camada de distribuição. GTM é o sistema operacional embaixo dela.",
         body: "Quando o time pula o sistema e vai direto pra execução, não está escalando, está chutando. Sem posicionamento, narrativa e sequenciamento de canais alinhados a produto e token, o budget vira esforço disperso e o lançamento vira aposta no escuro.",
       },
@@ -593,7 +618,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Investidor 4.20", metric: "173k followers", desc: "Full commercial development and launch strategy.", href: "/cases/investidor-4-20" },
         { name: "Bit das Minas", metric: "4+ launches", desc: "Content and launch strategy for female crypto education.", href: "/cases/bit-das-minas" },
-        { name: "Neobankless", metric: "Fintech", desc: "Positioning and content strategy for a digital-dollar fintech.", href: "/cases/neobankless" },
+        { name: "NBS Finance", metric: "Fintech", desc: "Positioning and content strategy for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Consulting & GTM",
@@ -614,8 +639,9 @@ export const SERVICE_PAGES: ServiceData[] = [
       finalCtaSubtitle: "Let's design your project's growth system.",
       statement: {
         kicker: "The real reason projects fail",
-        bigValue: "90%",
-        bigLabel: "of crypto projects die from distribution, not product",
+        bigValue: "Product ≠ Traction",
+        bigLabel:
+          "What kills a crypto project is almost never the technology. It's that nobody hears about it.",
         headline: "Marketing is the distribution layer. GTM is the operating system underneath it.",
         body: "When teams skip the system and jump straight to execution, they're not scaling, they're guessing. Without positioning, narrative and channel sequencing aligned to product and token, budget turns into scattered effort and the launch becomes a shot in the dark.",
       },
@@ -1168,7 +1194,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Defifest", metric: "Maior evento DeFi do Brasil", desc: "Evento que virou referência e gerou cobertura no ecossistema DeFi BR.", href: "/cases/defifest" },
         { name: "Investidor 4.20", metric: "173 mil seguidores", desc: "Construção de autoridade e percepção de marca pra creator cripto.", href: "/cases/investidor-4-20" },
-        { name: "Neobankless", metric: "Fintech", desc: "Posicionamento e narrativa pra fintech de dólar digital.", href: "/cases/neobankless" },
+        { name: "NBS Finance", metric: "Fintech", desc: "Posicionamento e narrativa pra fintech de dólar digital.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_PT,
       whyUsTitle: "Por que a Kaleidos para PR Cripto",
@@ -1292,7 +1318,7 @@ export const SERVICE_PAGES: ServiceData[] = [
       cases: [
         { name: "Defifest", metric: "Brazil's largest DeFi event", desc: "Event that became a reference and drove coverage in the BR DeFi ecosystem.", href: "/cases/defifest" },
         { name: "Investidor 4.20", metric: "173k followers", desc: "Authority and brand perception building for a crypto creator.", href: "/cases/investidor-4-20" },
-        { name: "Neobankless", metric: "Fintech", desc: "Positioning and narrative for a digital-dollar fintech.", href: "/cases/neobankless" },
+        { name: "NBS Finance", metric: "Fintech", desc: "Positioning and narrative for a digital-dollar fintech.", href: "/cases/neobankless" },
       ],
       stats: STATS_BASE_EN,
       whyUsTitle: "Why Kaleidos for Crypto PR",

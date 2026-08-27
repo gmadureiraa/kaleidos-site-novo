@@ -88,12 +88,12 @@ export default function SobrePage() {
     ? [
         "Kaleidos was born inside the crypto market, not next to it. Since 2020 we have lived through cycles, narratives and launches from the front row, building marketing for projects that move on-chain.",
         "That is what sets us apart: the whole team actually understands crypto. We read on-chain narrative, we follow what the market is talking about, and we translate all of it into brand, content and authority.",
-        "Almost six years later we are a boutique agency that speaks the language of this market fluently. We turn complex projects into clear stories, and stories into reputation that compounds.",
+        "We are a boutique agency that speaks the language of this market fluently. We turn complex projects into clear stories, and stories into reputation that compounds.",
       ]
     : [
         "A Kaleidos nasceu dentro do mercado cripto, não ao lado dele. Desde 2020 acompanhamos ciclos, narrativas e lançamentos na linha de frente, construindo marketing pra projetos que se movem on-chain.",
         "É isso que muda o jogo: o time inteiro entende de cripto de verdade. A gente lê a narrativa on-chain, acompanha o que o mercado está discutindo e traduz tudo isso em marca, conteúdo e autoridade.",
-        "Quase seis anos depois, somos uma agência boutique que fala a língua desse mercado com fluência. Transformamos projetos complexos em histórias claras, e histórias em reputação que se acumula.",
+        "Somos uma agência boutique que fala a língua desse mercado com fluência. Transformamos projetos complexos em histórias claras, e histórias em reputação que se acumula.",
       ];
 
   const valuesItems = (isEn
@@ -566,7 +566,7 @@ export default function SobrePage() {
                   <p style={{ color: "#FAFAFA", fontWeight: 600 }}>Reputation in crypto is the only moat that compounds. We help you build it.</p>
                 </div>
                 <div className="space-y-4">
-                  <p>Almost six years in, a boutique team and a track record across the names that shaped this market.</p>
+                  <p>In this market since 2020, a boutique team and a track record across the names that shaped this space.</p>
                   <p style={{ color: GREEN, fontWeight: 600 }}>If you speak this market, you already know who speaks it back.</p>
                 </div>
               </>
@@ -585,7 +585,7 @@ export default function SobrePage() {
                   <p style={{ color: "#FAFAFA", fontWeight: 600 }}>Reputação em cripto é o único moat que se acumula. A gente ajuda você a construir o seu.</p>
                 </div>
                 <div className="space-y-4">
-                  <p>Quase seis anos de mercado, um time boutique e um histórico ao lado dos nomes que moldaram esse espaço.</p>
+                  <p>Nesse mercado desde 2020, um time boutique e um histórico ao lado dos nomes que moldaram esse espaço.</p>
                   <p style={{ color: GREEN, fontWeight: 600 }}>Se você fala a língua desse mercado, já sabe quem fala de volta.</p>
                 </div>
               </>

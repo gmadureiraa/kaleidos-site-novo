@@ -131,14 +131,14 @@ export type HeroOpts = { badge?: string; headlineHtml?: string; subHtml?: string
 
 const HERO_DEFAULTS: Record<Locale, Required<HeroOpts>> = {
   pt: {
-    badge: "Há mais de 6 anos fazendo marketing de conteúdo",
+    badge: "Fazendo marketing de conteúdo desde 2020",
     headlineHtml:
       'Especialistas em marketing de <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">conteúdo</span> para empresas e criadores.',
     subHtml:
       'Fazemos <strong style="color:#14110D;">estratégia</strong>, <strong style="color:#14110D;">conteúdo</strong>, <strong style="color:#14110D;">lançamentos</strong> e <strong style="color:#14110D;">marca pessoal</strong>: pro projeto e pra pessoa que está na frente dele.',
   },
   en: {
-    badge: "More than 6 years doing content marketing",
+    badge: "Doing content marketing since 2020",
     headlineHtml:
       'Content <span style="background:linear-gradient(#7CF067,#7CF067) center/100% 40% no-repeat;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 6px;">marketing</span> specialists for companies and creators.',
     subHtml:

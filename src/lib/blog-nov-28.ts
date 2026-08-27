@@ -15,7 +15,7 @@ export const blogNov28: BlogPost[] = [
       "avatar": "/Kaleidos/imagens/Equipe/Madureira.png"
     },
     "publishedAt": "2026-11-28",
-    "readTime": 15,
+    "readTime": 16,
     "tags": [
       "DAO",
       "governança",

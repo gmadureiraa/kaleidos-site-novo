@@ -302,7 +302,13 @@ const FAQ_PT: FAQItem[] = [
   },
   {
     q: "Quanto tempo até o primeiro resultado?",
-    a: "Onboarding e estratégia nas primeiras semanas; produção no ritmo da timeline logo em seguida. No Defiverso, saímos do zero a 29 mil na base em 90 dias.",
+    // ⚠️ 27/08/2026: a resposta terminava com "No Defiverso, saímos do zero a 29
+    // mil na base em 90 dias". Três problemas numa frase só: os 29 mil eram
+    // inscrição em MINICURSO, não base de newsletter; o `KALEIDOS_PROOF` diz
+    // 26.556 assinantes ALL-TIME; e o prazo de 90 dias não existe em apuração
+    // nenhuma. Substituído pelo número do PROOF, com a janela que o PROOF define.
+    // ⛔ Não voltar a misturar as duas métricas nem a inventar prazo.
+    a: `Onboarding e estratégia nas primeiras semanas; produção no ritmo da timeline logo em seguida. No Defiverso, a newsletter que operamos tem ${KALEIDOS_PROOF.defiversoNewsletter.value} ${KALEIDOS_PROOF.defiversoNewsletter.label}.`,
   },
   {
     q: "E se eu só precisar de uma frente (ex: vídeo)?",
@@ -329,7 +335,7 @@ const FAQ_EN: FAQItem[] = [
   },
   {
     q: "How long until the first results?",
-    a: "Onboarding and strategy in the first weeks; production at full pace right after. At Defiverso, we went from zero to 29 thousand subscribers in 90 days.",
+    a: `Onboarding and strategy in the first weeks; production at full pace right after. At Defiverso, the newsletter we run has ${KALEIDOS_PROOF.defiversoNewsletter.value_en} ${KALEIDOS_PROOF.defiversoNewsletter.label_en}.`,
   },
   {
     q: "What if I only need one front (e.g. video)?",

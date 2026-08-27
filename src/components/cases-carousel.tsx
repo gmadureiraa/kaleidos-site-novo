@@ -137,7 +137,7 @@ const casesCarouselData = [
   },
   {
     id: "neobankless",
-    title: "Neobankless",
+    title: "NBS Finance",
     tag: "Manifesto · Vídeo",
     description: "Roteiro e produção de vídeos-manifesto para posicionar a marca de dólar digital.",
     metric: "Brand Film",

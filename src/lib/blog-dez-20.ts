@@ -15,7 +15,7 @@ export const blogDez20: BlogPost[] = [
       "avatar": "/Kaleidos/imagens/Equipe/Madureira.png"
     },
     "publishedAt": "2026-12-20",
-    "readTime": 15,
+    "readTime": 16,
     "tags": [
       "Discord",
       "Telegram",

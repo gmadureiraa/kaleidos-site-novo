@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { KALEIDOS_PROOF, PROOF_NOTE, PROOF_NOTE_EN } from "@/lib/metrics";
 import { useI18n } from "@/i18n/useI18n";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { generateServiceSchema } from "@/lib/seo-helpers";
@@ -43,8 +44,20 @@ import {
 
 /**
  * Kaleidos AI — landing de serviço institucional.
- * Promessa: até 70% do dia da operação, recuperado.
+ * Promessa: a hora repetitiva da operação volta pro time.
  * Tom: 3ª pessoa Kaleidos. Dark + lime #7CF067. Padrão visual /lp.
+ *
+ * 🔴 27/08/2026 — LIMPEZA DE NÚMERO SEM FONTE. Saíram daqui: o "3x de
+ * produtividade" (H1 + <title>), "8 marcas" e "10+ frentes" (badges), o "até
+ * 70% do tempo recuperado" (schema + FAQ), os antes/depois inventados do
+ * carrossel ("4h → 8s", "1h → 30s", "3 dias → 30 min", "Resposta em 60s",
+ * "5 dias → 24h"), o "ROI paga em 30-60 dias" e o exemplo "80h × R$ 200/h".
+ * Nenhum tinha apuração. Regra da casa (CLAUDE.md): número em copy da Kaleidos
+ * só sai de `KALEIDOS_PROOF` (`src/lib/metrics.ts`) — são 4 e só 4. Se a peça
+ * precisa de um número que não está lá, PARE e peça apuração. "Não rastreado"
+ * é resposta correta; número novo, estimado ou arredondado NÃO é.
+ * Preços (R$ 8.000 / R$ 4.500) e SLAs (48h, 30-45 min, sprints quinzenais)
+ * ficam: são compromisso comercial da casa, não alegação de resultado.
  */
 export default function KaleidosIAPage() {
   const { locale } = useI18n();
@@ -54,7 +67,7 @@ export default function KaleidosIAPage() {
 
   const serviceSchema = generateServiceSchema(
     "Kaleidos AI — IA e Automações",
-    "Auditoria + implementação de IA na operação. Até 70% do tempo recuperado em conteúdo, atendimento, pesquisa e cobrança."
+    "Auditoria + implementação de IA na operação: conteúdo, atendimento, pesquisa e cobrança rodando no fluxo que já existe, com código no repositório do cliente."
   );
 
   const handleWhatsApp = (origem: string) => {
@@ -168,23 +181,33 @@ export default function KaleidosIAPage() {
             {isEn ? "Real case" : "Case real"}
           </p>
           <p className="mt-4 text-lg leading-relaxed text-gray-300 sm:text-xl">
+            {/* ⚠️ 27/08/2026: saiu daqui "29 mil+ inscrições no minicurso" — não
+                está em `KALEIDOS_PROOF` e nunca teve apuração. O que ficou vem
+                direto do PROOF, com a atribuição que ele define. */}
             {isEn ? (
               <>
                 At <strong className="text-white">Defiverso</strong>, Kaleidos runs
-                AI-powered Twitter automation inside a content operation that generated{" "}
-                <strong className="text-[#7CF067]">12M organic views in 90 days</strong>{" "}
-                and <strong className="text-[#7CF067]">29K+ enrollments</strong> in the
-                lead-magnet mini course.
+                AI-powered Twitter automation inside a content operation with{" "}
+                <strong className="text-[#7CF067]">
+                  {KALEIDOS_PROOF.defiversoViews.value_en}{" "}
+                  {KALEIDOS_PROOF.defiversoViews.label_en}
+                </strong>
+                .
               </>
             ) : (
               <>
                 No <strong className="text-white">Defiverso</strong>, a Kaleidos roda
-                automação de Twitter com IA dentro de uma operação de conteúdo que gerou{" "}
-                <strong className="text-[#7CF067]">12M de views orgânicas em 90 dias</strong>{" "}
-                e <strong className="text-[#7CF067]">29 mil+ inscrições</strong> no
-                minicurso de captação.
+                automação de Twitter com IA dentro de uma operação de conteúdo com{" "}
+                <strong className="text-[#7CF067]">
+                  {KALEIDOS_PROOF.defiversoViews.value}{" "}
+                  {KALEIDOS_PROOF.defiversoViews.label}
+                </strong>
+                .
               </>
             )}
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-xs leading-relaxed text-gray-500">
+            {isEn ? PROOF_NOTE_EN : PROOF_NOTE}
           </p>
           <Link
             href="/cases/defiverso"
@@ -268,14 +291,14 @@ function HeroSection({
       <h1 className="font-display text-4xl font-semibold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[68px]">
         {isEn ? (
           <>
-            Increase your company&apos;s productivity{" "}
-            <span className="text-[#7CF067]">3x</span>
-            <br className="hidden sm:block" /> with Kaleidos.
+            The AI that gives back the{" "}
+            <span className="text-[#7CF067]">hours</span> your operation
+            <br className="hidden sm:block" /> loses to repetitive work.
           </>
         ) : (
           <>
-            Aumente em <span className="text-[#7CF067]">3x</span> a produtividade
-            <br className="hidden sm:block" /> da sua empresa com a Kaleidos.
+            A IA que devolve as <span className="text-[#7CF067]">horas</span> que
+            <br className="hidden sm:block" /> sua operação perde no repetitivo.
           </>
         )}
       </h1>
@@ -286,22 +309,30 @@ function HeroSection({
           : "IA dentro do fluxo que já existe. Código no repositório do cliente, sem lock-in."}
       </p>
 
-      {/* Trust signals — micro badges acima dos CTAs (P0 do audit) */}
+      {/* Trust signals — micro badges acima dos CTAs (P0 do audit).
+          ⚠️ 27/08/2026: aqui havia "8 marcas operando" e "10+ frentes
+          automatizadas". Nenhum dos dois está em `KALEIDOS_PROOF` nem tem
+          apuração. Trocados por compromissos verificáveis — o que a casa
+          entrega, não quanto ela alega ter feito. */}
       <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-400 sm:text-sm">
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">{isEn ? "8 brands" : "8 marcas"}</strong>{" "}
-          {isEn ? "operating" : "operando"}
+          <strong className="text-white">
+            {isEn ? "Code in your repository" : "Código no seu repositório"}
+          </strong>{" "}
+          {isEn ? "no lock-in" : "sem lock-in"}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">{isEn ? "5+ years" : "5+ anos"}</strong>{" "}
-          {isEn ? "of operation" : "de operação"}
+          <strong className="text-white">{isEn ? "since 2020" : "desde 2020"}</strong>{" "}
+          {isEn ? "in operation" : "em operação"}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#7CF067]" />
-          <strong className="text-white">{isEn ? "10+ fronts" : "10+ frentes"}</strong>{" "}
-          {isEn ? "automated" : "automatizadas"}
+          <strong className="text-white">
+            {isEn ? "Diagnosis first" : "Diagnóstico primeiro"}
+          </strong>{" "}
+          {isEn ? "scope after" : "escopo depois"}
         </span>
       </div>
 
@@ -545,12 +576,12 @@ function CasesSection({ isEn }: { isEn: boolean }) {
           cliente: "Radar Viral · Kaleidos platform",
           vertical: "Automated cross-posting",
           stack: "Post monitor + cross-network generation",
-          headline: "1 video → 5 cross-network assets in minutes.",
+          headline: "One video becomes ready-to-post content on every network.",
           antes:
             "Post on YouTube or IG and lose reach. Cross-posting is manual, or doesn't happen. Inconsistent voice.",
           depois:
             "Radar monitors the posts and generates derivatives: X thread, LinkedIn post, IG carousel, email. Format adapted per channel.",
-          destaque: "5 networks covered in 1 click. Minutes instead of hours.",
+          destaque: "Every network covered from a single post, without manual cross-posting.",
         },
       ]
     : [
@@ -572,12 +603,12 @@ function CasesSection({ isEn }: { isEn: boolean }) {
           cliente: "Radar Viral · Plataforma própria Kaleidos",
           vertical: "Cross-post automatizado",
           stack: "Monitor de postagens + geração cross-rede",
-          headline: "1 vídeo → 5 conteúdos cross-rede em minutos.",
+          headline: "Um vídeo vira conteúdo pronto pra cada rede.",
           antes:
             "Posta no YouTube ou IG e perde reach. Cross-post é manual, ou não acontece. Voz inconsistente.",
           depois:
             "Radar monitora as postagens e gera derivados: thread no X, post LinkedIn, carrossel IG, e-mail. Formato adaptado por canal.",
-          destaque: "5 redes cobertas em 1 click. Minutos no lugar de horas.",
+          destaque: "Todas as redes cobertas a partir de um post só, sem cross-post manual.",
         },
       ];
 
@@ -714,7 +745,7 @@ function OperationsCarouselSection({ isEn }: { isEn: boolean }) {
       kind: "cliente" as const,
       Icon: ArrowUpRight,
       cliente: "Investidor 4.20",
-      vertical: "Bitcoin BR · 300k+",
+      vertical: "Bitcoin BR",
       solucao: isEn
         ? "Organic funnel YouTube → IG → newsletter, repurposed with AI"
         : "Funil orgânico YouTube → IG → newsletter, repurpose com IA",
@@ -1095,22 +1126,26 @@ function FlipCarouselSection({
     return () => clearInterval(autoplay);
   }, [api, isPaused]);
 
-  // 6 cards selecionados — dor universal + número concreto + alto contraste antes/depois.
+  // 6 cards selecionados — dor universal + alto contraste antes/depois.
+  // ⚠️ 27/08/2026: os antes/depois eram numéricos ("4h → 8s", "1h → 30s",
+  // "3 dias → 30 min", "Resposta em 60s", "5 dias → 24h") e nenhum tinha
+  // apuração: eram tempos inventados apresentados como resultado típico.
+  // O contraste é o argumento, o número era só o enfeite. Não repor sem medição.
   const cards = [
     {
       front: {
         title: locale === "en" ? "Manual N1 support" : "Atendimento N1",
         description: locale === "en"
-          ? "Team answering the same 30 questions. Avg reply: 4h."
-          : "Time respondendo as mesmas 30 perguntas. Resposta: 4h.",
+          ? "The team answers the same handful of questions all day, every day."
+          : "O time responde as mesmas perguntas o dia inteiro, todo dia.",
         bgGradient: "from-red-500 to-pink-600",
         borderColor: "border-red-400",
       },
       back: {
-        title: "4h → 8s",
+        title: locale === "en" ? "N1 on autopilot" : "N1 no automático",
         description: locale === "en"
-          ? "Trained agent on the product knowledge base solves N1 in seconds."
-          : "Agente treinado na base do produto resolve N1 em segundos.",
+          ? "An agent trained on the product knowledge base handles N1 on its own."
+          : "Agente treinado na base do produto resolve o N1 sozinho.",
         features: locale === "en"
           ? ["Inside the existing chat", "Logged tickets", "Human only on edge cases"]
           : ["Dentro do chat existente", "Tickets logados", "Humano só em exceção"],
@@ -1128,10 +1163,10 @@ function FlipCarouselSection({
         borderColor: "border-blue-400",
       },
       back: {
-        title: "1h → 30s",
+        title: locale === "en" ? "Brief becomes a carousel" : "Brief vira carrossel",
         description: locale === "en"
-          ? "Brief in 3 lines becomes a carousel ready to post."
-          : "Brief de 3 linhas vira carrossel pronto pra postar.",
+          ? "A brief in three lines comes back as a carousel ready to post."
+          : "Brief de três linhas volta como carrossel pronto pra postar.",
         features: locale === "en"
           ? ["Brand voice", "Design system", "Cover ready"]
           : ["Voz da marca", "Design system", "Capa pronta"],
@@ -1143,16 +1178,16 @@ function FlipCarouselSection({
       front: {
         title: locale === "en" ? "Manual research" : "Pesquisa Manual",
         description: locale === "en"
-          ? "3 days reading newsletter and X to brief one client."
-          : "3 dias lendo newsletter e X pra um briefing.",
+          ? "Days reading newsletters and X to brief a single client."
+          : "Dias lendo newsletter e X pra montar um briefing só.",
         bgGradient: "from-yellow-500 to-orange-600",
         borderColor: "border-yellow-400",
       },
       back: {
-        title: locale === "en" ? "3 days → 30 min" : "3 dias → 30 min",
+        title: locale === "en" ? "Brief already done" : "Briefing já pronto",
         description: locale === "en"
-          ? "Agents scan source, cross data and deliver an actionable brief."
-          : "Agentes varrem fonte, cruzam dado e devolvem briefing acionável.",
+          ? "Agents scan the sources, cross the data and deliver an actionable brief."
+          : "Agentes varrem a fonte, cruzam o dado e devolvem briefing acionável.",
         features: locale === "en"
           ? ["Newsletter, X, Gmail", "Cross-source", "Editable output"]
           : ["Newsletter, X, Gmail", "Cruzamento de fonte", "Output editável"],
@@ -1185,16 +1220,16 @@ function FlipCarouselSection({
       front: {
         title: locale === "en" ? "Lost lead" : "Lead Perdido",
         description: locale === "en"
-          ? "Filled the form, nobody answered in 2 days. Lead cold."
-          : "Preencheu form, ninguém respondeu em 2 dias. Esfriou.",
+          ? "Filled the form, nobody got back in time. The lead went cold."
+          : "Preencheu o form, ninguém voltou a tempo. Esfriou.",
         bgGradient: "from-red-600 to-orange-700",
         borderColor: "border-red-400",
       },
       back: {
-        title: locale === "en" ? "Reply in 60s" : "Resposta em 60s",
+        title: locale === "en" ? "Nobody waits" : "Ninguém fica esperando",
         description: locale === "en"
-          ? "Smart auto-reply qualifies, schedules, hands warm to seller."
-          : "Auto-reply qualifica, agenda e entrega quente pro vendedor.",
+          ? "A smart auto-reply qualifies, schedules and hands the lead warm to the seller."
+          : "Auto-reply qualifica, agenda e entrega o lead quente pro vendedor.",
         features: locale === "en"
           ? ["Lead scoring", "Auto-schedule", "Slack/email handoff"]
           : ["Lead scoring", "Agendamento auto", "Handoff Slack/email"],
@@ -1204,21 +1239,21 @@ function FlipCarouselSection({
     },
     {
       front: {
-        title: locale === "en" ? "Brief → delivery: 5 days" : "Brief → entrega: 5 dias",
+        title: locale === "en" ? "Brief → delivery drags" : "Brief → entrega arrasta",
         description: locale === "en"
-          ? "Brief, 3 reviewers, context lost, back to edit."
-          : "Brief passa por 3 pessoas, perde contexto, volta pra ajuste.",
+          ? "The brief bounces between reviewers, loses context and comes back to edit."
+          : "Brief passa de mão em mão, perde contexto e volta pra ajuste.",
         bgGradient: "from-blue-600 to-sky-700",
         borderColor: "border-blue-400",
       },
       back: {
-        title: locale === "en" ? "5 days → 24h" : "5 dias → 24h",
+        title: locale === "en" ? "v1 on a fixed date" : "v1 com data certa",
         description: locale === "en"
-          ? "Structured brief triggers AI flow + human review. v1 in 24h."
-          : "Brief estruturado dispara fluxo IA + revisão humana. v1 em 24h.",
+          ? "A structured brief triggers the AI flow plus human review, on a committed deadline."
+          : "Brief estruturado dispara fluxo IA mais revisão humana, com prazo combinado.",
         features: locale === "en"
-          ? ["Editorial pipeline", "Human review on top", "v1 fixed time"]
-          : ["Pipeline editorial", "Revisão humana no topo", "v1 em prazo fixo"],
+          ? ["Editorial pipeline", "Human review on top", "Deadline agreed upfront"]
+          : ["Pipeline editorial", "Revisão humana no topo", "Prazo combinado antes"],
         bgGradient: "from-emerald-500 to-teal-600",
         borderColor: "border-emerald-400",
       },
@@ -1316,11 +1351,11 @@ function FAQSection({ isEn }: { isEn: boolean }) {
     ? [
         {
           q: "How soon do I see results?",
-          a: "30 days: first bottleneck running in production. Month 2: recovered hours start climbing. Month 3: a real 70% in most cases.",
+          a: "Month 1: the first bottleneck running in production, not in a demo. From there we attack the next ones in biweekly sprints. We don't promise a percentage: we agree on the metric in the diagnosis and read it together in the monthly meeting.",
         },
         {
           q: "What is the investment?",
-          a: "Free diagnosis (48h). Custom projects start at R$ 8.000. Monthly plan from R$ 4.500/month, minimum 3 months. Typical ROI pays for itself in 30-60 days.",
+          a: "Free diagnosis (48h). Custom projects start at R$ 8.000. Monthly plan from R$ 4.500/month, minimum 3 months. The diagnosis says what the payback looks like for your operation before you sign anything.",
         },
         {
           q: "Who keeps the code?",
@@ -1332,17 +1367,17 @@ function FAQSection({ isEn }: { isEn: boolean }) {
         },
         {
           q: "How do you measure ROI?",
-          a: "Hours recovered/month × hourly cost × months. 80h recovered from a R$ 200/h team = R$ 16k/month back. It shows up in the monthly meeting.",
+          a: "Hours recovered/month × your team's hourly cost. We measure the baseline before building, so the number that shows up in the monthly meeting is yours, not an average we made up.",
         },
       ]
     : [
         {
           q: "Em quanto tempo eu vejo resultado?",
-          a: "30 dias: primeiro gargalo rodando em produção. Mês 2: hora liberada começa a subir. Mês 3: 70% reais na maioria dos casos.",
+          a: "Mês 1: o primeiro gargalo rodando em produção, não em demo. Dali em diante atacamos os próximos em sprints quinzenais. Não prometemos percentual: a métrica é combinada no diagnóstico e lida junto na reunião mensal.",
         },
         {
           q: "Qual é o investimento?",
-          a: "Diagnóstico grátis (48h). Projeto custom começa em R$ 8.000. Plano mensal a partir de R$ 4.500/mês, mínimo 3 meses. ROI típico paga sozinho em 30-60 dias.",
+          a: "Diagnóstico grátis (48h). Projeto custom começa em R$ 8.000. Plano mensal a partir de R$ 4.500/mês, mínimo 3 meses. O diagnóstico mostra como fica o retorno na sua operação antes de você assinar qualquer coisa.",
         },
         {
           q: "O código fica com quem?",
@@ -1354,7 +1389,7 @@ function FAQSection({ isEn }: { isEn: boolean }) {
         },
         {
           q: "Como mede ROI?",
-          a: "Hora liberada/mês × custo da hora × meses. 80h liberadas de um time de R$ 200/h = R$ 16k/mês recuperados. Aparece na reunião mensal.",
+          a: "Hora liberada/mês × custo da hora do seu time. A gente mede a linha de base antes de construir, então o número que aparece na reunião mensal é o seu, não uma média que a gente inventou.",
         },
       ];
 

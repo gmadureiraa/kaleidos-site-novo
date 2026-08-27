@@ -11,7 +11,7 @@ const clients: { name: string; logo: string; url?: string }[] = [
   { name: "Crypto.com", logo: "/Clientes-logo/Crypto.com.png", url: "https://crypto.com" },
   { name: "Mercado Bitcoin", logo: "/Clientes-logo/MercadoBitcoin.png", url: "https://www.mercadobitcoin.com.br" },
   { name: "Ledger", logo: "/Clientes-logo/Ledger.png", url: "https://www.ledger.com" },
-  { name: "Neobankless", logo: "/Clientes-logo/Neobankless.png", url: "https://neobankless.com" },
+  { name: "NBS Finance", logo: "/Clientes-logo/Neobankless.png", url: "https://neobankless.com" },
   { name: "Defiverso", logo: "/Clientes-logo/Defiverso.png", url: "https://defiverso.com" },
   { name: "Jornal Cripto", logo: "/Clientes-logo/JornalCripto.png", url: "https://jornalcripto.com" },
   { name: "Orlando On Crypto", logo: "/Clientes-logo/OrlandoOnCrypto.png", url: "https://orlandooncrypto.com" },

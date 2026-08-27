@@ -15,7 +15,7 @@ export const blogNov30: BlogPost[] = [
       "avatar": "/Kaleidos/imagens/Equipe/Madureira.png"
     },
     "publishedAt": "2026-11-30",
-    "readTime": 15,
+    "readTime": 16,
     "tags": [
       "Immunefi",
       "Aave",

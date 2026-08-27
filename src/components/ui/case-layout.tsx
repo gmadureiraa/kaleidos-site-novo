@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { FooterDemo } from "@/components/ui/footer-demo";
 import { useI18n } from "@/i18n/useI18n";
 import { generateCaseStudySchema, generateBreadcrumbSchema } from "@/lib/seo-helpers";
+import { KALEIDOS_PROOF } from "@/lib/metrics";
 
 interface CaseLayoutProps {
   caseData: {
@@ -685,7 +686,7 @@ export function CaseLayout({ caseData, clientType, visualSection }: CaseLayoutPr
                         news.defiverso.com
                       </p>
                       <p className="text-sm text-gray-600 mb-4">
-                        Criamos uma newsletter do zero que hoje conta com mais de 30 mil inscritos orgânicos e taxa de abertura superior a 35%.
+                        Criamos uma newsletter do zero, hoje um canal de aquisição próprio: {KALEIDOS_PROOF.defiversoNewsletter.value} {KALEIDOS_PROOF.defiversoNewsletter.label}, apurado no painel Beehiiv.
                       </p>
                       <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
                         <iframe

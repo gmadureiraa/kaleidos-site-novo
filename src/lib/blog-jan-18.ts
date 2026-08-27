@@ -15,7 +15,7 @@ export const blogJan18: BlogPost[] = [
     "avatar": "/Kaleidos/imagens/Equipe/Madureira.png"
   },
   "publishedAt": "2027-01-17",
-  "readTime": 14,
+  "readTime": 13,
   "tags": [
     "Mercado Pago",
     "Mercado Livre",

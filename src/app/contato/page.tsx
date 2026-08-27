@@ -673,7 +673,7 @@ export default function ContatoPage() {
                     { name: "Crypto.com", logo: "/Clientes-logo/Crypto.com.png" },
                     { name: "Mercado Bitcoin", logo: "/Clientes-logo/MercadoBitcoin.png" },
                     { name: "Ledger", logo: "/Clientes-logo/Ledger.png" },
-                    { name: "Neobankless", logo: "/Clientes-logo/Neobankless.png" },
+                    { name: "NBS Finance", logo: "/Clientes-logo/Neobankless.png" },
                   ].map(client => (
                     <div key={client.name} className="h-8 w-24 relative">
                       <Image src={client.logo} alt={client.name} fill className="object-contain" sizes="96px" />

@@ -14,9 +14,6 @@ import {
   Sparkles,
   Cpu,
   Globe,
-  Radar,
-  Film,
-  CreditCard,
   CheckCircle2,
   Plus,
   Minus,
@@ -227,7 +224,6 @@ export default function KaleidosLPPage() {
 
       <Hero />
       <Frentes />
-      <Produtos />
       <Cases />
       <Stack />
       <Processo />
@@ -253,9 +249,8 @@ function Hero() {
         </h1>
 
         <p className="mt-7 max-w-2xl text-[17px] sm:text-[19px] leading-relaxed text-[var(--coal)]">
-          5+ anos no nicho cripto/web3/fintech. 8 marcas operando hoje.
-          17 frentes automatizadas com IA. Conteúdo + sites + automações
-          no mesmo time.
+          No nicho cripto/web3/fintech desde 2020. Conteúdo, sites e
+          automações com IA no mesmo time, operando marcas de ponta a ponta.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -273,9 +268,9 @@ function Hero() {
         </div>
 
         <div className="mt-10 flex flex-wrap gap-2">
-          <span className="num-badge">5+ anos</span>
-          <span className="num-badge">8 marcas</span>
-          <span className="num-badge">17 frentes IA</span>
+          <span className="num-badge">desde 2020</span>
+          <span className="num-badge">cripto, web3 e fintech</span>
+          <span className="num-badge">conteúdo + IA + sistemas</span>
         </div>
       </div>
     </section>
@@ -300,12 +295,11 @@ function Frentes() {
     {
       Icon: Cpu,
       title: "IA dentro da Operação",
-      desc: "Auditoria de gargalos do time + implementação de IA no fluxo do cliente. Cobrança, atendimento, pesquisa, conteúdo, relatório. Até 70% do dia recuperado.",
+      desc: "Auditoria de gargalos do time + implementação de IA no fluxo do cliente. Cobrança, atendimento, pesquisa, conteúdo, relatório. O time para de gastar o dia em tarefa repetitiva.",
       bullets: [
         "Diagnóstico gratuito em 48h",
         "Código fica com o cliente (sem lock-in, sem SaaS de aluguel)",
-        "17 frentes já mapeadas",
-        "Inclui acesso aos produtos: Sequência Viral, Radar Viral, Reels Viral",
+        "Frentes já mapeadas em operações reais de clientes",
       ],
       link: { href: "/servicos/ia-automacoes-completa", label: "Página dedicada" },
       highlight: true,
@@ -380,114 +374,9 @@ function Frentes() {
   );
 }
 
-/* ============================ PRODUTOS ============================ */
-function Produtos() {
-  const produtos = [
-    {
-      Icon: Sparkles,
-      name: "Sequência Viral",
-      url: "https://viral.kaleidos.com.br",
-      domain: "viral.kaleidos.com.br",
-      desc: "Carrossel viral em 30s a partir de brief de 3 linhas",
-    },
-    {
-      Icon: Radar,
-      name: "Radar Viral",
-      url: "https://radar.kaleidos.com.br",
-      domain: "radar.kaleidos.com.br",
-      desc: "Brief diário cruzando IG, YouTube, news e newsletters",
-    },
-    {
-      Icon: Film,
-      name: "Reels Viral",
-      url: "https://reels.kaleidos.com.br",
-      domain: "reels.kaleidos.com.br",
-      desc: "Cole link IG, receba roteiro adaptado cena por cena",
-    },
-    {
-      Icon: CreditCard,
-      name: "Kaleidos Pay",
-      url: "https://pay.kaleidos.com.br",
-      domain: "pay.kaleidos.com.br",
-      desc: "Cobrança + proposta com régua automática WhatsApp + email",
-    },
-  ];
-
-  return (
-    <section className="px-5 sm:px-10 py-20 border-t-[1.5px] border-[var(--ink)] bg-[var(--soft)]/40">
-      <div className="mx-auto max-w-6xl">
-        <span className="eyebrow">
-          <span className="rec-dot" /> PRODUTOS QUE A KALEIDOS CONSTRUIU
-        </span>
-        <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
-          Não vendemos SaaS. Construímos.
-        </h2>
-        <p className="mt-5 max-w-2xl text-[16px] sm:text-[17px] leading-relaxed text-[var(--coal)]">
-          Quatro produtos próprios que o time Kaleidos usa todo dia. Quando vira
-          cliente, esses produtos entram no fluxo dele também.
-        </p>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {produtos.map((p, i) => (
-            <motion.a
-              key={p.name}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
-              className="card p-7 group flex flex-col"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-[var(--ink)] bg-[var(--rec)]">
-                  <p.Icon className="h-5 w-5 text-[var(--paper)]" />
-                </div>
-                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </div>
-              <h3 className="serif mt-6 text-3xl leading-tight">{p.name}</h3>
-              <p className="mono mt-2 text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">
-                {p.domain}
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-[var(--coal)]">
-                {p.desc}
-              </p>
-            </motion.a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ============================ CASES ============================ */
 function Cases() {
   const cases = [
-    {
-      type: "produto",
-      cliente: "Sequência Viral",
-      vertical: "Produto próprio",
-      desc: "Carrossel viral em 30s a partir de brief de 3 linhas",
-    },
-    {
-      type: "produto",
-      cliente: "Radar Viral",
-      vertical: "Produto próprio",
-      desc: "Brief diário cruzando IG, YouTube, news e newsletters",
-    },
-    {
-      type: "produto",
-      cliente: "Reels Viral",
-      vertical: "Produto próprio",
-      desc: "Cole link IG, receba roteiro adaptado cena por cena",
-    },
-    {
-      type: "produto",
-      cliente: "Kaleidos Pay",
-      vertical: "Produto próprio",
-      desc: "Régua automática WhatsApp + email pra cobrança",
-    },
     {
       type: "cliente",
       cliente: "Defiverso",
@@ -497,7 +386,7 @@ function Cases() {
     {
       type: "cliente",
       cliente: "Investidor 4.20",
-      vertical: "Bitcoin BR · 300k+",
+      vertical: "Bitcoin BR",
       desc: "Funil orgânico YouTube → IG → newsletter",
     },
     {
@@ -511,12 +400,6 @@ function Cases() {
       cliente: "Laylä Föz",
       vertical: "Bem-estar · 177k IG",
       desc: "Newsletter Brisa da Semana + repurpose",
-    },
-    {
-      type: "cliente",
-      cliente: "Renan",
-      vertical: "Consultor financeiro",
-      desc: "Diagnóstico funil + IA captação + dashboard",
     },
     {
       type: "cliente",
@@ -536,7 +419,7 @@ function Cases() {
           <span className="rec-dot" /> OPERAÇÃO RODANDO HOJE
         </span>
         <h2 className="serif mt-5 text-[40px] sm:text-[60px] leading-[1] tracking-tight">
-          10+ projetos com IA dentro do fluxo.
+          Projetos com IA dentro do fluxo.
         </h2>
       </div>
 

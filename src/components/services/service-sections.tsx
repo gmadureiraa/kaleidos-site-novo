@@ -294,6 +294,15 @@ export function StatementBand({
 }) {
   const s = c.statement;
   if (!s) return null;
+  // `bigValue` nem sempre é número curto: quando a página não tem estatística
+  // com fonte, ele vira palavra ou contraste ("Produto ≠ Tração"). Sem esta
+  // régua, um valor longo estoura a coluna no desktop.
+  const bigSize =
+    s.bigValue.length <= 6
+      ? "text-[5.5rem] sm:text-[7rem] lg:text-[8.5rem]"
+      : s.bigValue.length <= 10
+        ? "text-[3.5rem] sm:text-[4.5rem] lg:text-[5.5rem]"
+        : "text-[2.5rem] sm:text-[3.25rem] lg:text-[3.75rem]";
   return (
     <section className="relative overflow-hidden bg-[#14110D] px-6 py-24 text-[#FAFAFA] sm:py-32">
       <DotGrid dark />
@@ -310,7 +319,7 @@ export function StatementBand({
               {s.kicker}
             </Eyebrow>
             <div
-              className="font-display text-[5.5rem] font-bold leading-[0.85] tracking-tight sm:text-[7rem] lg:text-[8.5rem]"
+              className={`font-display ${bigSize} font-bold leading-[0.85] tracking-tight`}
               style={{ color: accent.hex }}
             >
               {s.bigValue}
@@ -318,6 +327,16 @@ export function StatementBand({
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-[#b8b1a6]">
               {s.bigLabel}
             </p>
+            {s.bigSource && (
+              <a
+                href={s.bigSource.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block max-w-xs text-xs leading-relaxed text-[#8a8078] underline decoration-white/20 underline-offset-4 transition-colors hover:text-[#b8b1a6]"
+              >
+                {s.bigSource.label}
+              </a>
+            )}
           </div>
         </Reveal>
         <Reveal delay={0.1}>

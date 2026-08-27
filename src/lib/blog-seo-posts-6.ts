@@ -21,7 +21,7 @@ export const seoPosts6: BlogPost[] = [
     title: "Neobanks cripto e cartões em dólar: como escolher em 2026",
     seoTitle: "Neobanks cripto e cartões em dólar: guia de como escolher (2026)",
     excerpt:
-      "Panorama dos neobanks cripto e cartões em dólar em 2026: ether.fi Cash, Kast, Gnosis Pay, Wirex, Crypto.com, Coinbase e o brasileiro Neobankless. Custódia, redes, regiões, cashback e como escolher o seu.",
+      "Panorama dos neobanks cripto e cartões em dólar em 2026: ether.fi Cash, Kast, Gnosis Pay, Wirex, Crypto.com, Coinbase e o brasileiro NBS Finance. Custódia, redes, regiões, cashback e como escolher o seu.",
     seoDescription:
       "Guia dos neobanks cripto e cartões em dólar 2026: ether.fi, Kast, Gnosis Pay, Wirex e mais. Self-custody vs custodial, cashback, redes e regiões. Como escolher.",
     category: "cripto",
@@ -60,7 +60,7 @@ export const seoPosts6: BlogPost[] = [
       {
         question: "Brasileiro consegue usar cartão cripto em dólar?",
         answer:
-          "Sim, mas a disponibilidade varia por produto. ether.fi opera em dezenas de países (não nos EUA no lançamento) e a Kast atende grande parte do mundo. No Brasil existe ainda o Neobankless, fintech focada em dólar digital (USDC) para o público brasileiro. Antes de escolher, confira sempre a lista de países atendidos, as taxas de FX e de saque em ATM, e se o cartão funciona com o Pix ou só fora do país.",
+          "Sim, mas a disponibilidade varia por produto. ether.fi opera em dezenas de países (não nos EUA no lançamento) e a Kast atende grande parte do mundo. No Brasil existe ainda o NBS Finance, fintech focada em dólar digital (USDC) para o público brasileiro. Antes de escolher, confira sempre a lista de países atendidos, as taxas de FX e de saque em ATM, e se o cartão funciona com o Pix ou só fora do país.",
       },
       {
         question: "Como um neobank cripto deve escolher a agência de marketing certa?",
@@ -117,9 +117,9 @@ Pioneiro do Visa não-custodial ligado direto a um Safe na Gnosis Chain. Anuncia
 
 São os nomes mais conhecidos e disponíveis. **Wirex** suporta dezenas de cripto e tem boa cobertura geográfica, mas o cashback alto costuma estar travado atrás de assinatura cara. **Crypto.com Visa** tem perks globais e benefícios escalonados conforme você faz stake de CRO. **Coinbase Card** é a escolha confortável pra quem já vive no app da Coinbase (forte nos EUA), com rewards mais fracos. Bons pra quem prioriza marca conhecida e simplicidade.
 
-### Neobankless (Brasil)
+### NBS Finance (Brasil)
 
-No recorte brasileiro, vale citar o **Neobankless**, fintech focada em dólar digital (USDC) para o público local. É o tipo de produto que fala a língua de quem quer dolarizar parte do patrimônio sem montar estrutura no exterior, com onboarding pensado no brasileiro.
+No recorte brasileiro, vale citar o **NBS Finance**, fintech focada em dólar digital (USDC) para o público local. É o tipo de produto que fala a língua de quem quer dolarizar parte do patrimônio sem montar estrutura no exterior, com onboarding pensado no brasileiro.
 
 ## Tabela comparativa rápida
 
@@ -131,7 +131,7 @@ No recorte brasileiro, vale citar o **Neobankless**, fintech focada em dólar di
 | Wirex | Custodial | ~1% (mais em planos pagos) | 40+ cripto | Cobertura ampla |
 | Crypto.com | Custodial | escalonado por stake de CRO | ecossistema próprio | Perks globais |
 | Coinbase Card | Custodial | rewards fracos | conta Coinbase | Simplicidade pra quem já usa Coinbase |
-| Neobankless | depende do produto | conferir | USDC, foco Brasil | Dólar digital pro público BR |
+| NBS Finance | depende do produto | conferir | USDC, foco Brasil | Dólar digital pro público BR |
 
 *Números de cashback são valores anunciados pelas plataformas e costumam exigir holdear o token nativo ou assinar um tier pago. Confira sempre as condições e taxas atualizadas antes de escolher.*
 

@@ -47,12 +47,12 @@ const CLIENTS = [
   },
   {
     id: "neobankless",
-    name: "Neobankless",
+    name: "NBS Finance",
     logo: "/Clientes-logo/Neobankless.png",
     resultSummary: "Criação do site neobankless.com, vídeos de manifesto e estratégia completa de conteúdo para Instagram.",
     resultBadge: "Site + Manifesto",
     testimonial: "A Kaleidos entende o mercado cripto e entrega com agilidade. Comunicação clara e resultados orientados.",
-    author: "Equipe Neobankless",
+    author: "Equipe NBS Finance",
     role: "Parceiros",
   },
   {
