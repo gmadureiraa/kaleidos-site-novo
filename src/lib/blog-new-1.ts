@@ -79,7 +79,7 @@ A Lei 14.478, sancionada em dezembro de 2022 e em vigor desde junho de 2023, é 
 2. **Criou a figura da prestadora de serviços de ativos virtuais (VASP).** Empresas que fazem troca, custódia, administração ou transferência de ativos virtuais para terceiros precisam de autorização para operar.
 3. **Delegou a regulação ao Poder Executivo**, que via Decreto 11.563/2023 colocou o Banco Central do Brasil como regulador e fiscalizador das VASPs.
 
-O Banco Central abriu consultas públicas ao longo de 2024 para desenhar as regras operacionais das prestadoras. Para marketing, o recado é direto: a exchange anunciada é uma entidade regulada, e a comunicação institucional dela pode ser lida como declaração perante um regulador.
+O Banco Central abriu consultas públicas ao longo de 2024 para desenhar as regras operacionais das prestadoras, no mesmo movimento que traz o [Drex e o que ele muda no marketing de fintech](/blog/drex-o-que-muda-no-marketing-de-fintech). Para marketing, o recado é direto: a exchange anunciada é uma entidade regulada, e a comunicação institucional dela pode ser lida como declaração perante um regulador.
 
 ### E os tokens que são valores mobiliários?
 

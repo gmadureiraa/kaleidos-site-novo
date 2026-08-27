@@ -102,7 +102,7 @@ O Telegram divulga passar de 1 bilhão de usuários ativos mensais, segundo comu
 
 Discord dá controle fino. Você define quem vê o quê, quem escreve onde e quais permissões cada cargo carrega. O AutoMod nativo bloqueia palavras, links e spam por regra. Para comunidade grande, isso é decisivo.
 
-Telegram é mais direto. A moderação nativa cobre o básico e o resto vem de bots. Funciona, mas exige montar a stack certa. Em grupo de dezenas de milhares, a moderação frouxa vira porta de entrada para golpe.
+Telegram é mais direto. A moderação nativa cobre o básico e o resto vem de bots. Funciona, mas exige montar a stack certa. Em grupo de dezenas de milhares, a moderação frouxa vira porta de entrada para golpe, e é por isso que a [moderação de comunidade cripto é um time invisível com rotina própria](/blog/moderacao-de-comunidade-cripto-o-time-invisivel).
 
 ### Bots e automação
 

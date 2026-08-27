@@ -49,7 +49,7 @@ export const blogNew43: BlogPost[] = [
       {
         question: "Por que cripto e fintech precisam investir mais em marketing?",
         answer:
-          "Porque vendem confiança em mercados regulados e cheios de ceticismo. Cripto e fintech enfrentam restrições de anúncio no Google e na Meta, dependem mais de conteúdo, comunidade, educação e autoridade, e precisam sustentar presença mesmo em ciclos de baixa. Isso desloca o orçamento de mídia paga pura para construção de marca e conteúdo, e costuma exigir percentuais acima da média geral enquanto a empresa constrói reputação.",
+          "Porque vendem confiança em mercados regulados e cheios de ceticismo. Cripto e fintech enfrentam restrições de anúncio no Google e na Meta, dependem mais de conteúdo, comunidade, educação e autoridade, e precisam sustentar presença mesmo em ciclos de baixa. Isso desloca o orçamento de mídia paga pura para construção de marca e conteúdo, e costuma exigir percentuais acima da média geral enquanto a empresa constrói reputação, na escala que aparece em [quanto custa o marketing de ecossistema da Polkadot](/blog/polkadot-quanto-custa-marketing-de-ecossistema).",
       },
       {
         question: "Como definir o orçamento de marketing da minha empresa?",
@@ -118,7 +118,7 @@ Três fatores encarecem o marketing em cripto e fintech:
 
 1. **Restrição de mídia paga.** Google e Meta impõem políticas duras para anúncios de cripto e de produtos financeiros, com exigência de certificações e bloqueio de formatos inteiros (detalhamos as regras da Meta no guia de [Facebook Ads para cripto](/blog/facebook-ads-cripto-restricoes)). Isso reduz o arsenal de aquisição paga e força investimento em canais mais caros de construir: conteúdo, SEO, comunidade, influência e relações com veículos especializados.
 2. **Ceticismo do público.** Depois de cada ciclo de colapsos e golpes no setor, o custo de convencer alguém a confiar dinheiro a uma marca nova sobe. Confiança não se compra com um clique: se constrói com meses de conteúdo consistente, prova social e presença.
-3. **Ciclos de mercado.** Em cripto, o interesse do público oscila violentamente com o preço dos ativos. Quem corta marketing no bear market economiza pouco e perde a posição de autoridade exatamente quando ela é mais barata de construir, porque os concorrentes também sumiram.
+3. **Ciclos de mercado.** Em cripto, o interesse do público oscila violentamente com o preço dos ativos. Quem corta marketing no bear market economiza pouco e perde a posição de autoridade exatamente quando ela é mais barata de construir, porque os concorrentes também sumiram; a discussão de [o que cortar e o que manter no marketing cripto em bear market](/blog/marketing-cripto-em-bear-market-o-que-cortar) é sobre onde o corte dói menos.
 
 O efeito combinado: projetos de cripto e fintechs em fase de crescimento devem esperar investir **acima da média geral de mercado**, com um mix menos dependente de performance paga e mais pesado em conteúdo, educação e comunidade. E devem medir em janelas mais longas: o conteúdo que constrói autoridade num setor cético raramente se paga no mês em que foi publicado.
 

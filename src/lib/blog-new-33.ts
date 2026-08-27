@@ -81,7 +81,7 @@ A blockchain é um banco de dados público. Essas ferramentas transformam esse b
 
 **Pra que serve:** dashboards customizados sobre qualquer dado on-chain, via SQL.
 
-A Dune indexa dados de dezenas de blockchains (Ethereum, Solana, Base, Arbitrum e muitas outras, segundo a documentação oficial da Dune em 2025) e deixa qualquer pessoa escrever queries SQL sobre eles. O resultado vira gráfico, o gráfico vira dashboard, o dashboard vira link público.
+A Dune indexa dados de dezenas de blockchains (Ethereum, Solana, Base, Arbitrum e muitas outras, segundo a documentação oficial da Dune em 2025) e deixa qualquer pessoa escrever queries SQL sobre eles. O resultado vira gráfico, o gráfico vira dashboard, o dashboard vira link público, e um [dashboard público na Dune funciona como ativo de marketing](/blog/dashboard-publico-dune-como-ativo-de-marketing).
 
 Na prática, é a ferramenta que responde perguntas específicas do SEU protocolo: quantas carteiras novas interagiram com o contrato essa semana, qual a retenção de quem fez mint, de onde veio o volume. Se a pergunta é única do seu produto, a resposta quase sempre é um dashboard na Dune.
 

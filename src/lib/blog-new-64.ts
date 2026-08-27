@@ -199,7 +199,7 @@ O momento certo de fazer essa auditoria é antes do lançamento, quando ainda d�
     ],
     content: `# Crypto SEO em bear market: construir tráfego enquanto todos somem
 
-Bear market tem uma trilha sonora conhecida no marketing cripto: budgets cortados, agências dispensadas, influenciadores em silêncio, feeds que pareciam vivos virando desertos. A lógica dos cortes é compreensível. A consequência estratégica, nem sempre percebida, é esta: a atenção do setor inteiro entra em liquidação, e quase ninguém aparece para comprar.
+Bear market tem uma trilha sonora conhecida no marketing cripto: budgets cortados, agências dispensadas, influenciadores em silêncio, feeds que pareciam vivos virando desertos. A lógica dos cortes é compreensível, e a discussão sobre [o que cortar no marketing cripto em bear market](/blog/marketing-cripto-em-bear-market-o-que-cortar) começa exatamente aí. A consequência estratégica, nem sempre percebida, é esta: a atenção do setor inteiro entra em liquidação, e quase ninguém aparece para comprar.
 
 É nesse cenário que SEO deixa de ser o canal negligenciado de cripto e vira a aposta com melhor assimetria do ciclo. A [Coinbound, no seu guia de marketing para bear market](https://coinbound.io/crypto-marketing-tips-in-a-bear-market/), resume o argumento: as equipes que tratam o bear market como janela para construir, e não apenas para sobreviver, conquistam vantagem competitiva duradoura. A recomendação central do guia é justamente fortalecer conteúdo evergreen, guias de comparação, tutoriais e mapas de ecossistema que continuam gerando tráfego meses após a publicação, estruturados para busca e para modelos de IA.
 

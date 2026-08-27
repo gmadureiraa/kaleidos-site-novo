@@ -135,7 +135,7 @@ Aqui está o segredo aberto do marketing de eventos em web3: o negócio grande r
 
 Durante as grandes conferências, o ecossistema inteiro sabe disso. Semanas como a da Token2049 concentram centenas de side-events paralelos registrados em agregadores públicos de agenda, muitas vezes superando em volume a programação oficial. A conferência vira âncora de calendário; o valor se distribui pelos eventos ao redor.
 
-Organizar um side-event próprio muda sua posição no jogo:
+Organizar um [side event próprio durante a conferência](/blog/side-events-em-conferencia-cripto) muda sua posição no jogo:
 
 - **De participante para anfitrião.** Quem organiza define a pauta, escolhe os convidados e recebe o crédito da conexão entre as pessoas presentes.
 - **Contexto controlado.** Trinta pessoas certas por três horas valem mais que três mil pessoas erradas por três dias.

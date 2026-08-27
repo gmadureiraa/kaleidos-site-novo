@@ -273,7 +273,7 @@ A maioria dos projetos copia o "dar token" e ignora o "premiar uso real". O resu
 
 Aqui está o pilar que separa a Hyperliquid de cem clones de airdrop que desapareceram.
 
-Uma perp DEX compete em três coisas que o trader sente na pele: velocidade de execução, profundidade de liquidez e custo. A Hyperliquid construiu uma L1 própria justamente para entregar uma experiência de trading on-chain próxima da de uma corretora centralizada, com livro de ordens performático em vez do modelo de pool que domina o DeFi. Quando a execução é boa o suficiente, **o trader recomenda sem ser pago para isso.**
+Uma perp DEX compete em três coisas que o trader sente na pele: velocidade de execução, profundidade de liquidez e custo, o mesmo terreno em que a [GMX cresceu sem marketing pago](/blog/gmx-crescimento-sem-marketing-pago) e em que a [dYdX mudou de marca ao ganhar cadeia própria](/blog/dydx-cadeia-propria-mudanca-de-marca). A Hyperliquid construiu uma L1 própria justamente para entregar uma experiência de trading on-chain próxima da de uma corretora centralizada, com livro de ordens performático em vez do modelo de pool que domina o DeFi. Quando a execução é boa o suficiente, **o trader recomenda sem ser pago para isso.**
 
 ![Interface de trading do app da Hyperliquid, com livro de ordens e experiência próxima de uma corretora centralizada](/blog/hyperliquid-estrategia-marketing-teardown/app-interface.png)
 *A interface da Hyperliquid: produto bom o bastante para que o uso vire aquisição. Fonte: app.hyperliquid.xyz.*
@@ -852,7 +852,7 @@ Se o seu projeto está nessa lista, ou quer estar, o gargalo provavelmente não 
 
 **TL;DR:** Pudgy Penguins pegou uma coleção de NFT quase morta (floor abaixo de 1 ETH, fundadores expulsos) e a transformou numa marca de consumo global. O segredo não foi cripto: foi brand-building clássico, invertido. Brinquedo de pelúcia no Walmart como funil de aquisição, GIFs no GIPHY como motor de distribuição (65,1 bilhões de views, mais que Disney) e licenciamento de IP que paga royalty real pro dono do NFT. O token PENGU veio depois, e é justamente a parte mais fraca do case. A lição pra qualquer marca: construa demanda no mundo real primeiro, tokenize a comunidade depois.
 
-A maioria dos projetos de NFT de 2021 virou pó. Pudgy Penguins quase virou também. A diferença é que, em vez de prometer "um jogo, um token e um metaverso", a marca foi colocar um pinguim de pelúcia na prateleira do Walmart. Esse é o estudo de como isso aconteceu, e do que dá pra roubar.
+A maioria dos projetos de NFT de 2021 virou pó, e os poucos que escaparam seguiram caminhos distintos, como a [Yuga Labs levando o Bored Ape de clube a conglomerado](/blog/bored-ape-yuga-labs-de-clube-a-conglomerado) e a [Milady transformando cultura de meme em marca](/blog/milady-cultura-de-meme-como-marca). Pudgy Penguins quase virou pó também. A diferença é que, em vez de prometer "um jogo, um token e um metaverso", a marca foi colocar um pinguim de pelúcia na prateleira do Walmart. Esse é o estudo de como isso aconteceu, e do que dá pra roubar.
 
 ## O ponto de partida: um projeto à beira da morte
 
@@ -1173,7 +1173,7 @@ Quer entender quanto mindshare o seu projeto ocupa hoje e onde está vazando ate
 
 Branding em web3 é o conjunto de associações que o mercado faz com o seu projeto antes de ler uma linha do whitepaper. É o que a pessoa sente quando vê seu ticker no timeline, quando alguém cita seu nome num group de Telegram, quando o usuário escolhe entre o seu protocolo e três concorrentes que fazem quase a mesma coisa.
 
-Branding **não** é o logo, a paleta de cor ou a fonte. Esses são ativos de identidade visual, e identidade visual é a casca, não o núcleo. Você pode ter o melhor design system do setor e nenhuma marca, do mesmo jeito que pode ter um logo improvisado e uma marca que todo mundo respeita.
+Branding **não** é o logo, a paleta de cor ou a fonte. Esses são ativos de [identidade visual web3, que vai além do gradiente](/blog/identidade-visual-web3-alem-do-gradiente), e identidade visual é a casca, não o núcleo. Você pode ter o melhor design system do setor e nenhuma marca, do mesmo jeito que pode ter um logo improvisado e uma marca que todo mundo respeita.
 
 A definição prática que usamos na Kaleidos: **marca é a posição que você ocupa na memória de uma pessoa quando ela precisa decidir, e branding é o trabalho deliberado de moldar essa posição.** Em cripto isso tem um peso extra, porque o usuário decide rápido, é cético por padrão e tem o seu histórico on-chain disponível pra qualquer um auditar.
 
@@ -1237,7 +1237,7 @@ A Hyperliquid não tentou ser uma "Binance melhor" de frente. Ela ocupou o flanc
 
 ## Os erros que matam uma marca cripto
 
-- **Rebrand a cada narrativa.** Trocar nome, logo e tese a cada ciclo zera a memória acumulada. Adapte a mensagem, preserve a marca.
+- **Rebrand a cada narrativa.** Trocar nome, logo e tese a cada ciclo zera a memória acumulada, e o antídoto é um [brand book de projeto cripto com o que precisa entrar](/blog/brand-book-de-projeto-cripto-o-que-entra). Adapte a mensagem, preserve a marca.
 - **Confundir hype com marca.** Atenção viral sem substância gera pico e queda. Marca é o que sobra depois do pico.
 - **Copiar o tom de voz do líder.** Soar igual ao incumbente te transforma em alternativa esquecível.
 - **Esconder a prova.** Em cripto, opacidade lê como risco. A marca que não mostra dado perde para a que mostra.

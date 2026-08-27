@@ -1211,7 +1211,7 @@ O último é o copy que vai na landing page. Os primeiros vão na documentação
 
 ### A fórmula Feature → Benefit → Proof
 
-Estruture cada seção da landing page assim:
+Estruture cada seção da landing page assim, a mesma lógica que sustenta uma [landing page de projeto cripto que converte](/blog/landing-page-de-projeto-cripto-que-converte):
 
 1. **Feature:** o que é. "Relatórios automáticos semanais."
 2. **Benefit:** por que importa. "Você para de perder 3 horas montando planilha."
@@ -1352,7 +1352,7 @@ O que testar primeiro (por impacto):
 3. **Social proof.** Com vs. sem depoimentos.
 4. **Estrutura.** Longa vs. curta (depende do ticket).
 
-A regra: teste uma variável por vez, com volume suficiente pra significância estatística (mínimo 100 conversões por variante).
+A regra: teste uma variável por vez, com volume suficiente pra significância estatística (mínimo 100 conversões por variante); quando o tráfego não chega lá, o caminho é [testar copy e criativo com pouco tráfego](/blog/testar-copy-e-criativo-com-pouco-trafego).
 
 Copy que converte não é talento. É processo: pesquisar, escrever, testar, iterar. As técnicas deste guia são o framework. A execução consistente é o que separa conversão de 2% de conversão de 8%.
 
@@ -1672,7 +1672,7 @@ Antes de abrir portas:
 - Defina a persona. Quem é o membro ideal? Trader, developer, investidor retail, creator?
 - Escolha a plataforma. Telegram pra anúncio e volume. Discord pra profundidade e segmentação.
 - Crie o documento de cultura: tom, regras, valores. Como se comportar, o que é celebrado, o que é proibido.
-- Monte a equipe: pelo menos 1 community manager dedicado + 3 a 5 moderadores ativos.
+- Monte a equipe: pelo menos 1 community manager dedicado (veja [como contratar um community manager de cripto](/blog/contratar-community-manager-cripto)) + 3 a 5 moderadores ativos, com [rotina de moderação definida antes de abrir as portas](/blog/moderacao-de-comunidade-cripto-o-time-invisivel).
 
 ### Mês 2: Seed (primeiros membros)
 

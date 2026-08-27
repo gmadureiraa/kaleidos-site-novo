@@ -167,7 +167,7 @@ Isso pede um tipo de presença diferente. Menos campanha, mais utilidade constan
 
 O mesmo produto de wallet ou infraestrutura fala com dois públicos que quase não se entendem. E o marketing precisa endereçar cada um no idioma dele.
 
-**O varejo quer simplicidade e segurança percebida.** A objeção é o medo: medo de perder a chave, de cair em golpe, de não entender. A comunicação pro varejo remove fricção e explica o trade-off de self-custody de forma acolhedora, sem jargão. O sucesso é a pessoa se sentir capaz de usar sem ser especialista.
+**O varejo quer simplicidade e segurança percebida.** A objeção é o medo: medo de perder a chave, de cair em golpe, de não entender. A comunicação pro varejo remove fricção e explica o trade-off de self-custody de forma acolhedora, sem jargão. O sucesso é a pessoa se sentir capaz de usar sem ser especialista, que é exatamente o terreno da [briga de marca entre Phantom e MetaMask](/blog/phantom-vs-metamask-a-briga-de-marca-das-carteiras).
 
 **O institucional quer garantia, controle e compliance.** A objeção é o risco operacional e regulatório. Aqui a conversa é sobre modelo de custódia auditável, SLA, controles de acesso, trilha de auditoria, aderência a requisitos regulatórios. Analogia acolhedora não convence tesouraria. Documento técnico e prova de conformidade, sim.
 

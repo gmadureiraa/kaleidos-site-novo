@@ -358,7 +358,7 @@ Em modo loop, cada artigo tem três empregos simultâneos: capturar demanda de b
 
 ## SEO em cripto: a escala que ninguém vê no feed
 
-**Enquanto a atenção do setor está no X, a maior operação de aquisição orgânica de cripto acontece no Google.** O caso mais documentado é o da Coinbase: segundo levantamento da Flexe.io, cerca de 72% dos 8,3 milhões de visitantes orgânicos mensais da exchange chegam por páginas programáticas de preço e conversão de ativos, e a localização multiplica o efeito, com as páginas em turco da Binance sozinhas atraindo cerca de 1,1 milhão de visitantes mensais [Flexe.io](https://flexe.io/blog/exchange-traffic/).
+**Enquanto a atenção do setor está no X, a maior operação de aquisição orgânica de cripto acontece no Google.** O caso mais documentado é o da Coinbase: segundo levantamento da Flexe.io, cerca de 72% dos 8,3 milhões de visitantes orgânicos mensais da exchange chegam por páginas programáticas de preço e conversão de ativos, e a [localização de conteúdo cripto para novos mercados](/blog/localizacao-de-conteudo-cripto-novos-mercados) multiplica o efeito, com as páginas em turco da Binance sozinhas atraindo cerca de 1,1 milhão de visitantes mensais [Flexe.io](https://flexe.io/blog/exchange-traffic/).
 
 A lição não é "todo projeto precisa de páginas de preço". É que existe demanda de busca massiva e recorrente em cripto, e ela é capturável por arquitetura de conteúdo, não por sorte. Para um projeto web3, as camadas práticas:
 
@@ -396,7 +396,7 @@ Sobre cadência e fôlego, vale a régua realista que a NinjaPromo recomenda par
 **Um loop de conteúdo não nasce pronto; nasce mínimo e composto.** Um roteiro de implantação em três meses para um projeto web3 enxuto:
 
 - **Mês 1, fundação:** pesquisa de palavras-chave e perguntas do nicho, definição de 3 clusters prioritários, setup de newsletter com captação em todas as páginas, padrão editorial definido (resposta no topo, dados com fonte, FAQ).
-- **Mês 2, produção:** 2 a 4 pilares publicados, cada um derivado em posts sociais e em uma edição de newsletter; primeiros testes de citação em motores de resposta.
+- **Mês 2, produção:** 2 a 4 pilares publicados, cada um derivado em posts sociais, em uma edição de newsletter e, quando houver fôlego de produção, em [vídeo no YouTube do projeto](/blog/youtube-para-projeto-cripto); primeiros testes de citação em motores de resposta.
 - **Mês 3, ciclo:** análise do que ranqueou e do que converteu, atualização dos pilares com dados novos, pauta do trimestre seguinte extraída das perguntas reais de leitores e da busca.
 
 A Kaleidos aplica esse desenho com uma convicção que veio da prática nos projetos que atende: o loop só compõe se alguém for dono dele. Conteúdo sem dono vira campanha de novo, só que mais lenta.

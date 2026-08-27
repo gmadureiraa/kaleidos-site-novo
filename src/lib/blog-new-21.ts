@@ -107,7 +107,7 @@ A Kaleidos enxerga um programa de grants como um funil de quatro etapas. Se qual
 
 Programa de grants sem tese é caixa de sugestões cara. Antes de abrir inscrições, o protocolo precisa responder: quais lacunas do ecossistema queremos preencher? Faltam wallets? Ferramentas de dados? Apps de consumo? Integrações com stablecoins?
 
-A prática recomendada é publicar RFPs (requests for proposals) explícitas, como a Ethereum Foundation faz em seu programa de suporte, listando áreas prioritárias e o tipo de projeto que quer financiar (Ethereum Foundation, 2018). Isso filtra propostas genéricas e atrai times que resolvem problemas reais do ecossistema.
+A prática recomendada é publicar RFPs (requests for proposals) explícitas, como a Ethereum Foundation faz em seu programa de suporte, listando áreas prioritárias e o tipo de projeto que quer financiar (Ethereum Foundation, 2018). Isso filtra propostas genéricas e atrai times que resolvem problemas reais do ecossistema, do mesmo jeito que o [hackathon funciona como canal de GTM em web3](/blog/hackathon-como-canal-de-gtm-web3).
 
 ### 2. Selecionar com critério público
 
@@ -115,7 +115,7 @@ Transparência no processo de seleção não é virtude moral, é marketing. Cri
 
 ### 3. Ativar com suporte além do cheque
 
-O grant é o começo da relação, não o fim. Times financiados precisam de acesso técnico (documentação, suporte de engenharia, auditoria), acesso a distribuição (co-marketing, destaque nos canais oficiais, apresentação a parceiros) e acesso a capital seguinte (introdução a fundos e programas de aceleração). Programas como o Base Builder Grants, lançado pela Coinbase em 2023 com grants pequenos e rápidos em ETH, entenderam que velocidade e proximidade valem mais que valores altos: o builder pequeno quer destravar o projeto, não preencher formulário por seis meses (Base, 2023).
+O grant é o começo da relação, não o fim. Times financiados precisam de acesso técnico ([documentação como canal de aquisição](/blog/docs-led-growth-documentacao-como-canal-de-aquisicao), suporte de engenharia, auditoria), acesso a distribuição (co-marketing, destaque nos canais oficiais, apresentação a parceiros) e acesso a capital seguinte (introdução a fundos e programas de aceleração). Programas como o Base Builder Grants, lançado pela Coinbase em 2023 com grants pequenos e rápidos em ETH, entenderam que velocidade e proximidade valem mais que valores altos: o builder pequeno quer destravar o projeto, não preencher formulário por seis meses (Base, 2023).
 
 ### 4. Reter depois do marco final
 

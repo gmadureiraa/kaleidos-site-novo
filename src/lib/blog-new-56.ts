@@ -84,7 +84,7 @@ Visto assim, a baixa participação é uma resposta racional a um produto ruim. 
 
 **Votação sem atrito.** O Snapshot virou padrão de mercado justamente por permitir votação off-chain sem custo de gás, assinando com a carteira. Para decisões que não exigem execução on-chain imediata, é o caminho óbvio.
 
-**Propostas legíveis.** Todo texto de proposta deveria abrir com um resumo em linguagem simples: o que está sendo decidido, quais as opções, o que muda para o membro. O documento técnico completo vem depois, para quem quiser profundidade. Isso é trabalho de comunicação, e é exatamente o tipo de coisa que times de protocolo negligenciam.
+**Propostas legíveis.** Todo texto de proposta deveria abrir com um resumo em linguagem simples: o que está sendo decidido, quais as opções, o que muda para o membro, que é o miolo de [uma proposta de governança que passa](/blog/comunicar-proposta-de-governanca-que-passa). O documento técnico completo vem depois, para quem quiser profundidade. Isso é trabalho de comunicação, e é exatamente o tipo de coisa que times de protocolo negligenciam.
 
 **Delegação como produto.** Protocolos maduros como Uniswap, Arbitrum e Optimism estruturaram programas de delegados: o holder que não tem tempo de acompanhar tudo delega seu poder de voto a alguém que acompanha. Bem feito, isso cria uma camada de "políticos de protocolo" que publicam justificativas de voto, debatem em público e produzem conteúdo de governança continuamente. O delegado ativo é um creator não remunerado de marketing do protocolo, e quase nenhum projeto enxerga isso.
 

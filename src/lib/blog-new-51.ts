@@ -55,7 +55,7 @@ Tokenização de ativos reais virou a narrativa favorita de quem quer falar de c
 
 No Brasil, o cenário é ainda mais interessante. Temos marco legal para ativos virtuais, uma CVM que abriu sandbox regulatório para tokenização, uma resolução específica para ofertas via crowdfunding e o Drex, o projeto de moeda digital do Banco Central construído sobre a mesma lógica de ativos tokenizados. Poucos mercados no mundo têm um regulador tão ativamente a favor da tese.
 
-E ainda assim, a maioria das tokenizadoras brasileiras comunica mal. Ou copia o vocabulário do mercado cripto especulativo e assusta o investidor tradicional, ou se esconde atrás de jargão jurídico e não convence ninguém. Este guia mostra o caminho do meio: como a Kaleidos estrutura marketing para projetos de RWA que precisam vender a coisa mais difícil do mercado financeiro, que é confiança.
+E ainda assim, a maioria das tokenizadoras brasileiras comunica mal, num mercado em que a [construção de marca do Mercado Bitcoin no Brasil](/blog/mercado-bitcoin-construcao-de-marca-no-brasil) já mostrou o que está em jogo. Ou copia o vocabulário do mercado cripto especulativo e assusta o investidor tradicional, ou se esconde atrás de jargão jurídico e não convence ninguém. Este guia mostra o caminho do meio: como a Kaleidos estrutura marketing para projetos de RWA que precisam vender a coisa mais difícil do mercado financeiro, que é confiança.
 
 ## Principais takeaways
 

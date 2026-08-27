@@ -84,7 +84,7 @@ Três diferenças estruturais explicam por que a comunicação de DAO precisa de
 
 **2. O público interno É o canal.** Os melhores amplificadores de uma DAO são os próprios membros: delegates com audiência, contribuidores que documentam o que constroem, holders que explicam a tese. O trabalho do marketing é equipar essas pessoas com material, dados e narrativa, não competir com elas.
 
-**3. Transparência não é opcional.** Orçamento de marketing de DAO é público por definição: está na tesouraria, onchain. Se a comunidade descobre um contrato de marketing que nunca passou por governança, a crise de confiança custa mais do que qualquer campanha rende. A regra é simples: proposta pública, escopo público, relatório público.
+**3. Transparência não é opcional.** Orçamento de marketing de DAO é público por definição: está na tesouraria, onchain, e vira debate assim que alguém soma os números, como no caso do [quanto a Polkadot gasta em marketing de ecossistema](/blog/polkadot-quanto-custa-marketing-de-ecossistema). Se a comunidade descobre um contrato de marketing que nunca passou por governança, a crise de confiança custa mais do que qualquer campanha rende. A regra é simples: proposta pública, escopo público, relatório público.
 
 A consequência prática: numa DAO, marketing e governança não são departamentos separados. São o mesmo sistema.
 
@@ -95,7 +95,7 @@ A maioria das DAOs trata propostas de governança como burocracia interna. É um
 O fluxo que a Kaleidos recomenda pra transformar governança em máquina de conteúdo:
 
 - **Resumo executivo de cada proposta relevante**: 5 linhas em linguagem humana. O que está sendo decidido, quanto custa, o que muda pra quem segura o token. Publicado no fórum, no X e na newsletter.
-- **Thread de contexto antes da votação**: por que essa proposta existe, quais são os argumentos de cada lado. Não é advocacy, é tradução. Quem entende, vota. Quem vota, fica.
+- **Thread de contexto antes da votação**: por que essa proposta existe, quais são os argumentos de cada lado, no mesmo espírito de [comunicar uma proposta de governança que passa](/blog/comunicar-proposta-de-governanca-que-passa). Não é advocacy, é tradução. Quem entende, vota. Quem vota, fica.
 - **Post-mortem depois da execução**: a proposta passou, o dinheiro foi gasto, o que aconteceu? Esse é o conteúdo que constrói confiança de longo prazo e quase nenhuma DAO produz.
 - **Calendário de governança público**: votações têm data. Trate como lançamento: aviso prévio, lembrete, resultado.
 

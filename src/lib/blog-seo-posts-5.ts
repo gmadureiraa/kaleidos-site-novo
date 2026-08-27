@@ -431,7 +431,7 @@ Medir retenção não precisa de stack complexo. Precisa de disciplina:
 2. **Agrupe em coortes.** Todos que entraram numa semana/mês formam uma coorte. Acompanhe cada uma separadamente ao longo do tempo.
 3. **Meça atividade em D7/D30/D90.** Para cada coorte, quantos seguem ativos nesses marcos? Isso desenha a curva.
 4. **Cruze com on-chain.** Para holders, use dados da blockchain: quantos da coorte seguem segurando, quantos venderam.
-5. **Separe orgânico de incentivado.** Identifique quem veio por incentivo (airdrop, campanha) e quem veio orgânico. As curvas devem ser comparadas — é onde você descobre o que realmente retém.
+5. **Separe orgânico de incentivado.** Identifique quem veio por incentivo (airdrop, campanha) e quem veio orgânico. As curvas devem ser comparadas — é onde você descobre o que realmente retém, e o repertório de canais que traz o usuário de volta está em [notificações e retenção em produto cripto](/blog/notificacoes-e-retencao-em-produto-cripto).
 6. **Repita e compare no tempo.** A retenção da coorte nova vs. a antiga é o seu KPI de progresso.
 
 Esse processo transforma "achamos que a comunidade está engajada" em "a coorte de junho retém 38% em D90, contra 31% em março". É a diferença entre marketing por achismo e marketing por dado — exatamente o que defendemos em [como escolher uma agência de marketing cripto](/blog/como-escolher-agencia-marketing-cripto-checklist).
